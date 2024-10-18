@@ -1,0 +1,2 @@
+Usage:  
+LabelClustersUniquely ImageDimension clustersin.hdr labeledclustersout.hdr   sizethresh optionalBoolFullyConnected

@@ -1,0 +1,2 @@
+Usage: simpleSynRegistration
+<Fixed Image> , <Moving Image> , <Initial Transform> , <Output prefix file name without any extension>

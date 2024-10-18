@@ -1,0 +1,278 @@
+{
+  "name": "antsAtroposN4",
+  "command-line": "antsAtroposN4.sh -d [IMAGE_DIMENSION] -a [INPUT_IMAGE] -x [MASK_IMAGE] -c [NUMBER_OF_CLASSES] -o [OUTPUT_PREFIX] [OPTIONS]",
+  "author": "Advanced Normalization Tools (ANTs) Contributors",
+  "description": "antsAtroposN4.sh iterates between N4 <-> Atropos to improve segmentation results.",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "1.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:latest"
+  },
+  "inputs": [
+    {
+      "id": "image_dimension",
+      "name": "Image Dimension",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[IMAGE_DIMENSION]",
+      "value-choices": [
+        2,
+        3
+      ],
+      "command-line-flag": "-d",
+      "description": "2 or 3, for 2- or 3-dimensional image."
+    },
+    {
+      "id": "input_image",
+      "name": "Input Image",
+      "type": "File",
+      "value-key": "[INPUT_IMAGE]",
+      "command-line-flag": "-a",
+      "description": "Anatomical image, typically T1. If more than one anatomical image is specified, subsequent images are also used during the segmentation process."
+    },
+    {
+      "id": "mask_image",
+      "name": "Mask Image",
+      "type": "File",
+      "value-key": "[MASK_IMAGE]",
+      "command-line-flag": "-x",
+      "description": "Binary mask defining the region of interest."
+    },
+    {
+      "id": "number_of_classes",
+      "name": "Number of Segmentation Classes",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[NUMBER_OF_CLASSES]",
+      "command-line-flag": "-c",
+      "description": "Number of classes defining the segmentation."
+    },
+    {
+      "id": "output_prefix",
+      "name": "Output Prefix",
+      "type": "String",
+      "value-key": "[OUTPUT_PREFIX]",
+      "command-line-flag": "-o",
+      "description": "The following images are created: * ${OUTPUT_PREFIX}N4Corrected.${OUTPUT_SUFFIX} * ${OUTPUT_PREFIX}Segmentation.${OUTPUT_SUFFIX} * ${OUTPUT_PREFIX}SegmentationPosteriors.${OUTPUT_SUFFIX}"
+    },
+    {
+      "id": "max_n4_atropos_iterations",
+      "name": "Max. N4 <-> Atropos Iterations",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[MAX_N4_ATROPOS_ITERATIONS]",
+      "command-line-flag": "-m",
+      "optional": true,
+      "default-value": 15,
+      "description": "Maximum number of (outer loop) iterations between N4 <-> Atropos (default = 15)."
+    },
+    {
+      "id": "max_atropos_iterations",
+      "name": "Max. Atropos Iterations",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[MAX_ATROPOS_ITERATIONS]",
+      "command-line-flag": "-n",
+      "optional": true,
+      "default-value": 5,
+      "description": "Maximum number of (inner loop) iterations in Atropos (default = 5)."
+    },
+    {
+      "id": "segmentation_priors",
+      "name": "Segmentation Priors",
+      "type": "String",
+      "value-key": "[SEGMENTATION_PRIORS]",
+      "command-line-flag": "-p",
+      "optional": true,
+      "description": "Prior probability images initializing the segmentation. Specified using c-style formatting, e.g. -p labelsPriors%02d.nii.gz. If this is not specified, k-means initialization is used instead."
+    },
+    {
+      "id": "mrf",
+      "name": "MRF",
+      "type": "String",
+      "value-key": "[MRF]",
+      "command-line-flag": "-r",
+      "optional": true,
+      "description": "Specifies MRF prior (of the form '[ weight,neighborhood ]', e.g. '[ 0.1,1x1x1 ]' which is default)."
+    },
+    {
+      "id": "denoise_anatomical_images",
+      "name": "Denoise Anatomical Images",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[DENOISE_ANATOMICAL_IMAGES]",
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-g",
+      "optional": true,
+      "default-value": 0,
+      "description": "Denoise anatomical images (1) or not (0) (default = 0)."
+    },
+    {
+      "id": "posterior_formulation",
+      "name": "Posterior Formulation",
+      "type": "String",
+      "value-key": "[POSTERIOR_FORMULATION]",
+      "command-line-flag": "-b",
+      "optional": true,
+      "description": "Posterior formulation and whether or not to use mixture model proportions. e.g 'Socrates[ 1 ]' (default) or 'Aristotle[ 1 ]'. Choose the latter if you want to use the distance priors."
+    },
+    {
+      "id": "label_propagation",
+      "name": "Label Propagation",
+      "type": "String",
+      "value-key": "[LABEL_PROPAGATION]",
+      "command-line-flag": "-l",
+      "optional": true,
+      "description": "Incorporate a distance prior into the 'Aristotle' posterior formulation. Should be of the form 'label[ lambda,boundaryProbability ]'."
+    },
+    {
+      "id": "posterior_label_for_n4_weight_mask",
+      "name": "Posterior Label for N4 Weight Mask",
+      "type": "String",
+      "value-key": "[POSTERIOR_LABEL_FOR_N4_WEIGHT_MASK]",
+      "command-line-flag": "-y",
+      "optional": true,
+      "description": "Which posterior probability image should be used to define the N4 weight mask. Can also specify multiple posteriors in which case the chosen posteriors are combined."
+    },
+    {
+      "id": "image_file_suffix",
+      "name": "Image File Suffix",
+      "type": "String",
+      "value-key": "[IMAGE_FILE_SUFFIX]",
+      "command-line-flag": "-s",
+      "optional": true,
+      "default-value": "nii.gz",
+      "description": "Any of the standard ITK IO formats e.g. nrrd, nii.gz (default), mhd."
+    },
+    {
+      "id": "keep_temporary_files",
+      "name": "Keep Temporary Files",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[KEEP_TEMPORARY_FILES]",
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-k",
+      "optional": true,
+      "default-value": 0,
+      "description": "Keep temporary files on disk (1) or delete them (0) (default = 0)."
+    },
+    {
+      "id": "use_random_seeding",
+      "name": "Use Random Seeding",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[USE_RANDOM_SEEDING]",
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-u",
+      "optional": true,
+      "default-value": 1,
+      "description": "Use random number generated from system clock in Atropos (default = 1)."
+    },
+    {
+      "id": "atropos_prior_segmentation_weight",
+      "name": "Atropos Prior Segmentation Weight",
+      "type": "Number",
+      "value-key": "[ATROPOS_PRIOR_SEGMENTATION_WEIGHT]",
+      "command-line-flag": "-w",
+      "optional": true,
+      "default-value": 0.0,
+      "description": "Atropos spatial prior probability weight for the segmentation (default = 0.0)."
+    },
+    {
+      "id": "n4_convergence",
+      "name": "N4 Convergence",
+      "type": "String",
+      "value-key": "[N4_CONVERGENCE]",
+      "command-line-flag": "-e",
+      "optional": true,
+      "description": "Convergence parameters for N4, see \"-c\" option in N4BiasFieldCorrection (default = [ 50x50x50x50,0.0000000001 ])."
+    },
+    {
+      "id": "n4_shrink_factor",
+      "name": "N4 Shrink Factor",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[N4_SHRINK_FACTOR]",
+      "command-line-flag": "-f",
+      "optional": true,
+      "default-value": 2,
+      "description": "Shrink factor for N4 (default = 2)."
+    },
+    {
+      "id": "n4_bspline_parameters",
+      "name": "N4 B-spline Parameters",
+      "type": "String",
+      "value-key": "[N4_BSPLINE_PARAMETERS]",
+      "command-line-flag": "-q",
+      "optional": true,
+      "description": "N4 b-spline specification, see \"-b\" option in N4BiasFieldCorrection (default = [ 200 ])."
+    },
+    {
+      "id": "atropos_icm",
+      "name": "Atropos ICM",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[ATROPOS_ICM]",
+      "command-line-flag": "-i",
+      "optional": true,
+      "default-value": 1,
+      "description": "ICM parameters for segmentation, see \"-g\" option in Atropos (default = 1)."
+    },
+    {
+      "id": "atropos_use_euclidean_distance",
+      "name": "Atropos Use Euclidean Distance",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[ATROPOS_USE_EUCLIDEAN_DISTANCE]",
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-j",
+      "optional": true,
+      "default-value": 0,
+      "description": "Use Euclidean distances in distance prior formulation (1) or not (0), see Atropos usage for details (default = 0)."
+    },
+    {
+      "id": "test_debug_mode",
+      "name": "Test / Debug Mode",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[TEST_DEBUG_MODE]",
+      "command-line-flag": "-z",
+      "optional": true,
+      "description": "If > 0, attempts to continue after errors."
+    }
+  ],
+  "output-files": [
+    {
+      "id": "n4_corrected",
+      "name": "N4 Corrected Image",
+      "path-template": "[OUTPUT_PREFIX]N4Corrected.[IMAGE_FILE_SUFFIX]",
+      "description": "The N4 corrected image."
+    },
+    {
+      "id": "segmentation",
+      "name": "Segmentation Image",
+      "path-template": "[OUTPUT_PREFIX]Segmentation.[IMAGE_FILE_SUFFIX]",
+      "description": "The segmentation image."
+    },
+    {
+      "id": "segmentation_posteriors",
+      "name": "Segmentation Posteriors",
+      "path-template": "[OUTPUT_PREFIX]SegmentationPosteriors.[IMAGE_FILE_SUFFIX]",
+      "description": "The segmentation posteriors image."
+    }
+  ]
+}

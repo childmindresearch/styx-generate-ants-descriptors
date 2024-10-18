@@ -1,0 +1,170 @@
+{
+  "name": "antsBrainExtraction",
+  "command-line": "antsBrainExtraction.sh [DIMENSION] [ANATOMICAL_IMAGE] [BRAIN_EXTRACTION_TEMPLATE] [BRAIN_EXTRACTION_PROBABILITY_MASK] [OPTIONAL_ARGUMENTS] [OUTPUT_PREFIX]",
+  "author": "ANTs developers",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants"
+  },
+  "inputs": [
+    {
+      "id": "image_dimension",
+      "name": "Image dimension",
+      "value-key": "[DIMENSION]",
+      "type": "Number",
+      "integer": true,
+      "value-choices": [
+        2,
+        3
+      ],
+      "default-value": 3,
+      "command-line-flag": "-d",
+      "description": "Image dimension: 2 or 3 for 2- or 3-dimensional image."
+    },
+    {
+      "id": "anatomical_image",
+      "name": "Anatomical image",
+      "value-key": "[ANATOMICAL_IMAGE]",
+      "type": "File",
+      "command-line-flag": "-a",
+      "description": "Structural image, typically T1. If more than one anatomical image is specified, subsequently specified images are used during the segmentation process."
+    },
+    {
+      "id": "brain_extraction_template",
+      "name": "Brain extraction template",
+      "value-key": "[BRAIN_EXTRACTION_TEMPLATE]",
+      "type": "File",
+      "command-line-flag": "-e",
+      "description": "Anatomical template for brain extraction."
+    },
+    {
+      "id": "brain_extraction_probability_mask",
+      "name": "Brain extraction probability mask",
+      "value-key": "[BRAIN_EXTRACTION_PROBABILITY_MASK]",
+      "type": "File",
+      "command-line-flag": "-m",
+      "description": "Brain probability mask, with intensity range from 1 (definitely brain) to 0 (definitely background)."
+    },
+    {
+      "id": "output_prefix",
+      "name": "Output prefix",
+      "value-key": "[OUTPUT_PREFIX]",
+      "type": "String",
+      "command-line-flag": "-o",
+      "description": "Output directory and file prefix."
+    },
+    {
+      "id": "tissue_classification",
+      "name": "Tissue classification",
+      "value-key": "[TISSUE_CLASSIFICATION]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "-c",
+      "description": "A k-means segmentation to find gray or white matter around the edge of the initial brain mask. Format (\"KxcsfLabelxgmLabelxwmLabel\")."
+    },
+    {
+      "id": "brain_extraction_registration_mask",
+      "name": "Brain extraction registration mask",
+      "value-key": "[BRAIN_EXTRACTION_REGISTRATION_MASK]",
+      "type": "File",
+      "optional": true,
+      "command-line-flag": "-f",
+      "description": "Mask used for registration to limit the metric computation to a specific region."
+    },
+    {
+      "id": "keep_temporary_files",
+      "name": "Keep temporary files",
+      "value-key": "[KEEP_TEMPORARY_FILES]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "default-value": 0,
+      "command-line-flag": "-k",
+      "description": "Keep brain extraction/segmentation warps and temporary files."
+    },
+    {
+      "id": "use_single_floating_point_precision",
+      "name": "Use single floating point precision",
+      "value-key": "[USE_SINGLE_FLOATING_POINT_PRECISION]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "default-value": 0,
+      "command-line-flag": "-q",
+      "description": "Use antsRegistration with single (1) or double (0) floating point precision."
+    },
+    {
+      "id": "initial_moving_transform",
+      "name": "Initial moving transform",
+      "value-key": "[INITIAL_MOVING_TRANSFORM]",
+      "type": "File",
+      "optional": true,
+      "command-line-flag": "-r",
+      "description": "An ITK affine transform for the moving image."
+    },
+    {
+      "id": "rotation_search_parameters",
+      "name": "Rotation search parameters",
+      "value-key": "[ROTATION_SEARCH_PARAMETERS]",
+      "type": "String",
+      "optional": true,
+      "default-value": "20,0.12",
+      "command-line-flag": "-R",
+      "description": "Rotation search parameters for antsAI in format step,arcFraction."
+    },
+    {
+      "id": "image_file_suffix",
+      "name": "Image file suffix",
+      "value-key": "[IMAGE_FILE_SUFFIX]",
+      "type": "String",
+      "optional": true,
+      "default-value": "nii.gz",
+      "command-line-flag": "-s",
+      "description": "Image file suffix (eg., nrrd, nii.gz, mhd)."
+    },
+    {
+      "id": "translation_search_parameters",
+      "name": "Translation search parameters",
+      "value-key": "[TRANSLATION_SEARCH_PARAMETERS]",
+      "type": "String",
+      "optional": true,
+      "default-value": "40,0x40x40",
+      "command-line-flag": "-T",
+      "description": "Translation search parameters for antsAI in format step,range."
+    },
+    {
+      "id": "use_random_seeding",
+      "name": "Use random seeding",
+      "value-key": "[USE_RANDOM_SEEDING]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "default-value": 1,
+      "command-line-flag": "-u",
+      "description": "Use random number generated from system clock (1) or a fixed seed (0)."
+    },
+    {
+      "id": "test_debug_mode",
+      "name": "Test / debug mode",
+      "value-key": "[TEST_DEBUG_MODE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "command-line-flag": "-z",
+      "description": "If > 0, runs a faster version of the script for debugging."
+    }
+  ],
+  "output-files": [
+    {
+      "id": "brain_extraction_output",
+      "name": "Brain extraction output",
+      "description": "The output brain extraction results.",
+      "path-template": "[OUTPUT_PREFIX][IMAGE_FILE_SUFFIX]",
+      "optional": false
+    }
+  ]
+}

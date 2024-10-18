@@ -1,0 +1,177 @@
+
+antsCorticalThickness.sh performs T1 anatomical brain processing where the following steps are currently applied:
+
+  1. Brain extraction
+  2. Brain n-tissue segmentation
+  3. Cortical thickness
+  4. (Optional) registration to a template
+
+Usage:
+
+antsCorticalThickness.sh -d imageDimension
+              -a anatomicalImage
+              -e brainTemplate
+              -m brainExtractionProbabilityMask
+              -p brainSegmentationPriors
+              <OPTARGS>
+              -o outputPrefix
+
+Example:
+
+  bash /opt/ants/bin/antsCorticalThickness.sh -d 3 -a t1.nii.gz -e brainWithSkullTemplate.nii.gz -m brainPrior.nii.gz -p segmentationPriors%d.nii.gz -o output
+
+Required arguments:
+
+We use *intensity* to denote the original anatomical image of the brain.
+
+We use *probability* to denote a probability image with values in range 0 to 1.
+
+We use *label* to denote a label image with values in range 0 to N.
+
+     -d:  Image dimension                       2 or 3 (for 2- or 3-dimensional image)
+
+     -a:  Anatomical image                      Structural *intensity* image, typically T1.  If more than one
+                                                anatomical image is specified, subsequently specified
+                                                images are used during the segmentation process.  However,
+                                                only the first image is used in the registration of priors.
+                                                We recommend using the T1 as the first image.
+
+     -e:  Brain segmentation template           Anatomical *intensity* template. This template is *not* skull-stripped.
+                                                The following images must be in the same space as this template:
+                                                    * Brain probability mask (-m)
+                                                    * Segmentation priors (-p).
+                                                If used, the following optional images must also be in the same space as
+                                                this template:
+                                                    * Registration metric mask (-f)
+                                                    * Thickness prior image (-r).
+
+     -m:  Brain extraction probability mask     Brain *probability* mask in the segmentation template space. A binary mask
+                                                is an acceptable probability image.
+
+     -p:  Brain segmentation priors             Tissue *probability* priors corresponding to the template image specified
+                                                with the -e option.  Specified using c-style formatting, either with numeric indices
+                                                e.g.
+                                                  -p template/priors/Priors%02d.nii.gz
+                                                or BIDS style, eg
+                                                  -p tpl-templateName/tpl-templateName_res-01_label-%s_probseg.nii.gz
+
+                                                At least four priors must exist, corresponding to CSF, Cortical GM, WM, Subcortical GM.
+                                                If priors are numbered numerically, the classes must be ordered in the same way, ie
+                                                  1:  CSF
+                                                  2:  Cortical GM
+                                                  3:  WM
+                                                  4:  Subcortical GM
+
+                                                In BIDS format, the labels must include CSF, CGM, WM, SGM, and may optionally include BS, CBM.
+                                                Other labels will not be used. Templateflow labels use "SCGM" instead of "SGM", if "SGM" is not
+                                                found, "SCGM" will be used instead.
+
+     -o:  Output prefix                         A partial list of output images:
+                                                  * ///tmp30023//tmpBrainExtractionMask.nii.gz
+                                                  * ///tmp30023//tmpBrainSegmentation.nii.gz
+                                                  * ///tmp30023//tmpBrainSegmentation*N4.nii.gz One for each anatomical input
+                                                  * ///tmp30023//tmpBrainSegmentationPosteriors*1.nii.gz  CSF
+                                                  * ///tmp30023//tmpBrainSegmentationPosteriors*2.nii.gz  Cortical GM
+                                                  * ///tmp30023//tmpBrainSegmentationPosteriors*3.nii.gz  WM
+                                                  * ///tmp30023//tmpBrainSegmentationPosteriors*4.nii.gz  Subcortical GM
+                                                  * ... and so on for additional segmentation classes
+                                                  * ///tmp30023//tmpBrainSegmentationPosteriors*N.nii.gz where there are N priors
+                                                  *                              Number formatting of posteriors matches that of the priors.
+                                                  * ///tmp30023//tmpCorticalThickness.nii.gz
+                                                More information on the output can be found on the ANTs Wiki
+                                                https://github.com/ANTsX/ANTs/wiki.
+
+Optional arguments:
+
+     -s:  image file suffix                     Any of the standard ITK IO formats e.g. nrrd, nii.gz (default), mhd.
+
+     -t:  template for t1 registration          Anatomical *intensity* template. This template *must* be skull-stripped.
+                                                This template is used to produce a final, high-quality registration between
+                                                the bias-corrected, skull-stripped subject anatomical image and the template.
+                                                This template will commonly be a skull-stripped version of the template passed
+                                                with -e. We perform the registration with fixed image = (this template)
+                                                and moving image = (input anatomical image).
+                                                The output from this step is
+                                                  * Forward warps:
+                                                    - ///tmp30023//tmpSubjectToTemplate1Warp.nii.gz
+                                                    - ///tmp30023//tmpSubjectToTemplate0GenericAffine.mat
+                                                  * Inverse warps:
+                                                    - ///tmp30023//tmpTemplateToSubject1GenericAffine.mat
+                                                    - ///tmp30023//tmpTemplateToSubject0Warp.nii.gz
+                                                  * Jacobian:
+                                                    - ///tmp30023//tmpSubjectToTemplateLogJacobian.nii.gz
+
+                                                More information on the how to use these images can be found on the ANTs Wiki
+                                                https://github.com/ANTsX/ANTs/wiki.
+
+     -f:  extraction registration mask          Binary metric mask defined in the segmentation template space (-e). During the
+                                                registration for brain extraction, the similarity metric is only computed within
+                                                this mask.
+
+     -k:  keep temporary files                  Keep brain extraction/segmentation warps, etc (default = 0).
+
+     -g:  denoise anatomical images             Denoise anatomical images (default = 0).
+
+     -i:  max iterations for registration       ANTS registration max iterations (default = 100x100x70x20).
+
+     -w:  Atropos prior segmentation weight     Atropos spatial prior *probability* weight for the segmentation (default = 0.25).
+
+     -n:  number of segmentation iterations     N4 -> Atropos -> N4 iterations during segmentation (default = 3).
+
+     -b:  posterior formulation                 Atropos posterior formulation and whether or not to use mixture model proportions.
+                                                e.g 'Socrates[ 1 ]' (default) or 'Aristotle[ 1 ]'.  Choose the latter if you
+                                                want use the distance priors (see also the -l option for label propagation
+                                                control).
+
+     -j:  use floating-point precision          Use single float precision in registrations (default = 0).
+
+     -u:  use random seeding                    Use random number generated from system clock (default = 1). If 0, a fixed
+                                                random seed is used. To set your own seed, set this option to 0 and export the
+                                                environment variable ANTS_RANDOM_SEED. To achieve exactly identical results, you must
+                                                also set ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS to 1.
+
+     -v:  use b-spline smoothing                Use B-spline SyN for registrations and B-spline exponential mapping in DiReCT (default = 0).
+
+     -r:  cortical thickness prior image        Cortical thickness prior image in the template space, which contains an estimated
+                                                upper limit to the cortical thickness at each voxel. If not specified, the prior is
+                                                set to 10mm throughout the brain.
+
+     -l:  label propagation                     Incorporate a distance prior one the posterior formulation.  Should be
+                                                of the form 'label[ lambda,boundaryProbability ]' where label is a value
+                                                of 1,2,3,... denoting label ID.  The label probability for anything
+                                                outside the current label
+
+                                                  = boundaryProbability * exp( -lambda * distanceFromBoundary )
+
+                                                Intuitively, smaller lambda values will increase the spatial capture
+                                                range of the distance prior.  To apply to all label values, simply omit
+                                                specifying the label, i.e. '-l "[ lambda,boundaryProbability ]"'.
+
+     -c:  Additional priors for thickness       Add segmentation classes to be treated as gray or white matter for thickness
+                                                estimation. For example, when calling KellyKapowski for normal subjects, we
+                                                combine the deep gray matter segmentation/posteriors (class 4) with the white
+                                                matter segmentation/posteriors (class 3).
+                                                Another example would be computing cortical thickness in the presence
+                                                of white matter lesions. We can accommodate this by specifying a lesion mask
+                                                posterior as an additional posterior (suppose label '7'), combining this with
+                                                normal white matter in the thickness estimation by specifying '-c "WM[ 7 ]"'
+                                                or '-c "3[ 7 ]"'.
+
+     -q:  Use quick registration parameters     If = 1, use antsRegistrationSyNQuick.sh as the basis for registration
+                                                during brain extraction, brain segmentation, and (optional) normalization
+                                                to a template.  Otherwise use a slower registration comparable to
+                                                antsRegistrationSyN.sh (default = 0).
+
+     -x:  Atropos iterations                    Number of iterations within Atropos (default 5).
+
+     -y:  Script stage to run                   Which stage of ACT to run (default = 0, run all).  Tries to split in 2 hour chunks.
+                                                Will produce OutputNameACTStageNComplete.txt for each completed stage.
+                                                1: brain extraction
+                                                2: template registration
+                                                3: tissue segmentation
+                                                4: template registration (improved, optional)
+                                                5: DiReCT cortical thickness
+                                                6: qc, quality control and summary measurements
+
+     -z:  Test / debug mode                     If > 0, runs a faster version of the script. Only for testing. Implies -u 0.
+                                                Requires single thread computation for complete reproducibility.

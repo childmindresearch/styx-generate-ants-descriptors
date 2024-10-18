@@ -1,0 +1,61 @@
+
+antsNeuroimagngBattery align MR modalities to a common within-subject (and optional template) space
+Usage: antsNeuroimagingBattery.pl
+
+--input-directory where to look for modality images
+
+--output-directory where output goes (where antsCorticalThickness output lives)
+
+--output-name file prefix for outputs
+
+--anatomical reference subject image (usually T1)
+
+--anatomical-mask mask of anatomical image, should contain cerebrum, cerebellum, and brainstem
+
+
+## OPTIONAL INPUTS ###
+
+--template template image
+
+--template-transform-name basename of tranforms from anatomical to template space (must be in output base dir)
+
+--template-labels labels in template space
+
+--dti-flag DIRNAME/fileflag/outid [for example DTI/_30dir_dt.nii.gz/30dir for a file in DTI/*_30dir_dt.nii.gz ]
+
+--pcasl-flag DIRNAME/fileflag/outid
+
+--pasl-flag DIRNAME/fileflag/outid
+
+--pasl-m0-flag DIRNAME/fileflag/outid
+
+--bold-flag DIRNAME/fileflag/outid
+
+--rsbold-flag DIRNAME/fileflag/outid
+
+--mt-flag DIRNAME/fileflag/outid
+
+--no-mt-flag DIRNAME/fileflag/outid
+
+--temp-directory DIRNAME
+
+--help
+
+--info-only look for inputs, output what is there, but don't process any data.
+
+## NOTES ##
+
+Modality flags should only return one image, but you may
+provide multiple flags of a single type
+
+If you have the files DTI/name_12dir_dt.nii.gz & DTI/name_30dir_dt.nii.gz, you should call
+
+  --dti-flag DTI/12dir_dt --DTI/30dir_dt
+
+If you call
+  --dti-flag DTI/dt
+
+it will find both files and fail due to insufficient specificiation
+
+
+ 

@@ -1,0 +1,24 @@
+/opt/ants/bin/ANTSpexec.sh: illegal option -- -
+
+Usage:
+
+ANTSpexec.sh [-h ] [-r ] [-j nb_jobs ] command arg_list
+
+Optional arguments:
+
+     -h:  Shows help
+
+     -r:  Replace asterix * in the command string with argument
+
+     -j:  Number of cpu cores to use (default 2)
+
+Examples:
+
+    ANTSpexec.sh somecommand arg1 arg2 arg3
+
+    ANTSpexec.sh -j 3 \"somecommand -r -p\" arg1 arg2 arg3
+
+    ANTSpexec.sh -j 6 -r \"convert -scale 50% * small/small_*\" *.jpg"
+
+In case you terminate this script prematurely by pressing CTRL + C, run
+//killme.sh to terminate any remaining processes.

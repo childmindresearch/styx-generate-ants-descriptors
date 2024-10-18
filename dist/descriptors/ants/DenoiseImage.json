@@ -1,0 +1,128 @@
+{
+  "name": "DenoiseImage",
+  "command-line": "DenoiseImage [IMAGE_DIMENSIONALITY] [INPUT_IMAGE] [NOISE_MODEL] [MASK_IMAGE] [SHRINK_FACTOR] [PATCH_RADIUS] [SEARCH_RADIUS] [OUTPUT] [VERBOSE]",
+  "author": "ANTs developers",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "denoiseimage:latest"
+  },
+  "inputs": [
+    {
+      "id": "image_dimensionality",
+      "name": "Image Dimensionality",
+      "value-key": "[IMAGE_DIMENSIONALITY]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        2,
+        3,
+        4
+      ],
+      "command-line-flag": "--image-dimensionality",
+      "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, the program tries to infer the dimensionality from the input image."
+    },
+    {
+      "id": "input_image",
+      "name": "Input Image",
+      "value-key": "[INPUT_IMAGE]",
+      "command-line-flag": "-i",
+      "type": "File",
+      "optional": false,
+      "description": "A scalar image is expected as input for noise correction."
+    },
+    {
+      "id": "noise_model",
+      "name": "Noise Model",
+      "value-key": "[NOISE_MODEL]",
+      "type": "String",
+      "optional": true,
+      "value-choices": [
+        "Rician",
+        "Gaussian"
+      ],
+      "command-line-flag": "-n",
+      "description": "Employ a Rician or Gaussian noise model."
+    },
+    {
+      "id": "mask_image",
+      "name": "Mask Image",
+      "value-key": "[MASK_IMAGE]",
+      "command-line-flag": "-x",
+      "type": "File",
+      "optional": true,
+      "description": "If a mask image is specified, denoising is only performed in the mask region."
+    },
+    {
+      "id": "shrink_factor",
+      "name": "Shrink Factor",
+      "value-key": "[SHRINK_FACTOR]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "command-line-flag": "-s",
+      "minimum": 1,
+      "description": "Running noise correction on large images can be time consuming. To lessen computation time, the input image can be resampled. The shrink factor, specified as a single integer, describes this resampling. Shrink factor = 1 is the default."
+    },
+    {
+      "id": "patch_radius",
+      "name": "Patch Radius",
+      "value-key": "[PATCH_RADIUS]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "-p",
+      "description": "Patch radius. Default = 1x1x1"
+    },
+    {
+      "id": "search_radius",
+      "name": "Search Radius",
+      "value-key": "[SEARCH_RADIUS]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "-r",
+      "description": "Search radius. Default = 2x2x2."
+    },
+    {
+      "id": "output",
+      "name": "Output",
+      "value-key": "[OUTPUT]",
+      "command-line-flag": "-o",
+      "type": "String",
+      "optional": false,
+      "description": "The output consists of the noise corrected version of the input image. Optionally, one can also output the estimated noise image."
+    },
+    {
+      "id": "verbose",
+      "name": "Verbose",
+      "value-key": "[VERBOSE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-v",
+      "description": "Verbose output."
+    }
+  ],
+  "output-files": [
+    {
+      "id": "corrected_image",
+      "name": "Corrected Image",
+      "description": "The output is the noise-corrected version of the input image.",
+      "path-template": "[OUTPUT]"
+    },
+    {
+      "id": "noise_image",
+      "name": "Noise Image",
+      "description": "The output is the estimated noise image.",
+      "path-template": "[NOISE_IMAGE]",
+      "optional": true
+    }
+  ]
+}

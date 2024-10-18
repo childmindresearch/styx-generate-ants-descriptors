@@ -1,0 +1,35 @@
+
+COMMAND: 
+     AddNoiseToImage
+          Add various types of noise to an image. 
+
+OPTIONS: 
+     -d, --image-dimensionality 2/3/4
+          This option forces the image to be treated as a specified-dimensional image. If 
+          not specified, the program tries to infer the dimensionality from the input 
+          image. 
+
+     -i, --input-image inputImageFilename
+          A scalar image is expected as input for noise correction. 
+
+     -n, --noise-model AdditiveGaussian[<mean=0.0>,<standardDeviation=1.0>]
+                       SaltAndPepper[<probability=0.01>,<saltValue=minPixelType>,<pepperValue=maxPixelType>]
+                       Shot[<scale=1.0>]
+                       Speckle[<standardDeviation=1.0>]
+          Use different noise models each with its own (default) parameters. 
+
+     -o, --output noiseCorruptedImage
+          The output consists of the noise corrected version of the input image. 
+
+     --version 
+          Get version information. 
+
+     -v, --verbose (0)/1
+          Verbose output. 
+
+     -h 
+          Print the help menu (short version). 
+
+     --help 
+          Print the help menu. 
+          <VALUES>: 1

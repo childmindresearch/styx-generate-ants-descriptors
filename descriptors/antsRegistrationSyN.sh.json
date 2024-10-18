@@ -1,0 +1,71 @@
+{
+  "name": "antsRegistrationSyN",
+  "command-line": "/opt/ants/bin/antsRegistrationSyN.sh [DIMENSIONALITY] [FIXED_IMAGE] [MOVING_IMAGE] [OUTPUT_PREFIX] [TRANSFORM_TYPE]",
+  "description": "Script for simplified symmetric image registration using ANTs.",
+  "schema-version": "0.5",
+  "tool-version": "2.3.1",
+  "inputs": [
+    {
+      "id": "dimensionality",
+      "name": "Dimensionality",
+      "type": "Number",
+      "integer": true,
+      "description": "Dimensionality of the image (e.g., 2 or 3).",
+      "value-key": "[DIMENSIONALITY]",
+      "command-line-flag": "-d"
+    },
+    {
+      "id": "fixed_image",
+      "name": "Fixed Image",
+      "type": "File",
+      "description": "Fixed image in the registration process.",
+      "value-key": "[FIXED_IMAGE]"
+    },
+    {
+      "id": "moving_image",
+      "name": "Moving Image",
+      "type": "File",
+      "description": "Moving image in the registration process.",
+      "value-key": "[MOVING_IMAGE]"
+    },
+    {
+      "id": "output_prefix",
+      "name": "Output Prefix",
+      "type": "String",
+      "description": "Prefix for the output files.",
+      "value-key": "[OUTPUT_PREFIX]"
+    },
+    {
+      "id": "transform_type",
+      "name": "Transform Type",
+      "type": "String",
+      "description": "Type of transform to use (e.g., 's' for SyN, 't' for translation).",
+      "value-key": "[TRANSFORM_TYPE]",
+      "value-choices": [
+        "s",
+        "t"
+      ]
+    }
+  ],
+  "output-files": [
+    {
+      "id": "warped_image",
+      "name": "Warped Image",
+      "description": "The resulting warped image after registration.",
+      "path-template": "[OUTPUT_PREFIX]Warped.nii.gz"
+    },
+    {
+      "id": "inverse_warped_image",
+      "name": "Inverse Warped Image",
+      "description": "The inverse of the warped image.",
+      "path-template": "[OUTPUT_PREFIX]InverseWarped.nii.gz",
+      "optional": true
+    },
+    {
+      "id": "affine_transform",
+      "name": "Affine Transform",
+      "description": "Affine transformation matrix.",
+      "path-template": "[OUTPUT_PREFIX]0GenericAffine.mat"
+    }
+  ]
+}

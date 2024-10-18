@@ -1,0 +1,100 @@
+
+COMMAND: 
+     antsMotionCorr
+          antsMotionCorr = motion correction. This program is a user-level registration 
+          application meant to utilize classes in ITK v4.0 or greater. The user can 
+          specify any number of "stages" where a stage consists of a transform; an image 
+          metric; and iterations, shrink factors, and smoothing sigmas for each level. 
+          Specialized for 4D time series data: fixed image is 3D, moving image should be 
+          the 4D time series. Fixed image is a reference space or time slice. 
+
+OPTIONS: 
+     -d, --dimensionality 2/3
+          This option forces the image to be treated as a specified-dimensional image. If 
+          not specified, the program tries to infer the dimensionality from the input 
+          image. 
+
+     -n, --n-images 10
+          This option sets the number of images to use to construct the template image. 
+
+     -m, --metric CC[fixedImage,movingImage,metricWeight,radius,<samplingStrategy={Regular,Random}>,<samplingPercentage=[0,1]>,<useGradientFilter=false>]
+                  MI[fixedImage,movingImage,metricWeight,numberOfBins,<samplingStrategy={Regular,Random}>,<samplingPercentage=[0,1]>,<useGradientFilter=false>]
+                  Demons[fixedImage,movingImage,metricWeight,radius,<samplingStrategy={Regular,Random}>,<samplingPercentage=[0,1]>,<useGradientFilter=false>]
+                  GC[fixedImage,movingImage,metricWeight,radius,<samplingStrategy={Regular,Random}>,<samplingPercentage=[0,1]>,<useGradientFilter=false>]
+          Four image metrics are available--- GC : global correlation, CC: ANTS 
+          neighborhood cross correlation, MI: Mutual information, and Demons: Thirion's 
+          Demons (modified mean-squares). Note that the metricWeight is currently not 
+          used. Rather, it is a temporary place holder until multivariate metrics are 
+          available for a single stage. The fixed image should be a single time point (eg 
+          the average of the time series). By default, this image is not used, the fixed 
+          image for correction of each volume is the preceding volume in the time series. 
+          See below for the option to use a fixed reference image for all volumes. 
+          useGradientFilter specifies whether a smoothingfilter is applied when estimating 
+          the metric gradient. 
+
+     -u, --useFixedReferenceImage (0)/1
+          use a fixed reference image to correct all volumes, instead of correcting each 
+          image to the prior volume in the time series. 
+
+     -e, --useScalesEstimator 
+          use the scale estimator to control optimization. 
+
+     -t, --transform Affine[gradientStep]
+                     Rigid[gradientStep]
+                     GaussianDisplacementField[gradientStep,updateFieldSigmaInPhysicalSpace,totalFieldSigmaInPhysicalSpace]
+                     SyN[gradientStep,updateFieldSigmaInPhysicalSpace,totalFieldSigmaInPhysicalSpace]
+          Several transform options are available. The gradientStep orlearningRate 
+          characterizes the gradient descent optimization and is scaled appropriately for 
+          each transform using the shift scales estimator. Subsequent parameters are 
+          transform-specific and can be determined from the usage. 
+
+     -i, --iterations MxNx0...
+          Specify the number of iterations at each level. 
+
+     -s, --smoothingSigmas MxNx0...
+          Specify the sigma for smoothing at each level. Smoothing may be specified in mm 
+          units or voxels with "AxBxCmm" or "AxBxCvox". No units implies voxels. 
+
+     -f, --shrinkFactors MxNx0...
+          Specify the shrink factor for the virtual domain (typically the fixed image) at 
+          each level. 
+
+     -o, --output [outputTransformPrefix,<outputWarpedImage>,<outputAverageImage>]
+          Specify the output transform prefix (output format is .nii.gz ).Optionally, one 
+          can choose to warp the moving image to the fixed space and, if the inverse 
+          transform exists, one can also output the warped fixed image. 
+
+     -a, --average-image 
+          Average the input time series image. 
+
+     -w, --write-displacement 
+          Write the low-dimensional 3D transforms to a 4D displacement field. 
+
+     --use-histogram-matching 0/(1)
+          Histogram match the moving images to the reference image. 
+
+     --random-seed seedValue
+          Use a fixed seed for random number generation. By default, the system clock is 
+          used to initialize the seeding. The fixed seed can be any nonzero int value. 
+
+     -p, --interpolation Linear
+                         NearestNeighbor
+                         BSpline[<order=3>]
+                         BlackmanWindowedSinc
+                         CosineWindowedSinc
+                         WelchWindowedSinc
+                         HammingWindowedSinc
+                         LanczosWindowedSinc
+          Several interpolation options are available in ITK. The above are available 
+          (default Linear). 
+
+     -v, --verbose (0)/1
+          Verbose output. 
+
+     -h 
+          Print the help menu (short version). 
+          <VALUES>: 0
+
+     --help 
+          Print the help menu. 
+          <VALUES>: 1, 0

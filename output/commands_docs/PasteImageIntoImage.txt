@@ -1,0 +1,5 @@
+PasteImageIntoImage imageDimension inputCanvasImage inputImage outputImage startIndex [backgroundLabel=0] [paintOverNonBackgroundVoxels=0] [conflictLabel=-1]
+   If the current painting image voxel is nonbackground and corresponds to a background voxel in the canvas image 
+     paintOverNonBackgroundVoxels = 0 -> leave the canvas voxel as is.
+     paintOverNonBackgroundVoxels = 1 -> replace canvas voxel value with painting image voxel value
+     paintOverNonBackgroundVoxels = 2 -> replace canvas voxel walue with conflictLabel

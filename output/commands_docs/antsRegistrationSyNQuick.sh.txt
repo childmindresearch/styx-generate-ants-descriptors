@@ -1,0 +1,1 @@
+/opt/ants/bin/antsRegistrationSyNQuick.sh: illegal option -- -

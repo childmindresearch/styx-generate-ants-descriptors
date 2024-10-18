@@ -1,0 +1,24 @@
+
+Usage 1 (Forward warp): WarpTimeSeriesImageMultiTransform ImageDimension <moving_image.ext> <output_image.ext> -R <fixed_image.ext> <MyWarp.ext> <MyAffine.txt> [interpolation]
+
+Usage 2 (Inverse warp): WarpTimeSeriesImageMultiTransform ImageDimension <fixed_image.ext> <output_image.ext> -R <moving_image.ext> -i <MyAffine.txt> <MyInverseWarp.ext> [interpolation]
+
+Usage Information 
+ ImageDimension            : 3 or 4 (required argument).
+ <moving_image.ext>        : The image to apply the transformation to. The moving_image will be either a 3-D image with vector voxels or a 4D image with scalar voxels.
+ <output_image.ext>        : The resulting image. Output will be of the same type as input, but will be resampled to the domain size defined by the -R image.
+ <MyWarp.ext> <MyAffine.txt>    : Mappings can be stringed together, e.g.: MyAffine.txt MySecondAffine.txt MyWarp.nii.gz MySecondWarp.nii.gz -i MyInverseAffine.txt
+
+Options:
+ -i                : Will use the inversion of the following affine transform.
+ 
+ -R                : Reference image space that you wish to warp into.
+ --reslice-by-header        : Equivalient to -i -mh, or -fh -i -mh if used together with -R. It uses the orientation matrix and origin encoded in the image file header. 
+ --tightest-bounding-box    : Computes the tightest bounding box using all the affine transformations. It will be overrided by -R <reference_image.ext> if given.
+ These options can be used together with -R and are typically not used together with any other transforms.
+
+Interpolation:
+ --use-NN            : Use Nearest Neighbor Interpolator
+ --use-BSpline            : Use 3rd order B-Spline Interpolation.
+
+ 

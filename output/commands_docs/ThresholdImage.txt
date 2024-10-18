@@ -1,0 +1,4 @@
+Usage: ThresholdImage   ImageDimension ImageIn.ext outImage.ext  threshlo threshhi <insideValue> <outsideValue>
+   ImageDimension ImageIn.ext outImage.ext  Otsu NumberofThresholds <maskImage.ext>
+   ImageDimension ImageIn.ext outImage.ext  Kmeans NumberofThresholds <maskImage.ext>
+ Inclusive thresholds 

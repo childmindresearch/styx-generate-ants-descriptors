@@ -1,0 +1,152 @@
+{
+  "name": "N4BiasFieldCorrection",
+  "command-line": "N4BiasFieldCorrection [IMAGE_DIMENSIONALITY] [INPUT_IMAGE] [MASK] [WEIGHT] [SHRINK_FACTOR] [CONVERGENCE] [BSPLINE_FITTING] [HISTOGRAM_SHARPENING] [OUTPUT] [RESCALE_INTENSITIES] [VERBOSE]",
+  "author": "ANTs developers",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "itkteam/itk:4.13.0"
+  },
+  "inputs": [
+    {
+      "id": "image_dimensionality",
+      "name": "Image Dimensionality",
+      "value-key": "[IMAGE_DIMENSIONALITY]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        2,
+        3,
+        4
+      ],
+      "command-line-flag": "-d",
+      "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, N4 tries to infer the dimensionality from the input image."
+    },
+    {
+      "id": "input_image",
+      "name": "Input Image",
+      "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "command-line-flag": "-i",
+      "description": "A scalar image is expected as input for bias correction. Since N4 log transforms the intensities, negative values or values close to zero should be processed prior to correction."
+    },
+    {
+      "id": "mask_image",
+      "name": "Mask Image",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "command-line-flag": "-x",
+      "description": "If a mask image is specified, the final bias correction is only performed in the mask region."
+    },
+    {
+      "id": "weight_image",
+      "name": "Weight Image",
+      "value-key": "[WEIGHT]",
+      "type": "File",
+      "optional": true,
+      "command-line-flag": "-w",
+      "description": "The weight image allows the user to perform a relative weighting of specific voxels during the B-spline fitting."
+    },
+    {
+      "id": "shrink_factor",
+      "name": "Shrink Factor",
+      "value-key": "[SHRINK_FACTOR]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "command-line-flag": "-s",
+      "description": "The input image can be resampled to lessen computation time. The shrink factor describes this resampling."
+    },
+    {
+      "id": "convergence",
+      "name": "Convergence",
+      "value-key": "[CONVERGENCE]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "-c",
+      "description": "Convergence is determined by calculating the coefficient of variation between subsequent iterations."
+    },
+    {
+      "id": "bspline_fitting",
+      "name": "B-spline Fitting",
+      "value-key": "[BSPLINE_FITTING]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "-b",
+      "description": "These options describe the b-spline fitting parameters."
+    },
+    {
+      "id": "histogram_sharpening",
+      "name": "Histogram Sharpening",
+      "value-key": "[HISTOGRAM_SHARPENING]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "-t",
+      "description": "These options describe the histogram sharpening parameters."
+    },
+    {
+      "id": "output",
+      "name": "Output",
+      "value-key": "[OUTPUT]",
+      "type": "String",
+      "optional": false,
+      "command-line-flag": "-o",
+      "description": "The output consists of the bias corrected version of the input image. Optionally, one can also output the estimated bias field."
+    },
+    {
+      "id": "rescale_intensities",
+      "name": "Rescale Intensities",
+      "value-key": "[RESCALE_INTENSITIES]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-r",
+      "description": "This option rescales to the [min,max] range of the original image intensities within the user-specified mask."
+    },
+    {
+      "id": "verbose",
+      "name": "Verbose",
+      "value-key": "[VERBOSE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-v",
+      "description": "Verbose output."
+    }
+  ],
+  "output-files": [
+    {
+      "id": "corrected_image",
+      "name": "Corrected Image",
+      "description": "The output is the bias corrected version of the input image.",
+      "path-template": "[OUTPUT]_corrected.nii.gz"
+    },
+    {
+      "id": "bias_field",
+      "name": "Bias Field",
+      "description": "The output is the estimated bias field, if requested.",
+      "path-template": "[OUTPUT]_bias.nii.gz",
+      "optional": true
+    }
+  ]
+}

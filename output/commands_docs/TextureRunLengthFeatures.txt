@@ -1,0 +1,2 @@
+Usage: TextureRunLengthFeatures imageDimension inputImage [numberOfBinsPerAxis=256] [maskImage] [maskLabel=1]
+Features: ShortRunEmphasis,LongRunEmphasis,GreyLevelNonuniformity,RunLengthNonuniformity,LowGreyLevelRunEmphasis,HighGreyLevelRunEmphasis,ShortRunLowGreyLevelEmphasis,ShortRunHighGreyLevelEmphasis,LongRunLowGreyLevelEmphasis,LongRunHighGreyLevelEmphasis

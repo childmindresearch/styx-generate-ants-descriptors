@@ -1,0 +1,5 @@
+WARNING! ANTSJacobian may not be working correctly, see CreateJacobianDeterminantImage for an alternative method  
+Usage: ANTSJacobian ImageDim gWarp outfile uselog maskfn normbytotalbool projectionvector 
+ for example 
+ ANTSJacobian 3  myWarp.nii   Output  1   templatebrainmask.nii   1 1x0 
+ the last 1 normalizes the jacobian by the total in the mask.  use this to adjust for head size. 1x0 will project the warp along direction 1,0 --- don't add this option if you dont want to do this 

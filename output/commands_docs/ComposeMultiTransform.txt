@@ -1,0 +1,12 @@
+ComposeMultiTransform ImageDimension output_field [-R reference_image] {[deformation_field | [-i] affine_transform_txt ]}
+  Usage has the same form as WarpImageMultiTransform 
+ For Example: 
+
+ComposeMultiTransform Dimension  outwarp.nii   -R template.nii   ExistingWarp.nii  ExistingAffine.nii 
+ or for an inverse mapping : 
+ComposeMultiTransform Dimension  outwarp.nii   -R template.nii   -i ExistingAffine.nii ExistingInverseWarp.nii 
+ recalling that the -i option takes the inverse of the affine mapping 
+
+Or: to compose multiple affine text file into one: 
+ComposeMultiTransform ImageDimension output_affine_txt [-R reference_affine_txt] {[-i] affine_transform_txt}
+This will be evoked if a text file is given as the second parameter. In this case reference_affine_txt is used to define the center of the output affine.  The default reference is the first given affine text file. This ignores all non-txt files among the following parameters.

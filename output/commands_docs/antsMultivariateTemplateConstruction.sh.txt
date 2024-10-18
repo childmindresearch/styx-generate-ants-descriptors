@@ -1,0 +1,1 @@
+/opt/ants/bin/antsMultivariateTemplateConstruction.sh: illegal option -- -

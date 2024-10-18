@@ -1,0 +1,59 @@
+
+COMMAND: 
+     TimeSCCAN
+          A tool for sparse statistical analysis on connectivity within a subject : 
+
+OPTIONS: 
+     -h 
+          Print the help menu (short version). 
+
+     --help 
+          Print the help menu (long version). 
+          <VALUES>: 1
+
+     -o, --output outputImage
+          Output is a 2D correlation matrix. 
+
+     -l, --number-consecutive-labels 0
+          Number of consecutive labels in data 
+
+     -R, --minimum-region-size 1
+          Minimum size of a region: regions below this size are given a 0.0 connectivity 
+          value 
+
+     -i, --iterations 20
+          Number of iterations 
+
+     -s, --sparsity 0.10
+          Sparsity - a float from (0,1] indicating what fraction of the data to use 
+
+     -n, --n_eigenvectors 2
+          Number of permutations to use in scca. 
+
+     -r, --robustify 0
+          rank-based scca 
+
+     -l, --l1 0
+          use l1 ( > 0 ) or l0 ( < 0 ) penalty, also sets gradient step size e.g. -l 0.5 ( 
+          L1 ) , -l -0.5 (L0) will set 0.5 grad descent step for either penalty 
+
+     --ClusterThresh 1
+          cluster threshold on view P 
+
+     -e, --ridge_cca 0
+          Number of permutations to use in scca. 
+
+     --partial-scca-option PminusRQ
+          Choices for pscca: PQ, PminusRQ, PQminusR, PminusRQminusR 
+
+     --timeseriesimage-to-matrix [four_d_image.nii.gz,three_d_mask.nii.gz]
+          takes a timeseries (4D) image and converts it to a 2D matrix csv format as 
+          output.If the mask has multiple labels ( more the one ) then the average time 
+          series in each label will be computed and put in the csv. 
+
+     --labelsimage-to-matrix [three_d_mask.nii.gz]
+          takes a labeled (3D) image and converts it to a 2D matrix csv format as output. 
+
+     --network scca[time-matrix.mhd,label-matrix.mhd]
+               region-averaging[time-matrix.mhd,label-matrix.mhd]
+          Build the network connectivity matrix 

@@ -1,0 +1,171 @@
+{
+  "name": "antsApplyTransforms",
+  "command-line": "antsApplyTransforms [DIMENSIONALITY] [INPUT_IMAGE_TYPE] [INPUT] [REFERENCE_IMAGE] [OUTPUT] [INTERPOLATION] [OUTPUT_DATA_TYPE] [TRANSFORM] [DEFAULT_VALUE] [STATIC_CAST_FOR_R] [VERBOSE] [FLOAT]",
+  "author": "Advanced Normalization Tools (ANTs) Contributors",
+  "description": "antsApplyTransforms, applied to an input image, transforms it according to a reference image and a transform (or a set of transforms).",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  },
+  "inputs": [
+    {
+      "id": "dimensionality",
+      "name": "Dimensionality",
+      "value-key": "[DIMENSIONALITY]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        2,
+        3,
+        4
+      ],
+      "command-line-flag": "--dimensionality",
+      "description": "Sets the dimensionality of transforms and scalar inputs. This does not change for multi-valued inputs, use the -e option for time series and other multi-component images."
+    },
+    {
+      "id": "input_image_type",
+      "name": "Input Image Type",
+      "value-key": "[INPUT_IMAGE_TYPE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "command-line-flag": "--input-image-type",
+      "description": "Option specifying the input image type: scalar (default), vector, tensor, time series, multi-channel, or five-dimensional."
+    },
+    {
+      "id": "input",
+      "name": "Input Image",
+      "value-key": "[INPUT]",
+      "type": "File",
+      "command-line-flag": "--input",
+      "optional": false,
+      "description": "Currently, the only input objects supported are image objects."
+    },
+    {
+      "id": "reference_image",
+      "name": "Reference Image",
+      "value-key": "[REFERENCE_IMAGE]",
+      "type": "File",
+      "command-line-flag": "--reference-image",
+      "optional": false,
+      "description": "For warping input images, the reference image defines the spacing, origin, size, and direction of the output warped image."
+    },
+    {
+      "id": "output",
+      "name": "Output",
+      "value-key": "[OUTPUT]",
+      "type": "String",
+      "command-line-flag": "--output",
+      "optional": false,
+      "description": "One can output the warped image or print out the displacement field based on the composite transform. Another option is to compose all affine transforms and calculate its inverse."
+    },
+    {
+      "id": "interpolation",
+      "name": "Interpolation",
+      "value-key": "[INTERPOLATION]",
+      "type": "String",
+      "optional": true,
+      "value-choices": [
+        "Linear",
+        "NearestNeighbor",
+        "MultiLabel",
+        "Gaussian",
+        "BSpline",
+        "CosineWindowedSinc",
+        "WelchWindowedSinc",
+        "HammingWindowedSinc",
+        "LanczosWindowedSinc",
+        "GenericLabel"
+      ],
+      "command-line-flag": "--interpolation",
+      "description": "Several interpolation options are available in ITK."
+    },
+    {
+      "id": "output_data_type",
+      "name": "Output Data Type",
+      "value-key": "[OUTPUT_DATA_TYPE]",
+      "type": "String",
+      "optional": true,
+      "value-choices": [
+        "char",
+        "uchar",
+        "short",
+        "int",
+        "float",
+        "double",
+        "default"
+      ],
+      "command-line-flag": "--output-data-type",
+      "description": "Output image data type. Default is to use the internal data type (float or double)."
+    },
+    {
+      "id": "transform",
+      "name": "Transform",
+      "type": "String",
+      "value-key": "[TRANSFORM]",
+      "command-line-flag": "--transform",
+      "optional": false,
+      "list": true,
+      "description": "Transformations follow the ordering specified on the command line.",
+      "list-separator": ","
+    },
+    {
+      "id": "default_value",
+      "name": "Default Value",
+      "value-key": "[DEFAULT_VALUE]",
+      "type": "Number",
+      "command-line-flag": "--default-value",
+      "optional": true,
+      "description": "Default voxel value to be used with input images only. Specifies the value when the input point maps outside the output domain."
+    },
+    {
+      "id": "static_cast_for_r",
+      "name": "Static Cast for R",
+      "value-key": "[STATIC_CAST_FOR_R]",
+      "type": "Number",
+      "command-line-flag": "--static-cast-for-R",
+      "optional": true,
+      "description": "Forces static cast in ReadTransform (for R)."
+    },
+    {
+      "id": "float",
+      "name": "Float",
+      "value-key": "[FLOAT]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "--float",
+      "description": "Use 'float' instead of 'double' for computations."
+    },
+    {
+      "id": "verbose",
+      "name": "Verbose",
+      "value-key": "[VERBOSE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "--verbose",
+      "description": "Verbose output."
+    }
+  ]
+}

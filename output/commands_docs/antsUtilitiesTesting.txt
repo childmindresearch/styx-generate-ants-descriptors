@@ -1,0 +1,4 @@
+Usage: antsUtilitiesTesting testImage whichMetric[GCorMIorMattes] numberOfIterations lowerScalexUpperScalexNumberOfScaleSamples numberOfRotationSamples doPrintMatchingFileName transformName setOfTrainingImages
+Notes:  if transformName='none', no transform is printed
+Example call:  
+   antsUtilitiesTestingtest.nii.gz CC 10 0.25x3x11 15 testTransform.txt 0 training*.nii.gz

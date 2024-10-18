@@ -1,0 +1,1 @@
+Usage:   SetOrigin  Dimension infile.hdr outfile.nii  OriginX OriginY {OriginZ} 

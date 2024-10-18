@@ -1,0 +1,68 @@
+
+antsAtroposN4.sh iterates between N4 <-> Atropos to improve segmentation results.
+
+Usage:
+
+antsAtroposN4.sh -d imageDimension
+              -a inputImage
+              -x maskImage
+              -c numberOfClasses
+              -o outputPrefix
+              [Options]
+
+Example:
+
+  bash /opt/ants/bin/antsAtroposN4.sh -d 3 -a t1.nii.gz -x mask.nii.gz -c 4 -m 3 -p segmentationPriors%d.nii.gz -o output
+
+Required arguments:
+
+     -d:  image dimension                       2 or 3, for 2- or 3-dimensional image.
+     -a:  input image                           Anatomical image, typically T1.  If more than one anatomical image
+                                                is specified, subsequent images are also used during the segmentation process.
+     -x:  mask image                            Binary mask defining the region of interest.
+     -c:  number of segmentation classes        Number of classes defining the segmentation.
+     -o:  output prefix                         The following images are created:
+                                                  * ${OUTPUT_PREFIX}N4Corrected.${OUTPUT_SUFFIX}
+                                                  * ${OUTPUT_PREFIX}Segmentation.${OUTPUT_SUFFIX}
+                                                  * ${OUTPUT_PREFIX}SegmentationPosteriors.${OUTPUT_SUFFIX}
+
+Optional arguments:
+
+     -m:  max. N4 <-> Atropos iterations        Maximum number of (outer loop) iterations between N4 <-> Atropos (default = 15).
+     -n:  max. Atropos iterations               Maximum number of (inner loop) iterations in Atropos (default = 5).
+     -p:  segmentation priors                   Prior probability images initializing the segmentation.
+                                                Specified using c-style formatting, e.g. -p labelsPriors%02d.nii.gz. If this
+                                                is not specified, k-means initialization is used instead.
+     -r:  mrf                                   Specifies MRF prior (of the form '[ weight,neighborhood ]', e.g.
+                                                '[ 0.1,1x1x1 ]' which is default).
+     -g:  denoise anatomical images             Denoise anatomical images (1) or not (0) (default = 0).
+     -b:  posterior formulation                 Posterior formulation and whether or not to use mixture model proportions.
+                                                e.g 'Socrates[ 1 ]' (default) or 'Aristotle[ 1 ]'.  Choose the latter if you
+                                                want to use the distance priors, see also the -l option for label propagation
+                                                control (default = 'Socrates[ 1 ]').
+     -l:  label propagation                     Incorporate a distance prior into the 'Aristotle' posterior formulation.  Should be
+                                                of the form 'label[ lambda,boundaryProbability ]' where label is a value
+                                                of 1,2,3,... denoting label ID.  The label probability for anything
+                                                outside the current label
+
+                                                  = boundaryProbability * exp( -lambda * distanceFromBoundary )
+
+                                                Intuitively, smaller lambda values will increase the spatial capture
+                                                range of the distance prior.  To apply to all label values, simply omit
+                                                specifying the label, i.e. -l '[ lambda,boundaryProbability ]'.
+     -y:  posterior label for N4 weight mask    Which posterior probability image should be used to define the
+                                                N4 weight mask.  Can also specify multiple posteriors in which
+                                                case the chosen posteriors are combined.
+     -s:  image file suffix                     Any of the standard ITK IO formats e.g. nrrd, nii.gz (default), mhd.
+     -k:  keep temporary files                  Keep temporary files on disk (1) or delete them (0) (default = 0).
+     -u:  use random seeding                    Use random number generated from system clock in Atropos (default = 1).
+     -w:  Atropos prior segmentation weight     Atropos spatial prior probability weight for the segmentation (default = 0.0).
+
+     -e: N4 convergence                         Convergence parameters for N4, see "-c" option in N4BiasFieldCorrection (default = [ 50x50x50x50,0.0000000001 ]).
+     -f: N4 shrink factor                       Shrink factor for N4 (default = 2).
+     -q: N4 B-spline parameters                 N4 b-spline specification, see "-b" option in N4BiasFieldCorrection (default = [ 200 ]).
+     -i: Atropos icm                            ICM parameters for segmentation, see "-g" option in Atropos (default = 1).
+     -j: Atropos use-euclidean-distance         Use euclidean distances in distance prior formulation (1) or not (0), see Atropos usage for
+                                                details (default = 0).
+
+     -z:  Test / debug mode                     If > 0, attempts to continue after errors.

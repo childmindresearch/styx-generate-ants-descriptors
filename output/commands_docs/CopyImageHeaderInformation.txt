@@ -1,0 +1,1 @@
+Usage:  CopyImageHeaderInformation refimage.ext imagetocopyrefimageinfoto.ext imageout.ext   boolcopydirection  boolcopyorigin boolcopyspacing  {bool-Image2-IsTensor}

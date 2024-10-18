@@ -1,0 +1,91 @@
+
+COMMAND: 
+     KellyKapowski
+          DiReCT is a registration based estimate of cortical thickness. It was published 
+          in S. R. Das, B. B. Avants, M. Grossman, and J. C. Gee, Registration based 
+          cortical thickness measurement, Neuroimage 2009, 45:867--879. See also N. J. 
+          Tustison, P. A. Cook, A. Klein, G. Song, S. R. Das, J. T. Duda, B M. Kandel, N. 
+          van Strien, J. R. Stone, J. C. Gee, and B. B. Avants. Large-Scale Evaluation of 
+          ANTs and FreeSurfer Cortical Thickness Measurements. NeuroImage, 99:166-179, Oct 
+          2014. 
+
+OPTIONS: 
+     -d, --image-dimensionality 2/3
+          This option forces the image to be treated as a specified-dimensional image. If 
+          not specified, DiReCT tries to infer the dimensionality from the input image. 
+
+     -s, --segmentation-image imageFilename
+                              [imageFilename,<grayMatterLabel=2>,<whiteMatterLabel=3>]
+          A segmentation image must be supplied labeling the grayand white matters. 
+          Default values = 2 and 3, respectively. 
+
+     -g, --gray-matter-probability-image imageFilename
+          In addition to the segmentation image, a gray matter probability image can be 
+          used. If no such image is supplied, one is created using the segmentation image 
+          and a variance of 1.0 mm. 
+
+     -w, --white-matter-probability-image imageFilename
+          In addition to the segmentation image, a white matter probability image can be 
+          used. If no such image is supplied, one is created using the segmentation image 
+          and a variance of 1.0 mm. 
+
+     -c, --convergence [<numberOfIterations=45>,<convergenceThreshold=0.0>,<convergenceWindowSize=10>]
+          Convergence is determined by fitting a line to the normalized energy profile of 
+          the last N iterations (where N is specified by the window size) and determining 
+          the slope which is then compared with the convergence threshold. 
+
+     -t, --thickness-prior-estimate thicknessPriorEstimate
+          Provides a prior constraint on the final thickness measurement. Default = 10 mm. 
+
+     -a, --thickness-prior-image thicknessPriorFileName
+          An image containing spatially varying prior thickness values. 
+
+     -r, --gradient-step stepSize
+          Gradient step size for the optimization. Default = 0.025. 
+
+     -l, --smoothing-variance variance
+          Defines the Gaussian smoothing of the hit and total images. Default = 1.0 mm. 
+
+     -m, --smoothing-velocity-field-parameter variance
+                                              isotropicMeshSpacing
+          Defines the Gaussian smoothing of the velocity field (default = 1.5 voxels).If 
+          the b-spline smoothing option is chosen, then this defines the isotropic mesh 
+          spacing for the smoothing spline (default = 15 mm). 
+
+     -b, --use-bspline-smoothing 1/(0)
+          Sets the option for B-spline smoothing of the velocity field.Default = false. 
+
+     -x, --use-masked-smoothing 1/(0)
+          Sets the option for masked-based smoothing of the velocity field.Default = 
+          false. 
+
+     -q, --time-points 1
+          Time points for irregularly spaced time samples and time-variance with which to 
+          compute distance metric. The user specifies [0.0x1.2x4.5,3] for input with 3 
+          time slices where the vector of numeric value defines the time of sampling e.g. 
+          in years and the scalar value (here '3')defines the variance. 
+
+     -e, --restrict-deformation 1/(0)
+          Restrict the last dimension's deformation. Meant for use with multiple time 
+          points. Default = false. 
+
+     -n, --number-of-integration-points numberOfPoints
+          Number of compositions of the diffeomorphism per iteration. Default = 10. 
+
+     -p, --maximum-number-of-invert-displacement-field-iterations numberOfIterations
+          Maximum number of iterations for estimating the invert displacement field. 
+          Default = 20. 
+
+     -o, --output imageFileName
+                  [imageFileName,cumulativeVelocityFieldFileNamePrefix]
+          The output consists of a thickness map defined in the segmented gray matter. 
+
+     -v, --verbose (0)/1
+          Verbose output. 
+
+     -h 
+          Print the help menu (short version). 
+
+     --help 
+          Print the help menu. 
+          <VALUES>: 1

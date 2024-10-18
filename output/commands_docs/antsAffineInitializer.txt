@@ -1,0 +1,6 @@
+
+Usage: antsAffineInitializer ImageDimension <Image1.ext> <Image2.ext> TransformOutput.mat Optional-SearchFactor Optional-Radian-Fraction Optional-bool-UsePrincipalAxes Optional-uint-UseLocalSearch Optional-Image1Mask 
+ Optional-SearchFactor is in degrees --- e.g. 10 = search in 10 degree increments .
+ Radian-Fraction should be between 0 and 1 --- will search this arc +/- around principal axis.
+ Optional-bool-UsePrincipalAxes determines whether the rotation is searched around an initial principal axis alignment.  Default = false. 
+ Optional-uint-UseLocalSearch determines if a local optimization is run at each search point for the set number of iterations. Default = 20.

@@ -1,0 +1,128 @@
+{
+  "name": "DenoiseImage",
+  "command-line": "DenoiseImage [IMAGE_DIMENSIONALITY] [INPUT_IMAGE] [NOISE_MODEL] [MASK_IMAGE] [SHRINK_FACTOR] [PATCH_RADIUS] [SEARCH_RADIUS] [OUTPUT] [VERBOSE]",
+  "author": "J. V. Manjon, P. Coupe, Luis Marti-Bonmati, D. L. Collins, and M. Robles",
+  "description": "Denoise an image using a spatially adaptive filter originally described in J. V. Manjon, P. Coupe, Luis Marti-Bonmati, D. L. Collins, and M. Robles. Adaptive Non-Local Means Denoising of MR Images With Spatially Varying Noise Levels, Journal of Magnetic Resonance Imaging, 31:192-203, June 2010.",
+  "url": "http://example.com/DenoiseImage",
+  "tool-version": "1.0",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "denoiseimage:latest"
+  },
+  "inputs": [
+    {
+      "id": "image_dimensionality",
+      "name": "Image Dimensionality",
+      "value-key": "[IMAGE_DIMENSIONALITY]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        2,
+        3,
+        4
+      ],
+      "command-line-flag": "--image-dimensionality",
+      "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, the program tries to infer the dimensionality from the input image."
+    },
+    {
+      "id": "input_image",
+      "name": "Input Image",
+      "value-key": "[INPUT_IMAGE]",
+      "command-line-flag": "-i",
+      "type": "File",
+      "optional": false,
+      "description": "A scalar image is expected as input for noise correction."
+    },
+    {
+      "id": "noise_model",
+      "name": "Noise Model",
+      "value-key": "[NOISE_MODEL]",
+      "type": "String",
+      "optional": true,
+      "value-choices": [
+        "Rician",
+        "Gaussian"
+      ],
+      "command-line-flag": "-n",
+      "description": "Employ a Rician or Gaussian noise model."
+    },
+    {
+      "id": "mask_image",
+      "name": "Mask Image",
+      "value-key": "[MASK_IMAGE]",
+      "command-line-flag": "-x",
+      "type": "File",
+      "optional": true,
+      "description": "If a mask image is specified, denoising is only performed in the mask region."
+    },
+    {
+      "id": "shrink_factor",
+      "name": "Shrink Factor",
+      "value-key": "[SHRINK_FACTOR]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "command-line-flag": "-s",
+      "minimum": 1,
+      "description": "Running noise correction on large images can be time consuming. To lessen computation time, the input image can be resampled. The shrink factor, specified as a single integer, describes this resampling. Shrink factor = 1 is the default."
+    },
+    {
+      "id": "patch_radius",
+      "name": "Patch Radius",
+      "value-key": "[PATCH_RADIUS]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "-p",
+      "description": "Patch radius. Default = 1x1x1"
+    },
+    {
+      "id": "search_radius",
+      "name": "Search Radius",
+      "value-key": "[SEARCH_RADIUS]",
+      "type": "String",
+      "optional": true,
+      "command-line-flag": "-r",
+      "description": "Search radius. Default = 2x2x2."
+    },
+    {
+      "id": "output",
+      "name": "Output",
+      "value-key": "[OUTPUT]",
+      "command-line-flag": "-o",
+      "type": "String",
+      "optional": false,
+      "description": "The output consists of the noise corrected version of the input image. Optionally, one can also output the estimated noise image."
+    },
+    {
+      "id": "verbose",
+      "name": "Verbose",
+      "value-key": "[VERBOSE]",
+      "type": "Number",
+      "integer": true,
+      "optional": true,
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-v",
+      "description": "Verbose output."
+    }
+  ],
+  "output-files": [
+    {
+      "id": "corrected_image",
+      "name": "Corrected Image",
+      "description": "The output is the noise-corrected version of the input image.",
+      "path-template": "[OUTPUT]"
+    },
+    {
+      "id": "noise_image",
+      "name": "Noise Image",
+      "description": "The output is the estimated noise image.",
+      "path-template": "[NOISE_IMAGE]",
+      "optional": true
+    }
+  ]
+}

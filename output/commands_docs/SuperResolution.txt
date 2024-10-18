@@ -1,0 +1,5 @@
+SuperResolution imageDimension outputImage domainImage gradientSigma meshSize numberOfLevels inputImage1 ... inputImageN
+
+    N.B. The 'gradientSigma' parameter is used in calculating the gradient magnitude of the input images 
+       for weighting the voxel points during fitting.  If a negative 'gradient' sigma is specified then no 
+       weighting is used.
