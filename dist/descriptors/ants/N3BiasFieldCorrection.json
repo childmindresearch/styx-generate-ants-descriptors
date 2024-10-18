@@ -8,7 +8,7 @@
   "tool-version": "2.5.3",
   "container-image": {
     "type": "docker",
-    "image": "n3biasfieldcorrection-image"
+    "image": "antsx/ants:v2.5.3"
   },
   "inputs": [
     {

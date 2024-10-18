@@ -57,5 +57,9 @@
       "description": "The processed image file.",
       "path-template": "[FILENAMEOUT]"
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
 }

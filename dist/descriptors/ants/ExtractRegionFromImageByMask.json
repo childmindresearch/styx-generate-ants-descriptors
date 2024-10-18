@@ -60,5 +60,9 @@
     }
   ],
   "author": "ANTs developers",
-  "url": "https://github.com/ANTsX/ANTs"
+  "url": "https://github.com/ANTsX/ANTs",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
 }

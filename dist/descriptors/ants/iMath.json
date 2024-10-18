@@ -77,5 +77,9 @@
       "description": "The output image resulting from the operation.",
       "path-template": "[OUTPUT_IMAGE]"
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
 }

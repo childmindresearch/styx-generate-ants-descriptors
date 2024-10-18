@@ -53,5 +53,9 @@
       "description": "The output is the length image.",
       "path-template": "[LENGTH_IMAGE_OUTPUT]"
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
 }

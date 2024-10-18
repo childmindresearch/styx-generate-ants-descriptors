@@ -22,10 +22,15 @@ def copy_and_patch_descriptor(src_path, dest_path, ants_data):
         descriptor = json.load(f)
     
     # Update fields
+    descriptor['name'] = src_path.stem
     descriptor['author'] = "ANTs developers"
     descriptor['description'] = ants_data['description']
     descriptor['url'] = ants_data['url']
     descriptor['tool-version'] = ants_data['version']
+    descriptor["container-image"] = {
+        "type": "docker",
+        "image": "antsx/ants:v2.5.3"
+    }
     
     # Write updated descriptor to new location
     dest_path.parent.mkdir(parents=True, exist_ok=True)

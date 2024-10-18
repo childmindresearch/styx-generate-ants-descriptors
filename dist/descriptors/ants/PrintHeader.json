@@ -39,5 +39,9 @@
       "description": "The printed header information from the specified image.",
       "path-template": "header_info.txt"
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
 }

@@ -74,5 +74,9 @@
       "description": "The transformed image that is saved as output."
     }
   ],
-  "author": "ANTs developers"
+  "author": "ANTs developers",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
 }

@@ -60,5 +60,9 @@
       "description": "The output file containing the calculated texture co-occurrence features.",
       "path-template": "[INPUT_IMAGE]_features.txt"
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
 }
