@@ -1,0 +1,184 @@
+
+=== Output of 'compute_ROI_stats.tcsh --help' ===
+
+** unknown option '--help'
+
+=== Output of 'compute_ROI_stats.tcsh -help' ===
+
+
+------------------------------------------------------------------------------
+compute_ROI_stats.tcsh  - compute per-ROI value statisics over a given dataset
+
+   usage: compute_ROI_stats.tcsh [options] many_required_parameters...
+
+   given:
+      dset_ROI    : an ROI dataset
+      dset_data   : a dataset to compute statistics over (e.g. TSNR)
+      out_dir     : a directory to store the results in
+      rset_label  : a label for dset_ROI
+      rval_list   : a list of ROI values to compute stats over (e.g. 2 41 99)
+
+   and maybe:
+      stats_file  : name for the resulting statisics text file
+
+   create a stats (text) file:
+      create a depth map for dset_ROI
+      for each requested ROI value rval in rval_list (for dset_ROI)
+         compute and store in stats file:
+            ROI          : ROI index value (rval)
+
+            Nvox         : N voxels in dset_ROI rval region
+            Nzer         : N ROI voxels that are zero in dset_data
+            Dvox         : maximum ROI depth, in voxels (1.0 = 1 iso voxel)
+                           = (max mm depth) / (iso voxel width)
+
+            Tmin, T25%, Tmed, T75%, Tmax
+                         : multiples of 25%-iles (with min/max)
+
+            X, Y, Z      : x, y and z coordinates at max ROI depth
+                           (coordinates are in DICOM/RAI orientation)
+            ROI_name     : ROI label associated with ROI index (in dset_ROI)
+
+------------------------------------------------------------------------------
+example 0: based on afni_proc.py
+
+   compute_ROI_stats.tcsh                         \
+       -out_dir    t.tsnr_stats_regress           \
+       -dset_ROI   ROI_import_CAEZ_ML_resam+tlrc  \
+       -dset_data  TSNR.FT+tlrc                   \
+       -rset_label CAEZ_ML                        \
+       -rval_list  4 41 99 999
+
+------------------------------------------------------------------------------
+terminal options:
+
+   -help                   : show this help
+   -hist                   : show the revision history
+   -ver                    : show the program version
+
+required parameters:
+   -dset_ROI DSET_ROI      : ROI dataset containing regions of interest
+                             This dataset should (probably) contain the index
+                             values from -rval_list as regions of interest.
+
+   -dset_data DSET_DATA    : volume to compute statistics over
+                             This dataset is for computing ROI statistics over,
+                             such as a TSNR volume.
+
+   -out_dir OUT_DIR        : directory to put results into
+                             The output directory will hold a depth map for all
+                             DSET_ROI regions.
+
+   -rset_label RSET_LABEL  : text label to refer to dset_ROI by
+
+   -rval_list V1 V2 ...    : ROI index values (or ALL_LT)
+                             Each index with such voxels in DSET_ROI will be
+                             used to compute statistics from DSET_DATA.
+
+               example : -rval_list 2 41 99
+               example : -rval_list ALL_LT
+
+optional parameters:
+ 
+   -make_html              : make addition table formatted with HTML-style
+                             warning coloring (for APQC HTML)
+
+   -verb VERB              : specify verbosity level (3 == -echo)
+                             def: 1
+   -echo                   : same as -verb 3
+
+------------------------------------------------------------------------------
+R Reynolds Apr, 2021
+version version 1.8, August 5, 2024
+------------------------------------------------------------------------------
+
+
+=== Output of 'compute_ROI_stats.tcsh' (no arguments) ===
+
+
+------------------------------------------------------------------------------
+compute_ROI_stats.tcsh  - compute per-ROI value statisics over a given dataset
+
+   usage: compute_ROI_stats.tcsh [options] many_required_parameters...
+
+   given:
+      dset_ROI    : an ROI dataset
+      dset_data   : a dataset to compute statistics over (e.g. TSNR)
+      out_dir     : a directory to store the results in
+      rset_label  : a label for dset_ROI
+      rval_list   : a list of ROI values to compute stats over (e.g. 2 41 99)
+
+   and maybe:
+      stats_file  : name for the resulting statisics text file
+
+   create a stats (text) file:
+      create a depth map for dset_ROI
+      for each requested ROI value rval in rval_list (for dset_ROI)
+         compute and store in stats file:
+            ROI          : ROI index value (rval)
+
+            Nvox         : N voxels in dset_ROI rval region
+            Nzer         : N ROI voxels that are zero in dset_data
+            Dvox         : maximum ROI depth, in voxels (1.0 = 1 iso voxel)
+                           = (max mm depth) / (iso voxel width)
+
+            Tmin, T25%, Tmed, T75%, Tmax
+                         : multiples of 25%-iles (with min/max)
+
+            X, Y, Z      : x, y and z coordinates at max ROI depth
+                           (coordinates are in DICOM/RAI orientation)
+            ROI_name     : ROI label associated with ROI index (in dset_ROI)
+
+------------------------------------------------------------------------------
+example 0: based on afni_proc.py
+
+   compute_ROI_stats.tcsh                         \
+       -out_dir    t.tsnr_stats_regress           \
+       -dset_ROI   ROI_import_CAEZ_ML_resam+tlrc  \
+       -dset_data  TSNR.FT+tlrc                   \
+       -rset_label CAEZ_ML                        \
+       -rval_list  4 41 99 999
+
+------------------------------------------------------------------------------
+terminal options:
+
+   -help                   : show this help
+   -hist                   : show the revision history
+   -ver                    : show the program version
+
+required parameters:
+   -dset_ROI DSET_ROI      : ROI dataset containing regions of interest
+                             This dataset should (probably) contain the index
+                             values from -rval_list as regions of interest.
+
+   -dset_data DSET_DATA    : volume to compute statistics over
+                             This dataset is for computing ROI statistics over,
+                             such as a TSNR volume.
+
+   -out_dir OUT_DIR        : directory to put results into
+                             The output directory will hold a depth map for all
+                             DSET_ROI regions.
+
+   -rset_label RSET_LABEL  : text label to refer to dset_ROI by
+
+   -rval_list V1 V2 ...    : ROI index values (or ALL_LT)
+                             Each index with such voxels in DSET_ROI will be
+                             used to compute statistics from DSET_DATA.
+
+               example : -rval_list 2 41 99
+               example : -rval_list ALL_LT
+
+optional parameters:
+ 
+   -make_html              : make addition table formatted with HTML-style
+                             warning coloring (for APQC HTML)
+
+   -verb VERB              : specify verbosity level (3 == -echo)
+                             def: 1
+   -echo                   : same as -verb 3
+
+------------------------------------------------------------------------------
+R Reynolds Apr, 2021
+version version 1.8, August 5, 2024
+------------------------------------------------------------------------------
+

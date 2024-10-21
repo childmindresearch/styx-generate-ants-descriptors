@@ -1,0 +1,150 @@
+
+=== Output of 'mri_pretess --help' ===
+
+				Help
+
+NAME
+	mri_pretess
+
+SYNOPSIS
+	mri_pretess [options] filledvol labelstring normvol newfilledvol
+
+DESCRIPTION
+	Changes white matter (WM) segmentation so that the neighbors of all 
+	voxels labeled as WM have a face in common - no edges or corners 
+	allowed.
+
+POSITIONAL ARGUMENTS
+	filledvol
+		usually wm.mgz
+
+	labelstring
+		usually wm
+
+	normvol
+		usually norm.mgz
+
+	newfilledvol
+		usually wm.mgz
+
+OPTIONAL FLAGGED ARGUMENTS
+	-debug_voxel C R S
+
+	-nocorners
+		no removal of corner configurations in addition to edge ones
+
+	-w
+		turn on diagnostic writing
+
+	-keep
+		keep WM edits
+
+	-test
+		adds a voxel that should be removed by mri_pretess. The value 
+		of the voxel is set to that of an ON-edited WM, so it should 
+		be kept with -keep. The output will NOT be saved.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_pretess -help' ===
+
+				Help
+
+NAME
+	mri_pretess
+
+SYNOPSIS
+	mri_pretess [options] filledvol labelstring normvol newfilledvol
+
+DESCRIPTION
+	Changes white matter (WM) segmentation so that the neighbors of all 
+	voxels labeled as WM have a face in common - no edges or corners 
+	allowed.
+
+POSITIONAL ARGUMENTS
+	filledvol
+		usually wm.mgz
+
+	labelstring
+		usually wm
+
+	normvol
+		usually norm.mgz
+
+	newfilledvol
+		usually wm.mgz
+
+OPTIONAL FLAGGED ARGUMENTS
+	-debug_voxel C R S
+
+	-nocorners
+		no removal of corner configurations in addition to edge ones
+
+	-w
+		turn on diagnostic writing
+
+	-keep
+		keep WM edits
+
+	-test
+		adds a voxel that should be removed by mri_pretess. The value 
+		of the voxel is set to that of an ON-edited WM, so it should 
+		be kept with -keep. The output will NOT be saved.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_pretess' (no arguments) ===
+
+				Help
+
+NAME
+	mri_pretess
+
+SYNOPSIS
+	mri_pretess [options] filledvol labelstring normvol newfilledvol
+
+DESCRIPTION
+	Changes white matter (WM) segmentation so that the neighbors of all 
+	voxels labeled as WM have a face in common - no edges or corners 
+	allowed.
+
+POSITIONAL ARGUMENTS
+	filledvol
+		usually wm.mgz
+
+	labelstring
+		usually wm
+
+	normvol
+		usually norm.mgz
+
+	newfilledvol
+		usually wm.mgz
+
+OPTIONAL FLAGGED ARGUMENTS
+	-debug_voxel C R S
+
+	-nocorners
+		no removal of corner configurations in addition to edge ones
+
+	-w
+		turn on diagnostic writing
+
+	-keep
+		keep WM edits
+
+	-test
+		adds a voxel that should be removed by mri_pretess. The value 
+		of the voxel is set to that of an ON-edited WM, so it should 
+		be kept with -keep. The output will NOT be saved.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

@@ -1,0 +1,23 @@
+
+=== Output of 'dmri_violinPlots --help' ===
+
+usage: dmri_violinPlots [-h] -i INPUTDIRECTORY -l LABELS -s STRUCTURE
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUTDIRECTORY, --inputDirectory INPUTDIRECTORY
+                        Directory with all subjects
+  -l LABELS, --labels LABELS
+                        CSV file with group labels
+  -s STRUCTURE, --structure STRUCTURE
+                        Name of structure
+
+=== Output of 'dmri_violinPlots -help' ===
+
+usage: dmri_violinPlots [-h] -i INPUTDIRECTORY -l LABELS -s STRUCTURE
+dmri_violinPlots: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'dmri_violinPlots' (no arguments) ===
+
+usage: dmri_violinPlots [-h] -i INPUTDIRECTORY -l LABELS -s STRUCTURE
+dmri_violinPlots: error: the following arguments are required: -i/--inputDirectory, -l/--labels, -s/--structure

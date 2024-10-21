@@ -1,0 +1,69 @@
+
+=== Output of 'mris_flatten --help' ===
+
+Usage: /usr/local/freesurfer/bin/mris_flatten [options] <input patch> <output patch>
+
+This program will flatten a surface patch
+
+valid options are:
+
+ -w <# iterations>
+	write out the surface every # of iterations.
+ -distances <nbhd size> <# of vertices at each distance>
+	specify size of neighborhood and number of vertices at each
+	distance to be used in the optimization.
+ -dilate <# of dilations>
+	specify the number of times to dilate the ripped edges to ensure a clean cut
+ -norand
+	set the random seed to 0 so that flattening is repeatable
+ -seed <random seed>
+	set the random seed to a specific value so that flattening is repeatable
+ -copy-coords surf : copy xyz coords from surface before flattening
+    This allows creating cuts on, eg, white surface, but flattening the inflated
+    eg, mris_flatten -copy-coords lh.inflated -dilate 1 lh.white.cut lh.inflated.cut.flatten
+
+=== Output of 'mris_flatten -help' ===
+
+Usage: /usr/local/freesurfer/bin/mris_flatten [options] <input patch> <output patch>
+
+This program will flatten a surface patch
+
+valid options are:
+
+ -w <# iterations>
+	write out the surface every # of iterations.
+ -distances <nbhd size> <# of vertices at each distance>
+	specify size of neighborhood and number of vertices at each
+	distance to be used in the optimization.
+ -dilate <# of dilations>
+	specify the number of times to dilate the ripped edges to ensure a clean cut
+ -norand
+	set the random seed to 0 so that flattening is repeatable
+ -seed <random seed>
+	set the random seed to a specific value so that flattening is repeatable
+ -copy-coords surf : copy xyz coords from surface before flattening
+    This allows creating cuts on, eg, white surface, but flattening the inflated
+    eg, mris_flatten -copy-coords lh.inflated -dilate 1 lh.white.cut lh.inflated.cut.flatten
+
+=== Output of 'mris_flatten' (no arguments) ===
+
+Usage: /usr/local/freesurfer/bin/mris_flatten [options] <input patch> <output patch>
+
+This program will flatten a surface patch
+
+valid options are:
+
+ -w <# iterations>
+	write out the surface every # of iterations.
+ -distances <nbhd size> <# of vertices at each distance>
+	specify size of neighborhood and number of vertices at each
+	distance to be used in the optimization.
+ -dilate <# of dilations>
+	specify the number of times to dilate the ripped edges to ensure a clean cut
+ -norand
+	set the random seed to 0 so that flattening is repeatable
+ -seed <random seed>
+	set the random seed to a specific value so that flattening is repeatable
+ -copy-coords surf : copy xyz coords from surface before flattening
+    This allows creating cuts on, eg, white surface, but flattening the inflated
+    eg, mris_flatten -copy-coords lh.inflated -dilate 1 lh.white.cut lh.inflated.cut.flatten

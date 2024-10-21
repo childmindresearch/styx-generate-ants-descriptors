@@ -1,0 +1,12 @@
+
+=== Output of 'mri_classify --help' ===
+
+error: mri_classify has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_classify -help' ===
+
+error: mri_classify has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_classify' (no arguments) ===
+
+error: mri_classify has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

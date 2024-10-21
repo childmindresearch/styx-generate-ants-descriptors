@@ -1,0 +1,14 @@
+
+=== Output of '@GetAfniID --help' ===
+
+Error: AFNI Dset '--help' not found.
+
+=== Output of '@GetAfniID -help' ===
+
+@GetAfniID DSET
+ Returns the unique identifier of a dataset.
+
+=== Output of '@GetAfniID' (no arguments) ===
+
+@GetAfniID DSET
+ Returns the unique identifier of a dataset.

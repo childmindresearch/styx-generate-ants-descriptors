@@ -1,0 +1,186 @@
+
+=== Output of '3dLocalUnifize --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of '3dLocalUnifize -help' ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+This program takes an input and generates a simple "unifized" output
+volume.  It estimates the median in the local neighborhood of each
+voxel, and uses that to scale each voxel's brightness.  The result is
+a new dataset of brightness of order 1, which still has the
+interesting structure(s) present in the original.
+
+This program's output looks very useful to help with dataset alignment
+(esp. EPI-to-anatomical) in a wide array of cases.
+
+ver   : 1.2
+date  : Jan 29, 2024
+auth  : PA Taylor (SSCC, NIMH, NIH)
+
+
+USAGE ~1~
+
+This program is generally run as:
+
+    3dLocalUnifize [options] -prefix DSET_OUT -input DSET_IN
+
+where the following options exist:
+
+  -input     DSET_IN  :(req) input dataset
+  
+  -prefix   DSET_OUT  :(req) output dataset name, including path
+
+  -wdir_name WD       :name of temporary working directory, which 
+                       should not contain any path information---it will be
+                       created in the same directory as the final dataset
+                       is created
+                       (def: __wdir_LocalUni_, plus a random alphanumeric str)
+
+  -echo               :run this program very verbosely (def: don't do so)
+
+  -no_clean           :do not remove the working directory (def: remove it)
+
+ ... and the following are 'tinkering' options, likely not needed in
+     most cases:
+
+  -local_rad LR       :the spherical neighborhood's radius for the 
+                       3dLocalStat step (def: -3)
+
+  -local_perc LP      :the percentile used in the 3dLocalStat step,
+                       generating the scaling volume 
+                       (def: 50)
+
+  -local_mask LM      :provide the masking option to be used in the
+                       3dLocalStat step, which should be enclosed in
+                       quotes for passing along to the internal
+                       program call.  So, to use a pre-existing mask,
+                       you might call this option like:
+                         -local_mask "-mask my_mask.nii.gz"
+                       To remove any masking, put the special keyword
+                       "None" as the option value.
+                       (def: "-automask")
+
+  -filter_thr FT      :put a ceiling on values in the final, scaled dataset,
+                       whose values should be of order 1; setting FT to be a
+                       value <=0 turns off this final filtering
+                       (def: 1.5)
+
+
+NOTES ~1~
+
+  This program is designed to not need a lot of tinkering with
+  options, such as the '-local_* ..' ones.  In most cases, the default
+  scaling will be useful.
+
+
+EXAMPLES ~1~
+
+  1. Basic local unifizing:
+     3dLocalUnifize                                                  \
+        -prefix  vr_base_LU                                          \
+        -input   vr_base_min_outlier+orig.HEAD
+
+  1. Same as above, without masking:
+     3dLocalUnifize                                                  \
+        -prefix      vr_base_LU_FOV                                  \
+        -input       vr_base_min_outlier+orig.HEAD                   \
+        -local_mask  None
+
+
+=== Output of '3dLocalUnifize' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+This program takes an input and generates a simple "unifized" output
+volume.  It estimates the median in the local neighborhood of each
+voxel, and uses that to scale each voxel's brightness.  The result is
+a new dataset of brightness of order 1, which still has the
+interesting structure(s) present in the original.
+
+This program's output looks very useful to help with dataset alignment
+(esp. EPI-to-anatomical) in a wide array of cases.
+
+ver   : 1.2
+date  : Jan 29, 2024
+auth  : PA Taylor (SSCC, NIMH, NIH)
+
+
+USAGE ~1~
+
+This program is generally run as:
+
+    3dLocalUnifize [options] -prefix DSET_OUT -input DSET_IN
+
+where the following options exist:
+
+  -input     DSET_IN  :(req) input dataset
+  
+  -prefix   DSET_OUT  :(req) output dataset name, including path
+
+  -wdir_name WD       :name of temporary working directory, which 
+                       should not contain any path information---it will be
+                       created in the same directory as the final dataset
+                       is created
+                       (def: __wdir_LocalUni_, plus a random alphanumeric str)
+
+  -echo               :run this program very verbosely (def: don't do so)
+
+  -no_clean           :do not remove the working directory (def: remove it)
+
+ ... and the following are 'tinkering' options, likely not needed in
+     most cases:
+
+  -local_rad LR       :the spherical neighborhood's radius for the 
+                       3dLocalStat step (def: -3)
+
+  -local_perc LP      :the percentile used in the 3dLocalStat step,
+                       generating the scaling volume 
+                       (def: 50)
+
+  -local_mask LM      :provide the masking option to be used in the
+                       3dLocalStat step, which should be enclosed in
+                       quotes for passing along to the internal
+                       program call.  So, to use a pre-existing mask,
+                       you might call this option like:
+                         -local_mask "-mask my_mask.nii.gz"
+                       To remove any masking, put the special keyword
+                       "None" as the option value.
+                       (def: "-automask")
+
+  -filter_thr FT      :put a ceiling on values in the final, scaled dataset,
+                       whose values should be of order 1; setting FT to be a
+                       value <=0 turns off this final filtering
+                       (def: 1.5)
+
+
+NOTES ~1~
+
+  This program is designed to not need a lot of tinkering with
+  options, such as the '-local_* ..' ones.  In most cases, the default
+  scaling will be useful.
+
+
+EXAMPLES ~1~
+
+  1. Basic local unifizing:
+     3dLocalUnifize                                                  \
+        -prefix  vr_base_LU                                          \
+        -input   vr_base_min_outlier+orig.HEAD
+
+  1. Same as above, without masking:
+     3dLocalUnifize                                                  \
+        -prefix      vr_base_LU_FOV                                  \
+        -input       vr_base_min_outlier+orig.HEAD                   \
+        -local_mask  None
+

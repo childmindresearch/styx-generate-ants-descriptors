@@ -1,0 +1,21 @@
+
+=== Output of 'eddy_combine --help' ===
+
+
+Usage: eddy_combine <PosData> <Posbvals> <Posbvecs> <Pos_SeriesVol> <NegData> <Negbvals> <Negbvecs> <Neg_SeriesVol> <outputpath> <onlymatched_flag>
+If onlymatched_flag=1, then only the volumes that have matched Pos/Neg pairs will be included in the output
+
+
+=== Output of 'eddy_combine -help' ===
+
+
+Usage: eddy_combine <PosData> <Posbvals> <Posbvecs> <Pos_SeriesVol> <NegData> <Negbvals> <Negbvecs> <Neg_SeriesVol> <outputpath> <onlymatched_flag>
+If onlymatched_flag=1, then only the volumes that have matched Pos/Neg pairs will be included in the output
+
+
+=== Output of 'eddy_combine' (no arguments) ===
+
+
+Usage: eddy_combine <PosData> <Posbvals> <Posbvecs> <Pos_SeriesVol> <NegData> <Negbvals> <Negbvecs> <Neg_SeriesVol> <outputpath> <onlymatched_flag>
+If onlymatched_flag=1, then only the volumes that have matched Pos/Neg pairs will be included in the output
+

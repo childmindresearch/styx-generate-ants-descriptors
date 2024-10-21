@@ -1,0 +1,39 @@
+
+=== Output of 'convert_xfm --help' ===
+
+Lacking argument to option --help
+
+
+=== Output of 'convert_xfm -help' ===
+
+convert_xfm (Version 2.1)
+Tool for manipulating FSL transformation matrices
+Copyright(c) 1999-2007, University of Oxford (Mark Jenkinson)
+
+Usage: /usr/local/fsl/bin/convert_xfm [options] <input-matrix-filename>
+  e.g. /usr/local/fsl/bin/convert_xfm -omat <outmat> -inverse <inmat>
+       /usr/local/fsl/bin/convert_xfm -omat <outmat_AtoC> -concat <mat_BtoC> <mat_AtoB>
+
+  Available options are:
+        -omat <matrix-filename>            (4x4 ascii format)
+        -concat <second-matrix-filename>
+        -fixscaleskew <second-matrix-filename>
+        -inverse                           (Reference image must be the one originally used)
+        -help
+
+=== Output of 'convert_xfm' (no arguments) ===
+
+convert_xfm (Version 2.1)
+Tool for manipulating FSL transformation matrices
+Copyright(c) 1999-2007, University of Oxford (Mark Jenkinson)
+
+Usage: /usr/local/fsl/bin/convert_xfm [options] <input-matrix-filename>
+  e.g. /usr/local/fsl/bin/convert_xfm -omat <outmat> -inverse <inmat>
+       /usr/local/fsl/bin/convert_xfm -omat <outmat_AtoC> -concat <mat_BtoC> <mat_AtoB>
+
+  Available options are:
+        -omat <matrix-filename>            (4x4 ascii format)
+        -concat <second-matrix-filename>
+        -fixscaleskew <second-matrix-filename>
+        -inverse                           (Reference image must be the one originally used)
+        -help

@@ -1,0 +1,12 @@
+
+=== Output of 'fsl_label2voxel --help' ===
+
+Usage: fsl_label2voxel <labelval> <labeled volume> <src volume> <output filename>
+
+=== Output of 'fsl_label2voxel -help' ===
+
+Usage: fsl_label2voxel <labelval> <labeled volume> <src volume> <output filename>
+
+=== Output of 'fsl_label2voxel' (no arguments) ===
+
+Usage: fsl_label2voxel <labelval> <labeled volume> <src volume> <output filename>

@@ -1,0 +1,12 @@
+
+=== Output of 'siena_cal --help' ===
+
+Usage: siena_cal <input1_fileroot> <input2_fileroot> <scale> [siena_diff options]
+
+=== Output of 'siena_cal -help' ===
+
+Usage: siena_cal <input1_fileroot> <input2_fileroot> <scale> [siena_diff options]
+
+=== Output of 'siena_cal' (no arguments) ===
+
+Usage: siena_cal <input1_fileroot> <input2_fileroot> <scale> [siena_diff options]

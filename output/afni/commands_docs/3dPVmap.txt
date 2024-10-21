@@ -1,0 +1,115 @@
+
+=== Output of '3dPVmap --help' ===
+
+[7m** FATAL ERROR:[0m Unknown option --help
+** Program compile date = Sep 12 2024
+
+=== Output of '3dPVmap -help' ===
+
+
+3dPVmap [-prefix XXX] [-mask MMM] [-automask] inputdataset
+
+Computes the first 2 principal component vectors of a
+time series datasets, then outputs the R-squared coefficient
+of each voxel time series with these first 2 components.
+
+Each voxel times series from the input dataset is minimally pre-processed
+before the PCA is computed:
+  Despiking
+  Legendre polynomial detrending
+  L2 normalizing (sum-of-squares = 1)
+If you want more impressive pre-processing, you'll have to do that
+before running 3dPVmap (e.g., use the errts dataset from afni_proc.py).
+
+Program also outputs the first 2 principal component time series
+vectors into a 1D file, for fun and profit.
+
+The fractions of total-sum-of-squares allocable to the first 2
+principal components are written to stdout at the end of the program.
+along with a 3rd number that is a measure of the spatial concentration
+or dispersion of the PVmap.
+
+These values can be captured into a file by Unix shell redirection
+or into a shell variable by assignment:
+  3dPVmap -mask AUTO Fred.nii > Fred.sval.1D
+  set sval = ( `3dPVmap -mask AUTO Fred.nii` )  # csh syntax
+If the first value is very large, for example, this might indicate
+the widespread presence of some artifact in the dataset.
+
+If the 3rd number is bigger than 1, it indicates that the PVmap
+is more concentrated in space; if it is less than one, it indicates
+that it is more dispersed in space (relative to a uniform density).
+  3dPVmap -mask AUTO Zork.nii
+  ++ mask has 21300 voxels
+  ++ Output dataset ./PVmap+orig.BRIK
+  0.095960 0.074847 1.356635
+The first principal component accounted for 9.6% of the total sum-of-squares,
+the second component for 7.5%, and the PVmap is fairly concentrated in space.
+These % values are not very unusual, but the concentration is fairly high
+and the dataset should be further investigated.
+
+A concentration value below 1 indicates the PVmap is fairly dispersed; this
+often means the larger PVmap values are found near the edges of the brain
+and can be caused by motion or respiration artifacts.
+
+The goal is to visualize any widespread time series artifacts.
+For example, if a 'significant' part of the brain shows R-squared > 0.25,
+that could be a subject for concern -- look at your data!
+
+Author: Zhark the Unprincipaled
+
+
+=== Output of '3dPVmap' (no arguments) ===
+
+
+3dPVmap [-prefix XXX] [-mask MMM] [-automask] inputdataset
+
+Computes the first 2 principal component vectors of a
+time series datasets, then outputs the R-squared coefficient
+of each voxel time series with these first 2 components.
+
+Each voxel times series from the input dataset is minimally pre-processed
+before the PCA is computed:
+  Despiking
+  Legendre polynomial detrending
+  L2 normalizing (sum-of-squares = 1)
+If you want more impressive pre-processing, you'll have to do that
+before running 3dPVmap (e.g., use the errts dataset from afni_proc.py).
+
+Program also outputs the first 2 principal component time series
+vectors into a 1D file, for fun and profit.
+
+The fractions of total-sum-of-squares allocable to the first 2
+principal components are written to stdout at the end of the program.
+along with a 3rd number that is a measure of the spatial concentration
+or dispersion of the PVmap.
+
+These values can be captured into a file by Unix shell redirection
+or into a shell variable by assignment:
+  3dPVmap -mask AUTO Fred.nii > Fred.sval.1D
+  set sval = ( `3dPVmap -mask AUTO Fred.nii` )  # csh syntax
+If the first value is very large, for example, this might indicate
+the widespread presence of some artifact in the dataset.
+
+If the 3rd number is bigger than 1, it indicates that the PVmap
+is more concentrated in space; if it is less than one, it indicates
+that it is more dispersed in space (relative to a uniform density).
+  3dPVmap -mask AUTO Zork.nii
+  ++ mask has 21300 voxels
+  ++ Output dataset ./PVmap+orig.BRIK
+  0.095960 0.074847 1.356635
+The first principal component accounted for 9.6% of the total sum-of-squares,
+the second component for 7.5%, and the PVmap is fairly concentrated in space.
+These % values are not very unusual, but the concentration is fairly high
+and the dataset should be further investigated.
+
+A concentration value below 1 indicates the PVmap is fairly dispersed; this
+often means the larger PVmap values are found near the edges of the brain
+and can be caused by motion or respiration artifacts.
+
+The goal is to visualize any widespread time series artifacts.
+For example, if a 'significant' part of the brain shows R-squared > 0.25,
+that could be a subject for concern -- look at your data!
+
+Author: Zhark the Unprincipaled
+

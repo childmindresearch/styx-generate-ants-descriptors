@@ -1,0 +1,9 @@
+
+=== Output of 'skip_long_make_checks --help' ===
+
+
+=== Output of 'skip_long_make_checks -help' ===
+
+
+=== Output of 'skip_long_make_checks' (no arguments) ===
+

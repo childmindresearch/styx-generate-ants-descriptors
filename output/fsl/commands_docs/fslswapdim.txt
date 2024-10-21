@@ -1,0 +1,36 @@
+
+=== Output of 'fslswapdim --help' ===
+
+Usage: fslswapdim <input> <a> <b> <c> [output]
+
+  where a,b,c represent the new x,y,z axes in terms of the
+  old axes.  They can take values of -x,x,y,-y,z,-z
+  or RL,LR,AP,PA,SI,IS (in the case of nifti inputs)
+  e.g.  fslswapdim invol y x -z outvol
+  or    fslswapdim invol RL PA IS outvol
+  where the latter will convert to axial slicing 
+  (to match the avg152 images)
+
+=== Output of 'fslswapdim -help' ===
+
+Usage: fslswapdim <input> <a> <b> <c> [output]
+
+  where a,b,c represent the new x,y,z axes in terms of the
+  old axes.  They can take values of -x,x,y,-y,z,-z
+  or RL,LR,AP,PA,SI,IS (in the case of nifti inputs)
+  e.g.  fslswapdim invol y x -z outvol
+  or    fslswapdim invol RL PA IS outvol
+  where the latter will convert to axial slicing 
+  (to match the avg152 images)
+
+=== Output of 'fslswapdim' (no arguments) ===
+
+Usage: fslswapdim <input> <a> <b> <c> [output]
+
+  where a,b,c represent the new x,y,z axes in terms of the
+  old axes.  They can take values of -x,x,y,-y,z,-z
+  or RL,LR,AP,PA,SI,IS (in the case of nifti inputs)
+  e.g.  fslswapdim invol y x -z outvol
+  or    fslswapdim invol RL PA IS outvol
+  where the latter will convert to axial slicing 
+  (to match the avg152 images)

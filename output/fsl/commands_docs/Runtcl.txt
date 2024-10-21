@@ -1,0 +1,12 @@
+
+=== Output of 'Runtcl --help' ===
+
+DISPLAY is not set. Please set your DISPLAY environment variable!
+
+=== Output of 'Runtcl -help' ===
+
+DISPLAY is not set. Please set your DISPLAY environment variable!
+
+=== Output of 'Runtcl' (no arguments) ===
+
+DISPLAY is not set. Please set your DISPLAY environment variable!

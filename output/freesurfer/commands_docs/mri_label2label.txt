@@ -1,0 +1,217 @@
+
+=== Output of 'mri_label2label --help' ===
+
+
+USAGE: /usr/local/freesurfer/bin/mri_label2label 
+
+   --srclabel     input label file 
+   --trglabel     output label file 
+
+   --erode  N     erode the label N times before writing
+   --open   N     open the label N times before writing
+   --close  N     close the label N times before writing
+   --dilate N    dilate the label N times before writing
+   --ring   N    dilate the label N times then remove the original before writing
+   --srcsubject   source subject
+   --trgsubject   target subject
+   --s subject : use for both target and source
+
+   --outmask      maskfile : save output label as a binary mask (surf only)
+   --outstat      statfile : save output label stat as a mask (surf only)
+   --sample       output subject surface : sample label onto surface 
+
+   --regmethod    registration method (surface, volume) 
+   --usepathfiles read from and write to a path file
+
+   --hemi        hemisphere (lh or rh) (with surface)
+   --srchemi     hemisphere (lh or rh) (with surface)
+   --trghemi     hemisphere (lh or rh) (with surface)
+   --srcicoorder when srcsubject=ico
+   --trgicoorder when trgsubject=ico
+   --direct <src annot> <trg annot>     use the [xyz] coords for src and trg surfaces to do direct lookup
+   --trgsurf     get xyz from this surface (white)
+   --surfreg     surface registration (sphere.reg)  
+   --srcsurfreg  source surface registration (sphere.reg)
+   --trgsurfreg  target surface registration (sphere.reg)
+   --srcsurfreg-file  specify full path to source reg
+   --trgsurfreg-file  specify full path to source reg
+
+   --paint dmax surfname : map to closest vertex on source surfname if d < dmax
+   --dmindmin overlayfile : bin mask with vertex of closest label point when painting
+   --baryfill surf surflabel delta outlabel
+   --label-cortex surface aseg KeepHipAmyg01 outlabel : create a label like ?h.cortex.label <entowm.mgz>
+   --surf-label2mask label surf mask : stand-alone way to convert a label to a binary mask
+
+   --srcmask     surfvalfile thresh <format>
+   --srcmasksign sign (<abs>,pos,neg)
+   --srcmaskframe 0-based frame number <0>
+
+   --xfm xfmfile : use xfm instead of computing tal xfm
+   --reg regfile : use register.dat file instead of computing tal xfm
+   --xfm-invert : invert xfm, or reg 
+
+   --projabs  dist project dist mm along surf normal
+   --projfrac frac project frac of thickness along surf normal
+
+   --sd subjectsdir : default is to use env SUBJECTS_DIR
+   --nohash : don't use hash table when regmethod is surface
+   --norevmap : don't use reverse mapping regmethod is surface
+   --to-scanner template : convert coords to scanner RAS (if needed) prior 
+       to other operations. template is the MRI volume that the label was created on
+   --to-tkr template : convert coords to tkregister RAS (if needed) prior 
+       to other operations. template is the MRI volume that the label was created on
+   --scanner : set output coordinate type to scanner
+       NOTE: --scanner does nothing more than change a string in the label file
+
+  Purpose: Converts a label in one subject's space to a label
+  in another subject's space using either talairach or spherical
+  as an intermediate registration space. 
+
+  If a source mask is used, then the input label must have been
+  created from a surface (ie, the vertex numbers are valid). The 
+  format can be anything supported by mri_convert or curv or paint.
+  Vertices in the source label that do not meet threshold in the
+  mask will be removed from the label. See Example 2.
+
+  Example 1: If you have a label from subject fred called
+    broca-fred.label defined on fred's left hemispherical 
+    surface and you want to convert it to sally's surface, then
+
+    mri_label2label --srclabel broca-fred.label  --srcsubject fred 
+                    --trglabel broca-sally.label --trgsubject sally
+                    --regmethod surface --hemi lh
+
+    This will map from fred to sally using sphere.reg. The registration
+    surface can be changed with --surfreg.
+
+  Example 2: Same as Example 1 but with a mask
+
+    mri_label2label --srclabel broca-fred.label  --srcsubject fred 
+                    --trglabel broca-sally.label --trgsubject sally
+                    --regmethod surface --hemi lh
+                    --srcmask  fred-omnibus-sig 2 bfloat
+
+    This will load the bfloat data from fred-omnibus-sig and create
+    a mask by thresholding the first frame absolute values at 2.
+    To change it to only the positive values of the 3rd frame, add
+         --srcmasksign pos --srcmaskframe 2   
+
+
+  Example 3: You could also do the same mapping using talairach 
+    space as an intermediate:
+
+    mri_label2label --srclabel broca-fred.label  --srcsubject fred 
+                    --trglabel broca-sally.label --trgsubject sally
+                    --regmethod volume
+
+    Note that no hemisphere is specified with --regmethod volume.
+
+  Example 4: You have a label in the volume and you want to find 
+  the closest surface vertices:
+
+   mri_label2label --srclabel your.volume.label --s subject 
+     --trglabel lh.your.volume.on-pial.label --hemi lh --paint 30 pial
+     --trgsurf pial
+  This keeps the label on a single subject (but could also map to 
+  another subject). The label is mapped to vertices on the pial surface
+  that are within 30mm of the label point. The xyz of the output label
+  takes the coordinates of the pial surface (--trgsurf pial).
+
+  Notes:
+
+  1. A label can be converted to/from talairach space by specifying
+     the target/source subject as 'talairach'.
+  2. A label can be converted to/from the icosahedron by specifying
+     the target/source subject as 'ico'. When the source or target
+     subject is specified as 'ico', then the order of the icosahedron
+     must be specified with --srcicoorder/--trgicoorder.
+  3. When the surface registration method is used, the xyz coordinates
+     in the target label file are derived from the xyz coordinates
+     from the target subject's white surface. This can be changed
+     using the --trgsurf option.
+  4. When the volume registration method is used, the xyz coordinates
+     in the target label file are computed as xyzTrg = inv(Ttrg)*Tsrc*xyzSrc
+     where Tsrc is the talairach transform in 
+     srcsubject/mri/transforms/talairach.xfm, and where Ttrg is the talairach 
+     transform in trgsubject/mri/transforms/talairach.xfm.
+  5. The registration surfaces are rescaled to a radius of 100 (including 
+     the ico)
+  6. Projections along the surface normal can be either negative or
+     positive, but can only be used with surface registration method.
+
+BUGS:
+
+When using volume registration method, you cannot specify the SUBJECTS_DIR
+on the command-line.
+
+
+=== Output of 'mri_label2label -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+
+=== Output of 'mri_label2label' (no arguments) ===
+
+
+USAGE: /usr/local/freesurfer/bin/mri_label2label 
+
+   --srclabel     input label file 
+   --trglabel     output label file 
+
+   --erode  N     erode the label N times before writing
+   --open   N     open the label N times before writing
+   --close  N     close the label N times before writing
+   --dilate N    dilate the label N times before writing
+   --ring   N    dilate the label N times then remove the original before writing
+   --srcsubject   source subject
+   --trgsubject   target subject
+   --s subject : use for both target and source
+
+   --outmask      maskfile : save output label as a binary mask (surf only)
+   --outstat      statfile : save output label stat as a mask (surf only)
+   --sample       output subject surface : sample label onto surface 
+
+   --regmethod    registration method (surface, volume) 
+   --usepathfiles read from and write to a path file
+
+   --hemi        hemisphere (lh or rh) (with surface)
+   --srchemi     hemisphere (lh or rh) (with surface)
+   --trghemi     hemisphere (lh or rh) (with surface)
+   --srcicoorder when srcsubject=ico
+   --trgicoorder when trgsubject=ico
+   --direct <src annot> <trg annot>     use the [xyz] coords for src and trg surfaces to do direct lookup
+   --trgsurf     get xyz from this surface (white)
+   --surfreg     surface registration (sphere.reg)  
+   --srcsurfreg  source surface registration (sphere.reg)
+   --trgsurfreg  target surface registration (sphere.reg)
+   --srcsurfreg-file  specify full path to source reg
+   --trgsurfreg-file  specify full path to source reg
+
+   --paint dmax surfname : map to closest vertex on source surfname if d < dmax
+   --dmindmin overlayfile : bin mask with vertex of closest label point when painting
+   --baryfill surf surflabel delta outlabel
+   --label-cortex surface aseg KeepHipAmyg01 outlabel : create a label like ?h.cortex.label <entowm.mgz>
+   --surf-label2mask label surf mask : stand-alone way to convert a label to a binary mask
+
+   --srcmask     surfvalfile thresh <format>
+   --srcmasksign sign (<abs>,pos,neg)
+   --srcmaskframe 0-based frame number <0>
+
+   --xfm xfmfile : use xfm instead of computing tal xfm
+   --reg regfile : use register.dat file instead of computing tal xfm
+   --xfm-invert : invert xfm, or reg 
+
+   --projabs  dist project dist mm along surf normal
+   --projfrac frac project frac of thickness along surf normal
+
+   --sd subjectsdir : default is to use env SUBJECTS_DIR
+   --nohash : don't use hash table when regmethod is surface
+   --norevmap : don't use reverse mapping regmethod is surface
+   --to-scanner template : convert coords to scanner RAS (if needed) prior 
+       to other operations. template is the MRI volume that the label was created on
+   --to-tkr template : convert coords to tkregister RAS (if needed) prior 
+       to other operations. template is the MRI volume that the label was created on
+   --scanner : set output coordinate type to scanner
+       NOTE: --scanner does nothing more than change a string in the label file
+

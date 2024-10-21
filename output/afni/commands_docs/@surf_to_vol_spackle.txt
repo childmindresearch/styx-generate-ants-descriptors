@@ -1,0 +1,147 @@
+
+=== Output of '@surf_to_vol_spackle --help' ===
+
+@surf_to_vol_spackle.csh
+usage:
+   @surf_to_vol_spackle -maskset mymask.nii.gz -spec mysurfs.spec \
+      -surfA smoothwm -surfB pial -surfset thickness.niml.dset    \
+      -prefix vol_thick
+
+Project data from a surface dataset into a volume primarily using
+ 3dSurf2Vol but then filling any holes with an iterative smoothing
+ procedure. If two surfaces are provided, then the dataset is filled
+ between corresponding nodes. The filling is done by smoothing the
+ holes with a local non-zero mean (or mode) in a spherical neighborhood.
+ Holes come about because the lines from surfaces can miss some voxels.
+ These are more likely with sparse surfaces, but can still happen
+ even with high-resolution surfaces.
+
+Required (mostly) options:
+   -maskset mymask.nii     mask dataset in which to project surface measures
+   -spec mysurfs.spec      Surface specification file with list of surfaces
+   -surfA mysurf1          nameof first surface, e.g. smoothwm, pial,....
+   -surfB mysurf2          name of second surface.
+                           If not included, computes using normal vector
+   -surfset data.niml.dset dataset of surface measures
+   -prefix mmmm            basename of output. Final name used is prefix.nii.gz
+
+Other options:
+   -f_pn_mm mm.m           normal vector length if only using a single surface
+                           (default 2 mm) (only applies if no surfB used)
+   -meanrad mm.m           radius for search for mean to fill holes
+                           (default 2 mm)
+   -nsteps nn              number of steps on line segments (default 10)
+   -keep_temp_files        do not remove any of the temporary files
+                           (default is to remove them)
+   -maxiters nn            maximum number of smoothing and filling iterations
+                           (default is 4)
+   -mode                   use mode instead of non-zero median (appropriate for ROIs)
+   -datum cccc             set datum type to byte, short or float
+                           instead of maskset type. mode triggers -datum short
+   -ignore_unknown_options ignore additional options that are not needed
+
+ Example usage:
+    @surf_to_vol_spackle -maskset leftmask_1mm.nii.gz -spec quick.spec \
+       -surfA anat.gii -surfset v2s_inout_max_smooth2mm.niml.dset      \
+       -prefix vol_thick_ave -maxiters 10
+
+ See related scripts and programs:
+    3dSurf2Vol,3dVol2Surf,@measure_in2out,@measure_erosion_thick,SurfMeasures
+
+=== Output of '@surf_to_vol_spackle -help' ===
+
+@surf_to_vol_spackle.csh
+usage:
+   @surf_to_vol_spackle -maskset mymask.nii.gz -spec mysurfs.spec \
+      -surfA smoothwm -surfB pial -surfset thickness.niml.dset    \
+      -prefix vol_thick
+
+Project data from a surface dataset into a volume primarily using
+ 3dSurf2Vol but then filling any holes with an iterative smoothing
+ procedure. If two surfaces are provided, then the dataset is filled
+ between corresponding nodes. The filling is done by smoothing the
+ holes with a local non-zero mean (or mode) in a spherical neighborhood.
+ Holes come about because the lines from surfaces can miss some voxels.
+ These are more likely with sparse surfaces, but can still happen
+ even with high-resolution surfaces.
+
+Required (mostly) options:
+   -maskset mymask.nii     mask dataset in which to project surface measures
+   -spec mysurfs.spec      Surface specification file with list of surfaces
+   -surfA mysurf1          nameof first surface, e.g. smoothwm, pial,....
+   -surfB mysurf2          name of second surface.
+                           If not included, computes using normal vector
+   -surfset data.niml.dset dataset of surface measures
+   -prefix mmmm            basename of output. Final name used is prefix.nii.gz
+
+Other options:
+   -f_pn_mm mm.m           normal vector length if only using a single surface
+                           (default 2 mm) (only applies if no surfB used)
+   -meanrad mm.m           radius for search for mean to fill holes
+                           (default 2 mm)
+   -nsteps nn              number of steps on line segments (default 10)
+   -keep_temp_files        do not remove any of the temporary files
+                           (default is to remove them)
+   -maxiters nn            maximum number of smoothing and filling iterations
+                           (default is 4)
+   -mode                   use mode instead of non-zero median (appropriate for ROIs)
+   -datum cccc             set datum type to byte, short or float
+                           instead of maskset type. mode triggers -datum short
+   -ignore_unknown_options ignore additional options that are not needed
+
+ Example usage:
+    @surf_to_vol_spackle -maskset leftmask_1mm.nii.gz -spec quick.spec \
+       -surfA anat.gii -surfset v2s_inout_max_smooth2mm.niml.dset      \
+       -prefix vol_thick_ave -maxiters 10
+
+ See related scripts and programs:
+    3dSurf2Vol,3dVol2Surf,@measure_in2out,@measure_erosion_thick,SurfMeasures
+
+=== Output of '@surf_to_vol_spackle' (no arguments) ===
+
+@surf_to_vol_spackle.csh
+usage:
+   @surf_to_vol_spackle -maskset mymask.nii.gz -spec mysurfs.spec \
+      -surfA smoothwm -surfB pial -surfset thickness.niml.dset    \
+      -prefix vol_thick
+
+Project data from a surface dataset into a volume primarily using
+ 3dSurf2Vol but then filling any holes with an iterative smoothing
+ procedure. If two surfaces are provided, then the dataset is filled
+ between corresponding nodes. The filling is done by smoothing the
+ holes with a local non-zero mean (or mode) in a spherical neighborhood.
+ Holes come about because the lines from surfaces can miss some voxels.
+ These are more likely with sparse surfaces, but can still happen
+ even with high-resolution surfaces.
+
+Required (mostly) options:
+   -maskset mymask.nii     mask dataset in which to project surface measures
+   -spec mysurfs.spec      Surface specification file with list of surfaces
+   -surfA mysurf1          nameof first surface, e.g. smoothwm, pial,....
+   -surfB mysurf2          name of second surface.
+                           If not included, computes using normal vector
+   -surfset data.niml.dset dataset of surface measures
+   -prefix mmmm            basename of output. Final name used is prefix.nii.gz
+
+Other options:
+   -f_pn_mm mm.m           normal vector length if only using a single surface
+                           (default 2 mm) (only applies if no surfB used)
+   -meanrad mm.m           radius for search for mean to fill holes
+                           (default 2 mm)
+   -nsteps nn              number of steps on line segments (default 10)
+   -keep_temp_files        do not remove any of the temporary files
+                           (default is to remove them)
+   -maxiters nn            maximum number of smoothing and filling iterations
+                           (default is 4)
+   -mode                   use mode instead of non-zero median (appropriate for ROIs)
+   -datum cccc             set datum type to byte, short or float
+                           instead of maskset type. mode triggers -datum short
+   -ignore_unknown_options ignore additional options that are not needed
+
+ Example usage:
+    @surf_to_vol_spackle -maskset leftmask_1mm.nii.gz -spec quick.spec \
+       -surfA anat.gii -surfset v2s_inout_max_smooth2mm.niml.dset      \
+       -prefix vol_thick_ave -maxiters 10
+
+ See related scripts and programs:
+    3dSurf2Vol,3dVol2Surf,@measure_in2out,@measure_erosion_thick,SurfMeasures

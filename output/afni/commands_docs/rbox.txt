@@ -1,0 +1,69 @@
+
+=== Output of 'rbox --help' ===
+
+QH7070 rbox error: unknown flag at help.
+Execute 'rbox' without arguments for documentation.
+
+=== Output of 'rbox -help' ===
+
+
+-rbox- generate various point distributions.  Default is random in cube.
+
+args (any order, space separated):                    Version: 2001/06/24
+  3000    number of random points in cube, lens, spiral, sphere or grid
+  D3      dimension 3-d
+  c       add a unit cube to the output ('c G2.0' sets size)
+  d       add a unit diamond to the output ('d G2.0' sets size)
+  l       generate a regular 3-d spiral
+  r       generate a regular polygon, ('r s Z1 G0.1' makes a cone)
+  s       generate cospherical points
+  x       generate random points in simplex, may use 'r' or 'Wn'
+  y       same as 'x', plus simplex
+  Pn,m,r  add point [n,m,r] first, pads with 0
+
+  Ln      lens distribution of radius n.  Also 's', 'r', 'G', 'W'.
+  Mn,m,r  lattice(Mesh) rotated by [n,-m,0], [m,n,0], [0,0,r], ...
+          '27 M1,0,1' is {0,1,2} x {0,1,2} x {0,1,2}.  Try 'M3,4 z'.
+  W0.1    random distribution within 0.1 of the cube's or sphere's surface
+  Z0.5 s  random points in a 0.5 disk projected to a sphere
+  Z0.5 s G0.6 same as Z0.5 within a 0.6 gap
+
+  Bn      bounding box coordinates, default 0.5
+  h       output as homogeneous coordinates for cdd
+  n       remove command line from the first line of output
+  On      offset coordinates by n
+  t       use time as the random number seed(default is command line)
+  tn      use n as the random number seed
+  z       print integer coordinates, default 'Bn' is 1e+06
+
+=== Output of 'rbox' (no arguments) ===
+
+
+-rbox- generate various point distributions.  Default is random in cube.
+
+args (any order, space separated):                    Version: 2001/06/24
+  3000    number of random points in cube, lens, spiral, sphere or grid
+  D3      dimension 3-d
+  c       add a unit cube to the output ('c G2.0' sets size)
+  d       add a unit diamond to the output ('d G2.0' sets size)
+  l       generate a regular 3-d spiral
+  r       generate a regular polygon, ('r s Z1 G0.1' makes a cone)
+  s       generate cospherical points
+  x       generate random points in simplex, may use 'r' or 'Wn'
+  y       same as 'x', plus simplex
+  Pn,m,r  add point [n,m,r] first, pads with 0
+
+  Ln      lens distribution of radius n.  Also 's', 'r', 'G', 'W'.
+  Mn,m,r  lattice(Mesh) rotated by [n,-m,0], [m,n,0], [0,0,r], ...
+          '27 M1,0,1' is {0,1,2} x {0,1,2} x {0,1,2}.  Try 'M3,4 z'.
+  W0.1    random distribution within 0.1 of the cube's or sphere's surface
+  Z0.5 s  random points in a 0.5 disk projected to a sphere
+  Z0.5 s G0.6 same as Z0.5 within a 0.6 gap
+
+  Bn      bounding box coordinates, default 0.5
+  h       output as homogeneous coordinates for cdd
+  n       remove command line from the first line of output
+  On      offset coordinates by n
+  t       use time as the random number seed(default is command line)
+  tn      use n as the random number seed
+  z       print integer coordinates, default 'Bn' is 1e+06

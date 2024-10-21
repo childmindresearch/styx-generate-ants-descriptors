@@ -1,0 +1,521 @@
+
+=== Output of '3dZipperZapper --help' ===
+
+++ version: 2018_02_06
+[7m** ERROR:[0m Bad option '--help'
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dZipperZapper -help' enlighten:
+        '-input FFF   :input the 3D+time file of DWIs or EPIs.'
+        '-prefix PPP  :prefix for output file name.  Any volumetric file'
+        '-mask MMM    :optional input of a single volume mask file, which'
+
+=== Output of '3dZipperZapper -help' ===
+
+++ version: 2018_02_06
+ OVERVIEW ~1~
+ 
+ This is a basic program to help highlight problematic volumes in data
+ sets, specifically in EPI/DWI data sets with interleaved acquisition.
+ 
+ Intra-volume subject motion can be quite problematic, potentially
+ bad-ifying the data values in the volume so much that it is basically
+ useless for analysis.  In FMRI analysis, outlier counts might be
+ useful to find ensuing badness (e.g., via 3dToutcount). However, with
+ DWI data, we might want to find it without aligning the volumes
+ (esp. due to the necessarily differing contrasts) and without tensor
+ fitting.
+ 
+ *Therefore*, this program will look through axial slices of a data set
+ for brightness fluctuations and/or dropout slices.  It will build a
+ list of volumes indices that it identifies as bad, and the user can
+ then use something like the 'fat_proc_filter_dwis' program after to
+ apply the filtration to the volumetric dset *as well as* to any
+ accompanying b-value, gradient vector, b-matrix, etc., text files.
+ 
+ The program works by looking for alternating brightness patterns in
+ the data (again, specifically in axial slices, so if your data was
+ acquired differently, this program ain't for you! (weeellll, some
+ tricks with changing header info miiiight be able to work then)).  It
+ should be run *before* any processing, particularly alignments or
+ unwarping things, because those could change the slice locations.
+ Additionally, it has mainly been tested on 3T data of humans; it is
+ possible that it will work equally well on 7T or non-humans, but be
+ sure to check results carefully in the latter cases (well, *always*
+ check your data carefully!).
+ 
+ Note that there is also 'fat_proc_select_vols' program for
+ interactively selecting out bad volumes, by looking at a sheet of
+ sagittal images from the DWI set.  That might be useful for amending
+ or altering the output from this program, if necessary.
+ 
+ written by PA Taylor (started Jan, 2018)
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ USAGE ~1~
+ 
+     Input: + a 3D+time data set of DWI or EPI volumes,
+            + a mask of the brain-ish region.
+    
+    Output: + a mask of potentially bad slices across the input dset,
+            + a 1D (text) file containing a list of the bad volumes,
+            + a 1D file of the per-volume parameters used to detect
+              badness,
+            + a 1D file of the slices within which calculations were made,
+            + a text file with the selector string of *good* volumes
+              in the dset (for easy use with fat_proc_filter_dwis, 
+              for example).
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ COMMAND ~1~
+  
+  3dZipperZapper                                            \
+      -input FFF  {-mask MMM}                               \
+      -prefix PPP                                           \
+      {-min_slice_nvox N}                                   \
+      {-min_streak_len L}                                   \
+      {-do_out_slice_param}                                 \
+      {-no_out_bad_mask}                                    \
+      {-no_out_text_vals}                                   \
+ 
+    where:
+ 
+    -input FFF   :input the 3D+time file of DWIs or EPIs.
+ 
+    -mask MMM    :optional input of a single volume mask file, which 
+                  gets applied to the each volume in FFF.  Otherwise,
+                  the dataset is assumed to be masked already.
+ 
+    -prefix PPP  :prefix for output file name.  Any volumetric file
+                  extension included here (e.g., '.nii.gz') is
+                  propagated to any output volumetric dsets.
+ 
+    -do_out_slice_param
+                 :output the map of slice parameters (not done by
+                  default).  Might be of interest for investigating
+                  data.  Output file name base will be: PPP_param.
+ 
+    -no_out_bad_mask
+                 :do *not* output the mask of 'bad' slices that shows
+                  which volumes are considered bad (is output by
+                  default). Output file name base will be: PPP_badmask.
+ 
+    -no_out_text_vals
+                 :do *not* output the 1D files of the slice parameter
+                  values (are output by default). The list of slices
+                  in the mask (file name: PPP_sli.1D) and the list of
+                  values per slice per volume (file name: PPP_param.1D)
+                  are output.
+ 
+ 
+         ... and for having fine control of which drop criteria to use
+             (def: use all available, see listing in NOTES):
+ 
+   -dont_use_streak :
+                 :several criteria are used to search for bad slices.
+                  Using this opt, you elect to turn off the 'streak'
+                  criterion.  See the NOTES below for more description.
+   -dont_use_drop :
+                 :several criteria are used to search for bad slices.
+                  Using this opt, you elect to turn off the 'drop'
+                  criterion.  See the NOTES below for more description.
+   -dont_use_corr :
+                 :several criteria are used to search for bad slices.
+                  Using this opt, you elect to turn off the 'corr'
+                  criterion.  See the NOTES below for more description.
+ 
+ 
+         ... and for having fine control of drop criteria parameters:
+ 
+    -disp_def_params
+                 :display the defaults for each of the following parameters.
+                  NB: the value for MIN_SLICE_NVOX will be '-1', meaning
+                  that the number of voxels will be calculated from the
+                  slice size---see the option help, below.
+ 
+    -min_slice_nvox  N
+                 :set the minimum number of voxels to be in the mask
+                  for a given slice to be included in the calcs. 
+                  N must be >0 (and likely much more so, to be useful).
+                  Default: use 10 percent of the axial slice's nvox.
+ 
+    -min_streak_len  MSL
+                 :set the minimum number of slices in a row to look for
+                  fluctuations within (def: MSL=4).  That is, if 'large
+                  enough' fluctuations are found in L consecutive slices,
+                  then the volume is flagged for motion.  A larger MSL means
+                  that more slices need to vary for a volume to be flagged
+                  for 'brightness fluctuations'.  NB: this does parameter
+                  setting does not affect the search for dropout slices.
+                  Part of 'streak' criterion; see NOTES for more details.
+    -min_streak_val  MSV
+                 :set the minimum magnitude of voxelwise relative diffs
+                  to perhaps be problematic.
+                  Part of 'streak' criterion; see NOTES for more details.
+ 
+    -min_drop_frac  MDF
+                 :set the minimum fraction for judging if the change in
+                  'slice parameter' differences between neighboring slices 
+                  might be a sign of badness.
+                  Part of 'drop' criterion; see NOTES for more details.
+    -min_drop_diff  MDD
+                 :set the minimum 'slice parameter' value within a single
+                  slice that might be considered bad sign (e.g., of
+                  dropout).
+                  Part of 'drop' criterion; see NOTES for more details.
+ 
+    -min_corr_len  MCL
+                 :set the minimum number of slices in a row to look for
+                  consecutive anticorrelations in brightness differences.
+                  Part of 'corr' criterion; see NOTES for more details.
+    -min_corr_corr  MCC
+                 :set the threshold for the magnitude of anticorrelations
+                  to be considered potentially bad.
+                  Part of 'corr' criterion; see NOTES for more details.
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ NOTES ~1~
+ 
+ Drop Criteria ~2~
+ 
+ At present, there are 3 distinct criteria used to search for bad slices,
+ by default.  The list of bad slices from each method are combined through
+ a union operation, so that any slice identified as 'bad' by any of the
+ criteria is evaluated as 'bad' in the end.  The set of criteria might
+ grow over time.
+
+ As of March 30, 2022, users have the option of turning of any of the
+ criteria, via the '-dont_use_*' options.
+ 
+ The current criteria are described by keyword as follows (see the next
+ section for definitions of slipar, slicorr, and other mysterious
+ quantities):
+ 
+ 'streak' criterion
+   Walk upwards through slices in the volume.  If the absolute value of
+   differences in slipar values stays high, you may have badness.
+   MIN_STREAK_VAL is the magnitude threshold for judging if differences
+   are high.
+   MIN_STREAK_LEN is the minimal number of consecutive slices that have to
+   have high differences to be a sign of badness.
+ 
+ 'drop' criterion
+   If a particular slice has a very high slipar magnitude, you may have
+   badness.
+   MIN_DROP_FRAC is the threshold magnitude for that.
+   If the absolute difference in slipar between neighboring slices is very
+   high, you may have badness.
+   MIN_DROP_DIFF is the threshold for judging if the absolute difference
+   is large enough to be a sign of badness.
+ 
+ 'corr' criterion
+   Walk upwards through slices in the volume.  If slicorr values are
+   strongly anticorrelated for several slices in a row, you may have
+   badness.
+   MIN_CORR_CORR is the magnitude threshold for judging if anticorrelation
+   is high (the minus sign is applied internally).
+   MIN_CORR_LEN is the minimal number of consecutive slices that have to be
+   highly anticorrelated to be a sign of badness.
+ 
+ Underlying quantities for drop criteria ~2~
+ 
+ Many drop criteria depend on the calculated 'slice parameter' (slipar)
+ values.  These are generated per slice as follows:
+ + For each voxel in a slice, calculate its relative difference with its
+   'upstairs' neighbor:
+      reldiff(A, B) = 0.5*(A - B)/(abs(A) + abs(B)).
+ + Calculate the number of times reldiff is positive in a slice, divide that
+   by the total number of voxels in the slice, and subtract 0.5 (to center
+   that quantity around 0).  This is the slipar value per slice.
+ 
+ Separately, we also 'slice correlation' (slicorr) values of a slice with
+ its upstairs neighbor:
+ + For each slice, make a time series by flattening the 2D array of slipar
+   values for voxels that exist in both that slice and its upstairs (call
+   that X).
+ + Make a time series of flattening the matched upstairs neighbor slipar
+   values (call that Y).
+ + The slicorr value per slices is the Pearson correlation value of X and Y.
+ So, slicorr tells you something about how correlated your slice's reldiff
+ patterns are with your upstairs neighbor.
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ EXAMPLES ~1~
+ 
+     1) All types of outputs:
+     3dZipperZapper                                    \
+         -input AP.nii.gz                              \
+         -mask  AP_mask.nii.gz                         \
+         -prefix ZZZ.nii.gz                            \
+         -do_out_slice_param
+ 
+     2) No volumetric outputs (only if speed/write time is super
+        important?):
+     3dZipperZapper                                    \
+         -input AP.nii.gz                              \
+         -mask  AP_mask.nii.gz                         \
+         -prefix ZZZ.nii.gz                            \
+         -no_out_bad_mask
+ 
+ 
+ 
+ # ------------------------------------------------------------------
+ 
+ # ------------------------------------------------------------------------
+
+=== Output of '3dZipperZapper' (no arguments) ===
+
+++ version: 2018_02_06
+ OVERVIEW ~1~
+ 
+ This is a basic program to help highlight problematic volumes in data
+ sets, specifically in EPI/DWI data sets with interleaved acquisition.
+ 
+ Intra-volume subject motion can be quite problematic, potentially
+ bad-ifying the data values in the volume so much that it is basically
+ useless for analysis.  In FMRI analysis, outlier counts might be
+ useful to find ensuing badness (e.g., via 3dToutcount). However, with
+ DWI data, we might want to find it without aligning the volumes
+ (esp. due to the necessarily differing contrasts) and without tensor
+ fitting.
+ 
+ *Therefore*, this program will look through axial slices of a data set
+ for brightness fluctuations and/or dropout slices.  It will build a
+ list of volumes indices that it identifies as bad, and the user can
+ then use something like the 'fat_proc_filter_dwis' program after to
+ apply the filtration to the volumetric dset *as well as* to any
+ accompanying b-value, gradient vector, b-matrix, etc., text files.
+ 
+ The program works by looking for alternating brightness patterns in
+ the data (again, specifically in axial slices, so if your data was
+ acquired differently, this program ain't for you! (weeellll, some
+ tricks with changing header info miiiight be able to work then)).  It
+ should be run *before* any processing, particularly alignments or
+ unwarping things, because those could change the slice locations.
+ Additionally, it has mainly been tested on 3T data of humans; it is
+ possible that it will work equally well on 7T or non-humans, but be
+ sure to check results carefully in the latter cases (well, *always*
+ check your data carefully!).
+ 
+ Note that there is also 'fat_proc_select_vols' program for
+ interactively selecting out bad volumes, by looking at a sheet of
+ sagittal images from the DWI set.  That might be useful for amending
+ or altering the output from this program, if necessary.
+ 
+ written by PA Taylor (started Jan, 2018)
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ USAGE ~1~
+ 
+     Input: + a 3D+time data set of DWI or EPI volumes,
+            + a mask of the brain-ish region.
+    
+    Output: + a mask of potentially bad slices across the input dset,
+            + a 1D (text) file containing a list of the bad volumes,
+            + a 1D file of the per-volume parameters used to detect
+              badness,
+            + a 1D file of the slices within which calculations were made,
+            + a text file with the selector string of *good* volumes
+              in the dset (for easy use with fat_proc_filter_dwis, 
+              for example).
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ COMMAND ~1~
+  
+  3dZipperZapper                                            \
+      -input FFF  {-mask MMM}                               \
+      -prefix PPP                                           \
+      {-min_slice_nvox N}                                   \
+      {-min_streak_len L}                                   \
+      {-do_out_slice_param}                                 \
+      {-no_out_bad_mask}                                    \
+      {-no_out_text_vals}                                   \
+ 
+    where:
+ 
+    -input FFF   :input the 3D+time file of DWIs or EPIs.
+ 
+    -mask MMM    :optional input of a single volume mask file, which 
+                  gets applied to the each volume in FFF.  Otherwise,
+                  the dataset is assumed to be masked already.
+ 
+    -prefix PPP  :prefix for output file name.  Any volumetric file
+                  extension included here (e.g., '.nii.gz') is
+                  propagated to any output volumetric dsets.
+ 
+    -do_out_slice_param
+                 :output the map of slice parameters (not done by
+                  default).  Might be of interest for investigating
+                  data.  Output file name base will be: PPP_param.
+ 
+    -no_out_bad_mask
+                 :do *not* output the mask of 'bad' slices that shows
+                  which volumes are considered bad (is output by
+                  default). Output file name base will be: PPP_badmask.
+ 
+    -no_out_text_vals
+                 :do *not* output the 1D files of the slice parameter
+                  values (are output by default). The list of slices
+                  in the mask (file name: PPP_sli.1D) and the list of
+                  values per slice per volume (file name: PPP_param.1D)
+                  are output.
+ 
+ 
+         ... and for having fine control of which drop criteria to use
+             (def: use all available, see listing in NOTES):
+ 
+   -dont_use_streak :
+                 :several criteria are used to search for bad slices.
+                  Using this opt, you elect to turn off the 'streak'
+                  criterion.  See the NOTES below for more description.
+   -dont_use_drop :
+                 :several criteria are used to search for bad slices.
+                  Using this opt, you elect to turn off the 'drop'
+                  criterion.  See the NOTES below for more description.
+   -dont_use_corr :
+                 :several criteria are used to search for bad slices.
+                  Using this opt, you elect to turn off the 'corr'
+                  criterion.  See the NOTES below for more description.
+ 
+ 
+         ... and for having fine control of drop criteria parameters:
+ 
+    -disp_def_params
+                 :display the defaults for each of the following parameters.
+                  NB: the value for MIN_SLICE_NVOX will be '-1', meaning
+                  that the number of voxels will be calculated from the
+                  slice size---see the option help, below.
+ 
+    -min_slice_nvox  N
+                 :set the minimum number of voxels to be in the mask
+                  for a given slice to be included in the calcs. 
+                  N must be >0 (and likely much more so, to be useful).
+                  Default: use 10 percent of the axial slice's nvox.
+ 
+    -min_streak_len  MSL
+                 :set the minimum number of slices in a row to look for
+                  fluctuations within (def: MSL=4).  That is, if 'large
+                  enough' fluctuations are found in L consecutive slices,
+                  then the volume is flagged for motion.  A larger MSL means
+                  that more slices need to vary for a volume to be flagged
+                  for 'brightness fluctuations'.  NB: this does parameter
+                  setting does not affect the search for dropout slices.
+                  Part of 'streak' criterion; see NOTES for more details.
+    -min_streak_val  MSV
+                 :set the minimum magnitude of voxelwise relative diffs
+                  to perhaps be problematic.
+                  Part of 'streak' criterion; see NOTES for more details.
+ 
+    -min_drop_frac  MDF
+                 :set the minimum fraction for judging if the change in
+                  'slice parameter' differences between neighboring slices 
+                  might be a sign of badness.
+                  Part of 'drop' criterion; see NOTES for more details.
+    -min_drop_diff  MDD
+                 :set the minimum 'slice parameter' value within a single
+                  slice that might be considered bad sign (e.g., of
+                  dropout).
+                  Part of 'drop' criterion; see NOTES for more details.
+ 
+    -min_corr_len  MCL
+                 :set the minimum number of slices in a row to look for
+                  consecutive anticorrelations in brightness differences.
+                  Part of 'corr' criterion; see NOTES for more details.
+    -min_corr_corr  MCC
+                 :set the threshold for the magnitude of anticorrelations
+                  to be considered potentially bad.
+                  Part of 'corr' criterion; see NOTES for more details.
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ NOTES ~1~
+ 
+ Drop Criteria ~2~
+ 
+ At present, there are 3 distinct criteria used to search for bad slices,
+ by default.  The list of bad slices from each method are combined through
+ a union operation, so that any slice identified as 'bad' by any of the
+ criteria is evaluated as 'bad' in the end.  The set of criteria might
+ grow over time.
+
+ As of March 30, 2022, users have the option of turning of any of the
+ criteria, via the '-dont_use_*' options.
+ 
+ The current criteria are described by keyword as follows (see the next
+ section for definitions of slipar, slicorr, and other mysterious
+ quantities):
+ 
+ 'streak' criterion
+   Walk upwards through slices in the volume.  If the absolute value of
+   differences in slipar values stays high, you may have badness.
+   MIN_STREAK_VAL is the magnitude threshold for judging if differences
+   are high.
+   MIN_STREAK_LEN is the minimal number of consecutive slices that have to
+   have high differences to be a sign of badness.
+ 
+ 'drop' criterion
+   If a particular slice has a very high slipar magnitude, you may have
+   badness.
+   MIN_DROP_FRAC is the threshold magnitude for that.
+   If the absolute difference in slipar between neighboring slices is very
+   high, you may have badness.
+   MIN_DROP_DIFF is the threshold for judging if the absolute difference
+   is large enough to be a sign of badness.
+ 
+ 'corr' criterion
+   Walk upwards through slices in the volume.  If slicorr values are
+   strongly anticorrelated for several slices in a row, you may have
+   badness.
+   MIN_CORR_CORR is the magnitude threshold for judging if anticorrelation
+   is high (the minus sign is applied internally).
+   MIN_CORR_LEN is the minimal number of consecutive slices that have to be
+   highly anticorrelated to be a sign of badness.
+ 
+ Underlying quantities for drop criteria ~2~
+ 
+ Many drop criteria depend on the calculated 'slice parameter' (slipar)
+ values.  These are generated per slice as follows:
+ + For each voxel in a slice, calculate its relative difference with its
+   'upstairs' neighbor:
+      reldiff(A, B) = 0.5*(A - B)/(abs(A) + abs(B)).
+ + Calculate the number of times reldiff is positive in a slice, divide that
+   by the total number of voxels in the slice, and subtract 0.5 (to center
+   that quantity around 0).  This is the slipar value per slice.
+ 
+ Separately, we also 'slice correlation' (slicorr) values of a slice with
+ its upstairs neighbor:
+ + For each slice, make a time series by flattening the 2D array of slipar
+   values for voxels that exist in both that slice and its upstairs (call
+   that X).
+ + Make a time series of flattening the matched upstairs neighbor slipar
+   values (call that Y).
+ + The slicorr value per slices is the Pearson correlation value of X and Y.
+ So, slicorr tells you something about how correlated your slice's reldiff
+ patterns are with your upstairs neighbor.
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ EXAMPLES ~1~
+ 
+     1) All types of outputs:
+     3dZipperZapper                                    \
+         -input AP.nii.gz                              \
+         -mask  AP_mask.nii.gz                         \
+         -prefix ZZZ.nii.gz                            \
+         -do_out_slice_param
+ 
+     2) No volumetric outputs (only if speed/write time is super
+        important?):
+     3dZipperZapper                                    \
+         -input AP.nii.gz                              \
+         -mask  AP_mask.nii.gz                         \
+         -prefix ZZZ.nii.gz                            \
+         -no_out_bad_mask
+ 
+ 
+ 
+ # ------------------------------------------------------------------
+ 
+ # ------------------------------------------------------------------------

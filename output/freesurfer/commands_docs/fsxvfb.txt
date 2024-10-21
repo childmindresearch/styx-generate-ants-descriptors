@@ -1,0 +1,12 @@
+
+=== Output of 'fsxvfb --help' ===
+
+ERROR: fsxvb: cannot find the Xvrb command
+
+=== Output of 'fsxvfb -help' ===
+
+ERROR: fsxvb: cannot find the Xvrb command
+
+=== Output of 'fsxvfb' (no arguments) ===
+
+fsxvfb command

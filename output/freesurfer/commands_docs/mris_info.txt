@@ -1,0 +1,92 @@
+
+=== Output of 'mris_info --help' ===
+
+USAGE: mris_info [options] <surfacefile>
+
+Options:
+  --o outfile : save some data to outfile
+  --s subject hemi surfname : instead of surfacefile
+  --t : apply talairach xfm before reporting info
+  --r : rescale group surface so metrics same as avg of individuals
+  --patch patchfile : load patch before reporting
+  --v vnum : print out vertex information for vertex vnum
+  --vx vnum : print out extended vertex information for vertex vnum
+     NbrInfo: nbrno, nbrvno, nbrdist, nbrarea, faceno, facearea
+  --c curvfile : check if the specified curvature file has the
+                 same number of vertices as the surface, and
+                 exit with error if not. This is a QA check.
+  --a annotfile : check if the specified annotation file has the
+                  same number of vertices as the surface, and
+                  exit with error if not. This is a QA check.
+                  Also, the colortable is dumped.
+  --area-stats : compute stats on triangle area (n, mean, std, min, max)
+  --edge-stats id : compute stats on edge metric (n, mean, std, min, max)
+                    id=0=length, id=1=dot, id=2=angle, id<0= all
+  --ex edgeno : printout extended into about edge
+  --v-matlab vtxno mfile : write matlab file to plot vertex neighborhood
+  --quality: print out surface quality stats
+  --intersections : print the number of vertices that belong to a face that intersects another face
+  --mask mask.mgz : only compute edge and area stats using vertices in mask
+  --label labelfile : only compute edge and area stats using vertices in label
+  --edge-file file : print edge info for all edges into file
+  --mtx-fmt format : set format for matrix printing (eg, %12.8f)
+
+  --version   : print version and exits
+  --help      : no clue what this does
+  --nogifti-disp-image: no dump of GIFTI struct, read .gii as surface instead
+
+
+7.4.1
+
+Prints out information about a surface file.
+
+
+=== Output of 'mris_info -help' ===
+
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+
+=== Output of 'mris_info' (no arguments) ===
+
+USAGE: mris_info [options] <surfacefile>
+
+Options:
+  --o outfile : save some data to outfile
+  --s subject hemi surfname : instead of surfacefile
+  --t : apply talairach xfm before reporting info
+  --r : rescale group surface so metrics same as avg of individuals
+  --patch patchfile : load patch before reporting
+  --v vnum : print out vertex information for vertex vnum
+  --vx vnum : print out extended vertex information for vertex vnum
+     NbrInfo: nbrno, nbrvno, nbrdist, nbrarea, faceno, facearea
+  --c curvfile : check if the specified curvature file has the
+                 same number of vertices as the surface, and
+                 exit with error if not. This is a QA check.
+  --a annotfile : check if the specified annotation file has the
+                  same number of vertices as the surface, and
+                  exit with error if not. This is a QA check.
+                  Also, the colortable is dumped.
+  --area-stats : compute stats on triangle area (n, mean, std, min, max)
+  --edge-stats id : compute stats on edge metric (n, mean, std, min, max)
+                    id=0=length, id=1=dot, id=2=angle, id<0= all
+  --ex edgeno : printout extended into about edge
+  --v-matlab vtxno mfile : write matlab file to plot vertex neighborhood
+  --quality: print out surface quality stats
+  --intersections : print the number of vertices that belong to a face that intersects another face
+  --mask mask.mgz : only compute edge and area stats using vertices in mask
+  --label labelfile : only compute edge and area stats using vertices in label
+  --edge-file file : print edge info for all edges into file
+  --mtx-fmt format : set format for matrix printing (eg, %12.8f)
+
+  --version   : print version and exits
+  --help      : no clue what this does
+  --nogifti-disp-image: no dump of GIFTI struct, read .gii as surface instead
+

@@ -1,0 +1,23 @@
+
+=== Output of 'dmri_ac.sh --help' ===
+
+hola
+/usr/local/freesurfer/subjects
+/usr/local/freesurfer/subjects
+/usr/local/freesurfer/subjects
+/usr/local/freesurfer/bin/dmri_ac.sh: line 524: --help: command not found
+
+=== Output of 'dmri_ac.sh -help' ===
+
+hola
+/usr/local/freesurfer/subjects
+/usr/local/freesurfer/subjects
+/usr/local/freesurfer/subjects
+/usr/local/freesurfer/bin/dmri_ac.sh: line 524: -help: command not found
+
+=== Output of 'dmri_ac.sh' (no arguments) ===
+
+hola
+/usr/local/freesurfer/subjects
+/usr/local/freesurfer/subjects
+/usr/local/freesurfer/subjects

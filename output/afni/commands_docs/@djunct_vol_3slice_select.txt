@@ -1,0 +1,25 @@
+
+=== Output of '@djunct_vol_3slice_select --help' ===
+
+** unexpected option #1 = '--help'
+
+=== Output of '@djunct_vol_3slice_select -help' ===
+
+
+Basic helper script to convert a set of (x, y, z) coordinates to (i,
+j, k) indices for a dset.  Essentially stealing sage advice written by
+DR Glen in a helpful Message Board post.
+
+Run this program by entering exactly 4, space-separated arguments:
+    the name of a file, and then 3 coordinates (x, y, z).
+
+Program returns 3 indices: 
+    i j k
+(which can be redirected into a variable or file, for example).
+
+If any of 'i j k' are outside the dset's matrix, return an error.
+
+
+=== Output of '@djunct_vol_3slice_select' (no arguments) ===
+
+coor_type: Undefined variable.

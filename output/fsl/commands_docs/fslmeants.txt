@@ -1,0 +1,80 @@
+
+=== Output of 'fslmeants --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fslmeants
+Copyright(c) 2004-2009, University of Oxford (Mark Jenkinson, Christian F. Beckmann)
+Prints average timeseries (intensities) to the screen (or saves to a file).
+The average is taken over all voxels in the mask (or all voxels in the image if no mask is specified).
+
+
+Usage: 
+fslmeants -i filtered_func_data -o meants.txt -m my_mask
+fslmeants -i filtered_func_data -m my_mask
+fslmeants -i filtered_func_data -c 24 19 10
+
+Compulsory arguments (You MUST set one or more of):
+	-i <filename>	input 4D image
+
+Optional arguments (You may optionally specify one or more of):
+	-o <filename>	output text matrix
+	-m <filename>	input 3D mask
+	-c <x y z>	requested spatial coordinate (instead of mask)
+	--usemm		use mm instead of voxel coordinates (for -c option)
+	--showall	show all voxel time series (within mask) instead of averaging
+	--eig	        calculate Eigenvariate(s) instead of mean (output will have 0 mean)
+	--order	        select number of Eigenvariates (default 1)
+	--no_bin	        do not binarise the mask for calculation of Eigenvariates
+	--label	input 3D label image (generate separate mean for each integer label value - cannot be used with showall)
+	--transpose	        output results in transpose format (one row per voxel/mean)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-w	output weighted mean, using mask values as weights, and exit.
+
+
+
+=== Output of 'fslmeants -help' ===
+
+terminate called after throwing an instance of 'Utilities::X_OptionError'
+  what():  -e: Option doesn't exist!
+timeout: the monitored command dumped core
+
+=== Output of 'fslmeants' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i <filename>	input 4D image
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fslmeants
+Copyright(c) 2004-2009, University of Oxford (Mark Jenkinson, Christian F. Beckmann)
+Prints average timeseries (intensities) to the screen (or saves to a file).
+The average is taken over all voxels in the mask (or all voxels in the image if no mask is specified).
+
+
+Usage: 
+fslmeants -i filtered_func_data -o meants.txt -m my_mask
+fslmeants -i filtered_func_data -m my_mask
+fslmeants -i filtered_func_data -c 24 19 10
+
+Compulsory arguments (You MUST set one or more of):
+	-i <filename>	input 4D image
+
+Optional arguments (You may optionally specify one or more of):
+	-o <filename>	output text matrix
+	-m <filename>	input 3D mask
+	-c <x y z>	requested spatial coordinate (instead of mask)
+	--usemm		use mm instead of voxel coordinates (for -c option)
+	--showall	show all voxel time series (within mask) instead of averaging
+	--eig	        calculate Eigenvariate(s) instead of mean (output will have 0 mean)
+	--order	        select number of Eigenvariates (default 1)
+	--no_bin	        do not binarise the mask for calculation of Eigenvariates
+	--label	input 3D label image (generate separate mean for each integer label value - cannot be used with showall)
+	--transpose	        output results in transpose format (one row per voxel/mean)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-w	output weighted mean, using mask values as weights, and exit.
+
+

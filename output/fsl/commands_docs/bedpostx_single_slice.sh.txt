@@ -1,0 +1,18 @@
+
+=== Output of 'bedpostx_single_slice.sh --help' ===
+
+/usr/local/fsl/bin/bedpostx_single_slice.sh: line 77: --help.bedpostX/logs/log
+Usage: zeropad <input> <length of output>
+e.g. zeropad 1 4    gives 0001: No such file or directory
+
+=== Output of 'bedpostx_single_slice.sh -help' ===
+
+/usr/local/fsl/bin/bedpostx_single_slice.sh: line 77: -help.bedpostX/logs/log
+Usage: zeropad <input> <length of output>
+e.g. zeropad 1 4    gives 0001: No such file or directory
+
+=== Output of 'bedpostx_single_slice.sh' (no arguments) ===
+
+/usr/local/fsl/bin/bedpostx_single_slice.sh: line 77: .bedpostX/logs/log
+Usage: zeropad <input> <length of output>
+e.g. zeropad 1 4    gives 0001: No such file or directory

@@ -1,0 +1,14 @@
+
+=== Output of 'mris_transmantle_dysplasia_paths --help' ===
+
+unknown option --help
+
+=== Output of 'mris_transmantle_dysplasia_paths -help' ===
+
+unknown option -help
+
+=== Output of 'mris_transmantle_dysplasia_paths' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_transmantle_dysplasia_paths [options] <surface> <aseg volume> <intensity volume> <xform> <output volume>
+	f <f low> <f hi> - apply specified filter (not implemented yet)
+	n - noise-sensitivity normalize inverse (default=1)

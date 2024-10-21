@@ -1,0 +1,187 @@
+
+=== Output of 'lta_diff --help' ===
+
+
+				Help
+
+NAME
+	lta_diff
+
+SYNOPSIS
+	lta_diff trans1.lta [trans2.lta] [options ...]
+
+DESCRIPTION
+	This program can compute different distance norms for a single 
+	transform or for the difference between two transforms.
+	If only a single transform is passed, it is compared to identity.  
+	 
+
+POSITIONAL ARGUMENTS
+	The two transform files are positional arguments, the second one is 
+	optional.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--dist <int> 
+		the following distance types are supported:
+		 1    Rigid Trans. Dist. (||log(R)|| + ||T||) on D=M2*M1^(-1)
+		 2 *  Affine Transform Distance (RMS) on D=M2-M1 (r=100mm)
+		 3    8-corners mean distance after transform 
+		 4    Max Displacement on Sphere 
+		 5    Determinant (scaling) on D = M1*M2
+		 6    Interpolation Smoothing (only for first transform)
+		 7    Decomposition of D= M1*M2 = Rot*Shear*Scaling
+		(* default is 2)
+		The Affine Trans. Dist. (RMS) is based on Jenkinson 99 RMS 
+		deviation tech report.
+
+	--invert1 
+		invert first transform before computing difference matrix D
+
+	--invert2 
+		invert second transform before computing difference matrix D
+
+	--vox 
+		compute distance in vox coordinates (after adjusting for vox 
+		sizes). Default: work in RAS coordinates.
+
+	--normdiv <float> 
+		divide final distance by this (e.g. for step adjustment, this 
+		is usually not necessary)
+
+	--radius <float> 
+		in mm, use for RMS (dist 2), default 100 to include head
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_robust_register (to construct registrations between images)
+
+
+
+
+ERROR: Please specify a transform file first !  
+
+
+=== Output of 'lta_diff -help' ===
+
+
+				Help
+
+NAME
+	lta_diff
+
+SYNOPSIS
+	lta_diff trans1.lta [trans2.lta] [options ...]
+
+DESCRIPTION
+	This program can compute different distance norms for a single 
+	transform or for the difference between two transforms.
+	If only a single transform is passed, it is compared to identity.  
+	 
+
+POSITIONAL ARGUMENTS
+	The two transform files are positional arguments, the second one is 
+	optional.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--dist <int> 
+		the following distance types are supported:
+		 1    Rigid Trans. Dist. (||log(R)|| + ||T||) on D=M2*M1^(-1)
+		 2 *  Affine Transform Distance (RMS) on D=M2-M1 (r=100mm)
+		 3    8-corners mean distance after transform 
+		 4    Max Displacement on Sphere 
+		 5    Determinant (scaling) on D = M1*M2
+		 6    Interpolation Smoothing (only for first transform)
+		 7    Decomposition of D= M1*M2 = Rot*Shear*Scaling
+		(* default is 2)
+		The Affine Trans. Dist. (RMS) is based on Jenkinson 99 RMS 
+		deviation tech report.
+
+	--invert1 
+		invert first transform before computing difference matrix D
+
+	--invert2 
+		invert second transform before computing difference matrix D
+
+	--vox 
+		compute distance in vox coordinates (after adjusting for vox 
+		sizes). Default: work in RAS coordinates.
+
+	--normdiv <float> 
+		divide final distance by this (e.g. for step adjustment, this 
+		is usually not necessary)
+
+	--radius <float> 
+		in mm, use for RMS (dist 2), default 100 to include head
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_robust_register (to construct registrations between images)
+
+
+
+
+ERROR: Please specify a transform file first !  
+
+
+=== Output of 'lta_diff' (no arguments) ===
+
+				Help
+
+NAME
+	lta_diff
+
+SYNOPSIS
+	lta_diff trans1.lta [trans2.lta] [options ...]
+
+DESCRIPTION
+	This program can compute different distance norms for a single 
+	transform or for the difference between two transforms.
+	If only a single transform is passed, it is compared to identity.  
+	 
+
+POSITIONAL ARGUMENTS
+	The two transform files are positional arguments, the second one is 
+	optional.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--dist <int> 
+		the following distance types are supported:
+		 1    Rigid Trans. Dist. (||log(R)|| + ||T||) on D=M2*M1^(-1)
+		 2 *  Affine Transform Distance (RMS) on D=M2-M1 (r=100mm)
+		 3    8-corners mean distance after transform 
+		 4    Max Displacement on Sphere 
+		 5    Determinant (scaling) on D = M1*M2
+		 6    Interpolation Smoothing (only for first transform)
+		 7    Decomposition of D= M1*M2 = Rot*Shear*Scaling
+		(* default is 2)
+		The Affine Trans. Dist. (RMS) is based on Jenkinson 99 RMS 
+		deviation tech report.
+
+	--invert1 
+		invert first transform before computing difference matrix D
+
+	--invert2 
+		invert second transform before computing difference matrix D
+
+	--vox 
+		compute distance in vox coordinates (after adjusting for vox 
+		sizes). Default: work in RAS coordinates.
+
+	--normdiv <float> 
+		divide final distance by this (e.g. for step adjustment, this 
+		is usually not necessary)
+
+	--radius <float> 
+		in mm, use for RMS (dist 2), default 100 to include head
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_robust_register (to construct registrations between images)
+
+

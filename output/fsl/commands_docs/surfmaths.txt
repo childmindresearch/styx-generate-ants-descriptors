@@ -1,0 +1,75 @@
+
+=== Output of 'surfmaths --help' ===
+
+
+Usage: surfmaths <first_input> [operations and inputs] <output> 
+
+Basic unary operations:
+ -exp   : exponential
+ -log   : natural logarithm
+ -sin   : sine function
+ -cos   : cosine function
+ -tan   : tangent function
+ -asin  : arc sine function
+ -acos  : arc cosine function
+ -atan  : arc tangent function
+ -sqr   : square
+ -sqrt  : square root
+ -recip : reciprocal (1/current surface)
+ -abs   : absolute value
+ -bin   : use (current surface>0) to binarise
+ -nan   : replace NaNs (improper numbers) with 0
+
+Binary operations:
+  (some inputs can be either a surface or a number)
+ -add   : add following input to current surface
+ -sub   : subtract following input from current surface
+ -mul   : multiply current surface by following input
+ -div   : divide current surface by following input
+ -mas   : use (following surface>0) to mask current surface
+ -thr   : use following number to threshold current surface (zero anything below the number)
+
+e.g. surfmaths inputSurface -add inputSurface2 outputSurface
+     surfmaths inputSurface -add 2.5 outputSurface
+     surfmaths inputSurface -add 2.5 -mul inputSurface2 outputSurface
+
+
+=== Output of 'surfmaths -help' ===
+
+** syntax error at line 1
+timeout: the monitored command dumped core
+
+=== Output of 'surfmaths' (no arguments) ===
+
+
+Usage: surfmaths <first_input> [operations and inputs] <output> 
+
+Basic unary operations:
+ -exp   : exponential
+ -log   : natural logarithm
+ -sin   : sine function
+ -cos   : cosine function
+ -tan   : tangent function
+ -asin  : arc sine function
+ -acos  : arc cosine function
+ -atan  : arc tangent function
+ -sqr   : square
+ -sqrt  : square root
+ -recip : reciprocal (1/current surface)
+ -abs   : absolute value
+ -bin   : use (current surface>0) to binarise
+ -nan   : replace NaNs (improper numbers) with 0
+
+Binary operations:
+  (some inputs can be either a surface or a number)
+ -add   : add following input to current surface
+ -sub   : subtract following input from current surface
+ -mul   : multiply current surface by following input
+ -div   : divide current surface by following input
+ -mas   : use (following surface>0) to mask current surface
+ -thr   : use following number to threshold current surface (zero anything below the number)
+
+e.g. surfmaths inputSurface -add inputSurface2 outputSurface
+     surfmaths inputSurface -add 2.5 outputSurface
+     surfmaths inputSurface -add 2.5 -mul inputSurface2 outputSurface
+

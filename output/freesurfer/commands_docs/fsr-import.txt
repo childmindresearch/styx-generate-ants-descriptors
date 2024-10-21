@@ -1,0 +1,98 @@
+
+=== Output of 'fsr-import --help' ===
+
+
+fsr-import : copies/converts data into samseg-expected directory structure
+  --o outdir : root dir for data
+  --t1w inputfile : modename = t1w 
+  --t2w inputfile : modename = t2w 
+  --flair inputfile : modename = flair 
+  --mode modename inputfile : modename cannot be t1w, t2w, for flair
+  --force-update : update files regardless of time stamp
+  --no-conform : do not conform the input to 1mm, 256
+  --hires : same as --no-conform
+
+fsr-import 7.4.1
+
+fsr-import : copies/converts data into a certain directory structure
+to be operated on by fsr-coreg. All the input data are converted with
+mri_convert into mgz format.  This directory forms the basis of samseg
+input when performing a samseg-based recon-all analysis. See fsr-coreg.
+
+Eg,
+fsr-import --t1w run1.T1.slice0.dicom  --t1w run2.T1.slice0.dicom --t2w T2.nii.gz \
+  --mode pd myPDimage.mgz --flair FLAIR-weighted.dcm --o importdir
+
+This will import 5 volumes, two of which are T1-weighted, one is T2
+weighted, one is FLAIR weighted, the other is a custom mode called "pd".
+
+The output will be a directory structure stored in import, eg,
+import/pd/r001.mgz
+import/t1w/r001.mgz and r002.mgz
+import/t2w/r001.mgz
+
+This can be used as input to fsr-coreg
+
+Note: unrecognized options are ignored.
+
+t1w, t2w, and flair are given special consideration because they
+can all be used as input to recon-all.
+
+
+
+
+=== Output of 'fsr-import -help' ===
+
+
+fsr-import : copies/converts data into samseg-expected directory structure
+  --o outdir : root dir for data
+  --t1w inputfile : modename = t1w 
+  --t2w inputfile : modename = t2w 
+  --flair inputfile : modename = flair 
+  --mode modename inputfile : modename cannot be t1w, t2w, for flair
+  --force-update : update files regardless of time stamp
+  --no-conform : do not conform the input to 1mm, 256
+  --hires : same as --no-conform
+
+fsr-import 7.4.1
+
+fsr-import : copies/converts data into a certain directory structure
+to be operated on by fsr-coreg. All the input data are converted with
+mri_convert into mgz format.  This directory forms the basis of samseg
+input when performing a samseg-based recon-all analysis. See fsr-coreg.
+
+Eg,
+fsr-import --t1w run1.T1.slice0.dicom  --t1w run2.T1.slice0.dicom --t2w T2.nii.gz \
+  --mode pd myPDimage.mgz --flair FLAIR-weighted.dcm --o importdir
+
+This will import 5 volumes, two of which are T1-weighted, one is T2
+weighted, one is FLAIR weighted, the other is a custom mode called "pd".
+
+The output will be a directory structure stored in import, eg,
+import/pd/r001.mgz
+import/t1w/r001.mgz and r002.mgz
+import/t2w/r001.mgz
+
+This can be used as input to fsr-coreg
+
+Note: unrecognized options are ignored.
+
+t1w, t2w, and flair are given special consideration because they
+can all be used as input to recon-all.
+
+
+
+
+=== Output of 'fsr-import' (no arguments) ===
+
+
+fsr-import : copies/converts data into samseg-expected directory structure
+  --o outdir : root dir for data
+  --t1w inputfile : modename = t1w 
+  --t2w inputfile : modename = t2w 
+  --flair inputfile : modename = flair 
+  --mode modename inputfile : modename cannot be t1w, t2w, for flair
+  --force-update : update files regardless of time stamp
+  --no-conform : do not conform the input to 1mm, 256
+  --hires : same as --no-conform
+

@@ -1,0 +1,66 @@
+
+=== Output of 'betsurf --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+BETSURF (BET Surface Finder) v2.1 - FMRIB Analysis Group, Oxford
+
+Usage: 
+ betsurf          [options] <t1> <t2> <bet_mesh.vtk> <t1_to_standard.mat> <output>
+ betsurf --t1only [options] <t1>      <bet_mesh.vtk> <t1_to_standard.mat> <output>
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	displays this help, then exits
+	-v,--verbose	switch on diagnostic messages
+	-1,--t1only	extraction with t1 only
+	-o,--outline	generates all surface outlines
+	-m,--mask	generates binary masks from the meshes
+	-s,--skullmask	generates skull binary mask
+	-p,--increased_precision <int>	retessellates the meshes the indicated number of times
+
+
+
+=== Output of 'betsurf -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+BETSURF (BET Surface Finder) v2.1 - FMRIB Analysis Group, Oxford
+
+Usage: 
+ betsurf          [options] <t1> <t2> <bet_mesh.vtk> <t1_to_standard.mat> <output>
+ betsurf --t1only [options] <t1>      <bet_mesh.vtk> <t1_to_standard.mat> <output>
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	displays this help, then exits
+	-v,--verbose	switch on diagnostic messages
+	-1,--t1only	extraction with t1 only
+	-o,--outline	generates all surface outlines
+	-m,--mask	generates binary masks from the meshes
+	-s,--skullmask	generates skull binary mask
+	-p,--increased_precision <int>	retessellates the meshes the indicated number of times
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'betsurf' (no arguments) ===
+
+too few arguments
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+BETSURF (BET Surface Finder) v2.1 - FMRIB Analysis Group, Oxford
+
+Usage: 
+ betsurf          [options] <t1> <t2> <bet_mesh.vtk> <t1_to_standard.mat> <output>
+ betsurf --t1only [options] <t1>      <bet_mesh.vtk> <t1_to_standard.mat> <output>
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	displays this help, then exits
+	-v,--verbose	switch on diagnostic messages
+	-1,--t1only	extraction with t1 only
+	-o,--outline	generates all surface outlines
+	-m,--mask	generates binary masks from the meshes
+	-s,--skullmask	generates skull binary mask
+	-p,--increased_precision <int>	retessellates the meshes the indicated number of times
+
+

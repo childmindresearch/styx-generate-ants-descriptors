@@ -1,0 +1,69 @@
+
+=== Output of '3dLRflip --help' ===
+
+[7m** ERROR:[0m Bad option --help.
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dLRflip -help' enlighten:
+        '-LR | -AP | -IS: Axis about which to flip the data'
+        '-prefix ppp: Prefix to use for output. If you have'
+        '-X | -Y | -Z: Flip about 1st, 2nd or 3rd directions,'
+
+=== Output of '3dLRflip -help' ===
+
+Usage: 3dLRflip [-LR|-AP|-IS|-X|-Y|-Z] [-prefix ppp] dset dset dset ...
+Flips the rows of a dataset along one of the three axes.
+
+* This program is intended to be used in the case where you
+  (or some other loser) constructed a dataset with one of the 
+  directions incorrectly labeled. 
+* That is, it is to help you patch up a mistake in the dataset.
+  It has no other purpose.
+
+Optional options:
+-----------------
+
+ -LR | -AP | -IS: Axis about which to flip the data
+                  Default is -LR.
+      or
+ -X | -Y | -Z: Flip about 1st, 2nd or 3rd directions,
+               respectively. 
+ Note: Only one of these 6 options can be used at a time.
+        
+ -prefix ppp: Prefix to use for output. If you have 
+              multiple datasets as input, you are better
+              off letting the program choose a prefix for
+              each output.
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dLRflip' (no arguments) ===
+
+[7m*+ WARNING:[0m Too few options. Showing -help output.
+Usage: 3dLRflip [-LR|-AP|-IS|-X|-Y|-Z] [-prefix ppp] dset dset dset ...
+Flips the rows of a dataset along one of the three axes.
+
+* This program is intended to be used in the case where you
+  (or some other loser) constructed a dataset with one of the 
+  directions incorrectly labeled. 
+* That is, it is to help you patch up a mistake in the dataset.
+  It has no other purpose.
+
+Optional options:
+-----------------
+
+ -LR | -AP | -IS: Axis about which to flip the data
+                  Default is -LR.
+      or
+ -X | -Y | -Z: Flip about 1st, 2nd or 3rd directions,
+               respectively. 
+ Note: Only one of these 6 options can be used at a time.
+        
+ -prefix ppp: Prefix to use for output. If you have 
+              multiple datasets as input, you are better
+              off letting the program choose a prefix for
+              each output.
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

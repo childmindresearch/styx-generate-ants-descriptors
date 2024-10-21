@@ -1,0 +1,57 @@
+
+=== Output of 'slices_summary --help' ===
+
+
+Usage:
+slices_summary <4D_input> <threshold> <background_image> <pictures.sum> [-1] [-d] [-c]
+slices_summary <pictures.sum> <output.png> <space-separated list of timepoints to use; first timepoint is 0>
+
+The first usage creates the full set of summary PNG images, into a new directory <pictures.sum>
+  [-1] option: generate single-slice summary images instead of 3-slice
+  [-d] option: make background darker and colour brighter, for greater colour visibility
+  [-c] option: use dumber rule for choosing optimal slice
+
+The second usage processes the timepoint list, combining summary slices across all timepoints into a single PNG image.
+
+E.g.
+slices_summary groupica.ica/melodic_IC 4 /usr/local/fsl/data/standard/MNI152_T1_2mm groupica.ica/melodic_IC.sum
+slices_summary groupica.ica/melodic_IC.sum grot.png 5 10 0 200
+
+
+=== Output of 'slices_summary -help' ===
+
+
+Usage:
+slices_summary <4D_input> <threshold> <background_image> <pictures.sum> [-1] [-d] [-c]
+slices_summary <pictures.sum> <output.png> <space-separated list of timepoints to use; first timepoint is 0>
+
+The first usage creates the full set of summary PNG images, into a new directory <pictures.sum>
+  [-1] option: generate single-slice summary images instead of 3-slice
+  [-d] option: make background darker and colour brighter, for greater colour visibility
+  [-c] option: use dumber rule for choosing optimal slice
+
+The second usage processes the timepoint list, combining summary slices across all timepoints into a single PNG image.
+
+E.g.
+slices_summary groupica.ica/melodic_IC 4 /usr/local/fsl/data/standard/MNI152_T1_2mm groupica.ica/melodic_IC.sum
+slices_summary groupica.ica/melodic_IC.sum grot.png 5 10 0 200
+
+
+=== Output of 'slices_summary' (no arguments) ===
+
+
+Usage:
+slices_summary <4D_input> <threshold> <background_image> <pictures.sum> [-1] [-d] [-c]
+slices_summary <pictures.sum> <output.png> <space-separated list of timepoints to use; first timepoint is 0>
+
+The first usage creates the full set of summary PNG images, into a new directory <pictures.sum>
+  [-1] option: generate single-slice summary images instead of 3-slice
+  [-d] option: make background darker and colour brighter, for greater colour visibility
+  [-c] option: use dumber rule for choosing optimal slice
+
+The second usage processes the timepoint list, combining summary slices across all timepoints into a single PNG image.
+
+E.g.
+slices_summary groupica.ica/melodic_IC 4 /usr/local/fsl/data/standard/MNI152_T1_2mm groupica.ica/melodic_IC.sum
+slices_summary groupica.ica/melodic_IC.sum grot.png 5 10 0 200
+

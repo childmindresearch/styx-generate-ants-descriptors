@@ -1,0 +1,227 @@
+
+=== Output of 'dt_recon --help' ===
+
+
+USAGE: dt_recon
+
+ Required Aruments:
+   --i invol
+   --b bvals bvecs
+   --s subjectid
+   --o outputdir
+
+ Other Arguments (Optional)
+  --info-dump infodump.dat : use info dump created by unpacksdcmdir or dcmunpack
+  --ecref TP       : Use TP as 0-based reference time points for EC
+  --no-ec          : turn off eddy/motion correction
+  --no-reg         : do not register to subject or resample to talairach
+  --reg  reg.lta   : supply a register.lta file instead of registering
+  --no-tal         : do not resample FA to talairch space
+  --sd subjectsdir : specify subjects dir (default env SUBJECTS_DIR)
+  --eres-save      : save resdidual error (dwires and eres)
+  --pca            : run PCA/SVD analysis on eres (saves in pca-eres dir)
+  --prune_thr thr  : set threshold for masking (default is FLT_MIN)
+  --init-spm       : init BBR with SPM instead of coreg (requires matlab)
+  --init-fsl       : init BBR with FSL instead of coreg
+  --debug          : print out lots of info
+  --version        : print version of this script and exit
+  --help           : voluminous bits of wisdom
+
+dt_recon 7.4.1
+
+
+Performs DTI reconstruction from the raw DWI in the input file. If
+bvalues and bvectors are not specified with --b, it is assumed that
+the input is a Siemens dicom file, and gets gradient directions and
+bvalues from based on values found in the dicom file. See
+$FREESURFER_HOME/diffusion/mgh-dti-seqpack/README. If the bvalues 
+and bvectors are specified, then the input volume can be anything.
+
+The bvalues are in a simple text file, one for each direction
+(including b=0). The bvectors (gradient directions) are also in a
+simple text file with three components on each row. These also include
+the b=0 values. There must be as many rows in the bvals/bvecs
+as there are frames in the input.
+
+Stages:
+1. Convert input to nifti (creates dwi.nii.gz)
+2. Eddy current and motion correction using FSLs eddy_correct,
+   creates dwi-ec.nii.gz. Can take 1-2 hours.
+3. DTI GLM Fit and tensor construction. Includes creation of:
+   tensor.nii.gz -- maps of the tensor (9 frames)
+   eigvals.nii.gz -- maps of the eigenvalues
+   eigvec?.nii.gz -- maps of the eigenvectors
+   adc.nii.gz -- apparent diffusion coefficient
+   fa.nii.gz -- fractional anisotropy
+   ra.nii.gz -- relative anisotropy
+   vr.nii.gz -- volume ratio
+   ivc.nii.gz -- intervoxel correlation
+   lowb.nii.gz -- Low B 
+   bvals.dat -- bvalues
+   bvecs.dat -- directions
+   Also creates glm-related images: 
+     beta.nii.gz - regression coefficients
+     eres.nii.gz - residual error (log of dwi intensity)
+     rvar.nii.gz - residual variance (log)
+     rstd.nii.gz - residual stddev (log)
+     dwires.nii.gz - residual error (dwi intensity)
+     dwirvar.nii.gz - residual variance (dwi intensity)
+4. Registration of lowb to same-subject anatomical using
+   bbregister (creates mask.nii.gz and register.lta)
+5. Map FA to talairach space (creates fa-tal.nii.gz)
+
+Example usage:
+
+dt_recon --i 6-1025.dcm --s M87102113 --o dti
+dt_recon --i f.nii.gz --b f.bvals f.bvecs --s M87102113 --o dti
+
+# Check registration
+tkregisterfv --mov dti/lowb.nii.gz --reg dti/register.lta \ 
+  --surf orig --tag
+
+# View FA on the subject's anat:
+tkmedit  M87102113 orig.mgz -overlay dti/fa.nii.gz \
+   -overlay-reg dti/register.dat # NOTE: only works with .dat
+
+# View FA on fsaverage
+tkmedit fsaverage orig.mgz -overlay dti/fa-tal.nii.gz
+
+# Group/Higher level GLM analysis:
+# Concatenate fa from individuals into one file
+#  Make sure the order agrees with the fsgd below
+mri_concat */fa-tal.nii.gz --o group-fa-tal.nii.gz
+# Create a mask:
+mri_concat */mask-tal.nii.gz --o group-masksum-tal.nii.gz --mean
+mri_binarize --i group-masksum-tal.nii.gz --min .999 --o group-mask-tal.nii.gz
+# GLM Fit
+mri_glmfit --y group-fa-tal.nii.gz --mask group-mask-tal.nii.gz\
+    --fsgd your.fsgd --C contrast --glmdir groupanadir
+
+
+=== Output of 'dt_recon -help' ===
+
+
+USAGE: dt_recon
+
+ Required Aruments:
+   --i invol
+   --b bvals bvecs
+   --s subjectid
+   --o outputdir
+
+ Other Arguments (Optional)
+  --info-dump infodump.dat : use info dump created by unpacksdcmdir or dcmunpack
+  --ecref TP       : Use TP as 0-based reference time points for EC
+  --no-ec          : turn off eddy/motion correction
+  --no-reg         : do not register to subject or resample to talairach
+  --reg  reg.lta   : supply a register.lta file instead of registering
+  --no-tal         : do not resample FA to talairch space
+  --sd subjectsdir : specify subjects dir (default env SUBJECTS_DIR)
+  --eres-save      : save resdidual error (dwires and eres)
+  --pca            : run PCA/SVD analysis on eres (saves in pca-eres dir)
+  --prune_thr thr  : set threshold for masking (default is FLT_MIN)
+  --init-spm       : init BBR with SPM instead of coreg (requires matlab)
+  --init-fsl       : init BBR with FSL instead of coreg
+  --debug          : print out lots of info
+  --version        : print version of this script and exit
+  --help           : voluminous bits of wisdom
+
+dt_recon 7.4.1
+
+
+Performs DTI reconstruction from the raw DWI in the input file. If
+bvalues and bvectors are not specified with --b, it is assumed that
+the input is a Siemens dicom file, and gets gradient directions and
+bvalues from based on values found in the dicom file. See
+$FREESURFER_HOME/diffusion/mgh-dti-seqpack/README. If the bvalues 
+and bvectors are specified, then the input volume can be anything.
+
+The bvalues are in a simple text file, one for each direction
+(including b=0). The bvectors (gradient directions) are also in a
+simple text file with three components on each row. These also include
+the b=0 values. There must be as many rows in the bvals/bvecs
+as there are frames in the input.
+
+Stages:
+1. Convert input to nifti (creates dwi.nii.gz)
+2. Eddy current and motion correction using FSLs eddy_correct,
+   creates dwi-ec.nii.gz. Can take 1-2 hours.
+3. DTI GLM Fit and tensor construction. Includes creation of:
+   tensor.nii.gz -- maps of the tensor (9 frames)
+   eigvals.nii.gz -- maps of the eigenvalues
+   eigvec?.nii.gz -- maps of the eigenvectors
+   adc.nii.gz -- apparent diffusion coefficient
+   fa.nii.gz -- fractional anisotropy
+   ra.nii.gz -- relative anisotropy
+   vr.nii.gz -- volume ratio
+   ivc.nii.gz -- intervoxel correlation
+   lowb.nii.gz -- Low B 
+   bvals.dat -- bvalues
+   bvecs.dat -- directions
+   Also creates glm-related images: 
+     beta.nii.gz - regression coefficients
+     eres.nii.gz - residual error (log of dwi intensity)
+     rvar.nii.gz - residual variance (log)
+     rstd.nii.gz - residual stddev (log)
+     dwires.nii.gz - residual error (dwi intensity)
+     dwirvar.nii.gz - residual variance (dwi intensity)
+4. Registration of lowb to same-subject anatomical using
+   bbregister (creates mask.nii.gz and register.lta)
+5. Map FA to talairach space (creates fa-tal.nii.gz)
+
+Example usage:
+
+dt_recon --i 6-1025.dcm --s M87102113 --o dti
+dt_recon --i f.nii.gz --b f.bvals f.bvecs --s M87102113 --o dti
+
+# Check registration
+tkregisterfv --mov dti/lowb.nii.gz --reg dti/register.lta \ 
+  --surf orig --tag
+
+# View FA on the subject's anat:
+tkmedit  M87102113 orig.mgz -overlay dti/fa.nii.gz \
+   -overlay-reg dti/register.dat # NOTE: only works with .dat
+
+# View FA on fsaverage
+tkmedit fsaverage orig.mgz -overlay dti/fa-tal.nii.gz
+
+# Group/Higher level GLM analysis:
+# Concatenate fa from individuals into one file
+#  Make sure the order agrees with the fsgd below
+mri_concat */fa-tal.nii.gz --o group-fa-tal.nii.gz
+# Create a mask:
+mri_concat */mask-tal.nii.gz --o group-masksum-tal.nii.gz --mean
+mri_binarize --i group-masksum-tal.nii.gz --min .999 --o group-mask-tal.nii.gz
+# GLM Fit
+mri_glmfit --y group-fa-tal.nii.gz --mask group-mask-tal.nii.gz\
+    --fsgd your.fsgd --C contrast --glmdir groupanadir
+
+
+=== Output of 'dt_recon' (no arguments) ===
+
+
+USAGE: dt_recon
+
+ Required Aruments:
+   --i invol
+   --b bvals bvecs
+   --s subjectid
+   --o outputdir
+
+ Other Arguments (Optional)
+  --info-dump infodump.dat : use info dump created by unpacksdcmdir or dcmunpack
+  --ecref TP       : Use TP as 0-based reference time points for EC
+  --no-ec          : turn off eddy/motion correction
+  --no-reg         : do not register to subject or resample to talairach
+  --reg  reg.lta   : supply a register.lta file instead of registering
+  --no-tal         : do not resample FA to talairch space
+  --sd subjectsdir : specify subjects dir (default env SUBJECTS_DIR)
+  --eres-save      : save resdidual error (dwires and eres)
+  --pca            : run PCA/SVD analysis on eres (saves in pca-eres dir)
+  --prune_thr thr  : set threshold for masking (default is FLT_MIN)
+  --init-spm       : init BBR with SPM instead of coreg (requires matlab)
+  --init-fsl       : init BBR with FSL instead of coreg
+  --debug          : print out lots of info
+  --version        : print version of this script and exit
+  --help           : voluminous bits of wisdom
+

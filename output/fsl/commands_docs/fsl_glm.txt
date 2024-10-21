@@ -1,0 +1,142 @@
+
+=== Output of 'fsl_glm --help' ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        input file name (text matrix or 3D/4D image file)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_glm
+Author: Christian F. Beckmann 
+Copyright(C) 2006-2013 University of Oxford 
+ 
+ Simple GLM allowing temporal or spatial regression on either text data or images
+
+
+Usage: 
+fsl_glm -i <input> -d <design> -o <output> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (text matrix or 3D/4D image file)
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	output file name for GLM parameter estimates (GLM betas)
+	-d,--design	file name of the GLM design matrix (text time courses for temporal regression or an image file for spatial regression )
+	-c,--contrasts	matrix of t-statistics contrasts
+	-m,--mask	mask image file name if input is image
+	--dof	        set degrees-of-freedom explicitly
+	--des_norm	switch on normalisation of the design matrix columns to unit std. deviation
+	--dat_norm	switch on normalisation of the data time series to unit std. deviation
+	--vn	        perform MELODIC variance-normalisation on data
+	--demean	switch on de-meaning of design and data
+	-h,--help	display this help text
+	--out_cope	output file name for COPEs (either as text file or image)
+	--out_z	        output file name for Z-stats (either as text file or image)
+	--out_t	        output file name for t-stats (either as text file or image)
+	--out_p	        output file name for p-values of Z-stats (either as text file or image)
+	--out_f	        output file name for F-value of full model fit
+	--out_pf	output file name for p-value for full model fit
+	--out_res	output file name for residuals
+	--out_varcb	output file name for variance of COPEs
+	--out_sigsq	output file name for residual noise variance sigma-square
+	--out_data	output file name for pre-processed data
+	--out_vnscales	output file name for scaling factors for variance normalisation
+	--vxt		list of text files containing text matrix confounds. caution BETA option.
+	--vxf		list of 4D images containing voxelwise confounds. caution BETA option.
+
+
+
+=== Output of 'fsl_glm -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_glm
+Author: Christian F. Beckmann 
+Copyright(C) 2006-2013 University of Oxford 
+ 
+ Simple GLM allowing temporal or spatial regression on either text data or images
+
+
+Usage: 
+fsl_glm -i <input> -d <design> -o <output> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (text matrix or 3D/4D image file)
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	output file name for GLM parameter estimates (GLM betas)
+	-d,--design	file name of the GLM design matrix (text time courses for temporal regression or an image file for spatial regression )
+	-c,--contrasts	matrix of t-statistics contrasts
+	-m,--mask	mask image file name if input is image
+	--dof	        set degrees-of-freedom explicitly
+	--des_norm	switch on normalisation of the design matrix columns to unit std. deviation
+	--dat_norm	switch on normalisation of the data time series to unit std. deviation
+	--vn	        perform MELODIC variance-normalisation on data
+	--demean	switch on de-meaning of design and data
+	-h,--help	display this help text
+	--out_cope	output file name for COPEs (either as text file or image)
+	--out_z	        output file name for Z-stats (either as text file or image)
+	--out_t	        output file name for t-stats (either as text file or image)
+	--out_p	        output file name for p-values of Z-stats (either as text file or image)
+	--out_f	        output file name for F-value of full model fit
+	--out_pf	output file name for p-value for full model fit
+	--out_res	output file name for residuals
+	--out_varcb	output file name for variance of COPEs
+	--out_sigsq	output file name for residual noise variance sigma-square
+	--out_data	output file name for pre-processed data
+	--out_vnscales	output file name for scaling factors for variance normalisation
+	--vxt		list of text files containing text matrix confounds. caution BETA option.
+	--vxf		list of 4D images containing voxelwise confounds. caution BETA option.
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'fsl_glm' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        input file name (text matrix or 3D/4D image file)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_glm
+Author: Christian F. Beckmann 
+Copyright(C) 2006-2013 University of Oxford 
+ 
+ Simple GLM allowing temporal or spatial regression on either text data or images
+
+
+Usage: 
+fsl_glm -i <input> -d <design> -o <output> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (text matrix or 3D/4D image file)
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	output file name for GLM parameter estimates (GLM betas)
+	-d,--design	file name of the GLM design matrix (text time courses for temporal regression or an image file for spatial regression )
+	-c,--contrasts	matrix of t-statistics contrasts
+	-m,--mask	mask image file name if input is image
+	--dof	        set degrees-of-freedom explicitly
+	--des_norm	switch on normalisation of the design matrix columns to unit std. deviation
+	--dat_norm	switch on normalisation of the data time series to unit std. deviation
+	--vn	        perform MELODIC variance-normalisation on data
+	--demean	switch on de-meaning of design and data
+	-h,--help	display this help text
+	--out_cope	output file name for COPEs (either as text file or image)
+	--out_z	        output file name for Z-stats (either as text file or image)
+	--out_t	        output file name for t-stats (either as text file or image)
+	--out_p	        output file name for p-values of Z-stats (either as text file or image)
+	--out_f	        output file name for F-value of full model fit
+	--out_pf	output file name for p-value for full model fit
+	--out_res	output file name for residuals
+	--out_varcb	output file name for variance of COPEs
+	--out_sigsq	output file name for residual noise variance sigma-square
+	--out_data	output file name for pre-processed data
+	--out_vnscales	output file name for scaling factors for variance normalisation
+	--vxt		list of text files containing text matrix confounds. caution BETA option.
+	--vxf		list of 4D images containing voxelwise confounds. caution BETA option.
+
+

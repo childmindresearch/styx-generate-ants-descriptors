@@ -1,0 +1,15 @@
+
+=== Output of 'plot_structure_stats.tcl --help' ===
+
+/usr/local/freesurfer/bin/plot_structure_stats.tcl: line 60: syntax error near unexpected token `}'
+/usr/local/freesurfer/bin/plot_structure_stats.tcl: line 60: `  }'
+
+=== Output of 'plot_structure_stats.tcl -help' ===
+
+/usr/local/freesurfer/bin/plot_structure_stats.tcl: line 60: syntax error near unexpected token `}'
+/usr/local/freesurfer/bin/plot_structure_stats.tcl: line 60: `  }'
+
+=== Output of 'plot_structure_stats.tcl' (no arguments) ===
+
+/usr/local/freesurfer/bin/plot_structure_stats.tcl: line 60: syntax error near unexpected token `}'
+/usr/local/freesurfer/bin/plot_structure_stats.tcl: line 60: `  }'

@@ -1,0 +1,518 @@
+
+=== Output of 'long_submit_jobs --help' ===
+
+Usage: 
+
+SUMMARY
+
+Submits jobs to the cluster (either seychelles or launchpad at NMR) for 
+longitudinal processing. It can submit either cross, base or long or all.
+The script will run based on a qdec table (long format) and will wait
+with submission of base or long until necessary files are available.
+
+
+REQUIRED ARGUMENTS
+
+--qdec <name>     qdec.table.dat file with first columns: fsid  fsid-base
+
+--cdir <name>     Subjects dir for cross (inherited by base and long)
+
+
+OPTIONAL ARGUMENTS
+
+--bdir <name>     Subjects dir for base runs (default: inherit from cdir)
+
+--ldir <name>     Subjects dir for long runs (default: inherit from bdir)
+
+--cross           Run cross sectionals (default: do cross base and long)
+
+--base            Run bases (default: do cross base and long)
+
+--long            Run longitudinals (default: do cross base and long)
+
+--affine          Use affine registration for base
+
+--cflags          Manually specify flags for cross (e.g. --cflags '-all -cw256')
+
+--bflags          Manually specify flags for base (default: '-all')
+
+--lflags          Manually specify flags for long (default: '-all')
+
+--force           Force reprocessing even if finished (recon-all.done)
+
+--simulate        Do not submit anything, just print commands
+
+--simfiles        Do not submit anything, just create command files
+
+--check           Checks if all longitudinals are done
+
+--pause <int>     Pause in sec between submissions (default: 13)
+
+--max  <int>      Max num of jobs of this user (default: 100)
+
+--queue <name>    Special queue to submit
+
+
+DETAILS
+=======
+QDEC.TABLE
+Pass a qdec table file, where the first 2 columns need to be 'fsid  fsid-base'.
+fsid is the id of the individual time points an 'fsid-base' the template/base
+id (grouping the timepoints that belong to the same subject). By default the
+third column is taken as the time variable, but this can be overwritten with
+--time <name>. 
+
+QDEC.TABLE-EXAMPLE:
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+
+STREAMS
+=======
+Default is to run all streams: cross, base and long. You can switch on individual
+streams with --cross, --base and --long (then only the ones specifed are run). 
+
+
+SUBJECTS DIRS
+=============
+You can pass individual subject directories for cross (--cdir), base (--bdir) and 
+longitudinals (--ldir). You can ommit the --ldir or --bdir, their values will then
+be inherited from the previous directory. E.g., if you only specify --cdir, then
+the base and longitudinal directory will be intialized with the same value. Similarly,
+when specifying --cdir and --bdir, the longitudinal directory will be automatically
+initialized with the  base subject dir. It is often a good idea to have the cross
+sectionals in a different directory and base togehter with long in another directory.
+This way you can run several base/longitudinal streams with different parameters using
+the same cross sectional runs.
+
+
+SUBMITTED SCRIPTS
+=================
+The commands that were submitted will be saved in <cdir,bdir,ldir>/scripts_submitted by default. 
+You can set a different location to save all the submitted scripts using the --scriptsdir flag. 
+
+NOTE: The recon-all script that was used to run these commands is also copied to these 
+scripts directories.  This is to insure that all subjects will be processed with the same
+parameters if recon-all is being actively developed while long_submit_jobs is running
+(which could be days).  Pass the --update-recon-all flag to copy the version from
+$FREESURFER_HOME/bin/ and use this for subsequent processing. You can also pass a custom
+recon-all script via --use-recon-all <filename>.
+
+
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+
+
+
+Options:
+  -h, --help            show this help message and exit
+  --qdec=QDEC           (REQUIRED) qdec table file specifying the subjects and
+                        time points
+  --cdir=CDIR           (REQUIRED) use subjects dir for cross sectionals
+  --bdir=BDIR           use subjects dir for base runs (default: inherit from
+                        cross)
+  --ldir=LDIR           use subjects dir for long runs (default: inherit from
+                        base)
+  --scriptsdir=SCRIPTSDIR
+                        change the location of where all submitted scripts are
+                        saved (default: <cdir,bdir,ldir>/scripts_submitted)
+  --cross               process the cross sectionals
+  --base                process the bases
+  --long                process the longitudinals
+  --cflags=CFLAGS       Manually specify flags for cross (e.g. --cflags '-all
+                        -cw256')
+  --bflags=BFLAGS       Manually specify flags for base (default: '-all')
+  --lflags=LFLAGS       Manually specify flags for long (default: '-all')
+  --affine              use affine registration for base
+  --force               force reprocessing even if finished successfully
+                        before (recon-all.done)
+  --simulate            do not submit anything, just print commands
+  --simfiles            do not submit anything, just create command files
+  --skip=SKIP           0 (exit on missing), 1 (default, skip instead of
+                        exit), 2 (skip instead of wait)
+  --skiperror           skip re-submission if run had errors earlier (default:
+                        resubmit if not running)
+  --check               check if all longitudinals are done
+  --update-recon-all    replace the local copy of recon-all with
+                        $FREESURFER_HOME/bin/recon-all
+  --use-recon-all=USE_RECON_ALL
+                        use custom recon-all for processing
+  --pause=PAUSE         pause in sec between submissions (default: 13)
+  --max=MAX             max num of jobs of this user (default: 100)
+  --queue=QUEUE         special queue to submit
+  --cmem=CMEM           RAM in GB to request for cross (default: 7)
+  --bmem=BMEM, --mem=BMEM
+                        RAM in GB to request for base (default: 7)
+  --lmem=LMEM           RAM in GB to request for long (default: 7)
+  --cnodes=CNODES       nodes to request for cross (default: 1)
+  --bnodes=BNODES       nodes to request for base (default: 1)
+  --lnodes=LNODES       nodes to request for long (default: 1)
+
+=== Output of 'long_submit_jobs -help' ===
+
+Usage: 
+
+SUMMARY
+
+Submits jobs to the cluster (either seychelles or launchpad at NMR) for 
+longitudinal processing. It can submit either cross, base or long or all.
+The script will run based on a qdec table (long format) and will wait
+with submission of base or long until necessary files are available.
+
+
+REQUIRED ARGUMENTS
+
+--qdec <name>     qdec.table.dat file with first columns: fsid  fsid-base
+
+--cdir <name>     Subjects dir for cross (inherited by base and long)
+
+
+OPTIONAL ARGUMENTS
+
+--bdir <name>     Subjects dir for base runs (default: inherit from cdir)
+
+--ldir <name>     Subjects dir for long runs (default: inherit from bdir)
+
+--cross           Run cross sectionals (default: do cross base and long)
+
+--base            Run bases (default: do cross base and long)
+
+--long            Run longitudinals (default: do cross base and long)
+
+--affine          Use affine registration for base
+
+--cflags          Manually specify flags for cross (e.g. --cflags '-all -cw256')
+
+--bflags          Manually specify flags for base (default: '-all')
+
+--lflags          Manually specify flags for long (default: '-all')
+
+--force           Force reprocessing even if finished (recon-all.done)
+
+--simulate        Do not submit anything, just print commands
+
+--simfiles        Do not submit anything, just create command files
+
+--check           Checks if all longitudinals are done
+
+--pause <int>     Pause in sec between submissions (default: 13)
+
+--max  <int>      Max num of jobs of this user (default: 100)
+
+--queue <name>    Special queue to submit
+
+
+DETAILS
+=======
+QDEC.TABLE
+Pass a qdec table file, where the first 2 columns need to be 'fsid  fsid-base'.
+fsid is the id of the individual time points an 'fsid-base' the template/base
+id (grouping the timepoints that belong to the same subject). By default the
+third column is taken as the time variable, but this can be overwritten with
+--time <name>. 
+
+QDEC.TABLE-EXAMPLE:
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+
+STREAMS
+=======
+Default is to run all streams: cross, base and long. You can switch on individual
+streams with --cross, --base and --long (then only the ones specifed are run). 
+
+
+SUBJECTS DIRS
+=============
+You can pass individual subject directories for cross (--cdir), base (--bdir) and 
+longitudinals (--ldir). You can ommit the --ldir or --bdir, their values will then
+be inherited from the previous directory. E.g., if you only specify --cdir, then
+the base and longitudinal directory will be intialized with the same value. Similarly,
+when specifying --cdir and --bdir, the longitudinal directory will be automatically
+initialized with the  base subject dir. It is often a good idea to have the cross
+sectionals in a different directory and base togehter with long in another directory.
+This way you can run several base/longitudinal streams with different parameters using
+the same cross sectional runs.
+
+
+SUBMITTED SCRIPTS
+=================
+The commands that were submitted will be saved in <cdir,bdir,ldir>/scripts_submitted by default. 
+You can set a different location to save all the submitted scripts using the --scriptsdir flag. 
+
+NOTE: The recon-all script that was used to run these commands is also copied to these 
+scripts directories.  This is to insure that all subjects will be processed with the same
+parameters if recon-all is being actively developed while long_submit_jobs is running
+(which could be days).  Pass the --update-recon-all flag to copy the version from
+$FREESURFER_HOME/bin/ and use this for subsequent processing. You can also pass a custom
+recon-all script via --use-recon-all <filename>.
+
+
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+
+
+
+Options:
+  -h, --help            show this help message and exit
+  --qdec=QDEC           (REQUIRED) qdec table file specifying the subjects and
+                        time points
+  --cdir=CDIR           (REQUIRED) use subjects dir for cross sectionals
+  --bdir=BDIR           use subjects dir for base runs (default: inherit from
+                        cross)
+  --ldir=LDIR           use subjects dir for long runs (default: inherit from
+                        base)
+  --scriptsdir=SCRIPTSDIR
+                        change the location of where all submitted scripts are
+                        saved (default: <cdir,bdir,ldir>/scripts_submitted)
+  --cross               process the cross sectionals
+  --base                process the bases
+  --long                process the longitudinals
+  --cflags=CFLAGS       Manually specify flags for cross (e.g. --cflags '-all
+                        -cw256')
+  --bflags=BFLAGS       Manually specify flags for base (default: '-all')
+  --lflags=LFLAGS       Manually specify flags for long (default: '-all')
+  --affine              use affine registration for base
+  --force               force reprocessing even if finished successfully
+                        before (recon-all.done)
+  --simulate            do not submit anything, just print commands
+  --simfiles            do not submit anything, just create command files
+  --skip=SKIP           0 (exit on missing), 1 (default, skip instead of
+                        exit), 2 (skip instead of wait)
+  --skiperror           skip re-submission if run had errors earlier (default:
+                        resubmit if not running)
+  --check               check if all longitudinals are done
+  --update-recon-all    replace the local copy of recon-all with
+                        $FREESURFER_HOME/bin/recon-all
+  --use-recon-all=USE_RECON_ALL
+                        use custom recon-all for processing
+  --pause=PAUSE         pause in sec between submissions (default: 13)
+  --max=MAX             max num of jobs of this user (default: 100)
+  --queue=QUEUE         special queue to submit
+  --cmem=CMEM           RAM in GB to request for cross (default: 7)
+  --bmem=BMEM, --mem=BMEM
+                        RAM in GB to request for base (default: 7)
+  --lmem=LMEM           RAM in GB to request for long (default: 7)
+  --cnodes=CNODES       nodes to request for cross (default: 1)
+  --bnodes=BNODES       nodes to request for base (default: 1)
+  --lnodes=LNODES       nodes to request for long (default: 1)
+
+=== Output of 'long_submit_jobs' (no arguments) ===
+
+Usage: 
+
+SUMMARY
+
+Submits jobs to the cluster (either seychelles or launchpad at NMR) for 
+longitudinal processing. It can submit either cross, base or long or all.
+The script will run based on a qdec table (long format) and will wait
+with submission of base or long until necessary files are available.
+
+
+REQUIRED ARGUMENTS
+
+--qdec <name>     qdec.table.dat file with first columns: fsid  fsid-base
+
+--cdir <name>     Subjects dir for cross (inherited by base and long)
+
+
+OPTIONAL ARGUMENTS
+
+--bdir <name>     Subjects dir for base runs (default: inherit from cdir)
+
+--ldir <name>     Subjects dir for long runs (default: inherit from bdir)
+
+--cross           Run cross sectionals (default: do cross base and long)
+
+--base            Run bases (default: do cross base and long)
+
+--long            Run longitudinals (default: do cross base and long)
+
+--affine          Use affine registration for base
+
+--cflags          Manually specify flags for cross (e.g. --cflags '-all -cw256')
+
+--bflags          Manually specify flags for base (default: '-all')
+
+--lflags          Manually specify flags for long (default: '-all')
+
+--force           Force reprocessing even if finished (recon-all.done)
+
+--simulate        Do not submit anything, just print commands
+
+--simfiles        Do not submit anything, just create command files
+
+--check           Checks if all longitudinals are done
+
+--pause <int>     Pause in sec between submissions (default: 13)
+
+--max  <int>      Max num of jobs of this user (default: 100)
+
+--queue <name>    Special queue to submit
+
+
+DETAILS
+=======
+QDEC.TABLE
+Pass a qdec table file, where the first 2 columns need to be 'fsid  fsid-base'.
+fsid is the id of the individual time points an 'fsid-base' the template/base
+id (grouping the timepoints that belong to the same subject). By default the
+third column is taken as the time variable, but this can be overwritten with
+--time <name>. 
+
+QDEC.TABLE-EXAMPLE:
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+
+STREAMS
+=======
+Default is to run all streams: cross, base and long. You can switch on individual
+streams with --cross, --base and --long (then only the ones specifed are run). 
+
+
+SUBJECTS DIRS
+=============
+You can pass individual subject directories for cross (--cdir), base (--bdir) and 
+longitudinals (--ldir). You can ommit the --ldir or --bdir, their values will then
+be inherited from the previous directory. E.g., if you only specify --cdir, then
+the base and longitudinal directory will be intialized with the same value. Similarly,
+when specifying --cdir and --bdir, the longitudinal directory will be automatically
+initialized with the  base subject dir. It is often a good idea to have the cross
+sectionals in a different directory and base togehter with long in another directory.
+This way you can run several base/longitudinal streams with different parameters using
+the same cross sectional runs.
+
+
+SUBMITTED SCRIPTS
+=================
+The commands that were submitted will be saved in <cdir,bdir,ldir>/scripts_submitted by default. 
+You can set a different location to save all the submitted scripts using the --scriptsdir flag. 
+
+NOTE: The recon-all script that was used to run these commands is also copied to these 
+scripts directories.  This is to insure that all subjects will be processed with the same
+parameters if recon-all is being actively developed while long_submit_jobs is running
+(which could be days).  Pass the --update-recon-all flag to copy the version from
+$FREESURFER_HOME/bin/ and use this for subsequent processing. You can also pass a custom
+recon-all script via --use-recon-all <filename>.
+
+
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+
+
+
+Options:
+  -h, --help            show this help message and exit
+  --qdec=QDEC           (REQUIRED) qdec table file specifying the subjects and
+                        time points
+  --cdir=CDIR           (REQUIRED) use subjects dir for cross sectionals
+  --bdir=BDIR           use subjects dir for base runs (default: inherit from
+                        cross)
+  --ldir=LDIR           use subjects dir for long runs (default: inherit from
+                        base)
+  --scriptsdir=SCRIPTSDIR
+                        change the location of where all submitted scripts are
+                        saved (default: <cdir,bdir,ldir>/scripts_submitted)
+  --cross               process the cross sectionals
+  --base                process the bases
+  --long                process the longitudinals
+  --cflags=CFLAGS       Manually specify flags for cross (e.g. --cflags '-all
+                        -cw256')
+  --bflags=BFLAGS       Manually specify flags for base (default: '-all')
+  --lflags=LFLAGS       Manually specify flags for long (default: '-all')
+  --affine              use affine registration for base
+  --force               force reprocessing even if finished successfully
+                        before (recon-all.done)
+  --simulate            do not submit anything, just print commands
+  --simfiles            do not submit anything, just create command files
+  --skip=SKIP           0 (exit on missing), 1 (default, skip instead of
+                        exit), 2 (skip instead of wait)
+  --skiperror           skip re-submission if run had errors earlier (default:
+                        resubmit if not running)
+  --check               check if all longitudinals are done
+  --update-recon-all    replace the local copy of recon-all with
+                        $FREESURFER_HOME/bin/recon-all
+  --use-recon-all=USE_RECON_ALL
+                        use custom recon-all for processing
+  --pause=PAUSE         pause in sec between submissions (default: 13)
+  --max=MAX             max num of jobs of this user (default: 100)
+  --queue=QUEUE         special queue to submit
+  --cmem=CMEM           RAM in GB to request for cross (default: 7)
+  --bmem=BMEM, --mem=BMEM
+                        RAM in GB to request for base (default: 7)
+  --lmem=LMEM           RAM in GB to request for long (default: 7)
+  --cnodes=CNODES       nodes to request for cross (default: 1)
+  --bnodes=BNODES       nodes to request for base (default: 1)
+  --lnodes=LNODES       nodes to request for long (default: 1)
+
+ERROR: Specify --qdec and --cdir

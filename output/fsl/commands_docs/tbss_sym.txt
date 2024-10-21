@@ -1,0 +1,238 @@
+
+=== Output of 'tbss_sym --help' ===
+
+cat: thresh.txt: No such file or directory
+creating a symmetrised skeleton
+Image Exception : #63 :: No image files match: mean_FA_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_skeleton
+/usr/local/fsl/bin/tbss_sym: line 102: 21084 Aborted                 (core dumped) $FSLDIR/bin/fslmaths mean_FA_skeleton -thr $thresh -bin -dilF grotsym_dilated
+Image Exception : #63 :: No image files match: mean_FA
+No image files match: mean_FA
+/usr/local/fsl/bin/fslswapdim: line 107: [: =: unary operator expected
+Image Exception : #63 :: No image files match: mean_FA
+No image files match: mean_FA
+/usr/local/fsl/bin/fslswapdim: line 115: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: mean_FA
+No image files match: mean_FA
+/usr/local/fsl/bin/fslswapdim: line 117: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: mean_FA
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA
+/usr/local/fsl/bin/fslswapdim: line 184: 21113 Aborted                 (core dumped) $comm
+Image Exception : #63 :: No image files match: mean_FA
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA
+/usr/local/fsl/bin/tbss_sym: line 102: 21114 Aborted                 (core dumped) $FSLDIR/bin/fslmaths mean_FA -mas grotsym -add grotsym -div 2 mean_FA_symmetrised
+Image Exception : #63 :: No image files match: mean_FA_symmetrised
+Image Exception : #22 :: Failed to read volume mean_FA_symmetrised
+Error : No image files match: mean_FA_symmetrised
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume mean_FA_symmetrised
+Error : No image files match: mean_FA_symmetrised
+/usr/local/fsl/bin/tbss_sym: line 102: 21115 Aborted                 (core dumped) $FSLDIR/bin/tbss_skeleton -i mean_FA_symmetrised -o grotsym_symmetrised_skeleton
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/tbss_sym: line 102: 21116 Aborted                 (core dumped) $FSLDIR/bin/fslmaths grotsym_symmetrised_skeleton -thr $thresh -mas grotsym_dilated grotsym_symmetrised_skeleton
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/fslswapdim: line 107: [: =: unary operator expected
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/fslswapdim: line 115: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/fslswapdim: line 117: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/fslswapdim: line 184: 21145 Aborted                 (core dumped) $comm
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/tbss_sym: line 102: 21146 Aborted                 (core dumped) $FSLDIR/bin/fslmaths grotsym_symmetrised_skeleton -mas grotsym mean_FA_symmetrised_skeleton
+Image Exception : #63 :: No image files match: mean_FA_symmetrised_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_symmetrised_skeleton
+/usr/local/fsl/bin/tbss_sym: line 102: 21147 Aborted                 (core dumped) $FSLDIR/bin/fslmaths mean_FA_symmetrised_skeleton -bin mean_FA_symmetrised_skeleton_mask
+creating symmetrised skeleton distancemap
+Image Exception : #63 :: No image files match: mean_FA_mask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_mask
+/usr/local/fsl/bin/tbss_sym: line 102: 21148 Aborted                 (core dumped) ${FSLDIR}/bin/fslmaths mean_FA_mask -mul -1 -add 1 -add mean_FA_symmetrised_skeleton_mask mean_FA_symmetrised_skeleton_mask_dst
+Image Exception : #63 :: No image files match: mean_FA_symmetrised_skeleton_mask_dst
+Image Exception : #22 :: Failed to read volume mean_FA_symmetrised_skeleton_mask_dst
+Error : No image files match: mean_FA_symmetrised_skeleton_mask_dst
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume mean_FA_symmetrised_skeleton_mask_dst
+Error : No image files match: mean_FA_symmetrised_skeleton_mask_dst
+/usr/local/fsl/bin/tbss_sym: line 102: 21149 Aborted                 (core dumped) ${FSLDIR}/bin/distancemap -i mean_FA_symmetrised_skeleton_mask_dst -o mean_FA_symmetrised_skeleton_mask_dst
+projecting all FA data onto symmetrised skeleton
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+tbss_skeleton (Version 1.03)
+Copyright(c) 2005-2007, University of Oxford (Stephen Smith)
+
+Usage: 
+tbss_skeleton -i <inputimage> -o <skeleton>
+tbss_skeleton -i <inputimage> -p <skel_thresh> <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata> [-a <alt_4D>] [-s <alt_skeleton>]}
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	output image
+	-p <skel_thresh> <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata>
+	-a	alternative 4Ddata (e.g. L1)
+	-s	alternative skeleton
+	-h,--help	display this message
+	-d,--debug	switch on debugging image outputs
+	-D,--debug2 <skelpoints>	de-project <skelpoints> points on skeleton back to all_FA space
+
+
+
+all_--help:  is an unrecognised token!
+flipping, substracting and half-masking 4D skeletonised FA
+Image Exception : #63 :: No image files match: all_--help_symmetrised_skeletonised
+No image files match: all_--help_symmetrised_skeletonised
+/usr/local/fsl/bin/fslswapdim: line 107: [: =: unary operator expected
+Image Exception : #63 :: No image files match: all_--help_symmetrised_skeletonised
+No image files match: all_--help_symmetrised_skeletonised
+/usr/local/fsl/bin/fslswapdim: line 115: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: all_--help_symmetrised_skeletonised
+No image files match: all_--help_symmetrised_skeletonised
+/usr/local/fsl/bin/fslswapdim: line 117: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: all_--help_symmetrised_skeletonised
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: all_--help_symmetrised_skeletonised
+/usr/local/fsl/bin/fslswapdim: line 184: 21179 Aborted                 (core dumped) $comm
+Image Exception : #63 :: No image files match: all_FA_skeletonised
+No image files match: all_FA_skeletonised
+Image Exception : #63 :: No image files match: all_--help_symmetrised_skeletonised
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: all_--help_symmetrised_skeletonised
+/usr/local/fsl/bin/tbss_sym: line 112: 21186 Aborted                 (core dumped) $FSLDIR/bin/fslmaths all_${ALTIM}_symmetrised_skeletonised -sub grotsym_all_${ALTIM}_symmetrised_flipped -roi 91 91 0 218 0 182 0 `$FSLDIR/bin/fslval all_FA_skeletonised dim4` all_${ALTIM}_skeletonised_left_minus_right
+
+=== Output of 'tbss_sym -help' ===
+
+cat: thresh.txt: No such file or directory
+creating a symmetrised skeleton
+Image Exception : #63 :: No image files match: mean_FA_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_skeleton
+/usr/local/fsl/bin/tbss_sym: line 102: 21247 Aborted                 (core dumped) $FSLDIR/bin/fslmaths mean_FA_skeleton -thr $thresh -bin -dilF grotsym_dilated
+Image Exception : #63 :: No image files match: mean_FA
+No image files match: mean_FA
+/usr/local/fsl/bin/fslswapdim: line 107: [: =: unary operator expected
+Image Exception : #63 :: No image files match: mean_FA
+No image files match: mean_FA
+/usr/local/fsl/bin/fslswapdim: line 115: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: mean_FA
+No image files match: mean_FA
+/usr/local/fsl/bin/fslswapdim: line 117: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: mean_FA
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA
+/usr/local/fsl/bin/fslswapdim: line 184: 21276 Aborted                 (core dumped) $comm
+Image Exception : #63 :: No image files match: mean_FA
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA
+/usr/local/fsl/bin/tbss_sym: line 102: 21277 Aborted                 (core dumped) $FSLDIR/bin/fslmaths mean_FA -mas grotsym -add grotsym -div 2 mean_FA_symmetrised
+Image Exception : #63 :: No image files match: mean_FA_symmetrised
+Image Exception : #22 :: Failed to read volume mean_FA_symmetrised
+Error : No image files match: mean_FA_symmetrised
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume mean_FA_symmetrised
+Error : No image files match: mean_FA_symmetrised
+/usr/local/fsl/bin/tbss_sym: line 102: 21278 Aborted                 (core dumped) $FSLDIR/bin/tbss_skeleton -i mean_FA_symmetrised -o grotsym_symmetrised_skeleton
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/tbss_sym: line 102: 21279 Aborted                 (core dumped) $FSLDIR/bin/fslmaths grotsym_symmetrised_skeleton -thr $thresh -mas grotsym_dilated grotsym_symmetrised_skeleton
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/fslswapdim: line 107: [: =: unary operator expected
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/fslswapdim: line 115: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/fslswapdim: line 117: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/fslswapdim: line 184: 21308 Aborted                 (core dumped) $comm
+Image Exception : #63 :: No image files match: grotsym_symmetrised_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: grotsym_symmetrised_skeleton
+/usr/local/fsl/bin/tbss_sym: line 102: 21309 Aborted                 (core dumped) $FSLDIR/bin/fslmaths grotsym_symmetrised_skeleton -mas grotsym mean_FA_symmetrised_skeleton
+Image Exception : #63 :: No image files match: mean_FA_symmetrised_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_symmetrised_skeleton
+/usr/local/fsl/bin/tbss_sym: line 102: 21310 Aborted                 (core dumped) $FSLDIR/bin/fslmaths mean_FA_symmetrised_skeleton -bin mean_FA_symmetrised_skeleton_mask
+creating symmetrised skeleton distancemap
+Image Exception : #63 :: No image files match: mean_FA_mask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_mask
+/usr/local/fsl/bin/tbss_sym: line 102: 21311 Aborted                 (core dumped) ${FSLDIR}/bin/fslmaths mean_FA_mask -mul -1 -add 1 -add mean_FA_symmetrised_skeleton_mask mean_FA_symmetrised_skeleton_mask_dst
+Image Exception : #63 :: No image files match: mean_FA_symmetrised_skeleton_mask_dst
+Image Exception : #22 :: Failed to read volume mean_FA_symmetrised_skeleton_mask_dst
+Error : No image files match: mean_FA_symmetrised_skeleton_mask_dst
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume mean_FA_symmetrised_skeleton_mask_dst
+Error : No image files match: mean_FA_symmetrised_skeleton_mask_dst
+/usr/local/fsl/bin/tbss_sym: line 102: 21312 Aborted                 (core dumped) ${FSLDIR}/bin/distancemap -i mean_FA_symmetrised_skeleton_mask_dst -o mean_FA_symmetrised_skeleton_mask_dst
+projecting all FA data onto symmetrised skeleton
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+tbss_skeleton (Version 1.03)
+Copyright(c) 2005-2007, University of Oxford (Stephen Smith)
+
+Usage: 
+tbss_skeleton -i <inputimage> -o <skeleton>
+tbss_skeleton -i <inputimage> -p <skel_thresh> <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata> [-a <alt_4D>] [-s <alt_skeleton>]}
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	output image
+	-p <skel_thresh> <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata>
+	-a	alternative 4Ddata (e.g. L1)
+	-s	alternative skeleton
+	-h,--help	display this message
+	-d,--debug	switch on debugging image outputs
+	-D,--debug2 <skelpoints>	de-project <skelpoints> points on skeleton back to all_FA space
+
+
+
+all_-help:  is an unrecognised token!
+flipping, substracting and half-masking 4D skeletonised FA
+Image Exception : #63 :: No image files match: all_-help_symmetrised_skeletonised
+No image files match: all_-help_symmetrised_skeletonised
+/usr/local/fsl/bin/fslswapdim: line 107: [: =: unary operator expected
+Image Exception : #63 :: No image files match: all_-help_symmetrised_skeletonised
+No image files match: all_-help_symmetrised_skeletonised
+/usr/local/fsl/bin/fslswapdim: line 115: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: all_-help_symmetrised_skeletonised
+No image files match: all_-help_symmetrised_skeletonised
+/usr/local/fsl/bin/fslswapdim: line 117: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: all_-help_symmetrised_skeletonised
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: all_-help_symmetrised_skeletonised
+/usr/local/fsl/bin/fslswapdim: line 184: 21342 Aborted                 (core dumped) $comm
+Image Exception : #63 :: No image files match: all_FA_skeletonised
+No image files match: all_FA_skeletonised
+Image Exception : #63 :: No image files match: all_-help_symmetrised_skeletonised
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: all_-help_symmetrised_skeletonised
+/usr/local/fsl/bin/tbss_sym: line 112: 21349 Aborted                 (core dumped) $FSLDIR/bin/fslmaths all_${ALTIM}_symmetrised_skeletonised -sub grotsym_all_${ALTIM}_symmetrised_flipped -roi 91 91 0 218 0 182 0 `$FSLDIR/bin/fslval all_FA_skeletonised dim4` all_${ALTIM}_skeletonised_left_minus_right
+
+=== Output of 'tbss_sym' (no arguments) ===
+
+
+Usage: tbss_sym <image-rootname>
+e.g. tbss_sym FA
+e.g. tbss_sym L2
+

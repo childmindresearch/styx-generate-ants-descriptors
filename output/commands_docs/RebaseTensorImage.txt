@@ -1,1 +1,0 @@
-Usage: RebaseTensorImage Dimension infile.nii outfile.nii <PHYSICAL/LOCAL/reference.nii.gz> 

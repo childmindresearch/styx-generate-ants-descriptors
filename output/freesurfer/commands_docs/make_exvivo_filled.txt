@@ -1,0 +1,21 @@
+
+=== Output of 'make_exvivo_filled --help' ===
+
+if ( 1 < 4 ) then
+echo usage: make_exvivo_filled <subject name> <input samseg> <input intensity vol> <hemi/both>
+usage: make_exvivo_filled <subject name> <input samseg> <input intensity vol> <hemi/both>
+exit 1
+
+=== Output of 'make_exvivo_filled -help' ===
+
+if ( 1 < 4 ) then
+echo usage: make_exvivo_filled <subject name> <input samseg> <input intensity vol> <hemi/both>
+usage: make_exvivo_filled <subject name> <input samseg> <input intensity vol> <hemi/both>
+exit 1
+
+=== Output of 'make_exvivo_filled' (no arguments) ===
+
+if ( 0 < 4 ) then
+echo usage: make_exvivo_filled <subject name> <input samseg> <input intensity vol> <hemi/both>
+usage: make_exvivo_filled <subject name> <input samseg> <input intensity vol> <hemi/both>
+exit 1

@@ -1,0 +1,894 @@
+
+=== Output of '@SSwarper --help' ===
+
+** unexpected option #1 = '--help'
+
+=== Output of '@SSwarper -help' ===
+
+
+OVERVIEW ~1~
+
+This script has dual purposes for processing a given subject's
+anatomical volume:
+    + to skull-strip the brain, and
+    + to calculate the warp to a reference template/standard space.
+Automatic snapshots of the registration are created, as well, to help
+the QC process.
+
+This program cordially ties in directly with afni_proc.py, so you can
+run it beforehand, check the results, and then provide both the
+skull-stripped volume and the warps to the processing program.  That
+is convenient.
+
+*** This program has been superseded by the newer version, sswarper2,
+    which has essentially the same syntax and usage as this one. ***
+
+Current version = 2.6
+Authorship      = Bob, Bob, there is one Bob, He spells it B-O-B.
+
+# -----------------------------------------------------------------
+
+USAGE ~1~
+
+    @SSwarper             \
+        -input  AA           \
+        -base   BB           \
+        -subid  SS           \
+       {-odir   OD}          \
+       {-minp   MP}          \
+       {-nolite}             \
+       {-skipwarp}           \
+       {-unifize_off}        \
+       {-init_skullstr_off}  \
+       {-extra_qc_off}       \
+       {-jump_to_extra_qc}   \
+       {-cost_nl_init CNI}   \
+       {-cost_nl_final CNF}  \
+       {-deoblique}          \
+       {-deoblique_refitly}  \
+       {-warpscale WS}       \
+       {-SSopt 'strings'     \
+       {-aniso_off}          \
+       {-ceil_off}           \
+       {-tmp_name_nice}      \
+       {-echo}               \
+       {-verb}               \
+       {-noclean}
+
+where (note: many of the options with 'no' and 'off' in their name are
+really just included for backwards compatibility, as this program has
+grown/improved over time):
+
+  -input  AA :(req) an anatomical dataset, *not* skull-stripped, with
+              resolution about 1 mm.
+
+  -base   BB :(req) a base template dataset, with contrast similar to
+              the input AA dset, probably from some kind of standard
+              template.
+              NB: this dataset is not *just* a standard template,
+              because it is not a single volume-- read about its
+              composition in the NOTES on the 'The Template Dataset',
+              below.
+              The program first checks if the dset BB exists as
+              specified; if not, then if just the filename has been
+              provided it searches the AFNI_GLOBAL_SESSION,
+              AFNI_PLUGINPATH, and afni bin directory (in that order)
+              for the named dataset.
+
+  -subid  SS :(req) name code for output datasets (e.g., 'sub007').
+
+  -odir   OD :(opt) output directory for all files from this program
+              (def: directory of the '-input AA').
+
+  -minp   MP :(opt) minimum patch size on final 3dQwarp (def: 11).
+
+  -nolite    :(opt) Do not use the '-lite' option with 3dQwarp;
+              This option is used for backward compatibility, if you want
+              to run 3dQwarp the same way as older versions of @SSwarper.
+              The new way (starting Jan 2019) is to use the '-lite'
+              option with 3dQwarp to speed up the calculations.
+              (def: use '-lite' for faster calculations).
+
+  -skipwarp  :(opt) Do not compute past the output of anatSS.{subid}.nii.
+              This option is used if you just want the skull-stripped
+              result in original coordinates, without the warping
+              to the template space (anatQQ). The script will run faster.
+
+  -deoblique :(opt) apply obliquity information to deoblique the input
+              volume ('3dWarp -deoblique -wsinc5 ...'), as an initial step.
+              This might introduce the need to overcome a large rotation
+              during the alignment, though
+
+  -deoblique_refitly :(opt) purge obliquity information to deoblique
+              the input volume (copy, and then '3drefit -deoblique ...'), 
+              as an initial step.  This might help when data sets are
+              very... oblique.
+
+  -warpscale WS :(opt) opt to control flexibility of warps in 3dQwarp and
+              how they adjust with patch size;  see 3dQwarp's help for 
+              more info. Allowed values of WS are in range [0.1, 1.0].
+              (def: 1.0)
+
+  -giant_move :(opt) when starting the initial alignment to the template,
+              apply the same parameter expansions to 3dAllineate that
+              align_epi_anat.py does with the same option flag.  This
+              might be useful if the brain has a very large angle away
+              from "typical" ones, etc.
+
+  -unifize_off :(opt) don't start with a 3dUnifize command to try reduce
+              effects of brightness inhomogeneities.  Probably only
+              useful if unifizing has been previously performed on the
+              input dset.
+
+  -aniso_off :(opt) don't preprocess with a 3danisosmooth command to
+              try reduce effects of weird things (in a technical
+              sense).  Possible that this will never be used in the
+              history of running this program.
+
+  -ceil_off  :(opt) by default, after anisosmoothing, this program
+              will apply put a ceiling on values in the dset, to get rid
+              of possible outliers (ceil = 98%ile of non-zero voxels in
+              the whole volume).  This option will turn that off.
+
+  -init_skullstr_off :(opt) don't preprocess with a 3dSkullstrip command
+              to roughly isolated brain in the beginning.  This might
+              be useful with macaque dsets.
+
+  -extra_qc_off :(opt) don't make extra QC images QC*jpg (for some
+              unknown reason).
+
+  -jump_to_extra_qc :(opt) just make the two QC*jpg images from a
+              previous run of @SSwarper.  These QC*jpg images are new
+              QC output (as of late Feb, 2020), so this might be
+              useful to add a quick check to previously run data.
+              This command would just be tacked on to previously
+              executed one.
+
+  #-cost_aff CA :***no longer used.*** The affine cost function is only  
+              set via cost_nl_init, since the affine alignment is just a
+              'preliminary alignment' for that one.  So, what is specified
+              for the cost_nl_init will be used for the affine.
+
+  -cost_nl_init CNI 
+             :(opt) specify cost function for initial nonlinear
+              (3dQwarp) part of alignment.  Here, 'CNI' would be the
+              cost function name to be provided (def: is now "lpa").
+              This is probably only here for backwards compatibility
+              to older @SSwarper (where def was 'pcl').
+
+  -cost_nl_final CNF 
+             :(opt) specify cost function for final nonlinear
+              (3dQwarp) parts of alignment.  Here, 'CNF' would be the
+              cost function to be provided (def: is now "pcl").  This
+              is separate from the initial nonlinear warp cost values
+              '-cost_nl_init ..', because using those here might be
+              pretty slow; however, using "lpa" here might help
+              results.
+
+  -SSopt 'strings' :(opt) The content of 'strings' (which should be
+              in quotes if there are any blanks) is copied to the
+              end of the 3dSkullStrip command line. Example:
+                -SSopt '-o_ply Fred.Is.Wonderful'
+              to have 3dSkullStrip produce a .ply surface file
+              as an additional output.
+
+  -mask_ss MSS :(opt) as an alternative to skullstripping at an early
+              stage, you can provide a mask to be used before the
+              initial affine alignment.  The mask MSS can come from
+              anywhere, but @SUMA_Make_Spec_FS now makes a convenient
+              one from the FS parcellation (though it would have to be
+              resampled to the input anatomical's grid).
+
+  -tmp_name_nice :(opt) default temporary "junk.*" filenames include
+              a large, random char string.  This is ugly, but useful
+              if outputting several different SSW runs into the same
+              directory that we intermediate files (very likely) don't
+              get overwritten.  However, if you prefer, you can use a
+              nicer, non-random intermediate file prefix: "junk_ssw".
+              I would use this when the output dir ("-odir ..")
+              doesn't contain multiple SSW outputs.
+
+  -verb      :(opt) Apply the '-verb' option to 3dQwarp, to get more
+              verbose progress information - mostly used for debugging.
+
+  -echo      :(opt) Run the script with "set echo", for extra verbosity
+              in the terminal output.  Mainly for debugging times. 
+
+  -noclean   :(opt) Do not delete the 'junk' files at the end of
+              computations - mostly used for debugging and testing.
+
+# -----------------------------------------------------------------
+
+REFERENCE DATASETS ~1~
+
+If you are reading this message, then several reference data sets
+(base volumes) for @SSwarper now exist within the AFNI realm. Oh, what
+a time it is to be alive.  A current list includes:
+
++ MNI152_2009_template_SSW.nii.gz
++ TT_N27_SSW.nii.gz
++ HaskinsPeds_NL_template1.0_SSW.nii.gz
+
+Some of these are distributed with the AFNI binaries, and other may be
+found online. You can make other reference base templates in whatever
+space you prefer, but note that it must have several subvolumes of
+information included-- see NOTES on the 'The Template Dataset', below
+(which also contains a link to the @SSwarper template tutorial online
+help).
+
+# ----------------------------------------------------------------------
+
+OUTPUTS ~1~
+
+Datasets ~2~
+
+  Suppose the -prefix is 'sub007' (because you scanned Bond, JamesBond?).
+  Then the outputs from this script will be"
+
+  anatDO.sub007.nii       = deobliqued version of original dataset;
+                            (*only if* using '-deoblique' opt);
+  anatU.sub007.nii        = intensity uniform-ized original dataset
+                            (or, if '-unifize_off' used, a copy of orig dset);
+  anatUA.sub007.nii       = anisotropically smoothed version of the above
+                            (or, if '-aniso_off' used, a copy of anatU.*.nii)
+  anatUAC.sub007.nii      = ceiling-capped ver of the above (at 98%ile of 
+                            non-zero values)
+                            (or, if '-ceil_off' used, a copy of anatUA.*.nii)
+
+  anatS.sub007.nii        = first pass skull-stripped original dataset
+                            (or, if '-init_skullstr_off' used, a copy of
+                            anatUAC.*.nii);
+  anatSS.sub007.nii       = second pass skull-stripped original dataset;
+                            * note that anatS and anatSS are 'original'
+                              in the sense that they are aligned with
+                              the input dataset - however, they have been
+                              unifized and weakly smoothed: they are
+                              stripped versions of anatUAC; if you want
+                              a skull-stripped copy of the input with
+                              no other processing, use a command like
+                                3dcalc -a INPUTDATASET        \
+                                       -b anatSS.sub007.nii   \
+                                       -expr 'a*step(b)'      \
+                                       -prefix anatSSorig.sub007.nii
+
+  anatQQ.sub007.nii       = skull-stripped dataset nonlinearly warped to
+                            the base template space;
+  anatQQ.sub007.aff12.1D  = affine matrix to transform original dataset
+                            to base template space;
+  anatQQ.sub007_WARP.nii  = incremental warp from affine transformation
+                            to nonlinearly aligned dataset;
+
+  * The .aff12.1D and _WARP.nii transformations need to be catenated to get
+    the full warp from original space to the base space; example:
+
+      3dNwarpApply -nwarp 'anatQQ.sub007_WARP.nii anatQQ.sub007.aff12.1D' ...
+
+QC images ~2~
+
+  AMsub007.jpg            = 3x3 snapshot image of the anatQQ.sub007.nii
+                            dataset with the edges from the base template
+                            overlaid -- to check the alignment;
+  MAsub007.jpg            = similar to the above, with the roles of the
+                            template and the anatomical datasets reversed.
+  QC_anatQQ.sub007.jpg    = like AM*.jpg, but 3 rows of 8 slices
+  QC_anatSS.sub007.jpg    = check skullstripping in orig space: ulay is
+                            input dset, and olay is mask of
+                            skullstripped output (anatSS* dset)
+
+  init_qc_00_overlap_uinp_obase.jpg
+    o [ulay] original source dset
+      [olay] original base dset
+    o single image montage to check initial overlap of source and base,
+      ignoring any obliquity that might be present (i.e., the way AFNI 
+      GUI does by default, and also how alignment starts)
+    o if initial overlap is not strong, alignment can fail or
+      produce weirdness
+    o *if* either dset has obliquity, then an image of both after 
+      deobliquing with 3dWarp is created (*DEOB.jpg), and a text file
+      about obliquity is also created (*DEOB.txt).
+
+* It is important to examine (at least) the two .jpg snapshot images to
+  make sure that the skull-stripping and nonlinear warping worked well.
+
+USING SSW WITH AFNI_PROC.PY ~1~
+
+  When B-O-B uses @SSwarper for skull-stripping plus warping, He gives
+  afni_proc.py these options (among others, hence the ellipses), after
+  running @SSwarper successfully. Here, 'subj' is the subject
+  identifier:
+
+  |    set template = MNI152_2009_template_SSW.nii.gz
+  |    
+  |    afni_proc.py                                                  \
+  |      ...                                                         \
+  |      -copy_anat             anatSS.${subj}.nii                   \
+  |      -anat_has_skull        no                                   \
+  |      -align_opts_aea        -cost lpc+ZZ -giant_move             \
+  |                             -check_flip                          \
+  |      -volreg_align_to       MIN_OUTLIER                          \
+  |      -volreg_align_e2a                                           \
+  |      -volreg_tlrc_warp                                           \
+  |      -tlrc_base             ${template}                          \
+  |      -tlrc_NL_warp                                               \
+  |      -tlrc_NL_warped_dsets  anatQQ.${subj}.nii                   \
+  |                             anatQQ.${subj}.aff12.1D              \
+  |                             anatQQ.${subj}_WARP.nii
+  |      ...
+
+NOTES ~1~
+
+The Template dataset ~2~
+
+  Any reference base template dataset, such as
+  MNI152_2009_template_SSW.nii.gz, must have the first *4* volumes here
+  (and can have the optional 5th for later uses, as described):
+    [0] = skull-stripped template brain volume
+    [1] = skull-on template brain volume
+    [2] = weight mask for nonlinear registration, with the
+          brain given greater weight than the skull
+    [3] = binary mask for the brain
+    [4] = binary mask for gray matter plus some CSF (slightly dilated)
+          ++ this volume is not used in this script
+          ++ it is intended for use in restricting FMRI analyses
+             to the 'interesting' parts of the brain
+          ++ this mask should be resampled to your EPI spatial
+             resolution (see program 3dfractionize), and then
+             combined with a mask from your experiment reflecting
+             your EPI brain coverage (see program 3dmask_tool).
+
+  More information about making these (with scripts) is provided on
+  the Interweb:
+    https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/template_atlas/sswarper_base.html
+
+The steps being run ~2~
+
+  You Know My Methods, Watson...
+
+  #1: Uniform-ize the input dataset's intensity via 3dUnifize.
+       ==> anatU.sub007.nii
+  #2: Strip the skull with 3dSkullStrip, with mildly aggressive settings.
+       ==> anatS.sub007.nii
+  #3: Nonlinearly warp (3dQwarp) the result from #1 to the skull-on
+      template, driving the warping to a medium level of refinement.
+  #4: Use a slightly dilated brain mask from the template to
+      crop off the non-brain tissue resulting from #3 (3dcalc).
+  #5: Warp the output of #4 back to original anatomical space,
+      along with the template brain mask, and combine those
+      with the output of #2 to get a better skull-stripped
+      result in original space (3dNwarpApply and 3dcalc).
+       ==> anatSS.sub007.nii
+  #6  Restart the nonlinear warping, registering the output
+      of #5 to the skull-off template brain volume (3dQwarp).
+       ==> anatQQ.sub007.nii (et cetera)
+  #7  Use @snapshot_volreg to make the pretty pictures.
+       ==> AMsub007.jpg and MAsub007.jpg
+
+Temporary files ~2~
+
+  If the script crashes for some reason, it might leave behind files
+  whose names start with 'junk' -- you should delete these files
+  manually.
+
+WHAT TO DO IF RESULTS ARE WAY OFF? ~1~
+
+  The importance of initial dset overlap ~2~
+
+  Always, always, always check the initial image made by SSW when it
+  runs:  
+
+      init_qc_00_overlap_uinp_obase.jpg
+
+  This image tells you how well your datasets overlap initially before
+  the alignment work begins. **The better the overlap, the lower the
+  chance that something weird happens in your output.** All the SSW
+  templates have reasonable coordinates, meaning that (x, y, z) = (0,
+  0, 0) is in a good spot for it.  If there is poor overlap, probably
+  your input dataset has weird/bad coordinates for some reason.  
+
+  You can use @Align_Centers to put your anatomical dset in a better
+  spot (though note, if you are going to be processing EPI data
+  afterwards, you will want to move that along, as well, perhaps as a
+  "child" dataset).
+
+  By far the most common problem leading to obviously bad outputs is
+  that the initial datasets are waaay far apart when they start, and
+  the program gets stuck in a false minimum of solutions.
+
+  Other issues ~2~
+
+  Sometimes, it can be hard to separate the brain from dura and/or
+  skull surrounding the brain.  If little bits are left around in the
+  masking images, then perhaps adding one of the following options for
+  will help (this can help the initial skullstripping):
+
+    -SSopt '-blur_fwhm 2'
+    -SSopt '-blur_fwhm 3'
+
+  Any other questions/oddities, please don't hesitate to inquire on
+  the AFNI Message Board
+
+EXAMPLES ~1~
+
+*** This program has been superseded by the newer version, sswarper2,
+    which has essentially the same syntax and usage as this one. ***
+
+
+  1) Run the program, deciding what the main output directory will be
+  called (e.g., based on the subject ID):
+
+    @SSwarper                                    \
+        -input  anat_t1w.nii.gz                  \
+        -base   MNI152_2009_template_SSW.nii.gz  \
+        -subid  sub-001                          \
+        -odir   group/o.aw_sub-001
+
+  2) Same as above, but since we are using one outdir per subject, use
+  more aesthetically pleasing names of temporary files (which get
+  deleted, anyways):
+
+    @SSwarper                                    \
+        -tmp_name_nice                           \
+        -input  anat_t1w.nii.gz                  \
+        -base   MNI152_2009_template_SSW.nii.gz  \
+        -subid  sub-001                          \
+        -odir   group/o.aw_sub-001
+
+  3) As of version 2.5, you can input a mask to be used instead of
+  skullstripping.  For example, a good one might be the
+  parcellation-derived (but filled in) mask from @SUMA_Make_Spec_FS
+  after running FS's recon-all (though you will have to resample it
+  from the FS output grid to that of your input anatomical):
+
+    @SSwarper                                     \
+        -tmp_name_nice                            \
+        -input   anat_t1w.nii.gz                  \
+        -mask_ss fs_parc_wb_mask_RES.nii.gz       \
+        -base    MNI152_2009_template_SSW.nii.gz  \
+        -subid   sub-001                          \
+        -odir    group/o.aw_sub-001
+
+
+=== Output of '@SSwarper' (no arguments) ===
+
+
+OVERVIEW ~1~
+
+This script has dual purposes for processing a given subject's
+anatomical volume:
+    + to skull-strip the brain, and
+    + to calculate the warp to a reference template/standard space.
+Automatic snapshots of the registration are created, as well, to help
+the QC process.
+
+This program cordially ties in directly with afni_proc.py, so you can
+run it beforehand, check the results, and then provide both the
+skull-stripped volume and the warps to the processing program.  That
+is convenient.
+
+*** This program has been superseded by the newer version, sswarper2,
+    which has essentially the same syntax and usage as this one. ***
+
+Current version = 2.6
+Authorship      = Bob, Bob, there is one Bob, He spells it B-O-B.
+
+# -----------------------------------------------------------------
+
+USAGE ~1~
+
+    @SSwarper             \
+        -input  AA           \
+        -base   BB           \
+        -subid  SS           \
+       {-odir   OD}          \
+       {-minp   MP}          \
+       {-nolite}             \
+       {-skipwarp}           \
+       {-unifize_off}        \
+       {-init_skullstr_off}  \
+       {-extra_qc_off}       \
+       {-jump_to_extra_qc}   \
+       {-cost_nl_init CNI}   \
+       {-cost_nl_final CNF}  \
+       {-deoblique}          \
+       {-deoblique_refitly}  \
+       {-warpscale WS}       \
+       {-SSopt 'strings'     \
+       {-aniso_off}          \
+       {-ceil_off}           \
+       {-tmp_name_nice}      \
+       {-echo}               \
+       {-verb}               \
+       {-noclean}
+
+where (note: many of the options with 'no' and 'off' in their name are
+really just included for backwards compatibility, as this program has
+grown/improved over time):
+
+  -input  AA :(req) an anatomical dataset, *not* skull-stripped, with
+              resolution about 1 mm.
+
+  -base   BB :(req) a base template dataset, with contrast similar to
+              the input AA dset, probably from some kind of standard
+              template.
+              NB: this dataset is not *just* a standard template,
+              because it is not a single volume-- read about its
+              composition in the NOTES on the 'The Template Dataset',
+              below.
+              The program first checks if the dset BB exists as
+              specified; if not, then if just the filename has been
+              provided it searches the AFNI_GLOBAL_SESSION,
+              AFNI_PLUGINPATH, and afni bin directory (in that order)
+              for the named dataset.
+
+  -subid  SS :(req) name code for output datasets (e.g., 'sub007').
+
+  -odir   OD :(opt) output directory for all files from this program
+              (def: directory of the '-input AA').
+
+  -minp   MP :(opt) minimum patch size on final 3dQwarp (def: 11).
+
+  -nolite    :(opt) Do not use the '-lite' option with 3dQwarp;
+              This option is used for backward compatibility, if you want
+              to run 3dQwarp the same way as older versions of @SSwarper.
+              The new way (starting Jan 2019) is to use the '-lite'
+              option with 3dQwarp to speed up the calculations.
+              (def: use '-lite' for faster calculations).
+
+  -skipwarp  :(opt) Do not compute past the output of anatSS.{subid}.nii.
+              This option is used if you just want the skull-stripped
+              result in original coordinates, without the warping
+              to the template space (anatQQ). The script will run faster.
+
+  -deoblique :(opt) apply obliquity information to deoblique the input
+              volume ('3dWarp -deoblique -wsinc5 ...'), as an initial step.
+              This might introduce the need to overcome a large rotation
+              during the alignment, though
+
+  -deoblique_refitly :(opt) purge obliquity information to deoblique
+              the input volume (copy, and then '3drefit -deoblique ...'), 
+              as an initial step.  This might help when data sets are
+              very... oblique.
+
+  -warpscale WS :(opt) opt to control flexibility of warps in 3dQwarp and
+              how they adjust with patch size;  see 3dQwarp's help for 
+              more info. Allowed values of WS are in range [0.1, 1.0].
+              (def: 1.0)
+
+  -giant_move :(opt) when starting the initial alignment to the template,
+              apply the same parameter expansions to 3dAllineate that
+              align_epi_anat.py does with the same option flag.  This
+              might be useful if the brain has a very large angle away
+              from "typical" ones, etc.
+
+  -unifize_off :(opt) don't start with a 3dUnifize command to try reduce
+              effects of brightness inhomogeneities.  Probably only
+              useful if unifizing has been previously performed on the
+              input dset.
+
+  -aniso_off :(opt) don't preprocess with a 3danisosmooth command to
+              try reduce effects of weird things (in a technical
+              sense).  Possible that this will never be used in the
+              history of running this program.
+
+  -ceil_off  :(opt) by default, after anisosmoothing, this program
+              will apply put a ceiling on values in the dset, to get rid
+              of possible outliers (ceil = 98%ile of non-zero voxels in
+              the whole volume).  This option will turn that off.
+
+  -init_skullstr_off :(opt) don't preprocess with a 3dSkullstrip command
+              to roughly isolated brain in the beginning.  This might
+              be useful with macaque dsets.
+
+  -extra_qc_off :(opt) don't make extra QC images QC*jpg (for some
+              unknown reason).
+
+  -jump_to_extra_qc :(opt) just make the two QC*jpg images from a
+              previous run of @SSwarper.  These QC*jpg images are new
+              QC output (as of late Feb, 2020), so this might be
+              useful to add a quick check to previously run data.
+              This command would just be tacked on to previously
+              executed one.
+
+  #-cost_aff CA :***no longer used.*** The affine cost function is only  
+              set via cost_nl_init, since the affine alignment is just a
+              'preliminary alignment' for that one.  So, what is specified
+              for the cost_nl_init will be used for the affine.
+
+  -cost_nl_init CNI 
+             :(opt) specify cost function for initial nonlinear
+              (3dQwarp) part of alignment.  Here, 'CNI' would be the
+              cost function name to be provided (def: is now "lpa").
+              This is probably only here for backwards compatibility
+              to older @SSwarper (where def was 'pcl').
+
+  -cost_nl_final CNF 
+             :(opt) specify cost function for final nonlinear
+              (3dQwarp) parts of alignment.  Here, 'CNF' would be the
+              cost function to be provided (def: is now "pcl").  This
+              is separate from the initial nonlinear warp cost values
+              '-cost_nl_init ..', because using those here might be
+              pretty slow; however, using "lpa" here might help
+              results.
+
+  -SSopt 'strings' :(opt) The content of 'strings' (which should be
+              in quotes if there are any blanks) is copied to the
+              end of the 3dSkullStrip command line. Example:
+                -SSopt '-o_ply Fred.Is.Wonderful'
+              to have 3dSkullStrip produce a .ply surface file
+              as an additional output.
+
+  -mask_ss MSS :(opt) as an alternative to skullstripping at an early
+              stage, you can provide a mask to be used before the
+              initial affine alignment.  The mask MSS can come from
+              anywhere, but @SUMA_Make_Spec_FS now makes a convenient
+              one from the FS parcellation (though it would have to be
+              resampled to the input anatomical's grid).
+
+  -tmp_name_nice :(opt) default temporary "junk.*" filenames include
+              a large, random char string.  This is ugly, but useful
+              if outputting several different SSW runs into the same
+              directory that we intermediate files (very likely) don't
+              get overwritten.  However, if you prefer, you can use a
+              nicer, non-random intermediate file prefix: "junk_ssw".
+              I would use this when the output dir ("-odir ..")
+              doesn't contain multiple SSW outputs.
+
+  -verb      :(opt) Apply the '-verb' option to 3dQwarp, to get more
+              verbose progress information - mostly used for debugging.
+
+  -echo      :(opt) Run the script with "set echo", for extra verbosity
+              in the terminal output.  Mainly for debugging times. 
+
+  -noclean   :(opt) Do not delete the 'junk' files at the end of
+              computations - mostly used for debugging and testing.
+
+# -----------------------------------------------------------------
+
+REFERENCE DATASETS ~1~
+
+If you are reading this message, then several reference data sets
+(base volumes) for @SSwarper now exist within the AFNI realm. Oh, what
+a time it is to be alive.  A current list includes:
+
++ MNI152_2009_template_SSW.nii.gz
++ TT_N27_SSW.nii.gz
++ HaskinsPeds_NL_template1.0_SSW.nii.gz
+
+Some of these are distributed with the AFNI binaries, and other may be
+found online. You can make other reference base templates in whatever
+space you prefer, but note that it must have several subvolumes of
+information included-- see NOTES on the 'The Template Dataset', below
+(which also contains a link to the @SSwarper template tutorial online
+help).
+
+# ----------------------------------------------------------------------
+
+OUTPUTS ~1~
+
+Datasets ~2~
+
+  Suppose the -prefix is 'sub007' (because you scanned Bond, JamesBond?).
+  Then the outputs from this script will be"
+
+  anatDO.sub007.nii       = deobliqued version of original dataset;
+                            (*only if* using '-deoblique' opt);
+  anatU.sub007.nii        = intensity uniform-ized original dataset
+                            (or, if '-unifize_off' used, a copy of orig dset);
+  anatUA.sub007.nii       = anisotropically smoothed version of the above
+                            (or, if '-aniso_off' used, a copy of anatU.*.nii)
+  anatUAC.sub007.nii      = ceiling-capped ver of the above (at 98%ile of 
+                            non-zero values)
+                            (or, if '-ceil_off' used, a copy of anatUA.*.nii)
+
+  anatS.sub007.nii        = first pass skull-stripped original dataset
+                            (or, if '-init_skullstr_off' used, a copy of
+                            anatUAC.*.nii);
+  anatSS.sub007.nii       = second pass skull-stripped original dataset;
+                            * note that anatS and anatSS are 'original'
+                              in the sense that they are aligned with
+                              the input dataset - however, they have been
+                              unifized and weakly smoothed: they are
+                              stripped versions of anatUAC; if you want
+                              a skull-stripped copy of the input with
+                              no other processing, use a command like
+                                3dcalc -a INPUTDATASET        \
+                                       -b anatSS.sub007.nii   \
+                                       -expr 'a*step(b)'      \
+                                       -prefix anatSSorig.sub007.nii
+
+  anatQQ.sub007.nii       = skull-stripped dataset nonlinearly warped to
+                            the base template space;
+  anatQQ.sub007.aff12.1D  = affine matrix to transform original dataset
+                            to base template space;
+  anatQQ.sub007_WARP.nii  = incremental warp from affine transformation
+                            to nonlinearly aligned dataset;
+
+  * The .aff12.1D and _WARP.nii transformations need to be catenated to get
+    the full warp from original space to the base space; example:
+
+      3dNwarpApply -nwarp 'anatQQ.sub007_WARP.nii anatQQ.sub007.aff12.1D' ...
+
+QC images ~2~
+
+  AMsub007.jpg            = 3x3 snapshot image of the anatQQ.sub007.nii
+                            dataset with the edges from the base template
+                            overlaid -- to check the alignment;
+  MAsub007.jpg            = similar to the above, with the roles of the
+                            template and the anatomical datasets reversed.
+  QC_anatQQ.sub007.jpg    = like AM*.jpg, but 3 rows of 8 slices
+  QC_anatSS.sub007.jpg    = check skullstripping in orig space: ulay is
+                            input dset, and olay is mask of
+                            skullstripped output (anatSS* dset)
+
+  init_qc_00_overlap_uinp_obase.jpg
+    o [ulay] original source dset
+      [olay] original base dset
+    o single image montage to check initial overlap of source and base,
+      ignoring any obliquity that might be present (i.e., the way AFNI 
+      GUI does by default, and also how alignment starts)
+    o if initial overlap is not strong, alignment can fail or
+      produce weirdness
+    o *if* either dset has obliquity, then an image of both after 
+      deobliquing with 3dWarp is created (*DEOB.jpg), and a text file
+      about obliquity is also created (*DEOB.txt).
+
+* It is important to examine (at least) the two .jpg snapshot images to
+  make sure that the skull-stripping and nonlinear warping worked well.
+
+USING SSW WITH AFNI_PROC.PY ~1~
+
+  When B-O-B uses @SSwarper for skull-stripping plus warping, He gives
+  afni_proc.py these options (among others, hence the ellipses), after
+  running @SSwarper successfully. Here, 'subj' is the subject
+  identifier:
+
+  |    set template = MNI152_2009_template_SSW.nii.gz
+  |    
+  |    afni_proc.py                                                  \
+  |      ...                                                         \
+  |      -copy_anat             anatSS.${subj}.nii                   \
+  |      -anat_has_skull        no                                   \
+  |      -align_opts_aea        -cost lpc+ZZ -giant_move             \
+  |                             -check_flip                          \
+  |      -volreg_align_to       MIN_OUTLIER                          \
+  |      -volreg_align_e2a                                           \
+  |      -volreg_tlrc_warp                                           \
+  |      -tlrc_base             ${template}                          \
+  |      -tlrc_NL_warp                                               \
+  |      -tlrc_NL_warped_dsets  anatQQ.${subj}.nii                   \
+  |                             anatQQ.${subj}.aff12.1D              \
+  |                             anatQQ.${subj}_WARP.nii
+  |      ...
+
+NOTES ~1~
+
+The Template dataset ~2~
+
+  Any reference base template dataset, such as
+  MNI152_2009_template_SSW.nii.gz, must have the first *4* volumes here
+  (and can have the optional 5th for later uses, as described):
+    [0] = skull-stripped template brain volume
+    [1] = skull-on template brain volume
+    [2] = weight mask for nonlinear registration, with the
+          brain given greater weight than the skull
+    [3] = binary mask for the brain
+    [4] = binary mask for gray matter plus some CSF (slightly dilated)
+          ++ this volume is not used in this script
+          ++ it is intended for use in restricting FMRI analyses
+             to the 'interesting' parts of the brain
+          ++ this mask should be resampled to your EPI spatial
+             resolution (see program 3dfractionize), and then
+             combined with a mask from your experiment reflecting
+             your EPI brain coverage (see program 3dmask_tool).
+
+  More information about making these (with scripts) is provided on
+  the Interweb:
+    https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/template_atlas/sswarper_base.html
+
+The steps being run ~2~
+
+  You Know My Methods, Watson...
+
+  #1: Uniform-ize the input dataset's intensity via 3dUnifize.
+       ==> anatU.sub007.nii
+  #2: Strip the skull with 3dSkullStrip, with mildly aggressive settings.
+       ==> anatS.sub007.nii
+  #3: Nonlinearly warp (3dQwarp) the result from #1 to the skull-on
+      template, driving the warping to a medium level of refinement.
+  #4: Use a slightly dilated brain mask from the template to
+      crop off the non-brain tissue resulting from #3 (3dcalc).
+  #5: Warp the output of #4 back to original anatomical space,
+      along with the template brain mask, and combine those
+      with the output of #2 to get a better skull-stripped
+      result in original space (3dNwarpApply and 3dcalc).
+       ==> anatSS.sub007.nii
+  #6  Restart the nonlinear warping, registering the output
+      of #5 to the skull-off template brain volume (3dQwarp).
+       ==> anatQQ.sub007.nii (et cetera)
+  #7  Use @snapshot_volreg to make the pretty pictures.
+       ==> AMsub007.jpg and MAsub007.jpg
+
+Temporary files ~2~
+
+  If the script crashes for some reason, it might leave behind files
+  whose names start with 'junk' -- you should delete these files
+  manually.
+
+WHAT TO DO IF RESULTS ARE WAY OFF? ~1~
+
+  The importance of initial dset overlap ~2~
+
+  Always, always, always check the initial image made by SSW when it
+  runs:  
+
+      init_qc_00_overlap_uinp_obase.jpg
+
+  This image tells you how well your datasets overlap initially before
+  the alignment work begins. **The better the overlap, the lower the
+  chance that something weird happens in your output.** All the SSW
+  templates have reasonable coordinates, meaning that (x, y, z) = (0,
+  0, 0) is in a good spot for it.  If there is poor overlap, probably
+  your input dataset has weird/bad coordinates for some reason.  
+
+  You can use @Align_Centers to put your anatomical dset in a better
+  spot (though note, if you are going to be processing EPI data
+  afterwards, you will want to move that along, as well, perhaps as a
+  "child" dataset).
+
+  By far the most common problem leading to obviously bad outputs is
+  that the initial datasets are waaay far apart when they start, and
+  the program gets stuck in a false minimum of solutions.
+
+  Other issues ~2~
+
+  Sometimes, it can be hard to separate the brain from dura and/or
+  skull surrounding the brain.  If little bits are left around in the
+  masking images, then perhaps adding one of the following options for
+  will help (this can help the initial skullstripping):
+
+    -SSopt '-blur_fwhm 2'
+    -SSopt '-blur_fwhm 3'
+
+  Any other questions/oddities, please don't hesitate to inquire on
+  the AFNI Message Board
+
+EXAMPLES ~1~
+
+*** This program has been superseded by the newer version, sswarper2,
+    which has essentially the same syntax and usage as this one. ***
+
+
+  1) Run the program, deciding what the main output directory will be
+  called (e.g., based on the subject ID):
+
+    @SSwarper                                    \
+        -input  anat_t1w.nii.gz                  \
+        -base   MNI152_2009_template_SSW.nii.gz  \
+        -subid  sub-001                          \
+        -odir   group/o.aw_sub-001
+
+  2) Same as above, but since we are using one outdir per subject, use
+  more aesthetically pleasing names of temporary files (which get
+  deleted, anyways):
+
+    @SSwarper                                    \
+        -tmp_name_nice                           \
+        -input  anat_t1w.nii.gz                  \
+        -base   MNI152_2009_template_SSW.nii.gz  \
+        -subid  sub-001                          \
+        -odir   group/o.aw_sub-001
+
+  3) As of version 2.5, you can input a mask to be used instead of
+  skullstripping.  For example, a good one might be the
+  parcellation-derived (but filled in) mask from @SUMA_Make_Spec_FS
+  after running FS's recon-all (though you will have to resample it
+  from the FS output grid to that of your input anatomical):
+
+    @SSwarper                                     \
+        -tmp_name_nice                            \
+        -input   anat_t1w.nii.gz                  \
+        -mask_ss fs_parc_wb_mask_RES.nii.gz       \
+        -base    MNI152_2009_template_SSW.nii.gz  \
+        -subid   sub-001                          \
+        -odir    group/o.aw_sub-001
+

@@ -1,0 +1,69 @@
+
+=== Output of 'midtrans --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+midtrans 
+Copyright(c) 2010, University of Oxford (Mark Jenkinson)
+
+Usage: 
+midtrans [options] transform1 transform2 ... transformN
+  e.g. midtrans -o temp2mid.mat A2temp.mat B2temp.mat C2temp.mat
+       midtrans -o C2mid.mat A2C.mat B2C.mat ident.mat
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	output filename for matrix
+	--template	input filename for template image (needed for fix origin)
+	--separate	basename for output of separate matrices (final name includes a number; e.g. img2mid0001.mat)
+	--debug	switch on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'midtrans -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+midtrans 
+Copyright(c) 2010, University of Oxford (Mark Jenkinson)
+
+Usage: 
+midtrans [options] transform1 transform2 ... transformN
+  e.g. midtrans -o temp2mid.mat A2temp.mat B2temp.mat C2temp.mat
+       midtrans -o C2mid.mat A2C.mat B2C.mat ident.mat
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	output filename for matrix
+	--template	input filename for template image (needed for fix origin)
+	--separate	basename for output of separate matrices (final name includes a number; e.g. img2mid0001.mat)
+	--debug	switch on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'midtrans' (no arguments) ===
+
+Must specify at least 2 transforms to find the mid-transform
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+midtrans 
+Copyright(c) 2010, University of Oxford (Mark Jenkinson)
+
+Usage: 
+midtrans [options] transform1 transform2 ... transformN
+  e.g. midtrans -o temp2mid.mat A2temp.mat B2temp.mat C2temp.mat
+       midtrans -o C2mid.mat A2C.mat B2C.mat ident.mat
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	output filename for matrix
+	--template	input filename for template image (needed for fix origin)
+	--separate	basename for output of separate matrices (final name includes a number; e.g. img2mid0001.mat)
+	--debug	switch on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

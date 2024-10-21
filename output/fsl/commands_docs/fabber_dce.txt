@@ -1,0 +1,245 @@
+
+=== Output of 'fabber_dce --help' ===
+
+Fabber  : Thu Jul 23 09:42:04 2020
+Usage: fabber [--<option>|--<option>=<value> ...]
+
+Use -f <file> to read options in option=value form
+Use -@ <file> to read options in command line form (DEPRECATED).
+
+General options 
+
+--help [BOOL,NOT REQUIRED,NO DEFAULT]
+        Print this usage method. If given with --method or --model, display relevant method/model usage information
+
+--listmethods [BOOL,NOT REQUIRED,NO DEFAULT]
+        List all known inference methods
+
+--listmodels [BOOL,NOT REQUIRED,NO DEFAULT]
+        List all known forward models
+
+--listparams [BOOL,NOT REQUIRED,NO DEFAULT]
+        List model parameters (requires model configuration options to be given)
+
+--descparams [BOOL,NOT REQUIRED,NO DEFAULT]
+        Descript model parameters (name, description, units) - requires model configuration options to be given. Note that not all models provide parameter descriptions
+
+--listoutputs [BOOL,NOT REQUIRED,NO DEFAULT]
+        List additional model outputs (requires model configuration options to be given)
+
+--evaluate [STR,NOT REQUIRED,NO DEFAULT]
+        Evaluate model. Set to name of output required or blank for default output. Requires model configuration options, --evaluate-params and --evaluate-nt
+
+--evaluate-params [MATRIX,NOT REQUIRED,NO DEFAULT]
+        List of parameter values for evaluation
+
+--evaluate-nt [INT,NOT REQUIRED,NO DEFAULT]
+        Number of time points for evaluation - must be consistent with model options where appropriate
+
+--simple-output [BOOL,NOT REQUIRED,NO DEFAULT]
+        Instead of usual standard output, simply output series of lines each giving progress as percentage
+
+--output [STR,REQUIRED,NO DEFAULT]
+        Directory for output files (including logfile)
+
+--overwrite [BOOL,NOT REQUIRED,NO DEFAULT]
+        If set will overwrite existing output. If not set, new output directories will be created by appending '+' to the directory name 
+
+--link-to-latest [BOOL,NOT REQUIRED,NO DEFAULT]
+        Try to create a link to the most recent output directory with the prefix _latest
+
+--method [STR,REQUIRED,NO DEFAULT]
+        Use this inference method
+
+--model [STR,REQUIRED,NO DEFAULT]
+        Use this forward model
+
+--loadmodels [FILE,NOT REQUIRED,NO DEFAULT]
+        Load models dynamically from the specified filename, which should be a DLL/shared library
+
+--data [TIMESERIES,REQUIRED,NO DEFAULT]
+        Specify a single input data file
+
+--data<n> [TIMESERIES,NOT REQUIRED,NO DEFAULT]
+        Specify multiple data files for n=1, 2, 3...
+
+--data-order [STR,NOT REQUIRED,DEFAULT=interleave]
+        If multiple data files are specified, how they will be handled: concatenate = one after the other,  interleave = first record from each file, then  second, etc.
+
+--mask [IMAGE,NOT REQUIRED,NO DEFAULT]
+        Mask file. Inference will only be performed where mask value > 0
+
+--mt<n> [INT,NOT REQUIRED,NO DEFAULT]
+        List of masked time points, indexed from 1. These will be ignored in the parameter updates
+
+--suppdata [TIMESERIES,NOT REQUIRED,NO DEFAULT]
+        'Supplemental' timeseries data, required for some models
+
+--dump-param-names [BOOL,NOT REQUIRED,NO DEFAULT]
+        Write the file paramnames.txt containing the names of the model parameters
+
+--save-model-fit [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the model prediction as a 4d volume
+
+--save-residuals [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the residuals (difference between the data and the model prediction)
+
+--save-model-extras [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output any additional model-specific timeseries data
+
+--save-mvn [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the final MVN distributions.
+
+--save-mean [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the parameter means.
+
+--save-std [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the parameter standard deviations.
+
+--save-var [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the parameter variances.
+
+--save-zstat [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the parameter Zstats.
+
+--save-noise-mean [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the noise means. The noise distribution inferred is the precision of a Gaussian noise source
+
+--save-noise-std [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the noise standard deviations. 
+
+--save-free-energy [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the free energy, if calculated. 
+
+--optfile [BOOL,NOT REQUIRED,NO DEFAULT]
+        File containing additional options, one per line, in the same form as specified on the command line
+
+--debug [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output large amounts of debug information. ONLY USE WITH VERY SMALL NUMBERS OF VOXELS
+
+
+=== Output of 'fabber_dce -help' ===
+
+NEWMAT exception caught in fabber:
+  Option '-help' doesn't begin with --
+NEWMAT exception caught in fabber:
+  Option '-help' doesn't begin with --
+
+=== Output of 'fabber_dce' (no arguments) ===
+
+Fabber  : Thu Jul 23 09:42:04 2020
+Usage: fabber [--<option>|--<option>=<value> ...]
+
+Use -f <file> to read options in option=value form
+Use -@ <file> to read options in command line form (DEPRECATED).
+
+General options 
+
+--help [BOOL,NOT REQUIRED,NO DEFAULT]
+        Print this usage method. If given with --method or --model, display relevant method/model usage information
+
+--listmethods [BOOL,NOT REQUIRED,NO DEFAULT]
+        List all known inference methods
+
+--listmodels [BOOL,NOT REQUIRED,NO DEFAULT]
+        List all known forward models
+
+--listparams [BOOL,NOT REQUIRED,NO DEFAULT]
+        List model parameters (requires model configuration options to be given)
+
+--descparams [BOOL,NOT REQUIRED,NO DEFAULT]
+        Descript model parameters (name, description, units) - requires model configuration options to be given. Note that not all models provide parameter descriptions
+
+--listoutputs [BOOL,NOT REQUIRED,NO DEFAULT]
+        List additional model outputs (requires model configuration options to be given)
+
+--evaluate [STR,NOT REQUIRED,NO DEFAULT]
+        Evaluate model. Set to name of output required or blank for default output. Requires model configuration options, --evaluate-params and --evaluate-nt
+
+--evaluate-params [MATRIX,NOT REQUIRED,NO DEFAULT]
+        List of parameter values for evaluation
+
+--evaluate-nt [INT,NOT REQUIRED,NO DEFAULT]
+        Number of time points for evaluation - must be consistent with model options where appropriate
+
+--simple-output [BOOL,NOT REQUIRED,NO DEFAULT]
+        Instead of usual standard output, simply output series of lines each giving progress as percentage
+
+--output [STR,REQUIRED,NO DEFAULT]
+        Directory for output files (including logfile)
+
+--overwrite [BOOL,NOT REQUIRED,NO DEFAULT]
+        If set will overwrite existing output. If not set, new output directories will be created by appending '+' to the directory name 
+
+--link-to-latest [BOOL,NOT REQUIRED,NO DEFAULT]
+        Try to create a link to the most recent output directory with the prefix _latest
+
+--method [STR,REQUIRED,NO DEFAULT]
+        Use this inference method
+
+--model [STR,REQUIRED,NO DEFAULT]
+        Use this forward model
+
+--loadmodels [FILE,NOT REQUIRED,NO DEFAULT]
+        Load models dynamically from the specified filename, which should be a DLL/shared library
+
+--data [TIMESERIES,REQUIRED,NO DEFAULT]
+        Specify a single input data file
+
+--data<n> [TIMESERIES,NOT REQUIRED,NO DEFAULT]
+        Specify multiple data files for n=1, 2, 3...
+
+--data-order [STR,NOT REQUIRED,DEFAULT=interleave]
+        If multiple data files are specified, how they will be handled: concatenate = one after the other,  interleave = first record from each file, then  second, etc.
+
+--mask [IMAGE,NOT REQUIRED,NO DEFAULT]
+        Mask file. Inference will only be performed where mask value > 0
+
+--mt<n> [INT,NOT REQUIRED,NO DEFAULT]
+        List of masked time points, indexed from 1. These will be ignored in the parameter updates
+
+--suppdata [TIMESERIES,NOT REQUIRED,NO DEFAULT]
+        'Supplemental' timeseries data, required for some models
+
+--dump-param-names [BOOL,NOT REQUIRED,NO DEFAULT]
+        Write the file paramnames.txt containing the names of the model parameters
+
+--save-model-fit [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the model prediction as a 4d volume
+
+--save-residuals [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the residuals (difference between the data and the model prediction)
+
+--save-model-extras [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output any additional model-specific timeseries data
+
+--save-mvn [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the final MVN distributions.
+
+--save-mean [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the parameter means.
+
+--save-std [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the parameter standard deviations.
+
+--save-var [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the parameter variances.
+
+--save-zstat [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the parameter Zstats.
+
+--save-noise-mean [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the noise means. The noise distribution inferred is the precision of a Gaussian noise source
+
+--save-noise-std [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the noise standard deviations. 
+
+--save-free-energy [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output the free energy, if calculated. 
+
+--optfile [BOOL,NOT REQUIRED,NO DEFAULT]
+        File containing additional options, one per line, in the same form as specified on the command line
+
+--debug [BOOL,NOT REQUIRED,NO DEFAULT]
+        Output large amounts of debug information. ONLY USE WITH VERY SMALL NUMBERS OF VOXELS
+

@@ -1,0 +1,54 @@
+
+=== Output of 'xtract_stats --help' ===
+
+
+__  _______ ____      _    ____ _____    _        _
+\ \/ /_   _|  _ \    / \  / ___|_   _|__| |_ __ _| |_ ___
+ \  /  | | | |_) |  / _ \| |     | |/ __| __/ _  | __/ __|
+ /  \  | | |  _ <  / ___ \ |___  | |\__ \ || (_| | |_\__ \
+/_/\_\ |_| |_| \_\/_/   \_\____| |_||___/\__\__ _|\__|___/
+
+Unknown option '--help'
+
+=== Output of 'xtract_stats -help' ===
+
+
+__  _______ ____      _    ____ _____    _        _
+\ \/ /_   _|  _ \    / \  / ___|_   _|__| |_ __ _| |_ ___
+ \  /  | | | |_) |  / _ \| |     | |/ __| __/ _  | __/ __|
+ /  \  | | |  _ <  / ___ \ |___  | |\__ \ || (_| | |_\__ \
+/_/\_\ |_| |_| \_\/_/   \_\____| |_||___/\__\__ _|\__|___/
+
+Unknown option '-help'
+
+=== Output of 'xtract_stats' (no arguments) ===
+
+
+__  _______ ____      _    ____ _____    _        _
+\ \/ /_   _|  _ \    / \  / ___|_   _|__| |_ __ _| |_ ___
+ \  /  | | | |_) |  / _ \| |     | |/ __| __/ _  | __/ __|
+ /  \  | | |  _ <  / ___ \ |___  | |\__ \ || (_| | |_\__ \
+/_/\_\ |_| |_| \_\/_/   \_\____| |_||___/\__\__ _|\__|___/
+
+
+Usage:
+    xtract_stats -d <dir_basename> -xtract <XTRACT_dir> -w <xtract2diff> [options]
+
+    Compulsory arguments:
+
+       -d <folder_basename>                   Path to microstructure folder and basename of data (e.g. /home/DTI/dti_)
+       -xtract <folder>                       Path to XTRACT output folder
+       -w <xtract2diff>                       EITHER XTRACT results to diffusion space transform OR 'native' if tracts are already in diffusion space
+
+    Optional arguments:
+       -r <reference>                         If not 'native', provide reference image in diffusion space (e.g. /home/DTI/dti_FA)
+       -out <path>                            Output filepath (Default <XTRACT_dir>/stats.csv)
+       -str <file>                            Structures file (as in XTRACT) (Default is all tracts under <XTRACT_dir>)
+       -thr <float>                           Threshold applied to tract probability map (default = 0.001 = 0.1%)
+
+       -meas <list>                           Comma separated list of features to extract (Default = vol,prob,length,FA,MD - assumes DTI folder has been provided)
+                                              vol = tract volume, prob = tract probability, length = tract length
+                                              Additional metrics must follow file naming conventions. e.g. for dti_L1 use 'L1'
+
+       -keepfiles                             Keep temporary files
+

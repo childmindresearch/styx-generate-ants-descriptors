@@ -1,0 +1,21 @@
+
+=== Output of 'reinflate_subject-rh --help' ===
+
+/usr/local/freesurfer/subjects/--help ~ 
+hostname: Command not found.
+~ 
+/usr/local/freesurfer/subjects/--help/scripts: No such file or directory.
+
+=== Output of 'reinflate_subject-rh -help' ===
+
+/usr/local/freesurfer/subjects/-help ~ 
+hostname: Command not found.
+~ 
+/usr/local/freesurfer/subjects/-help/scripts: No such file or directory.
+
+=== Output of 'reinflate_subject-rh' (no arguments) ===
+
+/usr/local/freesurfer/subjects ~ 
+hostname: Command not found.
+~ 
+/usr/local/freesurfer/subjects//scripts: No such file or directory.

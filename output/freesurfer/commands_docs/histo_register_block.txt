@@ -1,0 +1,20 @@
+
+=== Output of 'histo_register_block --help' ===
+
+usage: /usr/local/freesurfer/bin/histo_register_block [options] <seg time1> <seg time 2> <transform 1> <transform 2> <output file>
+
+This program align a histological slice with a block face image
+-out_like <reference volume> - set out_volume parameters
+-I                           - invert transform coordinates
+
+=== Output of 'histo_register_block -help' ===
+
+unknown option -help
+
+=== Output of 'histo_register_block' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/histo_register_block [options] <seg time1> <seg time 2> <transform 1> <transform 2> <output file>
+
+This program align a histological slice with a block face image
+-out_like <reference volume> - set out_volume parameters
+-I                           - invert transform coordinates

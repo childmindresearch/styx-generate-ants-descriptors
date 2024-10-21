@@ -1,0 +1,12 @@
+
+=== Output of 'spm_t_to_b --help' ===
+
+usage: spm_t_to_b spm_stem_format bshort_stem
+
+=== Output of 'spm_t_to_b -help' ===
+
+usage: spm_t_to_b spm_stem_format bshort_stem
+
+=== Output of 'spm_t_to_b' (no arguments) ===
+
+usage: spm_t_to_b spm_stem_format bshort_stem

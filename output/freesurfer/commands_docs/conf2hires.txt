@@ -1,0 +1,122 @@
+
+=== Output of 'conf2hires --help' ===
+
+
+conf2hires
+  --s subject
+  --t2, --no-t2 (default 0)
+  --mm-norm-sigma sigma : smoothing level for T2 mri_normalize (8)
+  --flair, --no-flair (default 0)
+  --threads nthreads 
+  --copy-bias-from-conf : copy bias field from conformed instead of computing directly
+  --norm-opts-rca : compute bias directly using recon-all opts to mri_normalize
+  --cubic, --trilin (default trilin), only applies with --copy-bias-from-conf
+  --dev, --no-dev (default 0) : use mris_make_surfaces.dev
+      default value can be set with setenv CONF2HIRES_USEDEV
+  --bbr-con contype : set BBR contrast type (default t2)
+  --bbr-t1 : set BBR contrast type to t1
+  --bbr-t2 : set BBR contrast type to t2
+  --first-peak-d1 : refine surface targets in MRIScomputeBorderValues()
+  --first-peak-d2 : refine surface targets in MRIScomputeBorderValues()
+  --stopmask stopmaskscm
+  --expert xopts (or -expert)
+  --force-update
+
+conf2hires 7.4.1
+
+This is a script that places the surfaces on highres T1 (and maybe T2)
+volumes based on an initial placement on a conformed volume. The idea
+is that recon-all will be run up to and including the creation of
+white.preaparc. This script is then run to generate the final white
+and pial surfaces. After that, the final stages of recon-all can be
+run (making sure to skip the creation of the final white and pial
+surfaces). The recon-all.v6.hires script will do this automatically.
+
+The pial surface tends to extend further out than in the normal
+recon-all stream because the intensity normalization. mri_normalize is
+run with different parameters (unless --norm-opts-rca is used) but
+will also run differently because some of the parameters are set based
+on the number of voxels, so differences in resolution effectively
+cause these parameters to be different. The --copy-bias-from-conf
+option will cause conf2hires to use the bias field computed from the
+conformed (1mm) and makes the final surfaces much closer to that of
+recon-all. I cannot remember why I did not use this as the default
+except that the current set up might have worked better for HCP.
+
+
+
+
+
+
+=== Output of 'conf2hires -help' ===
+
+
+conf2hires
+  --s subject
+  --t2, --no-t2 (default 0)
+  --mm-norm-sigma sigma : smoothing level for T2 mri_normalize (8)
+  --flair, --no-flair (default 0)
+  --threads nthreads 
+  --copy-bias-from-conf : copy bias field from conformed instead of computing directly
+  --norm-opts-rca : compute bias directly using recon-all opts to mri_normalize
+  --cubic, --trilin (default trilin), only applies with --copy-bias-from-conf
+  --dev, --no-dev (default 0) : use mris_make_surfaces.dev
+      default value can be set with setenv CONF2HIRES_USEDEV
+  --bbr-con contype : set BBR contrast type (default t2)
+  --bbr-t1 : set BBR contrast type to t1
+  --bbr-t2 : set BBR contrast type to t2
+  --first-peak-d1 : refine surface targets in MRIScomputeBorderValues()
+  --first-peak-d2 : refine surface targets in MRIScomputeBorderValues()
+  --stopmask stopmaskscm
+  --expert xopts (or -expert)
+  --force-update
+
+conf2hires 7.4.1
+
+This is a script that places the surfaces on highres T1 (and maybe T2)
+volumes based on an initial placement on a conformed volume. The idea
+is that recon-all will be run up to and including the creation of
+white.preaparc. This script is then run to generate the final white
+and pial surfaces. After that, the final stages of recon-all can be
+run (making sure to skip the creation of the final white and pial
+surfaces). The recon-all.v6.hires script will do this automatically.
+
+The pial surface tends to extend further out than in the normal
+recon-all stream because the intensity normalization. mri_normalize is
+run with different parameters (unless --norm-opts-rca is used) but
+will also run differently because some of the parameters are set based
+on the number of voxels, so differences in resolution effectively
+cause these parameters to be different. The --copy-bias-from-conf
+option will cause conf2hires to use the bias field computed from the
+conformed (1mm) and makes the final surfaces much closer to that of
+recon-all. I cannot remember why I did not use this as the default
+except that the current set up might have worked better for HCP.
+
+
+
+
+
+
+=== Output of 'conf2hires' (no arguments) ===
+
+
+conf2hires
+  --s subject
+  --t2, --no-t2 (default 0)
+  --mm-norm-sigma sigma : smoothing level for T2 mri_normalize (8)
+  --flair, --no-flair (default 0)
+  --threads nthreads 
+  --copy-bias-from-conf : copy bias field from conformed instead of computing directly
+  --norm-opts-rca : compute bias directly using recon-all opts to mri_normalize
+  --cubic, --trilin (default trilin), only applies with --copy-bias-from-conf
+  --dev, --no-dev (default 0) : use mris_make_surfaces.dev
+      default value can be set with setenv CONF2HIRES_USEDEV
+  --bbr-con contype : set BBR contrast type (default t2)
+  --bbr-t1 : set BBR contrast type to t1
+  --bbr-t2 : set BBR contrast type to t2
+  --first-peak-d1 : refine surface targets in MRIScomputeBorderValues()
+  --first-peak-d2 : refine surface targets in MRIScomputeBorderValues()
+  --stopmask stopmaskscm
+  --expert xopts (or -expert)
+  --force-update
+

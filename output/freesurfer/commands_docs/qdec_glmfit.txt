@@ -1,0 +1,100 @@
+
+=== Output of 'qdec_glmfit --help' ===
+
+/usr/local/freesurfer/bin/qdec_glmfit: unrecognized option '--help'
+Error: no data table specified. Use --data-table <filename>.
+USAGE: qdec_glmfit [options...]
+
+Options:
+
+  --data-table, -d <filename>      Input qdec.table.dat file (reqd)
+
+  --working-dir, -w <path>         Directory in which to generate 
+                                   temporary data (default /tmp)
+
+  --subjects-dir, -s <path>        Directory in which to find the 
+                                   average subject (default 
+                                   SUBJECTS_DIR env var)
+
+  --average-subject, -a <string>   Average subject name (reqd)
+
+  --analysis-name, -n <string>     Name for analysis (reqd)
+
+  --discrete-factor, -f <string>   Discrete factor (up to 2)
+
+  --continuous-factor, -c <string> Continuous factor (up to 2)
+
+  --measurement, -m <string>       Measurement name (reqd)
+
+  --hemisphere, -h lh|rh           Hemisphere to use (reqd)
+
+  --smoothness, -t <integer>       Smoothness to use (reqd)
+
+  --output, -o <filename>          Output .qdec filename (reqd)
+
+
+=== Output of 'qdec_glmfit -help' ===
+
+Error: no data table specified. Use --data-table <filename>.
+USAGE: qdec_glmfit [options...]
+
+Options:
+
+  --data-table, -d <filename>      Input qdec.table.dat file (reqd)
+
+  --working-dir, -w <path>         Directory in which to generate 
+                                   temporary data (default /tmp)
+
+  --subjects-dir, -s <path>        Directory in which to find the 
+                                   average subject (default 
+                                   SUBJECTS_DIR env var)
+
+  --average-subject, -a <string>   Average subject name (reqd)
+
+  --analysis-name, -n <string>     Name for analysis (reqd)
+
+  --discrete-factor, -f <string>   Discrete factor (up to 2)
+
+  --continuous-factor, -c <string> Continuous factor (up to 2)
+
+  --measurement, -m <string>       Measurement name (reqd)
+
+  --hemisphere, -h lh|rh           Hemisphere to use (reqd)
+
+  --smoothness, -t <integer>       Smoothness to use (reqd)
+
+  --output, -o <filename>          Output .qdec filename (reqd)
+
+
+=== Output of 'qdec_glmfit' (no arguments) ===
+
+Error: no data table specified. Use --data-table <filename>.
+USAGE: qdec_glmfit [options...]
+
+Options:
+
+  --data-table, -d <filename>      Input qdec.table.dat file (reqd)
+
+  --working-dir, -w <path>         Directory in which to generate 
+                                   temporary data (default /tmp)
+
+  --subjects-dir, -s <path>        Directory in which to find the 
+                                   average subject (default 
+                                   SUBJECTS_DIR env var)
+
+  --average-subject, -a <string>   Average subject name (reqd)
+
+  --analysis-name, -n <string>     Name for analysis (reqd)
+
+  --discrete-factor, -f <string>   Discrete factor (up to 2)
+
+  --continuous-factor, -c <string> Continuous factor (up to 2)
+
+  --measurement, -m <string>       Measurement name (reqd)
+
+  --hemisphere, -h lh|rh           Hemisphere to use (reqd)
+
+  --smoothness, -t <integer>       Smoothness to use (reqd)
+
+  --output, -o <filename>          Output .qdec filename (reqd)
+

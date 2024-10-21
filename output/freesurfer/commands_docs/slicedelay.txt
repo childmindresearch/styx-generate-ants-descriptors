@@ -1,0 +1,35 @@
+
+=== Output of 'slicedelay --help' ===
+
+USAGE: slicedelay --help
+  --o slicedelayfile
+  --nslices nslices: total number of slices in the volume
+  --order order (up,down,odd,even,siemens)
+  --ngroups ngroups (number of slice groups for SMS)
+
+  Creates an FSL custom slice delay file for use with slicetimer (--tcustom=sdfile).
+  It has a single column of values, one for each slice. Each value is the 
+  slice delay measured as a fraction of the TR and range from +0.5 
+  (beginning of the TR) to -0.5 (end of the TR). Used for slice-time 
+  correction of fMRI
+  
+
+=== Output of 'slicedelay -help' ===
+
+ERROR: flag -help not recognized
+
+=== Output of 'slicedelay' (no arguments) ===
+
+ERROR: output file needed
+USAGE: slicedelay --help
+  --o slicedelayfile
+  --nslices nslices: total number of slices in the volume
+  --order order (up,down,odd,even,siemens)
+  --ngroups ngroups (number of slice groups for SMS)
+
+  Creates an FSL custom slice delay file for use with slicetimer (--tcustom=sdfile).
+  It has a single column of values, one for each slice. Each value is the 
+  slice delay measured as a fraction of the TR and range from +0.5 
+  (beginning of the TR) to -0.5 (end of the TR). Used for slice-time 
+  correction of fMRI
+  

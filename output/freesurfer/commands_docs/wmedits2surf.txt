@@ -1,0 +1,85 @@
+
+=== Output of 'wmedits2surf --help' ===
+
+
+wmedits2surf --s subject
+ --self : output will be on self instead of fsaverage
+ --overwrite : force overwriting of existing results
+ --tmp tmpdir, --cleanup, --no-cleanup, --debug 
+ --lh, --rh : only do one hemi
+ --no-surfs : do not computes surfs, only count stats
+ 
+ --help : without it you are helpless
+ 
+wmedits2surf 7.4.1
+
+This program computes binary maps of surface locations near where the
+wm.mgz has been edited. It creates two files for each hemisphere,
+one for each type of edit. These will be
+
+subject/surf/lh.wmerase.fsa.mgh
+subject/surf/rh.wmerase.fsa.mgh
+subject/surf/lh.wmfill.fsa.mgh
+subject/surf/rh.wmfill.fsa.mgh
+
+These are binary masks on fsaverage space. They can be concatenated
+together to make maps of the likelyhood that a given spatial location
+is affected by a white matter edit.
+
+It will also create 
+  subject/stats/wm.erase.dat
+  subject/stats/wm.fill.dat
+The first number will be the number of voxels cloned/edited
+
+See also bmedits2surf
+
+
+
+=== Output of 'wmedits2surf -help' ===
+
+
+wmedits2surf --s subject
+ --self : output will be on self instead of fsaverage
+ --overwrite : force overwriting of existing results
+ --tmp tmpdir, --cleanup, --no-cleanup, --debug 
+ --lh, --rh : only do one hemi
+ --no-surfs : do not computes surfs, only count stats
+ 
+ --help : without it you are helpless
+ 
+wmedits2surf 7.4.1
+
+This program computes binary maps of surface locations near where the
+wm.mgz has been edited. It creates two files for each hemisphere,
+one for each type of edit. These will be
+
+subject/surf/lh.wmerase.fsa.mgh
+subject/surf/rh.wmerase.fsa.mgh
+subject/surf/lh.wmfill.fsa.mgh
+subject/surf/rh.wmfill.fsa.mgh
+
+These are binary masks on fsaverage space. They can be concatenated
+together to make maps of the likelyhood that a given spatial location
+is affected by a white matter edit.
+
+It will also create 
+  subject/stats/wm.erase.dat
+  subject/stats/wm.fill.dat
+The first number will be the number of voxels cloned/edited
+
+See also bmedits2surf
+
+
+
+=== Output of 'wmedits2surf' (no arguments) ===
+
+
+wmedits2surf --s subject
+ --self : output will be on self instead of fsaverage
+ --overwrite : force overwriting of existing results
+ --tmp tmpdir, --cleanup, --no-cleanup, --debug 
+ --lh, --rh : only do one hemi
+ --no-surfs : do not computes surfs, only count stats
+ 
+ --help : without it you are helpless
+ 

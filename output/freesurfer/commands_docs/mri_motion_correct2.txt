@@ -1,0 +1,111 @@
+
+=== Output of 'mri_motion_correct2 --help' ===
+
+USAGE: mri_motion_correct2
+
+Required Arguments:
+
+  -o  output spec : output file or directory (for COR)
+  -i  input1 <-i input2 <-i input3>>
+
+Optional Arguments:
+
+  -t target      : use target instead of first file
+  -wild          : assume unmatched args are input files
+  -tmpdir tmpdir : directory for temporary files
+  -nocleanup     : do not delete temporary files
+  -umask umask   : set unix file permission mask
+  -cm            : COR volumes conform to min voxel size
+  -version       : print version and exit
+  -debug         : print lots of stuff to screen
+
+mri_motion_correct2 7.4.1
+
+Aligns and averages two or more volumes. Uses minctracc with -lsq6 to
+perform the alignment. Then uses mincresample and mincaverage.
+
+The inputs and output can be any format accepted by mri_convert.
+
+Example 1:
+
+mri_motion_correct2 -i 002.mgz  -i 003 -o mc4.img
+
+  002.mgz is a volume in compressed MGH format.
+  003 is in COR format.
+  mc4.img (the output) is in analyze format.
+
+Example 2:
+
+Say you have many input volumes, eg, 001.mgh ... 010.mgh, and
+you do not want to list all of them on the command-line with
+a -i. Then you can:
+
+mri_motion_correct2 -o mc.mgh  -wild *.mgh
+
+Note that -wild must appear BEFORE the wildcard.
+
+=== Output of 'mri_motion_correct2 -help' ===
+
+USAGE: mri_motion_correct2
+
+Required Arguments:
+
+  -o  output spec : output file or directory (for COR)
+  -i  input1 <-i input2 <-i input3>>
+
+Optional Arguments:
+
+  -t target      : use target instead of first file
+  -wild          : assume unmatched args are input files
+  -tmpdir tmpdir : directory for temporary files
+  -nocleanup     : do not delete temporary files
+  -umask umask   : set unix file permission mask
+  -cm            : COR volumes conform to min voxel size
+  -version       : print version and exit
+  -debug         : print lots of stuff to screen
+
+mri_motion_correct2 7.4.1
+
+Aligns and averages two or more volumes. Uses minctracc with -lsq6 to
+perform the alignment. Then uses mincresample and mincaverage.
+
+The inputs and output can be any format accepted by mri_convert.
+
+Example 1:
+
+mri_motion_correct2 -i 002.mgz  -i 003 -o mc4.img
+
+  002.mgz is a volume in compressed MGH format.
+  003 is in COR format.
+  mc4.img (the output) is in analyze format.
+
+Example 2:
+
+Say you have many input volumes, eg, 001.mgh ... 010.mgh, and
+you do not want to list all of them on the command-line with
+a -i. Then you can:
+
+mri_motion_correct2 -o mc.mgh  -wild *.mgh
+
+Note that -wild must appear BEFORE the wildcard.
+
+=== Output of 'mri_motion_correct2' (no arguments) ===
+
+USAGE: mri_motion_correct2
+
+Required Arguments:
+
+  -o  output spec : output file or directory (for COR)
+  -i  input1 <-i input2 <-i input3>>
+
+Optional Arguments:
+
+  -t target      : use target instead of first file
+  -wild          : assume unmatched args are input files
+  -tmpdir tmpdir : directory for temporary files
+  -nocleanup     : do not delete temporary files
+  -umask umask   : set unix file permission mask
+  -cm            : COR volumes conform to min voxel size
+  -version       : print version and exit
+  -debug         : print lots of stuff to screen
+

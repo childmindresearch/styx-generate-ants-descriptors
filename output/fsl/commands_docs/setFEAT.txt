@@ -1,0 +1,72 @@
+
+=== Output of 'setFEAT --help' ===
+
+
+=== Output of 'setFEAT -help' ===
+
+
+=== Output of 'setFEAT' (no arguments) ===
+
+Command-line editing of FSL design .*fsf files
+
+setFEAT inputfsffile outputfsffile -option optionparam [-option optionparam]
+setFEAT fsffiles -i fsffiles -option optionparam [-option optionparam] ** Replaces existing files
+
+-featwatcher x - set featwatcher off (0) or on (1)
+-replace x y - basic global replace x with y ( e.g. Subj10/run2 Subj11/run3 )
+-analysis x - analysis type (0 - reg/group 7 - full 1 - pre-stats 2 - stats 3 stats+post 4 post)
+-overwrite x - overwrite old dir 0 - yes 1 - no
+-B0 x - B0 correction? 0 - no 1 - yes
+-EPIes x - EPI echo spacing?
+-EPIte x - EPI TE?
+-structural x - sets structural image
+-reg x - 0,1 turns registration on/off/
+-outputdir x ( level directory only )
+-outputfulldir x
+-inputdirs x (not working)
+-inputfulldir x y - sets input x
+-smooth x - sets spatial smooth levels
+-hpfilteron x - set highpass filter on/off (1/0)
+-hpfilter x - set highpass filter to x
+-motion x - add motion parameters to model
+-confoundevs x - add confound evs file to model
+-hilevel x - sets high level analysis to x (3 - FE, 0 - ME OLS, 1 - ME FLAME, 2 - ME FLAME 1+2 )
+-outlier x - sets FLAME outlier detection
+-highresdof x
+-set FEAT watcher x
+
+
+
+-nevs_orig x - sets number of original EVs
+-nevs_real x - sets number of real EVs
+-tf x y temporal filtering for ev x on/off (1/0)
+-td x y temporal derivative for ev x on/off (1/0) (does not update contrasts)
+-evshape x y set shape of ev x to y 0: square 1: sinusoid 2: Custom (1 entry per vol) 3: Custom (3 col) 4: interaction 10: zeros
+-evcustom x set custom ev filename
+-evcustomfulldir x set custom ev full file location
+-evconv x y set ev convolution 0-none 1-Gauss 2-gamma 3-dbl gamma 4-gamma basis
+-evval x y z set higher level EV x val for input y to z
+-evorth x y z orthogonalise ev x wrt y?
+-evname x y set title for EV x to y
+-evskip x y skip ev x in web report on/off (1/0)
+
+-ncontrasts_orig x - sets number of original contrasts
+-ncontrasts_real x - sets number of real contrasts
+-contrast_mode x - sets contrast mode real/orig
+-contrast_orig x y z
+-contrast_real x y z
+-contrast_orig_name x y
+-contrast_real_name x y
+-contrast_orig_show x y
+-contrast_real_show x y
+
+-zthresh x set z_threshold
+-thresh x set thresholding type (0 - Noce,1 - Uncorr, 2 - Voxel, 3 - Cluster)
+-FNIRT x - sets FNIRT nonlinear reg on/off (1/0)
+-FNIRTwarpres x
+-bgim x - sts background image 1- mean highres 2 - first highres 3 - mean functional 4 - first functional 5 -std space
+-alt_example_func x - sets alternative example_func
+
+-MELODIC x
+-ndims x dimensions
+

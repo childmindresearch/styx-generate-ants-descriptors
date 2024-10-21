@@ -1,0 +1,93 @@
+
+=== Output of 'mris_sphere --help' ===
+
+				Help
+
+NAME
+	mris_sphere
+
+SYNOPSIS
+	mris_sphere [options] <surface file> <patch file name> <output patch>
+
+DESCRIPTION
+	This program will add a template into an average surface
+
+POSITIONAL ARGUMENTS
+	surface file
+
+	patch file name
+
+	output patch
+
+REQUIRED FLAGGED ARGUMENTS
+	********************************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	********************************************************
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_sphere -help' ===
+
+				Help
+
+NAME
+	mris_sphere
+
+SYNOPSIS
+	mris_sphere [options] <surface file> <patch file name> <output patch>
+
+DESCRIPTION
+	This program will add a template into an average surface
+
+POSITIONAL ARGUMENTS
+	surface file
+
+	patch file name
+
+	output patch
+
+REQUIRED FLAGGED ARGUMENTS
+	********************************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	********************************************************
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_sphere' (no arguments) ===
+
+				Help
+
+NAME
+	mris_sphere
+
+SYNOPSIS
+	mris_sphere [options] <surface file> <patch file name> <output patch>
+
+DESCRIPTION
+	This program will add a template into an average surface
+
+POSITIONAL ARGUMENTS
+	surface file
+
+	patch file name
+
+	output patch
+
+REQUIRED FLAGGED ARGUMENTS
+	********************************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	********************************************************
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

@@ -1,0 +1,21 @@
+
+=== Output of 'perfusion_subtract --help' ===
+
+
+Usage: perfusion_subtract <4D_input> <4D_output> [-c]
+-c : first timepoint is control instead of tag (default is tag first)
+
+
+=== Output of 'perfusion_subtract -help' ===
+
+
+Usage: perfusion_subtract <4D_input> <4D_output> [-c]
+-c : first timepoint is control instead of tag (default is tag first)
+
+
+=== Output of 'perfusion_subtract' (no arguments) ===
+
+
+Usage: perfusion_subtract <4D_input> <4D_output> [-c]
+-c : first timepoint is control instead of tag (default is tag first)
+

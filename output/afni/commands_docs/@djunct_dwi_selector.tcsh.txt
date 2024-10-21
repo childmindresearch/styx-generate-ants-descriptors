@@ -1,0 +1,12 @@
+
+=== Output of '@djunct_dwi_selector.tcsh --help' ===
+
+usage: /opt/afni/src/../install/@djunct_dwi_selector.tcsh DWI PNG OUTFILE
+
+=== Output of '@djunct_dwi_selector.tcsh -help' ===
+
+usage: /opt/afni/src/../install/@djunct_dwi_selector.tcsh DWI PNG OUTFILE
+
+=== Output of '@djunct_dwi_selector.tcsh' (no arguments) ===
+
+usage: /opt/afni/src/../install/@djunct_dwi_selector.tcsh DWI PNG OUTFILE

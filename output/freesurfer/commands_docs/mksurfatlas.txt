@@ -1,0 +1,101 @@
+
+=== Output of 'mksurfatlas --help' ===
+
+
+USAGE: mksurfatlas
+
+ --a atlas : saves results to this file (tif file)
+
+ --h hemi
+ --s subject <--s subject ...>
+ --v surfval  : looks for subject/surfvaldir/hemi.surfval
+
+ --d surfvaldir : default is label
+ --r regsurf : default is sphere
+
+ --version            : print version and exit
+ --help               : print help and exit
+ --debug              : turn on debugging
+
+mksurfatlas 7.4.1
+
+This program has not been tested, is not supported, and you should not
+use it.
+
+Creates an atlas using mris_make_template. The atlas can then be used
+to create the surface registration for each subject based on this
+atlas.
+
+A typical workflow for creating an fmri-based atlas would be something
+like:
+
+1. For each subject, run the functional analysis, map results to the
+   surface, and save in subject/fmri/hemi.func.mgh
+
+2. Choose one subject as the reference subject to create an initial
+   atlas:
+
+   mksurfatlas --a lh.func.atlas.init.tif --h lh --v func.mgh \
+      --r sphere.reg --s refsubject
+
+   This will create lh.func.atlas.init.tif
+
+3. Create an initial registration surface based on this atlas,
+
+   foreach subject (subject1 subject2 ...)
+     cd $SUBJECTS_DIR/$subject/surf
+     mris_register -dist 0 -para 0 -annot aparc -remove_negative 1 -w 0 \
+       -overlay func.mgh 10 -overlay-dir func \
+        $SUBJECTS_DIR/$subject/surf/$hemi.sphere.reg \
+       lh.func.atlas.init.tif $SUBJECTS_DIR/$subject/surf/$hemi.funcreg.init
+   end
+
+   This will create $hemi.funcreg.init. Note: 10 is the number of smoothing 
+   steps.
+
+4. Create final atlas based on all subjects (similar to step 2)
+
+   mksurfatlas --a lh.func.atlas.tif --h lh --v func.mgh \
+     --r $hemi.funcreg.init --s subject1 --s subject2 --s ...
+
+5. Create a final registration surface based on final atlas,
+
+   foreach subject (subject1 subject2 ...)
+     cd $SUBJECTS_DIR/$subject/surf
+     mris_register -dist 0 -para 0 -annot aparc -remove_negative 1 -w 0 \
+       -overlay func.mgh 10 -overlay-dir func \
+       $SUBJECTS_DIR/$subject/surf/$hemi.sphere \
+       lh.func.atlas.tif $SUBJECTS_DIR/$subject/surf/$hemi.funcreg
+   end
+
+   This will create $hemi.funcreg which can then be used as
+   you would $hemi.sphere.
+
+
+
+
+
+
+
+=== Output of 'mksurfatlas -help' ===
+
+ERROR: flag -help not recognized
+
+=== Output of 'mksurfatlas' (no arguments) ===
+
+
+USAGE: mksurfatlas
+
+ --a atlas : saves results to this file (tif file)
+
+ --h hemi
+ --s subject <--s subject ...>
+ --v surfval  : looks for subject/surfvaldir/hemi.surfval
+
+ --d surfvaldir : default is label
+ --r regsurf : default is sphere
+
+ --version            : print version and exit
+ --help               : print help and exit
+ --debug              : turn on debugging
+

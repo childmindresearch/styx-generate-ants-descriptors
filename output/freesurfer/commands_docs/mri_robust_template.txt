@@ -1,0 +1,639 @@
+
+=== Output of 'mri_robust_template --help' ===
+
+7.4.1
+
+				Help
+
+NAME
+	mri_robust_template
+
+SYNOPSIS
+	mri_robust_template --mov <tp1.mgz> <tp2.mgz> ... --template 
+	<template.mgz> [options]
+
+DESCRIPTION
+	This program constructs an unbiased robust template for longitudinal 
+	volumes (within modality, 6-7 DOF). It uses an iterative method to 
+	construct a mean/median volume and the robust rigid registration of 
+	all input images to the current mean/median.
+	
+	 It is used for the MotionCorrection step in recon-all and for 
+	creating a within-subject template in the longitudinal stream (-base) 
+	in FreeSurfer.
+	
+	Important Note: For best performance the input images should all have 
+	the same intensity level! Good images are, for example, the T1.mgz and
+	norm.mgz from the FreeSurfer stream. 
+
+POSITIONAL ARGUMENTS
+	None.
+
+REQUIRED FLAGGED ARGUMENTS
+	--mov <tp1.mgz> <tp2.mgz>...
+		input movable volumes to be aligned to common mean/median 
+		template
+
+	--template <template.mgz>
+		output template volume (final mean/median image)
+
+	One of the following is required for sensitivity:
+
+	--sat <real>
+		set outlier sensitivity manually (e.g. '--sat 4.685' ). Higher
+		values mean less sensitivity.
+
+	--satit
+		auto-detect good sensitivity (recommended for head or full 
+		brain scans)
+
+OPTIONAL FLAGGED ARGUMENTS
+	--lta <tp1.lta> <tp2.lta> ...
+		output xforms to template (for each input)
+
+	--mapmov <aligned1.mgz> ...
+		output images: map and resample each input to template
+
+	--mapmovhdr <aligned1.mgz> ...
+		output images: header-adjusted movables (no resampling) 
+
+	--weights <weights1.mgz> ...
+		output weights (outliers) in target space
+
+	--oneminusw
+		weights (outlier) map will be inverted (0=outlier), as in 
+		earlier versions
+
+	--average <#>
+		construct template from: 0 Mean, 1 Median (default)
+
+	--inittp <#>
+		use TP# for spacial init (default random), 0: no init
+
+	--fixtp
+		map everthing to init TP# (init TP is not resampled)
+
+	--iscale
+		allow also intensity scaling (default off)
+
+	--iscaleonly
+		only perform iscale (no transformation, default off)
+
+	--iscalein <is1.txt> <is2.txt> ...
+		use initial intensity scales
+
+	--iscaleout <is1.txt> <is2.txt> ...
+		output final intensity scales (will activate --iscale)
+
+	--transonly
+		find 3 parameter translation only
+
+	--affine
+		find 12 parameter affine transform
+
+	--ixforms <t1.lta> <t2.lta> ...
+		use initial transforms (lta) on source  ('id'=identity)
+
+	--masks <mask1.mgz> ...
+		input masks applied to movables
+
+	--vox2vox
+		output VOX2VOX lta file (default is RAS2RAS)
+
+	--leastsquares
+		use least squares instead of robust M-estimator (for testing 
+		only)
+
+	--noit
+		do not iterate, just create first template
+
+	--maxit <#>
+		iterate max # times (if #tp>2 default 6, else 5 for 2tp reg.)
+
+	--highit <#>
+		iterate max # times on highest resolution (default 5)
+
+	--epsit <real>
+		stop iterations when all tp transform updates fall below 
+		<real> (if #tp>2 default 0.03, else 0.01 for 2tp reg.)
+
+	--pairmaxit <#>
+		iterate max # times (default 5) for individual pairwise 
+		registgrations
+
+	--pairepsit <real>
+		stop individual pairwise registration iterations when 
+		transform updates fall below <real> (default 0.01)
+
+	--subsample <#>
+		subsample if dim > # on all axes (default no subs.)
+
+	--nomulti
+		do not use multi-resolution (only highest resolution)
+
+	--floattype
+		convert images to float internally (default: keep input type)
+
+	--finalnearest
+		use nearest neighbor in final interpolation when creating 
+		average. This is useful, e.g., when -noit and --ixforms are 
+		specified and brainmasks are mapped.
+
+	--doubleprec
+		double precision (instead of float) internally (large memory 
+		usage!!!)
+
+	--cras
+		Center template at average CRAS, instead of average barycenter
+		(default)
+
+	--res-thresh
+		volume resolution threshold (default is 0.01 mm)
+
+	--frobnorm-thresh
+		Matrix frobenius norm threshold (default is 0.0001)
+
+	--debug
+		show debug output (default no debug output)
+
+EXAMPLE 1
+	mri_robust_template --mov tp1.mgz tp2.mgz tp3.mgz --template mean.mgz 
+	--lta tp1.lta tp2.lta tp3.lta --mapmov tp1tomean.mgz tp2tomean.mgz 
+	tp3tomean.mgz --average 0 --iscale --satit
+	
+	Constructs a mean (--average 0) template from tp1,tp2 and tp3 and 
+	outputs the mean.mgz, the corresponding transforms (tp?.lta) and 
+	aligned images (tp?tomean.mgz). Intensity scaling is allowed, the 
+	saturation/sensitivity for outliers is automatically computed (only 
+	possible for
+	full head or full brain images). 
+	
+	View results:
+	
+	tkmedit -f mean.mgz -aux tp1tomean.mgz 
+
+EXAMPLE 2
+	
+	mri_robust_template --mov 001.mgz 002.mgz --average 1 --template 
+	rawavg.mgz --satit --inittp 1 --fixtp --noit --iscale --subsample 
+	200
+	
+	Is used in the recon-all stream for motion correction of several (here
+	two: 001.mgz and 002.mgz) inputs. In this case all follow-ups are 
+	registered to the first input (as specified with --inittp 1 --fixtp 
+	--noit) and the rawavg.mgz is output as the median image (--average 
+	1). 
+
+REFERENCES
+	
+	Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+	Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+	 http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+	 http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+	
+	Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing, M. 
+	Reuter, B. Fischl.  NeuroImage 57(1):19-21, 2011.
+	 http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+	 http://reuter.mit.edu/papers/reuter-bias11.pdf 
+	
+	Within-Subject Template Estimation for Unbiased Longitudinal Image 
+	Analysis. M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl. NeuroImage
+	61(4):1402-1418, 2012.
+	 http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+	 http://reuter.mit.edu/papers/reuter-long12.pdf
+	 
+	 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_robust_register
+
+
+
+=== Output of 'mri_robust_template -help' ===
+
+7.4.1
+
+				Help
+
+NAME
+	mri_robust_template
+
+SYNOPSIS
+	mri_robust_template --mov <tp1.mgz> <tp2.mgz> ... --template 
+	<template.mgz> [options]
+
+DESCRIPTION
+	This program constructs an unbiased robust template for longitudinal 
+	volumes (within modality, 6-7 DOF). It uses an iterative method to 
+	construct a mean/median volume and the robust rigid registration of 
+	all input images to the current mean/median.
+	
+	 It is used for the MotionCorrection step in recon-all and for 
+	creating a within-subject template in the longitudinal stream (-base) 
+	in FreeSurfer.
+	
+	Important Note: For best performance the input images should all have 
+	the same intensity level! Good images are, for example, the T1.mgz and
+	norm.mgz from the FreeSurfer stream. 
+
+POSITIONAL ARGUMENTS
+	None.
+
+REQUIRED FLAGGED ARGUMENTS
+	--mov <tp1.mgz> <tp2.mgz>...
+		input movable volumes to be aligned to common mean/median 
+		template
+
+	--template <template.mgz>
+		output template volume (final mean/median image)
+
+	One of the following is required for sensitivity:
+
+	--sat <real>
+		set outlier sensitivity manually (e.g. '--sat 4.685' ). Higher
+		values mean less sensitivity.
+
+	--satit
+		auto-detect good sensitivity (recommended for head or full 
+		brain scans)
+
+OPTIONAL FLAGGED ARGUMENTS
+	--lta <tp1.lta> <tp2.lta> ...
+		output xforms to template (for each input)
+
+	--mapmov <aligned1.mgz> ...
+		output images: map and resample each input to template
+
+	--mapmovhdr <aligned1.mgz> ...
+		output images: header-adjusted movables (no resampling) 
+
+	--weights <weights1.mgz> ...
+		output weights (outliers) in target space
+
+	--oneminusw
+		weights (outlier) map will be inverted (0=outlier), as in 
+		earlier versions
+
+	--average <#>
+		construct template from: 0 Mean, 1 Median (default)
+
+	--inittp <#>
+		use TP# for spacial init (default random), 0: no init
+
+	--fixtp
+		map everthing to init TP# (init TP is not resampled)
+
+	--iscale
+		allow also intensity scaling (default off)
+
+	--iscaleonly
+		only perform iscale (no transformation, default off)
+
+	--iscalein <is1.txt> <is2.txt> ...
+		use initial intensity scales
+
+	--iscaleout <is1.txt> <is2.txt> ...
+		output final intensity scales (will activate --iscale)
+
+	--transonly
+		find 3 parameter translation only
+
+	--affine
+		find 12 parameter affine transform
+
+	--ixforms <t1.lta> <t2.lta> ...
+		use initial transforms (lta) on source  ('id'=identity)
+
+	--masks <mask1.mgz> ...
+		input masks applied to movables
+
+	--vox2vox
+		output VOX2VOX lta file (default is RAS2RAS)
+
+	--leastsquares
+		use least squares instead of robust M-estimator (for testing 
+		only)
+
+	--noit
+		do not iterate, just create first template
+
+	--maxit <#>
+		iterate max # times (if #tp>2 default 6, else 5 for 2tp reg.)
+
+	--highit <#>
+		iterate max # times on highest resolution (default 5)
+
+	--epsit <real>
+		stop iterations when all tp transform updates fall below 
+		<real> (if #tp>2 default 0.03, else 0.01 for 2tp reg.)
+
+	--pairmaxit <#>
+		iterate max # times (default 5) for individual pairwise 
+		registgrations
+
+	--pairepsit <real>
+		stop individual pairwise registration iterations when 
+		transform updates fall below <real> (default 0.01)
+
+	--subsample <#>
+		subsample if dim > # on all axes (default no subs.)
+
+	--nomulti
+		do not use multi-resolution (only highest resolution)
+
+	--floattype
+		convert images to float internally (default: keep input type)
+
+	--finalnearest
+		use nearest neighbor in final interpolation when creating 
+		average. This is useful, e.g., when -noit and --ixforms are 
+		specified and brainmasks are mapped.
+
+	--doubleprec
+		double precision (instead of float) internally (large memory 
+		usage!!!)
+
+	--cras
+		Center template at average CRAS, instead of average barycenter
+		(default)
+
+	--res-thresh
+		volume resolution threshold (default is 0.01 mm)
+
+	--frobnorm-thresh
+		Matrix frobenius norm threshold (default is 0.0001)
+
+	--debug
+		show debug output (default no debug output)
+
+EXAMPLE 1
+	mri_robust_template --mov tp1.mgz tp2.mgz tp3.mgz --template mean.mgz 
+	--lta tp1.lta tp2.lta tp3.lta --mapmov tp1tomean.mgz tp2tomean.mgz 
+	tp3tomean.mgz --average 0 --iscale --satit
+	
+	Constructs a mean (--average 0) template from tp1,tp2 and tp3 and 
+	outputs the mean.mgz, the corresponding transforms (tp?.lta) and 
+	aligned images (tp?tomean.mgz). Intensity scaling is allowed, the 
+	saturation/sensitivity for outliers is automatically computed (only 
+	possible for
+	full head or full brain images). 
+	
+	View results:
+	
+	tkmedit -f mean.mgz -aux tp1tomean.mgz 
+
+EXAMPLE 2
+	
+	mri_robust_template --mov 001.mgz 002.mgz --average 1 --template 
+	rawavg.mgz --satit --inittp 1 --fixtp --noit --iscale --subsample 
+	200
+	
+	Is used in the recon-all stream for motion correction of several (here
+	two: 001.mgz and 002.mgz) inputs. In this case all follow-ups are 
+	registered to the first input (as specified with --inittp 1 --fixtp 
+	--noit) and the rawavg.mgz is output as the median image (--average 
+	1). 
+
+REFERENCES
+	
+	Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+	Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+	 http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+	 http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+	
+	Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing, M. 
+	Reuter, B. Fischl.  NeuroImage 57(1):19-21, 2011.
+	 http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+	 http://reuter.mit.edu/papers/reuter-bias11.pdf 
+	
+	Within-Subject Template Estimation for Unbiased Longitudinal Image 
+	Analysis. M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl. NeuroImage
+	61(4):1402-1418, 2012.
+	 http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+	 http://reuter.mit.edu/papers/reuter-long12.pdf
+	 
+	 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_robust_register
+
+
+
+=== Output of 'mri_robust_template' (no arguments) ===
+
+7.4.1
+
+				Help
+
+NAME
+	mri_robust_template
+
+SYNOPSIS
+	mri_robust_template --mov <tp1.mgz> <tp2.mgz> ... --template 
+	<template.mgz> [options]
+
+DESCRIPTION
+	This program constructs an unbiased robust template for longitudinal 
+	volumes (within modality, 6-7 DOF). It uses an iterative method to 
+	construct a mean/median volume and the robust rigid registration of 
+	all input images to the current mean/median.
+	
+	 It is used for the MotionCorrection step in recon-all and for 
+	creating a within-subject template in the longitudinal stream (-base) 
+	in FreeSurfer.
+	
+	Important Note: For best performance the input images should all have 
+	the same intensity level! Good images are, for example, the T1.mgz and
+	norm.mgz from the FreeSurfer stream. 
+
+POSITIONAL ARGUMENTS
+	None.
+
+REQUIRED FLAGGED ARGUMENTS
+	--mov <tp1.mgz> <tp2.mgz>...
+		input movable volumes to be aligned to common mean/median 
+		template
+
+	--template <template.mgz>
+		output template volume (final mean/median image)
+
+	One of the following is required for sensitivity:
+
+	--sat <real>
+		set outlier sensitivity manually (e.g. '--sat 4.685' ). Higher
+		values mean less sensitivity.
+
+	--satit
+		auto-detect good sensitivity (recommended for head or full 
+		brain scans)
+
+OPTIONAL FLAGGED ARGUMENTS
+	--lta <tp1.lta> <tp2.lta> ...
+		output xforms to template (for each input)
+
+	--mapmov <aligned1.mgz> ...
+		output images: map and resample each input to template
+
+	--mapmovhdr <aligned1.mgz> ...
+		output images: header-adjusted movables (no resampling) 
+
+	--weights <weights1.mgz> ...
+		output weights (outliers) in target space
+
+	--oneminusw
+		weights (outlier) map will be inverted (0=outlier), as in 
+		earlier versions
+
+	--average <#>
+		construct template from: 0 Mean, 1 Median (default)
+
+	--inittp <#>
+		use TP# for spacial init (default random), 0: no init
+
+	--fixtp
+		map everthing to init TP# (init TP is not resampled)
+
+	--iscale
+		allow also intensity scaling (default off)
+
+	--iscaleonly
+		only perform iscale (no transformation, default off)
+
+	--iscalein <is1.txt> <is2.txt> ...
+		use initial intensity scales
+
+	--iscaleout <is1.txt> <is2.txt> ...
+		output final intensity scales (will activate --iscale)
+
+	--transonly
+		find 3 parameter translation only
+
+	--affine
+		find 12 parameter affine transform
+
+	--ixforms <t1.lta> <t2.lta> ...
+		use initial transforms (lta) on source  ('id'=identity)
+
+	--masks <mask1.mgz> ...
+		input masks applied to movables
+
+	--vox2vox
+		output VOX2VOX lta file (default is RAS2RAS)
+
+	--leastsquares
+		use least squares instead of robust M-estimator (for testing 
+		only)
+
+	--noit
+		do not iterate, just create first template
+
+	--maxit <#>
+		iterate max # times (if #tp>2 default 6, else 5 for 2tp reg.)
+
+	--highit <#>
+		iterate max # times on highest resolution (default 5)
+
+	--epsit <real>
+		stop iterations when all tp transform updates fall below 
+		<real> (if #tp>2 default 0.03, else 0.01 for 2tp reg.)
+
+	--pairmaxit <#>
+		iterate max # times (default 5) for individual pairwise 
+		registgrations
+
+	--pairepsit <real>
+		stop individual pairwise registration iterations when 
+		transform updates fall below <real> (default 0.01)
+
+	--subsample <#>
+		subsample if dim > # on all axes (default no subs.)
+
+	--nomulti
+		do not use multi-resolution (only highest resolution)
+
+	--floattype
+		convert images to float internally (default: keep input type)
+
+	--finalnearest
+		use nearest neighbor in final interpolation when creating 
+		average. This is useful, e.g., when -noit and --ixforms are 
+		specified and brainmasks are mapped.
+
+	--doubleprec
+		double precision (instead of float) internally (large memory 
+		usage!!!)
+
+	--cras
+		Center template at average CRAS, instead of average barycenter
+		(default)
+
+	--res-thresh
+		volume resolution threshold (default is 0.01 mm)
+
+	--frobnorm-thresh
+		Matrix frobenius norm threshold (default is 0.0001)
+
+	--debug
+		show debug output (default no debug output)
+
+EXAMPLE 1
+	mri_robust_template --mov tp1.mgz tp2.mgz tp3.mgz --template mean.mgz 
+	--lta tp1.lta tp2.lta tp3.lta --mapmov tp1tomean.mgz tp2tomean.mgz 
+	tp3tomean.mgz --average 0 --iscale --satit
+	
+	Constructs a mean (--average 0) template from tp1,tp2 and tp3 and 
+	outputs the mean.mgz, the corresponding transforms (tp?.lta) and 
+	aligned images (tp?tomean.mgz). Intensity scaling is allowed, the 
+	saturation/sensitivity for outliers is automatically computed (only 
+	possible for
+	full head or full brain images). 
+	
+	View results:
+	
+	tkmedit -f mean.mgz -aux tp1tomean.mgz 
+
+EXAMPLE 2
+	
+	mri_robust_template --mov 001.mgz 002.mgz --average 1 --template 
+	rawavg.mgz --satit --inittp 1 --fixtp --noit --iscale --subsample 
+	200
+	
+	Is used in the recon-all stream for motion correction of several (here
+	two: 001.mgz and 002.mgz) inputs. In this case all follow-ups are 
+	registered to the first input (as specified with --inittp 1 --fixtp 
+	--noit) and the rawavg.mgz is output as the median image (--average 
+	1). 
+
+REFERENCES
+	
+	Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+	Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+	 http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+	 http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+	
+	Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing, M. 
+	Reuter, B. Fischl.  NeuroImage 57(1):19-21, 2011.
+	 http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+	 http://reuter.mit.edu/papers/reuter-bias11.pdf 
+	
+	Within-Subject Template Estimation for Unbiased Longitudinal Image 
+	Analysis. M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl. NeuroImage
+	61(4):1402-1418, 2012.
+	 http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+	 http://reuter.mit.edu/papers/reuter-long12.pdf
+	 
+	 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_robust_register
+
+

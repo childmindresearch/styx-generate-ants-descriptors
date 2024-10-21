@@ -1,0 +1,48 @@
+
+=== Output of 'mris_target_pos --help' ===
+
+
+USAGE: mris_target_pos
+
+   --v inputvolume
+   --i inputsurf
+   --o outputsurf
+   --adgws adgwsfile
+   --thresh InwardThresh (border_hi) OutwardThresh (outside_low)
+   --l label
+   --interp interpname
+   --debug-vertex vtxno
+   --cbv
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+
+
+=== Output of 'mris_target_pos -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mris_target_pos' (no arguments) ===
+
+
+USAGE: mris_target_pos
+
+   --v inputvolume
+   --i inputsurf
+   --o outputsurf
+   --adgws adgwsfile
+   --thresh InwardThresh (border_hi) OutwardThresh (outside_low)
+   --l label
+   --interp interpname
+   --debug-vertex vtxno
+   --cbv
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+

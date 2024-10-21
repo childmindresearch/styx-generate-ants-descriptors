@@ -1,0 +1,21 @@
+
+=== Output of 'mri_extract_label --help' ===
+
+
+This program will extract a set of labeled voxels from an image.
+
+=== Output of 'mri_extract_label -help' ===
+
+unknown option -help
+
+=== Output of 'mri_extract_label' (no arguments) ===
+
+Usage: /usr/local/freesurfer/bin/mri_extract_label [options] <input volume> <label 1> <label 2> ... <output name>
+Options:
+	-s <sigma>	apply a Gaussian smoothing kernel
+	-t <xform file>	apply the transform in <xform file> to extracted volume
+	-exit_none_found	exit 1 if label(s) not found
+	-dilate <n>	dilate output volume <n> times
+	-erode <n>	erode output volume <n> times
+
+This program will extract a set of labeled voxels from an image.

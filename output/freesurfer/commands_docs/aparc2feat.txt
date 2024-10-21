@@ -1,0 +1,84 @@
+
+=== Output of 'aparc2feat --help' ===
+
+
+USAGE: aparc2feat
+
+ --feat dir  <--feat dir>  : Feat output directory
+ --featdirfile file : file with a list of feat directories
+
+Optional flags and arguments:
+
+ --hemi hemi  : resample hemi only (default is both rh and lh)
+ --annot annot : spec something other than aparc
+ --a2005s : spec annot = aparc.a2005s
+ --a2009s : spec annot = aparc.a2009s
+ --help               : print help and exit
+ --debug              : turn on debugging
+ --version            : print version and exit
+
+aparc2feat 7.4.1
+
+SUMMARY
+
+Resamples the FreeSurfer automatic cortical segmentation
+(lh.aparc.annot and rh.aparc.annot) to the FEAT functional space. This
+is a front-end for the FreeSurfer mri_label2vol program (see
+mri_label2vol --help). See aseg2feat for resampling the subcortical
+parcellation (aseg).
+
+COMMAND-LINE ARGUMENTS
+
+--feat featdir
+
+featdir is the feat directory. reg-feat2anat must have already been run. Multiple
+--feat arguments can be supplied. Eg, --feat dir1 --feat dir2 ...
+
+--featdirfile file
+
+file is an ASCII file with a list of feat directories. This may be more convenient
+than specifying all of them with --feat on the command-line. Multiple
+--featdirfile flags are allowed. Can be used in conjunction with --feat.
+
+NOTES
+
+The result is stored in featdir/reg/freesurfer as lh.aparc.nii.gz and
+rh.aparc.nii.gz. The volumes will be the same size as the example_func
+and in voxel-for-voxel registration. The value of a voxel indicates
+which structure it belongs to. The correspondance between index number
+and structure can be found in $FREESURFER_HOME/Simple_surface_labels2002.txt
+Eg, the calcarine sulcus is 44.
+
+A binary mask of the left calcarine sulcus can be constructed with:
+
+avwmaths featdir/reg/freesurfer/lh.aparc.nii.gz \
+         -thr 44 -uthr 44 \
+         featdir/reg/freesurfer/lh.calc_sulc.nii.gz
+
+SEE ALSO
+
+reg-feat2anat, aseg2feat, mri_label2vol
+
+
+=== Output of 'aparc2feat -help' ===
+
+ERROR: flag -help not recognized
+
+=== Output of 'aparc2feat' (no arguments) ===
+
+
+USAGE: aparc2feat
+
+ --feat dir  <--feat dir>  : Feat output directory
+ --featdirfile file : file with a list of feat directories
+
+Optional flags and arguments:
+
+ --hemi hemi  : resample hemi only (default is both rh and lh)
+ --annot annot : spec something other than aparc
+ --a2005s : spec annot = aparc.a2005s
+ --a2009s : spec annot = aparc.a2009s
+ --help               : print help and exit
+ --debug              : turn on debugging
+ --version            : print version and exit
+

@@ -1,0 +1,185 @@
+
+=== Output of 'long_qdec_table --help' ===
+
+Usage: 
+
+SUMMARY
+=======
+
+Will operate on a longitudinal QDEC table.
+
+A longitudinal QDEC table is a text file with space sperated columns where the
+first two columns have the title fsid and fsid-base, containing the time point
+id and the subject id, for example:
+
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+Rows with # comments will be ignored.
+
+
+OPERATIONS
+==========
+
+--split <column> 
+Split table based on <column> into different tables named long.qdec.<value>.dat
+where <value> is the common value in the column. Use column=fsid-base to split
+table into individual subjects, e.g., to process in parallel.
+
+--cross 
+Also pass --out <name> for output table. This will create a cross table
+from a long table. Meaning that all time points (rows) of the same subject
+will be collapsed into a single line. Numerical values will be averaged across
+time, everything else will be taken from the first tp (first line of each
+subject, as ordered in the input table).
+
+--sort <column>
+Also pass --out <name> for output table. This will sort each subject's enties
+according to the value in <column>, e.g. age.
+
+--out <name>
+Used to specify output in some of the above flags.
+
+
+Options:
+  -h, --help     show this help message and exit
+  --qdec=QDEC    (REQUIRED) qdec table file specifying the subjects and time
+                 points
+  --split=SPLIT  split table based on column SPLIT (e.g. use --split fsid-base
+                 to separate subjects)
+  --cross        output name to collapse table to cross sectional (one line
+                 per subject)
+  --sort=SORT    sort table based on column SORT within subject (e.g. --sort
+                 age)
+  --out=OUT      output file name for operations producing single table
+
+=== Output of 'long_qdec_table -help' ===
+
+Usage: 
+
+SUMMARY
+=======
+
+Will operate on a longitudinal QDEC table.
+
+A longitudinal QDEC table is a text file with space sperated columns where the
+first two columns have the title fsid and fsid-base, containing the time point
+id and the subject id, for example:
+
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+Rows with # comments will be ignored.
+
+
+OPERATIONS
+==========
+
+--split <column> 
+Split table based on <column> into different tables named long.qdec.<value>.dat
+where <value> is the common value in the column. Use column=fsid-base to split
+table into individual subjects, e.g., to process in parallel.
+
+--cross 
+Also pass --out <name> for output table. This will create a cross table
+from a long table. Meaning that all time points (rows) of the same subject
+will be collapsed into a single line. Numerical values will be averaged across
+time, everything else will be taken from the first tp (first line of each
+subject, as ordered in the input table).
+
+--sort <column>
+Also pass --out <name> for output table. This will sort each subject's enties
+according to the value in <column>, e.g. age.
+
+--out <name>
+Used to specify output in some of the above flags.
+
+
+Options:
+  -h, --help     show this help message and exit
+  --qdec=QDEC    (REQUIRED) qdec table file specifying the subjects and time
+                 points
+  --split=SPLIT  split table based on column SPLIT (e.g. use --split fsid-base
+                 to separate subjects)
+  --cross        output name to collapse table to cross sectional (one line
+                 per subject)
+  --sort=SORT    sort table based on column SORT within subject (e.g. --sort
+                 age)
+  --out=OUT      output file name for operations producing single table
+
+=== Output of 'long_qdec_table' (no arguments) ===
+
+Usage: 
+
+SUMMARY
+=======
+
+Will operate on a longitudinal QDEC table.
+
+A longitudinal QDEC table is a text file with space sperated columns where the
+first two columns have the title fsid and fsid-base, containing the time point
+id and the subject id, for example:
+
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+Rows with # comments will be ignored.
+
+
+OPERATIONS
+==========
+
+--split <column> 
+Split table based on <column> into different tables named long.qdec.<value>.dat
+where <value> is the common value in the column. Use column=fsid-base to split
+table into individual subjects, e.g., to process in parallel.
+
+--cross 
+Also pass --out <name> for output table. This will create a cross table
+from a long table. Meaning that all time points (rows) of the same subject
+will be collapsed into a single line. Numerical values will be averaged across
+time, everything else will be taken from the first tp (first line of each
+subject, as ordered in the input table).
+
+--sort <column>
+Also pass --out <name> for output table. This will sort each subject's enties
+according to the value in <column>, e.g. age.
+
+--out <name>
+Used to specify output in some of the above flags.
+
+
+Options:
+  -h, --help     show this help message and exit
+  --qdec=QDEC    (REQUIRED) qdec table file specifying the subjects and time
+                 points
+  --split=SPLIT  split table based on column SPLIT (e.g. use --split fsid-base
+                 to separate subjects)
+  --cross        output name to collapse table to cross sectional (one line
+                 per subject)
+  --sort=SORT    sort table based on column SORT within subject (e.g. --sort
+                 age)
+  --out=OUT      output file name for operations producing single table
+
+ERROR: Specify --qdec

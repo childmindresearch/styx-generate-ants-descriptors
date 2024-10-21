@@ -1,0 +1,45 @@
+
+=== Output of 'ConvertImagePixelType --help' ===
+
+Usage:   ConvertImagePixelType infile.nii out.ext TYPE-OPTION 
+ ext is the extension you want, e.g. tif.  
+ TYPE-OPTION  :  TYPE 
+  0  :  char   
+  1  :  unsigned char   
+  2  :  short   
+  3  :  unsigned short   
+  4  :  int   
+  5  :  unsigned int   
+ Note that some pixel types are not supported by some image formats. e.g.  int is not supported by jpg. 
+ You can easily extend this for other pixel types with a few lines of code and adding usage info. 
+ The image intensity will be scaled to the dynamic range of the pixel type.  E.g. uchar => 0  (min), 255 (max). 
+
+=== Output of 'ConvertImagePixelType -help' ===
+
+Usage:   ConvertImagePixelType infile.nii out.ext TYPE-OPTION 
+ ext is the extension you want, e.g. tif.  
+ TYPE-OPTION  :  TYPE 
+  0  :  char   
+  1  :  unsigned char   
+  2  :  short   
+  3  :  unsigned short   
+  4  :  int   
+  5  :  unsigned int   
+ Note that some pixel types are not supported by some image formats. e.g.  int is not supported by jpg. 
+ You can easily extend this for other pixel types with a few lines of code and adding usage info. 
+ The image intensity will be scaled to the dynamic range of the pixel type.  E.g. uchar => 0  (min), 255 (max). 
+
+=== Output of 'ConvertImagePixelType' (no arguments) ===
+
+Usage:   ConvertImagePixelType infile.nii out.ext TYPE-OPTION 
+ ext is the extension you want, e.g. tif.  
+ TYPE-OPTION  :  TYPE 
+  0  :  char   
+  1  :  unsigned char   
+  2  :  short   
+  3  :  unsigned short   
+  4  :  int   
+  5  :  unsigned int   
+ Note that some pixel types are not supported by some image formats. e.g.  int is not supported by jpg. 
+ You can easily extend this for other pixel types with a few lines of code and adding usage info. 
+ The image intensity will be scaled to the dynamic range of the pixel type.  E.g. uchar => 0  (min), 255 (max). 

@@ -1,0 +1,59 @@
+
+=== Output of 'compute_label_volumes.csh --help' ===
+
+USAGE: compute_label_volumes
+
+Required Arguments:
+   --vol labelvol   : label volume to be analyzed
+   --out outputfile : text file where the results are written
+
+Optional Arguments
+
+   --L label        : the particular label to be analyzed
+   --l label        : the particular label to be analyzed
+   --version        : print version and exit
+   --help           : print help and exit
+
+
+Computes the number of voxels and the volumes of either all or a 
+particular label in the input label volume.
+
+Required Arguments:
+
+--vol labelvol
+
+Label volume to be analyzed
+
+--out outputfile 
+
+Text file where the results are written
+
+Optional Arguments:
+
+--L label
+--l label
+
+The particular label to be analyzed. By default, it is ALL labels in the volume.
+
+BUGS:
+
+=== Output of 'compute_label_volumes.csh -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'compute_label_volumes.csh' (no arguments) ===
+
+USAGE: compute_label_volumes
+
+Required Arguments:
+   --vol labelvol   : label volume to be analyzed
+   --out outputfile : text file where the results are written
+
+Optional Arguments
+
+   --L label        : the particular label to be analyzed
+   --l label        : the particular label to be analyzed
+   --version        : print version and exit
+   --help           : print help and exit
+

@@ -1,0 +1,12 @@
+
+=== Output of 'featregapply --help' ===
+
+Command timed out after 10 seconds
+
+=== Output of 'featregapply -help' ===
+
+Command timed out after 10 seconds
+
+=== Output of 'featregapply' (no arguments) ===
+
+Command timed out after 10 seconds

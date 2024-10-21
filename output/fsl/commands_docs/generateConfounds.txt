@@ -1,0 +1,16 @@
+
+=== Output of 'generateConfounds --help' ===
+
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Unable to open design.mat
+timeout: the monitored command dumped core
+
+=== Output of 'generateConfounds -help' ===
+
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Unable to open design.mat
+timeout: the monitored command dumped core
+
+=== Output of 'generateConfounds' (no arguments) ===
+
+Error opening confound file: 

@@ -1,0 +1,12 @@
+
+=== Output of 'quantifyHAsubregions.sh --help' ===
+
+Usage: /usr/local/freesurfer/bin/quantifyHAsubregions.sh prefix suffix outputFile [subjectsDirectory]
+
+=== Output of 'quantifyHAsubregions.sh -help' ===
+
+Usage: /usr/local/freesurfer/bin/quantifyHAsubregions.sh prefix suffix outputFile [subjectsDirectory]
+
+=== Output of 'quantifyHAsubregions.sh' (no arguments) ===
+
+Usage: /usr/local/freesurfer/bin/quantifyHAsubregions.sh prefix suffix outputFile [subjectsDirectory]

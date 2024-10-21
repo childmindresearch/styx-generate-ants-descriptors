@@ -1,0 +1,19 @@
+
+=== Output of 'mris_gradient --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_gradient [options] <input surface> <input vector field> <output gradient file>
+
+This program computes the gradient of an intensity profile of the cortical ribbon
+and writes the resulting measurement into a .mgz file
+<output file>.
+
+valid options are:
+
+
+=== Output of 'mris_gradient -help' ===
+
+unknown option -help
+
+=== Output of 'mris_gradient' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_gradient [options] <input surface> <input vector field> <output gradient file>

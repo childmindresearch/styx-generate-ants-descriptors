@@ -1,0 +1,20 @@
+
+=== Output of 'gcatrainskull --help' ===
+
+
+gcatrainskull --g gcatraindir
+
+gcatrainskull 7.4.1
+
+=== Output of 'gcatrainskull -help' ===
+
+
+gcatrainskull --g gcatraindir
+
+gcatrainskull 7.4.1
+
+=== Output of 'gcatrainskull' (no arguments) ===
+
+
+gcatrainskull --g gcatraindir
+

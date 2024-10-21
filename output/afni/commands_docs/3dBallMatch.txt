@@ -1,0 +1,540 @@
+
+=== Output of '3dBallMatch --help' ===
+
+[7m** ERROR:[0m Unknown option --help
+[7m** FATAL ERROR:[0m No input dataset?
+** Program compile date = Sep 12 2024
+
+=== Output of '3dBallMatch -help' ===
+
+
+--------------------------------------
+Usage #1:  3dBallMatch dataset [radius]
+--------------------------------------
+
+-----------------------------------------------------------------------
+Usage #2:  3dBallMatch [options]
+
+where the pitifully few options are:
+
+ -input dataset  =  read this dataset
+
+ -ball  radius   =  set the radius of the 3D ball to match (mm)
+
+ -spheroid a b   =  match with a spheroid of revolution, with principal
+                    axis radius of 'a' and secondary axes radii 'b'
+                    ++ this option is considerably slower
+-----------------------------------------------------------------------
+
+-------------------
+WHAT IT IS GOOD FOR
+-------------------
+* This program tries to find a good match between a ball (filled sphere)
+  of the given radius (in mm) and a dataset. The goal is to find a crude
+  approximate center of the brain quickly.
+
+* The output can be used to re-center a dataset so that its coordinate
+  origin is inside the brain and/or as a starting point for more refined
+  3D alignment. Sample scripts are given below.
+
+* The reason for this program is that not all brain images are even
+  crudely centered by using the center-of-mass ('3dAllineate -cmass')
+  as a starting point -- if the volume covered by the image includes
+  a lot of neck or even shoulders, then the center-of-mass may be
+  far from the brain.
+
+* If you don't give a radius, the default is 72 mm, which is about the
+  radius of an adult human brain/cranium. A larger value would be needed
+  for elephant brain images. A smaller value for marmosets.
+
+* For advanced use, you could try a prolate spheroid, using something like
+     3dBallMatch -input Fred.nii -spheroid 90 70
+  for a human head image (that was not skull stripped). This option is
+  several times slower than the 'ball' option, as multiple spheroids have
+  to be correlated with the input dataset.
+
+* This program does NOT work well with datasets containing large amounts
+  of negative values or background junk -- such as I've seen with animal
+  MRI scans and CT scans. Such datasets will likely require some repair
+  first, such as cropping (cf. 3dZeropad), to make this program useful.
+
+* Frankly, this program may not be that useful for any purpose :(
+
+* The output is text to stdout containing 3 triples of numbers, all on
+  one line:
+    i j k xs ys zs xd yd zd
+  where
+    i j k    = index triple of the central voxel
+    xs ys zs = values to use in '3drefit -dxxorigin' (etc.)
+               to make (i,j,k) be at coordinates (x,y,z)=(0,0,0)
+    xd yd zd = DICOM-order (x,y,z) coordinates of (i,j,k) in the
+               input dataset
+
+* The intention is that this output line be captured and then the
+  appropriate pieces be used for some higher purpose.
+
+--------------------------------------------------------------
+SAMPLE SCRIPT - VISUALIZING THE MATCHED LOCATION  (csh syntax)
+--------------------------------------------------------------
+Below is a script to process all the entries in a directory.
+
+#!/bin/tcsh
+
+# optional: start a virtual X11 server
+  set xdisplay = `count_afni -dig 1 3 999 R1`
+  echo " -- trying to start Xvfb :${xdisplay}"
+  Xvfb :${xdisplay} -screen 0 1024x768x24 >& /dev/null &
+  sleep 1
+  set display_old = $DISPLAY
+  setenv DISPLAY :${xdisplay}
+
+# loop over all subjects
+  foreach sss ( sub-?????_T1w.nii.gz )
+
+# extract subject ID code
+    set sub = `echo $sss | sed -e 's/sub-//' -e 's/_T1w.nii.gz//'`
+
+# skip if already finished
+    if ( -f $sub.match   ) continue
+    if ( -f $sub.sag.jpg ) continue
+    if ( -f $sub.cor.jpg ) continue
+
+# run the program, save output to a file
+    3dBallMatch $sss > $sub.match
+
+# capture the output for use below
+    set ijk = ( `cat $sub.match` )
+    echo $sub $ijk
+
+# run afni to make some QC images
+    afni -DAFNI_NOSPLASH=YES                            \
+         -DAFNI_NOPLUGINS=YES                           \
+         -com "OPEN_WINDOW A.sagittalimage"             \
+         -com "OPEN_WINDOW A.coronalimage"              \
+         -com "SET_IJK $ijk[1-3]"                       \
+         -com "SAVE_JPEG A.sagittalimage $sub.sag.jpg"  \
+         -com "SAVE_JPEG A.coronalimage $sub.cor.jpg"   \
+         -com "QUITT"                                   \
+         $sss
+
+# end of loop over subject
+  end
+
+# kill the virtual X11 server (if it was started above)
+  sleep 1
+  killall Xvfb
+
+# make a movie of the sagittal slices
+  im_to_mov -resize -prefix Bsag -npure 4 -nfade 0 *.sag.jpg
+# make a movie of the coronal slices
+  im_to_mov -resize -prefix Bcor -npure 4 -nfade 0 *.cor.jpg
+exit 0
+
+------------------------------------------------------------
+SAMPLE SCRIPT - IMPROVING THE MATCHED LOCATION  (csh syntax)
+------------------------------------------------------------
+This script is an extension of the one above, where it uses
+3dAllineate to align the human brain image to the MNI template,
+guided by the initial point computed by 3dBallMatch. The output
+of 3dAllineate is the coordinate of the center of the original
+volume, in the first 3 values stored in '*Aparam.1D' file.
+ * Note that the 3dAllineate step presumes that the input
+   dataset is a T1-weighted volume. A different set of options would
+   have to be used for an EPI (T2*-weighted) or T2-weighted volume.
+ * This script worked pretty well for putting the crosshairs at
+   the 'origin' of the brain -- near the anterior commissure.
+   Of course, you will need to evaluate its performance yourself.
+
+#!/bin/tcsh
+
+# optional: start Xvfb to avoid the AFNI GUI starting visibly
+  set xdisplay = `count_afni -dig 1 3 999 R1`
+  echo " -- trying to start Xvfb :${xdisplay}"
+  Xvfb :${xdisplay} -screen 0 1024x768x24 >& /dev/null &
+  sleep 1
+  set display_old = $DISPLAY
+  setenv DISPLAY :${xdisplay}
+
+# loop over datasets in the current directory
+  foreach sss ( anat_sub?????.nii.gz )
+
+# extract the subject identifier code (the '?????')
+    set sub = `echo $sss | sed -e 's/anat_sub//' -e 's/.nii.gz//'`
+
+# if 3dAllineate was already run on this, skip to next dataset
+    if ( -f $sub.Aparam.1D ) continue
+
+# find the 'center' voxel location with 3dBallMatch
+    if ( ! -f $sub.match ) then
+      echo "Running 3dBallMatch $sss"
+      3dBallMatch $sss | tee $sub.match
+    endif
+
+# extract results from 3dBallMatch output
+# in this case, we want the final triplet of coordinates
+    set ijk = ( `cat $sub.match` )
+# set shift range to be 55 mm about 3dBallMatch coordinates
+    set  xd = $ijk[7] ; set xbot = `ccalc "${xd}-55"` ; set xtop = `ccalc "${xd}+55"`
+    set  yd = $ijk[8] ; set ybot = `ccalc "${yd}-55"` ; set ytop = `ccalc "${yd}+55"`
+    set  zd = $ijk[9] ; set zbot = `ccalc "${zd}-55"` ; set ztop = `ccalc "${zd}+55"`
+
+# Align the brain image volume with 3dAllineate:
+#  match to 'skull on' part of MNI template = sub-brick [1]
+#  only save the parameters, not the final aligned dataset
+    3dAllineate                                          \
+      -base ~/abin/MNI152_2009_template_SSW.nii.gz'[1]'  \
+      -source $sss                                       \
+      -parang 1 $xbot $xtop                              \
+      -parang 2 $ybot $ytop                              \
+      -parang 3 $zbot $ztop                              \
+      -prefix NULL -lpa                                  \
+      -1Dparam_save $sub.Aparam.1D                       \
+      -conv 3.666 -fineblur 3 -num_rtb 0 -norefinal -verb
+
+# 1dcat (instead of cat) to strip off the comments at the top of the file
+# the first 3 values in 'param' are the (x,y,z) shifts
+# Those values could be used in 3drefit to re-center the dataset
+    set param = ( `1dcat $sub.Aparam.1D` )
+
+# run AFNI to produce the snapshots with crosshairs at
+# the 3dBallMatch center and the 3dAllineate center
+# - B.*.jpg = 3dBallMatch result in crosshairs
+# - A.*.jpg = 3dAllineate result in crosshairs
+    afni -DAFNI_NOSPLASH=YES                             \
+         -DAFNI_NOPLUGINS=YES                            \
+         -com "OPEN_WINDOW A.sagittalimage"              \
+         -com "SET_IJK $ijk[1-3]"                        \
+         -com "SAVE_JPEG A.sagittalimage B.$sub.sag.jpg"  \
+         -com "SET_DICOM_XYZ $param[1-3]"                \
+         -com "SAVE_JPEG A.sagittalimage A.$sub.sag.jpg" \
+         -com "QUITT"                                    \
+         $sss
+
+# End of loop over datasets
+  end
+
+# stop Xvfb (only needed if it was started above)
+  sleep 1
+  killall Xvfb
+
+# make movies from the resulting images
+  im_to_mov -resize -prefix Bsag -npure 4 -nfade 0 B.[1-9]*.sag.jpg
+  im_to_mov -resize -prefix Asag -npure 4 -nfade 0 A.[1-9]*.sag.jpg
+exit 0
+
+----------------------------
+HOW IT WORKS (approximately)
+----------------------------
+1] Create the automask of the input dataset (as in 3dAutomask).
+   + This is a 0/1 binary marking of outside/inside voxels.
+   + Then convert it to a -1/+1 mask instead.
+
+2] Create a -1/+1 mask for the ball [-1=outside, +1=inside],
+   inside a rectangular box.
+
+3] Convolve these 2 masks (using FFTs for speed).
+   + Basically, this is moving the ball around, then adding up
+     the voxel counts where the masks match sign (both positive
+     means ball and dataset are both 'inside'; both negative
+     means ball and dataset are both 'outside'), and subtracting
+     off the voxel counts where the mask differ in sign
+     (one is 'inside' and one is 'outside' == not matched).
+   + That is, the convolution value is the sum of matched voxels
+     minus the sum of mismatched voxels, at every location of
+     offset (i,j,k) of the corner of the ball mask.
+   + The ball mask is in a cube of side 2*radius, which has volume
+     8*radius^3. The volume of the ball is 4*pi/3*radius^3, so the
+     inside of the ball is about 4*pi/(3*8) = 52% of the volume of the cube
+     -- that is, inside and outside voxels are (roughly) matched, so they
+     have (approximately) equal weight.
+   + Most of the CPU time is in the 3D FFTs required.
+
+4] Find the centroid of the locations where the convolution
+   is positive (matches win over non-matches) and at least 5%
+   of the maximum convolution. This centroid gives (i,j,k).
+
+Why the centroid? I found that the peak convolution location
+is not very stable, as a lot of locations have results barely less
+than the peak value -- it was more stable to average them together.
+
+------------------------
+WHY 'ball' NOT 'sphere'?
+------------------------
+ * Because a 'sphere' is a 2D object, the surface of the 3D object 'ball'.
+ * Because my training was in mathematics, where precise terminology has
+   been developed and honed for centuries.
+ * Because I'm yanking your chain. Any other questions? No? Good.
+
+-------
+CREDITS
+-------
+By RWCox, September 2020 (the year it all fell apart).
+Delenda est. Never forget.
+
+
+=== Output of '3dBallMatch' (no arguments) ===
+
+
+--------------------------------------
+Usage #1:  3dBallMatch dataset [radius]
+--------------------------------------
+
+-----------------------------------------------------------------------
+Usage #2:  3dBallMatch [options]
+
+where the pitifully few options are:
+
+ -input dataset  =  read this dataset
+
+ -ball  radius   =  set the radius of the 3D ball to match (mm)
+
+ -spheroid a b   =  match with a spheroid of revolution, with principal
+                    axis radius of 'a' and secondary axes radii 'b'
+                    ++ this option is considerably slower
+-----------------------------------------------------------------------
+
+-------------------
+WHAT IT IS GOOD FOR
+-------------------
+* This program tries to find a good match between a ball (filled sphere)
+  of the given radius (in mm) and a dataset. The goal is to find a crude
+  approximate center of the brain quickly.
+
+* The output can be used to re-center a dataset so that its coordinate
+  origin is inside the brain and/or as a starting point for more refined
+  3D alignment. Sample scripts are given below.
+
+* The reason for this program is that not all brain images are even
+  crudely centered by using the center-of-mass ('3dAllineate -cmass')
+  as a starting point -- if the volume covered by the image includes
+  a lot of neck or even shoulders, then the center-of-mass may be
+  far from the brain.
+
+* If you don't give a radius, the default is 72 mm, which is about the
+  radius of an adult human brain/cranium. A larger value would be needed
+  for elephant brain images. A smaller value for marmosets.
+
+* For advanced use, you could try a prolate spheroid, using something like
+     3dBallMatch -input Fred.nii -spheroid 90 70
+  for a human head image (that was not skull stripped). This option is
+  several times slower than the 'ball' option, as multiple spheroids have
+  to be correlated with the input dataset.
+
+* This program does NOT work well with datasets containing large amounts
+  of negative values or background junk -- such as I've seen with animal
+  MRI scans and CT scans. Such datasets will likely require some repair
+  first, such as cropping (cf. 3dZeropad), to make this program useful.
+
+* Frankly, this program may not be that useful for any purpose :(
+
+* The output is text to stdout containing 3 triples of numbers, all on
+  one line:
+    i j k xs ys zs xd yd zd
+  where
+    i j k    = index triple of the central voxel
+    xs ys zs = values to use in '3drefit -dxxorigin' (etc.)
+               to make (i,j,k) be at coordinates (x,y,z)=(0,0,0)
+    xd yd zd = DICOM-order (x,y,z) coordinates of (i,j,k) in the
+               input dataset
+
+* The intention is that this output line be captured and then the
+  appropriate pieces be used for some higher purpose.
+
+--------------------------------------------------------------
+SAMPLE SCRIPT - VISUALIZING THE MATCHED LOCATION  (csh syntax)
+--------------------------------------------------------------
+Below is a script to process all the entries in a directory.
+
+#!/bin/tcsh
+
+# optional: start a virtual X11 server
+  set xdisplay = `count_afni -dig 1 3 999 R1`
+  echo " -- trying to start Xvfb :${xdisplay}"
+  Xvfb :${xdisplay} -screen 0 1024x768x24 >& /dev/null &
+  sleep 1
+  set display_old = $DISPLAY
+  setenv DISPLAY :${xdisplay}
+
+# loop over all subjects
+  foreach sss ( sub-?????_T1w.nii.gz )
+
+# extract subject ID code
+    set sub = `echo $sss | sed -e 's/sub-//' -e 's/_T1w.nii.gz//'`
+
+# skip if already finished
+    if ( -f $sub.match   ) continue
+    if ( -f $sub.sag.jpg ) continue
+    if ( -f $sub.cor.jpg ) continue
+
+# run the program, save output to a file
+    3dBallMatch $sss > $sub.match
+
+# capture the output for use below
+    set ijk = ( `cat $sub.match` )
+    echo $sub $ijk
+
+# run afni to make some QC images
+    afni -DAFNI_NOSPLASH=YES                            \
+         -DAFNI_NOPLUGINS=YES                           \
+         -com "OPEN_WINDOW A.sagittalimage"             \
+         -com "OPEN_WINDOW A.coronalimage"              \
+         -com "SET_IJK $ijk[1-3]"                       \
+         -com "SAVE_JPEG A.sagittalimage $sub.sag.jpg"  \
+         -com "SAVE_JPEG A.coronalimage $sub.cor.jpg"   \
+         -com "QUITT"                                   \
+         $sss
+
+# end of loop over subject
+  end
+
+# kill the virtual X11 server (if it was started above)
+  sleep 1
+  killall Xvfb
+
+# make a movie of the sagittal slices
+  im_to_mov -resize -prefix Bsag -npure 4 -nfade 0 *.sag.jpg
+# make a movie of the coronal slices
+  im_to_mov -resize -prefix Bcor -npure 4 -nfade 0 *.cor.jpg
+exit 0
+
+------------------------------------------------------------
+SAMPLE SCRIPT - IMPROVING THE MATCHED LOCATION  (csh syntax)
+------------------------------------------------------------
+This script is an extension of the one above, where it uses
+3dAllineate to align the human brain image to the MNI template,
+guided by the initial point computed by 3dBallMatch. The output
+of 3dAllineate is the coordinate of the center of the original
+volume, in the first 3 values stored in '*Aparam.1D' file.
+ * Note that the 3dAllineate step presumes that the input
+   dataset is a T1-weighted volume. A different set of options would
+   have to be used for an EPI (T2*-weighted) or T2-weighted volume.
+ * This script worked pretty well for putting the crosshairs at
+   the 'origin' of the brain -- near the anterior commissure.
+   Of course, you will need to evaluate its performance yourself.
+
+#!/bin/tcsh
+
+# optional: start Xvfb to avoid the AFNI GUI starting visibly
+  set xdisplay = `count_afni -dig 1 3 999 R1`
+  echo " -- trying to start Xvfb :${xdisplay}"
+  Xvfb :${xdisplay} -screen 0 1024x768x24 >& /dev/null &
+  sleep 1
+  set display_old = $DISPLAY
+  setenv DISPLAY :${xdisplay}
+
+# loop over datasets in the current directory
+  foreach sss ( anat_sub?????.nii.gz )
+
+# extract the subject identifier code (the '?????')
+    set sub = `echo $sss | sed -e 's/anat_sub//' -e 's/.nii.gz//'`
+
+# if 3dAllineate was already run on this, skip to next dataset
+    if ( -f $sub.Aparam.1D ) continue
+
+# find the 'center' voxel location with 3dBallMatch
+    if ( ! -f $sub.match ) then
+      echo "Running 3dBallMatch $sss"
+      3dBallMatch $sss | tee $sub.match
+    endif
+
+# extract results from 3dBallMatch output
+# in this case, we want the final triplet of coordinates
+    set ijk = ( `cat $sub.match` )
+# set shift range to be 55 mm about 3dBallMatch coordinates
+    set  xd = $ijk[7] ; set xbot = `ccalc "${xd}-55"` ; set xtop = `ccalc "${xd}+55"`
+    set  yd = $ijk[8] ; set ybot = `ccalc "${yd}-55"` ; set ytop = `ccalc "${yd}+55"`
+    set  zd = $ijk[9] ; set zbot = `ccalc "${zd}-55"` ; set ztop = `ccalc "${zd}+55"`
+
+# Align the brain image volume with 3dAllineate:
+#  match to 'skull on' part of MNI template = sub-brick [1]
+#  only save the parameters, not the final aligned dataset
+    3dAllineate                                          \
+      -base ~/abin/MNI152_2009_template_SSW.nii.gz'[1]'  \
+      -source $sss                                       \
+      -parang 1 $xbot $xtop                              \
+      -parang 2 $ybot $ytop                              \
+      -parang 3 $zbot $ztop                              \
+      -prefix NULL -lpa                                  \
+      -1Dparam_save $sub.Aparam.1D                       \
+      -conv 3.666 -fineblur 3 -num_rtb 0 -norefinal -verb
+
+# 1dcat (instead of cat) to strip off the comments at the top of the file
+# the first 3 values in 'param' are the (x,y,z) shifts
+# Those values could be used in 3drefit to re-center the dataset
+    set param = ( `1dcat $sub.Aparam.1D` )
+
+# run AFNI to produce the snapshots with crosshairs at
+# the 3dBallMatch center and the 3dAllineate center
+# - B.*.jpg = 3dBallMatch result in crosshairs
+# - A.*.jpg = 3dAllineate result in crosshairs
+    afni -DAFNI_NOSPLASH=YES                             \
+         -DAFNI_NOPLUGINS=YES                            \
+         -com "OPEN_WINDOW A.sagittalimage"              \
+         -com "SET_IJK $ijk[1-3]"                        \
+         -com "SAVE_JPEG A.sagittalimage B.$sub.sag.jpg"  \
+         -com "SET_DICOM_XYZ $param[1-3]"                \
+         -com "SAVE_JPEG A.sagittalimage A.$sub.sag.jpg" \
+         -com "QUITT"                                    \
+         $sss
+
+# End of loop over datasets
+  end
+
+# stop Xvfb (only needed if it was started above)
+  sleep 1
+  killall Xvfb
+
+# make movies from the resulting images
+  im_to_mov -resize -prefix Bsag -npure 4 -nfade 0 B.[1-9]*.sag.jpg
+  im_to_mov -resize -prefix Asag -npure 4 -nfade 0 A.[1-9]*.sag.jpg
+exit 0
+
+----------------------------
+HOW IT WORKS (approximately)
+----------------------------
+1] Create the automask of the input dataset (as in 3dAutomask).
+   + This is a 0/1 binary marking of outside/inside voxels.
+   + Then convert it to a -1/+1 mask instead.
+
+2] Create a -1/+1 mask for the ball [-1=outside, +1=inside],
+   inside a rectangular box.
+
+3] Convolve these 2 masks (using FFTs for speed).
+   + Basically, this is moving the ball around, then adding up
+     the voxel counts where the masks match sign (both positive
+     means ball and dataset are both 'inside'; both negative
+     means ball and dataset are both 'outside'), and subtracting
+     off the voxel counts where the mask differ in sign
+     (one is 'inside' and one is 'outside' == not matched).
+   + That is, the convolution value is the sum of matched voxels
+     minus the sum of mismatched voxels, at every location of
+     offset (i,j,k) of the corner of the ball mask.
+   + The ball mask is in a cube of side 2*radius, which has volume
+     8*radius^3. The volume of the ball is 4*pi/3*radius^3, so the
+     inside of the ball is about 4*pi/(3*8) = 52% of the volume of the cube
+     -- that is, inside and outside voxels are (roughly) matched, so they
+     have (approximately) equal weight.
+   + Most of the CPU time is in the 3D FFTs required.
+
+4] Find the centroid of the locations where the convolution
+   is positive (matches win over non-matches) and at least 5%
+   of the maximum convolution. This centroid gives (i,j,k).
+
+Why the centroid? I found that the peak convolution location
+is not very stable, as a lot of locations have results barely less
+than the peak value -- it was more stable to average them together.
+
+------------------------
+WHY 'ball' NOT 'sphere'?
+------------------------
+ * Because a 'sphere' is a 2D object, the surface of the 3D object 'ball'.
+ * Because my training was in mathematics, where precise terminology has
+   been developed and honed for centuries.
+ * Because I'm yanking your chain. Any other questions? No? Good.
+
+-------
+CREDITS
+-------
+By RWCox, September 2020 (the year it all fell apart).
+Delenda est. Never forget.
+

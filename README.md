@@ -1,23 +1,23 @@
-# ANTs Boutiques Descriptor Generator
+# LLM Neuroimaging Boutiques Descriptor Generator
 
-This repository contains scripts to automatically generate Boutiques descriptors for ANTs (Advanced Normalization Tools) commands.
+This repository contains scripts to automatically generate Boutiques descriptors for various neuroimaging software packages, including ANTs (Advanced Normalization Tools), FSL, AFNI and FreeSurfer.
+
+## Overview
+
+The process of generating Boutiques descriptors is divided into three main steps:
+
+1. **Documentation Extraction**: Extracts help texts and documentation from neuroimaging software commands.
+2. **Descriptor Generation**: Uses AI language models to generate Boutiques descriptors from the extracted documentation.
+3. **Package Compilation**: Compiles the generated descriptors into a structured package.
 
 ## Scripts
 
-1. `extract.sh`: Extracts documentation for ANTs commands using a Docker container.
-2. `llm.py`: Generates Boutiques descriptors from command help texts using OpenAI's GPT-4o.
+1. `extract.sh`: Extracts documentation for commands from specified neuroimaging software packages using Docker containers.
+2. `llm.py`: Generates Boutiques descriptors from command help texts using AI language models (e.g., OpenAI's GPT-4).
 3. `build.py`: Compiles the generated descriptors into a structured package.
 
 ## Requirements
 
 - Docker
-- Python 3.11
-- OpenAI API key
-
-## Output
-
-The final output is stored in the `dist` directory, containing:
-- Individual Boutiques descriptors for ANTs commands
-- An `ants.json` file with package metadata and command statuses
-
-Contents of the folder can then be merged into [NiWrap](https://github.com/childmindresearch/niwrap) for human review.
+- Python 3.11+
+- OpenAI API key (if using OpenAI's models)

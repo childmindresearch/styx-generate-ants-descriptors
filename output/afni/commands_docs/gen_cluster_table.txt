@@ -1,0 +1,192 @@
+
+=== Output of 'gen_cluster_table --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of 'gen_cluster_table -help' ===
+
+-------------------------------------------------------------------------
+Overview ~1~
+
+This is a program to take a cluster dataset and make a table of
+overlaps with respect to a given atlas.
+
+This would be useful for reporting more information about cluster
+results than, say, peak voxel or middle-voxel tables.  For usage
+example, see:
+
+  Highlight Results, Don't Hide Them: Enhance interpretation, reduce
+  biases and improve reproducibility. 
+  Taylor PA, Reynolds RC, Calhoun V, Gonzalez-Castillo J, Handwerker
+  DA, Bandettini PA, Mejia AF, Chen G (2023). Neuroimage 274:120138. 
+  https://pubmed.ncbi.nlm.nih.gov/37116766/
+
+This program basically wraps around the useful 'whereami_afni' program.
+
+auth    : PA Taylor (SSCC, NIMH, NIH, USA)
+ver     : 1.0
+revdate : Apr 05, 2024
+
+-------------------------------------------------------------------------
+Options ~1~
+
+-input_clust IC    :(req) input dataset: the map of clusters, of which you 
+                    want to list out overlaps. Should be a single 3D volume.
+
+-input_atlas IA    :(req) input dataset: the reference atlas, to be used
+                    to identify/list overlaps from the cluster input
+
+-prefix      PPP   :(req) output name for the table, so likely should end 
+                    with ".txt" or ".dat", for clarity
+
+-min_olap_perc MOP :minimum overlap (as a percentage value) of cluster with
+                    a given reference atlas region to be displayed in the 
+                    table. That is, if MOP% or more of the cluster overlaps
+                    with a given region, then list that region. 
+                    (def: 10)
+                    **See Notes, below, for more about this**
+                    
+-strict            :by default, if no atlas region overlaps with the 
+                    '-min_olap_perc ..' threshold value, then the atlas 
+                    region with maximum overlap will be displayed still;
+                    use this option, however, to strictly apply the threshold,
+                    so no ROI would be shown.
+
+-workdir     WWW   :specify the name of the temporary working directory
+                    (which is created as a new subdirectory of the output
+                    file location---do not include path info here, just a
+                    simple name)
+
+-no_clean          :do not remove working directory (def: remove it)
+
+-echo              :very verbose output when running (for troubleshooting)
+
+-help, -h          :display this meager help info
+
+-ver               :display this program version
+
+-------------------------------------------------------------------------
+Notes ~1~
+
+Note that the '-min_olap_perc ..' value specifies the fraction of the
+*cluster* for displaying in the table. If your cluster is inherently
+much, much larger than your atlas regions, this can mean that you
+won't see many overlaps reported in the table.  In such a case, you
+might want to lower the '-min_olap_perc ..' significantly.
+
+Future work might be to have a different thresholding criterion,
+perhaps based on the fraction of the *atlas* region overlap with the
+cluster, for reporting.
+
+-------------------------------------------------------------------------
+Examples ~1~
+
+1) Basic usage to create a table:
+   gen_cluster_table                                  \
+        -input_map   Clust_mask+tlrc.HEAD             \
+        -input_atlas MNI_Glasser_HCP_v1.0.nii.gz      \
+        -prefix      table_cluster_olap_glasser.txt
+
+2) Basic usage to create a table, using a lower overlap fraction cut-off:
+   gen_cluster_table                                  \
+        -input_map     Clust_mask+tlrc.HEAD           \
+        -input_atlas   MNI_Glasser_HCP_v1.0.nii.gz    \
+        -min_olap_perc 5                              \
+        -prefix        table_cluster_olap _glasser.txt
+
+
+=== Output of 'gen_cluster_table' (no arguments) ===
+
+-------------------------------------------------------------------------
+Overview ~1~
+
+This is a program to take a cluster dataset and make a table of
+overlaps with respect to a given atlas.
+
+This would be useful for reporting more information about cluster
+results than, say, peak voxel or middle-voxel tables.  For usage
+example, see:
+
+  Highlight Results, Don't Hide Them: Enhance interpretation, reduce
+  biases and improve reproducibility. 
+  Taylor PA, Reynolds RC, Calhoun V, Gonzalez-Castillo J, Handwerker
+  DA, Bandettini PA, Mejia AF, Chen G (2023). Neuroimage 274:120138. 
+  https://pubmed.ncbi.nlm.nih.gov/37116766/
+
+This program basically wraps around the useful 'whereami_afni' program.
+
+auth    : PA Taylor (SSCC, NIMH, NIH, USA)
+ver     : 1.0
+revdate : Apr 05, 2024
+
+-------------------------------------------------------------------------
+Options ~1~
+
+-input_clust IC    :(req) input dataset: the map of clusters, of which you 
+                    want to list out overlaps. Should be a single 3D volume.
+
+-input_atlas IA    :(req) input dataset: the reference atlas, to be used
+                    to identify/list overlaps from the cluster input
+
+-prefix      PPP   :(req) output name for the table, so likely should end 
+                    with ".txt" or ".dat", for clarity
+
+-min_olap_perc MOP :minimum overlap (as a percentage value) of cluster with
+                    a given reference atlas region to be displayed in the 
+                    table. That is, if MOP% or more of the cluster overlaps
+                    with a given region, then list that region. 
+                    (def: 10)
+                    **See Notes, below, for more about this**
+                    
+-strict            :by default, if no atlas region overlaps with the 
+                    '-min_olap_perc ..' threshold value, then the atlas 
+                    region with maximum overlap will be displayed still;
+                    use this option, however, to strictly apply the threshold,
+                    so no ROI would be shown.
+
+-workdir     WWW   :specify the name of the temporary working directory
+                    (which is created as a new subdirectory of the output
+                    file location---do not include path info here, just a
+                    simple name)
+
+-no_clean          :do not remove working directory (def: remove it)
+
+-echo              :very verbose output when running (for troubleshooting)
+
+-help, -h          :display this meager help info
+
+-ver               :display this program version
+
+-------------------------------------------------------------------------
+Notes ~1~
+
+Note that the '-min_olap_perc ..' value specifies the fraction of the
+*cluster* for displaying in the table. If your cluster is inherently
+much, much larger than your atlas regions, this can mean that you
+won't see many overlaps reported in the table.  In such a case, you
+might want to lower the '-min_olap_perc ..' significantly.
+
+Future work might be to have a different thresholding criterion,
+perhaps based on the fraction of the *atlas* region overlap with the
+cluster, for reporting.
+
+-------------------------------------------------------------------------
+Examples ~1~
+
+1) Basic usage to create a table:
+   gen_cluster_table                                  \
+        -input_map   Clust_mask+tlrc.HEAD             \
+        -input_atlas MNI_Glasser_HCP_v1.0.nii.gz      \
+        -prefix      table_cluster_olap_glasser.txt
+
+2) Basic usage to create a table, using a lower overlap fraction cut-off:
+   gen_cluster_table                                  \
+        -input_map     Clust_mask+tlrc.HEAD           \
+        -input_atlas   MNI_Glasser_HCP_v1.0.nii.gz    \
+        -min_olap_perc 5                              \
+        -prefix        table_cluster_olap _glasser.txt
+

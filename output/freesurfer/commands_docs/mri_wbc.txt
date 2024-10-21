@@ -1,0 +1,60 @@
+
+=== Output of 'mri_wbc --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_wbc 
+
+   --fvol volfile : functional volume
+   --volmask volfile : mask for functional volume 
+
+   --lh lhffile lh.surface <lh.inflated>: functional surface lh
+   --lhmask lhfile : mask for lh functional surface
+   --lhlabel lhlabel : label mask for lh functional surface
+
+   --rh rhffile rh.surface <rh.inflated>: functional surface rh
+   --rhmask rhfile : mask for rh functional surface
+   --rhlabel rhlabel : label mask for rh functional surface
+
+   --rho rhothresh
+   --dist distthresh
+
+   --threads nthreads
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+WARNING: this program is not yet tested!
+
+=== Output of 'mri_wbc -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_wbc' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_wbc 
+
+   --fvol volfile : functional volume
+   --volmask volfile : mask for functional volume 
+
+   --lh lhffile lh.surface <lh.inflated>: functional surface lh
+   --lhmask lhfile : mask for lh functional surface
+   --lhlabel lhlabel : label mask for lh functional surface
+
+   --rh rhffile rh.surface <rh.inflated>: functional surface rh
+   --rhmask rhfile : mask for rh functional surface
+   --rhlabel rhlabel : label mask for rh functional surface
+
+   --rho rhothresh
+   --dist distthresh
+
+   --threads nthreads
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

@@ -1,0 +1,15 @@
+
+=== Output of 'rmsdiff --help' ===
+
+Usage: /usr/local/fsl/bin/rmsdiff matrixfile1 matrixfile2 refvol [mask]
+        Outputs rms deviation between matrices (in mm)
+
+=== Output of 'rmsdiff -help' ===
+
+Usage: /usr/local/fsl/bin/rmsdiff matrixfile1 matrixfile2 refvol [mask]
+        Outputs rms deviation between matrices (in mm)
+
+=== Output of 'rmsdiff' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/rmsdiff matrixfile1 matrixfile2 refvol [mask]
+        Outputs rms deviation between matrices (in mm)

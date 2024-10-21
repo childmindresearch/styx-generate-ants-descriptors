@@ -1,0 +1,15 @@
+
+=== Output of 'mri_motion_correct.fsl --help' ===
+
+I/O warning : failed to load external entity "/usr/local/freesurfer/docs/xml/mri_motion_correct.fsl.help.xml"
+Document not parsed successfully. 
+
+=== Output of 'mri_motion_correct.fsl -help' ===
+
+I/O warning : failed to load external entity "/usr/local/freesurfer/docs/xml/mri_motion_correct.fsl.help.xml"
+Document not parsed successfully. 
+
+=== Output of 'mri_motion_correct.fsl' (no arguments) ===
+
+I/O warning : failed to load external entity "/usr/local/freesurfer/docs/xml/mri_motion_correct.fsl.help.xml"
+Document not parsed successfully. 

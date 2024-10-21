@@ -1,0 +1,87 @@
+
+=== Output of 'cp-dicom --help' ===
+
+
+USAGE: cp-dicom
+
+  -d dcmdir
+  -o outdir
+
+  -debug          : print out lots of info
+  -version        : print version of this script and exit
+  -help           : yea, like anybody's going to read this
+
+cp-dicom 7.4.1
+
+
+Copies dicom files into separate directories for each series. The
+series number is extracted from the dicom header, so the dicom file
+names do not have to conformm to any standard.
+
+Example:
+
+  cp-dicom -d ./dicomdir -o /space/data/mydicom
+
+All the dicom files should be in ./dicomdir.  The results will be in
+/space/data/mydicom/protocol-S, where "protocol" is the protocol name
+and S is the series number. There will be a separate directory for
+each series. The dicom file names will not be changed. If the protocol
+cannot be found in the dicom header, then only the series number is
+used for the directory name.
+
+The series number is based on DICOM tag 20 11.
+The protocol is based on DICOM tag 18 1030.
+
+Note: any spaces or asterices (*) are removed from the protocol name.
+
+
+
+=== Output of 'cp-dicom -help' ===
+
+
+USAGE: cp-dicom
+
+  -d dcmdir
+  -o outdir
+
+  -debug          : print out lots of info
+  -version        : print version of this script and exit
+  -help           : yea, like anybody's going to read this
+
+cp-dicom 7.4.1
+
+
+Copies dicom files into separate directories for each series. The
+series number is extracted from the dicom header, so the dicom file
+names do not have to conformm to any standard.
+
+Example:
+
+  cp-dicom -d ./dicomdir -o /space/data/mydicom
+
+All the dicom files should be in ./dicomdir.  The results will be in
+/space/data/mydicom/protocol-S, where "protocol" is the protocol name
+and S is the series number. There will be a separate directory for
+each series. The dicom file names will not be changed. If the protocol
+cannot be found in the dicom header, then only the series number is
+used for the directory name.
+
+The series number is based on DICOM tag 20 11.
+The protocol is based on DICOM tag 18 1030.
+
+Note: any spaces or asterices (*) are removed from the protocol name.
+
+
+
+=== Output of 'cp-dicom' (no arguments) ===
+
+
+USAGE: cp-dicom
+
+  -d dcmdir
+  -o outdir
+
+  -debug          : print out lots of info
+  -version        : print version of this script and exit
+  -help           : yea, like anybody's going to read this
+

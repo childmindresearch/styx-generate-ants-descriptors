@@ -1,0 +1,21 @@
+
+=== Output of 'mri_paint --help' ===
+
+usage: /usr/local/freesurfer/bin/mri_paint [options] <input volume> <input surface> <registration file> <output .float file>
+
+This program will paint a average Talairach stats onto a surface
+-imageoffset <image offset> - set offset to use
+-S                          - paint using surface coordinates
+
+=== Output of 'mri_paint -help' ===
+
+unknown option -help
+
+=== Output of 'mri_paint' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_paint [options] <input volume> <input surface> <registration file> <output .float file>
+usage: /usr/local/freesurfer/bin/mri_paint [options] <input volume> <input surface> <registration file> <output .float file>
+
+This program will paint a average Talairach stats onto a surface
+-imageoffset <image offset> - set offset to use
+-S                          - paint using surface coordinates

@@ -1,0 +1,345 @@
+
+=== Output of 'find_variance_lines.tcsh --help' ===
+
+[7m** ERROR:[0m Option --help unknown
+   Here's hoping these excerpts from '3dinfo -help' enlighten:
+        '-help: The entire help output'
+        '-HELP: Extreme help, same as -help in majority of cases.'
+        '-h: Mini help, at time, same as -help in many cases.'
+nstuff: Subscript out of range.
+
+=== Output of 'find_variance_lines.tcsh -help' ===
+
+---------------------------------------------------------------------------
+find_variance_lines.tcsh   - look for high temporal variance columns
+
+   usage : find_variance_lines.tcsh [options] datasets ..."
+
+Look for bars of high variance that might suggest scanner interference.
+
+   inputs: multiple runs of EPI datasets
+   output: a directory containing
+           - variance maps per run: original and scaled
+           - cluster reports and x,y coordinates at high averages
+           - a JPEG image showing locations of high variance
+
+This program takes one or more runs of (presumably) EPI time series data,
+and looks for slice locations with consistently high temporal variance across
+the (masked) slices.
+
+   steps:
+      - (possibly) automask, erode and require columns of 5 voxels
+      - (possibly) detrend at regress polort level, default = A
+      - compute temporal variance volume
+      - get p90 = 90th %ile in volume mask, default %ile = 90
+      - scale variance to val/p90, with max of 1
+      - Localstat -mask mean over columns
+      - find separate clusters of them
+
+------------------------------------------------------------
+Examples:
+
+  1. Run using defaults.
+
+        find_variance_lines.tcsh epi_r1.nii epi_r2.nii epi_r3.nii
+          OR
+        find_variance_lines.tcsh epi_r*.nii
+
+  2. What would afni_proc.py do?
+
+        find_variance_lines.tcsh -rdir vlines.pb00.tcat -nerode 2 \
+            pb00*tcat*.HEAD |& tee out.vlines.pb00.tcat.txt
+
+  3. Provide a mask (and do not erode).  Do not detrend time series.
+     Use the default output directory, vlines.result.
+
+        find_variance_lines.tcsh -mask my_mask.nii.gz -polort -1 \
+              epi_run*.nii.gz
+
+------------------------------------------------------------
+Options (terminal):
+
+   -help                : show this help
+   -hist                : show the version history
+   -ver                 : show the current version
+
+Options (processing):
+
+   -do_clean VAL        : do we clean up a little? (def=1)
+
+                             VAL in {0,1}
+
+                          Remove likely unneeded datasets, particular the
+                          large time series datasets.
+
+   -do_img VAL          : make vline images? (def=1)
+
+                             VAL in {0,1}
+
+                          Specify whether to make jpeg images of high
+                          variance locations.
+
+   -echo                : run script with shell 'echo' set (def=no)
+                          (this is VERY verbose)
+
+                          With this set, it is as if running the (tcsh) as in:
+
+                             tcsh -x .../find_variance_lines.tcsh ...
+
+                          So all shell commands (including setting variables,
+                          "if" evaluations, etc.) are shown.  This is useful
+                          for debugging.
+
+   -mask VAL            : mask for computations (def=AUTO)
+
+                             VAL in {AUTO, NONE, dataset}
+
+                          Specify a mask dataset to restrict variance
+                          computations to.  VAL should be a dataset, with
+                          exception for special cases:
+
+                             AUTO : generate automask with 3dAutomask
+                             NONE : do not mask
+
+   -min_cvox VAL        : min voxels for valid mask column (def=5)
+
+                             VAL in Z+ (positive integers)
+
+                          In the input or automask, after any eroding, remove
+                          voxels that do not have at least 'VAL' voxels in the
+                          vertical column.  Otherwise, edge voxels might end
+                          up in the result.
+
+   -min_nt VAL          : minimum number of time points required (def=10)
+
+                             VAL > 1 (integer)
+
+                          This is just a minimum limit to be sure the input
+                          time series are long enough to be reasonable.
+
+   -nerode VAL          : how much to erode input or auto-mask (def=0)
+
+                             VAL >= 0 (integer)
+
+                          Specify the number of levels to erode any mask by.
+                          "3dmask_tool -dilate -VAL " is used.
+
+   -nfirst VAL          : discard the first VAL time points (def=0)
+
+                             VAL >= 0 (integer)
+
+                          Specify the number of time points to discard from
+                          the start of each run (pre-steady state, presumably).
+
+   -perc VAL            : percentile of variance vals to scale to (def=90)
+
+                             VAL in {0..99}
+
+                          When looking for high variance, the values are scaled
+                          by this percentile value, with a scaled limit of 1.
+                          So if the 90%-ile of variance values were 876.5, then
+                          variance would be scaled using v_new = v_old/876.5,
+                          with v_new limited to the range [0,1].
+
+                          This allows evaluation relative to a modestly extreme
+                          value, without worrying about the exact numbers.
+
+   -polort VAL          : polynomial detrending degree (def=A)
+
+                             VAL >= -1 (integer), or in {A,AUTO,NONE}
+
+                          Specify the polynomial degree to use for time series
+                          detrending prior to the variance computation.  This
+                          should be an integer >= -1 (or a special case).  The
+                          default is the same as that used by afni_proc.py and
+                          3dDeconvolve, which is based on the duration of the
+                          run, in seconds.
+
+                          Special cases or examples:
+
+                                A       : auto = floor(run_duration/150)+1
+                                AUTO    : auto = floor(run_duration/150)+1
+                                NONE    : do not detrend (same as -1)
+                                -1      : do not detrend
+                                0       : only remove the mean
+                                3       : remove a cubic polynomial trend
+
+   -rdir VAL            : name of the output directory (def=vlines.result)
+
+                             VAL is a new directory name
+
+                          All output is put into this results directory.
+
+
+- R Reynolds, P Taylor, D Glen
+  Nov, 2022
+  version 0.4, 23 Nov, 2022
+
+
+=== Output of 'find_variance_lines.tcsh' (no arguments) ===
+
+---------------------------------------------------------------------------
+find_variance_lines.tcsh   - look for high temporal variance columns
+
+   usage : find_variance_lines.tcsh [options] datasets ..."
+
+Look for bars of high variance that might suggest scanner interference.
+
+   inputs: multiple runs of EPI datasets
+   output: a directory containing
+           - variance maps per run: original and scaled
+           - cluster reports and x,y coordinates at high averages
+           - a JPEG image showing locations of high variance
+
+This program takes one or more runs of (presumably) EPI time series data,
+and looks for slice locations with consistently high temporal variance across
+the (masked) slices.
+
+   steps:
+      - (possibly) automask, erode and require columns of 5 voxels
+      - (possibly) detrend at regress polort level, default = A
+      - compute temporal variance volume
+      - get p90 = 90th %ile in volume mask, default %ile = 90
+      - scale variance to val/p90, with max of 1
+      - Localstat -mask mean over columns
+      - find separate clusters of them
+
+------------------------------------------------------------
+Examples:
+
+  1. Run using defaults.
+
+        find_variance_lines.tcsh epi_r1.nii epi_r2.nii epi_r3.nii
+          OR
+        find_variance_lines.tcsh epi_r*.nii
+
+  2. What would afni_proc.py do?
+
+        find_variance_lines.tcsh -rdir vlines.pb00.tcat -nerode 2 \
+            pb00*tcat*.HEAD |& tee out.vlines.pb00.tcat.txt
+
+  3. Provide a mask (and do not erode).  Do not detrend time series.
+     Use the default output directory, vlines.result.
+
+        find_variance_lines.tcsh -mask my_mask.nii.gz -polort -1 \
+              epi_run*.nii.gz
+
+------------------------------------------------------------
+Options (terminal):
+
+   -help                : show this help
+   -hist                : show the version history
+   -ver                 : show the current version
+
+Options (processing):
+
+   -do_clean VAL        : do we clean up a little? (def=1)
+
+                             VAL in {0,1}
+
+                          Remove likely unneeded datasets, particular the
+                          large time series datasets.
+
+   -do_img VAL          : make vline images? (def=1)
+
+                             VAL in {0,1}
+
+                          Specify whether to make jpeg images of high
+                          variance locations.
+
+   -echo                : run script with shell 'echo' set (def=no)
+                          (this is VERY verbose)
+
+                          With this set, it is as if running the (tcsh) as in:
+
+                             tcsh -x .../find_variance_lines.tcsh ...
+
+                          So all shell commands (including setting variables,
+                          "if" evaluations, etc.) are shown.  This is useful
+                          for debugging.
+
+   -mask VAL            : mask for computations (def=AUTO)
+
+                             VAL in {AUTO, NONE, dataset}
+
+                          Specify a mask dataset to restrict variance
+                          computations to.  VAL should be a dataset, with
+                          exception for special cases:
+
+                             AUTO : generate automask with 3dAutomask
+                             NONE : do not mask
+
+   -min_cvox VAL        : min voxels for valid mask column (def=5)
+
+                             VAL in Z+ (positive integers)
+
+                          In the input or automask, after any eroding, remove
+                          voxels that do not have at least 'VAL' voxels in the
+                          vertical column.  Otherwise, edge voxels might end
+                          up in the result.
+
+   -min_nt VAL          : minimum number of time points required (def=10)
+
+                             VAL > 1 (integer)
+
+                          This is just a minimum limit to be sure the input
+                          time series are long enough to be reasonable.
+
+   -nerode VAL          : how much to erode input or auto-mask (def=0)
+
+                             VAL >= 0 (integer)
+
+                          Specify the number of levels to erode any mask by.
+                          "3dmask_tool -dilate -VAL " is used.
+
+   -nfirst VAL          : discard the first VAL time points (def=0)
+
+                             VAL >= 0 (integer)
+
+                          Specify the number of time points to discard from
+                          the start of each run (pre-steady state, presumably).
+
+   -perc VAL            : percentile of variance vals to scale to (def=90)
+
+                             VAL in {0..99}
+
+                          When looking for high variance, the values are scaled
+                          by this percentile value, with a scaled limit of 1.
+                          So if the 90%-ile of variance values were 876.5, then
+                          variance would be scaled using v_new = v_old/876.5,
+                          with v_new limited to the range [0,1].
+
+                          This allows evaluation relative to a modestly extreme
+                          value, without worrying about the exact numbers.
+
+   -polort VAL          : polynomial detrending degree (def=A)
+
+                             VAL >= -1 (integer), or in {A,AUTO,NONE}
+
+                          Specify the polynomial degree to use for time series
+                          detrending prior to the variance computation.  This
+                          should be an integer >= -1 (or a special case).  The
+                          default is the same as that used by afni_proc.py and
+                          3dDeconvolve, which is based on the duration of the
+                          run, in seconds.
+
+                          Special cases or examples:
+
+                                A       : auto = floor(run_duration/150)+1
+                                AUTO    : auto = floor(run_duration/150)+1
+                                NONE    : do not detrend (same as -1)
+                                -1      : do not detrend
+                                0       : only remove the mean
+                                3       : remove a cubic polynomial trend
+
+   -rdir VAL            : name of the output directory (def=vlines.result)
+
+                             VAL is a new directory name
+
+                          All output is put into this results directory.
+
+
+- R Reynolds, P Taylor, D Glen
+  Nov, 2022
+  version 0.4, 23 Nov, 2022
+

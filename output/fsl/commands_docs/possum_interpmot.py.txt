@@ -1,0 +1,15 @@
+
+=== Output of 'possum_interpmot.py --help' ===
+
+Usage: /usr/local/fsl/bin/possum_interpmot.py <motion_type> <tr> <tr_slice> <nslices> <nvols> <custom_motion_file> <output_file>
+  motion_type = 0 for continuous; 1 for between slices ; 2 for between volumes
+
+=== Output of 'possum_interpmot.py -help' ===
+
+Usage: /usr/local/fsl/bin/possum_interpmot.py <motion_type> <tr> <tr_slice> <nslices> <nvols> <custom_motion_file> <output_file>
+  motion_type = 0 for continuous; 1 for between slices ; 2 for between volumes
+
+=== Output of 'possum_interpmot.py' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/possum_interpmot.py <motion_type> <tr> <tr_slice> <nslices> <nvols> <custom_motion_file> <output_file>
+  motion_type = 0 for continuous; 1 for between slices ; 2 for between volumes

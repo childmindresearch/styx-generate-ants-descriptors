@@ -1,0 +1,92 @@
+
+=== Output of 'applyMorph --help' ===
+
+				Help
+
+NAME
+	applyMorph
+
+POSITIONAL ARGUMENTS
+	inputs
+		Inputs.
+
+REQUIRED FLAGGED ARGUMENTS
+	--template FILE
+		Template volume.
+
+	--transform FILE
+		Transform file.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--zlib_buffer INT
+		Zlib buffer pre-allocation multiplier.
+
+	--dbg_coords X Y Z
+		Debugging coordinates.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'applyMorph -help' ===
+
+				Help
+
+NAME
+	applyMorph
+
+POSITIONAL ARGUMENTS
+	inputs
+		Inputs.
+
+REQUIRED FLAGGED ARGUMENTS
+	--template FILE
+		Template volume.
+
+	--transform FILE
+		Transform file.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--zlib_buffer INT
+		Zlib buffer pre-allocation multiplier.
+
+	--dbg_coords X Y Z
+		Debugging coordinates.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+error: missing required input '--template'
+
+=== Output of 'applyMorph' (no arguments) ===
+
+				Help
+
+NAME
+	applyMorph
+
+POSITIONAL ARGUMENTS
+	inputs
+		Inputs.
+
+REQUIRED FLAGGED ARGUMENTS
+	--template FILE
+		Template volume.
+
+	--transform FILE
+		Transform file.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--zlib_buffer INT
+		Zlib buffer pre-allocation multiplier.
+
+	--dbg_coords X Y Z
+		Debugging coordinates.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+error: missing required input 'inputs'

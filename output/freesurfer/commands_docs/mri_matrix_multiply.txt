@@ -1,0 +1,58 @@
+
+=== Output of 'mri_matrix_multiply --help' ===
+
+mri_matrix_multiply: unknown option --help
+mri_matrix_multiply: no input files specified
+usage: mri_matrix_multiply [options]
+options are:
+  -v verbose
+  -fsl : assume input/output are FSL-style matrix files
+  -bin : 'binarize' output matrix.
+  -s subject : use subject for subjectname in output reg.dat files
+
+'-im file' specifies input matrix files
+'-iim file' specifies input matrix files to be inverted before multiplication
+'-om file' specifies output matrix files
+input and output files may be .dat or .xfm files
+
+ mri_matrix_multiply -im M1.dat -im M2.dat -iim M3.dat -om M4.dat 
+    will compute M4 = M1*M2*inv(M3)
+
+
+=== Output of 'mri_matrix_multiply -help' ===
+
+mri_matrix_multiply: unknown option -help
+mri_matrix_multiply: no input files specified
+usage: mri_matrix_multiply [options]
+options are:
+  -v verbose
+  -fsl : assume input/output are FSL-style matrix files
+  -bin : 'binarize' output matrix.
+  -s subject : use subject for subjectname in output reg.dat files
+
+'-im file' specifies input matrix files
+'-iim file' specifies input matrix files to be inverted before multiplication
+'-om file' specifies output matrix files
+input and output files may be .dat or .xfm files
+
+ mri_matrix_multiply -im M1.dat -im M2.dat -iim M3.dat -om M4.dat 
+    will compute M4 = M1*M2*inv(M3)
+
+
+=== Output of 'mri_matrix_multiply' (no arguments) ===
+
+usage: mri_matrix_multiply [options]
+options are:
+  -v verbose
+  -fsl : assume input/output are FSL-style matrix files
+  -bin : 'binarize' output matrix.
+  -s subject : use subject for subjectname in output reg.dat files
+
+'-im file' specifies input matrix files
+'-iim file' specifies input matrix files to be inverted before multiplication
+'-om file' specifies output matrix files
+input and output files may be .dat or .xfm files
+
+ mri_matrix_multiply -im M1.dat -im M2.dat -iim M3.dat -om M4.dat 
+    will compute M4 = M1*M2*inv(M3)
+

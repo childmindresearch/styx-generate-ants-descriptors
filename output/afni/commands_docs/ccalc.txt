@@ -1,0 +1,1848 @@
+
+=== Output of 'ccalc --help' ===
+
+ Arithmetic expressions are allowed, using + - * / ** ^ and parentheses.
+ C relational, boolean, and conditional expressions are NOT implemented!
+* Note that the expression evaluator is designed not to fail;  illegal  *
+* operations like 'sqrt(-1)' are changed to legal ones to avoid crashes.*
+ Built in functions include:
+
+    sin  , cos  , tan  , asin  , acos  , atan  , atan2,       
+    sinh , cosh , tanh , asinh , acosh , atanh , exp  ,       
+    log  , log10, abs  , int   , sqrt  , max   , min  ,       
+    J0   , J1   , Y0   , Y1    , erf   , erfc  , qginv, qg ,  
+    rect , step , astep, bool  , and   , or    , mofn ,       
+    sind , cosd , tand , median, lmode , hmode , mad  ,       
+    gran , uran , iran , eran  , lran  , orstat, mod  ,       
+    mean , stdev, sem  , Pleg  , cbrt  , rhddc2, hrfbk4,hrfbk5
+    minabove, maxbelow, extreme, absextreme    , acfwxm
+    gamp , gampq
+
+ where some of the less obvious functions are:
+ * qg(x)    = reversed cdf of a standard normal distribution
+ * qginv(x) = inverse function to qg
+ * min, max, atan2 each take 2 arguments ONLY
+ * J0, J1, Y0, Y1 are Bessel functions (see the holy book: Watson)
+ * Pleg(m,x) is the m'th Legendre polynomial evaluated at x
+ * erf, erfc are the error and complementary error functions
+ * sind, cosd, tand take arguments in degrees (vs. radians)
+ * median(a,b,c,...) computes the median of its arguments
+ * mad(a,b,c,...) computes the MAD of its arguments
+ * mean(a,b,c,...) computes the mean of its arguments
+ * stdev(a,b,c,...) computes the standard deviation of its arguments
+ * sem(a,b,c,...) computes standard error of the mean of its arguments,
+                  where sem(n arguments) = stdev(same)/sqrt(n)
+ * orstat(n,a,b,c,...) computes the n-th order statistic of
+    {a,b,c,...} - that is, the n-th value in size, starting
+    at the bottom (e.g., orstat(1,a,b,c) is the minimum)
+ * minabove(X,a,b,c,...) computes the smallest value amongst {a,b,c,...}
+    that is LARGER than the first argument X; if all values are smaller
+    than X, then X will be returned
+ * maxbelow(X,a,b,c,...) similarly returns the largest value amongst
+    {a,b,c,...} that is SMALLER than the first argument X.
+ * extreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning one of the original a,b,c,... values.
+ * absextreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning the maximum absolute value of a,b,c,... values.
+ * lmode(a,b,c,...) and hmode(a,b,c,...) compute the mode
+    of their arguments - lmode breaks ties by choosing the
+    smallest value with the maximal count, hmode breaks ties by
+    choosing the largest value with the maximal count
+    ["a,b,c,..." indicates a variable number of arguments]
+ * gran(m,s) returns a Gaussian deviate with mean=m, stdev=s
+ * uran(r)   returns a uniform deviate in the range [0,r]
+ * iran(t)   returns a random integer in the range [0..t]
+ * eran(s)   returns an exponentially distributed deviate
+               with parameter s; mean=s
+ * lran(t)   returns a logistically distributed deviate
+               with parameter t; mean=0, stdev=t*1.814
+ * mod(a,b)  returns (a modulo b) = a - b*int(a/b)
+ * hrfbk4(t,L) and hrfbk5(t,L) are the BLOCK4 and BLOCK5 hemodynamic
+    response functions from 3dDeconvolve (L=stimulus duration in sec,
+    and t is the time in sec since start of stimulus); for example:
+ 1deval -del 0.1 -num 400 -expr 'hrfbk5(t-2,20)' | 1dplot -stdin -del 0.1
+    These HRF functions are scaled to return values in the range [0..1]
+
+ * ACFWXM(a,b,c,x) returns the Full Width at X Maximum for the mixed
+   model ACF function
+     f(r) = a*expr(-r*r/(2*b*b))+(1-a)*exp(-r/c)
+   for X between 0 and 1 (not inclusive).  This is the model function
+   estimated in program 3dFWHMx.
+ * gamp(peak,fwhm) returns the parameter p in the formula
+      g(t) = (t/(p*q))^p * exp(p-t/q)
+   that gives the peak value of g(t) occurring at t=peak when the
+   FWHM of g(t) is given by fwhm; gamq(peak,fwhm) gives the q parameter.
+   These functions are largely used for creating FMRI hemodynamic shapes.
+
+ You may use the symbol 'PI' to refer to the constant of that name.
+ This is the only 2 letter symbol defined; all variables are
+ referred to by 1 letter symbols.  The case of the expression is
+ ignored (in fact, it is converted to uppercase as the first step
+ in the parsing algorithm).
+
+ The following functions are designed to help implement logical
+ functions, such as masking of 3D volumes against some criterion:
+       step(x)    = {1 if x>0           , 0 if x<=0},
+       posval(x)  = {x if x>0           , 0 if x<=0},
+       astep(x,y) = {1 if abs(x) > y    , 0 otherwise} = step(abs(x)-y)
+  within(x,MI,MX) = {1 if MI <= x <= MX , 0 otherwise},
+       rect(x)    = {1 if abs(x)<=0.5, 0 if abs(x)>0.5},
+       bool(x)    = {1 if x != 0.0   , 0 if x == 0.0},
+    notzero(x)    = bool(x),
+     iszero(x)    = 1-bool(x) = { 0 if x != 0.0, 1 if x == 0.0 },
+        not(x)    = same as iszero(x)
+     equals(x,y)  = 1-bool(x-y) = { 1 if x == y , 0 if x != y },
+   ispositive(x)  = { 1 if x > 0; 0 if x <= 0 },
+   isnegative(x)  = { 1 if x < 0; 0 if x >= 0 },
+   ifelse(x,t,f)  = { t if x != 0; f if x == 0 },
+        not(x)    = same as iszero(x) = Boolean negation
+   and(a,b,...,c) = {1 if all arguments are nonzero, 0 if any are zero}
+    or(a,b,...,c) = {1 if any arguments are nonzero, 0 if all are zero}
+  mofn(m,a,...,c) = {1 if at least 'm' arguments are nonzero, else 0 }
+  argmax(a,b,...) = index of largest argument; = 0 if all args are 0
+  argnum(a,b,...) = number of nonzero arguments
+  pairmax(a,b,...)= finds the 'paired' argument that corresponds to the
+                    maximum of the first half of the input arguments;
+                    for example, pairmax(a,b,c,p,q,r) determines which
+                    of {a,b,c} is the max, then returns corresponding
+                    value from {p,q,r}; requires even number of args.
+  pairmin(a,b,...)= Similar to pairmax, but for minimum; for example,
+                    pairmin(a,b,c,p,q,r} finds the minimum of {a,b,c}
+                    and returns the corresponding value from {p,q,r};
+                      pairmin(3,2,7,5,-1,-2,-3,-4) = -2
+                    (The 'pair' functions are Lukas Pezawas specials!)
+  amongst(a,b,...)= Return value is 1 if any of the b,c,... values
+                    equals the a value; otherwise, return value is 0.
+ choose(n,a,b,...)= chooses the n-th value from the a,b,... values.
+                    (e.g., choose(2,a,b,c) is b)
+  isprime(n)      = 1 if n is a positive integer and a prime number
+                    0 if n is a positive integer and not a prime number
+                   -1 if n is not a positive integer
+                   or if n is bigger than 2^31-1
+
+  [These last 9 functions take a variable number of arguments.]
+
+ The following 27 functions are used for statistical conversions,
+ as in the program 'cdf':
+   fico_t2p(t,a,b,c), fico_p2t(p,a,b,c), fico_t2z(t,a,b,c),
+   fitt_t2p(t,a)    , fitt_p2t(p,a)    , fitt_t2z(t,a)    ,
+   fift_t2p(t,a,b)  , fift_p2t(p,a,b)  , fift_t2z(t,a,b)  ,
+   fizt_t2p(t)      , fizt_p2t(p)      , fizt_t2z(t)      ,
+   fict_t2p(t,a)    , fict_p2t(p,a)    , fict_t2z(t,a)    ,
+   fibt_t2p(t,a,b)  , fibt_p2t(p,a,b)  , fibt_t2z(t,a,b)  ,
+   fibn_t2p(t,a,b)  , fibn_p2t(p,a,b)  , fibn_t2z(t,a,b)  ,
+   figt_t2p(t,a,b)  , figt_p2t(p,a,b)  , figt_t2z(t,a,b)  ,
+   fipt_t2p(t,a)    , fipt_p2t(p,a)    , fipt_t2z(t,a)    .
+
+ See the output of 'cdf -help' for documentation on the meanings of
+ and arguments to these functions.  The two functions below use the
+ NIfTI-1 statistical codes to map between statistical values and
+ cumulative distribution values:
+   cdf2stat(val,code,p1,p2,p3) -- val is between 0 and 1
+   stat2cdf(val,code,p1,p2,p3) -- val is legal for the given distribution
+ where code is
+   2 = correlation statistic     p1 = DOF
+   3 = t statistic (central)     p1 = DOF
+   4 = F statistic (central)     p1 = num DOF, p2 = den DOF
+   5 = N(0,1) statistic          no parameters (p1=p2=p3=0)
+   6 = Chi-squared (central)     p1 = DOF
+   7 = Beta variable (central)   p1 = a , p2 = b
+   8 = Binomial variable         p1 = #trials, p2 = prob per trial
+   9 = Gamma distribution        p1 = shape, p2 = scale
+  10 = Poisson distribution      p1 = mean
+  11 = N(mu,variance) normal     p1 = mean, p2 = scale
+  12 = noncentral F statistic    p1 = num DOF, p2 = den DOF, p3 = noncen
+  13 = noncentral chi-squared    p1 = DOF, p2 = noncentrality parameter
+  14 = Logistic distribution     p1 = mean, p2 = scale
+  15 = Laplace distribution      p1 = mean, p2 = scale
+  16 = Uniform distribution      p1 = min, p2 = max
+  17 = noncentral t statistic    p1 = DOF, p2 = noncentrality parameter
+  18 = Weibull distribution      p1 = location, p2 = scale, p3 = power
+  19 = Chi statistic (central)   p1 = DOF
+  20 = inverse Gaussian variable p1 = mu, p2 = lambda
+  21 = Extreme value type I      p1 = location, p2 = scale
+  22 = 'p-value'                 no parameters
+  23 = -ln(p)                    no parameters
+  24 = -log10(p)                 no parameters
+When fewer than 3 parameters are needed, the values for later parameters
+are still required, but will be ignored.  An extreme case is code=5,
+where the correct call is (e.g.) cdf2stat(p,5,0,0,0)
+
+Finally, note that the expression evaluator is designed not to crash, or
+to return NaN or Infinity.  Illegal operations, such as division by 0,
+logarithm of negative value, etc., are intercepted and something else
+(usually 0) will be returned.  To find out what that 'something else'
+is in any specific case, you should play with the ccalc program.
+ Arithmetic expressions are allowed, using + - * / ** ^ and parentheses.
+ C relational, boolean, and conditional expressions are NOT implemented!
+* Note that the expression evaluator is designed not to fail;  illegal  *
+* operations like 'sqrt(-1)' are changed to legal ones to avoid crashes.*
+ Built in functions include:
+
+    sin  , cos  , tan  , asin  , acos  , atan  , atan2,       
+    sinh , cosh , tanh , asinh , acosh , atanh , exp  ,       
+    log  , log10, abs  , int   , sqrt  , max   , min  ,       
+    J0   , J1   , Y0   , Y1    , erf   , erfc  , qginv, qg ,  
+    rect , step , astep, bool  , and   , or    , mofn ,       
+    sind , cosd , tand , median, lmode , hmode , mad  ,       
+    gran , uran , iran , eran  , lran  , orstat, mod  ,       
+    mean , stdev, sem  , Pleg  , cbrt  , rhddc2, hrfbk4,hrfbk5
+    minabove, maxbelow, extreme, absextreme    , acfwxm
+    gamp , gampq
+
+ where some of the less obvious functions are:
+ * qg(x)    = reversed cdf of a standard normal distribution
+ * qginv(x) = inverse function to qg
+ * min, max, atan2 each take 2 arguments ONLY
+ * J0, J1, Y0, Y1 are Bessel functions (see the holy book: Watson)
+ * Pleg(m,x) is the m'th Legendre polynomial evaluated at x
+ * erf, erfc are the error and complementary error functions
+ * sind, cosd, tand take arguments in degrees (vs. radians)
+ * median(a,b,c,...) computes the median of its arguments
+ * mad(a,b,c,...) computes the MAD of its arguments
+ * mean(a,b,c,...) computes the mean of its arguments
+ * stdev(a,b,c,...) computes the standard deviation of its arguments
+ * sem(a,b,c,...) computes standard error of the mean of its arguments,
+                  where sem(n arguments) = stdev(same)/sqrt(n)
+ * orstat(n,a,b,c,...) computes the n-th order statistic of
+    {a,b,c,...} - that is, the n-th value in size, starting
+    at the bottom (e.g., orstat(1,a,b,c) is the minimum)
+ * minabove(X,a,b,c,...) computes the smallest value amongst {a,b,c,...}
+    that is LARGER than the first argument X; if all values are smaller
+    than X, then X will be returned
+ * maxbelow(X,a,b,c,...) similarly returns the largest value amongst
+    {a,b,c,...} that is SMALLER than the first argument X.
+ * extreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning one of the original a,b,c,... values.
+ * absextreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning the maximum absolute value of a,b,c,... values.
+ * lmode(a,b,c,...) and hmode(a,b,c,...) compute the mode
+    of their arguments - lmode breaks ties by choosing the
+    smallest value with the maximal count, hmode breaks ties by
+    choosing the largest value with the maximal count
+    ["a,b,c,..." indicates a variable number of arguments]
+ * gran(m,s) returns a Gaussian deviate with mean=m, stdev=s
+ * uran(r)   returns a uniform deviate in the range [0,r]
+ * iran(t)   returns a random integer in the range [0..t]
+ * eran(s)   returns an exponentially distributed deviate
+               with parameter s; mean=s
+ * lran(t)   returns a logistically distributed deviate
+               with parameter t; mean=0, stdev=t*1.814
+ * mod(a,b)  returns (a modulo b) = a - b*int(a/b)
+ * hrfbk4(t,L) and hrfbk5(t,L) are the BLOCK4 and BLOCK5 hemodynamic
+    response functions from 3dDeconvolve (L=stimulus duration in sec,
+    and t is the time in sec since start of stimulus); for example:
+ 1deval -del 0.1 -num 400 -expr 'hrfbk5(t-2,20)' | 1dplot -stdin -del 0.1
+    These HRF functions are scaled to return values in the range [0..1]
+
+ * ACFWXM(a,b,c,x) returns the Full Width at X Maximum for the mixed
+   model ACF function
+     f(r) = a*expr(-r*r/(2*b*b))+(1-a)*exp(-r/c)
+   for X between 0 and 1 (not inclusive).  This is the model function
+   estimated in program 3dFWHMx.
+ * gamp(peak,fwhm) returns the parameter p in the formula
+      g(t) = (t/(p*q))^p * exp(p-t/q)
+   that gives the peak value of g(t) occurring at t=peak when the
+   FWHM of g(t) is given by fwhm; gamq(peak,fwhm) gives the q parameter.
+   These functions are largely used for creating FMRI hemodynamic shapes.
+
+ You may use the symbol 'PI' to refer to the constant of that name.
+ This is the only 2 letter symbol defined; all variables are
+ referred to by 1 letter symbols.  The case of the expression is
+ ignored (in fact, it is converted to uppercase as the first step
+ in the parsing algorithm).
+
+ The following functions are designed to help implement logical
+ functions, such as masking of 3D volumes against some criterion:
+       step(x)    = {1 if x>0           , 0 if x<=0},
+       posval(x)  = {x if x>0           , 0 if x<=0},
+       astep(x,y) = {1 if abs(x) > y    , 0 otherwise} = step(abs(x)-y)
+  within(x,MI,MX) = {1 if MI <= x <= MX , 0 otherwise},
+       rect(x)    = {1 if abs(x)<=0.5, 0 if abs(x)>0.5},
+       bool(x)    = {1 if x != 0.0   , 0 if x == 0.0},
+    notzero(x)    = bool(x),
+     iszero(x)    = 1-bool(x) = { 0 if x != 0.0, 1 if x == 0.0 },
+        not(x)    = same as iszero(x)
+     equals(x,y)  = 1-bool(x-y) = { 1 if x == y , 0 if x != y },
+   ispositive(x)  = { 1 if x > 0; 0 if x <= 0 },
+   isnegative(x)  = { 1 if x < 0; 0 if x >= 0 },
+   ifelse(x,t,f)  = { t if x != 0; f if x == 0 },
+        not(x)    = same as iszero(x) = Boolean negation
+   and(a,b,...,c) = {1 if all arguments are nonzero, 0 if any are zero}
+    or(a,b,...,c) = {1 if any arguments are nonzero, 0 if all are zero}
+  mofn(m,a,...,c) = {1 if at least 'm' arguments are nonzero, else 0 }
+  argmax(a,b,...) = index of largest argument; = 0 if all args are 0
+  argnum(a,b,...) = number of nonzero arguments
+  pairmax(a,b,...)= finds the 'paired' argument that corresponds to the
+                    maximum of the first half of the input arguments;
+                    for example, pairmax(a,b,c,p,q,r) determines which
+                    of {a,b,c} is the max, then returns corresponding
+                    value from {p,q,r}; requires even number of args.
+  pairmin(a,b,...)= Similar to pairmax, but for minimum; for example,
+                    pairmin(a,b,c,p,q,r} finds the minimum of {a,b,c}
+                    and returns the corresponding value from {p,q,r};
+                      pairmin(3,2,7,5,-1,-2,-3,-4) = -2
+                    (The 'pair' functions are Lukas Pezawas specials!)
+  amongst(a,b,...)= Return value is 1 if any of the b,c,... values
+                    equals the a value; otherwise, return value is 0.
+ choose(n,a,b,...)= chooses the n-th value from the a,b,... values.
+                    (e.g., choose(2,a,b,c) is b)
+  isprime(n)      = 1 if n is a positive integer and a prime number
+                    0 if n is a positive integer and not a prime number
+                   -1 if n is not a positive integer
+                   or if n is bigger than 2^31-1
+
+  [These last 9 functions take a variable number of arguments.]
+
+ The following 27 functions are used for statistical conversions,
+ as in the program 'cdf':
+   fico_t2p(t,a,b,c), fico_p2t(p,a,b,c), fico_t2z(t,a,b,c),
+   fitt_t2p(t,a)    , fitt_p2t(p,a)    , fitt_t2z(t,a)    ,
+   fift_t2p(t,a,b)  , fift_p2t(p,a,b)  , fift_t2z(t,a,b)  ,
+   fizt_t2p(t)      , fizt_p2t(p)      , fizt_t2z(t)      ,
+   fict_t2p(t,a)    , fict_p2t(p,a)    , fict_t2z(t,a)    ,
+   fibt_t2p(t,a,b)  , fibt_p2t(p,a,b)  , fibt_t2z(t,a,b)  ,
+   fibn_t2p(t,a,b)  , fibn_p2t(p,a,b)  , fibn_t2z(t,a,b)  ,
+   figt_t2p(t,a,b)  , figt_p2t(p,a,b)  , figt_t2z(t,a,b)  ,
+   fipt_t2p(t,a)    , fipt_p2t(p,a)    , fipt_t2z(t,a)    .
+
+ See the output of 'cdf -help' for documentation on the meanings of
+ and arguments to these functions.  The two functions below use the
+ NIfTI-1 statistical codes to map between statistical values and
+ cumulative distribution values:
+   cdf2stat(val,code,p1,p2,p3) -- val is between 0 and 1
+   stat2cdf(val,code,p1,p2,p3) -- val is legal for the given distribution
+ where code is
+   2 = correlation statistic     p1 = DOF
+   3 = t statistic (central)     p1 = DOF
+   4 = F statistic (central)     p1 = num DOF, p2 = den DOF
+   5 = N(0,1) statistic          no parameters (p1=p2=p3=0)
+   6 = Chi-squared (central)     p1 = DOF
+   7 = Beta variable (central)   p1 = a , p2 = b
+   8 = Binomial variable         p1 = #trials, p2 = prob per trial
+   9 = Gamma distribution        p1 = shape, p2 = scale
+  10 = Poisson distribution      p1 = mean
+  11 = N(mu,variance) normal     p1 = mean, p2 = scale
+  12 = noncentral F statistic    p1 = num DOF, p2 = den DOF, p3 = noncen
+  13 = noncentral chi-squared    p1 = DOF, p2 = noncentrality parameter
+  14 = Logistic distribution     p1 = mean, p2 = scale
+  15 = Laplace distribution      p1 = mean, p2 = scale
+  16 = Uniform distribution      p1 = min, p2 = max
+  17 = noncentral t statistic    p1 = DOF, p2 = noncentrality parameter
+  18 = Weibull distribution      p1 = location, p2 = scale, p3 = power
+  19 = Chi statistic (central)   p1 = DOF
+  20 = inverse Gaussian variable p1 = mu, p2 = lambda
+  21 = Extreme value type I      p1 = location, p2 = scale
+  22 = 'p-value'                 no parameters
+  23 = -ln(p)                    no parameters
+  24 = -log10(p)                 no parameters
+When fewer than 3 parameters are needed, the values for later parameters
+are still required, but will be ignored.  An extreme case is code=5,
+where the correct call is (e.g.) cdf2stat(p,5,0,0,0)
+
+Finally, note that the expression evaluator is designed not to crash, or
+to return NaN or Infinity.  Illegal operations, such as division by 0,
+logarithm of negative value, etc., are intercepted and something else
+(usually 0) will be returned.  To find out what that 'something else'
+is in any specific case, you should play with the ccalc program.
+ Arithmetic expressions are allowed, using + - * / ** ^ and parentheses.
+ C relational, boolean, and conditional expressions are NOT implemented!
+* Note that the expression evaluator is designed not to fail;  illegal  *
+* operations like 'sqrt(-1)' are changed to legal ones to avoid crashes.*
+ Built in functions include:
+
+    sin  , cos  , tan  , asin  , acos  , atan  , atan2,       
+    sinh , cosh , tanh , asinh , acosh , atanh , exp  ,       
+    log  , log10, abs  , int   , sqrt  , max   , min  ,       
+    J0   , J1   , Y0   , Y1    , erf   , erfc  , qginv, qg ,  
+    rect , step , astep, bool  , and   , or    , mofn ,       
+    sind , cosd , tand , median, lmode , hmode , mad  ,       
+    gran , uran , iran , eran  , lran  , orstat, mod  ,       
+    mean , stdev, sem  , Pleg  , cbrt  , rhddc2, hrfbk4,hrfbk5
+    minabove, maxbelow, extreme, absextreme    , acfwxm
+    gamp , gampq
+
+ where some of the less obvious functions are:
+ * qg(x)    = reversed cdf of a standard normal distribution
+ * qginv(x) = inverse function to qg
+ * min, max, atan2 each take 2 arguments ONLY
+ * J0, J1, Y0, Y1 are Bessel functions (see the holy book: Watson)
+ * Pleg(m,x) is the m'th Legendre polynomial evaluated at x
+ * erf, erfc are the error and complementary error functions
+ * sind, cosd, tand take arguments in degrees (vs. radians)
+ * median(a,b,c,...) computes the median of its arguments
+ * mad(a,b,c,...) computes the MAD of its arguments
+ * mean(a,b,c,...) computes the mean of its arguments
+ * stdev(a,b,c,...) computes the standard deviation of its arguments
+ * sem(a,b,c,...) computes standard error of the mean of its arguments,
+                  where sem(n arguments) = stdev(same)/sqrt(n)
+ * orstat(n,a,b,c,...) computes the n-th order statistic of
+    {a,b,c,...} - that is, the n-th value in size, starting
+    at the bottom (e.g., orstat(1,a,b,c) is the minimum)
+ * minabove(X,a,b,c,...) computes the smallest value amongst {a,b,c,...}
+    that is LARGER than the first argument X; if all values are smaller
+    than X, then X will be returned
+ * maxbelow(X,a,b,c,...) similarly returns the largest value amongst
+    {a,b,c,...} that is SMALLER than the first argument X.
+ * extreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning one of the original a,b,c,... values.
+ * absextreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning the maximum absolute value of a,b,c,... values.
+ * lmode(a,b,c,...) and hmode(a,b,c,...) compute the mode
+    of their arguments - lmode breaks ties by choosing the
+    smallest value with the maximal count, hmode breaks ties by
+    choosing the largest value with the maximal count
+    ["a,b,c,..." indicates a variable number of arguments]
+ * gran(m,s) returns a Gaussian deviate with mean=m, stdev=s
+ * uran(r)   returns a uniform deviate in the range [0,r]
+ * iran(t)   returns a random integer in the range [0..t]
+ * eran(s)   returns an exponentially distributed deviate
+               with parameter s; mean=s
+ * lran(t)   returns a logistically distributed deviate
+               with parameter t; mean=0, stdev=t*1.814
+ * mod(a,b)  returns (a modulo b) = a - b*int(a/b)
+ * hrfbk4(t,L) and hrfbk5(t,L) are the BLOCK4 and BLOCK5 hemodynamic
+    response functions from 3dDeconvolve (L=stimulus duration in sec,
+    and t is the time in sec since start of stimulus); for example:
+ 1deval -del 0.1 -num 400 -expr 'hrfbk5(t-2,20)' | 1dplot -stdin -del 0.1
+    These HRF functions are scaled to return values in the range [0..1]
+
+ * ACFWXM(a,b,c,x) returns the Full Width at X Maximum for the mixed
+   model ACF function
+     f(r) = a*expr(-r*r/(2*b*b))+(1-a)*exp(-r/c)
+   for X between 0 and 1 (not inclusive).  This is the model function
+   estimated in program 3dFWHMx.
+ * gamp(peak,fwhm) returns the parameter p in the formula
+      g(t) = (t/(p*q))^p * exp(p-t/q)
+   that gives the peak value of g(t) occurring at t=peak when the
+   FWHM of g(t) is given by fwhm; gamq(peak,fwhm) gives the q parameter.
+   These functions are largely used for creating FMRI hemodynamic shapes.
+
+ You may use the symbol 'PI' to refer to the constant of that name.
+ This is the only 2 letter symbol defined; all variables are
+ referred to by 1 letter symbols.  The case of the expression is
+ ignored (in fact, it is converted to uppercase as the first step
+ in the parsing algorithm).
+
+ The following functions are designed to help implement logical
+ functions, such as masking of 3D volumes against some criterion:
+       step(x)    = {1 if x>0           , 0 if x<=0},
+       posval(x)  = {x if x>0           , 0 if x<=0},
+       astep(x,y) = {1 if abs(x) > y    , 0 otherwise} = step(abs(x)-y)
+  within(x,MI,MX) = {1 if MI <= x <= MX , 0 otherwise},
+       rect(x)    = {1 if abs(x)<=0.5, 0 if abs(x)>0.5},
+       bool(x)    = {1 if x != 0.0   , 0 if x == 0.0},
+    notzero(x)    = bool(x),
+     iszero(x)    = 1-bool(x) = { 0 if x != 0.0, 1 if x == 0.0 },
+        not(x)    = same as iszero(x)
+     equals(x,y)  = 1-bool(x-y) = { 1 if x == y , 0 if x != y },
+   ispositive(x)  = { 1 if x > 0; 0 if x <= 0 },
+   isnegative(x)  = { 1 if x < 0; 0 if x >= 0 },
+   ifelse(x,t,f)  = { t if x != 0; f if x == 0 },
+        not(x)    = same as iszero(x) = Boolean negation
+   and(a,b,...,c) = {1 if all arguments are nonzero, 0 if any are zero}
+    or(a,b,...,c) = {1 if any arguments are nonzero, 0 if all are zero}
+  mofn(m,a,...,c) = {1 if at least 'm' arguments are nonzero, else 0 }
+  argmax(a,b,...) = index of largest argument; = 0 if all args are 0
+  argnum(a,b,...) = number of nonzero arguments
+  pairmax(a,b,...)= finds the 'paired' argument that corresponds to the
+                    maximum of the first half of the input arguments;
+                    for example, pairmax(a,b,c,p,q,r) determines which
+                    of {a,b,c} is the max, then returns corresponding
+                    value from {p,q,r}; requires even number of args.
+  pairmin(a,b,...)= Similar to pairmax, but for minimum; for example,
+                    pairmin(a,b,c,p,q,r} finds the minimum of {a,b,c}
+                    and returns the corresponding value from {p,q,r};
+                      pairmin(3,2,7,5,-1,-2,-3,-4) = -2
+                    (The 'pair' functions are Lukas Pezawas specials!)
+  amongst(a,b,...)= Return value is 1 if any of the b,c,... values
+                    equals the a value; otherwise, return value is 0.
+ choose(n,a,b,...)= chooses the n-th value from the a,b,... values.
+                    (e.g., choose(2,a,b,c) is b)
+  isprime(n)      = 1 if n is a positive integer and a prime number
+                    0 if n is a positive integer and not a prime number
+                   -1 if n is not a positive integer
+                   or if n is bigger than 2^31-1
+
+  [These last 9 functions take a variable number of arguments.]
+
+ The following 27 functions are used for statistical conversions,
+ as in the program 'cdf':
+   fico_t2p(t,a,b,c), fico_p2t(p,a,b,c), fico_t2z(t,a,b,c),
+   fitt_t2p(t,a)    , fitt_p2t(p,a)    , fitt_t2z(t,a)    ,
+   fift_t2p(t,a,b)  , fift_p2t(p,a,b)  , fift_t2z(t,a,b)  ,
+   fizt_t2p(t)      , fizt_p2t(p)      , fizt_t2z(t)      ,
+   fict_t2p(t,a)    , fict_p2t(p,a)    , fict_t2z(t,a)    ,
+   fibt_t2p(t,a,b)  , fibt_p2t(p,a,b)  , fibt_t2z(t,a,b)  ,
+   fibn_t2p(t,a,b)  , fibn_p2t(p,a,b)  , fibn_t2z(t,a,b)  ,
+   figt_t2p(t,a,b)  , figt_p2t(p,a,b)  , figt_t2z(t,a,b)  ,
+   fipt_t2p(t,a)    , fipt_p2t(p,a)    , fipt_t2z(t,a)    .
+
+ See the output of 'cdf -help' for documentation on the meanings of
+ and arguments to these functions.  The two functions below use the
+ NIfTI-1 statistical codes to map between statistical values and
+ cumulative distribution values:
+   cdf2stat(val,code,p1,p2,p3) -- val is between 0 and 1
+   stat2cdf(val,code,p1,p2,p3) -- val is legal for the given distribution
+ where code is
+   2 = correlation statistic     p1 = DOF
+   3 = t statistic (central)     p1 = DOF
+   4 = F statistic (central)     p1 = num DOF, p2 = den DOF
+   5 = N(0,1) statistic          no parameters (p1=p2=p3=0)
+   6 = Chi-squared (central)     p1 = DOF
+   7 = Beta variable (central)   p1 = a , p2 = b
+   8 = Binomial variable         p1 = #trials, p2 = prob per trial
+   9 = Gamma distribution        p1 = shape, p2 = scale
+  10 = Poisson distribution      p1 = mean
+  11 = N(mu,variance) normal     p1 = mean, p2 = scale
+  12 = noncentral F statistic    p1 = num DOF, p2 = den DOF, p3 = noncen
+  13 = noncentral chi-squared    p1 = DOF, p2 = noncentrality parameter
+  14 = Logistic distribution     p1 = mean, p2 = scale
+  15 = Laplace distribution      p1 = mean, p2 = scale
+  16 = Uniform distribution      p1 = min, p2 = max
+  17 = noncentral t statistic    p1 = DOF, p2 = noncentrality parameter
+  18 = Weibull distribution      p1 = location, p2 = scale, p3 = power
+  19 = Chi statistic (central)   p1 = DOF
+  20 = inverse Gaussian variable p1 = mu, p2 = lambda
+  21 = Extreme value type I      p1 = location, p2 = scale
+  22 = 'p-value'                 no parameters
+  23 = -ln(p)                    no parameters
+  24 = -log10(p)                 no parameters
+When fewer than 3 parameters are needed, the values for later parameters
+are still required, but will be ignored.  An extreme case is code=5,
+where the correct call is (e.g.) cdf2stat(p,5,0,0,0)
+
+Finally, note that the expression evaluator is designed not to crash, or
+to return NaN or Infinity.  Illegal operations, such as division by 0,
+logarithm of negative value, etc., are intercepted and something else
+(usually 0) will be returned.  To find out what that 'something else'
+is in any specific case, you should play with the ccalc program.
+ Arithmetic expressions are allowed, using + - * / ** ^ and parentheses.
+ C relational, boolean, and conditional expressions are NOT implemented!
+* Note that the expression evaluator is designed not to fail;  illegal  *
+* operations like 'sqrt(-1)' are changed to legal ones to avoid crashes.*
+ Built in functions include:
+
+    sin  , cos  , tan  , asin  , acos  , atan  , atan2,       
+    sinh , cosh , tanh , asinh , acosh , atanh , exp  ,       
+    log  , log10, abs  , int   , sqrt  , max   , min  ,       
+    J0   , J1   , Y0   , Y1    , erf   , erfc  , qginv, qg ,  
+    rect , step , astep, bool  , and   , or    , mofn ,       
+    sind , cosd , tand , median, lmode , hmode , mad  ,       
+    gran , uran , iran , eran  , lran  , orstat, mod  ,       
+    mean , stdev, sem  , Pleg  , cbrt  , rhddc2, hrfbk4,hrfbk5
+    minabove, maxbelow, extreme, absextreme    , acfwxm
+    gamp , gampq
+
+ where some of the less obvious functions are:
+ * qg(x)    = reversed cdf of a standard normal distribution
+ * qginv(x) = inverse function to qg
+ * min, max, atan2 each take 2 arguments ONLY
+ * J0, J1, Y0, Y1 are Bessel functions (see the holy book: Watson)
+ * Pleg(m,x) is the m'th Legendre polynomial evaluated at x
+ * erf, erfc are the error and complementary error functions
+ * sind, cosd, tand take arguments in degrees (vs. radians)
+ * median(a,b,c,...) computes the median of its arguments
+ * mad(a,b,c,...) computes the MAD of its arguments
+ * mean(a,b,c,...) computes the mean of its arguments
+ * stdev(a,b,c,...) computes the standard deviation of its arguments
+ * sem(a,b,c,...) computes standard error of the mean of its arguments,
+                  where sem(n arguments) = stdev(same)/sqrt(n)
+ * orstat(n,a,b,c,...) computes the n-th order statistic of
+    {a,b,c,...} - that is, the n-th value in size, starting
+    at the bottom (e.g., orstat(1,a,b,c) is the minimum)
+ * minabove(X,a,b,c,...) computes the smallest value amongst {a,b,c,...}
+    that is LARGER than the first argument X; if all values are smaller
+    than X, then X will be returned
+ * maxbelow(X,a,b,c,...) similarly returns the largest value amongst
+    {a,b,c,...} that is SMALLER than the first argument X.
+ * extreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning one of the original a,b,c,... values.
+ * absextreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning the maximum absolute value of a,b,c,... values.
+ * lmode(a,b,c,...) and hmode(a,b,c,...) compute the mode
+    of their arguments - lmode breaks ties by choosing the
+    smallest value with the maximal count, hmode breaks ties by
+    choosing the largest value with the maximal count
+    ["a,b,c,..." indicates a variable number of arguments]
+ * gran(m,s) returns a Gaussian deviate with mean=m, stdev=s
+ * uran(r)   returns a uniform deviate in the range [0,r]
+ * iran(t)   returns a random integer in the range [0..t]
+ * eran(s)   returns an exponentially distributed deviate
+               with parameter s; mean=s
+ * lran(t)   returns a logistically distributed deviate
+               with parameter t; mean=0, stdev=t*1.814
+ * mod(a,b)  returns (a modulo b) = a - b*int(a/b)
+ * hrfbk4(t,L) and hrfbk5(t,L) are the BLOCK4 and BLOCK5 hemodynamic
+    response functions from 3dDeconvolve (L=stimulus duration in sec,
+    and t is the time in sec since start of stimulus); for example:
+ 1deval -del 0.1 -num 400 -expr 'hrfbk5(t-2,20)' | 1dplot -stdin -del 0.1
+    These HRF functions are scaled to return values in the range [0..1]
+
+ * ACFWXM(a,b,c,x) returns the Full Width at X Maximum for the mixed
+   model ACF function
+     f(r) = a*expr(-r*r/(2*b*b))+(1-a)*exp(-r/c)
+   for X between 0 and 1 (not inclusive).  This is the model function
+   estimated in program 3dFWHMx.
+ * gamp(peak,fwhm) returns the parameter p in the formula
+      g(t) = (t/(p*q))^p * exp(p-t/q)
+   that gives the peak value of g(t) occurring at t=peak when the
+   FWHM of g(t) is given by fwhm; gamq(peak,fwhm) gives the q parameter.
+   These functions are largely used for creating FMRI hemodynamic shapes.
+
+ You may use the symbol 'PI' to refer to the constant of that name.
+ This is the only 2 letter symbol defined; all variables are
+ referred to by 1 letter symbols.  The case of the expression is
+ ignored (in fact, it is converted to uppercase as the first step
+ in the parsing algorithm).
+
+ The following functions are designed to help implement logical
+ functions, such as masking of 3D volumes against some criterion:
+       step(x)    = {1 if x>0           , 0 if x<=0},
+       posval(x)  = {x if x>0           , 0 if x<=0},
+       astep(x,y) = {1 if abs(x) > y    , 0 otherwise} = step(abs(x)-y)
+  within(x,MI,MX) = {1 if MI <= x <= MX , 0 otherwise},
+       rect(x)    = {1 if abs(x)<=0.5, 0 if abs(x)>0.5},
+       bool(x)    = {1 if x != 0.0   , 0 if x == 0.0},
+    notzero(x)    = bool(x),
+     iszero(x)    = 1-bool(x) = { 0 if x != 0.0, 1 if x == 0.0 },
+        not(x)    = same as iszero(x)
+     equals(x,y)  = 1-bool(x-y) = { 1 if x == y , 0 if x != y },
+   ispositive(x)  = { 1 if x > 0; 0 if x <= 0 },
+   isnegative(x)  = { 1 if x < 0; 0 if x >= 0 },
+   ifelse(x,t,f)  = { t if x != 0; f if x == 0 },
+        not(x)    = same as iszero(x) = Boolean negation
+   and(a,b,...,c) = {1 if all arguments are nonzero, 0 if any are zero}
+    or(a,b,...,c) = {1 if any arguments are nonzero, 0 if all are zero}
+  mofn(m,a,...,c) = {1 if at least 'm' arguments are nonzero, else 0 }
+  argmax(a,b,...) = index of largest argument; = 0 if all args are 0
+  argnum(a,b,...) = number of nonzero arguments
+  pairmax(a,b,...)= finds the 'paired' argument that corresponds to the
+                    maximum of the first half of the input arguments;
+                    for example, pairmax(a,b,c,p,q,r) determines which
+                    of {a,b,c} is the max, then returns corresponding
+                    value from {p,q,r}; requires even number of args.
+  pairmin(a,b,...)= Similar to pairmax, but for minimum; for example,
+                    pairmin(a,b,c,p,q,r} finds the minimum of {a,b,c}
+                    and returns the corresponding value from {p,q,r};
+                      pairmin(3,2,7,5,-1,-2,-3,-4) = -2
+                    (The 'pair' functions are Lukas Pezawas specials!)
+  amongst(a,b,...)= Return value is 1 if any of the b,c,... values
+                    equals the a value; otherwise, return value is 0.
+ choose(n,a,b,...)= chooses the n-th value from the a,b,... values.
+                    (e.g., choose(2,a,b,c) is b)
+  isprime(n)      = 1 if n is a positive integer and a prime number
+                    0 if n is a positive integer and not a prime number
+                   -1 if n is not a positive integer
+                   or if n is bigger than 2^31-1
+
+  [These last 9 functions take a variable number of arguments.]
+
+ The following 27 functions are used for statistical conversions,
+ as in the program 'cdf':
+   fico_t2p(t,a,b,c), fico_p2t(p,a,b,c), fico_t2z(t,a,b,c),
+   fitt_t2p(t,a)    , fitt_p2t(p,a)    , fitt_t2z(t,a)    ,
+   fift_t2p(t,a,b)  , fift_p2t(p,a,b)  , fift_t2z(t,a,b)  ,
+   fizt_t2p(t)      , fizt_p2t(p)      , fizt_t2z(t)      ,
+   fict_t2p(t,a)    , fict_p2t(p,a)    , fict_t2z(t,a)    ,
+   fibt_t2p(t,a,b)  , fibt_p2t(p,a,b)  , fibt_t2z(t,a,b)  ,
+   fibn_t2p(t,a,b)  , fibn_p2t(p,a,b)  , fibn_t2z(t,a,b)  ,
+   figt_t2p(t,a,b)  , figt_p2t(p,a,b)  , figt_t2z(t,a,b)  ,
+   fipt_t2p(t,a)    , fipt_p2t(p,a)    , fipt_t2z(t,a)    .
+
+ See the output of 'cdf -help' for documentation on the meanings of
+ and arguments to these functions.  The two functions below use the
+ NIfTI-1 statistical codes to map between statistical values and
+ cumulative distribution values:
+   cdf2stat(val,code,p1,p2,p3) -- val is between 0 and 1
+   stat2cdf(val,code,p1,p2,p3) -- val is legal for the given distribution
+ where code is
+   2 = correlation statistic     p1 = DOF
+   3 = t statistic (central)     p1 = DOF
+   4 = F statistic (central)     p1 = num DOF, p2 = den DOF
+   5 = N(0,1) statistic          no parameters (p1=p2=p3=0)
+   6 = Chi-squared (central)     p1 = DOF
+   7 = Beta variable (central)   p1 = a , p2 = b
+   8 = Binomial variable         p1 = #trials, p2 = prob per trial
+   9 = Gamma distribution        p1 = shape, p2 = scale
+  10 = Poisson distribution      p1 = mean
+  11 = N(mu,variance) normal     p1 = mean, p2 = scale
+  12 = noncentral F statistic    p1 = num DOF, p2 = den DOF, p3 = noncen
+  13 = noncentral chi-squared    p1 = DOF, p2 = noncentrality parameter
+  14 = Logistic distribution     p1 = mean, p2 = scale
+  15 = Laplace distribution      p1 = mean, p2 = scale
+  16 = Uniform distribution      p1 = min, p2 = max
+  17 = noncentral t statistic    p1 = DOF, p2 = noncentrality parameter
+  18 = Weibull distribution      p1 = location, p2 = scale, p3 = power
+  19 = Chi statistic (central)   p1 = DOF
+  20 = inverse Gaussian variable p1 = mu, p2 = lambda
+  21 = Extreme value type I      p1 = location, p2 = scale
+  22 = 'p-value'                 no parameters
+  23 = -ln(p)                    no parameters
+  24 = -log10(p)                 no parameters
+When fewer than 3 parameters are needed, the values for later parameters
+are still required, but will be ignored.  An extreme case is code=5,
+where the correct call is (e.g.) cdf2stat(p,5,0,0,0)
+
+Finally, note that the expression evaluator is designed not to crash, or
+to return NaN or Infinity.  Illegal operations, such as division by 0,
+logarithm of negative value, etc., are intercepted and something else
+(usually 0) will be returned.  To find out what that 'something else'
+is in any specific case, you should play with the ccalc program.
+ Arithmetic expressions are allowed, using + - * / ** ^ and parentheses.
+ C relational, boolean, and conditional expressions are NOT implemented!
+* Note that the expression evaluator is designed not to fail;  illegal  *
+* operations like 'sqrt(-1)' are changed to legal ones to avoid crashes.*
+ Built in functions include:
+
+    sin  , cos  , tan  , asin  , acos  , atan  , atan2,       
+    sinh , cosh , tanh , asinh , acosh , atanh , exp  ,       
+    log  , log10, abs  , int   , sqrt  , max   , min  ,       
+    J0   , J1   , Y0   , Y1    , erf   , erfc  , qginv, qg ,  
+    rect , step , astep, bool  , and   , or    , mofn ,       
+    sind , cosd , tand , median, lmode , hmode , mad  ,       
+    gran , uran , iran , eran  , lran  , orstat, mod  ,       
+    mean , stdev, sem  , Pleg  , cbrt  , rhddc2, hrfbk4,hrfbk5
+    minabove, maxbelow, extreme, absextreme    , acfwxm
+    gamp , gampq
+
+ where some of the less obvious functions are:
+ * qg(x)    = reversed cdf of a standard normal distribution
+ * qginv(x) = inverse function to qg
+ * min, max, atan2 each take 2 arguments ONLY
+ * J0, J1, Y0, Y1 are Bessel functions (see the holy book: Watson)
+ * Pleg(m,x) is the m'th Legendre polynomial evaluated at x
+ * erf, erfc are the error and complementary error functions
+ * sind, cosd, tand take arguments in degrees (vs. radians)
+ * median(a,b,c,...) computes the median of its arguments
+ * mad(a,b,c,...) computes the MAD of its arguments
+ * mean(a,b,c,...) computes the mean of its arguments
+ * stdev(a,b,c,...) computes the standard deviation of its arguments
+ * sem(a,b,c,...) computes standard error of the mean of its arguments,
+                  where sem(n arguments) = stdev(same)/sqrt(n)
+ * orstat(n,a,b,c,...) computes the n-th order statistic of
+    {a,b,c,...} - that is, the n-th value in size, starting
+    at the bottom (e.g., orstat(1,a,b,c) is the minimum)
+ * minabove(X,a,b,c,...) computes the smallest value amongst {a,b,c,...}
+    that is LARGER than the first argument X; if all values are smaller
+    than X, then X will be returned
+ * maxbelow(X,a,b,c,...) similarly returns the largest value amongst
+    {a,b,c,...} that is SMALLER than the first argument X.
+ * extreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning one of the original a,b,c,... values.
+ * absextreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning the maximum absolute value of a,b,c,... values.
+ * lmode(a,b,c,...) and hmode(a,b,c,...) compute the mode
+    of their arguments - lmode breaks ties by choosing the
+    smallest value with the maximal count, hmode breaks ties by
+    choosing the largest value with the maximal count
+    ["a,b,c,..." indicates a variable number of arguments]
+ * gran(m,s) returns a Gaussian deviate with mean=m, stdev=s
+ * uran(r)   returns a uniform deviate in the range [0,r]
+ * iran(t)   returns a random integer in the range [0..t]
+ * eran(s)   returns an exponentially distributed deviate
+               with parameter s; mean=s
+ * lran(t)   returns a logistically distributed deviate
+               with parameter t; mean=0, stdev=t*1.814
+ * mod(a,b)  returns (a modulo b) = a - b*int(a/b)
+ * hrfbk4(t,L) and hrfbk5(t,L) are the BLOCK4 and BLOCK5 hemodynamic
+    response functions from 3dDeconvolve (L=stimulus duration in sec,
+    and t is the time in sec since start of stimulus); for example:
+ 1deval -del 0.1 -num 400 -expr 'hrfbk5(t-2,20)' | 1dplot -stdin -del 0.1
+    These HRF functions are scaled to return values in the range [0..1]
+
+ * ACFWXM(a,b,c,x) returns the Full Width at X Maximum for the mixed
+   model ACF function
+     f(r) = a*expr(-r*r/(2*b*b))+(1-a)*exp(-r/c)
+   for X between 0 and 1 (not inclusive).  This is the model function
+   estimated in program 3dFWHMx.
+ * gamp(peak,fwhm) returns the parameter p in the formula
+      g(t) = (t/(p*q))^p * exp(p-t/q)
+   that gives the peak value of g(t) occurring at t=peak when the
+   FWHM of g(t) is given by fwhm; gamq(peak,fwhm) gives the q parameter.
+   These functions are largely used for creating FMRI hemodynamic shapes.
+
+ You may use the symbol 'PI' to refer to the constant of that name.
+ This is the only 2 letter symbol defined; all variables are
+ referred to by 1 letter symbols.  The case of the expression is
+ ignored (in fact, it is converted to uppercase as the first step
+ in the parsing algorithm).
+
+ The following functions are designed to help implement logical
+ functions, such as masking of 3D volumes against some criterion:
+       step(x)    = {1 if x>0           , 0 if x<=0},
+       posval(x)  = {x if x>0           , 0 if x<=0},
+       astep(x,y) = {1 if abs(x) > y    , 0 otherwise} = step(abs(x)-y)
+  within(x,MI,MX) = {1 if MI <= x <= MX , 0 otherwise},
+       rect(x)    = {1 if abs(x)<=0.5, 0 if abs(x)>0.5},
+       bool(x)    = {1 if x != 0.0   , 0 if x == 0.0},
+    notzero(x)    = bool(x),
+     iszero(x)    = 1-bool(x) = { 0 if x != 0.0, 1 if x == 0.0 },
+        not(x)    = same as iszero(x)
+     equals(x,y)  = 1-bool(x-y) = { 1 if x == y , 0 if x != y },
+   ispositive(x)  = { 1 if x > 0; 0 if x <= 0 },
+   isnegative(x)  = { 1 if x < 0; 0 if x >= 0 },
+   ifelse(x,t,f)  = { t if x != 0; f if x == 0 },
+        not(x)    = same as iszero(x) = Boolean negation
+   and(a,b,...,c) = {1 if all arguments are nonzero, 0 if any are zero}
+    or(a,b,...,c) = {1 if any arguments are nonzero, 0 if all are zero}
+  mofn(m,a,...,c) = {1 if at least 'm' arguments are nonzero, else 0 }
+  argmax(a,b,...) = index of largest argument; = 0 if all args are 0
+  argnum(a,b,...) = number of nonzero arguments
+  pairmax(a,b,...)= finds the 'paired' argument that corresponds to the
+                    maximum of the first half of the input arguments;
+                    for example, pairmax(a,b,c,p,q,r) determines which
+                    of {a,b,c} is the max, then returns corresponding
+                    value from {p,q,r}; requires even number of args.
+  pairmin(a,b,...)= Similar to pairmax, but for minimum; for example,
+                    pairmin(a,b,c,p,q,r} finds the minimum of {a,b,c}
+                    and returns the corresponding value from {p,q,r};
+                      pairmin(3,2,7,5,-1,-2,-3,-4) = -2
+                    (The 'pair' functions are Lukas Pezawas specials!)
+  amongst(a,b,...)= Return value is 1 if any of the b,c,... values
+                    equals the a value; otherwise, return value is 0.
+ choose(n,a,b,...)= chooses the n-th value from the a,b,... values.
+                    (e.g., choose(2,a,b,c) is b)
+  isprime(n)      = 1 if n is a positive integer and a prime number
+                    0 if n is a positive integer and not a prime number
+                   -1 if n is not a positive integer
+                   or if n is bigger than 2^31-1
+
+  [These last 9 functions take a variable number of arguments.]
+
+ The following 27 functions are used for statistical conversions,
+ as in the program 'cdf':
+   fico_t2p(t,a,b,c), fico_p2t(p,a,b,c), fico_t2z(t,a,b,c),
+   fitt_t2p(t,a)    , fitt_p2t(p,a)    , fitt_t2z(t,a)    ,
+   fift_t2p(t,a,b)  , fift_p2t(p,a,b)  , fift_t2z(t,a,b)  ,
+   fizt_t2p(t)      , fizt_p2t(p)      , fizt_t2z(t)      ,
+   fict_t2p(t,a)    , fict_p2t(p,a)    , fict_t2z(t,a)    ,
+   fibt_t2p(t,a,b)  , fibt_p2t(p,a,b)  , fibt_t2z(t,a,b)  ,
+   fibn_t2p(t,a,b)  , fibn_p2t(p,a,b)  , fibn_t2z(t,a,b)  ,
+   figt_t2p(t,a,b)  , figt_p2t(p,a,b)  , figt_t2z(t,a,b)  ,
+   fipt_t2p(t,a)    , fipt_p2t(p,a)    , fipt_t2z(t,a)    .
+
+ See the output of 'cdf -help' for documentation on the meanings of
+ and arguments to these functions.  The two functions below use the
+ NIfTI-1 statistical codes to map between statistical values and
+ cumulative distribution values:
+   cdf2stat(val,code,p1,p2,p3) -- val is between 0 and 1
+   stat2cdf(val,code,p1,p2,p3) -- val is legal for the given distribution
+ where code is
+   2 = correlation statistic     p1 = DOF
+   3 = t statistic (central)     p1 = DOF
+   4 = F statistic (central)     p1 = num DOF, p2 = den DOF
+   5 = N(0,1) statistic          no parameters (p1=p2=p3=0)
+   6 = Chi-squared (central)     p1 = DOF
+   7 = Beta variable (central)   p1 = a , p2 = b
+   8 = Binomial variable         p1 = #trials, p2 = prob per trial
+   9 = Gamma distribution        p1 = shape, p2 = scale
+  10 = Poisson distribution      p1 = mean
+  11 = N(mu,variance) normal     p1 = mean, p2 = scale
+  12 = noncentral F statistic    p1 = num DOF, p2 = den DOF, p3 = noncen
+  13 = noncentral chi-squared    p1 = DOF, p2 = noncentrality parameter
+  14 = Logistic distribution     p1 = mean, p2 = scale
+  15 = Laplace distribution      p1 = mean, p2 = scale
+  16 = Uniform distribution      p1 = min, p2 = max
+  17 = noncentral t statistic    p1 = DOF, p2 = noncentrality parameter
+  18 = Weibull distribution      p1 = location, p2 = scale, p3 = power
+  19 = Chi statistic (central)   p1 = DOF
+  20 = inverse Gaussian variable p1 = mu, p2 = lambda
+  21 = Extreme value type I      p1 = location, p2 = scale
+  22 = 'p-value'                 no parameters
+  23 = -ln(p)                    no parameters
+  24 = -log10(p)                 no parameters
+When fewer than 3 parameters are needed, the values for later parameters
+are still required, but will be ignored.  An extreme case is code=5,
+where the correct call is (e.g.) cdf2stat(p,5,0,0,0)
+
+Finally, note that the expression evaluator is designed not to crash, or
+to return NaN or Infinity.  Illegal operations, such as division by 0,
+logarithm of negative value, etc., are intercepted and something else
+(usually 0) will be returned.  To find out what that 'something else'
+is in any specific case, you should play with the ccalc program.
+ Arithmetic expressions are allowed, using + - * / ** ^ and parentheses.
+ C relational, boolean, and conditional expressions are NOT implemented!
+* Note that the expression evaluator is designed not to fail;  illegal  *
+* operations like 'sqrt(-1)' are changed to legal ones to avoid crashes.*
+ Built in functions include:
+
+    sin  , cos  , tan  , asin  , acos  , atan  , atan2,       
+    sinh , cosh , tanh , asinh , acosh , atanh , exp  ,       
+    log  , log10, abs  , int   , sqrt  , max   , min  ,       
+    J0   , J1   , Y0   , Y1    , erf   , erfc  , qginv, qg ,  
+    rect , step , astep, bool  , and   , or    , mofn ,       
+    sind , cosd , tand , median, lmode , hmode , mad  ,       
+    gran , uran , iran , eran  , lran  , orstat, mod  ,       
+    mean , stdev, sem  , Pleg  , cbrt  , rhddc2, hrfbk4,hrfbk5
+    minabove, maxbelow, extreme, absextreme    , acfwxm
+    gamp , gampq
+
+ where some of the less obvious functions are:
+ * qg(x)    = reversed cdf of a standard normal distribution
+ * qginv(x) = inverse function to qg
+ * min, max, atan2 each take 2 arguments ONLY
+ * J0, J1, Y0, Y1 are Bessel functions (see the holy book: Watson)
+ * Pleg(m,x) is the m'th Legendre polynomial evaluated at x
+ * erf, erfc are the error and complementary error functions
+ * sind, cosd, tand take arguments in degrees (vs. radians)
+ * median(a,b,c,...) computes the median of its arguments
+ * mad(a,b,c,...) computes the MAD of its arguments
+ * mean(a,b,c,...) computes the mean of its arguments
+ * stdev(a,b,c,...) computes the standard deviation of its arguments
+ * sem(a,b,c,...) computes standard error of the mean of its arguments,
+                  where sem(n arguments) = stdev(same)/sqrt(n)
+ * orstat(n,a,b,c,...) computes the n-th order statistic of
+    {a,b,c,...} - that is, the n-th value in size, starting
+    at the bottom (e.g., orstat(1,a,b,c) is the minimum)
+ * minabove(X,a,b,c,...) computes the smallest value amongst {a,b,c,...}
+    that is LARGER than the first argument X; if all values are smaller
+    than X, then X will be returned
+ * maxbelow(X,a,b,c,...) similarly returns the largest value amongst
+    {a,b,c,...} that is SMALLER than the first argument X.
+ * extreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning one of the original a,b,c,... values.
+ * absextreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning the maximum absolute value of a,b,c,... values.
+ * lmode(a,b,c,...) and hmode(a,b,c,...) compute the mode
+    of their arguments - lmode breaks ties by choosing the
+    smallest value with the maximal count, hmode breaks ties by
+    choosing the largest value with the maximal count
+    ["a,b,c,..." indicates a variable number of arguments]
+ * gran(m,s) returns a Gaussian deviate with mean=m, stdev=s
+ * uran(r)   returns a uniform deviate in the range [0,r]
+ * iran(t)   returns a random integer in the range [0..t]
+ * eran(s)   returns an exponentially distributed deviate
+               with parameter s; mean=s
+ * lran(t)   returns a logistically distributed deviate
+               with parameter t; mean=0, stdev=t*1.814
+ * mod(a,b)  returns (a modulo b) = a - b*int(a/b)
+ * hrfbk4(t,L) and hrfbk5(t,L) are the BLOCK4 and BLOCK5 hemodynamic
+    response functions from 3dDeconvolve (L=stimulus duration in sec,
+    and t is the time in sec since start of stimulus); for example:
+ 1deval -del 0.1 -num 400 -expr 'hrfbk5(t-2,20)' | 1dplot -stdin -del 0.1
+    These HRF functions are scaled to return values in the range [0..1]
+
+ * ACFWXM(a,b,c,x) returns the Full Width at X Maximum for the mixed
+   model ACF function
+     f(r) = a*expr(-r*r/(2*b*b))+(1-a)*exp(-r/c)
+   for X between 0 and 1 (not inclusive).  This is the model function
+   estimated in program 3dFWHMx.
+ * gamp(peak,fwhm) returns the parameter p in the formula
+      g(t) = (t/(p*q))^p * exp(p-t/q)
+   that gives the peak value of g(t) occurring at t=peak when the
+   FWHM of g(t) is given by fwhm; gamq(peak,fwhm) gives the q parameter.
+   These functions are largely used for creating FMRI hemodynamic shapes.
+
+ You may use the symbol 'PI' to refer to the constant of that name.
+ This is the only 2 letter symbol defined; all variables are
+ referred to by 1 letter symbols.  The case of the expression is
+ ignored (in fact, it is converted to uppercase as the first step
+ in the parsing algorithm).
+
+ The following functions are designed to help implement logical
+ functions, such as masking of 3D volumes against some criterion:
+       step(x)    = {1 if x>0           , 0 if x<=0},
+       posval(x)  = {x if x>0           , 0 if x<=0},
+       astep(x,y) = {1 if abs(x) > y    , 0 otherwise} = step(abs(x)-y)
+  within(x,MI,MX) = {1 if MI <= x <= MX , 0 otherwise},
+       rect(x)    = {1 if abs(x)<=0.5, 0 if abs(x)>0.5},
+       bool(x)    = {1 if x != 0.0   , 0 if x == 0.0},
+    notzero(x)    = bool(x),
+     iszero(x)    = 1-bool(x) = { 0 if x != 0.0, 1 if x == 0.0 },
+        not(x)    = same as iszero(x)
+     equals(x,y)  = 1-bool(x-y) = { 1 if x == y , 0 if x != y },
+   ispositive(x)  = { 1 if x > 0; 0 if x <= 0 },
+   isnegative(x)  = { 1 if x < 0; 0 if x >= 0 },
+   ifelse(x,t,f)  = { t if x != 0; f if x == 0 },
+        not(x)    = same as iszero(x) = Boolean negation
+   and(a,b,...,c) = {1 if all arguments are nonzero, 0 if any are zero}
+    or(a,b,...,c) = {1 if any arguments are nonzero, 0 if all are zero}
+  mofn(m,a,...,c) = {1 if at least 'm' arguments are nonzero, else 0 }
+  argmax(a,b,...) = index of largest argument; = 0 if all args are 0
+  argnum(a,b,...) = number of nonzero arguments
+  pairmax(a,b,...)= finds the 'paired' argument that corresponds to the
+                    maximum of the first half of the input arguments;
+                    for example, pairmax(a,b,c,p,q,r) determines which
+                    of {a,b,c} is the max, then returns corresponding
+                    value from {p,q,r}; requires even number of args.
+  pairmin(a,b,...)= Similar to pairmax, but for minimum; for example,
+                    pairmin(a,b,c,p,q,r} finds the minimum of {a,b,c}
+                    and returns the corresponding value from {p,q,r};
+                      pairmin(3,2,7,5,-1,-2,-3,-4) = -2
+                    (The 'pair' functions are Lukas Pezawas specials!)
+  amongst(a,b,...)= Return value is 1 if any of the b,c,... values
+                    equals the a value; otherwise, return value is 0.
+ choose(n,a,b,...)= chooses the n-th value from the a,b,... values.
+                    (e.g., choose(2,a,b,c) is b)
+  isprime(n)      = 1 if n is a positive integer and a prime number
+                    0 if n is a positive integer and not a prime number
+                   -1 if n is not a positive integer
+                   or if n is bigger than 2^31-1
+
+  [These last 9 functions take a variable number of arguments.]
+
+ The following 27 functions are used for statistical conversions,
+ as in the program 'cdf':
+   fico_t2p(t,a,b,c), fico_p2t(p,a,b,c), fico_t2z(t,a,b,c),
+   fitt_t2p(t,a)    , fitt_p2t(p,a)    , fitt_t2z(t,a)    ,
+   fift_t2p(t,a,b)  , fift_p2t(p,a,b)  , fift_t2z(t,a,b)  ,
+   fizt_t2p(t)      , fizt_p2t(p)      , fizt_t2z(t)      ,
+   fict_t2p(t,a)    , fict_p2t(p,a)    , fict_t2z(t,a)    ,
+   fibt_t2p(t,a,b)  , fibt_p2t(p,a,b)  , fibt_t2z(t,a,b)  ,
+   fibn_t2p(t,a,b)  , fibn_p2t(p,a,b)  , fibn_t2z(t,a,b)  ,
+   figt_t2p(t,a,b)  , figt_p2t(p,a,b)  , figt_t2z(t,a,b)  ,
+   fipt_t2p(t,a)    , fipt_p2t(p,a)    , fipt_t2z(t,a)    .
+
+ See the output of 'cdf -help' for documentation on the meanings of
+ and arguments to these functions.  The two functions below use the
+ NIfTI-1 statistical codes to map between statistical values and
+ cumulative distribution values:
+   cdf2stat(val,code,p1,p2,p3) -- val is between 0 and 1
+   stat2cdf(val,code,p1,p2,p3) -- val is legal for the given distribution
+ where code is
+   2 = correlation statistic     p1 = DOF
+   3 = t statistic (central)     p1 = DOF
+   4 = F statistic (central)     p1 = num DOF, p2 = den DOF
+   5 = N(0,1) statistic          no parameters (p1=p2=p3=0)
+   6 = Chi-squared (central)     p1 = DOF
+   7 = Beta variable (central)   p1 = a , p2 = b
+   8 = Binomial variable         p1 = #trials, p2 = prob per trial
+   9 = Gamma distribution        p1 = shape, p2 = scale
+  10 = Poisson distribution      p1 = mean
+  11 = N(mu,variance) normal     p1 = mean, p2 = scale
+  12 = noncentral F statistic    p1 = num DOF, p2 = den DOF, p3 = noncen
+  13 = noncentral chi-squared    p1 = DOF, p2 = noncentrality parameter
+  14 = Logistic distribution     p1 = mean, p2 = scale
+  15 = Laplace distribution      p1 = mean, p2 = scale
+  16 = Uniform distribution      p1 = min, p2 = max
+  17 = noncentral t statistic    p1 = DOF, p2 = noncentrality parameter
+  18 = Weibull distribution      p1 = location, p2 = scale, p3 = power
+  19 = Chi statistic (central)   p1 = DOF
+  20 = inverse Gaussian variable p1 = mu, p2 = lambda
+  21 = Extreme value type I      p1 = location, p2 = scale
+  22 = 'p-value'                 no parameters
+  23 = -ln(p)                    no parameters
+  24 = -log10(p)                 no parameters
+When fewer than 3 parameters are needed, the values for later parameters
+are still required, but will be ignored.  An extreme case is code=5,
+where the correct call is (e.g.) cdf2stat(p,5,0,0,0)
+
+Finally, note that the expression evaluator is designed not to crash, or
+to return NaN or Infinity.  Illegal operations, such as division by 0,
+logarithm of negative value, etc., are intercepted and something else
+(usually 0) will be returned.  To find out what that 'something else'
+is in any specific case, you should play with the ccalc program.
+ Arithmetic expressions are allowed, using + - * / ** ^ and parentheses.
+ C relational, boolean, and conditional expressions are NOT implemented!
+* Note that the expression evaluator is designed not to fail;  illegal  *
+* operations like 'sqrt(-1)' are changed to legal ones to avoid crashes.*
+ Built in functions include:
+
+    sin  , cos  , tan  , asin  , acos  , atan  , atan2,       
+    sinh , cosh , tanh , asinh , acosh , atanh , exp  ,       
+    log  , log10, abs  , int   , sqrt  , max   , min  ,       
+    J0   , J1   , Y0   , Y1    , erf   , erfc  , qginv, qg ,  
+    rect , step , astep, bool  , and   , or    , mofn ,       
+    sind , cosd , tand , median, lmode , hmode , mad  ,       
+    gran , uran , iran , eran  , lran  , orstat, mod  ,       
+    mean , stdev, sem  , Pleg  , cbrt  , rhddc2, hrfbk4,hrfbk5
+    minabove, maxbelow, extreme, absextreme    , acfwxm
+    gamp , gampq
+
+ where some of the less obvious functions are:
+ * qg(x)    = reversed cdf of a standard normal distribution
+ * qginv(x) = inverse function to qg
+ * min, max, atan2 each take 2 arguments ONLY
+ * J0, J1, Y0, Y1 are Bessel functions (see the holy book: Watson)
+ * Pleg(m,x) is the m'th Legendre polynomial evaluated at x
+ * erf, erfc are the error and complementary error functions
+ * sind, cosd, tand take arguments in degrees (vs. radians)
+ * median(a,b,c,...) computes the median of its arguments
+ * mad(a,b,c,...) computes the MAD of its arguments
+ * mean(a,b,c,...) computes the mean of its arguments
+ * stdev(a,b,c,...) computes the standard deviation of its arguments
+ * sem(a,b,c,...) computes standard error of the mean of its arguments,
+                  where sem(n arguments) = stdev(same)/sqrt(n)
+ * orstat(n,a,b,c,...) computes the n-th order statistic of
+    {a,b,c,...} - that is, the n-th value in size, starting
+    at the bottom (e.g., orstat(1,a,b,c) is the minimum)
+ * minabove(X,a,b,c,...) computes the smallest value amongst {a,b,c,...}
+    that is LARGER than the first argument X; if all values are smaller
+    than X, then X will be returned
+ * maxbelow(X,a,b,c,...) similarly returns the largest value amongst
+    {a,b,c,...} that is SMALLER than the first argument X.
+ * extreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning one of the original a,b,c,... values.
+ * absextreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning the maximum absolute value of a,b,c,... values.
+ * lmode(a,b,c,...) and hmode(a,b,c,...) compute the mode
+    of their arguments - lmode breaks ties by choosing the
+    smallest value with the maximal count, hmode breaks ties by
+    choosing the largest value with the maximal count
+    ["a,b,c,..." indicates a variable number of arguments]
+ * gran(m,s) returns a Gaussian deviate with mean=m, stdev=s
+ * uran(r)   returns a uniform deviate in the range [0,r]
+ * iran(t)   returns a random integer in the range [0..t]
+ * eran(s)   returns an exponentially distributed deviate
+               with parameter s; mean=s
+ * lran(t)   returns a logistically distributed deviate
+               with parameter t; mean=0, stdev=t*1.814
+ * mod(a,b)  returns (a modulo b) = a - b*int(a/b)
+ * hrfbk4(t,L) and hrfbk5(t,L) are the BLOCK4 and BLOCK5 hemodynamic
+    response functions from 3dDeconvolve (L=stimulus duration in sec,
+    and t is the time in sec since start of stimulus); for example:
+ 1deval -del 0.1 -num 400 -expr 'hrfbk5(t-2,20)' | 1dplot -stdin -del 0.1
+    These HRF functions are scaled to return values in the range [0..1]
+
+ * ACFWXM(a,b,c,x) returns the Full Width at X Maximum for the mixed
+   model ACF function
+     f(r) = a*expr(-r*r/(2*b*b))+(1-a)*exp(-r/c)
+   for X between 0 and 1 (not inclusive).  This is the model function
+   estimated in program 3dFWHMx.
+ * gamp(peak,fwhm) returns the parameter p in the formula
+      g(t) = (t/(p*q))^p * exp(p-t/q)
+   that gives the peak value of g(t) occurring at t=peak when the
+   FWHM of g(t) is given by fwhm; gamq(peak,fwhm) gives the q parameter.
+   These functions are largely used for creating FMRI hemodynamic shapes.
+
+ You may use the symbol 'PI' to refer to the constant of that name.
+ This is the only 2 letter symbol defined; all variables are
+ referred to by 1 letter symbols.  The case of the expression is
+ ignored (in fact, it is converted to uppercase as the first step
+ in the parsing algorithm).
+
+ The following functions are designed to help implement logical
+ functions, such as masking of 3D volumes against some criterion:
+       step(x)    = {1 if x>0           , 0 if x<=0},
+       posval(x)  = {x if x>0           , 0 if x<=0},
+       astep(x,y) = {1 if abs(x) > y    , 0 otherwise} = step(abs(x)-y)
+  within(x,MI,MX) = {1 if MI <= x <= MX , 0 otherwise},
+       rect(x)    = {1 if abs(x)<=0.5, 0 if abs(x)>0.5},
+       bool(x)    = {1 if x != 0.0   , 0 if x == 0.0},
+    notzero(x)    = bool(x),
+     iszero(x)    = 1-bool(x) = { 0 if x != 0.0, 1 if x == 0.0 },
+        not(x)    = same as iszero(x)
+     equals(x,y)  = 1-bool(x-y) = { 1 if x == y , 0 if x != y },
+   ispositive(x)  = { 1 if x > 0; 0 if x <= 0 },
+   isnegative(x)  = { 1 if x < 0; 0 if x >= 0 },
+   ifelse(x,t,f)  = { t if x != 0; f if x == 0 },
+        not(x)    = same as iszero(x) = Boolean negation
+   and(a,b,...,c) = {1 if all arguments are nonzero, 0 if any are zero}
+    or(a,b,...,c) = {1 if any arguments are nonzero, 0 if all are zero}
+  mofn(m,a,...,c) = {1 if at least 'm' arguments are nonzero, else 0 }
+  argmax(a,b,...) = index of largest argument; = 0 if all args are 0
+  argnum(a,b,...) = number of nonzero arguments
+  pairmax(a,b,...)= finds the 'paired' argument that corresponds to the
+                    maximum of the first half of the input arguments;
+                    for example, pairmax(a,b,c,p,q,r) determines which
+                    of {a,b,c} is the max, then returns corresponding
+                    value from {p,q,r}; requires even number of args.
+  pairmin(a,b,...)= Similar to pairmax, but for minimum; for example,
+                    pairmin(a,b,c,p,q,r} finds the minimum of {a,b,c}
+                    and returns the corresponding value from {p,q,r};
+                      pairmin(3,2,7,5,-1,-2,-3,-4) = -2
+                    (The 'pair' functions are Lukas Pezawas specials!)
+  amongst(a,b,...)= Return value is 1 if any of the b,c,... values
+                    equals the a value; otherwise, return value is 0.
+ choose(n,a,b,...)= chooses the n-th value from the a,b,... values.
+                    (e.g., choose(2,a,b,c) is b)
+  isprime(n)      = 1 if n is a positive integer and a prime number
+                    0 if n is a positive integer and not a prime number
+                   -1 if n is not a positive integer
+                   or if n is bigger than 2^31-1
+
+  [These last 9 functions take a variable number of arguments.]
+
+ The following 27 functions are used for statistical conversions,
+ as in the program 'cdf':
+   fico_t2p(t,a,b,c), fico_p2t(p,a,b,c), fico_t2z(t,a,b,c),
+   fitt_t2p(t,a)    , fitt_p2t(p,a)    , fitt_t2z(t,a)    ,
+   fift_t2p(t,a,b)  , fift_p2t(p,a,b)  , fift_t2z(t,a,b)  ,
+   fizt_t2p(t)      , fizt_p2t(p)      , fizt_t2z(t)      ,
+   fict_t2p(t,a)    , fict_p2t(p,a)    , fict_t2z(t,a)    ,
+   fibt_t2p(t,a,b)  , fibt_p2t(p,a,b)  , fibt_t2z(t,a,b)  ,
+   fibn_t2p(t,a,b)  , fibn_p2t(p,a,b)  , fibn_t2z(t,a,b)  ,
+   figt_t2p(t,a,b)  , figt_p2t(p,a,b)  , figt_t2z(t,a,b)  ,
+   fipt_t2p(t,a)    , fipt_p2t(p,a)    , fipt_t2z(t,a)    .
+
+ See the output of 'cdf -help' for documentation on the meanings of
+ and arguments to these functions.  The two functions below use the
+ NIfTI-1 statistical codes to map between statistical values and
+ cumulative distribution values:
+   cdf2stat(val,code,p1,p2,p3) -- val is between 0 and 1
+   stat2cdf(val,code,p1,p2,p3) -- val is legal for the given distribution
+ where code is
+   2 = correlation statistic     p1 = DOF
+   3 = t statistic (central)     p1 = DOF
+   4 = F statistic (central)     p1 = num DOF, p2 = den DOF
+   5 = N(0,1) statistic          no parameters (p1=p2=p3=0)
+   6 = Chi-squared (central)     p1 = DOF
+   7 = Beta variable (central)   p1 = a , p2 = b
+   8 = Binomial variable         p1 = #trials, p2 = prob per trial
+   9 = Gamma distribution        p1 = shape, p2 = scale
+  10 = Poisson distribution      p1 = mean
+  11 = N(mu,variance) normal     p1 = mean, p2 = scale
+  12 = noncentral F statistic    p1 = num DOF, p2 = den DOF, p3 = noncen
+  13 = noncentral chi-squared    p1 = DOF, p2 = noncentrality parameter
+  14 = Logistic distribution     p1 = mean, p2 = scale
+  15 = Laplace distribution      p1 = mean, p2 = scale
+  16 = Uniform distribution      p1 = min, p2 = max
+  17 = noncentral t statistic    p1 = DOF, p2 = noncentrality parameter
+  18 = Weibull distribution      p1 = location, p2 = scale, p3 = power
+  19 = Chi statistic (central)   p1 = DOF
+  20 = inverse Gaussian variable p1 = mu, p2 = lambda
+  21 = Extreme value type I      p1 = location, p2 = scale
+  22 = 'p-value'                 no parameters
+  23 = -ln(p)                    no parameters
+  24 = -log10(p)                 no parameters
+When fewer than 3 parameters are needed, the values for later parameters
+are still required, but will be ignored.  An extreme case is code=5,
+where the correct call is (e.g.) cdf2stat(p,5,0,0,0)
+
+Finally, note that the expression evaluator is designed not to crash, or
+to return NaN or Infinity.  Illegal operations, such as division by 0,
+logarithm of negative value, etc., are intercepted and something else
+(usually 0) will be returned.  To find out what that 'something else'
+is in any specific case, you should play with the ccalc program.
+ Arithmetic expressions are allowed, using + - * / ** ^ and parentheses.
+ C relational, boolean, and conditional expressions are NOT implemented!
+* Note that the expression evaluator is designed not to fail;  illegal  *
+* operations like 'sqrt(-1)' are changed to legal ones to avoid crashes.*
+ Built in functions include:
+
+    sin  , cos  , tan  , asin  , acos  , atan  , atan2,       
+    sinh , cosh , tanh , asinh , acosh , atanh , exp  ,       
+    log  , log10, abs  , int   , sqrt  , max   , min  ,       
+    J0   , J1   , Y0   , Y1    , erf   , erfc  , qginv, qg ,  
+    rect , step , astep, bool  , and   , or    , mofn ,       
+    sind , cosd , tand , median, lmode , hmode , mad  ,       
+    gran , uran , iran , eran  , lran  , orstat, mod  ,       
+    mean , stdev, sem  , Pleg  , cbrt  , rhddc2, hrfbk4,hrfbk5
+    minabove, maxbelow, extreme, absextreme    , acfwxm
+    gamp , gampq
+
+ where some of the less obvious functions are:
+ * qg(x)    = reversed cdf of a standard normal distribution
+ * qginv(x) = inverse function to qg
+ * min, max, atan2 each take 2 arguments ONLY
+ * J0, J1, Y0, Y1 are Bessel functions (see the holy book: Watson)
+ * Pleg(m,x) is the m'th Legendre polynomial evaluated at x
+ * erf, erfc are the error and complementary error functions
+ * sind, cosd, tand take arguments in degrees (vs. radians)
+ * median(a,b,c,...) computes the median of its arguments
+ * mad(a,b,c,...) computes the MAD of its arguments
+ * mean(a,b,c,...) computes the mean of its arguments
+ * stdev(a,b,c,...) computes the standard deviation of its arguments
+ * sem(a,b,c,...) computes standard error of the mean of its arguments,
+                  where sem(n arguments) = stdev(same)/sqrt(n)
+ * orstat(n,a,b,c,...) computes the n-th order statistic of
+    {a,b,c,...} - that is, the n-th value in size, starting
+    at the bottom (e.g., orstat(1,a,b,c) is the minimum)
+ * minabove(X,a,b,c,...) computes the smallest value amongst {a,b,c,...}
+    that is LARGER than the first argument X; if all values are smaller
+    than X, then X will be returned
+ * maxbelow(X,a,b,c,...) similarly returns the largest value amongst
+    {a,b,c,...} that is SMALLER than the first argument X.
+ * extreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning one of the original a,b,c,... values.
+ * absextreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning the maximum absolute value of a,b,c,... values.
+ * lmode(a,b,c,...) and hmode(a,b,c,...) compute the mode
+    of their arguments - lmode breaks ties by choosing the
+    smallest value with the maximal count, hmode breaks ties by
+    choosing the largest value with the maximal count
+    ["a,b,c,..." indicates a variable number of arguments]
+ * gran(m,s) returns a Gaussian deviate with mean=m, stdev=s
+ * uran(r)   returns a uniform deviate in the range [0,r]
+ * iran(t)   returns a random integer in the range [0..t]
+ * eran(s)   returns an exponentially distributed deviate
+               with parameter s; mean=s
+ * lran(t)   returns a logistically distributed deviate
+               with parameter t; mean=0, stdev=t*1.814
+ * mod(a,b)  returns (a modulo b) = a - b*int(a/b)
+ * hrfbk4(t,L) and hrfbk5(t,L) are the BLOCK4 and BLOCK5 hemodynamic
+    response functions from 3dDeconvolve (L=stimulus duration in sec,
+    and t is the time in sec since start of stimulus); for example:
+ 1deval -del 0.1 -num 400 -expr 'hrfbk5(t-2,20)' | 1dplot -stdin -del 0.1
+    These HRF functions are scaled to return values in the range [0..1]
+
+ * ACFWXM(a,b,c,x) returns the Full Width at X Maximum for the mixed
+   model ACF function
+     f(r) = a*expr(-r*r/(2*b*b))+(1-a)*exp(-r/c)
+   for X between 0 and 1 (not inclusive).  This is the model function
+   estimated in program 3dFWHMx.
+ * gamp(peak,fwhm) returns the parameter p in the formula
+      g(t) = (t/(p*q))^p * exp(p-t/q)
+   that gives the peak value of g(t) occurring at t=peak when the
+   FWHM of g(t) is given by fwhm; gamq(peak,fwhm) gives the q parameter.
+   These functions are largely used for creating FMRI hemodynamic shapes.
+
+ You may use the symbol 'PI' to refer to the constant of that name.
+ This is the only 2 letter symbol defined; all variables are
+ referred to by 1 letter symbols.  The case of the expression is
+ ignored (in fact, it is converted to uppercase as the first step
+ in the parsing algorithm).
+
+ The following functions are designed to help implement logical
+ functions, such as masking of 3D volumes against some criterion:
+       step(x)    = {1 if x>0           , 0 if x<=0},
+       posval(x)  = {x if x>0           , 0 if x<=0},
+       astep(x,y) = {1 if abs(x) > y    , 0 otherwise} = step(abs(x)-y)
+  within(x,MI,MX) = {1 if MI <= x <= MX , 0 otherwise},
+       rect(x)    = {1 if abs(x)<=0.5, 0 if abs(x)>0.5},
+       bool(x)    = {1 if x != 0.0   , 0 if x == 0.0},
+    notzero(x)    = bool(x),
+     iszero(x)    = 1-bool(x) = { 0 if x != 0.0, 1 if x == 0.0 },
+        not(x)    = same as iszero(x)
+     equals(x,y)  = 1-bool(x-y) = { 1 if x == y , 0 if x != y },
+   ispositive(x)  = { 1 if x > 0; 0 if x <= 0 },
+   isnegative(x)  = { 1 if x < 0; 0 if x >= 0 },
+   ifelse(x,t,f)  = { t if x != 0; f if x == 0 },
+        not(x)    = same as iszero(x) = Boolean negation
+   and(a,b,...,c) = {1 if all arguments are nonzero, 0 if any are zero}
+    or(a,b,...,c) = {1 if any arguments are nonzero, 0 if all are zero}
+  mofn(m,a,...,c) = {1 if at least 'm' arguments are nonzero, else 0 }
+  argmax(a,b,...) = index of largest argument; = 0 if all args are 0
+  argnum(a,b,...) = number of nonzero arguments
+  pairmax(a,b,...)= finds the 'paired' argument that corresponds to the
+                    maximum of the first half of the input arguments;
+                    for example, pairmax(a,b,c,p,q,r) determines which
+                    of {a,b,c} is the max, then returns corresponding
+                    value from {p,q,r}; requires even number of args.
+  pairmin(a,b,...)= Similar to pairmax, but for minimum; for example,
+                    pairmin(a,b,c,p,q,r} finds the minimum of {a,b,c}
+                    and returns the corresponding value from {p,q,r};
+                      pairmin(3,2,7,5,-1,-2,-3,-4) = -2
+                    (The 'pair' functions are Lukas Pezawas specials!)
+  amongst(a,b,...)= Return value is 1 if any of the b,c,... values
+                    equals the a value; otherwise, return value is 0.
+ choose(n,a,b,...)= chooses the n-th value from the a,b,... values.
+                    (e.g., choose(2,a,b,c) is b)
+  isprime(n)      = 1 if n is a positive integer and a prime number
+                    0 if n is a positive integer and not a prime number
+                   -1 if n is not a positive integer
+                   or if n is bigger than 2^31-1
+
+  [These last 9 functions take a variable number of arguments.]
+
+ The following 27 functions are used for statistical conversions,
+ as in the program 'cdf':
+   fico_t2p(t,a,b,c), fico_p2t(p,a,b,c), fico_t2z(t,a,b,c),
+   fitt_t2p(t,a)    , fitt_p2t(p,a)    , fitt_t2z(t,a)    ,
+   fift_t2p(t,a,b)  , fift_p2t(p,a,b)  , fift_t2z(t,a,b)  ,
+   fizt_t2p(t)      , fizt_p2t(p)      , fizt_t2z(t)      ,
+   fict_t2p(t,a)    , fict_p2t(p,a)    , fict_t2z(t,a)    ,
+   fibt_t2p(t,a,b)  , fibt_p2t(p,a,b)  , fibt_t2z(t,a,b)  ,
+   fibn_t2p(t,a,b)  , fibn_p2t(p,a,b)  , fibn_t2z(t,a,b)  ,
+   figt_t2p(t,a,b)  , figt_p2t(p,a,b)  , figt_t2z(t,a,b)  ,
+   fipt_t2p(t,a)    , fipt_p2t(p,a)    , fipt_t2z(t,a)    .
+
+ See the output of 'cdf -help' for documentation on the meanings of
+ and arguments to these functions.  The two functions below use the
+ NIfTI-1 statistical codes to map between statistical values and
+ cumulative distribution values:
+   cdf2stat(val,code,p1,p2,p3) -- val is between 0 and 1
+   stat2cdf(val,code,p1,p2,p3) -- val is legal for the given distribution
+ where code is
+   2 = correlation statistic     p1 = DOF
+   3 = t statistic (central)     p1 = DOF
+   4 = F statistic (central)     p1 = num DOF, p2 = den DOF
+   5 = N(0,1) statistic          no parameters (p1=p2=p3=0)
+   6 = Chi-squared (central)     p1 = DOF
+   7 = Beta variable (central)   p1 = a , p2 = b
+   8 = Binomial variable         p1 = #trials, p2 = prob per trial
+   9 = Gamma distribution        p1 = shape, p2 = scale
+  10 = Poisson distribution      p1 = mean
+  11 = N(mu,variance) normal     p1 = mean, p2 = scale
+  12 = noncentral F statistic    p1 = num DOF, p2 = den DOF, p3 = noncen
+  13 = noncentral chi-squared    p1 = DOF, p2 = noncentrality parameter
+  14 = Logistic distribution     p1 = mean, p2 = scale
+  15 = Laplace distribution      p1 = mean, p2 = scale
+  16 = Uniform distribution      p1 = min, p2 = max
+  17 = noncentral t statistic    p1 = DOF, p2 = noncentrality parameter
+  18 = Weibull distribution      p1 = location, p2 = scale, p3 = power
+  19 = Chi statistic (central)   p1 = DOF
+  20 = inverse Gaussian variable p1 = mu, p2 = lambda
+  21 = Extreme value type I      p1 = location, p2 = scale
+  22 = 'p-value'                 no parameters
+  23 = -ln(p)                    no parameters
+  24 = -log10(p)                 no parameters
+When fewer than 3 parameters are needed, the values for later parameters
+are still required, but will be ignored.  An extreme case is code=5,
+where the correct call is (e.g.) cdf2stat(p,5,0,0,0)
+
+Finally, note that the expression evaluator is designed not to crash, or
+to return NaN or Infinity.  Illegal operations, such as division by 0,
+logarithm of negative value, etc., are intercepted and something else
+(usually 0) will be returned.  To find out what that 'something else'
+is in any specific case, you should play with the ccalc program.
+ Arithmetic expressions are allowed, using + - * / ** ^ and parentheses.
+ C relational, boolean, and conditional expressions are NOT implemented!
+* Note that the expression evaluator is designed not to fail;  illegal  *
+* operations like 'sqrt(-1)' are changed to legal ones to avoid crashes.*
+ Built in functions include:
+
+    sin  , cos  , tan  , asin  , acos  , atan  , atan2,       
+    sinh , cosh , tanh , asinh , acosh , atanh , exp  ,       
+    log  , log10, abs  , int   , sqrt  , max   , min  ,       
+    J0   , J1   , Y0   , Y1    , erf   , erfc  , qginv, qg ,  
+    rect , step , astep, bool  , and   , or    , mofn ,       
+    sind , cosd , tand , median, lmode , hmode , mad  ,       
+    gran , uran , iran , eran  , lran  , orstat, mod  ,       
+    mean , stdev, sem  , Pleg  , cbrt  , rhddc2, hrfbk4,hrfbk5
+    minabove, maxbelow, extreme, absextreme    , acfwxm
+    gamp , gampq
+
+ where some of the less obvious functions are:
+ * qg(x)    = reversed cdf of a standard normal distribution
+ * qginv(x) = inverse function to qg
+ * min, max, atan2 each take 2 arguments ONLY
+ * J0, J1, Y0, Y1 are Bessel functions (see the holy book: Watson)
+ * Pleg(m,x) is the m'th Legendre polynomial evaluated at x
+ * erf, erfc are the error and complementary error functions
+ * sind, cosd, tand take arguments in degrees (vs. radians)
+ * median(a,b,c,...) computes the median of its arguments
+ * mad(a,b,c,...) computes the MAD of its arguments
+ * mean(a,b,c,...) computes the mean of its arguments
+ * stdev(a,b,c,...) computes the standard deviation of its arguments
+ * sem(a,b,c,...) computes standard error of the mean of its arguments,
+                  where sem(n arguments) = stdev(same)/sqrt(n)
+ * orstat(n,a,b,c,...) computes the n-th order statistic of
+    {a,b,c,...} - that is, the n-th value in size, starting
+    at the bottom (e.g., orstat(1,a,b,c) is the minimum)
+ * minabove(X,a,b,c,...) computes the smallest value amongst {a,b,c,...}
+    that is LARGER than the first argument X; if all values are smaller
+    than X, then X will be returned
+ * maxbelow(X,a,b,c,...) similarly returns the largest value amongst
+    {a,b,c,...} that is SMALLER than the first argument X.
+ * extreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning one of the original a,b,c,... values.
+ * absextreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning the maximum absolute value of a,b,c,... values.
+ * lmode(a,b,c,...) and hmode(a,b,c,...) compute the mode
+    of their arguments - lmode breaks ties by choosing the
+    smallest value with the maximal count, hmode breaks ties by
+    choosing the largest value with the maximal count
+    ["a,b,c,..." indicates a variable number of arguments]
+ * gran(m,s) returns a Gaussian deviate with mean=m, stdev=s
+ * uran(r)   returns a uniform deviate in the range [0,r]
+ * iran(t)   returns a random integer in the range [0..t]
+ * eran(s)   returns an exponentially distributed deviate
+               with parameter s; mean=s
+ * lran(t)   returns a logistically distributed deviate
+               with parameter t; mean=0, stdev=t*1.814
+ * mod(a,b)  returns (a modulo b) = a - b*int(a/b)
+ * hrfbk4(t,L) and hrfbk5(t,L) are the BLOCK4 and BLOCK5 hemodynamic
+    response functions from 3dDeconvolve (L=stimulus duration in sec,
+    and t is the time in sec since start of stimulus); for example:
+ 1deval -del 0.1 -num 400 -expr 'hrfbk5(t-2,20)' | 1dplot -stdin -del 0.1
+    These HRF functions are scaled to return values in the range [0..1]
+
+ * ACFWXM(a,b,c,x) returns the Full Width at X Maximum for the mixed
+   model ACF function
+     f(r) = a*expr(-r*r/(2*b*b))+(1-a)*exp(-r/c)
+   for X between 0 and 1 (not inclusive).  This is the model function
+   estimated in program 3dFWHMx.
+ * gamp(peak,fwhm) returns the parameter p in the formula
+      g(t) = (t/(p*q))^p * exp(p-t/q)
+   that gives the peak value of g(t) occurring at t=peak when the
+   FWHM of g(t) is given by fwhm; gamq(peak,fwhm) gives the q parameter.
+   These functions are largely used for creating FMRI hemodynamic shapes.
+
+ You may use the symbol 'PI' to refer to the constant of that name.
+ This is the only 2 letter symbol defined; all variables are
+ referred to by 1 letter symbols.  The case of the expression is
+ ignored (in fact, it is converted to uppercase as the first step
+ in the parsing algorithm).
+
+ The following functions are designed to help implement logical
+ functions, such as masking of 3D volumes against some criterion:
+       step(x)    = {1 if x>0           , 0 if x<=0},
+       posval(x)  = {x if x>0           , 0 if x<=0},
+       astep(x,y) = {1 if abs(x) > y    , 0 otherwise} = step(abs(x)-y)
+  within(x,MI,MX) = {1 if MI <= x <= MX , 0 otherwise},
+       rect(x)    = {1 if abs(x)<=0.5, 0 if abs(x)>0.5},
+       bool(x)    = {1 if x != 0.0   , 0 if x == 0.0},
+    notzero(x)    = bool(x),
+     iszero(x)    = 1-bool(x) = { 0 if x != 0.0, 1 if x == 0.0 },
+        not(x)    = same as iszero(x)
+     equals(x,y)  = 1-bool(x-y) = { 1 if x == y , 0 if x != y },
+   ispositive(x)  = { 1 if x > 0; 0 if x <= 0 },
+   isnegative(x)  = { 1 if x < 0; 0 if x >= 0 },
+   ifelse(x,t,f)  = { t if x != 0; f if x == 0 },
+        not(x)    = same as iszero(x) = Boolean negation
+   and(a,b,...,c) = {1 if all arguments are nonzero, 0 if any are zero}
+    or(a,b,...,c) = {1 if any arguments are nonzero, 0 if all are zero}
+  mofn(m,a,...,c) = {1 if at least 'm' arguments are nonzero, else 0 }
+  argmax(a,b,...) = index of largest argument; = 0 if all args are 0
+  argnum(a,b,...) = number of nonzero arguments
+  pairmax(a,b,...)= finds the 'paired' argument that corresponds to the
+                    maximum of the first half of the input arguments;
+                    for example, pairmax(a,b,c,p,q,r) determines which
+                    of {a,b,c} is the max, then returns corresponding
+                    value from {p,q,r}; requires even number of args.
+  pairmin(a,b,...)= Similar to pairmax, but for minimum; for example,
+                    pairmin(a,b,c,p,q,r} finds the minimum of {a,b,c}
+                    and returns the corresponding value from {p,q,r};
+                      pairmin(3,2,7,5,-1,-2,-3,-4) = -2
+                    (The 'pair' functions are Lukas Pezawas specials!)
+  amongst(a,b,...)= Return value is 1 if any of the b,c,... values
+                    equals the a value; otherwise, return value is 0.
+ choose(n,a,b,...)= chooses the n-th value from the a,b,... values.
+                    (e.g., choose(2,a,b,c) is b)
+  isprime(n)      = 1 if n is a positive integer and a prime number
+                    0 if n is a positive integer and not a prime number
+                   -1 if n is not a positive integer
+                   or if n is bigger than 2^31-1
+
+  [These last 9 functions take a variable number of arguments.]
+
+ The following 27 functions are used for statistical conversions,
+ as in the program 'cdf':
+   fico_t2p(t,a,b,c), fico_p2t(p,a,b,c), fico_t2z(t,a,b,c),
+   fitt_t2p(t,a)    , fitt_p2t(p,a)    , fitt_t2z(t,a)    ,
+   fift_t2p(t,a,b)  , fift_p2t(p,a,b)  , fift_t2z(t,a,b)  ,
+   fizt_t2p(t)      , fizt_p2t(p)      , fizt_t2z(t)      ,
+   fict_t2p(t,a)    , fict_p2t(p,a)    , fict_t2z(t,a)    ,
+   fibt_t2p(t,a,b)  , fibt_p2t(p,a,b)  , fibt_t2z(t,a,b)  ,
+   fibn_t2p(t,a,b)  , fibn_p2t(p,a,b)  , fibn_t2z(t,a,b)  ,
+   figt_t2p(t,a,b)  , figt_p2t(p,a,b)  , figt_t2z(t,a,b)  ,
+   fipt_t2p(t,a)    , fipt_p2t(p,a)    , fipt_t2z(t,a)    .
+
+ See the output of 'cdf -help' for documentation on the meanings of
+ and arguments to these functions.  The two functions below use the
+ NIfTI-1 statistical codes to map between statistical values and
+ cumulative distribution values:
+   cdf2stat(val,code,p1,p2,p3) -- val is between 0 and 1
+   stat2cdf(val,code,p1,p2,p3) -- val is legal for the given distribution
+ where code is
+   2 = correlation statistic     p1 = DOF
+   3 = t statistic (central)     p1 = DOF
+   4 = F statistic (central)     p1 = num DOF, p2 = den DOF
+   5 = N(0,1) statistic          no parameters (p1=p2=p3=0)
+   6 = Chi-squared (central)     p1 = DOF
+   7 = Beta variable (central)   p1 = a , p2 = b
+   8 = Binomial variable         p1 = #trials, p2 = prob per trial
+   9 = Gamma distribution        p1 = shape, p2 = scale
+  10 = Poisson distribution      p1 = mean
+  11 = N(mu,variance) normal     p1 = mean, p2 = scale
+  12 = noncentral F statistic    p1 = num DOF, p2 = den DOF, p3 = noncen
+  13 = noncentral chi-squared    p1 = DOF, p2 = noncentrality parameter
+  14 = Logistic distribution     p1 = mean, p2 = scale
+  15 = Laplace distribution      p1 = mean, p2 = scale
+  16 = Uniform distribution      p1 = min, p2 = max
+  17 = noncentral t statistic    p1 = DOF, p2 = noncentrality parameter
+  18 = Weibull distribution      p1 = location, p2 = scale, p3 = power
+  19 = Chi statistic (central)   p1 = DOF
+  20 = inverse Gaussian variable p1 = mu, p2 = lambda
+  21 = Extreme value type I      p1 = location, p2 = scale
+  22 = 'p-value'                 no parameters
+  23 = -ln(p)                    no parameters
+  24 = -log10(p)                 no parameters
+When fewer than 3 parameters are needed, the values for later parameters
+are still required, but will be ignored.  An extreme case is code=5,
+where the correct call is (e.g.) cdf2stat(p,5,0,0,0)
+
+Finally, note that the expression evaluator is designed not to crash, or
+to return NaN or Infinity.  Illegal operations, such as division by 0,
+logarithm of negative value, etc., are intercepted and something else
+(usually 0) will be returned.  To find out what that 'something else'
+is in any specific case, you should play with the ccalc program.
+ Arithmetic expressions are allowed, using + - * / ** ^ and parentheses.
+ C relational, boolean, and conditional expressions are NOT implemented!
+* Note that the expression evaluator is designed not to fail;  illegal  *
+* operations like 'sqrt(-1)' are changed to legal ones to avoid crashes.*
+ Built in functions include:
+
+    sin  , cos  , tan  , asin  , acos  , atan  , atan2,       
+    sinh , cosh , tanh , asinh , acosh , atanh , exp  ,       
+    log  , log10, abs  , int   , sqrt  , max   , min  ,       
+    J0   , J1   , Y0   , Y1    , erf   , erfc  , qginv, qg ,  
+    rect , step , astep, bool  , and   , or    , mofn ,       
+    sind , cosd , tand , median, lmode , hmode , mad  ,       
+    gran , uran , iran , eran  , lran  , orstat, mod  ,       
+    mean , stdev, sem  , Pleg  , cbrt  , rhddc2, hrfbk4,hrfbk5
+    minabove, maxbelow, extreme, absextreme    , acfwxm
+    gamp , gampq
+
+ where some of the less obvious functions are:
+ * qg(x)    = reversed cdf of a standard normal distribution
+ * qginv(x) = inverse function to qg
+ * min, max, atan2 each take 2 arguments ONLY
+ * J0, J1, Y0, Y1 are Bessel functions (see the holy book: Watson)
+ * Pleg(m,x) is the m'th Legendre polynomial evaluated at x
+ * erf, erfc are the error and complementary error functions
+ * sind, cosd, tand take arguments in degrees (vs. radians)
+ * median(a,b,c,...) computes the median of its arguments
+ * mad(a,b,c,...) computes the MAD of its arguments
+ * mean(a,b,c,...) computes the mean of its arguments
+ * stdev(a,b,c,...) computes the standard deviation of its arguments
+ * sem(a,b,c,...) computes standard error of the mean of its arguments,
+                  where sem(n arguments) = stdev(same)/sqrt(n)
+ * orstat(n,a,b,c,...) computes the n-th order statistic of
+    {a,b,c,...} - that is, the n-th value in size, starting
+    at the bottom (e.g., orstat(1,a,b,c) is the minimum)
+ * minabove(X,a,b,c,...) computes the smallest value amongst {a,b,c,...}
+    that is LARGER than the first argument X; if all values are smaller
+    than X, then X will be returned
+ * maxbelow(X,a,b,c,...) similarly returns the largest value amongst
+    {a,b,c,...} that is SMALLER than the first argument X.
+ * extreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning one of the original a,b,c,... values.
+ * absextreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning the maximum absolute value of a,b,c,... values.
+ * lmode(a,b,c,...) and hmode(a,b,c,...) compute the mode
+    of their arguments - lmode breaks ties by choosing the
+    smallest value with the maximal count, hmode breaks ties by
+    choosing the largest value with the maximal count
+    ["a,b,c,..." indicates a variable number of arguments]
+ * gran(m,s) returns a Gaussian deviate with mean=m, stdev=s
+ * uran(r)   returns a uniform deviate in the range [0,r]
+ * iran(t)   returns a random integer in the range [0..t]
+ * eran(s)   returns an exponentially distributed deviate
+               with parameter s; mean=s
+ * lran(t)   returns a logistically distributed deviate
+               with parameter t; mean=0, stdev=t*1.814
+ * mod(a,b)  returns (a modulo b) = a - b*int(a/b)
+ * hrfbk4(t,L) and hrfbk5(t,L) are the BLOCK4 and BLOCK5 hemodynamic
+    response functions from 3dDeconvolve (L=stimulus duration in sec,
+    and t is the time in sec since start of stimulus); for example:
+ 1deval -del 0.1 -num 400 -expr 'hrfbk5(t-2,20)' | 1dplot -stdin -del 0.1
+    These HRF functions are scaled to return values in the range [0..1]
+
+ * ACFWXM(a,b,c,x) returns the Full Width at X Maximum for the mixed
+   model ACF function
+     f(r) = a*expr(-r*r/(2*b*b))+(1-a)*exp(-r/c)
+   for X between 0 and 1 (not inclusive).  This is the model function
+   estimated in program 3dFWHMx.
+ * gamp(peak,fwhm) returns the parameter p in the formula
+      g(t) = (t/(p*q))^p * exp(p-t/q)
+   that gives the peak value of g(t) occurring at t=peak when the
+   FWHM of g(t) is given by fwhm; gamq(peak,fwhm) gives the q parameter.
+   These functions are largely used for creating FMRI hemodynamic shapes.
+
+ You may use the symbol 'PI' to refer to the constant of that name.
+ This is the only 2 letter symbol defined; all variables are
+ referred to by 1 letter symbols.  The case of the expression is
+ ignored (in fact, it is converted to uppercase as the first step
+ in the parsing algorithm).
+
+ The following functions are designed to help implement logical
+ functions, such as masking of 3D volumes against some criterion:
+       step(x)    = {1 if x>0           , 0 if x<=0},
+       posval(x)  = {x if x>0           , 0 if x<=0},
+       astep(x,y) = {1 if abs(x) > y    , 0 otherwise} = step(abs(x)-y)
+  within(x,MI,MX) = {1 if MI <= x <= MX , 0 otherwise},
+       rect(x)    = {1 if abs(x)<=0.5, 0 if abs(x)>0.5},
+       bool(x)    = {1 if x != 0.0   , 0 if x == 0.0},
+    notzero(x)    = bool(x),
+     iszero(x)    = 1-bool(x) = { 0 if x != 0.0, 1 if x == 0.0 },
+        not(x)    = same as iszero(x)
+     equals(x,y)  = 1-bool(x-y) = { 1 if x == y , 0 if x != y },
+   ispositive(x)  = { 1 if x > 0; 0 if x <= 0 },
+   isnegative(x)  = { 1 if x < 0; 0 if x >= 0 },
+   ifelse(x,t,f)  = { t if x != 0; f if x == 0 },
+        not(x)    = same as iszero(x) = Boolean negation
+   and(a,b,...,c) = {1 if all arguments are nonzero, 0 if any are zero}
+    or(a,b,...,c) = {1 if any arguments are nonzero, 0 if all are zero}
+  mofn(m,a,...,c) = {1 if at least 'm' arguments are nonzero, else 0 }
+  argmax(a,b,...) = index of largest argument; = 0 if all args are 0
+  argnum(a,b,...) = number of nonzero arguments
+  pairmax(a,b,...)= finds the 'paired' argument that corresponds to the
+                    maximum of the first half of the input arguments;
+                    for example, pairmax(a,b,c,p,q,r) determines which
+                    of {a,b,c} is the max, then returns corresponding
+                    value from {p,q,r}; requires even number of args.
+  pairmin(a,b,...)= Similar to pairmax, but for minimum; for example,
+                    pairmin(a,b,c,p,q,r} finds the minimum of {a,b,c}
+                    and returns the corresponding value from {p,q,r};
+                      pairmin(3,2,7,5,-1,-2,-3,-4) = -2
+                    (The 'pair' functions are Lukas Pezawas specials!)
+  amongst(a,b,...)= Return value is 1 if any of the b,c,... values
+                    equals the a value; otherwise, return value is 0.
+ choose(n,a,b,...)= chooses the n-th value from the a,b,... values.
+                    (e.g., choose(2,a,b,c) is b)
+  isprime(n)      = 1 if n is a positive integer and a prime number
+                    0 if n is a positive integer and not a prime number
+                   -1 if n is not a positive integer
+                   or if n is bigger than 2^31-1
+
+  [These last 9 functions take a variable number of arguments.]
+
+ The following 27 functions are used for statistical conversions,
+ as in the program 'cdf':
+   fico_t2p(t,a,b,c), fico_p2t(p,a,b,c), fico_t2z(t,a,b,c),
+   fitt_t2p(t,a)    , fitt_p2t(p,a)    , fitt_t2z(t,a)    ,
+   fift_t2p(t,a,b)  , fift_p2t(p,a,b)  , fift_t2z(t,a,b)  ,
+   fizt_t2p(t)      , fizt_p2t(p)      , fizt_t2z(t)      ,
+   fict_t2p(t,a)    , fict_p2t(p,a)    , fict_t2z(t,a)    ,
+   fibt_t2p(t,a,b)  , fibt_p2t(p,a,b)  , fibt_t2z(t,a,b)  ,
+   fibn_t2p(t,a,b)  , fibn_p2t(p,a,b)  , fibn_t2z(t,a,b)  ,
+   figt_t2p(t,a,b)  , figt_p2t(p,a,b)  , figt_t2z(t,a,b)  ,
+   fipt_t2p(t,a)    , fipt_p2t(p,a)    , fipt_t2z(t,a)    .
+
+ See the output of 'cdf -help' for documentation on the meanings of
+ and arguments to these functions.  The two functions below use the
+ NIfTI-1 statistical codes to map between statistical values and
+ cumulative distribution values:
+   cdf2stat(val,code,p1,p2,p3) -- val is between 0 and 1
+   stat2cdf(val,code,p1,p2,p3) -- val is legal for the given distribution
+ where code is
+   2 = correlation statistic     p1 = DOF
+   3 = t statistic (central)     p1 = DOF
+   4 = F statistic (central)     p1 = num DOF, p2 = den DOF
+   5 = N(0,1) statistic          no parameters (p1=p2=p3=0)
+   6 = Chi-squared (central)     p1 = DOF
+   7 = Beta variable (central)   p1 = a , p2 = b
+   8 = Binomial variable         p1 = #trials, p2 = prob per trial
+   9 = Gamma distribution        p1 = shape, p2 = scale
+  10 = Poisson distribution      p1 = mean
+  11 = N(mu,variance) normal     p1 = mean, p2 = scale
+  12 = noncentral F statistic    p1 = num DOF, p2 = den DOF, p3 = noncen
+  13 = noncentral chi-squared    p1 = DOF, p2 = noncentrality parameter
+  14 = Logistic distribution     p1 = mean, p2 = scale
+  15 = Laplace distribution      p1 = mean, p2 = scale
+  16 = Uniform distribution      p1 = min, p2 = max
+  17 = noncentral t statistic    p1 = DOF, p2 = noncentrality parameter
+  18 = Weibull distribution      p1 = location, p2 = scale, p3 = power
+  19 = Chi statistic (central)   p1 = DOF
+  20 = inverse Gaussian variable p1 = mu, p2 = lambda
+  21 = Extreme value type I      p1 = location, p2 = scale
+  22 = 'p-value'                 no parameters
+  23 = -ln(p)                    no parameters
+  24 = -log10(p)                 no parameters
+When fewer than 3 parameters are needed, the values for later parameters
+are still required, but will be ignored.  An extreme case is code=5,
+where the correct call is (e.g.) cdf2stat(p,5,0,0,0)
+
+Finally, note that the expression evaluator is designed not to crash, or
+to return NaN or Infinity.  Illegal operations, such as division by 0,
+logarithm of negative value, etc., are intercepted and something else
+(usually 0) will be returned.  To find out what that 'something else'
+is in any specific case, you should play with the ccalc program.
+ Arithmetic expressions are allowed, using + - * / ** ^ and parentheses.
+ C relational, boolean, and conditional expressions are NOT implemented!
+* Note that the expression evaluator is designed not to fail;  illegal  *
+* operations like 'sqrt(-1)' are changed to legal ones to avoid crashes.*
+ Built in functions include:
+
+    sin  , cos  , tan  , asin  , acos  , atan  , atan2,       
+    sinh , cosh , tanh , asinh , acosh , atanh , exp  ,       
+    log  , log10, abs  , int   , sqrt  , max   , min  ,       
+    J0   , J1   , Y0   , Y1    , erf   , erfc  , qginv, qg ,  
+    rect , step , astep, bool  , and   , or    , mofn ,       
+    sind , cosd , tand , median, lmode , hmode , mad  ,       
+    gran , uran , iran , eran  , lran  , orstat, mod  ,       
+    mean , stdev, sem  , Pleg  , cbrt  , rhddc2, hrfbk4,hrfbk5
+    minabove, maxbelow, extreme, absextreme    , acfwxm
+    gamp , gampq
+
+ where some of the less obvious functions are:
+ * qg(x)    = reversed cdf of a standard normal distribution
+ * qginv(x) = inverse function to qg
+ * min, max, atan2 each take 2 arguments ONLY
+ * J0, J1, Y0, Y1 are Bessel functions (see the holy book: Watson)
+ * Pleg(m,x) is the m'th Legendre polynomial evaluated at x
+ * erf, erfc are the error and complementary error functions
+ * sind, cosd, tand take arguments in degrees (vs. radians)
+ * median(a,b,c,...) computes the median of its arguments
+ * mad(a,b,c,...) computes the MAD of its arguments
+ * mean(a,b,c,...) computes the mean of its arguments
+ * stdev(a,b,c,...) computes the standard deviation of its arguments
+ * sem(a,b,c,...) computes standard error of the mean of its arguments,
+                  where sem(n arguments) = stdev(same)/sqrt(n)
+ * orstat(n,a,b,c,...) computes the n-th order statistic of
+    {a,b,c,...} - that is, the n-th value in size, starting
+    at the bottom (e.g., orstat(1,a,b,c) is the minimum)
+ * minabove(X,a,b,c,...) computes the smallest value amongst {a,b,c,...}
+    that is LARGER than the first argument X; if all values are smaller
+    than X, then X will be returned
+ * maxbelow(X,a,b,c,...) similarly returns the largest value amongst
+    {a,b,c,...} that is SMALLER than the first argument X.
+ * extreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning one of the original a,b,c,... values.
+ * absextreme(a,b,c,...) finds the largest absolute value amongst
+    {a,b,c,...} returning the maximum absolute value of a,b,c,... values.
+ * lmode(a,b,c,...) and hmode(a,b,c,...) compute the mode
+    of their arguments - lmode breaks ties by choosing the
+    smallest value with the maximal count, hmode breaks ties by
+    choosing the largest value with the maximal count
+    ["a,b,c,..." indicates a variable number of arguments]
+ * gran(m,s) returns a Gaussian deviate with mean=m, stdev=s
+ * uran(r)   returns a uniform deviate in the range [0,r]
+ * iran(t)   returns a random integer in the range [0..t]
+ * eran(s)   returns an exponentially distributed deviate
+               with parameter s; mean=s
+ * lran(t)   returns a logistically distributed deviate
+               with parameter t; mean=0, stdev=t*1.814
+ * mod(a,b)  returns (a modulo b) = a - b*int(a/b)
+ * hrfbk4(t,L) and hrfbk5(t,L) are the BLOCK4 and BLOCK5 hemodynami
+
+... Output truncated due to size limit ...
+
+=== Output of 'ccalc -help' ===
+
+Usage: ccalc [-form FORM] [-eval 'expr']
+Usage mode 1: Interactive numerical calculator
+    Interactive numerical calculator, using the 
+    same expression syntax as 3dcalc. 
+    No command line parameters are permitted in
+    usage 1 mode.
+Usage mode 2: Command line expression calculator
+    Evaluate an expression specified on command
+    line, return answer and quit.
+    Optional parameters: (must come first)
+    -form FORM: Format output in a nice form
+                Choose from:
+                double: Macho numbers (default).
+                nice: Metrosexual output.
+                int (or rint): Rounded to nearest integer.
+                cint: Rounded up.
+                fint: Rounded down.
+                %n.mf: custom format string, used as in printf.
+                   format string can contain %%, \n and other
+                   regular characters.
+                   See man fprintf and man printf for details.
+                You can also replace:
+                   -form int    with    -i
+                   -form nice   with    -n
+                   -form double with    -d
+                   -form fint   with    -f
+                   -form cint   with    -c
+    Mandatory parameter: (must come last on command line)
+    -eval EXPR: EXPR is the expression to evaluate.
+                Example: ccalc -eval '3 + 5 * sin(22)' 
+                     or: ccalc -eval 3 +5 '*' 'sin(22)'
+                You can not use variables in EXPR
+                as you do with 3dcalc.
+    Example with formatting:
+        ccalc -form '********\n%6.4f%%\n********' -eval '100*328/457'
+    gives:
+        ********
+        0.7177%
+        ********
+    Try also:
+        ccalc -i 3.6
+        ccalc -f 3.6
+        ccalc -c 3.6
+        ccalc -form '%3.5d' 3.3
+        ccalc -form '**%5d**' 3.3
+        ccalc -form '**%-5d**' 3.3
+
+ ** SECRET: You don't need to use -eval if you are 
+            not using any other options. I hate typing
+            it for quick command line calculations. 
+            But that feature might be removed in the
+            future, so always use -eval when you are 
+            using this program in your scripts.
+
+
+... Output truncated due to size limit ...
+
+=== Output of 'ccalc' (no arguments) ===
+
+calc> 
+
+
+... Output truncated due to size limit ...

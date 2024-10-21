@@ -1,0 +1,26 @@
+
+=== Output of 'mris_entropy --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_entropy [options] <subject> <hemi> <wfile> <curv file>
+
+This program computes the entropy of a surface activation pattern smoothing (-a <avgs>) or normalizing (-n)
+
+valid options are:
+
+-a <avgs>  specify # of curvature averaging iterations (def=0).
+-n  normalize curvature before writing
+
+=== Output of 'mris_entropy -help' ===
+
+unknown option -help
+
+=== Output of 'mris_entropy' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_entropy [options] <subject> <hemi> <wfile> <curv file>
+
+This program computes the entropy of a surface activation pattern smoothing (-a <avgs>) or normalizing (-n)
+
+valid options are:
+
+-a <avgs>  specify # of curvature averaging iterations (def=0).
+-n  normalize curvature before writing

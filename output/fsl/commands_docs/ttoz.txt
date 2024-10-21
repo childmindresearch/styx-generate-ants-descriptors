@@ -1,0 +1,27 @@
+
+=== Output of 'ttoz --help' ===
+
+Lacking argument to option --help
+Vars filename not found
+
+Usage: /usr/local/fsl/bin/ttoz [options] <varsfile> <cbsfile> <dof> 
+  Available options are:
+        -zout <outputvol>            (default is zstats)
+        -help
+
+
+=== Output of 'ttoz -help' ===
+
+Usage: /usr/local/fsl/bin/ttoz [options] <varsfile> <cbsfile> <dof> 
+  Available options are:
+        -zout <outputvol>            (default is zstats)
+        -help
+
+
+=== Output of 'ttoz' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/ttoz [options] <varsfile> <cbsfile> <dof> 
+  Available options are:
+        -zout <outputvol>            (default is zstats)
+        -help
+

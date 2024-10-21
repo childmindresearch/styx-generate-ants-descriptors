@@ -1,0 +1,37 @@
+
+=== Output of 'stattablediff --help' ===
+
+usage: stattablediff [-h] --t1 T1 --t2 T2 --o O [--percent] [--percent1]
+                     [--percent2] [--mul MUL] [--div DIV] [--common]
+                     [--rm-exvivo] [--diff-subjs] [--noreplace53]
+
+creates a table of the differences between two stats tables
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --t1 T1        input table 1 (output of asegstats2table or aparcstats2table)
+  --t2 T2        input table 2 (output of asegstats2table or aparcstats2table)
+  --o O          output file
+  --percent      compute percent diff with respect to mean of tables
+  --percent1     compute percent diff with respect to table1
+  --percent2     compute percent diff with respect to table2
+  --mul MUL      multiply by mulval
+  --div DIV      divide by divval
+  --common       compute diff on common segs (may reorder)
+  --rm-exvivo    remove the string "_exvivo" from the column header
+  --diff-subjs   pass this flag to compare subjects with different names
+  --noreplace53  do not replace 5.3 structure names with later names
+
+=== Output of 'stattablediff -help' ===
+
+usage: stattablediff [-h] --t1 T1 --t2 T2 --o O [--percent] [--percent1]
+                     [--percent2] [--mul MUL] [--div DIV] [--common]
+                     [--rm-exvivo] [--diff-subjs] [--noreplace53]
+stattablediff: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'stattablediff' (no arguments) ===
+
+usage: stattablediff [-h] --t1 T1 --t2 T2 --o O [--percent] [--percent1]
+                     [--percent2] [--mul MUL] [--div DIV] [--common]
+                     [--rm-exvivo] [--diff-subjs] [--noreplace53]
+stattablediff: error: the following arguments are required: --t1, --t2, --o

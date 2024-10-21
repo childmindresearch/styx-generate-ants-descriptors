@@ -1,0 +1,36 @@
+
+=== Output of 'fslinfo --help' ===
+
+data_type	UNKNOWN
+dim1		0
+dim2		0
+dim3		0
+dim4		0
+datatype	0
+pixdim1		0.000000
+pixdim2		0.000000
+pixdim3		0.000000
+pixdim4		0.000000
+cal_max		0.000000
+cal_min		0.000000
+file_type	NIFTI-1+
+
+=== Output of 'fslinfo -help' ===
+
+data_type	UNKNOWN
+dim1		0
+dim2		0
+dim3		0
+dim4		0
+datatype	0
+pixdim1		0.000000
+pixdim2		0.000000
+pixdim3		0.000000
+pixdim4		0.000000
+cal_max		0.000000
+cal_min		0.000000
+file_type	NIFTI-1+
+
+=== Output of 'fslinfo' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/fslinfo <filename>

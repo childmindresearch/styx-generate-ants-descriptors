@@ -1,0 +1,10 @@
+
+=== Output of '3dICA.R --help' ===
+
+
+=== Output of '3dICA.R -help' ===
+
+
+=== Output of '3dICA.R' (no arguments) ===
+
+** afni_run_R: requires at least 2 args

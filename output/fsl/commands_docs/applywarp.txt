@@ -1,0 +1,116 @@
+
+=== Output of 'applywarp --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+applywarp 
+Copyright(c) 2001, University of Oxford (Jesper Andersson)
+
+Usage: 
+applywarp -i invol -o outvol -r refvol -w warpvol
+applywarp -i invol -o outvol -r refvol -w coefvol
+applywarp -i invol -o outvol -r refvol --usesqform
+
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of input image (to be warped)
+	-r,--ref	filename for reference image
+	-o,--out	filename for output (warped) image
+
+Optional arguments (You may optionally specify one or more of):
+	-w,--warp	filename for warp/coefficient (volume)
+	--abs		treat warp field as absolute: x' = w(x)
+	--rel		treat warp field as relative: x' = x + w(x)
+	-d,--datatype	Force output data type [char short int float double].
+	-s,--super	intermediary supersampling of output, default is off
+	--superlevel	level of intermediary supersampling, a for 'automatic' or integer level. Default = 2
+	--premat	filename for pre-transform (affine matrix)
+	--postmat	filename for post-transform (affine matrix)
+	-m,--mask	filename for mask image (in reference space)
+	--interp	interpolation method {nn,trilinear,sinc,spline}
+	--paddingsize	Extrapolates outside original volume by n voxels
+	--usesqform	use s/qforms of --ref and --in images
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'applywarp -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+applywarp 
+Copyright(c) 2001, University of Oxford (Jesper Andersson)
+
+Usage: 
+applywarp -i invol -o outvol -r refvol -w warpvol
+applywarp -i invol -o outvol -r refvol -w coefvol
+applywarp -i invol -o outvol -r refvol --usesqform
+
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of input image (to be warped)
+	-r,--ref	filename for reference image
+	-o,--out	filename for output (warped) image
+
+Optional arguments (You may optionally specify one or more of):
+	-w,--warp	filename for warp/coefficient (volume)
+	--abs		treat warp field as absolute: x' = w(x)
+	--rel		treat warp field as relative: x' = x + w(x)
+	-d,--datatype	Force output data type [char short int float double].
+	-s,--super	intermediary supersampling of output, default is off
+	--superlevel	level of intermediary supersampling, a for 'automatic' or integer level. Default = 2
+	--premat	filename for pre-transform (affine matrix)
+	--postmat	filename for post-transform (affine matrix)
+	-m,--mask	filename for mask image (in reference space)
+	--interp	interpolation method {nn,trilinear,sinc,spline}
+	--paddingsize	Extrapolates outside original volume by n voxels
+	--usesqform	use s/qforms of --ref and --in images
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'applywarp' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	filename of input image (to be warped)
+	-r,--ref	filename for reference image
+	-o,--out	filename for output (warped) image
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+applywarp 
+Copyright(c) 2001, University of Oxford (Jesper Andersson)
+
+Usage: 
+applywarp -i invol -o outvol -r refvol -w warpvol
+applywarp -i invol -o outvol -r refvol -w coefvol
+applywarp -i invol -o outvol -r refvol --usesqform
+
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of input image (to be warped)
+	-r,--ref	filename for reference image
+	-o,--out	filename for output (warped) image
+
+Optional arguments (You may optionally specify one or more of):
+	-w,--warp	filename for warp/coefficient (volume)
+	--abs		treat warp field as absolute: x' = w(x)
+	--rel		treat warp field as relative: x' = x + w(x)
+	-d,--datatype	Force output data type [char short int float double].
+	-s,--super	intermediary supersampling of output, default is off
+	--superlevel	level of intermediary supersampling, a for 'automatic' or integer level. Default = 2
+	--premat	filename for pre-transform (affine matrix)
+	--postmat	filename for post-transform (affine matrix)
+	-m,--mask	filename for mask image (in reference space)
+	--interp	interpolation method {nn,trilinear,sinc,spline}
+	--paddingsize	Extrapolates outside original volume by n voxels
+	--usesqform	use s/qforms of --ref and --in images
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

@@ -1,0 +1,98 @@
+
+=== Output of 'vecreg --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+vecreg 
+Vector Affine/NonLinear Tranformation with Orientation Preservation
+
+Usage: 
+vecreg -i <input4D> -o <output4D> -r <refvol> -t <transform>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--input	filename for input vector or tensor field
+	-o,--output	filename for output registered vector or tensor field
+	-r,--ref	filename for reference (target) volume
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-t,--affine	filename for affine transformation matrix
+	-w,--warpfield	filename for 4D warp field for nonlinear registration
+	--rotmat	filename for secondary affine matrix 
+			if set, this will be used for the rotation of the vector/tensor field 
+	--rotwarp	filename for secondary warp field 
+			if set, this will be used for the rotation of the vector/tensor field 
+	--interp	interpolation method : nearestneighbour, trilinear (default), sinc or spline
+	-m,--mask	brain mask in input space
+	--refmask	brain mask in output space (useful for speed up of nonlinear reg)
+
+
+
+=== Output of 'vecreg -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+vecreg 
+Vector Affine/NonLinear Tranformation with Orientation Preservation
+
+Usage: 
+vecreg -i <input4D> -o <output4D> -r <refvol> -t <transform>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--input	filename for input vector or tensor field
+	-o,--output	filename for output registered vector or tensor field
+	-r,--ref	filename for reference (target) volume
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-t,--affine	filename for affine transformation matrix
+	-w,--warpfield	filename for 4D warp field for nonlinear registration
+	--rotmat	filename for secondary affine matrix 
+			if set, this will be used for the rotation of the vector/tensor field 
+	--rotwarp	filename for secondary warp field 
+			if set, this will be used for the rotation of the vector/tensor field 
+	--interp	interpolation method : nearestneighbour, trilinear (default), sinc or spline
+	-m,--mask	brain mask in input space
+	--refmask	brain mask in output space (useful for speed up of nonlinear reg)
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'vecreg' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--input	filename for input vector or tensor field
+	-o,--output	filename for output registered vector or tensor field
+	-r,--ref	filename for reference (target) volume
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+vecreg 
+Vector Affine/NonLinear Tranformation with Orientation Preservation
+
+Usage: 
+vecreg -i <input4D> -o <output4D> -r <refvol> -t <transform>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--input	filename for input vector or tensor field
+	-o,--output	filename for output registered vector or tensor field
+	-r,--ref	filename for reference (target) volume
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-t,--affine	filename for affine transformation matrix
+	-w,--warpfield	filename for 4D warp field for nonlinear registration
+	--rotmat	filename for secondary affine matrix 
+			if set, this will be used for the rotation of the vector/tensor field 
+	--rotwarp	filename for secondary warp field 
+			if set, this will be used for the rotation of the vector/tensor field 
+	--interp	interpolation method : nearestneighbour, trilinear (default), sinc or spline
+	-m,--mask	brain mask in input space
+	--refmask	brain mask in output space (useful for speed up of nonlinear reg)
+
+

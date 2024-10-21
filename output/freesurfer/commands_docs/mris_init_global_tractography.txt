@@ -1,0 +1,13 @@
+
+=== Output of 'mris_init_global_tractography --help' ===
+
+unknown option --help
+
+=== Output of 'mris_init_global_tractography -help' ===
+
+unknown option -help
+
+=== Output of 'mris_init_global_tractography' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_init_global_tractography [options] <subject> <parcellation> <output volume>
+	

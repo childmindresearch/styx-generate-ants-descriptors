@@ -1,0 +1,728 @@
+
+=== Output of '1dplot.py --help' ===
+
+** ERROR: unknown opt: '--help'
+
+=== Output of '1dplot.py -help' ===
+
+
+
+OVERVIEW ~1~
+
+This program is for making images to visualize columns of numbers from
+"1D" text files.  It is based heavily on RWCox's 1dplot program, just
+using Python (particularly matplotlib).  To use this program, Python
+version >=2.7 is required, as well as matplotlib modules (someday numpy 
+might be needed, as well).
+
+This program takes very few required options-- mainly, file names and
+an output prefix-- but it allows the user to control/add many
+features, such as axis labels, titles, colors, adding in censor
+information, plotting summary boxplots and more.
+
+++ constructed by PA Taylor (NIMH, NIH, USA).
+
+# =========================================================================
+
+COMMAND OPTIONS ~1~
+
+-help, -h     :see helpfile
+
+-infiles II   :(req) one or more file names of text files.  Each column
+               in this file will be treated as a separate time series
+               for plotting (i.e., as 'y-values').  One can use
+               AFNI-style column '{ }' and row '[ ]' selectors.  One
+               or more files may be entered, but they must all be of 
+               equal length.
+-yfiles YY    :exactly the same behavior as "-infiles ..", just another
+               option name for it that might be more consistent with
+               other options.
+
+-prefix  PP   :output filename or prefix; if no file extension for an
+               image is included in 'PP', one will be added from a
+               list.  At present, OK file types to output should include:
+                  .jpg, .png, .tif, .pdf, .svg
+               ... but note that the kinds of image files you may output
+               may be limited by packages (or lack thereof) installed on
+               your own computer.   Default output image type is .jpg
+
+-boxplot_on   :a fun feature to show an small, additional boxplot
+               adjacent to each time series.  The plot is a standard
+               Python boxplot of that times series's values.  The box
+               shows the 25-75%ile range (interquartile range, IQR);
+               the median value highlighted by a white line; whiskers
+               stretch to 1.5*IQR; circles show outliers.
+               When using this option and censoring, by default both a
+               boxplot of data "before censoring" (BC) and "after
+               censoring (AC) will be added after.  See '-bplot_view ...'
+               about current opts to change that, if desired.
+
+-bplot_view BC_ONLY | AC_ONLY
+              :when using '-boxplot_on' and censoring, by default the
+               plotter will put one boxplot of data "before censoring"
+               (BC) and after censoring (AC). To show *only* the
+               uncensored one, use this option and keyword.
+
+-margin_off   :use this option to have the plot frame fill the figure
+               window completely; thus, no labels, frame, titles or
+               other parts of the 'normal' image outside the plot
+               window will be visible.  Tick lines will still be
+               present, living their best lives.
+               This is probably only useful/recommended/tested for
+               plots with a single panel.
+
+-scale  SCA1 SCA2 SCA3 ...
+              :provide a list of scales to apply to the y-values.
+               These will be applied multiplicatively to the y-values;
+               there should either be 1 (applied to all time series)
+               or the same number as the time series (in the same
+               order as those were entered).  The scale values are
+               also applied to the censor_hline values, but *not* to
+               the "-yaxis ..." range(s). 
+               Note that there are a couple keywords that can be used
+               instead of SCA* values:
+                   SCALE_TO_HLINE: each input time series is
+                      vertically scaled so that its censor_hline -> 1.
+                      That is, each time point is divided by the
+                      censor_hline value.  When using this, a visually
+                      pleasing yaxis range might be 0:3.
+                   SCALE_TO_MAX: each input time series is
+                      vertically scaled so that its max value -> 1.
+                      That is, each time point is divided by the
+                      max value. When using this, a visually
+                      pleasing yaxis range might be 0:1.1.
+
+-yfiles_pm YP :one or more file names of text files. Each column in
+               this file will be treated as a separate time series for
+               plotting a plus/minus colorized range for an associated
+               yfile/infile line. The number of files input with YP
+               must exactly match that of either '-infiles ..' or
+               '-yfiles ..'. The color will match the line color, but at
+               greatly reduced opacity.
+
+-ylim_use_pm  :by default, if not '-yaxis ..' opt is used, the ylim
+               range each subplot comes from (slightly expanded)
+               bounds of the min and max yvalue in each. But if
+               '-yfiles_pm ..' is used, you can use this option to expand
+               those limits by the min and max of the extra error-bounded
+               space.
+
+-xfile   XX   :one way to input x-values explicitly: as a "1D" file XX, a
+               containing a single file of numbers.  If no xfile is 
+               entered, then a list of integers is created, 0..N-1, based
+               on the length of the "-infiles ..".
+               
+-xvals START STOP STEP
+              :an alternative means for entering abscissa values: one
+               can provide exactly 3 numbers, the start (inclusive)
+               the stop (exclusive) and the steps to take, following
+               Python conventions-- that is, numbers are generated
+               [START,STOP) in stepsizes of STEP.
+
+-yaxis YMIN1:YMAX1 YMIN2:YMAX2 YMIN3:YMAX3 ...
+              :optional range for each "infile" y-axis; note the use
+              of a colon to designate the min/max of the range.  One
+              can also specify just the min (e.g., "YMIN:") or just
+              the max (e.g., ":YMAX"). The final number of y-axis
+              values or pairs *must* match the total number of columns
+              of data from infiles; a placeholder could just be
+              ":". Without specifying a range, one is calculated
+              automatically from the min and max of the dsets
+              themselves. The order of ylabels should match the order
+              of infiles.
+
+-ylabels YL1 YL2 YL3 ...
+              :optional text labels for each "infile" column; the
+               final number of ylabels *must* match the total number
+               of columns of data from infiles.  The order of ylabels
+               should match the order of infiles.  These labels are
+               plotted vertically along the y-axis of the plot.
+               * For 1D files output by 3dvolreg, one can
+               automatically provide the 6 associated ylabels by
+               providing the keyword 'VOLREG' (and this counts as 6
+               labels).  
+               * For 1D files output by '3dAllineate -1Dparam_save ..',
+               if you are using just the 6 rigid body parameters, you
+               can automatically provide the 6 associated ylabels by
+               providing the keyword 'ALLINPAR6' (and this counts as
+               6 labels).  If using the 6 rigid body parameters and 3 
+               scaling, you can use the keyword 'ALLINPAR9' (which counts
+               as 9 labels). If using all 12 affine parameters, you can use 
+               the keyword 'ALLINPAR12' (which counts as 9 labels). 
+
+-ylabels_maxlen MM
+              :y-axis labels can get long; this opt allows you to have
+               them wrap into multiple rows, each of length <=MM.  At the
+               moment, this wrapping is done with some "logic" that tries
+               to be helpful (e.g., split at underscores where possible), 
+               as long as that helpfulness doesn't increase line numbers
+               a lot.  The value entered here will apply to all y-axis 
+               labels in the plot.
+
+-legend_on    :turn on the plotting of a legend in the plot(s).  Legend
+               will not be shown in the boxplot panels, if using.
+
+-legend_labels LL1 LL2 LL3 ...
+              :optional legend labels, if using '-legend_on' to show a
+               legend.  If no arguments are provided for this option,
+               then the labels will be the arguments to '-infiles ..'
+               (or '-yfiles ..').  If arguments ARE input, then they must
+               match the number of '-infiles ..' (or '-yfiles ..').
+
+-legend_locs  LOC1 LOC2 LOC3 ...
+              :optional legend locations, if using '-legend_on' to
+               show a legend.  If no arguments are provided for this
+               option, then the locations will be the ones picked by
+               Python (reasonable starting point) If arguments ARE
+               input, then they must match the number of '-infiles ..'
+               (or '-yfiles ..').  Valid entries are strings
+               recognizable by matplotlib's plt.legend()'s "loc" opt;
+               this includes: 'best', 'right', 'upper right', 'lower
+               right', 'center right', etc. Note that if you use a
+               two-word argument here, you MUST put it in quotes (or,
+               as a special treat, you can combine it with an
+               underscore, and it will be parsed correctly.  So, valid
+               values of LOC* could be:
+                  left
+                  'lower left'
+                  upper_center
+
+-xlabel XL    :optional text labels for the abscissa/x-axis.  Only one may  
+               be entered, and it will *only* be displayed on the bottom 
+               panel of the output plot.  Using labels is good practice!!
+
+ 
+-title TT     :optional title for the set of plots, placed above the top- 
+               most subplot
+
+-reverse_order :optional switch; by default, the entered time series
+               are plotted top to bottom according to the order they
+               were entered (i.e., first- listed plot at the top).
+               This option reverses that order (to first-listed plot
+               at the bottom), in order to match with 1dplot's
+               behavior.
+
+-sepscl       :make each graph have its own y-range, determined by
+               slightly padding its min and max values.  By default,
+               the separate plots all have the same y-range, which
+               is determined by taking the min-of-mins and max-of-
+               maxes, and padding slightly outward.  
+
+-one_graph    :plot multiple infiles in a single subplot (default is to put
+               each one in a new subplot).
+
+-dpi DDD      :choose the output image's DPI.  The default value is
+               150.
+
+-figsize FX FY :choose the output image's dimensions (units are inches).  
+                The default width is 10; the default height
+                is 0.5 + N*0.75, where 'N' is the number of 
+                infile columns.
+
+-fontsize FS   :change image fontsize; default is 10.
+
+-fontfamily FF :change font-family used; default is the luvly
+                monospace.
+
+-fontstyles FSS :add in a fontname; should match with chosen
+                font-family; default is whatever Python has on your
+                system for the given family.  Whether your prescribed
+                font gets used depends on what is installed on your
+                comp.
+
+-colors C1 C2 C3 ...
+               :you can decide what color(s) to cycle through in plots
+                (enter one or more); if there are more infile columns
+                than entered colors, the program just keeps cycling
+                through the list. By default, if only 1 infile column is
+                given, the plotline will be black; when more than one
+                infile column is given, a default palette of 10
+                colors, chosen for their mutual-distinguishable-ness,
+                will be cycled through.
+                One of the colors can also be a decimal in range [0.0, 1.0],
+                which will correspond to grayscale in range [black, white],
+                respectively.
+
+-patches RL1 RL2 RL3 ...
+               :when viewing data from multiple runs that have been
+                processing+concatenated, knowing where they start/stop
+                can be useful. This option helps with that, by
+                alternating patches of the background slightly between
+                white and light gray.  The user enters any appropriate
+                number of run lengths, and the background patch for
+                the duration of the first is white, then light gray,
+                etc. (to *start* with light gray, one can have '0' be
+                the first RL value).
+
+-censor_trs CS1 CS2 CS3 ...
+               :specify time points where censoring has occurred (e.g.,
+                due to a motion or outlier criterion).  With this
+                option, the values are entered using AFNI index
+                notation, such as '0..3,8,25,99..$'.  Note that if you
+                use special characters like the '$', then the given
+                string must be enclosed on quotes.  
+                One or more string can be entered, and results are
+                simply combined (as well as if censor files are
+                entered-- see the '-censor_files ..' opt).
+                In order to highlight censored points, a translucent
+                background color will be added to all plots of width 1.
+
+-censor_files CF1 CF2 CF3 ...
+               :specify time points where censoring has occurred (e.g.,
+                due to a motion or outlier criterion).  With this
+                option, the values are entered as 1D files, columns
+                where 0 indicates censoring at that [i]th time point,
+                and 1 indicates *no* censoring there.  
+                One or more file can be entered, and results are
+                simply combined (as well as if censor strings are
+                entered-- see the '-censor_str ..' opt).  
+                In order to highlight censored points, a translucent
+                background color will be added to all plots of width 1.
+
+-censor_hline CH1 CH2 CH3 ...
+               :one can add a dotted horizontal line to the plot, with
+                the intention that it represents the relevant threshold
+                (for example, motion limit or outlier fraction limit).
+                One can specify more than one hline: if one line
+                is entered, it will be applied to each plot; if more
+                than one hline is entered, there must be the same number
+                of values as infile columns. 
+                Ummm, it is also assumed that all censor hline values 
+                are >=0; if negative, it will be a problem-- ask if this
+                is a problem!
+                A value of 'NONE' can also be input, to be a placeholder
+                in a list, when some subplots have censor_hline values
+                and others don't.
+
+-censor_RGB COL :choose the color of the censoring background; from the 
+                command line, users enter a string, which could be:
+                + 3 space-separated floats in range [0, 1], of RGB values
+                + 4 space-separated floats in range [0, 1], of RGBA values
+                + 1 string of a valid matplotlib color
+                + 1 string of a valid matplotlib color and 1 floats in 
+                  range [0, 1], which is an alpha opacity value.
+                (default is: '1 0.7 0.7').
+
+-bkgd_color BC :change the background color outside of the plot
+                windows.  Default is the Python color: 0.9.
+
+EXAMPLES ~1~
+
+1) Plot Euclidean norm (enorm) profile, with the censor limit and
+   related file of censoring:
+1dplot.py                                    \
+    -sepscl                                  \
+    -boxplot_on                              \
+    -infiles      motion_sub-10506_enorm.1D  \
+    -censor_files motion_sub-10506_censor.1D \
+    -censor_hline 0.2                        \
+    -title   "Motion censoring"              \
+    -ylabels enorm                           \
+    -xlabel  "vols"                          \
+    -title   "Motion censoring"              \
+    -prefix  mot_cen_plot.jpg
+
+2) Plot the 6 solid body parameters from 3dvolreg, along with
+   the useful composite 'enorm' and outlier time series:
+1dplot.py                                    \
+    -sepscl                                  \
+    -boxplot_on                              \
+    -reverse_order                           \
+    -infiles      dfile_rall.1D              \
+                  motion_sub-10506_enorm.1D  \
+                  outcount_rall.1D           \
+    -ylabels  VOLREG enorm outliers          \
+    -xlabel  "vols"                          \
+    -title   "Motion and outlier plots"      \
+    -prefix  mot_outlier_plot.png
+
+3) Use labels and locations to plot 3dhistog output (there will
+   be some minor whining about failing to process comment label
+   *.1D files, but won't cause any problems for plot); here, 
+   legend labels will be the args after '-yfiles ..' (with the 
+   part in square brackets, but without the quotes):
+1dplot.py                                    \
+    -xfile  HOUT_A.1D'[0]'                   \
+    -yfiles HOUT_A.1D'[1]' HOUT_B.1D'[1]'    \
+    -prefix img_histog.png                   \
+    -colors blue 0.6                         \
+    -boxplot_on                              \
+    -legend_on 
+
+4) Same as #3, but using some additional opts to control legends.
+   Here, am using 2 different formats of providing the legend
+   locations in each separate subplot, just for fun:
+1dplot.py                                    \
+    -xfile  HOUT_A.1D'[0]'                   \
+    -yfiles HOUT_A.1D'[1]' HOUT_B.1D'[1]'    \
+    -prefix img_histog.png                   \
+    -colors blue 0.6                         \
+    -boxplot_on                              \
+    -legend_on                               \
+    -legend_locs upper_right "lower left"    \
+    -legend_labels A B
+
+
+
+
+=== Output of '1dplot.py' (no arguments) ===
+
+
+
+OVERVIEW ~1~
+
+This program is for making images to visualize columns of numbers from
+"1D" text files.  It is based heavily on RWCox's 1dplot program, just
+using Python (particularly matplotlib).  To use this program, Python
+version >=2.7 is required, as well as matplotlib modules (someday numpy 
+might be needed, as well).
+
+This program takes very few required options-- mainly, file names and
+an output prefix-- but it allows the user to control/add many
+features, such as axis labels, titles, colors, adding in censor
+information, plotting summary boxplots and more.
+
+++ constructed by PA Taylor (NIMH, NIH, USA).
+
+# =========================================================================
+
+COMMAND OPTIONS ~1~
+
+-help, -h     :see helpfile
+
+-infiles II   :(req) one or more file names of text files.  Each column
+               in this file will be treated as a separate time series
+               for plotting (i.e., as 'y-values').  One can use
+               AFNI-style column '{ }' and row '[ ]' selectors.  One
+               or more files may be entered, but they must all be of 
+               equal length.
+-yfiles YY    :exactly the same behavior as "-infiles ..", just another
+               option name for it that might be more consistent with
+               other options.
+
+-prefix  PP   :output filename or prefix; if no file extension for an
+               image is included in 'PP', one will be added from a
+               list.  At present, OK file types to output should include:
+                  .jpg, .png, .tif, .pdf, .svg
+               ... but note that the kinds of image files you may output
+               may be limited by packages (or lack thereof) installed on
+               your own computer.   Default output image type is .jpg
+
+-boxplot_on   :a fun feature to show an small, additional boxplot
+               adjacent to each time series.  The plot is a standard
+               Python boxplot of that times series's values.  The box
+               shows the 25-75%ile range (interquartile range, IQR);
+               the median value highlighted by a white line; whiskers
+               stretch to 1.5*IQR; circles show outliers.
+               When using this option and censoring, by default both a
+               boxplot of data "before censoring" (BC) and "after
+               censoring (AC) will be added after.  See '-bplot_view ...'
+               about current opts to change that, if desired.
+
+-bplot_view BC_ONLY | AC_ONLY
+              :when using '-boxplot_on' and censoring, by default the
+               plotter will put one boxplot of data "before censoring"
+               (BC) and after censoring (AC). To show *only* the
+               uncensored one, use this option and keyword.
+
+-margin_off   :use this option to have the plot frame fill the figure
+               window completely; thus, no labels, frame, titles or
+               other parts of the 'normal' image outside the plot
+               window will be visible.  Tick lines will still be
+               present, living their best lives.
+               This is probably only useful/recommended/tested for
+               plots with a single panel.
+
+-scale  SCA1 SCA2 SCA3 ...
+              :provide a list of scales to apply to the y-values.
+               These will be applied multiplicatively to the y-values;
+               there should either be 1 (applied to all time series)
+               or the same number as the time series (in the same
+               order as those were entered).  The scale values are
+               also applied to the censor_hline values, but *not* to
+               the "-yaxis ..." range(s). 
+               Note that there are a couple keywords that can be used
+               instead of SCA* values:
+                   SCALE_TO_HLINE: each input time series is
+                      vertically scaled so that its censor_hline -> 1.
+                      That is, each time point is divided by the
+                      censor_hline value.  When using this, a visually
+                      pleasing yaxis range might be 0:3.
+                   SCALE_TO_MAX: each input time series is
+                      vertically scaled so that its max value -> 1.
+                      That is, each time point is divided by the
+                      max value. When using this, a visually
+                      pleasing yaxis range might be 0:1.1.
+
+-yfiles_pm YP :one or more file names of text files. Each column in
+               this file will be treated as a separate time series for
+               plotting a plus/minus colorized range for an associated
+               yfile/infile line. The number of files input with YP
+               must exactly match that of either '-infiles ..' or
+               '-yfiles ..'. The color will match the line color, but at
+               greatly reduced opacity.
+
+-ylim_use_pm  :by default, if not '-yaxis ..' opt is used, the ylim
+               range each subplot comes from (slightly expanded)
+               bounds of the min and max yvalue in each. But if
+               '-yfiles_pm ..' is used, you can use this option to expand
+               those limits by the min and max of the extra error-bounded
+               space.
+
+-xfile   XX   :one way to input x-values explicitly: as a "1D" file XX, a
+               containing a single file of numbers.  If no xfile is 
+               entered, then a list of integers is created, 0..N-1, based
+               on the length of the "-infiles ..".
+               
+-xvals START STOP STEP
+              :an alternative means for entering abscissa values: one
+               can provide exactly 3 numbers, the start (inclusive)
+               the stop (exclusive) and the steps to take, following
+               Python conventions-- that is, numbers are generated
+               [START,STOP) in stepsizes of STEP.
+
+-yaxis YMIN1:YMAX1 YMIN2:YMAX2 YMIN3:YMAX3 ...
+              :optional range for each "infile" y-axis; note the use
+              of a colon to designate the min/max of the range.  One
+              can also specify just the min (e.g., "YMIN:") or just
+              the max (e.g., ":YMAX"). The final number of y-axis
+              values or pairs *must* match the total number of columns
+              of data from infiles; a placeholder could just be
+              ":". Without specifying a range, one is calculated
+              automatically from the min and max of the dsets
+              themselves. The order of ylabels should match the order
+              of infiles.
+
+-ylabels YL1 YL2 YL3 ...
+              :optional text labels for each "infile" column; the
+               final number of ylabels *must* match the total number
+               of columns of data from infiles.  The order of ylabels
+               should match the order of infiles.  These labels are
+               plotted vertically along the y-axis of the plot.
+               * For 1D files output by 3dvolreg, one can
+               automatically provide the 6 associated ylabels by
+               providing the keyword 'VOLREG' (and this counts as 6
+               labels).  
+               * For 1D files output by '3dAllineate -1Dparam_save ..',
+               if you are using just the 6 rigid body parameters, you
+               can automatically provide the 6 associated ylabels by
+               providing the keyword 'ALLINPAR6' (and this counts as
+               6 labels).  If using the 6 rigid body parameters and 3 
+               scaling, you can use the keyword 'ALLINPAR9' (which counts
+               as 9 labels). If using all 12 affine parameters, you can use 
+               the keyword 'ALLINPAR12' (which counts as 9 labels). 
+
+-ylabels_maxlen MM
+              :y-axis labels can get long; this opt allows you to have
+               them wrap into multiple rows, each of length <=MM.  At the
+               moment, this wrapping is done with some "logic" that tries
+               to be helpful (e.g., split at underscores where possible), 
+               as long as that helpfulness doesn't increase line numbers
+               a lot.  The value entered here will apply to all y-axis 
+               labels in the plot.
+
+-legend_on    :turn on the plotting of a legend in the plot(s).  Legend
+               will not be shown in the boxplot panels, if using.
+
+-legend_labels LL1 LL2 LL3 ...
+              :optional legend labels, if using '-legend_on' to show a
+               legend.  If no arguments are provided for this option,
+               then the labels will be the arguments to '-infiles ..'
+               (or '-yfiles ..').  If arguments ARE input, then they must
+               match the number of '-infiles ..' (or '-yfiles ..').
+
+-legend_locs  LOC1 LOC2 LOC3 ...
+              :optional legend locations, if using '-legend_on' to
+               show a legend.  If no arguments are provided for this
+               option, then the locations will be the ones picked by
+               Python (reasonable starting point) If arguments ARE
+               input, then they must match the number of '-infiles ..'
+               (or '-yfiles ..').  Valid entries are strings
+               recognizable by matplotlib's plt.legend()'s "loc" opt;
+               this includes: 'best', 'right', 'upper right', 'lower
+               right', 'center right', etc. Note that if you use a
+               two-word argument here, you MUST put it in quotes (or,
+               as a special treat, you can combine it with an
+               underscore, and it will be parsed correctly.  So, valid
+               values of LOC* could be:
+                  left
+                  'lower left'
+                  upper_center
+
+-xlabel XL    :optional text labels for the abscissa/x-axis.  Only one may  
+               be entered, and it will *only* be displayed on the bottom 
+               panel of the output plot.  Using labels is good practice!!
+
+ 
+-title TT     :optional title for the set of plots, placed above the top- 
+               most subplot
+
+-reverse_order :optional switch; by default, the entered time series
+               are plotted top to bottom according to the order they
+               were entered (i.e., first- listed plot at the top).
+               This option reverses that order (to first-listed plot
+               at the bottom), in order to match with 1dplot's
+               behavior.
+
+-sepscl       :make each graph have its own y-range, determined by
+               slightly padding its min and max values.  By default,
+               the separate plots all have the same y-range, which
+               is determined by taking the min-of-mins and max-of-
+               maxes, and padding slightly outward.  
+
+-one_graph    :plot multiple infiles in a single subplot (default is to put
+               each one in a new subplot).
+
+-dpi DDD      :choose the output image's DPI.  The default value is
+               150.
+
+-figsize FX FY :choose the output image's dimensions (units are inches).  
+                The default width is 10; the default height
+                is 0.5 + N*0.75, where 'N' is the number of 
+                infile columns.
+
+-fontsize FS   :change image fontsize; default is 10.
+
+-fontfamily FF :change font-family used; default is the luvly
+                monospace.
+
+-fontstyles FSS :add in a fontname; should match with chosen
+                font-family; default is whatever Python has on your
+                system for the given family.  Whether your prescribed
+                font gets used depends on what is installed on your
+                comp.
+
+-colors C1 C2 C3 ...
+               :you can decide what color(s) to cycle through in plots
+                (enter one or more); if there are more infile columns
+                than entered colors, the program just keeps cycling
+                through the list. By default, if only 1 infile column is
+                given, the plotline will be black; when more than one
+                infile column is given, a default palette of 10
+                colors, chosen for their mutual-distinguishable-ness,
+                will be cycled through.
+                One of the colors can also be a decimal in range [0.0, 1.0],
+                which will correspond to grayscale in range [black, white],
+                respectively.
+
+-patches RL1 RL2 RL3 ...
+               :when viewing data from multiple runs that have been
+                processing+concatenated, knowing where they start/stop
+                can be useful. This option helps with that, by
+                alternating patches of the background slightly between
+                white and light gray.  The user enters any appropriate
+                number of run lengths, and the background patch for
+                the duration of the first is white, then light gray,
+                etc. (to *start* with light gray, one can have '0' be
+                the first RL value).
+
+-censor_trs CS1 CS2 CS3 ...
+               :specify time points where censoring has occurred (e.g.,
+                due to a motion or outlier criterion).  With this
+                option, the values are entered using AFNI index
+                notation, such as '0..3,8,25,99..$'.  Note that if you
+                use special characters like the '$', then the given
+                string must be enclosed on quotes.  
+                One or more string can be entered, and results are
+                simply combined (as well as if censor files are
+                entered-- see the '-censor_files ..' opt).
+                In order to highlight censored points, a translucent
+                background color will be added to all plots of width 1.
+
+-censor_files CF1 CF2 CF3 ...
+               :specify time points where censoring has occurred (e.g.,
+                due to a motion or outlier criterion).  With this
+                option, the values are entered as 1D files, columns
+                where 0 indicates censoring at that [i]th time point,
+                and 1 indicates *no* censoring there.  
+                One or more file can be entered, and results are
+                simply combined (as well as if censor strings are
+                entered-- see the '-censor_str ..' opt).  
+                In order to highlight censored points, a translucent
+                background color will be added to all plots of width 1.
+
+-censor_hline CH1 CH2 CH3 ...
+               :one can add a dotted horizontal line to the plot, with
+                the intention that it represents the relevant threshold
+                (for example, motion limit or outlier fraction limit).
+                One can specify more than one hline: if one line
+                is entered, it will be applied to each plot; if more
+                than one hline is entered, there must be the same number
+                of values as infile columns. 
+                Ummm, it is also assumed that all censor hline values 
+                are >=0; if negative, it will be a problem-- ask if this
+                is a problem!
+                A value of 'NONE' can also be input, to be a placeholder
+                in a list, when some subplots have censor_hline values
+                and others don't.
+
+-censor_RGB COL :choose the color of the censoring background; from the 
+                command line, users enter a string, which could be:
+                + 3 space-separated floats in range [0, 1], of RGB values
+                + 4 space-separated floats in range [0, 1], of RGBA values
+                + 1 string of a valid matplotlib color
+                + 1 string of a valid matplotlib color and 1 floats in 
+                  range [0, 1], which is an alpha opacity value.
+                (default is: '1 0.7 0.7').
+
+-bkgd_color BC :change the background color outside of the plot
+                windows.  Default is the Python color: 0.9.
+
+EXAMPLES ~1~
+
+1) Plot Euclidean norm (enorm) profile, with the censor limit and
+   related file of censoring:
+1dplot.py                                    \
+    -sepscl                                  \
+    -boxplot_on                              \
+    -infiles      motion_sub-10506_enorm.1D  \
+    -censor_files motion_sub-10506_censor.1D \
+    -censor_hline 0.2                        \
+    -title   "Motion censoring"              \
+    -ylabels enorm                           \
+    -xlabel  "vols"                          \
+    -title   "Motion censoring"              \
+    -prefix  mot_cen_plot.jpg
+
+2) Plot the 6 solid body parameters from 3dvolreg, along with
+   the useful composite 'enorm' and outlier time series:
+1dplot.py                                    \
+    -sepscl                                  \
+    -boxplot_on                              \
+    -reverse_order                           \
+    -infiles      dfile_rall.1D              \
+                  motion_sub-10506_enorm.1D  \
+                  outcount_rall.1D           \
+    -ylabels  VOLREG enorm outliers          \
+    -xlabel  "vols"                          \
+    -title   "Motion and outlier plots"      \
+    -prefix  mot_outlier_plot.png
+
+3) Use labels and locations to plot 3dhistog output (there will
+   be some minor whining about failing to process comment label
+   *.1D files, but won't cause any problems for plot); here, 
+   legend labels will be the args after '-yfiles ..' (with the 
+   part in square brackets, but without the quotes):
+1dplot.py                                    \
+    -xfile  HOUT_A.1D'[0]'                   \
+    -yfiles HOUT_A.1D'[1]' HOUT_B.1D'[1]'    \
+    -prefix img_histog.png                   \
+    -colors blue 0.6                         \
+    -boxplot_on                              \
+    -legend_on 
+
+4) Same as #3, but using some additional opts to control legends.
+   Here, am using 2 different formats of providing the legend
+   locations in each separate subplot, just for fun:
+1dplot.py                                    \
+    -xfile  HOUT_A.1D'[0]'                   \
+    -yfiles HOUT_A.1D'[1]' HOUT_B.1D'[1]'    \
+    -prefix img_histog.png                   \
+    -colors blue 0.6                         \
+    -boxplot_on                              \
+    -legend_on                               \
+    -legend_locs upper_right "lower left"    \
+    -legend_labels A B
+
+
+

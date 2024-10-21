@@ -1,0 +1,140 @@
+
+=== Output of 'train-gcs-atlas --help' ===
+
+
+train-gcs-atlas 
+  --man manparc : manual parcellation (default is aparc_edited)
+  --f subjlistfile
+  --lh, --rh, --hemi hemi
+  --o gcsfile
+
+  --reg surfreg (default is sphere.reg)
+  --ctab colortable
+  --x subject : exclude subject from atlas (will also label and compute overlap)
+  --jackknife : pbsubmit a job for each subject excluding it
+  --aseg asegname (default is aseg.auto.mgz) only needed when applying
+
+  --threads nthreads : probably not needed, this runs pretty fast < 5min
+
+train-gcs-atlas 7.4.1
+
+The purpose of this script is to train a surface-based gaussian
+classifier which is then used to parcellate the cortical surface. The
+output is a "GCS" file, eg.
+DKaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs. The subjects must be
+analyzed in recon-all up to the point of creating sphere.reg. If a
+different registration is used, then specify it with --reg. Before
+creating GCSs for a release, make sure the registration is up-to-date,
+eg, by running: recon-all -s subject -sphere -surfreg to create new
+sphere and sphere.reg; make sure to use the production folding
+atlas. While a new sphere.reg must be generated for a new release, the
+white.preaparc surfaces themselves (used as input to the registration)
+do not necessarily need to be regenerated as long as they are
+accurate.
+
+There must be a manual parcellation in the label folder (default is
+?h.aparc_edited.annot but can be specified with --man).  This script
+only takes about 5min to run for 40 subjects.
+
+
+After this script is done, it can be applied with
+
+set CPAtlas = output/from/this/script
+cd $SUBJECTS_DIR/$subject
+mris_ca_label -l label/$hemi.cortex.label -aseg mri/aseg.presurf.mgz -seed 1234
+ $subject $hemi surf/$hemi.sphere.reg $CPAtlas $hemi.your.annot
+
+Above assumes that the registration $hemi.sphere.reg is what was used
+in this script. If not then change it.
+
+The aseg is set to aseg.auto.mgz by default because the if the source data are old (as with the aparc)
+
+mris_ca_label runs in less than 1min.
+
+To view the results
+freeview -f surf/lh.inflated:annot=label/lh.aparc_edited.annot surf/lh.inflated:annot=label/lh.your.annot 
+
+To compute dice (only computes overall dice right now)
+mris_compute_parc_overlap --s subject --hemi lh --annot1 aparc_edited --annot2 your
+
+# vc623
+
+
+=== Output of 'train-gcs-atlas -help' ===
+
+
+train-gcs-atlas 
+  --man manparc : manual parcellation (default is aparc_edited)
+  --f subjlistfile
+  --lh, --rh, --hemi hemi
+  --o gcsfile
+
+  --reg surfreg (default is sphere.reg)
+  --ctab colortable
+  --x subject : exclude subject from atlas (will also label and compute overlap)
+  --jackknife : pbsubmit a job for each subject excluding it
+  --aseg asegname (default is aseg.auto.mgz) only needed when applying
+
+  --threads nthreads : probably not needed, this runs pretty fast < 5min
+
+train-gcs-atlas 7.4.1
+
+The purpose of this script is to train a surface-based gaussian
+classifier which is then used to parcellate the cortical surface. The
+output is a "GCS" file, eg.
+DKaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs. The subjects must be
+analyzed in recon-all up to the point of creating sphere.reg. If a
+different registration is used, then specify it with --reg. Before
+creating GCSs for a release, make sure the registration is up-to-date,
+eg, by running: recon-all -s subject -sphere -surfreg to create new
+sphere and sphere.reg; make sure to use the production folding
+atlas. While a new sphere.reg must be generated for a new release, the
+white.preaparc surfaces themselves (used as input to the registration)
+do not necessarily need to be regenerated as long as they are
+accurate.
+
+There must be a manual parcellation in the label folder (default is
+?h.aparc_edited.annot but can be specified with --man).  This script
+only takes about 5min to run for 40 subjects.
+
+
+After this script is done, it can be applied with
+
+set CPAtlas = output/from/this/script
+cd $SUBJECTS_DIR/$subject
+mris_ca_label -l label/$hemi.cortex.label -aseg mri/aseg.presurf.mgz -seed 1234
+ $subject $hemi surf/$hemi.sphere.reg $CPAtlas $hemi.your.annot
+
+Above assumes that the registration $hemi.sphere.reg is what was used
+in this script. If not then change it.
+
+The aseg is set to aseg.auto.mgz by default because the if the source data are old (as with the aparc)
+
+mris_ca_label runs in less than 1min.
+
+To view the results
+freeview -f surf/lh.inflated:annot=label/lh.aparc_edited.annot surf/lh.inflated:annot=label/lh.your.annot 
+
+To compute dice (only computes overall dice right now)
+mris_compute_parc_overlap --s subject --hemi lh --annot1 aparc_edited --annot2 your
+
+# vc623
+
+
+=== Output of 'train-gcs-atlas' (no arguments) ===
+
+
+train-gcs-atlas 
+  --man manparc : manual parcellation (default is aparc_edited)
+  --f subjlistfile
+  --lh, --rh, --hemi hemi
+  --o gcsfile
+
+  --reg surfreg (default is sphere.reg)
+  --ctab colortable
+  --x subject : exclude subject from atlas (will also label and compute overlap)
+  --jackknife : pbsubmit a job for each subject excluding it
+  --aseg asegname (default is aseg.auto.mgz) only needed when applying
+
+  --threads nthreads : probably not needed, this runs pretty fast < 5min
+

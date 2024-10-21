@@ -1,0 +1,77 @@
+
+=== Output of 'fslsmoothfill --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+smoothfill (Version 1.0)
+Copyright(c) 2012, University of Oxford (Mark Jenkinson)
+
+Usage: 
+smoothfill -i inputimage -m mask -o smoothedresult
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename for input image
+	-o,--out	filename for output (inverse warped) image
+	-m,--mask	filename for mask image
+
+Optional arguments (You may optionally specify one or more of):
+	-n,--niter	number of iterations
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'fslsmoothfill -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+smoothfill (Version 1.0)
+Copyright(c) 2012, University of Oxford (Mark Jenkinson)
+
+Usage: 
+smoothfill -i inputimage -m mask -o smoothedresult
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename for input image
+	-o,--out	filename for output (inverse warped) image
+	-m,--mask	filename for mask image
+
+Optional arguments (You may optionally specify one or more of):
+	-n,--niter	number of iterations
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'fslsmoothfill' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	filename for input image
+	-o,--out	filename for output (inverse warped) image
+	-m,--mask	filename for mask image
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+smoothfill (Version 1.0)
+Copyright(c) 2012, University of Oxford (Mark Jenkinson)
+
+Usage: 
+smoothfill -i inputimage -m mask -o smoothedresult
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename for input image
+	-o,--out	filename for output (inverse warped) image
+	-m,--mask	filename for mask image
+
+Optional arguments (You may optionally specify one or more of):
+	-n,--niter	number of iterations
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

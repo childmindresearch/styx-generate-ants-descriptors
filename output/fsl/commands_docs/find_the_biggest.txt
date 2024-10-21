@@ -1,0 +1,24 @@
+
+=== Output of 'find_the_biggest --help' ===
+
+ 
+usage: find_the_biggest <lots of volumes/surfaces> output
+  output is index in order of inputs
+  please use EITHER volumes OR surfaces
+ 
+
+=== Output of 'find_the_biggest -help' ===
+
+ 
+usage: find_the_biggest <lots of volumes/surfaces> output
+  output is index in order of inputs
+  please use EITHER volumes OR surfaces
+ 
+
+=== Output of 'find_the_biggest' (no arguments) ===
+
+ 
+usage: find_the_biggest <lots of volumes/surfaces> output
+  output is index in order of inputs
+  please use EITHER volumes OR surfaces
+ 

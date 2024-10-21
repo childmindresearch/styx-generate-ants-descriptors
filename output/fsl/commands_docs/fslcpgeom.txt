@@ -1,0 +1,18 @@
+
+=== Output of 'fslcpgeom --help' ===
+
+
+Usage: fslcpgeom <source> <destination> [-d]
+-d : don't copy image dimensions
+
+=== Output of 'fslcpgeom -help' ===
+
+
+Usage: fslcpgeom <source> <destination> [-d]
+-d : don't copy image dimensions
+
+=== Output of 'fslcpgeom' (no arguments) ===
+
+
+Usage: fslcpgeom <source> <destination> [-d]
+-d : don't copy image dimensions

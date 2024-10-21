@@ -1,2 +1,0 @@
-/opt/ants/bin/antsMultivariateTemplateConstruction2.sh: illegal option -- -
-/opt/ants/bin/antsMultivariateTemplateConstruction2.sh: line 695: USAGE: unbound variable

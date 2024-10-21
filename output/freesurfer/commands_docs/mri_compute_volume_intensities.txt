@@ -1,0 +1,13 @@
+
+=== Output of 'mri_compute_volume_intensities --help' ===
+
+unknown option --help
+
+=== Output of 'mri_compute_volume_intensities -help' ===
+
+unknown option -help
+
+=== Output of 'mri_compute_volume_intensities' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_compute_volume_intensities [options] <input intensity volume> <volume fraction stem> <output volume>
+	

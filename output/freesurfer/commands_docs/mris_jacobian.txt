@@ -1,0 +1,105 @@
+
+=== Output of 'mris_jacobian --help' ===
+
+				Help
+
+NAME
+	mris_jacobian
+
+SYNOPSIS
+	mris_jacobian [options] <original surface> <mapped surface> <jacobian 
+	file name>
+
+DESCRIPTION
+	This program computes the Jacobian of a surface mapping.
+
+POSITIONAL ARGUMENTS
+	*****************************************************
+
+REQUIRED FLAGGED ARGUMENTS
+	****************************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	-log
+		compute and write out log of jacobian
+
+	-noscale
+		don't scale jacobian by total surface areas
+
+	-invert
+		compute -1/jacobian for jacobian < 1
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_jacobian -help' ===
+
+				Help
+
+NAME
+	mris_jacobian
+
+SYNOPSIS
+	mris_jacobian [options] <original surface> <mapped surface> <jacobian 
+	file name>
+
+DESCRIPTION
+	This program computes the Jacobian of a surface mapping.
+
+POSITIONAL ARGUMENTS
+	*****************************************************
+
+REQUIRED FLAGGED ARGUMENTS
+	****************************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	-log
+		compute and write out log of jacobian
+
+	-noscale
+		don't scale jacobian by total surface areas
+
+	-invert
+		compute -1/jacobian for jacobian < 1
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_jacobian' (no arguments) ===
+
+				Help
+
+NAME
+	mris_jacobian
+
+SYNOPSIS
+	mris_jacobian [options] <original surface> <mapped surface> <jacobian 
+	file name>
+
+DESCRIPTION
+	This program computes the Jacobian of a surface mapping.
+
+POSITIONAL ARGUMENTS
+	*****************************************************
+
+REQUIRED FLAGGED ARGUMENTS
+	****************************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	-log
+		compute and write out log of jacobian
+
+	-noscale
+		don't scale jacobian by total surface areas
+
+	-invert
+		compute -1/jacobian for jacobian < 1
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

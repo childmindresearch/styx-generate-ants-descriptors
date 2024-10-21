@@ -1,0 +1,17 @@
+
+=== Output of 'mris_remove_negative_vertices --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_remove_negative_vertices [options] <surface file> <patch file name> <output patch>
+
+This program will add a template into an average surface.
+
+valid options are:
+
+
+=== Output of 'mris_remove_negative_vertices -help' ===
+
+unknown option -help
+
+=== Output of 'mris_remove_negative_vertices' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_remove_negative_vertices [options] <surface file> <patch file name> <output patch>

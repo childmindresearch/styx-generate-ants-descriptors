@@ -1,0 +1,15 @@
+
+=== Output of 'mist_FA_reg --help' ===
+
+Usage: mist_FA_reg <FA volume> <S0 volume> <reference T1 volume> <output filename>
+/usr/local/fsl/bin/mist_FA_reg: line 73: $2: unbound variable
+
+=== Output of 'mist_FA_reg -help' ===
+
+Usage: mist_FA_reg <FA volume> <S0 volume> <reference T1 volume> <output filename>
+/usr/local/fsl/bin/mist_FA_reg: line 73: $2: unbound variable
+
+=== Output of 'mist_FA_reg' (no arguments) ===
+
+Usage: mist_FA_reg <FA volume> <S0 volume> <reference T1 volume> <output filename>
+/usr/local/fsl/bin/mist_FA_reg: line 72: $1: unbound variable

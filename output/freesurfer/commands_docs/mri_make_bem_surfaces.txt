@@ -1,0 +1,21 @@
+
+=== Output of 'mri_make_bem_surfaces --help' ===
+
+nvertices=2562, nfaces=5120
+mri_strip_skull: triangle file /usr/local/freesurfer/lib/bem/ic4.tri read
+trishrink: File /usr/local/freesurfer/subjects/--help/mri/brain/COR-.info not found
+Best guess at inner_skull.tri is in inner_skull_tmp.tri
+
+=== Output of 'mri_make_bem_surfaces -help' ===
+
+nvertices=2562, nfaces=5120
+mri_strip_skull: triangle file /usr/local/freesurfer/lib/bem/ic4.tri read
+trishrink: File /usr/local/freesurfer/subjects/-help/mri/brain/COR-.info not found
+Best guess at inner_skull.tri is in inner_skull_tmp.tri
+
+=== Output of 'mri_make_bem_surfaces' (no arguments) ===
+
+
+Usage: /usr/local/freesurfer/bin/mri_make_bem_surfaces name [mfile]
+
+                                               [vers: 050304]

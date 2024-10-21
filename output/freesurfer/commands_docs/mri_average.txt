@@ -1,0 +1,52 @@
+
+=== Output of 'mri_average --help' ===
+
+unknown option --help
+
+=== Output of 'mri_average -help' ===
+
+usage: /usr/local/freesurfer/bin/mri_average [options] <volume> ... <output volume>
+	-a              rigid alignment of input volumes before averaging
+	-F              read volumes from an input file (first argument is the input filename)
+	-dt <float n>   set dt to n (default=1e-6)
+	-tol <float n>  set tol to n (default=1e-5)
+	-conform        interpolate volume to be isotropic 1mm^3 (this option is on by default)
+	-noconform      inhibit isotropic volume interpolation
+	-reduce <int n> reduce input images n (default=2) times
+	-sinc <int n>   using sinc interpolation with windowwidth of 2*n (default=3)
+	-trilinear      use trilinear interpolation
+	-window         apply hanning window to volumes
+	-w <int n>      write snapshots every n iterations
+	-t <x> <y> <z>  translation of second volume
+	-r <x> <y> <z>  rotation of second volume around each axis in degrees
+	-m <float n>    use momentum n (default=0)
+	-sqr            compute sqrt of average of sum of squares (RMS, same as -rms)
+	-rms            compute sqrt of average of sum of squares (RMS, same as -sqr)
+	-u              print usage
+	-p              compute % 
+	-b <float th>   binarize the input volumes using threshold th 
+	-abs            take abs value of volume 
+
+=== Output of 'mri_average' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_average [options] <volume> ... <output volume>
+	-a              rigid alignment of input volumes before averaging
+	-F              read volumes from an input file (first argument is the input filename)
+	-dt <float n>   set dt to n (default=1e-6)
+	-tol <float n>  set tol to n (default=1e-5)
+	-conform        interpolate volume to be isotropic 1mm^3 (this option is on by default)
+	-noconform      inhibit isotropic volume interpolation
+	-reduce <int n> reduce input images n (default=2) times
+	-sinc <int n>   using sinc interpolation with windowwidth of 2*n (default=3)
+	-trilinear      use trilinear interpolation
+	-window         apply hanning window to volumes
+	-w <int n>      write snapshots every n iterations
+	-t <x> <y> <z>  translation of second volume
+	-r <x> <y> <z>  rotation of second volume around each axis in degrees
+	-m <float n>    use momentum n (default=0)
+	-sqr            compute sqrt of average of sum of squares (RMS, same as -rms)
+	-rms            compute sqrt of average of sum of squares (RMS, same as -sqr)
+	-u              print usage
+	-p              compute % 
+	-b <float th>   binarize the input volumes using threshold th 
+	-abs            take abs value of volume 

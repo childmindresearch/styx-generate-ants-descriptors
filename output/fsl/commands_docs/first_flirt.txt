@@ -1,0 +1,45 @@
+
+=== Output of 'first_flirt --help' ===
+
+
+Usage:   first_flirt <input_image> <output_basename> [options]
+
+-b        : input is already brain extracted
+-d        : debug (don't delete intermediate files)
+-inweight : use a weighting mask on the first registration
+-strucweight <maskimage> : use a specific structure weighting mask (in standard space) for an (optional) third-stage registration step
+-cort : use a weighting mask of the whole brain on the first registration (for specific models)
+-cost <costfunction> : specify the costfunction to be used by all FLIRT calls
+
+e.g.:    first_flirt subject10rawT1 subject10rawT1_to_std_sub
+
+
+=== Output of 'first_flirt -help' ===
+
+
+Usage:   first_flirt <input_image> <output_basename> [options]
+
+-b        : input is already brain extracted
+-d        : debug (don't delete intermediate files)
+-inweight : use a weighting mask on the first registration
+-strucweight <maskimage> : use a specific structure weighting mask (in standard space) for an (optional) third-stage registration step
+-cort : use a weighting mask of the whole brain on the first registration (for specific models)
+-cost <costfunction> : specify the costfunction to be used by all FLIRT calls
+
+e.g.:    first_flirt subject10rawT1 subject10rawT1_to_std_sub
+
+
+=== Output of 'first_flirt' (no arguments) ===
+
+
+Usage:   first_flirt <input_image> <output_basename> [options]
+
+-b        : input is already brain extracted
+-d        : debug (don't delete intermediate files)
+-inweight : use a weighting mask on the first registration
+-strucweight <maskimage> : use a specific structure weighting mask (in standard space) for an (optional) third-stage registration step
+-cort : use a weighting mask of the whole brain on the first registration (for specific models)
+-cost <costfunction> : specify the costfunction to be used by all FLIRT calls
+
+e.g.:    first_flirt subject10rawT1 subject10rawT1_to_std_sub
+

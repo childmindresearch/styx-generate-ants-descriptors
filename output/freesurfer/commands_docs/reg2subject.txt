@@ -1,0 +1,32 @@
+
+=== Output of 'reg2subject --help' ===
+
+
+reg2subject --r reg-or-lta file
+
+reg2subject 7.4.1
+
+Returns the name of the subject in the registration file regardless of
+whether the file is an LTA or register.dat file.  Runs IsLTA on the
+file to determine if it an LTA or not. If not, it assumes that it is a
+register.dat style file
+
+
+=== Output of 'reg2subject -help' ===
+
+
+reg2subject --r reg-or-lta file
+
+reg2subject 7.4.1
+
+Returns the name of the subject in the registration file regardless of
+whether the file is an LTA or register.dat file.  Runs IsLTA on the
+file to determine if it an LTA or not. If not, it assumes that it is a
+register.dat style file
+
+
+=== Output of 'reg2subject' (no arguments) ===
+
+
+reg2subject --r reg-or-lta file
+

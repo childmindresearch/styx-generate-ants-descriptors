@@ -1,0 +1,89 @@
+
+=== Output of 'new_invwarp --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+new_invwarp
+Copyright(c) 2010, University of Oxford (Jesper Andersson)
+
+Usage: 
+invwarp -w warpvol -o invwarpvol -r refvol
+
+Compulsory arguments (You MUST set one or more of):
+	-w,--warp	filename for warp/shiftmap transform (volume)
+	-o,--out	filename for output (inverse warped) image
+	-r,--ref	filename for new reference image, i.e., what was originally the input image (determines inverse warpvol's FOV and pixdims)
+
+Optional arguments (You may optionally specify one or more of):
+	--rel	use relative warp convention: x' = x + w(x)
+	--abs	use absolute warp convention (default): x' = w(x)
+	--noconstraint	do not apply the Jacobian constraint
+	--jmin	minimum acceptable Jacobian value for constraint (default 0.01)
+	--jmax	maximum acceptable Jacobian value for constraint (default 100.0)
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'new_invwarp -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+new_invwarp
+Copyright(c) 2010, University of Oxford (Jesper Andersson)
+
+Usage: 
+invwarp -w warpvol -o invwarpvol -r refvol
+
+Compulsory arguments (You MUST set one or more of):
+	-w,--warp	filename for warp/shiftmap transform (volume)
+	-o,--out	filename for output (inverse warped) image
+	-r,--ref	filename for new reference image, i.e., what was originally the input image (determines inverse warpvol's FOV and pixdims)
+
+Optional arguments (You may optionally specify one or more of):
+	--rel	use relative warp convention: x' = x + w(x)
+	--abs	use absolute warp convention (default): x' = w(x)
+	--noconstraint	do not apply the Jacobian constraint
+	--jmin	minimum acceptable Jacobian value for constraint (default 0.01)
+	--jmax	maximum acceptable Jacobian value for constraint (default 100.0)
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'new_invwarp' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-w,--warp	filename for warp/shiftmap transform (volume)
+	-o,--out	filename for output (inverse warped) image
+	-r,--ref	filename for new reference image, i.e., what was originally the input image (determines inverse warpvol's FOV and pixdims)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+new_invwarp
+Copyright(c) 2010, University of Oxford (Jesper Andersson)
+
+Usage: 
+invwarp -w warpvol -o invwarpvol -r refvol
+
+Compulsory arguments (You MUST set one or more of):
+	-w,--warp	filename for warp/shiftmap transform (volume)
+	-o,--out	filename for output (inverse warped) image
+	-r,--ref	filename for new reference image, i.e., what was originally the input image (determines inverse warpvol's FOV and pixdims)
+
+Optional arguments (You may optionally specify one or more of):
+	--rel	use relative warp convention: x' = x + w(x)
+	--abs	use absolute warp convention (default): x' = w(x)
+	--noconstraint	do not apply the Jacobian constraint
+	--jmin	minimum acceptable Jacobian value for constraint (default 0.01)
+	--jmax	maximum acceptable Jacobian value for constraint (default 100.0)
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

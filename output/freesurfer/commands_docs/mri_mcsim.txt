@@ -1,0 +1,124 @@
+
+=== Output of 'mri_mcsim --help' ===
+
+/usr/local/freesurfer/bin/mri_mcsim 
+
+   --o top-output-dir
+   --base csdbase
+   --surface subjectname hemi
+   --nreps nrepetitions
+   --fwhm FWHM <FWHM2 FWHM3 ...>
+   --fwhm-max FWHMMax : sim with fwhm=1:FWHMMax (default 30)
+   
+   --avgvtxarea : report cluster area based on average vtx area
+   --seed randomseed : default is to choose based on ToD
+   --label labelfile : default is ?h.cortex.label 
+   --mask maskfile : instead of label
+   --no-label : do not use a label to mask
+   --no-save-mask : do not save mask to output (good for mult jobs)
+   --surfname surfname : default is white
+
+   --log  LogFile 
+   --done DoneFile : will create DoneFile when finished
+   --stop stopfile : default is ourdir/mri_mcsim.stop 
+   --save savefile : default is ourdir/mri_mcsim.save 
+   --save-iter : save output after each iteration 
+   --sd SUBJECTS_DIR
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+
+This program computes tables for performing multiple comparisons on
+the surface based on a monte carlo simulation using white gaussian
+noise smoothed on the surface. mri_mcsim was used to generate the
+tables found in $FREESURFER_HOME/average/mult-comp-cor and used by
+mri_glmfit-sim with the --cache option. The tables in mult-comp-cor
+are for fsaverage and fsaverage_sym for a search space over the whole
+cortex. mri_mcsim can be used to create new tables for a new subject
+or for fsaverage/fsaverage_sum with a smaller search space.
+
+Example 1: Create tables for a new subject for whole hemisphere
+
+mri_mcsim --o /path/to/mult-comp-cor/newsubject/lh/cortex --base mc-z 
+  --save-iter  --surf newsubject lh --nreps 10000
+
+This may take hours (or even days) to run; see below for
+parallelizing.  When running mri_glmfit-sim, add --cache-dir
+/path/to/mult-comp-cor
+
+Example 2: Create tables for superior temporal gyrus for fsaverage
+
+First, create the label by running
+
+mri_annotation2label --subject fsaverage --hemi lh --outdir labeldir
+
+mri_mcsim --o /path/to/mult-comp-cor/fsaverage/lh/superiortemporal --base mc-z 
+  --save-iter  --surf fsaverage lh --nreps 10000 
+  --label labeldir/lh.superiortemporal.label
+
+When running mri_glmfit, make sure to use   --label labeldir/lh.superiortemporal.label
+When running mri_glmfit-sim, add --cache-dir /path/to/mult-comp-cor --cache-label superiortemporal
+
+Example 3: running simulations in parallel (two jobs, 5000 iterations
+each for a total of 10000)
+
+mri_mcsim --o /path/to/mult-comp-cor/fsaverage/lh/superiortemporal --base mc-z.j001 
+  --save-iter  --surf fsaverage lh --nreps 5000
+  --label labeldir/lh.superiortemporal.label
+
+mri_mcsim --o /path/to/mult-comp-cor/fsaverage/lh/superiortemporal --base mc-z.j002 
+  --save-iter  --surf fsaverage lh --nreps 500
+  --label labeldir/lh.superiortemporal.label
+
+When those jobs are done, merge the results into a single table with
+
+mri_surfcluster 
+  --csd /path/to/mult-comp-cor/fsaverage/lh/superiortemporal/fwhm10/abs/th20/mc-z.j001.csd 
+  --csd /path/to/mult-comp-cor/fsaverage/lh/superiortemporal/fwhm10/abs/th20/mc-z.j002.csd 
+  --csd-out /path/to/mult-comp-cor/fsaverage/lh/superiortemporal/fwhm10/abs/th20/mc-z.csd 
+  --csdpdf  /path/to/mult-comp-cor/fsaverage/lh/superiortemporal/fwhm10/abs/th20/mc-z.cdf --csdpdf-only
+
+Repeat the above command for each FWHM, sign (pos, neg, abs) and threshold
+
+
+=== Output of 'mri_mcsim -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_mcsim' (no arguments) ===
+
+/usr/local/freesurfer/bin/mri_mcsim 
+
+   --o top-output-dir
+   --base csdbase
+   --surface subjectname hemi
+   --nreps nrepetitions
+   --fwhm FWHM <FWHM2 FWHM3 ...>
+   --fwhm-max FWHMMax : sim with fwhm=1:FWHMMax (default 30)
+   
+   --avgvtxarea : report cluster area based on average vtx area
+   --seed randomseed : default is to choose based on ToD
+   --label labelfile : default is ?h.cortex.label 
+   --mask maskfile : instead of label
+   --no-label : do not use a label to mask
+   --no-save-mask : do not save mask to output (good for mult jobs)
+   --surfname surfname : default is white
+
+   --log  LogFile 
+   --done DoneFile : will create DoneFile when finished
+   --stop stopfile : default is ourdir/mri_mcsim.stop 
+   --save savefile : default is ourdir/mri_mcsim.save 
+   --save-iter : save output after each iteration 
+   --sd SUBJECTS_DIR
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

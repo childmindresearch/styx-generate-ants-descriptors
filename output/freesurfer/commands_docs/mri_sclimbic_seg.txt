@@ -1,0 +1,164 @@
+
+=== Output of 'mri_sclimbic_seg --help' ===
+
+/usr/local/freesurfer/python/scripts/mri_sclimbic_seg --help
+usage: mri_sclimbic_seg [-h] [-i I] [-o O] [-s [S [S ...]]] [--sd SD]
+                        [--conform] [--etiv] [--tal TAL] [--write_posteriors]
+                        [--write_volumes] [--write_qa_stats]
+                        [--exclude EXCLUDE [EXCLUDE ...]] [--keep_ac]
+                        [--vox-count-volumes] [--model MODEL] [--ctab CTAB]
+                        [--population-stats POPULATION_STATS] [--debug]
+                        [--vmp] [--threads THREADS] [--7T]
+                        [--percentile PERCENTILE] [--cuda-device CUDA_DEVICE]
+                        [--output-base OUTPUT_BASE] [--no-cite-sclimbic]
+                        [--nchannels NCHANNELS]
+
+Segment subcortical limbic structures. Input images can be provided by one of
+two methods. To segment one or multiple T1-weighted images, use the --i flag
+to point to an input image file or directory containing a series of images.
+The --o flag should specify the corresponding output segmentation file or
+directory. For example: mri_sclimbic_seg --i image.mgz --o seg.mgz To process
+a series of freesurfer recon-all subjects, use the --s input flag. When no
+arguments are provided to this flag, subjects will be searched for in the
+'subjects directory' defined by the --sd flag or the SUBJECTS_DIR env
+variable. Otherwise, a set of subject names can be specified as arguments. For
+example: mri_sclimbic_seg --s subj1 subj2 subj3 In freesurfer subject-mode,
+outputs will be saved to the subject's mri and stats subdirectories, and
+volumetric stats will be computed and saved automatically.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i I, --i I           T1-w image(s) to segment. Can be a path to a single
+                        image or a directory of images.
+  -o O, --o O           Segmentation output (required if --i is provided).
+                        Must be the same type as the input path (a single file
+                        or directory).
+  -s [S [S ...]], --s [S [S ...]]
+                        Process a series of freesurfer recon-all subjects
+                        (enables subject-mode).
+  --sd SD               Set the subjects directory (overrides the SUBJECTS_DIR
+                        env variable).
+  --conform             Resample input to 1mm-iso; results will be put back in
+                        native resolution.
+  --etiv                deInclude eTIV in volume stats (enabled by default in
+                        subject-mode and --tal).
+  --tal TAL             Alternative talairach xfm transform for estimating
+                        TIV. Can be file or suffix (for multiple inputs).
+  --write_posteriors    Save the label posteriors.
+  --write_volumes       Save label volume stats (enabled by default in
+                        subject-mode).
+  --write_qa_stats      Save QA stats (z and confidence).
+  --exclude EXCLUDE [EXCLUDE ...]
+                        List of label IDs to exclude in any output stats
+                        files.
+  --keep_ac             Explicitly keep anterior commissure in the volume/qa
+                        files.
+  --vox-count-volumes   Use discrete voxel count for label volumes.
+  --model MODEL         Alternative model weights to load.
+  --ctab CTAB           Alternative color lookup table to embed in
+                        segmentation. Must be minimal, including 0, and
+                        sorted.
+  --population-stats POPULATION_STATS
+                        Alternative population volume stats for QA output.
+  --debug               Enable debug logging.
+  --vmp                 Enable printing of vmpeak at the end.
+  --threads THREADS     Number of threads to use. Default is 1.
+  --7T                  Preprocess 7T images (just sets percentile to 99.9).
+  --percentile PERCENTILE
+                        Use intensity percentile threshold for normalization.
+  --cuda-device CUDA_DEVICE
+                        Cuda device for GPU support.
+  --output-base OUTPUT_BASE
+                        String to use in output file name; default is sclimbic
+  --no-cite-sclimbic    Do not cite sclimbic paper at the end.
+  --nchannels NCHANNELS
+                        Number of channels
+
+=== Output of 'mri_sclimbic_seg -help' ===
+
+usage: mri_sclimbic_seg [-h] [-i I] [-o O] [-s [S [S ...]]] [--sd SD]
+                        [--conform] [--etiv] [--tal TAL] [--write_posteriors]
+                        [--write_volumes] [--write_qa_stats]
+                        [--exclude EXCLUDE [EXCLUDE ...]] [--keep_ac]
+                        [--vox-count-volumes] [--model MODEL] [--ctab CTAB]
+                        [--population-stats POPULATION_STATS] [--debug]
+                        [--vmp] [--threads THREADS] [--7T]
+                        [--percentile PERCENTILE] [--cuda-device CUDA_DEVICE]
+                        [--output-base OUTPUT_BASE] [--no-cite-sclimbic]
+                        [--nchannels NCHANNELS]
+mri_sclimbic_seg: error: argument -h/--help: ignored explicit argument 'elp'
+/usr/local/freesurfer/python/scripts/mri_sclimbic_seg -help
+
+=== Output of 'mri_sclimbic_seg' (no arguments) ===
+
+usage: mri_sclimbic_seg [-h] [-i I] [-o O] [-s [S [S ...]]] [--sd SD]
+                        [--conform] [--etiv] [--tal TAL] [--write_posteriors]
+                        [--write_volumes] [--write_qa_stats]
+                        [--exclude EXCLUDE [EXCLUDE ...]] [--keep_ac]
+                        [--vox-count-volumes] [--model MODEL] [--ctab CTAB]
+                        [--population-stats POPULATION_STATS] [--debug]
+                        [--vmp] [--threads THREADS] [--7T]
+                        [--percentile PERCENTILE] [--cuda-device CUDA_DEVICE]
+                        [--output-base OUTPUT_BASE] [--no-cite-sclimbic]
+                        [--nchannels NCHANNELS]
+
+Segment subcortical limbic structures. Input images can be provided by one of
+two methods. To segment one or multiple T1-weighted images, use the --i flag
+to point to an input image file or directory containing a series of images.
+The --o flag should specify the corresponding output segmentation file or
+directory. For example: mri_sclimbic_seg --i image.mgz --o seg.mgz To process
+a series of freesurfer recon-all subjects, use the --s input flag. When no
+arguments are provided to this flag, subjects will be searched for in the
+'subjects directory' defined by the --sd flag or the SUBJECTS_DIR env
+variable. Otherwise, a set of subject names can be specified as arguments. For
+example: mri_sclimbic_seg --s subj1 subj2 subj3 In freesurfer subject-mode,
+outputs will be saved to the subject's mri and stats subdirectories, and
+volumetric stats will be computed and saved automatically.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i I, --i I           T1-w image(s) to segment. Can be a path to a single
+                        image or a directory of images.
+  -o O, --o O           Segmentation output (required if --i is provided).
+                        Must be the same type as the input path (a single file
+                        or directory).
+  -s [S [S ...]], --s [S [S ...]]
+                        Process a series of freesurfer recon-all subjects
+                        (enables subject-mode).
+  --sd SD               Set the subjects directory (overrides the SUBJECTS_DIR
+                        env variable).
+  --conform             Resample input to 1mm-iso; results will be put back in
+                        native resolution.
+  --etiv                deInclude eTIV in volume stats (enabled by default in
+                        subject-mode and --tal).
+  --tal TAL             Alternative talairach xfm transform for estimating
+                        TIV. Can be file or suffix (for multiple inputs).
+  --write_posteriors    Save the label posteriors.
+  --write_volumes       Save label volume stats (enabled by default in
+                        subject-mode).
+  --write_qa_stats      Save QA stats (z and confidence).
+  --exclude EXCLUDE [EXCLUDE ...]
+                        List of label IDs to exclude in any output stats
+                        files.
+  --keep_ac             Explicitly keep anterior commissure in the volume/qa
+                        files.
+  --vox-count-volumes   Use discrete voxel count for label volumes.
+  --model MODEL         Alternative model weights to load.
+  --ctab CTAB           Alternative color lookup table to embed in
+                        segmentation. Must be minimal, including 0, and
+                        sorted.
+  --population-stats POPULATION_STATS
+                        Alternative population volume stats for QA output.
+  --debug               Enable debug logging.
+  --vmp                 Enable printing of vmpeak at the end.
+  --threads THREADS     Number of threads to use. Default is 1.
+  --7T                  Preprocess 7T images (just sets percentile to 99.9).
+  --percentile PERCENTILE
+                        Use intensity percentile threshold for normalization.
+  --cuda-device CUDA_DEVICE
+                        Cuda device for GPU support.
+  --output-base OUTPUT_BASE
+                        String to use in output file name; default is sclimbic
+  --no-cite-sclimbic    Do not cite sclimbic paper at the end.
+  --nchannels NCHANNELS
+                        Number of channels

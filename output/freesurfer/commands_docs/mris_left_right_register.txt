@@ -1,0 +1,12 @@
+
+=== Output of 'mris_left_right_register --help' ===
+
+usage: mris_left_right_register lh.sphere rh.sphere lh.sphere.left_right rh.sphere.left_right
+
+=== Output of 'mris_left_right_register -help' ===
+
+usage: mris_left_right_register lh.sphere rh.sphere lh.sphere.left_right rh.sphere.left_right
+
+=== Output of 'mris_left_right_register' (no arguments) ===
+
+usage: mris_left_right_register lh.sphere rh.sphere lh.sphere.left_right rh.sphere.left_right

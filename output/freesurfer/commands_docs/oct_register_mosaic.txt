@@ -1,0 +1,26 @@
+
+=== Output of 'oct_register_mosaic --help' ===
+
+unknown option --help
+usage 1: /usr/local/freesurfer/bin/oct_register_mosaic [options] <tile 1> <tile 2> ...  <output volume>
+usage 2: /usr/local/freesurfer/bin/oct_register_mosaic [options] <mosaic list file>  <output volume>
+	options:
+	-D <downsample>	-	use Gaussian downsampling <downsample> times
+	-W <weight fname>	-	read tile of weights from <weight fname> and use it in tile averaging
+
+=== Output of 'oct_register_mosaic -help' ===
+
+unknown option -help
+usage 1: /usr/local/freesurfer/bin/oct_register_mosaic [options] <tile 1> <tile 2> ...  <output volume>
+usage 2: /usr/local/freesurfer/bin/oct_register_mosaic [options] <mosaic list file>  <output volume>
+	options:
+	-D <downsample>	-	use Gaussian downsampling <downsample> times
+	-W <weight fname>	-	read tile of weights from <weight fname> and use it in tile averaging
+
+=== Output of 'oct_register_mosaic' (no arguments) ===
+
+usage 1: /usr/local/freesurfer/bin/oct_register_mosaic [options] <tile 1> <tile 2> ...  <output volume>
+usage 2: /usr/local/freesurfer/bin/oct_register_mosaic [options] <mosaic list file>  <output volume>
+	options:
+	-D <downsample>	-	use Gaussian downsampling <downsample> times
+	-W <weight fname>	-	read tile of weights from <weight fname> and use it in tile averaging

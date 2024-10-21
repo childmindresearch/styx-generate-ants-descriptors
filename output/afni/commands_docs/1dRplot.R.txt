@@ -1,0 +1,15 @@
+
+=== Output of '1dRplot.R --help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/1dRplot.R --args /opt/afni/src/../install/1dRplot.R --help
+
+=== Output of '1dRplot.R -help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/1dRplot.R --args /opt/afni/src/../install/1dRplot.R -help
+
+=== Output of '1dRplot.R' (no arguments) ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/1dRplot.R --args /opt/afni/src/../install/1dRplot.R

@@ -1,0 +1,136 @@
+
+=== Output of 'map_ap_to_deriv.py --help' ===
+
+usage: map_ap_to_deriv.py [-subj_dir SUBJ_DIR] [-deriv_dir DERIV_DIR]
+                          [-ow_mode_top OW_MODE_TOP]
+                          [-ow_mode_subj OW_MODE_SUBJ] [-verb VERB] [-ver]
+                          [-help] [-hview]
+map_ap_to_deriv.py: error: unrecognized arguments: --help
+
+=== Output of 'map_ap_to_deriv.py -help' ===
+
+usage: map_ap_to_deriv.py [-subj_dir SUBJ_DIR] [-deriv_dir DERIV_DIR]
+                          [-ow_mode_top OW_MODE_TOP]
+                          [-ow_mode_subj OW_MODE_SUBJ] [-verb VERB] [-ver]
+                          [-help] [-hview]
+
+Overview ~1~
+
+This program is used to map afni_proc.py (AP) results directory
+outputs to names and file structure of FMRI BIDS derivatives.
+
+The number of outputs may increase over time.
+
+============================================================================
+
+Options ~1~
+
+optional arguments:
+  -subj_dir SUBJ_DIR    (req) location of the input AP results directory
+                        (often ".", as this program is often run from within
+                        the AP results directory).
+  -deriv_dir DERIV_DIR  location of the output derivatives directory, which
+                        can include path as well as output directory name.
+                        (def: "bids_deriv", in "-subj_dir ..").
+  -ow_mode_top OW_MODE_TOP
+                        set overwrite mode for top-level dir; choices are:
+                        backup -> move existing dir to dir_<time>; then make
+                        new dir overwrite -> purge old dir and make new dir in
+                        its vacant place shy -> make new dir only if one does
+                        not exist simple_ok -> make new dir, ok if pre-exist
+                        (mkdir -p ..) (def: simple_ok)
+  -ow_mode_subj OW_MODE_SUBJ
+                        set overwrite mode for subject-level dir; choices are:
+                        backup -> move existing dir to dir_<time>; then make
+                        new dir overwrite -> purge old dir and make new dir in
+                        its vacant place shy -> make new dir only if one does
+                        not exist simple_ok -> make new dir, ok if pre-exist
+                        (mkdir -p ..) (def: backup)
+  -verb VERB            verbosity level (def: 0)
+  -ver                  display version
+  -help                 display help in terminal
+  -hview                display help in a text editor
+
+============================================================================
+
+Examples ~1~
+
+  1) Run the program from within an AP results dir, to make the output
+     derivatives directory in the current spot:
+
+     map_ap_to_deriv.py -subj_dir .
+
+  2) Run the program from within an AP results dir, to make the output
+     derivatives directory in a different group directory output:
+
+     map_ap_to_deriv.py                               \
+         -subj_dir   .                                \
+         -deriv_dir  /path/to/derivatives/task_NAME
+
+============================================================================
+written by: PA Taylor (SSCC, NIMH, NIH, USA)
+============================================================================
+
+=== Output of 'map_ap_to_deriv.py' (no arguments) ===
+
+usage: map_ap_to_deriv.py [-subj_dir SUBJ_DIR] [-deriv_dir DERIV_DIR]
+                          [-ow_mode_top OW_MODE_TOP]
+                          [-ow_mode_subj OW_MODE_SUBJ] [-verb VERB] [-ver]
+                          [-help] [-hview]
+
+Overview ~1~
+
+This program is used to map afni_proc.py (AP) results directory
+outputs to names and file structure of FMRI BIDS derivatives.
+
+The number of outputs may increase over time.
+
+============================================================================
+
+Options ~1~
+
+optional arguments:
+  -subj_dir SUBJ_DIR    (req) location of the input AP results directory
+                        (often ".", as this program is often run from within
+                        the AP results directory).
+  -deriv_dir DERIV_DIR  location of the output derivatives directory, which
+                        can include path as well as output directory name.
+                        (def: "bids_deriv", in "-subj_dir ..").
+  -ow_mode_top OW_MODE_TOP
+                        set overwrite mode for top-level dir; choices are:
+                        backup -> move existing dir to dir_<time>; then make
+                        new dir overwrite -> purge old dir and make new dir in
+                        its vacant place shy -> make new dir only if one does
+                        not exist simple_ok -> make new dir, ok if pre-exist
+                        (mkdir -p ..) (def: simple_ok)
+  -ow_mode_subj OW_MODE_SUBJ
+                        set overwrite mode for subject-level dir; choices are:
+                        backup -> move existing dir to dir_<time>; then make
+                        new dir overwrite -> purge old dir and make new dir in
+                        its vacant place shy -> make new dir only if one does
+                        not exist simple_ok -> make new dir, ok if pre-exist
+                        (mkdir -p ..) (def: backup)
+  -verb VERB            verbosity level (def: 0)
+  -ver                  display version
+  -help                 display help in terminal
+  -hview                display help in a text editor
+
+============================================================================
+
+Examples ~1~
+
+  1) Run the program from within an AP results dir, to make the output
+     derivatives directory in the current spot:
+
+     map_ap_to_deriv.py -subj_dir .
+
+  2) Run the program from within an AP results dir, to make the output
+     derivatives directory in a different group directory output:
+
+     map_ap_to_deriv.py                               \
+         -subj_dir   .                                \
+         -deriv_dir  /path/to/derivatives/task_NAME
+
+============================================================================
+written by: PA Taylor (SSCC, NIMH, NIH, USA)
+============================================================================

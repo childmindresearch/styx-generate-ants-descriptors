@@ -1,0 +1,39 @@
+
+=== Output of '@help.AFNI --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@help.AFNI -help' ===
+
+
+@help.AFNI [OPTIONS]
+   A script to retrieve and search AFNI's help page for all programs
+
+ Examples:
+   @help.AFNI 
+
+   @help.AFNI -match love
+
+ Options:
+   -match 'word1 [word2 word3]' : Looks for occurrence of each word in
+                                  the list in the help file.
+                                  For a match with multiple words, all
+                                  the words must be on the same line of
+                                  text in the help file.
+   -lynx :  Set viewer to lynx
+   -vi   :  Set viewer to vi
+   -less :  Set viewer to less (default)
+   -nedit:  Set viewer to nedit
+   -noview: Set viewer to no view
+
+
+=== Output of '@help.AFNI' (no arguments) ===
+
+Retrieving https://afni.nimh.nih.gov/pub/dist/doc/program_help/all-of-them.html
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 77 16.4M   77 12.7M    0     0  21.4M      0 --:--:-- --:--:-- --:--:-- 21.3M100 16.4M  100 16.4M    0     0  22.2M      0 --:--:-- --:--:-- --:--:-- 22.2M
+lynx: Command not found.
+[1] 18094
+xterm: Command not found.
+[1]    Exit 1                        xterm -T less-@help.AFNI.output -e less all-of-them.txt

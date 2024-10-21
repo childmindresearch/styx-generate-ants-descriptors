@@ -1,0 +1,20 @@
+
+=== Output of 'mris_find_flat_regions --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_find_flat_regions [options] <surface> <wfile>
+
+This program computed regions in  which the surface is almost perpindicular to one
+of  the cardinal axes, and writes  the results  to  a label file
+-t <thresh>  specify the threshold to use  (default=0.990)
+
+=== Output of 'mris_find_flat_regions -help' ===
+
+unknown option -help
+
+=== Output of 'mris_find_flat_regions' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_find_flat_regions [options] <surface> <wfile>
+
+This program computed regions in  which the surface is almost perpindicular to one
+of  the cardinal axes, and writes  the results  to  a label file
+-t <thresh>  specify the threshold to use  (default=0.990)

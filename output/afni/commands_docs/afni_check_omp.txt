@@ -1,0 +1,12 @@
+
+=== Output of 'afni_check_omp --help' ===
+
+16
+
+=== Output of 'afni_check_omp -help' ===
+
+16
+
+=== Output of 'afni_check_omp' (no arguments) ===
+
+16

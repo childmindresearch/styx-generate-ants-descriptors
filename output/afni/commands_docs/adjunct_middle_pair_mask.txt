@@ -1,0 +1,198 @@
+
+=== Output of 'adjunct_middle_pair_mask --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of 'adjunct_middle_pair_mask -help' ===
+
+
+Overview ~1~
+
+This is an adjunct program to find 2 points within a mask that are
+centered along the AP and IS axes for a mask/input dset, and then one
+is also centered in the "left half" and one centered in the "right
+half".
+
+This is primarily meant to be used for APQC HTML creation for ORIG or
+TLRC datasets without recognized seed locations.
+
+The locations are found by first running 3dAutobox on the input, which
+is expected to be a mask by default. If the input is not a mask, users
+can also use the '-automask' option to automask it.  After that, each
+output point is found in each half of the autoboxed input using '3dCM
+-Icent ...'.  The output is two sets of three numbers, the coordinates
+in question.
+
+Users can use '-prefix ..' to save the results to a text file, or they
+could redirect the output with '... > FILE.txt'.
+
+auth : PA Taylor (SSCC, NIMH, NIH, USA)
+ver  : 0.8
+date : April 22, 2024
+
+-------------------------------------------------------------------------
+
+Options ~1~
+
+-input    III      :(req) input dset, which can be a mask or a dset  
+
+-prefix   PPP      :output the two lines of 3 coords each to a text file
+
+-automask          :use this to run 3dAutomask on the input, *if* the 
+                    input is not a mask already
+
+-restrict_mask RM :add in another mask as a constraint, which the two
+                    points must also fall within. This RM dset need
+                    not be on the same grid as the input III dset
+                    (resampling will happen internally).
+                    Using this opt can lead to complicated logic if
+                    there is poor overlap between this and the
+                    input. If this doesn't overlap with one of the
+                    intermediate hemispheres of the input, then the
+                    output points might both be in the same apparent
+                    hemisphere. And if there is no overlap between
+                    this restrictor and the input, you will get two
+                    sets of null coords: (0 0 0). But that will be
+                    your own fault.
+
+-overwrite         :flag to turn on overwriting of prior existing file
+                    if '-prefix ..' is used
+
+-verb              :spit out a bit of extra text info about calcs. 
+                    NB: if you use this opt, then you won't want to try to
+                    get the seed-based coordinates by redirecting 
+                    output to a file with '>' but instead would need
+                    to use '-prefix ..' for that.
+
+-no_num_out        :do not report the two coordinates in the terminal output
+                    (stdout). Probably this means you are using '-prefix ..'
+                    to save the output results.
+
+-echo              :run this script with '-e' opt, to echo every line before
+                    it is executed (so, very verbose output)
+
+-workdir  WWW      :provide a name of a temporary working directory.
+                    NB: no path should be included in it; it will be placed
+                    into the output directory location
+                     
+-no_clean          :if a workdir is used, then this opt turns off 
+                    removing it (def: remove working dir)
+
+-ver               :display program version
+
+-help, -h          :display this help (soooo meta)
+
+-------------------------------------------------------------------------
+
+Examples ~1~
+
+1) simple case, just input a mask:
+    adjunct_middle_pair_mask                                \
+        -input  mask_epi_anat.sub-001+tlrc.HEAD
+
+2) input a template, automask it and get two points that are also 
+   constrained to be in a secondary mask:
+    adjunct_middle_pair_mask                                \
+        -input            MNI152_2009_template_SSW.nii.gz   \
+        -automask                                           \
+        -restrictor_mask  mask_epi_anat.sub-001+tlrc.HEAD
+
+
+=== Output of 'adjunct_middle_pair_mask' (no arguments) ===
+
+
+Overview ~1~
+
+This is an adjunct program to find 2 points within a mask that are
+centered along the AP and IS axes for a mask/input dset, and then one
+is also centered in the "left half" and one centered in the "right
+half".
+
+This is primarily meant to be used for APQC HTML creation for ORIG or
+TLRC datasets without recognized seed locations.
+
+The locations are found by first running 3dAutobox on the input, which
+is expected to be a mask by default. If the input is not a mask, users
+can also use the '-automask' option to automask it.  After that, each
+output point is found in each half of the autoboxed input using '3dCM
+-Icent ...'.  The output is two sets of three numbers, the coordinates
+in question.
+
+Users can use '-prefix ..' to save the results to a text file, or they
+could redirect the output with '... > FILE.txt'.
+
+auth : PA Taylor (SSCC, NIMH, NIH, USA)
+ver  : 0.8
+date : April 22, 2024
+
+-------------------------------------------------------------------------
+
+Options ~1~
+
+-input    III      :(req) input dset, which can be a mask or a dset  
+
+-prefix   PPP      :output the two lines of 3 coords each to a text file
+
+-automask          :use this to run 3dAutomask on the input, *if* the 
+                    input is not a mask already
+
+-restrict_mask RM :add in another mask as a constraint, which the two
+                    points must also fall within. This RM dset need
+                    not be on the same grid as the input III dset
+                    (resampling will happen internally).
+                    Using this opt can lead to complicated logic if
+                    there is poor overlap between this and the
+                    input. If this doesn't overlap with one of the
+                    intermediate hemispheres of the input, then the
+                    output points might both be in the same apparent
+                    hemisphere. And if there is no overlap between
+                    this restrictor and the input, you will get two
+                    sets of null coords: (0 0 0). But that will be
+                    your own fault.
+
+-overwrite         :flag to turn on overwriting of prior existing file
+                    if '-prefix ..' is used
+
+-verb              :spit out a bit of extra text info about calcs. 
+                    NB: if you use this opt, then you won't want to try to
+                    get the seed-based coordinates by redirecting 
+                    output to a file with '>' but instead would need
+                    to use '-prefix ..' for that.
+
+-no_num_out        :do not report the two coordinates in the terminal output
+                    (stdout). Probably this means you are using '-prefix ..'
+                    to save the output results.
+
+-echo              :run this script with '-e' opt, to echo every line before
+                    it is executed (so, very verbose output)
+
+-workdir  WWW      :provide a name of a temporary working directory.
+                    NB: no path should be included in it; it will be placed
+                    into the output directory location
+                     
+-no_clean          :if a workdir is used, then this opt turns off 
+                    removing it (def: remove working dir)
+
+-ver               :display program version
+
+-help, -h          :display this help (soooo meta)
+
+-------------------------------------------------------------------------
+
+Examples ~1~
+
+1) simple case, just input a mask:
+    adjunct_middle_pair_mask                                \
+        -input  mask_epi_anat.sub-001+tlrc.HEAD
+
+2) input a template, automask it and get two points that are also 
+   constrained to be in a secondary mask:
+    adjunct_middle_pair_mask                                \
+        -input            MNI152_2009_template_SSW.nii.gz   \
+        -automask                                           \
+        -restrictor_mask  mask_epi_anat.sub-001+tlrc.HEAD
+

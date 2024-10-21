@@ -1,0 +1,30 @@
+
+=== Output of 'easythresh --help' ===
+
+
+Usage: easythresh <raw_zstat> <brain_mask> <cluster_z_thresh> <cluster_prob_thresh> <background_image> <output_root> [--mm]
+e.g.:  easythresh stats/zstat1 mask 2.3 0.01 example_func grot
+
+Or:    easythresh <stat> <stat_thresh> <background_image> <output_root>
+e.g.:  easythresh stats/zstat1 2.3 example_func grot
+
+
+=== Output of 'easythresh -help' ===
+
+
+Usage: easythresh <raw_zstat> <brain_mask> <cluster_z_thresh> <cluster_prob_thresh> <background_image> <output_root> [--mm]
+e.g.:  easythresh stats/zstat1 mask 2.3 0.01 example_func grot
+
+Or:    easythresh <stat> <stat_thresh> <background_image> <output_root>
+e.g.:  easythresh stats/zstat1 2.3 example_func grot
+
+
+=== Output of 'easythresh' (no arguments) ===
+
+
+Usage: easythresh <raw_zstat> <brain_mask> <cluster_z_thresh> <cluster_prob_thresh> <background_image> <output_root> [--mm]
+e.g.:  easythresh stats/zstat1 mask 2.3 0.01 example_func grot
+
+Or:    easythresh <stat> <stat_thresh> <background_image> <output_root>
+e.g.:  easythresh stats/zstat1 2.3 example_func grot
+

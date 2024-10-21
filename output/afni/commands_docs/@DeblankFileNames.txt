@@ -1,0 +1,85 @@
+
+=== Output of '@DeblankFileNames --help' ===
+
+Would rename   >./Usage: ls [OPTION]... [FILE]...<
+            to >./Usage:_ls__OPTION_...__FILE_...<
+Would rename   >./List information about the FILEs (the current directory by default).<
+            to >./List_information_about_the_FILEs__the_current_directory_by_default_.<
+Would rename   >./Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.<
+            to >./Sort_entries_alphabetically_if_none_of_-cftuvSUX_nor_--sort_is_specified.<
+Would rename   >./Mandatory arguments to long options are mandatory for short options too.<
+            to >./Mandatory_arguments_to_long_options_are_mandatory_for_short_options_too.<
+Would rename   >./  -a, --all                  do not ignore entries starting with .<
+            to >./__-a,_--all__________________do_not_ignore_entries_starting_with_.<
+Would rename   >./  -A, --almost-all           do not list implied . and ..<
+            to >./__-A,_--almost-all___________do_not_list_implied_._and_..<
+Would rename   >./      --author               with -l, print the author of each file<
+            to >./______--author_______________with_-l,_print_the_author_of_each_file<
+Would rename   >./  -b, --escape               print C-style escapes for nongraphic characters<
+            to >./__-b,_--escape_______________print_C-style_escapes_for_nongraphic_characters<
+Would rename   >./      --block-size=SIZE      scale sizes by SIZE before printing them; e.g.,<
+            to >./______--block-size=SIZE______scale_sizes_by_SIZE_before_printing_them;_e.g.,<
+Would rename   >./                               '--block-size=M' prints sizes in units of<
+            to >./_______________________________'--block-size=M'_prints_sizes_in_units_of<
+Would rename   >./                               1,048,576 bytes; see SIZE format below<
+            to >./_______________________________1,048,576_bytes;_see_SIZE_format_below<
+Would rename   >./  -B, --ignore-backups       do not list implied entries ending with ~<
+            to >./__-B,_--ignore-backups_______do_not_list_implied_entries_ending_with_~<
+Would rename   >./  -c                         with -lt: sort by, and show, ctime (time of last<
+            to >./__-c_________________________with_-lt:_sort_by,_and_show,_ctime__time_of_last<
+Would rename   >./                               modification of file status information);<
+            to >./_______________________________modification_of_file_status_information_;<
+Would rename   >./                               with -l: show ctime and sort by name;<
+            to >./_______________________________with_-l:_show_ctime_and_sort_by_name;<
+Would rename   >./                               otherwise: sort by ctime, newest first<
+            to >./_______________________________otherwise:_sort_by_ctime,_newest_first<
+Would rename   >./  -C                         list entries by columns<
+            to >./__-C_________________________list_entries_by_columns<
+Would rename   >./      --color[=WHEN]         colorize the output; WHEN can be 'always' (default<
+            to >./______--color_=WHEN__________colorize_the_output;_WHEN_can_be_'always'__default<
+Would rename   >./                               if omitted), 'auto', or 'never'; more info below<
+            to >./_______________________________if_omitted_,_'auto',_or_'never';_more_info_below<
+Would rename   >./  -d, --directory            list directories themselves, not their contents<
+            to >./__-d,_--directory____________list_directories_themselves,_not_their_contents<
+Would rename   >./  -D, --dired                generate output designed for Emacs' dired mode<
+            to >./__-D,_--dired________________generate_output_designed_for_Emacs'_dired_mode<
+Would rename   >./  -f                         do not sort, enable -aU, disable -ls --color<
+            to >./__-f_________________________do_not_sort,_enable_-aU,_disable_-ls_--color<
+set: No match.
+
+=== Output of '@DeblankFileNames -help' ===
+
+
+A script to remove blanks and other annoying characters from filenames.
+ in the current directory.
+The default set of characters to replace is ' []()'
+Spaces are replaced with _. 
+If resultant name exists, more _ are used until new name
+is found.
+
+   @DeblankFileNames [-move] [FILES]
+
+OPTIONS
+   -dry_run: Just show what would be done. Don't rename files.
+             This is the default option
+   -move: Actually rename the files (opposite of -dry_run)
+   -nobrac: Do not replace () and [] in filenames, just spaces
+   -demo_set: Create a toy directory with bad names for testing.
+   -echo: Turn on script echo
+   -help: This message
+   FILES: Specify files to fix as opposed to letting it fix all
+          the names in the current directory.
+
+Examples:
+   1- @DeblankFileNames 
+
+   2- @DeblankFileNames -move 
+
+   3- Run the command below and follow its suggestions
+      @DeblankFileNames -demo_set
+
+
+=== Output of '@DeblankFileNames' (no arguments) ===
+
+ls: No match.
+No files to fix

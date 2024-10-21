@@ -1,0 +1,15 @@
+
+=== Output of 'streamlineFilter --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/streamlineFilter -i streamlines -o streamlines -l minLength  -m mask/segmentation -nu (filter ushape fibers) -s subsample -c cleaningThreshold (std times) -d outputDirectory
+
+=== Output of 'streamlineFilter -help' ===
+
+ clean 0
+ clean 0
+
+=== Output of 'streamlineFilter' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/streamlineFilter -i streamlines -o streamlines -l minLength  -m mask/segmentation -nu (filter ushape fibers) -s subsample -c cleaningThreshold (std times) -d outputDirectory

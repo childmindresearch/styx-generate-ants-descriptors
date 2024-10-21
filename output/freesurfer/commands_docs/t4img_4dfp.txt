@@ -1,0 +1,30 @@
+
+=== Output of 't4img_4dfp --help' ===
+
+Usage:	t4img_4dfp <t4file> <imgfile> [outfile] [options]
+ e.g.,	t4img_4dfp vce1_mprS_to_711-2B_t4	vce1_mprS.4dfp.img -O222
+   or,	t4img_4dfp vce1_mprS_to_711-2B_t4 	vce1_mprS vce_mprS_711-2B -O222
+   or,	t4img_4dfp none				vce1_mprS vce1_mprS_222 -O222
+N.B.:	.4dfp.img filename extensions are optional
+N.B.:	default output filename = <imgfile>t
+N.B.:	options must follow the filename arguments
+
+=== Output of 't4img_4dfp -help' ===
+
+Usage:	t4img_4dfp <t4file> <imgfile> [outfile] [options]
+ e.g.,	t4img_4dfp vce1_mprS_to_711-2B_t4	vce1_mprS.4dfp.img -O222
+   or,	t4img_4dfp vce1_mprS_to_711-2B_t4 	vce1_mprS vce_mprS_711-2B -O222
+   or,	t4img_4dfp none				vce1_mprS vce1_mprS_222 -O222
+N.B.:	.4dfp.img filename extensions are optional
+N.B.:	default output filename = <imgfile>t
+N.B.:	options must follow the filename arguments
+
+=== Output of 't4img_4dfp' (no arguments) ===
+
+Usage:	t4img_4dfp <t4file> <imgfile> [outfile] [options]
+ e.g.,	t4img_4dfp vce1_mprS_to_711-2B_t4	vce1_mprS.4dfp.img -O222
+   or,	t4img_4dfp vce1_mprS_to_711-2B_t4 	vce1_mprS vce_mprS_711-2B -O222
+   or,	t4img_4dfp none				vce1_mprS vce1_mprS_222 -O222
+N.B.:	.4dfp.img filename extensions are optional
+N.B.:	default output filename = <imgfile>t
+N.B.:	options must follow the filename arguments

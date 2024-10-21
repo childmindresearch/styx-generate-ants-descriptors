@@ -1,0 +1,30 @@
+
+=== Output of 'pointset2label --help' ===
+
+pointset2label <waypoint file> <input volume file> <label value> <output volume label file> [-clear]
+
+  Example: pointset2label wp.label input.mgz 3 label_out.mgz
+
+  If -clear option is given, input volume will be cleared first. 
+  If output is the same as input, input volume file will be overwritten.
+
+
+=== Output of 'pointset2label -help' ===
+
+pointset2label <waypoint file> <input volume file> <label value> <output volume label file> [-clear]
+
+  Example: pointset2label wp.label input.mgz 3 label_out.mgz
+
+  If -clear option is given, input volume will be cleared first. 
+  If output is the same as input, input volume file will be overwritten.
+
+
+=== Output of 'pointset2label' (no arguments) ===
+
+pointset2label <waypoint file> <input volume file> <label value> <output volume label file> [-clear]
+
+  Example: pointset2label wp.label input.mgz 3 label_out.mgz
+
+  If -clear option is given, input volume will be cleared first. 
+  If output is the same as input, input volume file will be overwritten.
+

@@ -1,0 +1,510 @@
+
+=== Output of 'afni_python_wrapper.py --help' ===
+
+
+afni_python_wrapper.py: use to call afnipy functions from the shell
+
+   By default, this loads module afni_util, and attempts use functions from it.
+   To use a function from a different module, apply -module.
+
+   MODULE will subsequently to the imported module.
+
+
+   options:
+
+      -help             : show this help
+
+      -module MODULE    : specify the python module to import
+
+         By default, functions to process are imported from afni_util.  To
+         import a different module, apply this option.
+
+         Example:
+
+            afni_python_wrapper.py -module afni_base ...
+
+      -module_dir       : show the elements returned by dir()
+
+         This option is useful to get a list of all module functions.
+
+         Examples:
+
+            afni_python_wrapper.py -module_dir
+            afni_python_wrapper.py -module afni_base -module_dir
+
+      -eval STRING      : evaluate STRING in context of MODULE
+                          (i.e. STRING can be function calls or other)
+
+         This option is used to simply execute the code in STRING.
+
+         Examples for eval:
+
+            afni_python_wrapper.py -eval "show_process_stack()"
+            afni_python_wrapper.py -eval "show_process_stack(verb=2)"
+            afni_python_wrapper.py -eval "show_process_stack(pid=1000)"
+
+            # write a command in pretty format
+            cat INPUT | afni_python_wrapper.py -eval 'wrap_file_text()'
+
+            # display out.ss_review.FT.txt as a json dictionary
+            afni_python_wrapper.py -eval                  \
+                'write_data_as_json(read_text_dictionary( \
+                "out.ss_review.FT.txt")[1])'
+            afni_python_wrapper.py -eval                  \
+                'write_data_as_json(read_text_dictionary( \
+                "out.ss_review.FT.txt", compact=1)[1])'
+
+            afni_python_wrapper.py -module module_test_lib \
+                -eval 'test_import("afnipy.afni_util", verb=4)'
+
+      -exec STRING      : execute STRING in context of MODULE
+
+         This option is used to simply execute the code in STRING.
+
+         Examples for exec:
+
+            afni_python_wrapper.py -exec "y = 3+4 ; print y"
+            afni_python_wrapper.py -exec "import PyQt4"
+            afni_python_wrapper.py -exec "show_process_stack()"
+
+      -funchelp FUNC    : print the help for module function FUNC
+
+         Print the FUNC.__doc__ text, if any.
+
+         Example:
+
+            afni_python_wrapper.py -funchelp wrap_file_text
+
+      -print STRING     : print the result of executing STRING
+
+         Akin to -eval, but print the results of evaluating STRING.
+
+         Examples for print:
+
+            afni_python_wrapper.py                      \
+                -print "get_last_history_ver_pack('DSET+tlrc')"
+            afni_python_wrapper.py                      \
+                -print "get_last_history_version('DSET+tlrc')"
+            afni_python_wrapper.py -print 'gaussian_at_fwhm(3,5)'
+            afni_python_wrapper.py -print 'gaussian_at_hwhm_frac.__doc__'
+
+      -lprint STRING    : line print: print result list, one element per line
+
+         The 'l' stands for 'line' (or 'list').  This is akin to -print,
+         but prints a list with one element per line.
+
+         Examples for lprint:
+
+            # show alt+z slice timing for 20 slices and TR=2s
+            afni_python_wrapper.py \
+                -lprint "slice_pattern_to_timing('alt+z', 20, 2)"
+
+      -listfunc [SUB_OPTS] FUNC LIST ... : execute FUNC(LIST)
+
+         With this option, LIST is a list of values to be passed to FUNC().
+         Note that LIST can be simply '-' or 'stdin', in which case the
+         list values are read from stdin.
+
+         This is similar to eval, but instead of requiring:
+            -eval "FUNC([v1,v2,v3,...])"
+         the list values can be left as trailing arguments:
+            -listfunc FUNC v1 v2 v3 ...
+         (where LIST = v1 v2 v3 ...).
+
+         SUB_OPTS sub-options:
+
+                -float  : convert the list to floats before passing to FUNC()
+                -print  : print the result
+                -join   : print the results join()'d together
+                -joinc  : print the results join()'d together with commas
+                -joinn  : print the results join()'d together with newlines
+
+         Examples for listfunc:
+
+           afni_python_wrapper.py -listfunc        min_mean_max_stdev 1 2 3 4 5
+           afni_python_wrapper.py -listfunc -print min_mean_max_stdev 1 2 3 4 5
+           afni_python_wrapper.py -listfunc -join  min_mean_max_stdev 1 2 3 4 5
+
+           afni_python_wrapper.py -listfunc -join -float demean 1 2 3 4 5
+
+           afni_python_wrapper.py -listfunc -join shuffle       \
+                                  `count_afni -digits 4 1 124`
+
+           count -digits 4 1 124 | afni_python_wrapper.py -listfunc \
+                                  -join shuffle -
+
+           afni_python_wrapper.py -listfunc glob2stdout 'EPI_run1/8*'
+
+           afni_python_wrapper.py -listfunc -joinc list_minus_glob_form *HEAD
+
+           afni_python_wrapper.py -listfunc -join -float linear_fit \
+                                  2 3 5 4 8 5 8 9
+
+         Also, if LIST contains -list2, then 2 lists can be input to do
+         something like:
+            -eval "FUNC([v1,v2,v3], [v4,v5,v6])"
+
+         Examples with -list2:
+
+            afni_python_wrapper.py -listfunc -print -float ttest 1 2 3 4 5 \
+                                                 -list2 2 2 4 6 8
+
+            afni_python_wrapper.py -listfunc -print -float ttest_paired   \
+                                1 2 3 4 5 -list2 2 4 5 6 8
+
+            afni_python_wrapper.py -listfunc -join -float linear_fit      \
+                                `cat y.1D` -list2 `cat x.1D`
+
+           afni_python_wrapper.py -listfunc -join list_intersect \
+                `cat fileA` -list2 `cat fileB`                   \
+                | tr ' ' '\n'
+
+           # same, but use -joinn instead of tr, for newline separation
+           afni_python_wrapper.py -listfunc -joinn list_intersect \
+                `cat fileA` -list2 `cat fileB`
+
+           afni_python_wrapper.py -listfunc -joinn list_diff    \
+                `cat fileA` -list2 `cat fileB`
+
+   Author: R Reynolds  Feb, 2020  (moved from afni_util.py)
+
+
+=== Output of 'afni_python_wrapper.py -help' ===
+
+
+afni_python_wrapper.py: use to call afnipy functions from the shell
+
+   By default, this loads module afni_util, and attempts use functions from it.
+   To use a function from a different module, apply -module.
+
+   MODULE will subsequently to the imported module.
+
+
+   options:
+
+      -help             : show this help
+
+      -module MODULE    : specify the python module to import
+
+         By default, functions to process are imported from afni_util.  To
+         import a different module, apply this option.
+
+         Example:
+
+            afni_python_wrapper.py -module afni_base ...
+
+      -module_dir       : show the elements returned by dir()
+
+         This option is useful to get a list of all module functions.
+
+         Examples:
+
+            afni_python_wrapper.py -module_dir
+            afni_python_wrapper.py -module afni_base -module_dir
+
+      -eval STRING      : evaluate STRING in context of MODULE
+                          (i.e. STRING can be function calls or other)
+
+         This option is used to simply execute the code in STRING.
+
+         Examples for eval:
+
+            afni_python_wrapper.py -eval "show_process_stack()"
+            afni_python_wrapper.py -eval "show_process_stack(verb=2)"
+            afni_python_wrapper.py -eval "show_process_stack(pid=1000)"
+
+            # write a command in pretty format
+            cat INPUT | afni_python_wrapper.py -eval 'wrap_file_text()'
+
+            # display out.ss_review.FT.txt as a json dictionary
+            afni_python_wrapper.py -eval                  \
+                'write_data_as_json(read_text_dictionary( \
+                "out.ss_review.FT.txt")[1])'
+            afni_python_wrapper.py -eval                  \
+                'write_data_as_json(read_text_dictionary( \
+                "out.ss_review.FT.txt", compact=1)[1])'
+
+            afni_python_wrapper.py -module module_test_lib \
+                -eval 'test_import("afnipy.afni_util", verb=4)'
+
+      -exec STRING      : execute STRING in context of MODULE
+
+         This option is used to simply execute the code in STRING.
+
+         Examples for exec:
+
+            afni_python_wrapper.py -exec "y = 3+4 ; print y"
+            afni_python_wrapper.py -exec "import PyQt4"
+            afni_python_wrapper.py -exec "show_process_stack()"
+
+      -funchelp FUNC    : print the help for module function FUNC
+
+         Print the FUNC.__doc__ text, if any.
+
+         Example:
+
+            afni_python_wrapper.py -funchelp wrap_file_text
+
+      -print STRING     : print the result of executing STRING
+
+         Akin to -eval, but print the results of evaluating STRING.
+
+         Examples for print:
+
+            afni_python_wrapper.py                      \
+                -print "get_last_history_ver_pack('DSET+tlrc')"
+            afni_python_wrapper.py                      \
+                -print "get_last_history_version('DSET+tlrc')"
+            afni_python_wrapper.py -print 'gaussian_at_fwhm(3,5)'
+            afni_python_wrapper.py -print 'gaussian_at_hwhm_frac.__doc__'
+
+      -lprint STRING    : line print: print result list, one element per line
+
+         The 'l' stands for 'line' (or 'list').  This is akin to -print,
+         but prints a list with one element per line.
+
+         Examples for lprint:
+
+            # show alt+z slice timing for 20 slices and TR=2s
+            afni_python_wrapper.py \
+                -lprint "slice_pattern_to_timing('alt+z', 20, 2)"
+
+      -listfunc [SUB_OPTS] FUNC LIST ... : execute FUNC(LIST)
+
+         With this option, LIST is a list of values to be passed to FUNC().
+         Note that LIST can be simply '-' or 'stdin', in which case the
+         list values are read from stdin.
+
+         This is similar to eval, but instead of requiring:
+            -eval "FUNC([v1,v2,v3,...])"
+         the list values can be left as trailing arguments:
+            -listfunc FUNC v1 v2 v3 ...
+         (where LIST = v1 v2 v3 ...).
+
+         SUB_OPTS sub-options:
+
+                -float  : convert the list to floats before passing to FUNC()
+                -print  : print the result
+                -join   : print the results join()'d together
+                -joinc  : print the results join()'d together with commas
+                -joinn  : print the results join()'d together with newlines
+
+         Examples for listfunc:
+
+           afni_python_wrapper.py -listfunc        min_mean_max_stdev 1 2 3 4 5
+           afni_python_wrapper.py -listfunc -print min_mean_max_stdev 1 2 3 4 5
+           afni_python_wrapper.py -listfunc -join  min_mean_max_stdev 1 2 3 4 5
+
+           afni_python_wrapper.py -listfunc -join -float demean 1 2 3 4 5
+
+           afni_python_wrapper.py -listfunc -join shuffle       \
+                                  `count_afni -digits 4 1 124`
+
+           count -digits 4 1 124 | afni_python_wrapper.py -listfunc \
+                                  -join shuffle -
+
+           afni_python_wrapper.py -listfunc glob2stdout 'EPI_run1/8*'
+
+           afni_python_wrapper.py -listfunc -joinc list_minus_glob_form *HEAD
+
+           afni_python_wrapper.py -listfunc -join -float linear_fit \
+                                  2 3 5 4 8 5 8 9
+
+         Also, if LIST contains -list2, then 2 lists can be input to do
+         something like:
+            -eval "FUNC([v1,v2,v3], [v4,v5,v6])"
+
+         Examples with -list2:
+
+            afni_python_wrapper.py -listfunc -print -float ttest 1 2 3 4 5 \
+                                                 -list2 2 2 4 6 8
+
+            afni_python_wrapper.py -listfunc -print -float ttest_paired   \
+                                1 2 3 4 5 -list2 2 4 5 6 8
+
+            afni_python_wrapper.py -listfunc -join -float linear_fit      \
+                                `cat y.1D` -list2 `cat x.1D`
+
+           afni_python_wrapper.py -listfunc -join list_intersect \
+                `cat fileA` -list2 `cat fileB`                   \
+                | tr ' ' '\n'
+
+           # same, but use -joinn instead of tr, for newline separation
+           afni_python_wrapper.py -listfunc -joinn list_intersect \
+                `cat fileA` -list2 `cat fileB`
+
+           afni_python_wrapper.py -listfunc -joinn list_diff    \
+                `cat fileA` -list2 `cat fileB`
+
+   Author: R Reynolds  Feb, 2020  (moved from afni_util.py)
+
+
+=== Output of 'afni_python_wrapper.py' (no arguments) ===
+
+
+afni_python_wrapper.py: use to call afnipy functions from the shell
+
+   By default, this loads module afni_util, and attempts use functions from it.
+   To use a function from a different module, apply -module.
+
+   MODULE will subsequently to the imported module.
+
+
+   options:
+
+      -help             : show this help
+
+      -module MODULE    : specify the python module to import
+
+         By default, functions to process are imported from afni_util.  To
+         import a different module, apply this option.
+
+         Example:
+
+            afni_python_wrapper.py -module afni_base ...
+
+      -module_dir       : show the elements returned by dir()
+
+         This option is useful to get a list of all module functions.
+
+         Examples:
+
+            afni_python_wrapper.py -module_dir
+            afni_python_wrapper.py -module afni_base -module_dir
+
+      -eval STRING      : evaluate STRING in context of MODULE
+                          (i.e. STRING can be function calls or other)
+
+         This option is used to simply execute the code in STRING.
+
+         Examples for eval:
+
+            afni_python_wrapper.py -eval "show_process_stack()"
+            afni_python_wrapper.py -eval "show_process_stack(verb=2)"
+            afni_python_wrapper.py -eval "show_process_stack(pid=1000)"
+
+            # write a command in pretty format
+            cat INPUT | afni_python_wrapper.py -eval 'wrap_file_text()'
+
+            # display out.ss_review.FT.txt as a json dictionary
+            afni_python_wrapper.py -eval                  \
+                'write_data_as_json(read_text_dictionary( \
+                "out.ss_review.FT.txt")[1])'
+            afni_python_wrapper.py -eval                  \
+                'write_data_as_json(read_text_dictionary( \
+                "out.ss_review.FT.txt", compact=1)[1])'
+
+            afni_python_wrapper.py -module module_test_lib \
+                -eval 'test_import("afnipy.afni_util", verb=4)'
+
+      -exec STRING      : execute STRING in context of MODULE
+
+         This option is used to simply execute the code in STRING.
+
+         Examples for exec:
+
+            afni_python_wrapper.py -exec "y = 3+4 ; print y"
+            afni_python_wrapper.py -exec "import PyQt4"
+            afni_python_wrapper.py -exec "show_process_stack()"
+
+      -funchelp FUNC    : print the help for module function FUNC
+
+         Print the FUNC.__doc__ text, if any.
+
+         Example:
+
+            afni_python_wrapper.py -funchelp wrap_file_text
+
+      -print STRING     : print the result of executing STRING
+
+         Akin to -eval, but print the results of evaluating STRING.
+
+         Examples for print:
+
+            afni_python_wrapper.py                      \
+                -print "get_last_history_ver_pack('DSET+tlrc')"
+            afni_python_wrapper.py                      \
+                -print "get_last_history_version('DSET+tlrc')"
+            afni_python_wrapper.py -print 'gaussian_at_fwhm(3,5)'
+            afni_python_wrapper.py -print 'gaussian_at_hwhm_frac.__doc__'
+
+      -lprint STRING    : line print: print result list, one element per line
+
+         The 'l' stands for 'line' (or 'list').  This is akin to -print,
+         but prints a list with one element per line.
+
+         Examples for lprint:
+
+            # show alt+z slice timing for 20 slices and TR=2s
+            afni_python_wrapper.py \
+                -lprint "slice_pattern_to_timing('alt+z', 20, 2)"
+
+      -listfunc [SUB_OPTS] FUNC LIST ... : execute FUNC(LIST)
+
+         With this option, LIST is a list of values to be passed to FUNC().
+         Note that LIST can be simply '-' or 'stdin', in which case the
+         list values are read from stdin.
+
+         This is similar to eval, but instead of requiring:
+            -eval "FUNC([v1,v2,v3,...])"
+         the list values can be left as trailing arguments:
+            -listfunc FUNC v1 v2 v3 ...
+         (where LIST = v1 v2 v3 ...).
+
+         SUB_OPTS sub-options:
+
+                -float  : convert the list to floats before passing to FUNC()
+                -print  : print the result
+                -join   : print the results join()'d together
+                -joinc  : print the results join()'d together with commas
+                -joinn  : print the results join()'d together with newlines
+
+         Examples for listfunc:
+
+           afni_python_wrapper.py -listfunc        min_mean_max_stdev 1 2 3 4 5
+           afni_python_wrapper.py -listfunc -print min_mean_max_stdev 1 2 3 4 5
+           afni_python_wrapper.py -listfunc -join  min_mean_max_stdev 1 2 3 4 5
+
+           afni_python_wrapper.py -listfunc -join -float demean 1 2 3 4 5
+
+           afni_python_wrapper.py -listfunc -join shuffle       \
+                                  `count_afni -digits 4 1 124`
+
+           count -digits 4 1 124 | afni_python_wrapper.py -listfunc \
+                                  -join shuffle -
+
+           afni_python_wrapper.py -listfunc glob2stdout 'EPI_run1/8*'
+
+           afni_python_wrapper.py -listfunc -joinc list_minus_glob_form *HEAD
+
+           afni_python_wrapper.py -listfunc -join -float linear_fit \
+                                  2 3 5 4 8 5 8 9
+
+         Also, if LIST contains -list2, then 2 lists can be input to do
+         something like:
+            -eval "FUNC([v1,v2,v3], [v4,v5,v6])"
+
+         Examples with -list2:
+
+            afni_python_wrapper.py -listfunc -print -float ttest 1 2 3 4 5 \
+                                                 -list2 2 2 4 6 8
+
+            afni_python_wrapper.py -listfunc -print -float ttest_paired   \
+                                1 2 3 4 5 -list2 2 4 5 6 8
+
+            afni_python_wrapper.py -listfunc -join -float linear_fit      \
+                                `cat y.1D` -list2 `cat x.1D`
+
+           afni_python_wrapper.py -listfunc -join list_intersect \
+                `cat fileA` -list2 `cat fileB`                   \
+                | tr ' ' '\n'
+
+           # same, but use -joinn instead of tr, for newline separation
+           afni_python_wrapper.py -listfunc -joinn list_intersect \
+                `cat fileA` -list2 `cat fileB`
+
+           afni_python_wrapper.py -listfunc -joinn list_diff    \
+                `cat fileA` -list2 `cat fileB`
+
+   Author: R Reynolds  Feb, 2020  (moved from afni_util.py)
+

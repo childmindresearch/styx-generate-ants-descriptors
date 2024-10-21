@@ -1,0 +1,36 @@
+
+=== Output of 'flip_4dfp --help' ===
+
+freesurfer flip_4dfp.c
+Usage:	flip_4dfp <(4dfp) image> [(4dfp) output]
+e.g.,	flip_4dfp -yz vc345 vc345_flipyz
+	option
+	-x	flip x
+	-y	flip y
+	-z	flip z
+	-@<b|l>	output big or little endian (default input endian)
+N.B.:	default output fileroot = <image>_flip[xyz]
+
+=== Output of 'flip_4dfp -help' ===
+
+freesurfer flip_4dfp.c
+Usage:	flip_4dfp <(4dfp) image> [(4dfp) output]
+e.g.,	flip_4dfp -yz vc345 vc345_flipyz
+	option
+	-x	flip x
+	-y	flip y
+	-z	flip z
+	-@<b|l>	output big or little endian (default input endian)
+N.B.:	default output fileroot = <image>_flip[xyz]
+
+=== Output of 'flip_4dfp' (no arguments) ===
+
+freesurfer flip_4dfp.c
+Usage:	flip_4dfp <(4dfp) image> [(4dfp) output]
+e.g.,	flip_4dfp -yz vc345 vc345_flipyz
+	option
+	-x	flip x
+	-y	flip y
+	-z	flip z
+	-@<b|l>	output big or little endian (default input endian)
+N.B.:	default output fileroot = <image>_flip[xyz]

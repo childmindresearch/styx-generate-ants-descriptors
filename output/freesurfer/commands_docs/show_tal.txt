@@ -1,0 +1,12 @@
+
+=== Output of 'show_tal --help' ===
+
+mri_show: Command not found.
+
+=== Output of 'show_tal -help' ===
+
+mri_show: Command not found.
+
+=== Output of 'show_tal' (no arguments) ===
+
+mri_show: Command not found.

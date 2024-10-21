@@ -1,0 +1,15 @@
+
+=== Output of '3dMEMA.R --help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dMEMA.R --args /opt/afni/src/../install/3dMEMA.R --help
+
+=== Output of '3dMEMA.R -help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dMEMA.R --args /opt/afni/src/../install/3dMEMA.R -help
+
+=== Output of '3dMEMA.R' (no arguments) ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dMEMA.R --args /opt/afni/src/../install/3dMEMA.R

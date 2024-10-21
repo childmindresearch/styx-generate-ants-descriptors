@@ -1,0 +1,65 @@
+
+=== Output of 'mri_voldiff --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_voldiff 
+
+   --v1 first input volume 
+   --v2 second input volume 
+
+   --vox2ras thresh 
+   --pix thresh 
+
+   --allow-prec
+   --allow-res
+   --allow-vox2ras
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+Determines whether two volumes are different. The difference
+can be in pixel data or in the dimension, precision, resolution
+or geometry. If there are no errors of differences in the volumes,
+then it exits with 0. If an error occurs, then it exits with 1.
+If the volumes are different, it will exit with one of the 
+following codes:
+
+dimensions inconsistent   2
+precision  inconsistent   3
+resolution inconsistent   4
+vox2ras    inconsistent   5
+pixel      inconsistent   6
+
+Some of the exit conditions can be allowed with --allow-prec,
+--allow-res, --allow-vox2ras.
+
+
+=== Output of 'mri_voldiff -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_voldiff' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_voldiff 
+
+   --v1 first input volume 
+   --v2 second input volume 
+
+   --vox2ras thresh 
+   --pix thresh 
+
+   --allow-prec
+   --allow-res
+   --allow-vox2ras
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

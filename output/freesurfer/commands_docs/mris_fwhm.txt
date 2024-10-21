@@ -1,0 +1,177 @@
+
+=== Output of 'mris_fwhm --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mris_fwhm
+Smooths surface data and/or estimates FWHM
+   --i input
+   --subject subject (--s)
+   --hemi hemi (--h), or --lh or --rh
+   --surf surf <white>
+   --label labelfile
+   --cortex : used hemi.cortex.label
+   --mask maskfile
+   --X x.mat : matlab4 detrending matrix
+   --detrend order : polynomial detrending (default 0, turned off with output)
+   --smooth-only : only smooth (implies --no-detrend)
+   --no-detrend : turn of poly detrending 
+   --sqr : compute square of input before smoothing
+   --sum sumfile
+   --dat datfile (only contains fwhm)
+   --ar1dat ar1datfile (contains ar1mean ar1std)
+   --ar1 ar1vol : save spatial ar1 as an overlay
+   --fwhm-map fwhmmap : save vertex-wise spatial FWHM as an overlay
+   --prune - remove any voxel that is zero in any subject (after any inversion)
+   --no-prune - do not prune (default)
+   --out-mask outmask : save final mask
+   --varnorm : normalize the variance across space within any mask
+   
+   --fwhm fwhm : apply before measuring
+   --niters-only <niters> : only report on niters for fwhm
+   --o output
+
+   --sd SUBJECTS_DIR 
+   --synth 
+   --synth-frames nframes : default is 10 
+   --threads nthreads
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+
+This program has two functions:
+  1. Apply surface-based smoothing so surface overlay data.
+     This function overlaps with that in mri_surf2surf
+  2. Estimate the smoothness of a surface-based data set.
+
+--i input
+
+Input data. Format must be something readable by mri_convert
+(eg, mgh, mgz, img, nii). Alternately, one can synthesize
+white gaussian noise with --synth and --synth-frames.
+
+--subject subject (--s)
+
+Subject whose surface the input is defined on. Can use --s instead of
+--subject.
+
+--surf surfname
+
+Compute AR1 on surface surfname. Default is white.
+
+--mask maskfile
+
+Compute AR1 only over voxels in the given mask. Format can be anything
+accepted by mri_convert. See also --label.
+
+--mask-inv
+
+Invert mask, ie, compute AR1 only over voxels outside the given mask.
+
+--label label
+
+Use label as a mask. Can be inverted with --mask-inv.
+
+--cortex
+
+Use hemi.cortex.label as a mask. Can be inverted with --mask-inv.
+
+--hemi hemi (--h)
+
+Hemifield that the input is defined on. Legal values are lh and rh.
+Can use --h instead of --hemi.
+
+--X x.mat
+
+Detrend data with the matrix in x.mat. Ie, y = (I-inv(X'*X)*X')*y, where
+y is the input. x.mat must be a matlab4 matrix.
+
+--detrend order
+
+Detrend data with polynomial regressors upto order. If no output is specified,
+then order=0 by default. If an output is specified, then no detrending is done.
+
+--sum sumfile
+
+Prints ascii summary to sumfile.
+
+--fwhm fwhm
+
+Smooth input by fwhm mm.
+
+--niters-only <nitersfile>
+
+Only report the number of iterations needed to achieve the FWHM given
+by fwhm. If nitersfile is specified, the number of iterations is 
+written to the file.
+
+--o outfile
+
+Save (possibly synthesized and/or smoothed) data to outfile. Automatically
+detects format. Format must be one accepted as by mri_convert. Note: do
+not use analyze or nifit as these cannot store more than 32k in a dimension.
+mri_surf2surf can store surface data in those formats. When an output
+is specified, detrending is turned off. Normally the mean is removed.
+
+--synth
+
+Synthesize input with white gaussian noise. Ten frames are used by default,
+but this can be changed with --synth-frames.
+
+--synth-frames nframes
+
+Synthesize input with white gaussian noise with the given number of frames.
+Implies --synth.
+
+
+
+=== Output of 'mris_fwhm -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mris_fwhm' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mris_fwhm
+Smooths surface data and/or estimates FWHM
+   --i input
+   --subject subject (--s)
+   --hemi hemi (--h), or --lh or --rh
+   --surf surf <white>
+   --label labelfile
+   --cortex : used hemi.cortex.label
+   --mask maskfile
+   --X x.mat : matlab4 detrending matrix
+   --detrend order : polynomial detrending (default 0, turned off with output)
+   --smooth-only : only smooth (implies --no-detrend)
+   --no-detrend : turn of poly detrending 
+   --sqr : compute square of input before smoothing
+   --sum sumfile
+   --dat datfile (only contains fwhm)
+   --ar1dat ar1datfile (contains ar1mean ar1std)
+   --ar1 ar1vol : save spatial ar1 as an overlay
+   --fwhm-map fwhmmap : save vertex-wise spatial FWHM as an overlay
+   --prune - remove any voxel that is zero in any subject (after any inversion)
+   --no-prune - do not prune (default)
+   --out-mask outmask : save final mask
+   --varnorm : normalize the variance across space within any mask
+   
+   --fwhm fwhm : apply before measuring
+   --niters-only <niters> : only report on niters for fwhm
+   --o output
+
+   --sd SUBJECTS_DIR 
+   --synth 
+   --synth-frames nframes : default is 10 
+   --threads nthreads
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

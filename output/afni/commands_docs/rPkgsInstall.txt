@@ -1,0 +1,214 @@
+
+=== Output of 'rPkgsInstall --help' ===
+
+
+** Error: 
+   Illegal parameters on command line:
+        --help 
+Try -allowed_options, or -help for details
+ 
+
+
+=== Output of 'rPkgsInstall -help' ===
+
+
+          ================== Welcome to rPkgsInstall ==================          
+                     Install/update/remove R packages for AFNI
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Version 1.0.1, Feb 13, 2024
+Author: Gang Chen (gangchen@mail.nih.gov)
+Website - https://afni.nimh.nih.gov/gangchen_homepage
+SSCC/NIMH, National Institutes of Health, Bethesda MD 20892
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Usage:
+------ 
+ rPkgsInstall is a program for installing, checking, updating, or removing any
+ R packages. It conveniently runs on the shell terminal instead of the R prompt.
+ Check out the examples below or the option specifications for usage details.
+
+--------------------------------
+Example 1 --- Install all the R packages that are currently required for most
+AFNI programs except for RBA, MBA and TRR, which require the R package 'brms':
+   rPkgsInstall -pkgs ALL
+   rPkgsInstall -pkgs ALL -site 'http://cloud.r-project.org'
+
+
+--------------------------------
+Example 2 --- Install user-specified R packages:
+   rPkgsInstall -pkgs 'brms'
+   rPkgsInstall -pkgs 'afex,phia,paran'
+   rPkgsInstall -pkgs 'snow,nlme,psych' -site 'http://cloud.r-project.org'
+
+
+--------------------------------
+Example 3 --- check/update/remove R packages:
+   rPkgsInstall -pkgs ALL -check
+   rPkgsInstall -pkgs ALL -update
+   rPkgsInstall -pkgs ALL -remove
+   rPkgsInstall -pkgs ALL -update -site 'http://cloud.r-project.org/'
+   rPkgsInstall -pkgs 'lmerTest,pixmap,plotrix' -check
+   rPkgsInstall -pkgs 'afex,phia,paran' -update
+   rPkgsInstall -pkgs 'boot' -remove
+   rPkgsInstall -pkgs 'snow,nlme,vars' -update -site 'http://cloud.r-project.org'
+
+
+Options in alphabetical order:
+==============================
+
+   -check: This option verifies whether all or the user-specified R packages
+         listed in option -pkgs are installed on the computer, but it does not
+         install/update/remove the packages.
+
+   -help: this help message
+
+   -pkgs package_list: List all the packages that you would like to install,
+         update or move. This option is required for installation, update,
+         or removal. The absence of both options -update and -remove means
+         installation. The package names should be separated with comma (,)
+         without any other characters such as spaces, and should be surrounded
+         within single/double quotes. For example, -pkgs "afex,phia". If
+         package_list is set as ALL, all the following packages required for
+         AFNI programs will be installed, updated, or removed:
+
+         'afex', 'phia', 'snow', 'nlme', 'lmerTest', 'gamm4', 'data.table',
+         'paran', 'psych', 'corrplot', 'metafor'.
+
+         You can use rPkgsInstall to install, update, or remove any R packages,
+         and those packages do not have to be in the list above.
+
+         ***NOTE*** these R packages should be good enough for running all major
+         programs that use R except for programs such as RBA, MBA and TRR, which
+         require installing the R package 'brms'. To install 'brms', run the
+         following command at the terminal:
+
+         rPkgsInstall -pkgs 'brms'
+
+         Or, type the following in R:
+
+         install.packages("brms").
+           
+
+   -remove: This option indicates that all or the user-specified R packages in AFNI
+         will be purged from your computer. The absence of the option (default)
+         means installing or updating, but no removing. 
+
+   -show_allowed_options: list of allowed options
+
+   -site download_website: You can specify the package repository website within
+        single/double quotes. The current sites can be found at
+
+        http://cran.r-project.org/mirrors.html
+
+        The default is 'http://cloud.r-project.org'
+        University, Houghton, MI.
+
+   -update: This option indicates that all or the user-specified R packages in AFNI
+         will be updated. The absence of the option (default) means no updating.
+         A package specified in '-pkgs package_list' that has not been installed on
+         the computer will be installed under this option.
+         WARNING: Updating some R packages may require that R be upgraded to the
+                  most recent version. 
+
+
+=== Output of 'rPkgsInstall' (no arguments) ===
+
+
+          ================== Welcome to rPkgsInstall ==================          
+                     Install/update/remove R packages for AFNI
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Version 1.0.1, Feb 13, 2024
+Author: Gang Chen (gangchen@mail.nih.gov)
+Website - https://afni.nimh.nih.gov/gangchen_homepage
+SSCC/NIMH, National Institutes of Health, Bethesda MD 20892
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Usage:
+------ 
+ rPkgsInstall is a program for installing, checking, updating, or removing any
+ R packages. It conveniently runs on the shell terminal instead of the R prompt.
+ Check out the examples below or the option specifications for usage details.
+
+--------------------------------
+Example 1 --- Install all the R packages that are currently required for most
+AFNI programs except for RBA, MBA and TRR, which require the R package 'brms':
+   rPkgsInstall -pkgs ALL
+   rPkgsInstall -pkgs ALL -site 'http://cloud.r-project.org'
+
+
+--------------------------------
+Example 2 --- Install user-specified R packages:
+   rPkgsInstall -pkgs 'brms'
+   rPkgsInstall -pkgs 'afex,phia,paran'
+   rPkgsInstall -pkgs 'snow,nlme,psych' -site 'http://cloud.r-project.org'
+
+
+--------------------------------
+Example 3 --- check/update/remove R packages:
+   rPkgsInstall -pkgs ALL -check
+   rPkgsInstall -pkgs ALL -update
+   rPkgsInstall -pkgs ALL -remove
+   rPkgsInstall -pkgs ALL -update -site 'http://cloud.r-project.org/'
+   rPkgsInstall -pkgs 'lmerTest,pixmap,plotrix' -check
+   rPkgsInstall -pkgs 'afex,phia,paran' -update
+   rPkgsInstall -pkgs 'boot' -remove
+   rPkgsInstall -pkgs 'snow,nlme,vars' -update -site 'http://cloud.r-project.org'
+
+
+Options in alphabetical order:
+==============================
+
+   -check: This option verifies whether all or the user-specified R packages
+         listed in option -pkgs are installed on the computer, but it does not
+         install/update/remove the packages.
+
+   -help: this help message
+
+   -pkgs package_list: List all the packages that you would like to install,
+         update or move. This option is required for installation, update,
+         or removal. The absence of both options -update and -remove means
+         installation. The package names should be separated with comma (,)
+         without any other characters such as spaces, and should be surrounded
+         within single/double quotes. For example, -pkgs "afex,phia". If
+         package_list is set as ALL, all the following packages required for
+         AFNI programs will be installed, updated, or removed:
+
+         'afex', 'phia', 'snow', 'nlme', 'lmerTest', 'gamm4', 'data.table',
+         'paran', 'psych', 'corrplot', 'metafor'.
+
+         You can use rPkgsInstall to install, update, or remove any R packages,
+         and those packages do not have to be in the list above.
+
+         ***NOTE*** these R packages should be good enough for running all major
+         programs that use R except for programs such as RBA, MBA and TRR, which
+         require installing the R package 'brms'. To install 'brms', run the
+         following command at the terminal:
+
+         rPkgsInstall -pkgs 'brms'
+
+         Or, type the following in R:
+
+         install.packages("brms").
+           
+
+   -remove: This option indicates that all or the user-specified R packages in AFNI
+         will be purged from your computer. The absence of the option (default)
+         means installing or updating, but no removing. 
+
+   -show_allowed_options: list of allowed options
+
+   -site download_website: You can specify the package repository website within
+        single/double quotes. The current sites can be found at
+
+        http://cran.r-project.org/mirrors.html
+
+        The default is 'http://cloud.r-project.org'
+        University, Houghton, MI.
+
+   -update: This option indicates that all or the user-specified R packages in AFNI
+         will be updated. The absence of the option (default) means no updating.
+         A package specified in '-pkgs package_list' that has not been installed on
+         the computer will be installed under this option.
+         WARNING: Updating some R packages may require that R be upgraded to the
+                  most recent version. 
+

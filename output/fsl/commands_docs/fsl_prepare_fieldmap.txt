@@ -1,0 +1,36 @@
+
+=== Output of 'fsl_prepare_fieldmap --help' ===
+
+Usage: fsl_prepare_fieldmap <scanner> <phase_image> <magnitude_image> <out_image> <deltaTE (in ms)> [--nocheck]
+ 
+  Prepares a fieldmap suitable for FEAT from SIEMENS data - saves output in rad/s format
+  <scanner> must be SIEMENS
+  <magnitude image> should be Brain Extracted (with BET or otherwise)
+  <deltaTE> is the echo time difference of the fieldmap sequence - find this out form the operator (defaults are *usually* 2.46ms on SIEMENS)
+  --nocheck supresses automatic sanity checking of image size/range/dimensions
+ 
+   e.g. fsl_prepare_fieldmap SIEMENS images_3_gre_field_mapping images_4_gre_field_mapping fmap_rads 2.65
+
+=== Output of 'fsl_prepare_fieldmap -help' ===
+
+Usage: fsl_prepare_fieldmap <scanner> <phase_image> <magnitude_image> <out_image> <deltaTE (in ms)> [--nocheck]
+ 
+  Prepares a fieldmap suitable for FEAT from SIEMENS data - saves output in rad/s format
+  <scanner> must be SIEMENS
+  <magnitude image> should be Brain Extracted (with BET or otherwise)
+  <deltaTE> is the echo time difference of the fieldmap sequence - find this out form the operator (defaults are *usually* 2.46ms on SIEMENS)
+  --nocheck supresses automatic sanity checking of image size/range/dimensions
+ 
+   e.g. fsl_prepare_fieldmap SIEMENS images_3_gre_field_mapping images_4_gre_field_mapping fmap_rads 2.65
+
+=== Output of 'fsl_prepare_fieldmap' (no arguments) ===
+
+Usage: fsl_prepare_fieldmap <scanner> <phase_image> <magnitude_image> <out_image> <deltaTE (in ms)> [--nocheck]
+ 
+  Prepares a fieldmap suitable for FEAT from SIEMENS data - saves output in rad/s format
+  <scanner> must be SIEMENS
+  <magnitude image> should be Brain Extracted (with BET or otherwise)
+  <deltaTE> is the echo time difference of the fieldmap sequence - find this out form the operator (defaults are *usually* 2.46ms on SIEMENS)
+  --nocheck supresses automatic sanity checking of image size/range/dimensions
+ 
+   e.g. fsl_prepare_fieldmap SIEMENS images_3_gre_field_mapping images_4_gre_field_mapping fmap_rads 2.65

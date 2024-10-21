@@ -1,0 +1,18 @@
+
+=== Output of 'mri_head --help' ===
+
+usage: mri_head -identify filename
+       mri_head -read filename
+       mri_head -h|-u|-?
+
+=== Output of 'mri_head -help' ===
+
+usage: mri_head -identify filename
+       mri_head -read filename
+       mri_head -h|-u|-?
+
+=== Output of 'mri_head' (no arguments) ===
+
+usage: mri_head -identify filename
+       mri_head -read filename
+       mri_head -h|-u|-?

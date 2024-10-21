@@ -1,0 +1,12 @@
+
+=== Output of 'mri_estimate_tissue_parms --help' ===
+
+error: mri_estimate_tissue_parms has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_estimate_tissue_parms -help' ===
+
+error: mri_estimate_tissue_parms has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_estimate_tissue_parms' (no arguments) ===
+
+error: mri_estimate_tissue_parms has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

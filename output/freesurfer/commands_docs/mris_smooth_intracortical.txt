@@ -1,0 +1,147 @@
+
+=== Output of 'mris_smooth_intracortical --help' ===
+
+Smooths data overlaid onto to the cortical surface meshes using kernels for which tangential and radial extent can be specified. 
+
+USAGE: /usr/local/freesurfer/bin/mris_smooth_intracortical --surf_dir surfdir --surf_name surfname --overlay_dir overdir --overlay_name overname [--output_dir outdir --output_name outname --tan-size tansize --rad-size radsize --rad-start radstart]
+
+  --surf_dir surfdir      : path to the directory with surface meshes (use mris_extend for creating intermediate surfaces between white and pial)
+  --surf_name surfname    : name of a surface file(s) (use * and ? to pass multiple names, maximum 20)
+                            multiple surface names have to be sorted from wm to pial
+  --overlay_dir overdir   : path to the directory with surface mesh overlays (use mris_vol2surf to map data onto the surface meshes and create overlays)
+  --overlay_name overname : name of an overlay file(s) (use * and ? to pass multiple names, maximum 20)
+                            multiple overlays names have to be sorted from wm to pial
+                            corresponding surfaces and overlays must have the same numbers of vertices
+  --output_dir outdir     : path to the output directory [default: overdir]
+  --output_name outname   : name of a output overlay file [default: based on the name of 1st overlay file]
+
+  --tan-size tansize      : tangential extent of the smoothing kernel [default: 0 = no smoothing, max = 6]
+                            depending on the weighting scheme (see --tan-weights):
+                            gauss: tansize = FWHM of the 2D gaussian kernel applied in the tangential direction
+                            distance: tansize = radius of the neighborhood around the central vertex of the smoothing kernel in tangential direction (number of vertices) 
+
+  --rad-size radsize      : radial extent of the intracortical smoothing kernel (number of adjacent meshes) [default: 1 = no smoothing, max = number of input surfaces/overlays]
+  --rad-start radstart    : starting surface mesh of the intracortical smoothing kernel in the radial direction [default: 0 = white, max = number of input surfaces/overlays--radsize]
+
+  --tan-weights type      : weighting function for tangential smoothing [default: gauss]
+                            gauss = gaussian with FWHM = tansize
+                            distance = 1/tansize
+  --rad-weights type      : weighting function for radial extent of the kernel: not yet implemented
+
+  --help                  : prints this info
+
+Tangential-only smoothing: 
+  - requires exactly 1 input surface mesh with Nv vertices and exactly 1 corresponding overlay with Nv values
+  - tansize has to be in range [1, 6]
+  - one output overlay 
+
+Intracortical smoothing (radial + tangential): 
+  - requires 2 or more input surfaces spanning from white (=0) to pial (=n)  - requires 2 or more input overlays - one for each input surface with a corresponding number of vertices
+  - radsize has to be larger than 2 but smaller than or equal to the number of input surfaces/overlays
+  - radstart is the index of the starting surface of the intracortical smoothing kernel, where white (=0) & pial (= total number of surfaces-1)
+  - intracortical smoothing kernel will include radsize of adjacent surfaces starting from radstart surface and moving towards pial surface
+  - tansize has to be in range [0, 6]
+
+If you use mris_smooth_intracortical in your research, please cite:
+Blazejewska AI, Fischl B, Wald LL, Polimeni JR, Intracortical smoothing of small-voxel fMRI data can provide increased detection power without spatial resolution losses compared to conventional large-voxel fMRI data.
+NeuroImage 2019. 189:601-614. DOI: 10.1016/j.neuroimage.2019.01.054
+
+7.4.1
+
+=== Output of 'mris_smooth_intracortical -help' ===
+
+Smooths data overlaid onto to the cortical surface meshes using kernels for which tangential and radial extent can be specified. 
+
+USAGE: /usr/local/freesurfer/bin/mris_smooth_intracortical --surf_dir surfdir --surf_name surfname --overlay_dir overdir --overlay_name overname [--output_dir outdir --output_name outname --tan-size tansize --rad-size radsize --rad-start radstart]
+
+  --surf_dir surfdir      : path to the directory with surface meshes (use mris_extend for creating intermediate surfaces between white and pial)
+  --surf_name surfname    : name of a surface file(s) (use * and ? to pass multiple names, maximum 20)
+                            multiple surface names have to be sorted from wm to pial
+  --overlay_dir overdir   : path to the directory with surface mesh overlays (use mris_vol2surf to map data onto the surface meshes and create overlays)
+  --overlay_name overname : name of an overlay file(s) (use * and ? to pass multiple names, maximum 20)
+                            multiple overlays names have to be sorted from wm to pial
+                            corresponding surfaces and overlays must have the same numbers of vertices
+  --output_dir outdir     : path to the output directory [default: overdir]
+  --output_name outname   : name of a output overlay file [default: based on the name of 1st overlay file]
+
+  --tan-size tansize      : tangential extent of the smoothing kernel [default: 0 = no smoothing, max = 6]
+                            depending on the weighting scheme (see --tan-weights):
+                            gauss: tansize = FWHM of the 2D gaussian kernel applied in the tangential direction
+                            distance: tansize = radius of the neighborhood around the central vertex of the smoothing kernel in tangential direction (number of vertices) 
+
+  --rad-size radsize      : radial extent of the intracortical smoothing kernel (number of adjacent meshes) [default: 1 = no smoothing, max = number of input surfaces/overlays]
+  --rad-start radstart    : starting surface mesh of the intracortical smoothing kernel in the radial direction [default: 0 = white, max = number of input surfaces/overlays--radsize]
+
+  --tan-weights type      : weighting function for tangential smoothing [default: gauss]
+                            gauss = gaussian with FWHM = tansize
+                            distance = 1/tansize
+  --rad-weights type      : weighting function for radial extent of the kernel: not yet implemented
+
+  --help                  : prints this info
+
+Tangential-only smoothing: 
+  - requires exactly 1 input surface mesh with Nv vertices and exactly 1 corresponding overlay with Nv values
+  - tansize has to be in range [1, 6]
+  - one output overlay 
+
+Intracortical smoothing (radial + tangential): 
+  - requires 2 or more input surfaces spanning from white (=0) to pial (=n)  - requires 2 or more input overlays - one for each input surface with a corresponding number of vertices
+  - radsize has to be larger than 2 but smaller than or equal to the number of input surfaces/overlays
+  - radstart is the index of the starting surface of the intracortical smoothing kernel, where white (=0) & pial (= total number of surfaces-1)
+  - intracortical smoothing kernel will include radsize of adjacent surfaces starting from radstart surface and moving towards pial surface
+  - tansize has to be in range [0, 6]
+
+If you use mris_smooth_intracortical in your research, please cite:
+Blazejewska AI, Fischl B, Wald LL, Polimeni JR, Intracortical smoothing of small-voxel fMRI data can provide increased detection power without spatial resolution losses compared to conventional large-voxel fMRI data.
+NeuroImage 2019. 189:601-614. DOI: 10.1016/j.neuroimage.2019.01.054
+
+7.4.1
+
+=== Output of 'mris_smooth_intracortical' (no arguments) ===
+
+Smooths data overlaid onto to the cortical surface meshes using kernels for which tangential and radial extent can be specified. 
+
+USAGE: /usr/local/freesurfer/bin/mris_smooth_intracortical --surf_dir surfdir --surf_name surfname --overlay_dir overdir --overlay_name overname [--output_dir outdir --output_name outname --tan-size tansize --rad-size radsize --rad-start radstart]
+
+  --surf_dir surfdir      : path to the directory with surface meshes (use mris_extend for creating intermediate surfaces between white and pial)
+  --surf_name surfname    : name of a surface file(s) (use * and ? to pass multiple names, maximum 20)
+                            multiple surface names have to be sorted from wm to pial
+  --overlay_dir overdir   : path to the directory with surface mesh overlays (use mris_vol2surf to map data onto the surface meshes and create overlays)
+  --overlay_name overname : name of an overlay file(s) (use * and ? to pass multiple names, maximum 20)
+                            multiple overlays names have to be sorted from wm to pial
+                            corresponding surfaces and overlays must have the same numbers of vertices
+  --output_dir outdir     : path to the output directory [default: overdir]
+  --output_name outname   : name of a output overlay file [default: based on the name of 1st overlay file]
+
+  --tan-size tansize      : tangential extent of the smoothing kernel [default: 0 = no smoothing, max = 6]
+                            depending on the weighting scheme (see --tan-weights):
+                            gauss: tansize = FWHM of the 2D gaussian kernel applied in the tangential direction
+                            distance: tansize = radius of the neighborhood around the central vertex of the smoothing kernel in tangential direction (number of vertices) 
+
+  --rad-size radsize      : radial extent of the intracortical smoothing kernel (number of adjacent meshes) [default: 1 = no smoothing, max = number of input surfaces/overlays]
+  --rad-start radstart    : starting surface mesh of the intracortical smoothing kernel in the radial direction [default: 0 = white, max = number of input surfaces/overlays--radsize]
+
+  --tan-weights type      : weighting function for tangential smoothing [default: gauss]
+                            gauss = gaussian with FWHM = tansize
+                            distance = 1/tansize
+  --rad-weights type      : weighting function for radial extent of the kernel: not yet implemented
+
+  --help                  : prints this info
+
+Tangential-only smoothing: 
+  - requires exactly 1 input surface mesh with Nv vertices and exactly 1 corresponding overlay with Nv values
+  - tansize has to be in range [1, 6]
+  - one output overlay 
+
+Intracortical smoothing (radial + tangential): 
+  - requires 2 or more input surfaces spanning from white (=0) to pial (=n)  - requires 2 or more input overlays - one for each input surface with a corresponding number of vertices
+  - radsize has to be larger than 2 but smaller than or equal to the number of input surfaces/overlays
+  - radstart is the index of the starting surface of the intracortical smoothing kernel, where white (=0) & pial (= total number of surfaces-1)
+  - intracortical smoothing kernel will include radsize of adjacent surfaces starting from radstart surface and moving towards pial surface
+  - tansize has to be in range [0, 6]
+
+If you use mris_smooth_intracortical in your research, please cite:
+Blazejewska AI, Fischl B, Wald LL, Polimeni JR, Intracortical smoothing of small-voxel fMRI data can provide increased detection power without spatial resolution losses compared to conventional large-voxel fMRI data.
+NeuroImage 2019. 189:601-614. DOI: 10.1016/j.neuroimage.2019.01.054
+
+7.4.1

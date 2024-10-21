@@ -1,0 +1,12 @@
+
+=== Output of 'mri_strip_subject_info --help' ===
+
+usage: mri_strip_subject_info <input file> ... <output directory>
+
+=== Output of 'mri_strip_subject_info -help' ===
+
+usage: mri_strip_subject_info <input file> ... <output directory>
+
+=== Output of 'mri_strip_subject_info' (no arguments) ===
+
+usage: mri_strip_subject_info <input file> ... <output directory>

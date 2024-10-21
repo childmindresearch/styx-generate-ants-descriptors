@@ -1,0 +1,27 @@
+
+=== Output of '@Install_NIH_Marmoset --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Install_NIH_Marmoset -help' ===
+
+     Installs the NIH marmoset template and atlases described
+     in:
+         "Marmoset template"
+         Cirong Liu, et al, submitted
+     
+     After the archive is downloaded and unpacked, see its README.txt
+     for details.
+     Options:
+     [-wget]: Use wget to download archive. Script chooses by default
+              with preference for curl
+     [-curl]: Use curl to download archive. Script chooses by default
+              with preference for curl
+
+
+=== Output of '@Install_NIH_Marmoset' (no arguments) ===
+
+/usr/bin/curl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0  862M    0 7856k    0     0  19.0M      0  0:00:45 --:--:--  0:00:45 18.9M  3  862M    3 33.5M    0     0  23.8M      0  0:00:36  0:00:01  0:00:35 23.8M  6  862M    6 59.5M    0     0  24.7M      0  0:00:34  0:00:02  0:00:32 24.7M  9  862M    9 85.4M    0     0  25.1M      0  0:00:34  0:00:03  0:00:31 25.0M 12  862M   12  111M    0     0  25.2M      0  0:00:34  0:00:04  0:00:30 25.2M 15  862M   15  137M    0     0  25.4M      0  0:00:33  0:00:05  0:00:28 25.9M 18  862M   18  163M    0     0  25.5M      0  0:00:33  0:00:06  0:00:27 25.9M 21  862M   21  189M    0     0  25.5M      0  0:00:33  0:00:07  0:00:26 25.9M 24  862M   24  215M    0     0  25.6M      0  0:00:33  0:00:08  0:00:25 25.9M 27  862M   27  241M    0     0  25.6M      0  0:00:33  0:00:09  0:00:24 25.9MCommand timed out after 10 seconds

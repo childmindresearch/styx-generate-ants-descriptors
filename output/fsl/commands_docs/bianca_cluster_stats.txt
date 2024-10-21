@@ -1,0 +1,22 @@
+
+=== Output of 'bianca_cluster_stats --help' ===
+
+mktemp: invalid option -- 'a'
+Try 'mktemp --help' for more information.
+
+=== Output of 'bianca_cluster_stats -help' ===
+
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+
+=== Output of 'bianca_cluster_stats' (no arguments) ===
+
+   
+Usage:  bianca_cluster_stats <bianca_output_map> <threshold> <min_cluster_size> [ <mask> ]
+   
+If only 3 inputs provided it will output the total number of clusters and the total WMH volume after applying <threshold>
+and including clusters bigger than <min_cluster_size>, where the size is expressed in number of voxels
+   
+Optional: number of clusters and  WMH volume within a mask
+<mask> = mask file (in the same space as <bianca_output_map> )
+   

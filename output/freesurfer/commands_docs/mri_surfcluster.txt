@@ -1,0 +1,335 @@
+
+=== Output of 'mri_surfcluster --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_surfcluster 
+
+
+   --in infile : source of surface values 
+
+   --thmin  threshold : minimum intensity threshold
+   --sign   sign      : <abs> or pos/neg for one-sided tests
+   --no-adjust  : do not adjust thresh for one-tailed tests
+   --fdr FDR  : set thmin with False Discovery Rate
+
+   --subject  subjid    : source surface subject (can be ico)
+   --hemi hemi          : lh or rh 
+   --surf     surface   : get coorindates from surface (white)
+   --surfpath path/to/surface  : specify full path
+   --annot    annotname : report annotation for max vertex (eg, aparc)
+   --frame frameno      : 0-based source frame number
+
+   --csd csdfile <--csd csdfile ...>
+   --vwsig vwsig : map of corrected voxel-wise significances
+   --cwsig cwsig : map of cluster-wise significances
+   --maxcwpval maxcwpvalfile.txt : save p-value of the largest (max) cluster (1.0 if no cluster)
+   --bonferroni N : addition correction across N (eg, spaces)
+   --sig2p-max : convert max from sig to p
+   --bonferroni-max N : apply bonf cor to maximum (only applies with --sig2p-max)
+   --csdpdf csdpdffile
+   --csdpdf-only : write csd pdf file and exit.
+   --csd-out out.csd : write out merged csd files as one.
+   --cwpvalthresh cwpvalthresh : clusterwise threshold
+
+   --fwhm    fwhm     :  fwhm in mm2 for GRF
+   --fwhmdat fwhm.dat :  text file with fwhm in mm2 for GRF
+
+   --clabel labelfile : constrain to be within clabel
+   --cortex : set clabel to be subject/label/hemi.cortex.label
+   --mask maskfile : constrain to be within mask
+   --mask-inv : constrain to be OUTSIDE mask or clabel
+   --centroid : report centroid instead of location of maximum stat
+   --sum sumfile     : text summary file
+   --pointset pointsetfile : file that can be read into freeview with -c
+   --maxareafile file : write area of largest cluster to file
+   --o outid        : input with non-clusters set to 0
+   --ocn ocnid      : value is cluster number 
+   --olab labelbase : output clusters as labels 
+   --oannot annotname : output clusters as an annotation 
+
+   --minarea  area      : area threshold for a cluster (mm^2)
+   --xfm xfmfile     : talairach transform (def is talairach.xfm) 
+   --<no>fixmni      : <do not> fix MNI talairach coordinates
+   --sd subjects_dir : (default is env SUBJECTS_DIR)
+   --thmax  threshold : maximum intensity threshold (only use if you know what you are doing)
+   --no-fix-vertex-area : turn off fixing of vertex area (for back comapt only)
+   --help : answers to ALL your questions
+
+
+7.4.1
+
+This program assigns each vertex on a cortical surface to a cluster 
+based on the distribution of intensity values in the source file. 
+A vertex must meet two criteria to be part of a cluster. First, 
+its intensity must fall within a certain range (the intensity threshold 
+criteria). Second, it must be part of a contiguous set of vertices 
+that meet the threshold criteria and whose surface area is greater  
+than a minimum.  
+
+There are three types of output. (1) Summary file - simple text file
+with a list of clusters found including maximum value, area, and 
+talairach coordinate. (2) Filtered - identical to the input except that
+vertices not assigned to a cluster are set to 0. (3) Cluster number
+surface - this has the same format as the input and filtered output
+except that the value at each vertex is the cluster number assigned
+to it. 
+
+COMMAND-LINE ARGUMENTS
+--in inputfile 
+
+This is the input data to the clustering program.
+Reads all formats supported by mri_convert.
+
+--subject subjectid
+
+Surface values are defined on this subject.
+
+--hemi hemi
+
+Specify the cortical hemisphere that the input represents. Valid values
+are lh and rh.
+
+--surf surface
+
+This is the surface to use when computing the talairach coordinagtes.
+Default is white.
+
+--annot annotationname
+
+Report the cortical annotation that the maximum in each label falls into. 
+The annotation used will be SUBJECTS_DIR/subject/label/hemi.annotationname.annot.
+Eg, --annot aparc
+
+--frame frameno
+
+Zero-based frame number of the input file. Default is 0. For paint
+format, zero is the only possible value.
+
+--thmin minthresh
+
+Minimum threshold in the intensity threshold criteria. See 
+SETTING THE CLUSTER INTENSITY THRESHOLD CRITERIA below.
+
+--thmax maxthresh
+
+Maximum threshold in the intensity threshold criteria. If negative,
+then the maximum threshold is infinity. See SETTING THE CLUSTER 
+INTENSITY THRESHOLD CRITERIA below.
+
+--sign threshold sign
+
+This is used to control the sign of the threshold criteria. Legal
+values are pos, neg, and abs. See SETTING THE CLUSTER INTENSITY 
+THRESHOLD CRITERIA below.
+
+--no-adjust  
+
+Do not adjust thresh for one-tailed tests. By default, the threshold
+will be adjusted when the --sign is pos or neg by subtracting log10(2.0).
+This assumes several things: (1) the source is a -log10(p) map, and (2)
+the pvalue was computed using a two-sided t-test. Under these conditions,
+subtracting log10(2.0) is like dividing the p-value by 2 (ie, changing it
+from a two-tailed test to a one-tailed test). If the input map does not
+meet these criteria, then run with --no-adjust.
+
+--fdr FDR
+
+Set thmin with False Discovery Rate. 0 < FDR < 1. Usually something 
+like .01 or .05. Only when input is -log10(p).
+
+--csd csdfile <--csd csdfile>
+
+Load one or more CSD files. CSD stands for 'Cluster Simulation Data'. This
+file is produced by running mri_glmfit with --sim. The the threshold and hemi
+info are obtained from the CSD file and cannot be specified on the command-
+line. If more than one CSD is specified, they are merged into one CSD internally.
+When a CSD file is specified, three more columns are added to the summary table:
+  1. CWP - cluster-wise pvalue. The pvalue of the cluster corrected for 
+     multiple comparisons
+  2. CWPLow - lower 90% confidence limit of CWP based on binomial distribution
+  3. CWPHi  - upper 90% confidence limit of CWP based on binomial distribution
+In addition, the user can specify --cwsig, which saves the sigificance map of 
+the clusters in which the value of each vertex is the -log10(pvalue) of cluster
+to which the vertex belongs (the cluster-wise significance). The user can also
+specify that the vertex-wise significance be computed and saved  with --vwsig.
+The significance is based on the distribution of the maximum significances 
+found during the CSD simulation.
+
+--csdpdf csdpdfile
+
+Compute PDF/CDF of CSD data and save in csdpdffile. This is mostly good for debugging.
+
+--csdpdf-only
+
+Only write the csd pdf file.
+
+--minarea area
+
+Minimum surface area (in mm^2) that a set of contiguous vertices
+must achieve in order to be considered a cluster.
+
+--clabel labelfile
+
+Constrain cluster search to be inside or outside clabel. By default,
+it will be constrained to be INSIDE. For OUTSIDE, specify --clabelinv.
+clabel must be a surface-based label.
+
+--mask-inv 
+
+Constrain cluster search to be OUTSIDE mask or clabel. 
+
+--sum summaryfile
+
+Text file in which to store the cluster summary. See SUMMARY FILE
+OUTPUT below.
+
+--o outputid 
+
+File in which to store the surface values after setting the
+non-cluster vertices to zero. Fmt is the format (currently, only
+paint format is supported). Note: make sure to put a ./ in front
+of outputid or else it will attempt to write the output to the
+subject's surf directory.
+
+--ocn ocnid 
+
+File in which to store the cluster number of each vertex. This can be
+useful for determining to which cluster a particular vertex
+belongs. It can be viewed as with any other surface value file. Fmt is
+the format (currently, only paint format is supported). Note: make
+sure to put a ./ in front of outputid or else it will attempt to write
+the output to the subject's surf directory.
+
+--olab outlabelbase
+
+Save output clusters as labels. There will be a label file for each
+cluster. The name will be outlabelbase-XXXX.label, where XXXX is the
+4-digit, zero-paded cluster number. The stat field in the label will
+be the value of the input statistic at that vertex.
+
+--xfm xfmfile
+
+This is a transform file that is used to compute the Talairach 
+coordinates of a vertex for the summary file. The file must be
+found in subjects_dir/subjectid/transforms. The default is
+talairach.xfm which is based on the MNI atlas (see --fixmni).
+
+--fixmni --nofixmni
+
+Fix (or do not fix) MNI Talairach coordinates based on Matthew Brett's
+transform. See http://www.mrc-cbu.cam.ac.uk/Imaging/mnispace.html.
+Default is to fix. The user may elect not to fix if the xfm file
+is not talairach.xfm (see --xfm).
+
+--sd subjects_dir
+
+This allows the user to change the FreeSurfer subjects's directory
+from the command-line. If unspecified, it will be set to the 
+environment variable SUBJECTS_DIR
+
+SETTING THE CLUSTER INTENSITY THRESHOLD CRITERIA
+
+Vertices on the surface are excluded or included, in part, based on
+their intensity. For a vertex to be included, its value (ie,
+intensity) must be within a certain range (namely, between the minimum
+threshold, set with --thmin, and the maximum threshold, set with
+--thmax). While thmin and thmax must be positive values, the sign of
+the threshold can be set with --thsign. However, if thmax is negative,
+then the maximum threshold will be set to infinity. For example, if
+--thmin 2 --thmax 5 --thsign pos, then all vertices with values
+between (positive) 2 and 5 will be candidates for clustering. However,
+if --thsign abs is used instead, then all vertices between -2 and -5
+as well as between +2 and +5 will be candidates.
+
+SUMMARY FILE OUTPUT
+
+The summary file (the argument of the --sum flag) will contain a 
+summary of the result of the clustering as well as a summary of the
+conditions under which the clustering was performed. It will list
+the clusters (1 to N) along with the maximum value found in the
+cluster (Max), the vertex at which this maximum value was found
+(VtxMax), the surface area of the cluster (Size), and the Talaiarach
+coordinates of the maximum (based on talairach.xfm). A sample 
+summary file is shown below.
+
+Cluster Growing Summary (mri_surfcluster)
+Input :      minsig-0-lh.w
+Frame Number:      0
+Minimum Threshold: 5
+Maximum Threshold: infinity
+Threshold Sign:    pos
+Area Threshold:    40 mm^2
+NClusters          37
+Total Cortical Surface Area 115576 (mm^2)
+FixMNI = 1
+
+ClusterNo   Max  VtxMax  Size(mm^2)   TalX   TalY   TalZ
+   1       44.6    6370    636.79    -33.6  -69.8   49.2
+   2       40.3   48234    518.50     -2.9  -10.5   62.4
+   3       39.5   54239    103.19    -51.1  -13.3   45.3
+   4       39.5   55350     47.31    -50.1  -11.0   46.8
+
+BUGS
+
+Currently only supports paint (or w) format for input and output.
+
+
+=== Output of 'mri_surfcluster -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_surfcluster' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_surfcluster 
+
+
+   --in infile : source of surface values 
+
+   --thmin  threshold : minimum intensity threshold
+   --sign   sign      : <abs> or pos/neg for one-sided tests
+   --no-adjust  : do not adjust thresh for one-tailed tests
+   --fdr FDR  : set thmin with False Discovery Rate
+
+   --subject  subjid    : source surface subject (can be ico)
+   --hemi hemi          : lh or rh 
+   --surf     surface   : get coorindates from surface (white)
+   --surfpath path/to/surface  : specify full path
+   --annot    annotname : report annotation for max vertex (eg, aparc)
+   --frame frameno      : 0-based source frame number
+
+   --csd csdfile <--csd csdfile ...>
+   --vwsig vwsig : map of corrected voxel-wise significances
+   --cwsig cwsig : map of cluster-wise significances
+   --maxcwpval maxcwpvalfile.txt : save p-value of the largest (max) cluster (1.0 if no cluster)
+   --bonferroni N : addition correction across N (eg, spaces)
+   --sig2p-max : convert max from sig to p
+   --bonferroni-max N : apply bonf cor to maximum (only applies with --sig2p-max)
+   --csdpdf csdpdffile
+   --csdpdf-only : write csd pdf file and exit.
+   --csd-out out.csd : write out merged csd files as one.
+   --cwpvalthresh cwpvalthresh : clusterwise threshold
+
+   --fwhm    fwhm     :  fwhm in mm2 for GRF
+   --fwhmdat fwhm.dat :  text file with fwhm in mm2 for GRF
+
+   --clabel labelfile : constrain to be within clabel
+   --cortex : set clabel to be subject/label/hemi.cortex.label
+   --mask maskfile : constrain to be within mask
+   --mask-inv : constrain to be OUTSIDE mask or clabel
+   --centroid : report centroid instead of location of maximum stat
+   --sum sumfile     : text summary file
+   --pointset pointsetfile : file that can be read into freeview with -c
+   --maxareafile file : write area of largest cluster to file
+   --o outid        : input with non-clusters set to 0
+   --ocn ocnid      : value is cluster number 
+   --olab labelbase : output clusters as labels 
+   --oannot annotname : output clusters as an annotation 
+
+   --minarea  area      : area threshold for a cluster (mm^2)
+   --xfm xfmfile     : talairach transform (def is talairach.xfm) 
+   --<no>fixmni      : <do not> fix MNI talairach coordinates
+   --sd subjects_dir : (default is env SUBJECTS_DIR)
+   --thmax  threshold : maximum intensity threshold (only use if you know what you are doing)
+   --no-fix-vertex-area : turn off fixing of vertex area (for back comapt only)
+   --help : answers to ALL your questions
+

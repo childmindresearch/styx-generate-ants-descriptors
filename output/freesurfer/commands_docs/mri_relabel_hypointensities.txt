@@ -1,0 +1,12 @@
+
+=== Output of 'mri_relabel_hypointensities --help' ===
+
+usage: /usr/local/freesurfer/bin/mri_relabel_hypointensities [options] <input aseg> <surface  directory> <output aseg>
+
+=== Output of 'mri_relabel_hypointensities -help' ===
+
+unknown option -help
+
+=== Output of 'mri_relabel_hypointensities' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_relabel_hypointensities [options] <input aseg> <surface  directory> <output aseg>

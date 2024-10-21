@@ -1,0 +1,18 @@
+
+=== Output of 'setup_masks --help' ===
+
+setup_masks <input matrix> <input contrast> <output basename> <mask1> <mask2> ...
+ 
+The list of mask images (<mask1> <mask2> ...) must be from subjects in the same order as used in the design matrix
+
+=== Output of 'setup_masks -help' ===
+
+setup_masks <input matrix> <input contrast> <output basename> <mask1> <mask2> ...
+ 
+The list of mask images (<mask1> <mask2> ...) must be from subjects in the same order as used in the design matrix
+
+=== Output of 'setup_masks' (no arguments) ===
+
+setup_masks <input matrix> <input contrast> <output basename> <mask1> <mask2> ...
+ 
+The list of mask images (<mask1> <mask2> ...) must be from subjects in the same order as used in the design matrix

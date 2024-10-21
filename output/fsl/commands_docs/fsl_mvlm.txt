@@ -1,0 +1,123 @@
+
+=== Output of 'fsl_mvlm --help' ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        input file name (text matrix or 3D/4D image file)
+	-o,--out	basename for output files 
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_mvlm (Version 1.0)
+Author: Christian F. Beckmann 
+Copyright(C) 2006-2013 University of Oxford
+ 
+ Multivariate Linear Model regression on
+ time courses and/or 3D/4D imges using  SVD (PCA), PLS, normalised PLS, 
+ CVA, SVD-CVA or  MLM
+
+
+
+Usage: 
+fsl_mvlm -i <input> -o <output> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (text matrix or 3D/4D image file)
+	-o,--out	basename for output files 
+
+Optional arguments (You may optionally specify one or more of):
+	-a,--alg	algorithm for decomposition: PCA (or SVD; default), PLS, orthoPLS, CVA, SVD-CVA, MLM, NMF
+	-d,--design	file name of the GLM design matrix (time courses or spatial maps)
+	-m,--mask	mask image file name if input is image
+	--des_norm	switch on normalisation of the design matrix columns to unit std. deviation
+	--vn	        perform MELODIC variance-normalisation on data
+	--demean	switch on de-meaning of design and data
+	--nmf_dim	 Number of underlying factors for NMF
+	--nmfitt	number of NMF itterations (default 100)
+	-h,--help	display this help text
+	-v,--verbose	switch on verbose output
+	--out_data	output file name for pre-processed data
+	--out_vnscales	output file name for scaling factors for variance normalisation
+
+
+
+=== Output of 'fsl_mvlm -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_mvlm (Version 1.0)
+Author: Christian F. Beckmann 
+Copyright(C) 2006-2013 University of Oxford
+ 
+ Multivariate Linear Model regression on
+ time courses and/or 3D/4D imges using  SVD (PCA), PLS, normalised PLS, 
+ CVA, SVD-CVA or  MLM
+
+
+
+Usage: 
+fsl_mvlm -i <input> -o <output> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (text matrix or 3D/4D image file)
+	-o,--out	basename for output files 
+
+Optional arguments (You may optionally specify one or more of):
+	-a,--alg	algorithm for decomposition: PCA (or SVD; default), PLS, orthoPLS, CVA, SVD-CVA, MLM, NMF
+	-d,--design	file name of the GLM design matrix (time courses or spatial maps)
+	-m,--mask	mask image file name if input is image
+	--des_norm	switch on normalisation of the design matrix columns to unit std. deviation
+	--vn	        perform MELODIC variance-normalisation on data
+	--demean	switch on de-meaning of design and data
+	--nmf_dim	 Number of underlying factors for NMF
+	--nmfitt	number of NMF itterations (default 100)
+	-h,--help	display this help text
+	-v,--verbose	switch on verbose output
+	--out_data	output file name for pre-processed data
+	--out_vnscales	output file name for scaling factors for variance normalisation
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'fsl_mvlm' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        input file name (text matrix or 3D/4D image file)
+	-o,--out	basename for output files 
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_mvlm (Version 1.0)
+Author: Christian F. Beckmann 
+Copyright(C) 2006-2013 University of Oxford
+ 
+ Multivariate Linear Model regression on
+ time courses and/or 3D/4D imges using  SVD (PCA), PLS, normalised PLS, 
+ CVA, SVD-CVA or  MLM
+
+
+
+Usage: 
+fsl_mvlm -i <input> -o <output> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (text matrix or 3D/4D image file)
+	-o,--out	basename for output files 
+
+Optional arguments (You may optionally specify one or more of):
+	-a,--alg	algorithm for decomposition: PCA (or SVD; default), PLS, orthoPLS, CVA, SVD-CVA, MLM, NMF
+	-d,--design	file name of the GLM design matrix (time courses or spatial maps)
+	-m,--mask	mask image file name if input is image
+	--des_norm	switch on normalisation of the design matrix columns to unit std. deviation
+	--vn	        perform MELODIC variance-normalisation on data
+	--demean	switch on de-meaning of design and data
+	--nmf_dim	 Number of underlying factors for NMF
+	--nmfitt	number of NMF itterations (default 100)
+	-h,--help	display this help text
+	-v,--verbose	switch on verbose output
+	--out_data	output file name for pre-processed data
+	--out_vnscales	output file name for scaling factors for variance normalisation
+
+

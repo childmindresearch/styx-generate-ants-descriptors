@@ -1,0 +1,25 @@
+
+=== Output of 'mri_mergelabels --help' ===
+
+ERROR: --help not recognized
+
+=== Output of 'mri_mergelabels -help' ===
+
+ERROR: -help not recognized
+
+=== Output of 'mri_mergelabels' (no arguments) ===
+
+
+USAGE: mri_mergelabels
+
+   -i label1 -i label2 ...
+   -o outputlabel
+   -d dir : all labels in directory dir
+
+This is a simple script that will merge two or more label
+files. It does this by catting the label files together
+(after removing the first two lines). It inserts a new
+header (the first two lines). The number of entries in
+the new file (ie, the number on the second line), is 
+computed by summing those from the input files.
+

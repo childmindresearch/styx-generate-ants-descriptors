@@ -1,0 +1,15 @@
+
+=== Output of '3dICC.R --help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dICC.R --args /opt/afni/src/../install/3dICC.R --help
+
+=== Output of '3dICC.R -help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dICC.R --args /opt/afni/src/../install/3dICC.R -help
+
+=== Output of '3dICC.R' (no arguments) ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dICC.R --args /opt/afni/src/../install/3dICC.R

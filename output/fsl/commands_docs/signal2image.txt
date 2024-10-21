@@ -1,0 +1,96 @@
+
+=== Output of 'signal2image --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+signal2image
+Copyright(c) 2003, University of Oxford (Mark Jenkinson & Ivana Drobnjak)
+
+Usage: 
+signal2image [options] -i <signal> -p <pulse> -o <image> 
+ signal2image -p <pulse> -c <kcoord>
+
+Compulsory arguments (You MUST set one or more of):
+	-p,--pulse	8-column pulse_sequence matrix. Expects to find all other pulse sequence files in the same directory.
+
+Optional arguments (You may optionally specify one or more of):
+	-i,--in	input signal
+	-o,--out	output image
+	-c, --kcoord	kspace coordinates
+	-k,--kout	output k-space
+	-a,--abs	save absolute magnitude and phase
+	--homo	do the homodyne reconstruction
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-z,--apodize	Do apodization
+	-l,--limit	Apodization with this cutoff; default 100
+	-r,--roll	Apodization with this rolloff; default 10
+	-s,--save	(DEBUG!) Save window as ascii matrix
+
+
+
+=== Output of 'signal2image -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+signal2image
+Copyright(c) 2003, University of Oxford (Mark Jenkinson & Ivana Drobnjak)
+
+Usage: 
+signal2image [options] -i <signal> -p <pulse> -o <image> 
+ signal2image -p <pulse> -c <kcoord>
+
+Compulsory arguments (You MUST set one or more of):
+	-p,--pulse	8-column pulse_sequence matrix. Expects to find all other pulse sequence files in the same directory.
+
+Optional arguments (You may optionally specify one or more of):
+	-i,--in	input signal
+	-o,--out	output image
+	-c, --kcoord	kspace coordinates
+	-k,--kout	output k-space
+	-a,--abs	save absolute magnitude and phase
+	--homo	do the homodyne reconstruction
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-z,--apodize	Do apodization
+	-l,--limit	Apodization with this cutoff; default 100
+	-r,--roll	Apodization with this rolloff; default 10
+	-s,--save	(DEBUG!) Save window as ascii matrix
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'signal2image' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-p,--pulse	8-column pulse_sequence matrix. Expects to find all other pulse sequence files in the same directory.
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+signal2image
+Copyright(c) 2003, University of Oxford (Mark Jenkinson & Ivana Drobnjak)
+
+Usage: 
+signal2image [options] -i <signal> -p <pulse> -o <image> 
+ signal2image -p <pulse> -c <kcoord>
+
+Compulsory arguments (You MUST set one or more of):
+	-p,--pulse	8-column pulse_sequence matrix. Expects to find all other pulse sequence files in the same directory.
+
+Optional arguments (You may optionally specify one or more of):
+	-i,--in	input signal
+	-o,--out	output image
+	-c, --kcoord	kspace coordinates
+	-k,--kout	output k-space
+	-a,--abs	save absolute magnitude and phase
+	--homo	do the homodyne reconstruction
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-z,--apodize	Do apodization
+	-l,--limit	Apodization with this cutoff; default 100
+	-r,--roll	Apodization with this rolloff; default 10
+	-s,--save	(DEBUG!) Save window as ascii matrix
+
+

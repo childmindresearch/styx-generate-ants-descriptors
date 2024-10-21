@@ -1,0 +1,85 @@
+
+=== Output of 'bbmask --help' ===
+
+
+bbmask 
+ --mask inputmask outputmask
+
+ --src inputvol outputvol <--src inputvol outputvol>
+ --npad npad
+ --reg srcreg.dat subreg.dat : srcreg.dat is input, subreg.dat is output
+ --regheader subreg.dat : srcreg.dat is input, subreg.dat is output
+ --sub2src sub2src.reg.dat : output: sub-src  reg with mov=sub
+
+bbmask 7.4.1
+
+The purpose of this program is to create a volume with a smaller field
+of view by creating a bounding box small enough to encompass a
+mask. The bounding box can be expanded by npad number of voxels. Other
+volumes that are the same size as the input mask can be reduced to the
+bounding box. If a registration file for the input mask is passed,
+then a new registration file is created that can be applied to the new
+field of view.
+
+EXAMPLES:
+
+# This just takes brain.mgz and produces a new mask volume in a tight
+# bounding box. It also creates a registration matrix between
+# the bounding box volume and the original brain.mgz
+bbmask --mask brain.mgz brain.bb.nii.gz --regheader reg.bb.dat
+tkregister2 --mov brain.bb.nii.gz --reg reg.bb.dat --targ brain.mgz
+
+bbmask --mask mask.nii.gz mask.bb.nii.gz --reg register.dat reg.bb.dat \
+   --src func1.nii.gz func1.bb.nii.gz --src func2.nii.gz func2.bb.nii.gz \
+   --npad 3
+tkregister2 --mov func1.bb.nii.gz --reg reg.bb.dat 
+
+
+=== Output of 'bbmask -help' ===
+
+
+bbmask 
+ --mask inputmask outputmask
+
+ --src inputvol outputvol <--src inputvol outputvol>
+ --npad npad
+ --reg srcreg.dat subreg.dat : srcreg.dat is input, subreg.dat is output
+ --regheader subreg.dat : srcreg.dat is input, subreg.dat is output
+ --sub2src sub2src.reg.dat : output: sub-src  reg with mov=sub
+
+bbmask 7.4.1
+
+The purpose of this program is to create a volume with a smaller field
+of view by creating a bounding box small enough to encompass a
+mask. The bounding box can be expanded by npad number of voxels. Other
+volumes that are the same size as the input mask can be reduced to the
+bounding box. If a registration file for the input mask is passed,
+then a new registration file is created that can be applied to the new
+field of view.
+
+EXAMPLES:
+
+# This just takes brain.mgz and produces a new mask volume in a tight
+# bounding box. It also creates a registration matrix between
+# the bounding box volume and the original brain.mgz
+bbmask --mask brain.mgz brain.bb.nii.gz --regheader reg.bb.dat
+tkregister2 --mov brain.bb.nii.gz --reg reg.bb.dat --targ brain.mgz
+
+bbmask --mask mask.nii.gz mask.bb.nii.gz --reg register.dat reg.bb.dat \
+   --src func1.nii.gz func1.bb.nii.gz --src func2.nii.gz func2.bb.nii.gz \
+   --npad 3
+tkregister2 --mov func1.bb.nii.gz --reg reg.bb.dat 
+
+
+=== Output of 'bbmask' (no arguments) ===
+
+
+bbmask 
+ --mask inputmask outputmask
+
+ --src inputvol outputvol <--src inputvol outputvol>
+ --npad npad
+ --reg srcreg.dat subreg.dat : srcreg.dat is input, subreg.dat is output
+ --regheader subreg.dat : srcreg.dat is input, subreg.dat is output
+ --sub2src sub2src.reg.dat : output: sub-src  reg with mov=sub
+

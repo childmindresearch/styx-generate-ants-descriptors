@@ -1,4 +1,0 @@
-Usage 1: ExtractRegionFromImage ImageDimension inputImage outputImage minIndex maxIndex 
-Usage 2: ExtractRegionFromImage ImageDimension inputImage outputImage label 
-Usage 3: ExtractRegionFromImage ImageDimension inputImage outputImage domainImage 
-Usage 4: ExtractRegionFromImage ImageDimension inputImage outputImage label labelImage 1 

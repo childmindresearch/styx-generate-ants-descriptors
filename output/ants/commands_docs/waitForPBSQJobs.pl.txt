@@ -1,0 +1,21 @@
+
+=== Output of 'waitForPBSQJobs.pl --help' ===
+
+Use of uninitialized value $delay in numeric lt (<) at /opt/ants/bin/waitForPBSQJobs.pl line 23.
+Sleep period is too short, will poll queue once every 10 seconds
+  Waiting for 0 jobs: 
+Can't exec "qstat": No such file or directory at /opt/ants/bin/waitForPBSQJobs.pl line 38.
+
+=== Output of 'waitForPBSQJobs.pl -help' ===
+
+Use of uninitialized value $delay in numeric lt (<) at /opt/ants/bin/waitForPBSQJobs.pl line 23.
+Sleep period is too short, will poll queue once every 10 seconds
+  Waiting for 0 jobs: 
+Can't exec "qstat": No such file or directory at /opt/ants/bin/waitForPBSQJobs.pl line 38.
+
+=== Output of 'waitForPBSQJobs.pl' (no arguments) ===
+
+Use of uninitialized value $delay in numeric lt (<) at /opt/ants/bin/waitForPBSQJobs.pl line 23.
+Sleep period is too short, will poll queue once every 10 seconds
+  Waiting for 0 jobs: 
+Can't exec "qstat": No such file or directory at /opt/ants/bin/waitForPBSQJobs.pl line 38.

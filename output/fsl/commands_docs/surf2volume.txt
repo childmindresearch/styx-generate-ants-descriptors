@@ -1,0 +1,16 @@
+
+=== Output of 'surf2volume --help' ===
+
+terminate called after throwing an instance of 'std::logic_error'
+  what():  basic_string::_S_construct null not valid
+timeout: the monitored command dumped core
+
+=== Output of 'surf2volume -help' ===
+
+terminate called after throwing an instance of 'std::logic_error'
+  what():  basic_string::_S_construct null not valid
+timeout: the monitored command dumped core
+
+=== Output of 'surf2volume' (no arguments) ===
+
+surf2vol <surf> <refvol> <outvol> <convention>

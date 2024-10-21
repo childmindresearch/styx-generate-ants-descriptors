@@ -1,0 +1,51 @@
+
+=== Output of 'fslchfiletype_exe --help' ===
+
+Usage: fslchfiletype[_exe] <filetype> <filename> [filename2]
+
+Changes the file type of the image file [ or copies to new file ].
+Valid values for filetype are:
+	ANALYZE
+	ANALYZE_GZ
+	NIFTI
+	NIFTI_GZ
+	NIFTI_PAIR
+	NIFTI_PAIR_GZ
+	NIFTI2
+	NIFTI2_GZ
+	NIFTI2_PAIR
+	NIFTI2_PAIR_GZ
+
+=== Output of 'fslchfiletype_exe -help' ===
+
+Usage: fslchfiletype[_exe] <filetype> <filename> [filename2]
+
+Changes the file type of the image file [ or copies to new file ].
+Valid values for filetype are:
+	ANALYZE
+	ANALYZE_GZ
+	NIFTI
+	NIFTI_GZ
+	NIFTI_PAIR
+	NIFTI_PAIR_GZ
+	NIFTI2
+	NIFTI2_GZ
+	NIFTI2_PAIR
+	NIFTI2_PAIR_GZ
+
+=== Output of 'fslchfiletype_exe' (no arguments) ===
+
+Usage: fslchfiletype[_exe] <filetype> <filename> [filename2]
+
+Changes the file type of the image file [ or copies to new file ].
+Valid values for filetype are:
+	ANALYZE
+	ANALYZE_GZ
+	NIFTI
+	NIFTI_GZ
+	NIFTI_PAIR
+	NIFTI_PAIR_GZ
+	NIFTI2
+	NIFTI2_GZ
+	NIFTI2_PAIR
+	NIFTI2_PAIR_GZ

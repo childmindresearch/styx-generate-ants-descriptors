@@ -1,0 +1,25 @@
+
+=== Output of 'tokens --help' ===
+
+error: invalid argument '--help'
+
+=== Output of 'tokens -help' ===
+
+usage: /opt/afni/src/../install/tokens [-infile INFILE] [-extra C] [...]
+
+   -infile : specify input file (stdin if none)
+   -extra  : specify extra character to count as valid
+             - can use this more than once
+             - I do not remember why I added this
+------------------------------
+examples:
+
+   /opt/afni/src/../install/tokens -infile script.txt
+   /opt/afni/src/../install/tokens -infile script.txt | grep -i anat
+------------------------------
+R. Reynolds, circa 1994
+version 1.1, 1 Mar 2016
+
+
+=== Output of 'tokens' (no arguments) ===
+

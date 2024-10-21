@@ -1,0 +1,77 @@
+
+=== Output of 'possum_matrix --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+possum (Version 2.0)
+Copyright(c) 2008, University of Oxford (Ivana Drobnjak)
+
+Usage: 
+possum_matrix  -p <pulse>  -m <motion file> -o <output main even matrix> [optional arguments]
+
+Compulsory arguments (You MUST set one or more of):
+	-m,--motion	<inputmatrix-filename> (Motion matrix [time(s) Tx(m) Ty(m) Tz(m) Rx(rad) Ry(rad) Rz(rad)]) 
+	-p,--pulse	<inputmatrix-basename> (Pulse sequence - all additional files .posx,.posy, etc,  expected to be in the same directory)
+	-o,--mainmatx	<outputmatrix-filename> (Main event matrix [t(s),rf_ang(rad),rf_freq_band(Hz),(4)=rf_cent_freq(Hz),read(1/0),Gx,Gy,Gz(T/m),Tx,Ty,Tz(m),angle_of_rot B(rad),rot_axis Bx,By,Bz(m),angle_of_rot A(rad),rot_axis Ax,Ay,Az(m)]) 
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--old	Allows for the old version of the sorter to run
+	--seg	Seting the size of the segment of the matrix that is read in one at a time
+
+
+
+=== Output of 'possum_matrix -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+possum (Version 2.0)
+Copyright(c) 2008, University of Oxford (Ivana Drobnjak)
+
+Usage: 
+possum_matrix  -p <pulse>  -m <motion file> -o <output main even matrix> [optional arguments]
+
+Compulsory arguments (You MUST set one or more of):
+	-m,--motion	<inputmatrix-filename> (Motion matrix [time(s) Tx(m) Ty(m) Tz(m) Rx(rad) Ry(rad) Rz(rad)]) 
+	-p,--pulse	<inputmatrix-basename> (Pulse sequence - all additional files .posx,.posy, etc,  expected to be in the same directory)
+	-o,--mainmatx	<outputmatrix-filename> (Main event matrix [t(s),rf_ang(rad),rf_freq_band(Hz),(4)=rf_cent_freq(Hz),read(1/0),Gx,Gy,Gz(T/m),Tx,Ty,Tz(m),angle_of_rot B(rad),rot_axis Bx,By,Bz(m),angle_of_rot A(rad),rot_axis Ax,Ay,Az(m)]) 
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--old	Allows for the old version of the sorter to run
+	--seg	Seting the size of the segment of the matrix that is read in one at a time
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'possum_matrix' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-m,--motion	<inputmatrix-filename> (Motion matrix [time(s) Tx(m) Ty(m) Tz(m) Rx(rad) Ry(rad) Rz(rad)]) 
+	-p,--pulse	<inputmatrix-basename> (Pulse sequence - all additional files .posx,.posy, etc,  expected to be in the same directory)
+	-o,--mainmatx	<outputmatrix-filename> (Main event matrix [t(s),rf_ang(rad),rf_freq_band(Hz),(4)=rf_cent_freq(Hz),read(1/0),Gx,Gy,Gz(T/m),Tx,Ty,Tz(m),angle_of_rot B(rad),rot_axis Bx,By,Bz(m),angle_of_rot A(rad),rot_axis Ax,Ay,Az(m)]) 
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+possum (Version 2.0)
+Copyright(c) 2008, University of Oxford (Ivana Drobnjak)
+
+Usage: 
+possum_matrix  -p <pulse>  -m <motion file> -o <output main even matrix> [optional arguments]
+
+Compulsory arguments (You MUST set one or more of):
+	-m,--motion	<inputmatrix-filename> (Motion matrix [time(s) Tx(m) Ty(m) Tz(m) Rx(rad) Ry(rad) Rz(rad)]) 
+	-p,--pulse	<inputmatrix-basename> (Pulse sequence - all additional files .posx,.posy, etc,  expected to be in the same directory)
+	-o,--mainmatx	<outputmatrix-filename> (Main event matrix [t(s),rf_ang(rad),rf_freq_band(Hz),(4)=rf_cent_freq(Hz),read(1/0),Gx,Gy,Gz(T/m),Tx,Ty,Tz(m),angle_of_rot B(rad),rot_axis Bx,By,Bz(m),angle_of_rot A(rad),rot_axis Ax,Ay,Az(m)]) 
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--old	Allows for the old version of the sorter to run
+	--seg	Seting the size of the segment of the matrix that is read in one at a time
+
+

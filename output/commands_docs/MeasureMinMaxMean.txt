@@ -1,3 +1,0 @@
-Basic useage ex: 
-MeasureMinMaxMean ImageDimension  image.nii {log.txt} {take-absolute-value}  {mask-name} 
-  log.txt is optional  - take-abs-val reports min-max-mean of abs val image 

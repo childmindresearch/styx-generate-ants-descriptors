@@ -1,0 +1,326 @@
+
+=== Output of 'epidewarp.fsl --help' ===
+
+
+USAGE: epidewarp.fsl
+
+Inputs
+
+  --mag volid     : B0 magnitude volume
+  --dph volid     : B0 phase difference volume
+  --ph volid      : B0 phase volume
+  --complex r1 i1 r2 i2 : B0 map in complex values
+
+  --exf volid     : example func volume (or use epi)
+  --epi volid     : epi volume to unwarp
+
+  --tediff tediff : difference in B0 field map TEs
+  --esp esp       : EPI echo spacing
+  --perev         : assume reversed phase encode direction
+  
+  --sigma sigmamm : 2D spatial gaussing smoothing stddev (def 2mm)
+  --vsm-fwhm fwhm : allows vsm to be extended outside of the mask
+  
+Outputs
+  --vsm volid   : voxel shift map (required)
+  --vsmmag volid: voxel shift map in mag space
+  --exfdw volid : dewarped example func volume
+  --epidw volid : dewarped epi volume
+  
+  --nomagexfreg : assume mag and exf are in register
+  --head        : mask to head instead of brain
+  --tmpdir dir  : save intermediate results here
+  --log logfile : use logfile instead of default
+  --nocleanup   : do not delete tmpdir
+  --cleanup     : force deletion of tmpdir
+  --debug
+  --help
+
+epidewarp.fsl 7.4.1
+
+NOTE! As of Feb 26, 2010, this program requires FreeSurfer to run.
+
+Help Outline:
+  SUMMARY
+  ALGORITHM OVERVIEW
+  ARGUMENTS
+  SUGGESTED FIELD MAP PARAMETERS
+  NOTES
+  SEE ALSO
+  BUGS
+  BUG REPORTING
+  AUTHORS
+  REFERENCES AND ACKNOWLEDGMENTS
+
+SUMMARY
+
+Front end for FSLs PRELUDE and FUGUE programs to correct for B0
+distortion in functional EPI scans. The programs use a B0 fieldmap.
+This is assumed to be two conventional GREs collected at two different
+echo times (TEs). The field map should be acquired with the same slice
+prescription, slice thickness, slice skip, voxel resolution, and
+field-of-view as the EPI. This should work with NIFTI, NIFTI_GZ, and
+ANALYZE formats, but NIFTI are NIFTI_GZ *HIGHLY* recommended.
+Converting between ANALYZE and NIFTI in FSL can produce
+unpredictable results.
+
+For the stock Siemens field map, two field maps are required, one to
+get the phase and another to get the magnitude (this will change with
+new version of the Siemens scanner software). The volume that is
+stored as the phase is actually the phase difference and is scaled
+between 0 to 4095 for -pi to pi. The magnitude volumes for both TEs
+are saved, but only one is needed.
+
+All volumes are assumed to be in analyze 4D format. All volumes should
+be referred to as volid.ext (where ext is either nii, nii.gz, or
+img). If the EPI or EXF volume has a .mat file, this will be
+propagated to the outputs.
+
+ALGORITHM OVERVIEW
+
+1.  Create a brain mask from the mag volume (BET)
+2.  Create a head mask by dilating the brain mask 3 times
+3.  Rescale the phase image to -pi to pi
+4.  Unwrap the phase (PRELUDE)
+5.  Create and smooth the voxel shift map (VSM) (FUGUE)
+6.  Remove in-brain mean from VSM
+7.  Forward warp the mag volume (FUGUE)
+8.  Register the forward warped mag with the example func (FLIRT)
+9.  Resample the VSM into EPI space (FLIRT)
+10. Dewarp the EPI and/or Example Func (FUGUE).
+
+ARGUMENTS
+
+--mag magvolid
+
+Magnitude volume from the B0 fieldmap. If more than one frame is
+present, then only the first is used. Not with --complex.
+
+--dph phasediffvolid
+
+Phase difference volume (Echo2-Echo1). These are assumed to be scaled
+between 0 to 4095 for -pi to pi. Eg, dph.ext, where ext is either nii,
+nii.gz, or img. Not with --complex or with --ph.
+
+--ph phasevolid
+
+Phase volume from the B0 fieldmap (if the phases from Echo1, Echo2 are
+available instead of their difference). These are assumed to be scaled
+between 0 to 4095 for -pi to pi. Eg, ph.ext, where ext is either nii,
+nii.gz, or img. Not with --complex or with --dph.
+
+--complex real1 imag1 real2 imag2
+
+Specify B0 field map with real and imaginary components instead of
+mag and phase. 
+
+--exf examplevolid
+
+Single volume to use as the example func. If not supplied, then the
+middle time point from the EPIs will be used. This volume must have
+enough anatomy to be able to register with the mag. It should also
+have the exact same geometry as any EPIs. This option allows the user
+to specify a functional for the example and then a statistical map as
+the EPI.
+
+--epi epivolid
+
+EPI volume to dewarp. This could be a time series or a single frame
+statistical map. If it is a stat map, then supply an example func
+(--exf) to assure that there is some anatomy for registration to
+the mag volume.
+
+--tediff tediff
+
+Difference in the echo times of the B0 field map in ms. This number is
+set when acquiring the field map. This is often set to 2.46 ms at 3T,
+which is the amount of time it takes for the fat and water to
+rephase. The rephase time scales with field strength.
+
+--esp echospacing
+
+Time (ms) between the start of the readout of two successive lines in
+k-space during the EPI acquisition.  This can also be thought of as
+the time between rows.  This parameter is not available in the Siemens
+DICOM header. However, it can be obtained from the console.  Open the
+protocol for the functional scan (NOT the field map). Go to the
+Sequence tab. Go to Part 1. The Echo Spacing is displayed on the
+bottom right. It will also be on the protocol print out (select the
+functional protocol in the Exam Explorer, right click, and select
+Print...).  If one saves the raw kspace data, then the echo spacing
+can be found next to the m_lEchoSpacing tag in the meas.asc and is in
+usec. Note that the echo spacing is not the same as the time to read
+out a line of k-space and it cannot be computed from the bandwidth
+because neither of these methods takes into account the dead time
+between lines when no data are being read out.
+
+--perev
+
+Assume reversed phase encode direction. Same as giving esp or tediff a
+negative sign. Implemented by multiplying esp by -1.
+
+--sigma sigmamm
+
+2D Smoothing VSM with gaussian with stddev of sigmamm (in mm). Default
+is 2 mm. This tends to have minimal impact but can clean things up
+around the edge of the brain.
+
+--vsm vsmvolid
+
+Voxel shift map. This is a volume the same size as the EPI. The value
+at each voxel indicates the amount the voxel has shifted in the phase
+encode direction due to B0 distortion. This argument is required.
+
+--exfdw exfdwvolid
+
+This is exf volume or the middle time point from the EPI time series
+(the "example functional") with B0 distortion removed. Mainly good for
+checking how good the dewarping is without having to dewarp the entire
+time series.
+
+--epidw epidwvolid
+
+This is the EPI time series with B0 distortion removed.
+
+--tmpdir tmpdir
+
+Location to put the directory for storing temporary files. By default,
+this will be in a directory called tmp-epidewarp.fsl under the
+directory to hold the VSM volume. When --tmpdir is used or --nocleanup
+is specified, then this directory will not be deleted. Otherwise or
+with --cleanup it will automatically be deleted.
+
+--nocleanup
+
+Do not delete the tmp dir. --tmpdir automatically implies --nocleanup.
+
+--cleanup
+
+Forces deleting of the tmp dir regardless of whether --tmpdir or
+--nocleanup have been specified.
+
+--debug
+
+Prints copious amounts to the screen.
+
+SUGGESTED FIELD MAP PARAMETERS
+
+These field map parameters are being used by the Biomedical
+Informatics Research Network (www.nbirn.net). For Siemens, we
+recommend using the stock sequence called gre_field_mapping.  The
+DeltaTE might differ slightly on individual systems from the values
+listed below depending upon the exact field strength (eg, 2.89T
+instead of exactly 3T).
+
+TR = 500ms (1000ms with phased-array)
+TE1: Minimum possible
+TE2 = TE1 + DeltaTE
+
+DeltaTE = 4.92ms for 1.5T
+Flip Angle: 65 for 1.5T
+DeltaTE = 2.46ms for 3T
+Flip Angle: 55 for 3T
+DeltaTE = 1.845ms for 4T
+Flip Angle: 55 for 4T
+
+FatSat: Off
+Bandwidth: Maximum
+Slice Prescription, FOV, Thickness, Skip, Pixel Resolution, Matrix Size:
+same as functional
+
+NOTES
+
+The output will not necessarily be registered with the mag volume. To
+compare the mag with the dewarped output, first register the mag
+to the dewarped output.
+
+SEE ALSO
+
+http://www.fmrib.ox.ac.uk/fsl/fugue
+http://www.ami.hut.fi/instructions/epi_distortion.html
+
+BUGS
+
+None (yet).
+
+BUG REPORTING
+
+This software is offered as is with no promise or implication that it
+will be supported. However, if you have a problem or question, you can
+send it to analysis-bugs@nmr.mgh.harvard.edu and we will get to as we
+can. If you want your question to have a chance of being answered,
+include all of the following: your command-line, text printed out by
+the program, log file, and a description of the problem. Of course, if
+you have made it this far into the documentation, you probably alrealy
+know these things.
+
+AUTHORS
+
+Doug Greve, Dave Tuch, Tom Liu, and Bryon Mueller with generous help
+from the FSL crew (www.fmrib.ox.ac.uk/fsl) and the Biomedical
+Informatics Research Network (www.nbirn.net).
+
+REFERENCES AND ACKNOWLEDGMENTS:
+
+For prelude:
+
+M. Jenkinson. A Fast, Automated, N-Dimensional Phase Unwrapping
+Algorithm Magnetic Resonance in Medicine, 49(1), 193-197, 2003.
+
+For fugue:
+
+M. Jenkinson. Improved Unwarping of EPI Volumes using Regularised B0
+Maps International Conference on Human Brain Mapping - HBM2001.
+
+Jezzard, Peter, and Balaban, Robert S. Correction for Geometric
+Distortion in Echo Planar Images from B0 Field Variations. Mag Res
+Med, 1995, 34:65-73.
+
+For epidewarp.fsl we ask that the following be placed in the
+acknowledgement section of you papers:
+
+  "Some of the scripts involved in this work were developed by
+   FBIRN (www.nbirn.net)."
+
+=== Output of 'epidewarp.fsl -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'epidewarp.fsl' (no arguments) ===
+
+
+USAGE: epidewarp.fsl
+
+Inputs
+
+  --mag volid     : B0 magnitude volume
+  --dph volid     : B0 phase difference volume
+  --ph volid      : B0 phase volume
+  --complex r1 i1 r2 i2 : B0 map in complex values
+
+  --exf volid     : example func volume (or use epi)
+  --epi volid     : epi volume to unwarp
+
+  --tediff tediff : difference in B0 field map TEs
+  --esp esp       : EPI echo spacing
+  --perev         : assume reversed phase encode direction
+  
+  --sigma sigmamm : 2D spatial gaussing smoothing stddev (def 2mm)
+  --vsm-fwhm fwhm : allows vsm to be extended outside of the mask
+  
+Outputs
+  --vsm volid   : voxel shift map (required)
+  --vsmmag volid: voxel shift map in mag space
+  --exfdw volid : dewarped example func volume
+  --epidw volid : dewarped epi volume
+  
+  --nomagexfreg : assume mag and exf are in register
+  --head        : mask to head instead of brain
+  --tmpdir dir  : save intermediate results here
+  --log logfile : use logfile instead of default
+  --nocleanup   : do not delete tmpdir
+  --cleanup     : force deletion of tmpdir
+  --debug
+  --help
+

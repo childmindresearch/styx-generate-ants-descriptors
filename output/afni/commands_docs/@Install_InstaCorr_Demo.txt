@@ -1,0 +1,48 @@
+
+=== Output of '@Install_InstaCorr_Demo --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Install_InstaCorr_Demo -help' ===
+
+Installs and sets up AFNI's InstaCorr demo archive
+After setup, all you need to do is run the demo scripts
+this way:
+*****************
+
+For Volume-based 3dGroupInCorr run:
+cd /home/afni_user/work//vol
+tcsh ./@RunVolGroupInCorr 
+
+For Surface-based 3dGroupInCorr run:
+cd /home/afni_user/work//srf
+tcsh ./@RunSurfGroupInCorr 
+
+For Surface-based Single-Subject InstaCorr run:
+cd /home/afni_user/work//srf
+tcsh ./@RunSingleSurfInstaCorr 
+
+*****************
+Options:
+[-wget]: Use wget to download archive. Script chooses by default
+         with preference for curl
+[-curl]: Use curl to download archive. Script chooses by default
+         with preference for curl
+[-full]: Install the full version of the demo. This downloads
+         all subject surfaces, resting state volume time series
+         etc. The script then processes the data and produces
+         the files needed for running the various interactive
+         InstaCorr demos.
+[-mini]: Install the mini version of the demo. This downloads
+         only the files needed for running the various interactive
+         InstaCorr demos.
+
+It takes a while to download, unpack, and run the setup scripts
+
+
+=== Output of '@Install_InstaCorr_Demo' (no arguments) ===
+
+/usr/bin/curl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  1 1177M    1 14.5M    0     0  14.8M      0  0:01:19 --:--:--  0:01:19 14.8M  1 1177M    1 21.6M    0     0  10.9M      0  0:01:47  0:00:01  0:01:46 10.9M  2 1177M    2 31.5M    0     0  10.5M      0  0:01:51  0:00:02  0:01:49 10.5M  4 1177M    4 48.5M    0     0  12.1M      0  0:01:36  0:00:03  0:01:33 12.1M  6 1177M    6 72.4M    0     0  14.5M      0  0:01:20  0:00:04  0:01:16 14.5M  8 1177M    8 98.3M    0     0  16.4M      0  0:01:11  0:00:05  0:01:06 16.7M 10 1177M   10  124M    0     0  17.7M      0  0:01:06  0:00:06  0:01:00 20.5M 12 1177M   12  150M    0     0  18.8M      0  0:01:02  0:00:07  0:00:55 23.7M 14 1177M   14  176M    0     0  19.6M      0  0:01:00  0:00:08  0:00:52 25.5M 17 1177M   17  202M    0     0  20.2M      0  0:00:58  0:00:09  0:00:49 25.9MCommand timed out after 10 seconds

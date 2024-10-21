@@ -1,0 +1,36 @@
+
+=== Output of 'vno_match_check --help' ===
+
+USAGE: vno_match_check <subjid> [option]
+
+Checks that all surfaces and surface data files for subject <subjid>
+have the same number of vertices. Exits with status code 0 if ok.
+Exits with status code 1 and error message if any mismatches found.
+Options: (only one is accepted)
+  debug     progress text is printed
+  rh        right hemi only
+  lh        left hemi only
+
+=== Output of 'vno_match_check -help' ===
+
+USAGE: vno_match_check <subjid> [option]
+
+Checks that all surfaces and surface data files for subject <subjid>
+have the same number of vertices. Exits with status code 0 if ok.
+Exits with status code 1 and error message if any mismatches found.
+Options: (only one is accepted)
+  debug     progress text is printed
+  rh        right hemi only
+  lh        left hemi only
+
+=== Output of 'vno_match_check' (no arguments) ===
+
+USAGE: vno_match_check <subjid> [option]
+
+Checks that all surfaces and surface data files for subject <subjid>
+have the same number of vertices. Exits with status code 0 if ok.
+Exits with status code 1 and error message if any mismatches found.
+Options: (only one is accepted)
+  debug     progress text is printed
+  rh        right hemi only
+  lh        left hemi only

@@ -1,0 +1,23 @@
+
+=== Output of 'mri_normalize_tp2 --help' ===
+
+unknown option --help
+
+=== Output of 'mri_normalize_tp2 -help' ===
+
+unknown option -help
+
+=== Output of 'mri_normalize_tp2' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_normalize_tp2 <input vol> <normalized vol>
+This program uses the controls points of tp1 to help normalize tp2 
+Options are: 
+	 -T1 %s: T1 volume for tp1 (actually the volume to perform mri_normalize on for tp1) 
+	 -mask1 %s: brain mask for tp1 (will be mapped to tp2 by applying the xform if -mask2 not specified) 
+	 -mask2 %s: brain mask for tp2 (will be mapped to tp1 by applying inverse-xform if -mask1 not specified) 
+	 -threshold %d: threshold for background (default = 1.0) 
+	 -ctrl %s: ctrl point volume for tp1 
+	 -xform %s: LTA transform that aligns tp1 to tp2 
+	 -invert  reversely apply -xform 
+	 -lta_src %s:  source volume for -xform (if not available from the xform file) 
+	 -lta_dst %s:  target volume for -xform (if not available from the xform file) 

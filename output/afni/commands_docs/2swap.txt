@@ -1,0 +1,16 @@
+
+=== Output of '2swap --help' ===
+
+** file --help not found!
+
+=== Output of '2swap -help' ===
+
+Usage: 2swap [-q] file ...
+-- Swaps byte pairs on the files listed.
+   The -q option means to work quietly.
+
+=== Output of '2swap' (no arguments) ===
+
+Usage: 2swap [-q] file ...
+-- Swaps byte pairs on the files listed.
+   The -q option means to work quietly.

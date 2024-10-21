@@ -1,0 +1,51 @@
+
+=== Output of 'segment_subregions --help' ===
+
+usage: segment_subregions [-h] [--cross CROSS] [--long-base LONG_BASE]
+                          [--sd SD] [--suffix SUFFIX] [--temp-dir TEMP_DIR]
+                          [--out-dir OUT_DIR] [--debug] [--threads THREADS]
+                          structure
+
+Cross-sectional and longitudinal segmentation for the following structures:
+thalamus, brainstem, hippo-amygdala. To segment the thalamic nuclei, for
+example, in a cross-sectional analysis: segment_subregions thalamus --cross
+subj Similarly, for a longitudinal analysis, run: segment_subregions thalamus
+--long-base base Timepoints are extracted from the `base-tps` file in the
+`base` subject. Output segmentations and computed structure volumes will be
+saved to the subject's `mri` subdirectory.
+
+positional arguments:
+  structure             Structure to segment. Options are: thalamus,
+                        brainstem, hippo-amygdala.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --cross CROSS         Subject to segment in cross-sectional analysis.
+  --long-base LONG_BASE
+                        Base subject for longitudinal analysis. Timepoints are
+                        extracted from the base-tps file.
+  --sd SD               Specify subjects directory (will override SUBJECTS_DIR
+                        env variable).
+  --suffix SUFFIX       Optional output file suffix.
+  --temp-dir TEMP_DIR   Use alternative temporary directory. This will get
+                        deleted unless --debug is enabled.
+  --out-dir OUT_DIR     Use alternative output directory (only for cross-
+                        sectional). Default is the subject's `mri` directory.
+  --debug               Write intermediate debugging outputs.
+  --threads THREADS     Number of threads to use. Defaults to 1.
+
+=== Output of 'segment_subregions -help' ===
+
+usage: segment_subregions [-h] [--cross CROSS] [--long-base LONG_BASE]
+                          [--sd SD] [--suffix SUFFIX] [--temp-dir TEMP_DIR]
+                          [--out-dir OUT_DIR] [--debug] [--threads THREADS]
+                          structure
+segment_subregions: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'segment_subregions' (no arguments) ===
+
+usage: segment_subregions [-h] [--cross CROSS] [--long-base LONG_BASE]
+                          [--sd SD] [--suffix SUFFIX] [--temp-dir TEMP_DIR]
+                          [--out-dir OUT_DIR] [--debug] [--threads THREADS]
+                          structure
+segment_subregions: error: the following arguments are required: structure

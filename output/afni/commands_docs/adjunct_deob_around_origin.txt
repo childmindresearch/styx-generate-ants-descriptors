@@ -1,0 +1,108 @@
+
+=== Output of 'adjunct_deob_around_origin --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of 'adjunct_deob_around_origin -help' ===
+
+-------------------------------------------------------------------------
+
+Overview ~1~
+
+This is a simple program to wrap around the 3drefit functionality to 
+remove obliquity from a dataset whilst preserving its origin.
+
+In many cases, this is very useful to run on oblique anatomicals
+before processing.
+
+ver  = 1.0
+auth = PA Taylor, RC Reynolds (SSCC, NIMH, NIH)
+-------------------------------------------------------------------------
+
+Options ~1~
+
+-input                 : (req) input volumetric dataset name
+-prefix                : (req) output dataset name
+-oblique_origin        : style of preserving origin, via 3drefit (def)
+-oblique_recenter      : style of preserving origin, via 3drefit (def)
+-oblique_recenter_raw  : style of preserving origin, via 3drefit (def)
+-workdir               : working directory name (just name, no path;
+                         will be subdirectory of the output location)
+-overwrite             : when writing output, overwrite any preexisting
+                         dataset (def: do not overwrite)
+-no_clean              : when done, do not remove temporary working
+                         directory (def: do remove woroking directory
+-echo                  : run very verbosely (with 'set echo' on)
+-ver                   : display program version
+-help                  : show help
+-hview                 : show help in text editor
+
+-------------------------------------------------------------------------
+
+Examples ~1~
+
+1) Basic usage:
+     adjunct_deob_around_origin                       \
+         -input   sub-001_T1w.nii.gz                  \
+         -prefix  sub-001_T1w_DEOB.nii.gz
+
+2) Different origin-preservation choice:
+     adjunct_deob_around_origin                       \
+         -oblique_recenter_raw                        \
+         -input   sub-001_T1w.nii.gz                  \
+         -prefix  sub-001_T1w_DEOB.nii.gz
+
+
+=== Output of 'adjunct_deob_around_origin' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+Overview ~1~
+
+This is a simple program to wrap around the 3drefit functionality to 
+remove obliquity from a dataset whilst preserving its origin.
+
+In many cases, this is very useful to run on oblique anatomicals
+before processing.
+
+ver  = 1.0
+auth = PA Taylor, RC Reynolds (SSCC, NIMH, NIH)
+-------------------------------------------------------------------------
+
+Options ~1~
+
+-input                 : (req) input volumetric dataset name
+-prefix                : (req) output dataset name
+-oblique_origin        : style of preserving origin, via 3drefit (def)
+-oblique_recenter      : style of preserving origin, via 3drefit (def)
+-oblique_recenter_raw  : style of preserving origin, via 3drefit (def)
+-workdir               : working directory name (just name, no path;
+                         will be subdirectory of the output location)
+-overwrite             : when writing output, overwrite any preexisting
+                         dataset (def: do not overwrite)
+-no_clean              : when done, do not remove temporary working
+                         directory (def: do remove woroking directory
+-echo                  : run very verbosely (with 'set echo' on)
+-ver                   : display program version
+-help                  : show help
+-hview                 : show help in text editor
+
+-------------------------------------------------------------------------
+
+Examples ~1~
+
+1) Basic usage:
+     adjunct_deob_around_origin                       \
+         -input   sub-001_T1w.nii.gz                  \
+         -prefix  sub-001_T1w_DEOB.nii.gz
+
+2) Different origin-preservation choice:
+     adjunct_deob_around_origin                       \
+         -oblique_recenter_raw                        \
+         -input   sub-001_T1w.nii.gz                  \
+         -prefix  sub-001_T1w_DEOB.nii.gz
+

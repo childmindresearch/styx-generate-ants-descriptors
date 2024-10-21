@@ -1,0 +1,14 @@
+
+=== Output of '@2dwarper --help' ===
+
+*** Can't open dataset --help+orig
+0
+Dataset --help+orig missing DATASET_DIMENSIONS attribute - exiting
+
+=== Output of '@2dwarper -help' ===
+
+usage: @2dwarper DATASET
+
+=== Output of '@2dwarper' (no arguments) ===
+
+usage: @2dwarper DATASET

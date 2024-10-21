@@ -1,0 +1,12 @@
+
+=== Output of 'talairach_mgh --help' ===
+
+/usr/local/freesurfer/bin/mri_em_register.old: Command not found.
+
+=== Output of 'talairach_mgh -help' ===
+
+/usr/local/freesurfer/bin/mri_em_register.old: Command not found.
+
+=== Output of 'talairach_mgh' (no arguments) ===
+
+/usr/local/freesurfer/bin/mri_em_register.old: Command not found.

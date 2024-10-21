@@ -1,0 +1,18 @@
+
+=== Output of 'mri_copy_params --help' ===
+
+Usage: mri_copy_params <in_vol> <template_vol> <out_vol>
+     : where all volume parameters of in_vol are replaced with those of template_vol.
+use --size to force copying of voxel sizes when resolutions var
+
+=== Output of 'mri_copy_params -help' ===
+
+Usage: mri_copy_params <in_vol> <template_vol> <out_vol>
+     : where all volume parameters of in_vol are replaced with those of template_vol.
+use --size to force copying of voxel sizes when resolutions var
+
+=== Output of 'mri_copy_params' (no arguments) ===
+
+Usage: mri_copy_params <in_vol> <template_vol> <out_vol>
+     : where all volume parameters of in_vol are replaced with those of template_vol.
+use --size to force copying of voxel sizes when resolutions var

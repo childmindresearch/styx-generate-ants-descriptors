@@ -1,2 +1,0 @@
-Usage: compareTwoTransforms
-<First Transform> , <Second Transform>

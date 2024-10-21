@@ -1,0 +1,25 @@
+
+=== Output of 'run_mris_preproc --help' ===
+
+Usage:
+
+  run_mris_preproc <qdec.table.dat> [target average]
+
+where:
+  <qdec.table.dat>   is the text file of subject data used by qdec
+  [target averag]    optional: specify a target average, where the
+                     default is fsaverage
+
+This utility will create the pre-smoothed surface data on a target
+average subject needed by the Qdec application.  If the current
+machine is not the cluster machine 'seychelles', then just the
+commands that need to be executed will be printed.
+
+
+=== Output of 'run_mris_preproc -help' ===
+
+File -help does not exist.
+
+=== Output of 'run_mris_preproc' (no arguments) ===
+
+Must specify a qdec.table.dat file as the input argument.

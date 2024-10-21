@@ -1,0 +1,12 @@
+
+=== Output of 'fsfget --help' ===
+
+env: 'tclsh': No such file or directory
+
+=== Output of 'fsfget -help' ===
+
+env: 'tclsh': No such file or directory
+
+=== Output of 'fsfget' (no arguments) ===
+
+env: 'tclsh': No such file or directory

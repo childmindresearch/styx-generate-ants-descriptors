@@ -1,0 +1,38 @@
+
+=== Output of 'first_boundary_corr --help' ===
+
+getopt: unrecognized option '--help'
+
+Usage:   first_boundary_corr -s <segmented_image> -i <intensity_image> -o <output_image> -b <boundary_correction_method> [options]
+
+boundary_correction_method can be: fast, thresh, none
+-t <threshold> : threshold value for 'thresh' method
+-v             : verbose output
+
+e.g.:  first_boundary_corr -s image_first_L_Hipp -i orig_t1 -o image_first_L_Hipp_corr -b fast
+
+=== Output of 'first_boundary_corr -help' ===
+
+getopt: invalid option -- 'h'
+getopt: invalid option -- 'e'
+getopt: invalid option -- 'l'
+getopt: invalid option -- 'p'
+
+Usage:   first_boundary_corr -s <segmented_image> -i <intensity_image> -o <output_image> -b <boundary_correction_method> [options]
+
+boundary_correction_method can be: fast, thresh, none
+-t <threshold> : threshold value for 'thresh' method
+-v             : verbose output
+
+e.g.:  first_boundary_corr -s image_first_L_Hipp -i orig_t1 -o image_first_L_Hipp_corr -b fast
+
+=== Output of 'first_boundary_corr' (no arguments) ===
+
+
+Usage:   first_boundary_corr -s <segmented_image> -i <intensity_image> -o <output_image> -b <boundary_correction_method> [options]
+
+boundary_correction_method can be: fast, thresh, none
+-t <threshold> : threshold value for 'thresh' method
+-v             : verbose output
+
+e.g.:  first_boundary_corr -s image_first_L_Hipp -i orig_t1 -o image_first_L_Hipp_corr -b fast

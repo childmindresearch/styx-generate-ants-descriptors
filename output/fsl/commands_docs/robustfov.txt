@@ -1,0 +1,84 @@
+
+=== Output of 'robustfov --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+robustfov 
+Copyright(c) 2012, University of Oxford (Mark Jenkinson)
+
+Reduce FOV of image to remove lower head and neck.
+
+Usage: 
+robustfov [options] -i <image> -r <outputimage>
+robustfov [options] -i <image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i	input filename
+
+Optional arguments (You may optionally specify one or more of):
+	-b	size of brain in z-dimension (default 170mm)
+	-m	matrix output name (roi to full fov)
+	-r	ROI volume output name
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'robustfov -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+robustfov 
+Copyright(c) 2012, University of Oxford (Mark Jenkinson)
+
+Reduce FOV of image to remove lower head and neck.
+
+Usage: 
+robustfov [options] -i <image> -r <outputimage>
+robustfov [options] -i <image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i	input filename
+
+Optional arguments (You may optionally specify one or more of):
+	-b	size of brain in z-dimension (default 170mm)
+	-m	matrix output name (roi to full fov)
+	-r	ROI volume output name
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'robustfov' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i	input filename
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+robustfov 
+Copyright(c) 2012, University of Oxford (Mark Jenkinson)
+
+Reduce FOV of image to remove lower head and neck.
+
+Usage: 
+robustfov [options] -i <image> -r <outputimage>
+robustfov [options] -i <image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i	input filename
+
+Optional arguments (You may optionally specify one or more of):
+	-b	size of brain in z-dimension (default 170mm)
+	-m	matrix output name (roi to full fov)
+	-r	ROI volume output name
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

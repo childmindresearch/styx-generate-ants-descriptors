@@ -1,0 +1,12 @@
+
+=== Output of 'first3Dview --help' ===
+
+first3Dview <mask image> <corrp image>
+
+=== Output of 'first3Dview -help' ===
+
+first3Dview <mask image> <corrp image>
+
+=== Output of 'first3Dview' (no arguments) ===
+
+first3Dview <mask image> <corrp image>

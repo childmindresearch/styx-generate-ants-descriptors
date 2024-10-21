@@ -1,0 +1,12 @@
+
+=== Output of 'mri_make_template --help' ===
+
+error: mri_make_template has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_make_template -help' ===
+
+error: mri_make_template has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_make_template' (no arguments) ===
+
+error: mri_make_template has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

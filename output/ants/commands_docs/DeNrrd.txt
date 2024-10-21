@@ -1,0 +1,12 @@
+
+=== Output of 'DeNrrd --help' ===
+
+Usage: DeNrrd inImage.nrrd outImage.nii gradients.txt
+
+=== Output of 'DeNrrd -help' ===
+
+Usage: DeNrrd inImage.nrrd outImage.nii gradients.txt
+
+=== Output of 'DeNrrd' (no arguments) ===
+
+Usage: DeNrrd inImage.nrrd outImage.nii gradients.txt

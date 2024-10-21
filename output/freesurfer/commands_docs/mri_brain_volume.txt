@@ -1,0 +1,19 @@
+
+=== Output of 'mri_brain_volume --help' ===
+
+
+Mode:          unknown option --help
+
+=== Output of 'mri_brain_volume -help' ===
+
+
+Mode:          unknown option -help
+
+=== Output of 'mri_brain_volume' (no arguments) ===
+
+
+
+Usage: /usr/local/freesurfer/bin/mri_brain_volume [options] input_file [output_file]
+optional command -forceParam val: change pushout force (default 1.0)
+optional command --version : to show the current version
+

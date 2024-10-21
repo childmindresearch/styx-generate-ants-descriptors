@@ -1,0 +1,108 @@
+
+=== Output of 'make-segvol-table --help' ===
+
+
+USAGE: make-segvol-table
+
+Required Arguments:
+   -s  subj1 <-s subj2 ...>
+   -sf subjfile : file with list of subjects>
+   -o  outfile
+
+Optional Arguments:
+   -idmap fname : file with structure name and id number.
+        Default is FREESURFER_HOME/tkmeditColorsCMA
+   -id name1 <-id name2> : default is all
+   -segdir subdirname : default is aseg
+   -sd subjectsdir : default is SUBJECTS_DIR
+
+Other Arguments (Optional)
+   -umask umask   : set unix file permission mask
+   -version       : print version and exit
+
+   -help
+
+
+make-segvol-table 7.4.1
+
+
+Creates a table of volumes of subcortical structures for the given
+list of subjects. Each row is a different structure, and each column
+is a different subject. The first column gives the structure name, and
+the first row gives the subject id. The list of subjects can be listed
+directly on the command-line (with -s) or specified inside of a text
+file (with -sf). The output table is a text file specified with -o.
+
+By default, make-segvol-table gets the volume of each structure listed
+in the FREESURFER_HOME/tkmeditColorsCMA from the mri/aseg volume in
+each subject. The structure list file can be changed with -idmap. The
+segmentation subdirectory can be changed from aseg with -segdir. A
+subset of the structures can be obtained by explicitly listing each
+structure name on the command-line with -id (the name must be present
+in the idmap).
+
+=== Output of 'make-segvol-table -help' ===
+
+
+USAGE: make-segvol-table
+
+Required Arguments:
+   -s  subj1 <-s subj2 ...>
+   -sf subjfile : file with list of subjects>
+   -o  outfile
+
+Optional Arguments:
+   -idmap fname : file with structure name and id number.
+        Default is FREESURFER_HOME/tkmeditColorsCMA
+   -id name1 <-id name2> : default is all
+   -segdir subdirname : default is aseg
+   -sd subjectsdir : default is SUBJECTS_DIR
+
+Other Arguments (Optional)
+   -umask umask   : set unix file permission mask
+   -version       : print version and exit
+
+   -help
+
+
+make-segvol-table 7.4.1
+
+
+Creates a table of volumes of subcortical structures for the given
+list of subjects. Each row is a different structure, and each column
+is a different subject. The first column gives the structure name, and
+the first row gives the subject id. The list of subjects can be listed
+directly on the command-line (with -s) or specified inside of a text
+file (with -sf). The output table is a text file specified with -o.
+
+By default, make-segvol-table gets the volume of each structure listed
+in the FREESURFER_HOME/tkmeditColorsCMA from the mri/aseg volume in
+each subject. The structure list file can be changed with -idmap. The
+segmentation subdirectory can be changed from aseg with -segdir. A
+subset of the structures can be obtained by explicitly listing each
+structure name on the command-line with -id (the name must be present
+in the idmap).
+
+=== Output of 'make-segvol-table' (no arguments) ===
+
+
+USAGE: make-segvol-table
+
+Required Arguments:
+   -s  subj1 <-s subj2 ...>
+   -sf subjfile : file with list of subjects>
+   -o  outfile
+
+Optional Arguments:
+   -idmap fname : file with structure name and id number.
+        Default is FREESURFER_HOME/tkmeditColorsCMA
+   -id name1 <-id name2> : default is all
+   -segdir subdirname : default is aseg
+   -sd subjectsdir : default is SUBJECTS_DIR
+
+Other Arguments (Optional)
+   -umask umask   : set unix file permission mask
+   -version       : print version and exit
+
+   -help
+

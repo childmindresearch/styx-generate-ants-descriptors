@@ -1,0 +1,12 @@
+
+=== Output of 'mris_thickness_comparison --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_thickness_comparison [options] <subject> <hemi> <thickness file> <w file> <label1> <label2>...
+
+=== Output of 'mris_thickness_comparison -help' ===
+
+unknown option -help
+
+=== Output of 'mris_thickness_comparison' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_thickness_comparison [options] <subject> <hemi> <thickness file> <w file> <label1> <label2>...

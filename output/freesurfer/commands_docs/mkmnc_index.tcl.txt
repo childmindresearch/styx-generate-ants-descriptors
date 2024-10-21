@@ -1,0 +1,9 @@
+
+=== Output of 'mkmnc_index.tcl --help' ===
+
+
+=== Output of 'mkmnc_index.tcl -help' ===
+
+
+=== Output of 'mkmnc_index.tcl' (no arguments) ===
+

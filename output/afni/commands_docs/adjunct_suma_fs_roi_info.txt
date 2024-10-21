@@ -1,0 +1,194 @@
+
+=== Output of 'adjunct_suma_fs_roi_info --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of 'adjunct_suma_fs_roi_info -help' ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+In brief, this script is for quickly making some ROI stats (counts)
+for the SUMA/ directory created by @SUMA_Make_Spec_FS after running
+FreeSurfer's recon-all.  
+
+This program should be used *after* running adjunct_suma_fs_mask_and_qc,
+which makes a useful mask from the aparc+aseg dataset, called
+fs_parc_wb_mask.nii.gz.
+
+written by PA Taylor.
+
+# --------------------------------------------------------------------
+
+USAGE ~1~
+
+This program has the following options:
+
+    -sid          SUBJ_ID    :(req) subject ID
+
+    -suma_dir     SUMA_DIR   :(req) SUMA/ directory output by AFNI's
+                              @SUMA_Make_Spec_FS
+
+    -help                    :(opt) show help
+
+    -hview                   :(opt) show help in text editor
+
+    -ver                     :(opt) show version
+
+OUTPUT ~1~
+
+This script makes four *.1D files in the specified SUMA/ directory.
+Column labels are present in each file.  Note there are 2 ways to
+think of brain volumes after running FS's recon-all: the
+brainmask.nii* file (= br_mask), or the number of voxels in the full
+set of the aseg/aparc dset for a given atlas (= "all" segment, from
+the *_REN_all.nii* dset). 
+
+    Nvox                    : number of voxels in the ROI, segment or 
+                              mask. This number is always an integer,
+                              >= 0.
+
+    FR_BR_MASK              : fraction of the number of voxels, segment
+                              or mask, relative to the "br_mask" dset
+                              (that is, to the brainmask.nii* volume).
+                              
+    FR_PARC_MASK            : fraction of the number of voxels, segment
+                              or mask, relative to the "parc_mask" dset
+                              (that is, to the fs_parc_wb_mask.nii.gz 
+                              volume that is created by the AFNI program
+                              adjunct_suma_fs_mask_and_qc).  If this file  
+                              does not exist, you will get a col of -1 
+                              values for the fraction;  but you *should* 
+                              just run adjunct_suma_fs_mask_and_qc.
+
+                              fs_parc_wb_mask.nii.gz is a filled in
+                              form of the aparc+aseg segmentation result.
+
+    FR_ALL_ROI              : fraction of the number of voxels, segment
+                              or mask, relative to the full set of ROIs 
+                              in the given parcellation (that is, to the 
+                              *REN_all.nii* volume).
+
+Note that the ROI string labels are provided for each ROI, but behind
+a comment symbol in each line (so you can use them as regular *.1D
+files, with 1dcat, 1dtranspose, etc.).
+
+  stats_fs_rois_2000_FT.1D  : info for the "2000" parcellation 
+                              (from the file: aparc+aseg_REN_all.nii*)
+
+  stats_fs_rois_2009_FT.1D  : info for the "2009" parcellation 
+                              (from the file: aparc+aseg_REN_all.nii*)
+
+  stats_fs_segs_2000_FT.1D  : info for the "2000" parc brain mask
+                              and tissue/segmentations (from the
+                              brainmask.nii* and aparc+aseg_REN_* files)
+
+  stats_fs_segs_2009_FT.1D  : info for the "2009" parc brain mask
+                              and tissue/segmentations (from the
+                              brainmask.nii* and aparc.a2009s+aseg_REN_* 
+                              files)
+
+EXAMPLE ~1~
+
+  adjunct_suma_fs_roi_info                \
+      -sid       sub-001                  \
+      -suma_dir  group/sub-001/SUMA
+
+
+=== Output of 'adjunct_suma_fs_roi_info' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+In brief, this script is for quickly making some ROI stats (counts)
+for the SUMA/ directory created by @SUMA_Make_Spec_FS after running
+FreeSurfer's recon-all.  
+
+This program should be used *after* running adjunct_suma_fs_mask_and_qc,
+which makes a useful mask from the aparc+aseg dataset, called
+fs_parc_wb_mask.nii.gz.
+
+written by PA Taylor.
+
+# --------------------------------------------------------------------
+
+USAGE ~1~
+
+This program has the following options:
+
+    -sid          SUBJ_ID    :(req) subject ID
+
+    -suma_dir     SUMA_DIR   :(req) SUMA/ directory output by AFNI's
+                              @SUMA_Make_Spec_FS
+
+    -help                    :(opt) show help
+
+    -hview                   :(opt) show help in text editor
+
+    -ver                     :(opt) show version
+
+OUTPUT ~1~
+
+This script makes four *.1D files in the specified SUMA/ directory.
+Column labels are present in each file.  Note there are 2 ways to
+think of brain volumes after running FS's recon-all: the
+brainmask.nii* file (= br_mask), or the number of voxels in the full
+set of the aseg/aparc dset for a given atlas (= "all" segment, from
+the *_REN_all.nii* dset). 
+
+    Nvox                    : number of voxels in the ROI, segment or 
+                              mask. This number is always an integer,
+                              >= 0.
+
+    FR_BR_MASK              : fraction of the number of voxels, segment
+                              or mask, relative to the "br_mask" dset
+                              (that is, to the brainmask.nii* volume).
+                              
+    FR_PARC_MASK            : fraction of the number of voxels, segment
+                              or mask, relative to the "parc_mask" dset
+                              (that is, to the fs_parc_wb_mask.nii.gz 
+                              volume that is created by the AFNI program
+                              adjunct_suma_fs_mask_and_qc).  If this file  
+                              does not exist, you will get a col of -1 
+                              values for the fraction;  but you *should* 
+                              just run adjunct_suma_fs_mask_and_qc.
+
+                              fs_parc_wb_mask.nii.gz is a filled in
+                              form of the aparc+aseg segmentation result.
+
+    FR_ALL_ROI              : fraction of the number of voxels, segment
+                              or mask, relative to the full set of ROIs 
+                              in the given parcellation (that is, to the 
+                              *REN_all.nii* volume).
+
+Note that the ROI string labels are provided for each ROI, but behind
+a comment symbol in each line (so you can use them as regular *.1D
+files, with 1dcat, 1dtranspose, etc.).
+
+  stats_fs_rois_2000_FT.1D  : info for the "2000" parcellation 
+                              (from the file: aparc+aseg_REN_all.nii*)
+
+  stats_fs_rois_2009_FT.1D  : info for the "2009" parcellation 
+                              (from the file: aparc+aseg_REN_all.nii*)
+
+  stats_fs_segs_2000_FT.1D  : info for the "2000" parc brain mask
+                              and tissue/segmentations (from the
+                              brainmask.nii* and aparc+aseg_REN_* files)
+
+  stats_fs_segs_2009_FT.1D  : info for the "2009" parc brain mask
+                              and tissue/segmentations (from the
+                              brainmask.nii* and aparc.a2009s+aseg_REN_* 
+                              files)
+
+EXAMPLE ~1~
+
+  adjunct_suma_fs_roi_info                \
+      -sid       sub-001                  \
+      -suma_dir  group/sub-001/SUMA
+

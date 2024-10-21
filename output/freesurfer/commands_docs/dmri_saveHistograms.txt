@@ -1,0 +1,18 @@
+
+=== Output of 'dmri_saveHistograms --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_saveHistograms -p parcellation -f numberOfBundles <list of vtk bundles> -o output.csv -bb
+
+=== Output of 'dmri_saveHistograms -help' ===
+
+Output histogram file histograms.csv
+terminate called after throwing an instance of 'itk::ImageFileReaderException'
+  what():  /usr/pubsw/packages/itk/4.13.2_centos8/include/ITK-4.13/itkImageFileReader.hxx:87:
+FileName must be specified
+timeout: the monitored command dumped core
+
+=== Output of 'dmri_saveHistograms' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_saveHistograms -p parcellation -f numberOfBundles <list of vtk bundles> -o output.csv -bb

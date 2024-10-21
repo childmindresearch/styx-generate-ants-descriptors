@@ -1,0 +1,76 @@
+
+=== Output of 'mri_sbbr --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_sbbr 
+
+   --mov volfile : template volume 
+   --surf surfacefile 
+   --init-reg regfile 
+   --t1, --t2
+   --opt optno : optimization type 1, 2, or 3, default is 1 (6 dof)
+   --din dinmm : dist in mm into surface 1.000000
+   --dout doutmm : dist in mm out of surface 2.000000
+   --slope bbrslope : default 0.500000
+   --ftol ftol : default 1.000000e-08
+   --linmintol linmintol : default 0.000000
+   --niters-max nmax : default 10
+   --search nper mul : brute force through param space
+   --search1d niters nper mul : 1d search through param space
+   --p parno par : set init parameter 
+   --inc n : face number increment (default 1)
+   --slice sliceno : defaults to 0
+   --threads nthreads 
+   --reg regfile : output registration 
+   --reg-inv invregfile : inverted output registration 
+   --out-surf surfname : output surface in slice coords
+
+   --debug     turn on debugging
+   --diag diagno turn on diagnositcs
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+WARNING: this program is not yet tested!
+This program is a special implementation of boundary-based registration
+that computes the registration for a single slice.
+
+=== Output of 'mri_sbbr -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_sbbr' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_sbbr 
+
+   --mov volfile : template volume 
+   --surf surfacefile 
+   --init-reg regfile 
+   --t1, --t2
+   --opt optno : optimization type 1, 2, or 3, default is 1 (6 dof)
+   --din dinmm : dist in mm into surface 1.000000
+   --dout doutmm : dist in mm out of surface 2.000000
+   --slope bbrslope : default 0.500000
+   --ftol ftol : default 1.000000e-08
+   --linmintol linmintol : default 0.000000
+   --niters-max nmax : default 10
+   --search nper mul : brute force through param space
+   --search1d niters nper mul : 1d search through param space
+   --p parno par : set init parameter 
+   --inc n : face number increment (default 1)
+   --slice sliceno : defaults to 0
+   --threads nthreads 
+   --reg regfile : output registration 
+   --reg-inv invregfile : inverted output registration 
+   --out-surf surfname : output surface in slice coords
+
+   --debug     turn on debugging
+   --diag diagno turn on diagnositcs
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

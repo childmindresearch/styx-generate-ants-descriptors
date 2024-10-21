@@ -1,0 +1,21 @@
+
+=== Output of 'imgreg_4dfp --help' ===
+
+freesurfer imgreg_4dfp.c
+Usage:	imgreg_4dfp target_imag target_mask source_imag source_mask t4file mode
+or:	imgreg_4dfp target_imag        none source_imag source_mask t4file mode
+or:	imgreg_4dfp target_imag        none source_imag        none t4file mode
+
+=== Output of 'imgreg_4dfp -help' ===
+
+freesurfer imgreg_4dfp.c
+Usage:	imgreg_4dfp target_imag target_mask source_imag source_mask t4file mode
+or:	imgreg_4dfp target_imag        none source_imag source_mask t4file mode
+or:	imgreg_4dfp target_imag        none source_imag        none t4file mode
+
+=== Output of 'imgreg_4dfp' (no arguments) ===
+
+freesurfer imgreg_4dfp.c
+Usage:	imgreg_4dfp target_imag target_mask source_imag source_mask t4file mode
+or:	imgreg_4dfp target_imag        none source_imag source_mask t4file mode
+or:	imgreg_4dfp target_imag        none source_imag        none t4file mode

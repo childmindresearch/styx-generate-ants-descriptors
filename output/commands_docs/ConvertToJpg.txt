@@ -1,1 +1,0 @@
-Usage:   ConvertToJpg infile.nii out.jpg 

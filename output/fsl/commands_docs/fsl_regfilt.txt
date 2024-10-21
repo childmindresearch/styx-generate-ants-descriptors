@@ -1,0 +1,122 @@
+
+=== Output of 'fsl_regfilt --help' ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        input file name (4D image)
+	-o,--out	output file name for the filtered data
+	-d,--design	file name of the matrix with time courses (e.g. GLM design or MELODIC mixing matrix)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_regfilt
+Author: Christian F. Beckmann 
+ Copyright(C) 2016-2013 University of Oxford
+ Data de-noising by regressing out part of a design matrix
+ using simple OLS regression on 4D images
+
+Usage: 
+fsl_regfilt -i <input> -d <design> -f <component numbers or filter threshold> -o <out> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (4D image)
+	-o,--out	output file name for the filtered data
+	-d,--design	file name of the matrix with time courses (e.g. GLM design or MELODIC mixing matrix)
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	mask image file name
+	-f,--filter	filter out part of the regression model, e.g. -f "1,2,3" 
+	-F,--freqfilt	filter out components based on high vs. low frequency content 
+	--freq_ic	switch off IC Z-stats filtering as part of frequency filtering
+	--freq_ic_smooth	smoothing width for IC Z-stats filtering as part of frequency filtering
+	--fthresh	frequency threshold ratio - default: 0.15
+	--fthresh2	frequency filter score threshold - default: 0.02
+	--vn	        perform variance-normalisation on data
+	-v	        switch on diagnostic messages
+	-a	        switch on aggressive filtering (full instead of partial regression)
+	-h,--help	display this help text
+	--out_data	output file name for pre-processed data (prior to denoising)
+	--out_mix	output file name for new mixing matrix
+	--out_vnscales	output file name for scaling factors from variance normalisation
+
+
+
+=== Output of 'fsl_regfilt -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_regfilt
+Author: Christian F. Beckmann 
+ Copyright(C) 2016-2013 University of Oxford
+ Data de-noising by regressing out part of a design matrix
+ using simple OLS regression on 4D images
+
+Usage: 
+fsl_regfilt -i <input> -d <design> -f <component numbers or filter threshold> -o <out> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (4D image)
+	-o,--out	output file name for the filtered data
+	-d,--design	file name of the matrix with time courses (e.g. GLM design or MELODIC mixing matrix)
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	mask image file name
+	-f,--filter	filter out part of the regression model, e.g. -f "1,2,3" 
+	-F,--freqfilt	filter out components based on high vs. low frequency content 
+	--freq_ic	switch off IC Z-stats filtering as part of frequency filtering
+	--freq_ic_smooth	smoothing width for IC Z-stats filtering as part of frequency filtering
+	--fthresh	frequency threshold ratio - default: 0.15
+	--fthresh2	frequency filter score threshold - default: 0.02
+	--vn	        perform variance-normalisation on data
+	-v	        switch on diagnostic messages
+	-a	        switch on aggressive filtering (full instead of partial regression)
+	-h,--help	display this help text
+	--out_data	output file name for pre-processed data (prior to denoising)
+	--out_mix	output file name for new mixing matrix
+	--out_vnscales	output file name for scaling factors from variance normalisation
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'fsl_regfilt' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        input file name (4D image)
+	-o,--out	output file name for the filtered data
+	-d,--design	file name of the matrix with time courses (e.g. GLM design or MELODIC mixing matrix)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_regfilt
+Author: Christian F. Beckmann 
+ Copyright(C) 2016-2013 University of Oxford
+ Data de-noising by regressing out part of a design matrix
+ using simple OLS regression on 4D images
+
+Usage: 
+fsl_regfilt -i <input> -d <design> -f <component numbers or filter threshold> -o <out> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (4D image)
+	-o,--out	output file name for the filtered data
+	-d,--design	file name of the matrix with time courses (e.g. GLM design or MELODIC mixing matrix)
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	mask image file name
+	-f,--filter	filter out part of the regression model, e.g. -f "1,2,3" 
+	-F,--freqfilt	filter out components based on high vs. low frequency content 
+	--freq_ic	switch off IC Z-stats filtering as part of frequency filtering
+	--freq_ic_smooth	smoothing width for IC Z-stats filtering as part of frequency filtering
+	--fthresh	frequency threshold ratio - default: 0.15
+	--fthresh2	frequency filter score threshold - default: 0.02
+	--vn	        perform variance-normalisation on data
+	-v	        switch on diagnostic messages
+	-a	        switch on aggressive filtering (full instead of partial regression)
+	-h,--help	display this help text
+	--out_data	output file name for pre-processed data (prior to denoising)
+	--out_mix	output file name for new mixing matrix
+	--out_vnscales	output file name for scaling factors from variance normalisation
+
+

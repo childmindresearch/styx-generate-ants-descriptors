@@ -1,0 +1,104 @@
+
+=== Output of 'mris_ca_train --help' ===
+
+mris_ca_train [options] <hemi> <canonsurf> <annot file> <subject 1> <subject 2> ... <output file>
+
+Creates a cortical parcellation atlas file based on one or 
+more annotated subjects. mris_ca_train builds probabilistic 
+information estimated from a manually labeled training set 
+(of annotated subjects). The manual labeling can be carried out 
+directly on surface models using drawing tools in tksurfer, or 
+volumetrically, then sampled onto the surfaces using 
+mris_sample_parc. This information is then used by mris_ca_label
+to automatically assign a neuroanatomical label to each location 
+on a cortical surface model. This procedure incorporates both 
+geometric information derived from the cortical model (sulcus 
+and curvature), and neuroanatomical convention, as found in the 
+training set. The result of mris_ca_train and mris_ca_label is 
+a complete labeling of cortical sulci and gyri.
+Multimodal possible with -n: 1=Mean Curv, 2=Sulc, 3=Thickness.
+
+Required args:
+  <hemi>               hemisphere: rh or lh
+  <canon surf>         canonical surface filename
+  <annot file>         annotation filename
+  <subject 1> <subject 2> ...  the subject id(s)
+  <outputfile>         classifier array output file
+Optional args:-------------
+  -sdir <directory>    use <directory> as subjects directory (default: $SUBJECTS_DIR)
+  -nbrs <number>       neighborhood size (default=2)
+  -orig <filename>     specify filename of original surface   (default=smoothwm)
+  -norm1               GCSA normalize input #1 after reading   (default: disabled)
+  -norm2               GCSA normalize input #2 after reading   (default: disabled)
+  -norm3               GCSA normalize input #3 after reading   (default: disabled)
+  -ic <number_priors> <number_classifiers>   parameters passed to the classifier routine (default: -ic 7 4)
+  -sulc                 specify sulc as only input    (default: sulcus and curvature)
+  -sulconly             same as -sulc
+  -a <number>           number of nearest neighbor smoothing iterations to apply to input 1 (default=5)
+  -t <filename>         specify parcellation table input file  (default: none)
+  -n <number>           number of inputs (default=1,max=3)
+  -v <number>            diagnostic level (default=0)
+  -debug-vertex <number> diagnostic level (default=0)
+  -gcs-means gcsa inputno means.mgz : stand-alone to extract
+      likelihood means for all classes for given input
+  -gcs-priors gcsa priors.mgz : stand-alone to extract
+      priors for all classes for given input
+  -gcs-diff gcsa1 gcsa2 : determines whether GCSAs are different
+  -nfill nfill : set the max number of iterations for filling empty vertices
+  -no-fill : do not fill at all
+  --help                print help info
+  --version             print version info
+
+=== Output of 'mris_ca_train -help' ===
+
+mris_ca_train [options] <hemi> <canonsurf> <annot file> <subject 1> <subject 2> ... <output file>
+
+Creates a cortical parcellation atlas file based on one or 
+more annotated subjects. mris_ca_train builds probabilistic 
+information estimated from a manually labeled training set 
+(of annotated subjects). The manual labeling can be carried out 
+directly on surface models using drawing tools in tksurfer, or 
+volumetrically, then sampled onto the surfaces using 
+mris_sample_parc. This information is then used by mris_ca_label
+to automatically assign a neuroanatomical label to each location 
+on a cortical surface model. This procedure incorporates both 
+geometric information derived from the cortical model (sulcus 
+and curvature), and neuroanatomical convention, as found in the 
+training set. The result of mris_ca_train and mris_ca_label is 
+a complete labeling of cortical sulci and gyri.
+Multimodal possible with -n: 1=Mean Curv, 2=Sulc, 3=Thickness.
+
+Required args:
+  <hemi>               hemisphere: rh or lh
+  <canon surf>         canonical surface filename
+  <annot file>         annotation filename
+  <subject 1> <subject 2> ...  the subject id(s)
+  <outputfile>         classifier array output file
+Optional args:-------------
+  -sdir <directory>    use <directory> as subjects directory (default: $SUBJECTS_DIR)
+  -nbrs <number>       neighborhood size (default=2)
+  -orig <filename>     specify filename of original surface   (default=smoothwm)
+  -norm1               GCSA normalize input #1 after reading   (default: disabled)
+  -norm2               GCSA normalize input #2 after reading   (default: disabled)
+  -norm3               GCSA normalize input #3 after reading   (default: disabled)
+  -ic <number_priors> <number_classifiers>   parameters passed to the classifier routine (default: -ic 7 4)
+  -sulc                 specify sulc as only input    (default: sulcus and curvature)
+  -sulconly             same as -sulc
+  -a <number>           number of nearest neighbor smoothing iterations to apply to input 1 (default=5)
+  -t <filename>         specify parcellation table input file  (default: none)
+  -n <number>           number of inputs (default=1,max=3)
+  -v <number>            diagnostic level (default=0)
+  -debug-vertex <number> diagnostic level (default=0)
+  -gcs-means gcsa inputno means.mgz : stand-alone to extract
+      likelihood means for all classes for given input
+  -gcs-priors gcsa priors.mgz : stand-alone to extract
+      priors for all classes for given input
+  -gcs-diff gcsa1 gcsa2 : determines whether GCSAs are different
+  -nfill nfill : set the max number of iterations for filling empty vertices
+  -no-fill : do not fill at all
+  --help                print help info
+  --version             print version info
+
+=== Output of 'mris_ca_train' (no arguments) ===
+
+mris_ca_train [options] <hemi> <canonsurf> <annot file> <subject 1> <subject 2> ... <output file>

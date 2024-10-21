@@ -1,0 +1,57 @@
+
+=== Output of 'aparcstatsdiff --help' ===
+
+USAGE: aparcstatsdiff <subj1> <subj2> <hemi> <parc> <meas> [<outdir>]
+
+The utility aparcstats2table is executed given the two subjects
+as input, along with hemisphere (rh or lh), parcellation scheme
+(aparc or aparc.a2009s) and measure (area, volume, or thickness), 
+and an output table called aparcstats-hemi.parc.meas.txt 
+is produced.
+Then, another row is added to that table containing the percent
+difference between the data of each of the two subjects.
+Mainly this is used to evaluate the effect of a code change on
+the aparc morphometry data for a given subject (before and after).
+The return code is the number of structures found to have nonzero
+percentage differences.
+
+[<outdir>] - optionally specify a directory to write aparcstats-hemi.parc.meas.txt
+
+
+=== Output of 'aparcstatsdiff -help' ===
+
+USAGE: aparcstatsdiff <subj1> <subj2> <hemi> <parc> <meas> [<outdir>]
+
+The utility aparcstats2table is executed given the two subjects
+as input, along with hemisphere (rh or lh), parcellation scheme
+(aparc or aparc.a2009s) and measure (area, volume, or thickness), 
+and an output table called aparcstats-hemi.parc.meas.txt 
+is produced.
+Then, another row is added to that table containing the percent
+difference between the data of each of the two subjects.
+Mainly this is used to evaluate the effect of a code change on
+the aparc morphometry data for a given subject (before and after).
+The return code is the number of structures found to have nonzero
+percentage differences.
+
+[<outdir>] - optionally specify a directory to write aparcstats-hemi.parc.meas.txt
+
+
+=== Output of 'aparcstatsdiff' (no arguments) ===
+
+USAGE: aparcstatsdiff <subj1> <subj2> <hemi> <parc> <meas> [<outdir>]
+
+The utility aparcstats2table is executed given the two subjects
+as input, along with hemisphere (rh or lh), parcellation scheme
+(aparc or aparc.a2009s) and measure (area, volume, or thickness), 
+and an output table called aparcstats-hemi.parc.meas.txt 
+is produced.
+Then, another row is added to that table containing the percent
+difference between the data of each of the two subjects.
+Mainly this is used to evaluate the effect of a code change on
+the aparc morphometry data for a given subject (before and after).
+The return code is the number of structures found to have nonzero
+percentage differences.
+
+[<outdir>] - optionally specify a directory to write aparcstats-hemi.parc.meas.txt
+

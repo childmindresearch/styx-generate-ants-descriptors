@@ -1,0 +1,25 @@
+
+=== Output of 'imdump --help' ===
+
+
+** Error: Failed parsing data row 0 of 1D file '--help'
+          Check for illegal non-numeric characters in:
+          'v R'
+          You can have text entries set to 0 with -ok_1D_text or by 
+          setting environment variable AFNI_1D_ZERO_TEXT to YES.
+[7m** ERROR:[0m mri_read: do not recognize image file --help
+[7m** ERROR:[0m           -- FWIW: length seen as 1716 bytes
+
+=== Output of 'imdump -help' ===
+
+Usage: imdump input_image
+* Prints out nonzero pixels in an image;
+* Results to stdout; redirect (with >) to save to a file;
+* Format: x-index y-index value, one pixel per line.
+
+=== Output of 'imdump' (no arguments) ===
+
+Usage: imdump input_image
+* Prints out nonzero pixels in an image;
+* Results to stdout; redirect (with >) to save to a file;
+* Format: x-index y-index value, one pixel per line.

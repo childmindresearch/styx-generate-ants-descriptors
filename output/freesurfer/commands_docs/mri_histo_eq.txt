@@ -1,0 +1,12 @@
+
+=== Output of 'mri_histo_eq --help' ===
+
+unknown option --help
+
+=== Output of 'mri_histo_eq -help' ===
+
+unknown option -help
+
+=== Output of 'mri_histo_eq' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_histo_eq [options] <volume 1> <volume 2>	f <f low> <f hi> - apply specified filter (not implemented yet)

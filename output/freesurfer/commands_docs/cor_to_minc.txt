@@ -1,0 +1,12 @@
+
+=== Output of 'cor_to_minc --help' ===
+
+usage: cor_to_minc <cor directory> <minc file name>
+
+=== Output of 'cor_to_minc -help' ===
+
+usage: cor_to_minc <cor directory> <minc file name>
+
+=== Output of 'cor_to_minc' (no arguments) ===
+
+usage: cor_to_minc <cor directory> <minc file name>

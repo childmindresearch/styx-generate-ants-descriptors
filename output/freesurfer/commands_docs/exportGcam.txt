@@ -1,0 +1,83 @@
+
+=== Output of 'exportGcam --help' ===
+
+				Help
+
+NAME
+	exportGcam
+
+REQUIRED FLAGGED ARGUMENTS
+	--fixed FILE
+		Fixed volume.
+
+	--moving FILE
+		Moving volume.
+
+	--morph FILE
+		Morph.
+
+	--out_gcam FILE
+		Output gcam.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--zlib_buffer INT
+		Zlib buffer pre-allocation multiplier.
+
+	--bbox_threshold INT
+		Threshold for bounding box. If absent, no bbox will be used.
+
+	--interp [linear, nearest]
+		Interpolation method. Default is linear.
+
+	--test
+		Write out test files to verify the equivalence of tm3d and 
+		gcam morphs.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'exportGcam -help' ===
+
+error: unexpected argument '-help'
+
+=== Output of 'exportGcam' (no arguments) ===
+
+				Help
+
+NAME
+	exportGcam
+
+REQUIRED FLAGGED ARGUMENTS
+	--fixed FILE
+		Fixed volume.
+
+	--moving FILE
+		Moving volume.
+
+	--morph FILE
+		Morph.
+
+	--out_gcam FILE
+		Output gcam.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--zlib_buffer INT
+		Zlib buffer pre-allocation multiplier.
+
+	--bbox_threshold INT
+		Threshold for bounding box. If absent, no bbox will be used.
+
+	--interp [linear, nearest]
+		Interpolation method. Default is linear.
+
+	--test
+		Write out test files to verify the equivalence of tm3d and 
+		gcam morphs.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+error: missing required input '--fixed'

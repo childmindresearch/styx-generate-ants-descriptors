@@ -1,0 +1,30 @@
+
+=== Output of 'applyxfm4D --help' ===
+
+Usage: /usr/local/fsl/bin/applyxfm4D <input volume> <ref volume> <output volume> <transformation matrix file/dir>
+
+	--interp, -interp <nearestneighbour (or nn), trilinear, spline, sinc (default)>
+	--singlematrix, -singlematrix (flag option, do not provide an argument)
+	--fourdigit, -fourdigit (flag option, do not provide an argument)
+	--userprefix, -userprefix <prefix>
+
+
+=== Output of 'applyxfm4D -help' ===
+
+Usage: /usr/local/fsl/bin/applyxfm4D <input volume> <ref volume> <output volume> <transformation matrix file/dir>
+
+	--interp, -interp <nearestneighbour (or nn), trilinear, spline, sinc (default)>
+	--singlematrix, -singlematrix (flag option, do not provide an argument)
+	--fourdigit, -fourdigit (flag option, do not provide an argument)
+	--userprefix, -userprefix <prefix>
+
+
+=== Output of 'applyxfm4D' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/applyxfm4D <input volume> <ref volume> <output volume> <transformation matrix file/dir>
+
+	--interp, -interp <nearestneighbour (or nn), trilinear, spline, sinc (default)>
+	--singlematrix, -singlematrix (flag option, do not provide an argument)
+	--fourdigit, -fourdigit (flag option, do not provide an argument)
+	--userprefix, -userprefix <prefix>
+

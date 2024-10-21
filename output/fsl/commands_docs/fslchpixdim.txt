@@ -1,0 +1,15 @@
+
+=== Output of 'fslchpixdim --help' ===
+
+Usage: /usr/local/fsl/bin/fslchpixdim <hdrfile> <xdim> <ydim> <zdim> [tdim]      (in mm, or seconds for tdim)
+WARNING: This will set default s/q-form values for NIFTI files
+
+=== Output of 'fslchpixdim -help' ===
+
+Usage: /usr/local/fsl/bin/fslchpixdim <hdrfile> <xdim> <ydim> <zdim> [tdim]      (in mm, or seconds for tdim)
+WARNING: This will set default s/q-form values for NIFTI files
+
+=== Output of 'fslchpixdim' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/fslchpixdim <hdrfile> <xdim> <ydim> <zdim> [tdim]      (in mm, or seconds for tdim)
+WARNING: This will set default s/q-form values for NIFTI files

@@ -1,0 +1,15 @@
+
+=== Output of 'segment_subject_talmgh --help' ===
+
+/usr/local/freesurfer/subjects/--help/scripts ~ 
+/usr/local/freesurfer/bin/mri_em_register.old: Command not found.
+
+=== Output of 'segment_subject_talmgh -help' ===
+
+/usr/local/freesurfer/subjects/-help/scripts ~ 
+/usr/local/freesurfer/bin/mri_em_register.old: Command not found.
+
+=== Output of 'segment_subject_talmgh' (no arguments) ===
+
+/usr/local/freesurfer/subjects/scripts ~ 
+/usr/local/freesurfer/bin/mri_em_register.old: Command not found.

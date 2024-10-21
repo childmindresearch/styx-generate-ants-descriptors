@@ -1,0 +1,76 @@
+
+=== Output of 'parc_atlas_jackknife_test --help' ===
+
+parc_atlas_jackknife_test [options]
+
+options:
+  -register         run mris_register: creates .sphere.reg files
+  -reg_dist <arg>   run mris_register with '-dist <arg>' flag
+  -reg_append <string>  append <string> to end of ?h.sphere.reg
+  -reg_copy <string> cp ?h.sphere.reg<string> ?h.sphere.reg
+  -train            run mris_ca_train: creates .gcs files
+  -classify         run mris_ca_label: creates .annot files
+  -test             run mris_compute_parc_overlap
+  -all              -train, -classify, -test
+  -sd <subjects dir>          override default subjects dir
+  -fshome <FREESURFER_HOME>   source a new FREESURFER_HOME 
+  -binhome <path to binaries> specify override path to binaries
+  -dontrun          dont execute the commands
+
+example1:
+  Assuming the subjects to test are listed in the SUBJECTS var
+  declared in the scripts/subjects.csh file, and that
+  each of these subjects has a surf/?h.sphere.reg and a manually
+  edited file named surf/?h.aparc_edited.annot, and there exists
+  a color LUT named scripts/colortable_final.txt, then the
+  following command will perform a jackknife accuracy test: 
+
+  parc_atlas_jackknife_test -all
+
+  The test is conducted as follows: Given a set of N manually 
+  labeled subjects, N atlases trained on N-1 number of subjects 
+  are created, and the one excluded subject is used to test the
+  accuracy of this atlas, based on the Dice coefficient(s).
+  The overall classifier accuracy is the mean of all the results.
+  The results are written to the directory named 'jackknife'.
+
+
+=== Output of 'parc_atlas_jackknife_test -help' ===
+
+parc_atlas_jackknife_test [options]
+
+options:
+  -register         run mris_register: creates .sphere.reg files
+  -reg_dist <arg>   run mris_register with '-dist <arg>' flag
+  -reg_append <string>  append <string> to end of ?h.sphere.reg
+  -reg_copy <string> cp ?h.sphere.reg<string> ?h.sphere.reg
+  -train            run mris_ca_train: creates .gcs files
+  -classify         run mris_ca_label: creates .annot files
+  -test             run mris_compute_parc_overlap
+  -all              -train, -classify, -test
+  -sd <subjects dir>          override default subjects dir
+  -fshome <FREESURFER_HOME>   source a new FREESURFER_HOME 
+  -binhome <path to binaries> specify override path to binaries
+  -dontrun          dont execute the commands
+
+example1:
+  Assuming the subjects to test are listed in the SUBJECTS var
+  declared in the scripts/subjects.csh file, and that
+  each of these subjects has a surf/?h.sphere.reg and a manually
+  edited file named surf/?h.aparc_edited.annot, and there exists
+  a color LUT named scripts/colortable_final.txt, then the
+  following command will perform a jackknife accuracy test: 
+
+  parc_atlas_jackknife_test -all
+
+  The test is conducted as follows: Given a set of N manually 
+  labeled subjects, N atlases trained on N-1 number of subjects 
+  are created, and the one excluded subject is used to test the
+  accuracy of this atlas, based on the Dice coefficient(s).
+  The overall classifier accuracy is the mean of all the results.
+  The results are written to the directory named 'jackknife'.
+
+
+=== Output of 'parc_atlas_jackknife_test' (no arguments) ===
+
+Nothing to do!  Use --help for options

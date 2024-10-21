@@ -1,0 +1,12 @@
+
+=== Output of 'label_child --help' ===
+
+GCA_TL: Undefined variable.
+
+=== Output of 'label_child -help' ===
+
+GCA_TL: Undefined variable.
+
+=== Output of 'label_child' (no arguments) ===
+
+GCA_TL: Undefined variable.

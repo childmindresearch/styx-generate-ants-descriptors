@@ -1,0 +1,91 @@
+
+=== Output of 'mris_remesh --help' ===
+
+				Help
+
+NAME
+	mris_remesh
+
+SYNOPSIS
+	mris_remesh [options] -i <insurf> -o <outsurf>
+
+DESCRIPTION
+	Remeshes a surface to a desired edge length, number of vertices, or 
+	average face area. One of the following mutually exclusive options 
+	must be specified on the commandline.
+
+REQUIRED FLAGGED ARGUMENTS
+	-i, --input insurf
+		input surface
+
+	-o, --output outsurf
+		output surface
+
+MUTUALLY EXCLUSIVE ARGUMENTS
+	--edge-len length
+		target average edge length in mm for remeshed surface
+
+	--nvert nvertices
+		target number of vertices for remeshed surface
+
+	--desired-face-area area
+		control the decimation by specifying the desired average face 
+		area in mm2
+
+	--remesh
+		improve the quality while only reducing vertices by a small 
+		amount
+
+OPTIONAL FLAGGED ARGUMENTS
+	--iters niters
+		number of remeshing iterations (default is 5)
+
+
+
+=== Output of 'mris_remesh -help' ===
+
+error: unexpected argument '-help'
+
+=== Output of 'mris_remesh' (no arguments) ===
+
+				Help
+
+NAME
+	mris_remesh
+
+SYNOPSIS
+	mris_remesh [options] -i <insurf> -o <outsurf>
+
+DESCRIPTION
+	Remeshes a surface to a desired edge length, number of vertices, or 
+	average face area. One of the following mutually exclusive options 
+	must be specified on the commandline.
+
+REQUIRED FLAGGED ARGUMENTS
+	-i, --input insurf
+		input surface
+
+	-o, --output outsurf
+		output surface
+
+MUTUALLY EXCLUSIVE ARGUMENTS
+	--edge-len length
+		target average edge length in mm for remeshed surface
+
+	--nvert nvertices
+		target number of vertices for remeshed surface
+
+	--desired-face-area area
+		control the decimation by specifying the desired average face 
+		area in mm2
+
+	--remesh
+		improve the quality while only reducing vertices by a small 
+		amount
+
+OPTIONAL FLAGGED ARGUMENTS
+	--iters niters
+		number of remeshing iterations (default is 5)
+
+
+error: missing required input '--input'

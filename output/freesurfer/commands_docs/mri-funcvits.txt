@@ -1,0 +1,32 @@
+
+=== Output of 'mri-funcvits --help' ===
+
+ERROR: Flag --help unrecognized.
+--help
+
+=== Output of 'mri-funcvits -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'mri-funcvits' (no arguments) ===
+
+
+USAGE: 
+
+ mri-funcvits 
+   -stem      template stem      --required--
+   -outdir    output directory   --required--
+   -reg       registration file  templatedir/register.dat
+   -paintsurf surface upon which to paint  white
+   -sphere    spherical surface  sphere
+   -icosize   icosahedron size   10242
+   -hemi      hemifield(s)       lh rh
+   -svitdir   svit directory     SubjectsDir/subject/svit
+   -icodir    ico directory      /usr/local/freesurfer/lib/bem
+   -umask     newumask
+   -mail      user
+   -noforce   dont create if already exists
+
+ mri-funcvits 7.4.1 
+

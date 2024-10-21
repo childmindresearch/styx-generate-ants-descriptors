@@ -1,0 +1,68 @@
+
+=== Output of 'reg-mni305.2mm --help' ===
+
+
+reg-mni305.2mm --s subject --reg regfile
+
+reg-mni305.2mm 7.4.1
+
+Computes the registration between the FreeSurfer MNI305 2mm space and
+a subject's FreeSurfer anatomical space. This is completely dependent
+on the talairach.xfm file and should only take a few seconds to run.
+
+regfile is a tkregister2-style registration matrix (should have a .dat
+or .reg extension).
+
+This registration can be used to view mni305 2mm results as produced
+by FS-FAST in a subject's native anatomical.
+
+The FreeSurfer MNI305 2mm space is that defined by:
+
+$FREESURFER_HOME/average/mni305.cor.subfov2.mgz
+
+To check, run
+
+tkregister2 --reg regfile --mov $FREESURFER_HOME/average/mni305.cor.subfov2.mgz
+
+This should be no better or worse than the FreeSurfer taliarach registration 
+as seen by
+
+tkregister2 --s subject --fstal
+
+
+=== Output of 'reg-mni305.2mm -help' ===
+
+
+reg-mni305.2mm --s subject --reg regfile
+
+reg-mni305.2mm 7.4.1
+
+Computes the registration between the FreeSurfer MNI305 2mm space and
+a subject's FreeSurfer anatomical space. This is completely dependent
+on the talairach.xfm file and should only take a few seconds to run.
+
+regfile is a tkregister2-style registration matrix (should have a .dat
+or .reg extension).
+
+This registration can be used to view mni305 2mm results as produced
+by FS-FAST in a subject's native anatomical.
+
+The FreeSurfer MNI305 2mm space is that defined by:
+
+$FREESURFER_HOME/average/mni305.cor.subfov2.mgz
+
+To check, run
+
+tkregister2 --reg regfile --mov $FREESURFER_HOME/average/mni305.cor.subfov2.mgz
+
+This should be no better or worse than the FreeSurfer taliarach registration 
+as seen by
+
+tkregister2 --s subject --fstal
+
+
+=== Output of 'reg-mni305.2mm' (no arguments) ===
+
+
+reg-mni305.2mm --s subject --reg regfile
+

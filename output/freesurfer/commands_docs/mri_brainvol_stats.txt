@@ -1,0 +1,13 @@
+
+=== Output of 'mri_brainvol_stats --help' ===
+
+error: unexpected argument '--help'
+
+=== Output of 'mri_brainvol_stats -help' ===
+
+error: unexpected argument '-help'
+
+=== Output of 'mri_brainvol_stats' (no arguments) ===
+
+No xml string passed.
+error: missing required input '--subject'

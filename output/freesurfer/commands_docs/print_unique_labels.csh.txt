@@ -1,0 +1,57 @@
+
+=== Output of 'print_unique_labels.csh --help' ===
+
+USAGE: print_unique_labels
+
+Required Arguments:
+   --vol labelvol   : label volume to be analyzed
+  and one of the below
+   --out outputfile : text file where the results are written
+   --list : only lists the labels
+
+Optional Arguments
+
+   --version        : print version and exit
+   --help           : print help and exit
+
+
+Prints the list of unique lables (with structure name) in the input volume.
+
+Required Arguments:
+
+--vol labelvol
+
+Label volume to be analyzed
+
+--out outputfile 
+
+Text file where the results are written
+
+or
+
+--list 
+
+Only list the labels (not their anatomical equivalents)
+
+BUGS:
+
+=== Output of 'print_unique_labels.csh -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'print_unique_labels.csh' (no arguments) ===
+
+USAGE: print_unique_labels
+
+Required Arguments:
+   --vol labelvol   : label volume to be analyzed
+  and one of the below
+   --out outputfile : text file where the results are written
+   --list : only lists the labels
+
+Optional Arguments
+
+   --version        : print version and exit
+   --help           : print help and exit
+

@@ -1,0 +1,41 @@
+
+=== Output of 'mri_path2label --help' ===
+
+  Purpose: Converts a path file to a label or a label file to a path
+  file. Attempts to guess the correct format by looking for
+  .path and .label suffixes and by looking at the first line in
+  the file. Use one of the options to override this behavior.
+  Will return an error if it cannot guess a format and none is
+  explicitly supplied.
+
+  Multiple paths will be encoded in a label file separated by a
+  line with all columns -99999. This is a sentinel dividing lists
+  of path points from each other. If the option --single is provided,
+  then sentinel values won't be used, and the label file will look
+  like a normal label file.
+
+ERROR: Couldn't open (null)
+ERROR: Couldn't determine source file type.
+
+=== Output of 'mri_path2label -help' ===
+
+ERROR: Couldn't open -help
+ERROR: Couldn't determine source file type.
+
+=== Output of 'mri_path2label' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_path2label [options] input output
+
+   --single : only convert a single path, and don't use sentinel values
+   --path2label : will treat input as a path and output a label
+   --label2path : will treat input as a label and output a path
+   --connect subject hemi : connect path (input and output must be paths)
+   --fill subject hemi seedvtx : fill already closed, connected path
+      input must be a path, output must be a label
+   --confillx surface_fname seedvtx : connect and fill path
+      input must be a path, output must be a label
+   --confill subject hemi seedvtx : connect and fill path
+      input must be a path, output must be a label
+   --i source_file : the path file, if path2label
+   --o dest_file   : the label file, if path2label
+

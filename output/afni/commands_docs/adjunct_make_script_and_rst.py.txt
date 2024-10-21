@@ -1,0 +1,148 @@
+
+=== Output of 'adjunct_make_script_and_rst.py --help' ===
+
+** ERROR: unknown opt: '--help'
+
+=== Output of 'adjunct_make_script_and_rst.py -help' ===
+
+
+
+PURPOSE ~1~ 
+
+Program to take a script with some special (~simple) markup and turn
+it into both an RST page and a script for the online Sphinx
+documentation.
+
+
+INPUTS ~1~ 
+
+-prefix_rst AA    :(req) output filename, including any path, of the
+                   RST/Sphinx file.  AA must include file extension 
+                   '.rst'.  E.g.:  tutorial/fun_3dcalc.rst
+
+-prefix_script BB :(req) output filename, *without* any path, of the
+                   script file.  BB probably should include file extension, 
+                   such as '.tcsh'.  E.g.:  fun_3dcalc.tcsh
+
+
+-reflink       CC :(req) a string tag that will be 1) subdirectory name
+                   holding images for the given demo, and 2) the RST 
+                   internal reference label, as '.. _CC:'.  First character
+                   of CC must be alphabetic.
+
+-execute_script   :(req/opt) flag to not just create the RST+script, but
+                   to execute the script as well.  IF the script
+                   generates images that will be copied to the
+                   media/CC/. directory, then this flag should be used
+                   at least the first time the script is run (so the
+                   files can be copied); it may not be necessary to
+                   execute on later runs.
+ 
+
+OUTPUTS ~1~ 
+
++ an RST file, which is basically a Sphinx-formatted page, that can be
+  placed in a separate directory
+
++ an output directory to put into the Sphinx tree, called
+  [rst-path]/media/CC, where [rst-path] is the location of the output
+  RST file and CC is the reflink name.
+
++ a script file, both locally (where the script is run, so that it can
+  be executed) and in [rst-path]/media/CC (which will be shown in the
+  RST pages).
+
++ images made by the script which are flagged to be show in the RST
+  pages will be copied to [rst-path]/media/CC/. 
+
+
+EXAMPLES ~1~
+
+   1) First time through, execute script to make images:
+   adjunct_make_script_and_rst.py                                          \
+       -input          ex_afni11_roi_cmds.tcsh                             \
+       -reflink        afni11_roi_cmds                                     \
+       -prefix_script  afni11_roi_cmds.tcsh                                \
+       -prefix_rst ~/afni_doc/tutorials/rois_corr_vis/afni11_roi_cmds.rst  \
+       -execute_script
+
+   2) Second time through, if "only" text changes/formatting:
+   adjunct_make_script_and_rst.py                                          \
+       -input          ex_afni11_roi_cmds.tcsh                             \
+       -reflink        afni11_roi_cmds                                     \
+       -prefix_script  afni11_roi_cmds.tcsh                                \
+       -prefix_rst ~/afni_doc/tutorials/rois_corr_vis/afni11_roi_cmds.rst 
+
+
+
+=== Output of 'adjunct_make_script_and_rst.py' (no arguments) ===
+
+
+
+PURPOSE ~1~ 
+
+Program to take a script with some special (~simple) markup and turn
+it into both an RST page and a script for the online Sphinx
+documentation.
+
+
+INPUTS ~1~ 
+
+-prefix_rst AA    :(req) output filename, including any path, of the
+                   RST/Sphinx file.  AA must include file extension 
+                   '.rst'.  E.g.:  tutorial/fun_3dcalc.rst
+
+-prefix_script BB :(req) output filename, *without* any path, of the
+                   script file.  BB probably should include file extension, 
+                   such as '.tcsh'.  E.g.:  fun_3dcalc.tcsh
+
+
+-reflink       CC :(req) a string tag that will be 1) subdirectory name
+                   holding images for the given demo, and 2) the RST 
+                   internal reference label, as '.. _CC:'.  First character
+                   of CC must be alphabetic.
+
+-execute_script   :(req/opt) flag to not just create the RST+script, but
+                   to execute the script as well.  IF the script
+                   generates images that will be copied to the
+                   media/CC/. directory, then this flag should be used
+                   at least the first time the script is run (so the
+                   files can be copied); it may not be necessary to
+                   execute on later runs.
+ 
+
+OUTPUTS ~1~ 
+
++ an RST file, which is basically a Sphinx-formatted page, that can be
+  placed in a separate directory
+
++ an output directory to put into the Sphinx tree, called
+  [rst-path]/media/CC, where [rst-path] is the location of the output
+  RST file and CC is the reflink name.
+
++ a script file, both locally (where the script is run, so that it can
+  be executed) and in [rst-path]/media/CC (which will be shown in the
+  RST pages).
+
++ images made by the script which are flagged to be show in the RST
+  pages will be copied to [rst-path]/media/CC/. 
+
+
+EXAMPLES ~1~
+
+   1) First time through, execute script to make images:
+   adjunct_make_script_and_rst.py                                          \
+       -input          ex_afni11_roi_cmds.tcsh                             \
+       -reflink        afni11_roi_cmds                                     \
+       -prefix_script  afni11_roi_cmds.tcsh                                \
+       -prefix_rst ~/afni_doc/tutorials/rois_corr_vis/afni11_roi_cmds.rst  \
+       -execute_script
+
+   2) Second time through, if "only" text changes/formatting:
+   adjunct_make_script_and_rst.py                                          \
+       -input          ex_afni11_roi_cmds.tcsh                             \
+       -reflink        afni11_roi_cmds                                     \
+       -prefix_script  afni11_roi_cmds.tcsh                                \
+       -prefix_rst ~/afni_doc/tutorials/rois_corr_vis/afni11_roi_cmds.rst 
+
+

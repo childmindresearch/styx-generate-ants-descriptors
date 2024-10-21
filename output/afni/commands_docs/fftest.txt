@@ -1,0 +1,12 @@
+
+=== Output of 'fftest --help' ===
+
+Usage: fftest [-q] len num nvec
+
+=== Output of 'fftest -help' ===
+
+Usage: fftest [-q] len num nvec
+
+=== Output of 'fftest' (no arguments) ===
+
+Usage: fftest [-q] len num nvec

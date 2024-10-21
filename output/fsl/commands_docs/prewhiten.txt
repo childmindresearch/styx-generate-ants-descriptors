@@ -1,0 +1,25 @@
+
+=== Output of 'prewhiten --help' ===
+
+Image Exception : #63 :: No image files match: --help/filtered_func_data
+Image Exception : #22 :: Failed to read volume --help/filtered_func_data
+Error : No image files match: --help/filtered_func_data
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume --help/filtered_func_data
+Error : No image files match: --help/filtered_func_data
+timeout: the monitored command dumped core
+
+=== Output of 'prewhiten -help' ===
+
+Image Exception : #63 :: No image files match: -help/filtered_func_data
+Image Exception : #22 :: Failed to read volume -help/filtered_func_data
+Error : No image files match: -help/filtered_func_data
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume -help/filtered_func_data
+Error : No image files match: -help/filtered_func_data
+timeout: the monitored command dumped core
+
+=== Output of 'prewhiten' (no arguments) ===
+
+Usage: prewhiten <feat_directory.feat> [options]
+[-o <output_directory>] change output directory from default of input feat directory

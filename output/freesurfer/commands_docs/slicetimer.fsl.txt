@@ -1,0 +1,93 @@
+
+=== Output of 'slicetimer.fsl --help' ===
+
+
+Part of FSL (build 419)
+slicetimer (Version 1.9)
+FMRIB's Interpolation for Slice Timing
+Copyright(c) 2001-2009, University of Oxford
+
+Usage: 
+slicetimer -i <timeseries> [-o <corrected_timeseries>] [options]
+
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of input timeseries
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	filename of output timeseries
+	-h,--help	display this message
+	-v,--verbose	switch on diagnostic messages
+	--down	reverse slice indexing (default is: slices were acquired bottom-up)
+	-r,--repeat	Specify TR of data - default is 3s
+	-d,--direction	direction of slice acquisition (x=1,y=2,z=3) - default is z
+	--odd	use interleaved acquisition
+	--tcustom	filename of single-column slice timings, in fractions of TR, +ve values shift slices forwards in time.
+	--tglobal	global shift in fraction of TR, (default is 0)
+	--ocustom	filename of single-column custom interleave order file (first slice is referred to as 1 not 0)
+
+
+
+=== Output of 'slicetimer.fsl -help' ===
+
+
+Part of FSL (build 419)
+slicetimer (Version 1.9)
+FMRIB's Interpolation for Slice Timing
+Copyright(c) 2001-2009, University of Oxford
+
+Usage: 
+slicetimer -i <timeseries> [-o <corrected_timeseries>] [options]
+
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of input timeseries
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	filename of output timeseries
+	-h,--help	display this message
+	-v,--verbose	switch on diagnostic messages
+	--down	reverse slice indexing (default is: slices were acquired bottom-up)
+	-r,--repeat	Specify TR of data - default is 3s
+	-d,--direction	direction of slice acquisition (x=1,y=2,z=3) - default is z
+	--odd	use interleaved acquisition
+	--tcustom	filename of single-column slice timings, in fractions of TR, +ve values shift slices forwards in time.
+	--tglobal	global shift in fraction of TR, (default is 0)
+	--ocustom	filename of single-column custom interleave order file (first slice is referred to as 1 not 0)
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'slicetimer.fsl' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	filename of input timeseries
+***************************************************
+
+Part of FSL (build 419)
+slicetimer (Version 1.9)
+FMRIB's Interpolation for Slice Timing
+Copyright(c) 2001-2009, University of Oxford
+
+Usage: 
+slicetimer -i <timeseries> [-o <corrected_timeseries>] [options]
+
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of input timeseries
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	filename of output timeseries
+	-h,--help	display this message
+	-v,--verbose	switch on diagnostic messages
+	--down	reverse slice indexing (default is: slices were acquired bottom-up)
+	-r,--repeat	Specify TR of data - default is 3s
+	-d,--direction	direction of slice acquisition (x=1,y=2,z=3) - default is z
+	--odd	use interleaved acquisition
+	--tcustom	filename of single-column slice timings, in fractions of TR, +ve values shift slices forwards in time.
+	--tglobal	global shift in fraction of TR, (default is 0)
+	--ocustom	filename of single-column custom interleave order file (first slice is referred to as 1 not 0)
+
+

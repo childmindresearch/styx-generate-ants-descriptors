@@ -1,0 +1,123 @@
+
+=== Output of 'qdelaunay --help' ===
+
+QH7035 qhull warning: unknown flag -(2d)
+QH7036 qhull warning: missing space after flag -(2d); reserved for menu. Skipped.
+QH6075 qhull input error: short input file.  Did not find dimension and number of points
+
+While executing:  | qdelaunay --help
+Options selected for Qhull 2010.1 2010/01/14:
+  run-id 67512812  delaunay  Qbbound-last
+
+=== Output of 'qdelaunay -help' ===
+
+
+qdelaunay- compute the Delaunay triangulation
+    http://www.qhull.org  2010.1 2010/01/14
+
+input (stdin):
+    first lines: dimension and number of points (or vice-versa).
+    other lines: point coordinates, best if one point per line
+    comments:    start with a non-numeric character
+
+options:
+    Qu   - compute furthest-site Delaunay triangulation
+    Qt   - triangulated output
+    QJ   - joggled input instead of merged facets
+
+Qhull control options:
+    QJn  - randomly joggle input in range [-n,n]
+    Qs   - search all points for the initial simplex
+    Qz   - add point-at-infinity to Delaunay triangulation
+    QGn  - print Delaunay region if visible from point n, -n if not
+    QVn  - print Delaunay regions that include point n, -n if not
+
+Trace options:
+    T4   - trace at level n, 4=all, 5=mem/gauss, -1= events
+    Tc   - check frequently during execution
+    Ts   - print statistics
+    Tv   - verify result: structure, convexity, and in-circle test
+    Tz   - send all output to stdout
+    TFn  - report summary when n or more facets created
+    TI file - input data from file, no spaces or single quotes
+    TO file - output results to file, may be enclosed in single quotes
+    TPn  - turn on tracing when point n added to hull
+     TMn - turn on tracing at merge n
+     TWn - trace merge facets when width > n
+    TVn  - stop qhull after adding point n, -n for before (see TCn)
+     TCn - stop qhull after building cone for point n (see TVn)
+
+Precision options:
+    Cn   - radius of centrum (roundoff added).  Merge facets if non-convex
+     An  - cosine of maximum angle.  Merge facets if cosine > n or non-convex
+           C-0 roundoff, A-0.99/C-0.01 pre-merge, A0.99/C0.01 post-merge
+    Rn   - randomly perturb computations by a factor of [1-n,1+n]
+    Wn   - min facet width for outside point (before roundoff)
+
+Output formats (may be combined; if none, produces a summary to stdout):
+    f    - facet dump
+    G    - Geomview output (see below)
+    i    - vertices incident to each Delaunay region
+    m    - Mathematica output (2-d only, lifted to a paraboloid)
+    o    - OFF format (dim, points, and facets as a paraboloid)
+    p    - point coordinates (lifted to a paraboloid)
+    s    - summary (stderr)
+
+More formats:
+    Fa   - area for each Delaunay region
+    FA   - compute total area for option 's'
+    Fc   - count plus coincident points for each Delaunay region
+    Fd   - use cdd format for input (homogeneous with offset first)
+    FD   - use cdd format for numeric output (offset first)
+    FF   - facet dump without ridges
+    FI   - ID of each Delaunay region
+    Fm   - merge count for each Delaunay region (511 max)
+    FM   - Maple output (2-d only, lifted to a paraboloid)
+    Fn   - count plus neighboring region for each Delaunay region
+    FN   - count plus neighboring region for each point
+    FO   - options and precision constants
+    FP   - nearest point and distance for each coincident point
+    FQ   - command used for qdelaunay
+    Fs   - summary: #int (8), dimension, #points, tot vertices, tot facets,
+                    for output: #vertices, #Delaunay regions,
+                                #coincident points, #non-simplicial regions
+                    #real (2), max outer plane, min vertex
+    FS   - sizes:   #int (0)
+                    #real (2), tot area, 0
+    Fv   - count plus vertices for each Delaunay region
+    Fx   - extreme points of Delaunay triangulation (on convex hull)
+
+Geomview options (2-d and 3-d)
+    Ga   - all points as dots
+     Gp  -  coplanar points and vertices as radii
+     Gv  -  vertices as spheres
+    Gi   - inner planes only
+     Gn  -  no planes
+     Go  -  outer planes only
+    Gc     - centrums
+    Gh   - hyperplane intersections
+    Gr   - ridges
+    GDn  - drop dimension n in 3-d and 4-d output
+    Gt   - transparent outer ridges to view 3-d Delaunay
+
+Print options:
+    PAn  - keep n largest Delaunay regions by area
+    Pdk:n - drop facet if normal[k] <= n (default 0.0)
+    PDk:n - drop facet if normal[k] >= n
+    Pg   - print good Delaunay regions (needs 'QGn' or 'QVn')
+    PFn  - keep Delaunay regions whose area is at least n
+    PG   - print neighbors of good regions (needs 'QGn' or 'QVn')
+    PMn  - keep n Delaunay regions with most merges
+    Po   - force output.  If error, output neighborhood of facet
+    Pp   - do not report precision problems
+
+    .    - list of all options
+    -    - one line descriptions of all options
+
+=== Output of 'qdelaunay' (no arguments) ===
+
+QH6075 qhull input error: short input file.  Did not find dimension and number of points
+
+While executing:  | qdelaunay
+Options selected for Qhull 2010.1 2010/01/14:
+  run-id 67512812  delaunay  Qbbound-last

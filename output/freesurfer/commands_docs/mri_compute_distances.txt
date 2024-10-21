@@ -1,0 +1,14 @@
+
+=== Output of 'mri_compute_distances --help' ===
+
+unknown option --HELP
+usage: /usr/local/freesurfer/bin/mri_compute_distances <source> <target> <output xform>
+
+=== Output of 'mri_compute_distances -help' ===
+
+unknown option -HELP
+usage: /usr/local/freesurfer/bin/mri_compute_distances <source> <target> <output xform>
+
+=== Output of 'mri_compute_distances' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_compute_distances <source> <target> <output xform>

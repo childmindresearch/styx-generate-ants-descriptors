@@ -1,0 +1,67 @@
+
+=== Output of 'mri_refine_seg --help' ===
+
+				Help
+
+NAME
+	mri_refine_seg
+
+SYNOPSIS
+	mri_refine_seg [options] -i <input seg> -o <output seg>
+
+DESCRIPTION
+	Refines a messy segmentation by recoding stray voxels.
+
+REQUIRED FLAGGED ARGUMENTS
+	-i, --in FILE
+		Input segmentation.
+
+	-o, --out FILE
+		Refined segmentation output name.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--debug
+		Save the original segmentation, a mask of the refined voxels, 
+		and a pointset of the refined clusters to the output 
+		directory.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_refine_seg -help' ===
+
+error: unexpected argument '-help'
+
+=== Output of 'mri_refine_seg' (no arguments) ===
+
+				Help
+
+NAME
+	mri_refine_seg
+
+SYNOPSIS
+	mri_refine_seg [options] -i <input seg> -o <output seg>
+
+DESCRIPTION
+	Refines a messy segmentation by recoding stray voxels.
+
+REQUIRED FLAGGED ARGUMENTS
+	-i, --in FILE
+		Input segmentation.
+
+	-o, --out FILE
+		Refined segmentation output name.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--debug
+		Save the original segmentation, a mask of the refined voxels, 
+		and a pointset of the refined clusters to the output 
+		directory.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+error: missing required input '--in'

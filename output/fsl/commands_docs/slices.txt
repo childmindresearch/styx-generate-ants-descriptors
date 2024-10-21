@@ -1,0 +1,14 @@
+
+=== Output of 'slices --help' ===
+
+/usr/local/fsl/bin/slices: line 168: 19585 Segmentation fault      (core dumped) ${FSLDIR}/bin/slicer $opts -x 0.4 ${f}a.png -x 0.5 ${f}b.png -x 0.6 ${f}c.png -y 0.4 ${f}d.png -y 0.5 ${f}e.png -y 0.6 ${f}f.png -z 0.4 ${f}g.png -z 0.5 ${f}h.png -z 0.6 ${f}i.png
+
+=== Output of 'slices -help' ===
+
+/usr/local/fsl/bin/slices: line 168: 19665 Segmentation fault      (core dumped) ${FSLDIR}/bin/slicer $opts -x 0.4 ${f}a.png -x 0.5 ${f}b.png -x 0.6 ${f}c.png -y 0.4 ${f}d.png -y 0.5 ${f}e.png -y 0.6 ${f}f.png -z 0.4 ${f}g.png -z 0.5 ${f}h.png -z 0.6 ${f}i.png
+
+=== Output of 'slices' (no arguments) ===
+
+
+Usage: slices <input> [input2] [-s scale] [-i <intmin> <intmax>] [-o <output gif>]
+

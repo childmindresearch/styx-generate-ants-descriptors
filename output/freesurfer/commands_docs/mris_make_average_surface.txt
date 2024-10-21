@@ -1,0 +1,154 @@
+
+=== Output of 'mris_make_average_surface --help' ===
+
+mris_make_average_surface [options] hemi outsurfname cansurfname outsubject 
+       subj1 subj2 subj3 ...
+  Run with -help for more info
+
+  This program will average the orig surfaces from the given subject
+  list into a single surface using Talairach coords and the spherical
+  transform.  The cooridinates of the vertices are the average of the
+  talairach coordinates (as defined by mri/transforms/talairach.xfm)
+  of the vertices from the input subjects.  The results will be saved
+  in a the specified subject's directory.  This default behavior can
+  be changed with option flags.
+
+  The user must supply at least 4 arguments, plus subject list:
+
+  mris_make_average_surface [options] hemi outsurfname cansurfname outsubject 
+    subj1 subj2 subj3 ...
+
+  hemi - hemisphere,  lh or rh
+  outsurfname - output surface name (eg, avg_orig)
+  cansurfname - registration surface (eg, sphere.reg)
+  outsubject  - name of subject to store the results in
+
+  OPTIONS
+
+  -help 
+
+  Print help and exit.
+
+  -version
+
+  Print version and exit
+
+  -sdir sdir
+
+  Use sdir instead of SUBJECTS_DIR
+
+  -sdir-out sdirout
+
+  Save results in sdirout/outsubject instead of SUBJECTS_IDR/outsubject.
+
+  -nonorm
+
+  Do not normalize area
+
+  -i icoorder
+
+  Use given icosahedron order (default is 7)
+
+  -x xfmname
+
+  Use transforms/xfmname instead of talairach.xfm
+
+  -t templatename
+
+  Volume to use as geometry template for output surfaces
+
+  -s surfname
+  Use surfname instead of orig
+
+-surf2surf, -no-surf2surf
+  Use (don't use) surf2surf transform instead of parametric surface.
+  The parametric surface often creates large faces near the poles.
+
+-simple avgsurf surf1 surf2 ...
+  Stand-alone option to compute an average surface from the list.
+  All surfaces must have same number of vertices 
+
+  -v diagno
+
+  Set Gdiag_no = diagno
+  
+
+=== Output of 'mris_make_average_surface -help' ===
+
+mris_make_average_surface [options] hemi outsurfname cansurfname outsubject 
+       subj1 subj2 subj3 ...
+  Run with -help for more info
+
+  This program will average the orig surfaces from the given subject
+  list into a single surface using Talairach coords and the spherical
+  transform.  The cooridinates of the vertices are the average of the
+  talairach coordinates (as defined by mri/transforms/talairach.xfm)
+  of the vertices from the input subjects.  The results will be saved
+  in a the specified subject's directory.  This default behavior can
+  be changed with option flags.
+
+  The user must supply at least 4 arguments, plus subject list:
+
+  mris_make_average_surface [options] hemi outsurfname cansurfname outsubject 
+    subj1 subj2 subj3 ...
+
+  hemi - hemisphere,  lh or rh
+  outsurfname - output surface name (eg, avg_orig)
+  cansurfname - registration surface (eg, sphere.reg)
+  outsubject  - name of subject to store the results in
+
+  OPTIONS
+
+  -help 
+
+  Print help and exit.
+
+  -version
+
+  Print version and exit
+
+  -sdir sdir
+
+  Use sdir instead of SUBJECTS_DIR
+
+  -sdir-out sdirout
+
+  Save results in sdirout/outsubject instead of SUBJECTS_IDR/outsubject.
+
+  -nonorm
+
+  Do not normalize area
+
+  -i icoorder
+
+  Use given icosahedron order (default is 7)
+
+  -x xfmname
+
+  Use transforms/xfmname instead of talairach.xfm
+
+  -t templatename
+
+  Volume to use as geometry template for output surfaces
+
+  -s surfname
+  Use surfname instead of orig
+
+-surf2surf, -no-surf2surf
+  Use (don't use) surf2surf transform instead of parametric surface.
+  The parametric surface often creates large faces near the poles.
+
+-simple avgsurf surf1 surf2 ...
+  Stand-alone option to compute an average surface from the list.
+  All surfaces must have same number of vertices 
+
+  -v diagno
+
+  Set Gdiag_no = diagno
+  
+
+=== Output of 'mris_make_average_surface' (no arguments) ===
+
+mris_make_average_surface [options] hemi outsurfname cansurfname outsubject 
+       subj1 subj2 subj3 ...
+  Run with -help for more info

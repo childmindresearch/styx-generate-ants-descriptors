@@ -1,0 +1,178 @@
+
+=== Output of 'gca-apply --help' ===
+
+
+gca-apply : apply a gca, including em_reg, ca_norm, ca_reg, and ca_label
+  --gca gcafile
+  --s subject
+
+ Other options
+  --nthreads nthreads : control number of OMP threads
+  --base gcabase : use gcabase when naming output files (default is basename gcafile)
+  --no-segstats : do not compute segstats 
+  --sd SUBJECTS_DIR, or -sd 
+  --dice DiceSeg DiceFile 
+  --lta SrcLTA : use SrcLTA instead of running mri_em_register 
+  --norm SrcNorm : use SrcNorm instead of running mri_ca_normalize 
+  --input input.mgz : defalt is nu.mgz 
+  --brainmask newbrainmask.mgz : defalt is brainmask.mgz 
+  --o outdir : use this for output instead of SUBJECTS_DIR/subject 
+  --no-v6labopts : do not include -relabel_unlikely 9 .3 -prior 0.5 with mri_ca_label:
+  --m3z m3zfile:
+  --gca-rb-2016 : use RB_all_2016-05-10.vc700.gca
+  --force-update : force recreation of a file even if it is younger then its parents
+
+  --gcareg-iters : set to 1, only for testing
+
+gca-apply 7.4.1
+
+Applies a GCA, performing the steps of mri_em_register,
+mri_ca_normalize, mri_ca_register, and mri_ca_label (and possibly
+mri_segstats). This script is designed to replicate the stages in
+recon-all but does not overwrite any of those files. Single threaded,
+this script may take 8 hours or so because mri_ca_register is done.
+By default, an existing file will not be recreated if its inputs
+are older than it (use --force-update to create regardless).
+
+Creates files with the names:
+
+gcabase.lta
+gcabase.m3z
+norm.gcabase.mgz
+gcabase.aseg.mgz
+gcabase.stats
+
+Where gcabase is either `basename gcafile` or whatever is passed with --gcabase
+
+When computing segstats, it uses partial volume correction with norm.gcabase.mgz.
+
+Requires that nu.mgz (or --input instead of nu.mgz) and brainmask.mgz
+(or --brainmask instead of brainmask.mgz) be present and ideally
+created in the same way as when the atlas was trained on the training
+subjects. When using gcatrain, the brainmask.mgz and nu.mgz are
+created with:
+
+recon-all -s subject -autorecon1 -no-talcheck
+
+If --dice is specified, then the dice coefficient is computed using
+mri_compute_seg_overlap using $SUBJECTS_DIR/$subject/mri/$DiceSeg
+and the output will be put in $SUBJECTS_DIR/$subject/$DiceFile
+
+--no-v6labopts 
+
+do not include "-relabel_unlikely 9 .3 -prior 0.5" as part of the
+mri_ca_label command options.  This are v6 options that are not part
+of the 5.3 command line.
+
+--o outputdir
+
+If this is specified, then the output will be created in this folder.
+This can be useful when you do not have permissions to the source
+data or do not want to create additional files in the source tree.
+outputdir will look like the subjects recon-all folder, so make sure
+that the subject name is in the outputdir.
+
+
+
+
+=== Output of 'gca-apply -help' ===
+
+
+gca-apply : apply a gca, including em_reg, ca_norm, ca_reg, and ca_label
+  --gca gcafile
+  --s subject
+
+ Other options
+  --nthreads nthreads : control number of OMP threads
+  --base gcabase : use gcabase when naming output files (default is basename gcafile)
+  --no-segstats : do not compute segstats 
+  --sd SUBJECTS_DIR, or -sd 
+  --dice DiceSeg DiceFile 
+  --lta SrcLTA : use SrcLTA instead of running mri_em_register 
+  --norm SrcNorm : use SrcNorm instead of running mri_ca_normalize 
+  --input input.mgz : defalt is nu.mgz 
+  --brainmask newbrainmask.mgz : defalt is brainmask.mgz 
+  --o outdir : use this for output instead of SUBJECTS_DIR/subject 
+  --no-v6labopts : do not include -relabel_unlikely 9 .3 -prior 0.5 with mri_ca_label:
+  --m3z m3zfile:
+  --gca-rb-2016 : use RB_all_2016-05-10.vc700.gca
+  --force-update : force recreation of a file even if it is younger then its parents
+
+  --gcareg-iters : set to 1, only for testing
+
+gca-apply 7.4.1
+
+Applies a GCA, performing the steps of mri_em_register,
+mri_ca_normalize, mri_ca_register, and mri_ca_label (and possibly
+mri_segstats). This script is designed to replicate the stages in
+recon-all but does not overwrite any of those files. Single threaded,
+this script may take 8 hours or so because mri_ca_register is done.
+By default, an existing file will not be recreated if its inputs
+are older than it (use --force-update to create regardless).
+
+Creates files with the names:
+
+gcabase.lta
+gcabase.m3z
+norm.gcabase.mgz
+gcabase.aseg.mgz
+gcabase.stats
+
+Where gcabase is either `basename gcafile` or whatever is passed with --gcabase
+
+When computing segstats, it uses partial volume correction with norm.gcabase.mgz.
+
+Requires that nu.mgz (or --input instead of nu.mgz) and brainmask.mgz
+(or --brainmask instead of brainmask.mgz) be present and ideally
+created in the same way as when the atlas was trained on the training
+subjects. When using gcatrain, the brainmask.mgz and nu.mgz are
+created with:
+
+recon-all -s subject -autorecon1 -no-talcheck
+
+If --dice is specified, then the dice coefficient is computed using
+mri_compute_seg_overlap using $SUBJECTS_DIR/$subject/mri/$DiceSeg
+and the output will be put in $SUBJECTS_DIR/$subject/$DiceFile
+
+--no-v6labopts 
+
+do not include "-relabel_unlikely 9 .3 -prior 0.5" as part of the
+mri_ca_label command options.  This are v6 options that are not part
+of the 5.3 command line.
+
+--o outputdir
+
+If this is specified, then the output will be created in this folder.
+This can be useful when you do not have permissions to the source
+data or do not want to create additional files in the source tree.
+outputdir will look like the subjects recon-all folder, so make sure
+that the subject name is in the outputdir.
+
+
+
+
+=== Output of 'gca-apply' (no arguments) ===
+
+
+gca-apply : apply a gca, including em_reg, ca_norm, ca_reg, and ca_label
+  --gca gcafile
+  --s subject
+
+ Other options
+  --nthreads nthreads : control number of OMP threads
+  --base gcabase : use gcabase when naming output files (default is basename gcafile)
+  --no-segstats : do not compute segstats 
+  --sd SUBJECTS_DIR, or -sd 
+  --dice DiceSeg DiceFile 
+  --lta SrcLTA : use SrcLTA instead of running mri_em_register 
+  --norm SrcNorm : use SrcNorm instead of running mri_ca_normalize 
+  --input input.mgz : defalt is nu.mgz 
+  --brainmask newbrainmask.mgz : defalt is brainmask.mgz 
+  --o outdir : use this for output instead of SUBJECTS_DIR/subject 
+  --no-v6labopts : do not include -relabel_unlikely 9 .3 -prior 0.5 with mri_ca_label:
+  --m3z m3zfile:
+  --gca-rb-2016 : use RB_all_2016-05-10.vc700.gca
+  --force-update : force recreation of a file even if it is younger then its parents
+
+  --gcareg-iters : set to 1, only for testing
+

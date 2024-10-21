@@ -1,0 +1,48 @@
+
+=== Output of 'get_afni_model_PRF_6_BAD --help' ===
+
+** usage: /opt/afni/src/../install/get_afni_model_PRF_6_BAD A x y sigma sigrat theta
+
+   consider something like:
+
+       setenv AFNI_CONVMODEL_REF conv.ref.GAM.1D
+       setenv AFNI_MODEL_PRF_STIM_DSET stim.144.LIA.bmask.resam+orig
+       setenv AFNI_MODEL_PRF_ON_GRID NO
+
+       setenv AFNI_MODEL_PRF_GAUSS_FILE gauss_dset
+
+       # A=2, x=0.2, y=0.5,  sigma=0.05  sigrat=5  theta=PI/8=0.3927
+       get_afni_model_PRF_6_BAD 2 .2 .5 .05 5 0.3927
+
+
+=== Output of 'get_afni_model_PRF_6_BAD -help' ===
+
+** usage: /opt/afni/src/../install/get_afni_model_PRF_6_BAD A x y sigma sigrat theta
+
+   consider something like:
+
+       setenv AFNI_CONVMODEL_REF conv.ref.GAM.1D
+       setenv AFNI_MODEL_PRF_STIM_DSET stim.144.LIA.bmask.resam+orig
+       setenv AFNI_MODEL_PRF_ON_GRID NO
+
+       setenv AFNI_MODEL_PRF_GAUSS_FILE gauss_dset
+
+       # A=2, x=0.2, y=0.5,  sigma=0.05  sigrat=5  theta=PI/8=0.3927
+       get_afni_model_PRF_6_BAD 2 .2 .5 .05 5 0.3927
+
+
+=== Output of 'get_afni_model_PRF_6_BAD' (no arguments) ===
+
+** usage: /opt/afni/src/../install/get_afni_model_PRF_6_BAD A x y sigma sigrat theta
+
+   consider something like:
+
+       setenv AFNI_CONVMODEL_REF conv.ref.GAM.1D
+       setenv AFNI_MODEL_PRF_STIM_DSET stim.144.LIA.bmask.resam+orig
+       setenv AFNI_MODEL_PRF_ON_GRID NO
+
+       setenv AFNI_MODEL_PRF_GAUSS_FILE gauss_dset
+
+       # A=2, x=0.2, y=0.5,  sigma=0.05  sigrat=5  theta=PI/8=0.3927
+       get_afni_model_PRF_6_BAD 2 .2 .5 .05 5 0.3927
+

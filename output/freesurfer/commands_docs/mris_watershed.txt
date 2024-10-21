@@ -1,0 +1,21 @@
+
+=== Output of 'mris_watershed --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_watershed [options] <input surface> <input gradient field> <output annotation>
+
+This program computes the watershed transform on the surface of an intensity gradient
+and writes the resulting measurement into a .annot file
+<output file>.
+
+valid options are:
+
+	-M <max clusters>: set the number of clusters
+	-mask_label <label>: read in and mask the input volume that is not in the specified label
+
+=== Output of 'mris_watershed -help' ===
+
+unknown option -help
+
+=== Output of 'mris_watershed' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_watershed [options] <input surface> <input gradient field> <output annotation>

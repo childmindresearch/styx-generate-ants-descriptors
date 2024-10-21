@@ -1,0 +1,12 @@
+
+=== Output of 'label2flat --help' ===
+
+unknown option --help
+
+=== Output of 'label2flat -help' ===
+
+unknown option -help
+
+=== Output of 'label2flat' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/label2flat [options] <subject name> <label file> <patch file> <output file>

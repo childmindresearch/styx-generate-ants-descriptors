@@ -1,0 +1,111 @@
+
+=== Output of 'make_average_surface --help' ===
+
+
+USAGE: make_average_surface
+
+Required Arguments
+   --subjects <subj1> <subj2> ... <subjN>
+             : or declare subjects in SUBJECTS env var
+   --fsgd fsgdfile : get subject list from fsgd
+
+Optional Arguments
+   --out <average subject name>    : default name is 'average'
+   --sdir <SUBJECTS_DIR to use instead of the one in the env>
+   --sd      : same as --sdir
+   --sd-out topdir : put data here
+   --xform <transform_fname>       : filename of transform file
+   --ico <number>  : specify icosahedron number, default is 7 (ic7.tri)
+   --surf-reg <surface name>   : alternative registration surface
+   --lh : only do left  hemi (default is to do both)
+   --rh : only do right hemi (default is to do both)
+                                 default: sphere.reg
+   --force   : overwrite existing average subject data
+   --annot-template : use annotation when making tif
+   --template-only : useful when creating iterative atlases
+   --no-template-only : turns off --template-only
+   --no-annot : do not create average annotations (does not affect use with template)
+   --no-cortex-label : do not create ?h.cortex.label
+   --annot annotname <--annot annotname > : supply list of annots to use (default )
+   --meas measname <--meas measname > : supply list of meass to use (default )
+   --no-surf2surf : use old parametric surface method (may give big faces at the poles)
+
+   --help       : short descriptive help
+   --no-symlink : do not use symbolic links (just copy files)
+   --no-lik     : same as --no-symlink
+   --version : script version info
+   --echo    : enable command echo, for debug
+   --debug   : same as --echo
+
+See also: recon-all, make_final_surfaces, morph_subject
+
+Version: make_average_surface 7.4.1
+
+Creates average surfaces and curvatures from a set of subjects.
+
+Calls mris_average_curvature, mris_make_average_surface, mris_smooth,
+mris_inflate, and mris_curvature.
+
+EXAMPLE
+
+make_average_surface --out avgsubject --subjects subj1 subj2 subj3 subj4
+
+will create $SUBJECTS_DIR/avgsubject with average surfaces for orig,
+white, pial, inflated for each hemi.
+
+SEE ALSO
+
+make_average_subject, make_average_volume
+
+GETTING HELP
+
+Run recon-all --help for extensive text on the reconstruction process.
+Or, send email to freesurfer@nmr.mgh.harvard.edu.
+Also see http://surfer.nmr.mgh.harvard.edu.
+
+
+=== Output of 'make_average_surface -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'make_average_surface' (no arguments) ===
+
+
+USAGE: make_average_surface
+
+Required Arguments
+   --subjects <subj1> <subj2> ... <subjN>
+             : or declare subjects in SUBJECTS env var
+   --fsgd fsgdfile : get subject list from fsgd
+
+Optional Arguments
+   --out <average subject name>    : default name is 'average'
+   --sdir <SUBJECTS_DIR to use instead of the one in the env>
+   --sd      : same as --sdir
+   --sd-out topdir : put data here
+   --xform <transform_fname>       : filename of transform file
+   --ico <number>  : specify icosahedron number, default is 7 (ic7.tri)
+   --surf-reg <surface name>   : alternative registration surface
+   --lh : only do left  hemi (default is to do both)
+   --rh : only do right hemi (default is to do both)
+                                 default: sphere.reg
+   --force   : overwrite existing average subject data
+   --annot-template : use annotation when making tif
+   --template-only : useful when creating iterative atlases
+   --no-template-only : turns off --template-only
+   --no-annot : do not create average annotations (does not affect use with template)
+   --no-cortex-label : do not create ?h.cortex.label
+   --annot annotname <--annot annotname > : supply list of annots to use (default )
+   --meas measname <--meas measname > : supply list of meass to use (default )
+   --no-surf2surf : use old parametric surface method (may give big faces at the poles)
+
+   --help       : short descriptive help
+   --no-symlink : do not use symbolic links (just copy files)
+   --no-lik     : same as --no-symlink
+   --version : script version info
+   --echo    : enable command echo, for debug
+   --debug   : same as --echo
+
+See also: recon-all, make_final_surfaces, morph_subject
+

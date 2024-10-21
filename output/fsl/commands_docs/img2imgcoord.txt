@@ -1,0 +1,53 @@
+
+=== Output of 'img2imgcoord --help' ===
+
+Lacking argument to option --help
+ERROR:: Source volume filename not found
+
+ERROR:: Destination volume filename not found
+
+Image Exception : #63 :: No image files match: 
+Image Exception : #22 :: Failed to read volume 
+Error : No image files match: 
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume 
+Error : No image files match: 
+timeout: the monitored command dumped core
+
+=== Output of 'img2imgcoord -help' ===
+
+Usage: /usr/local/fsl/bin/img2imgcoord [options] <filename containing coordinates>
+
+  Options are:
+        -src <filename of source image>        
+        -dest <filename of destination image>  
+        -xfm <filename of affine transform     (e.g. source2dest.mat)>
+        -warp <filename of warpfield (e.g. intermediate2dest_warp.nii.gz)>
+        -premat <filename of pre-warp affine transform  (e.g. source2intermediate.mat)>   (default=identity)
+        -vox                                   (all coordinates in voxels - default)
+        -mm                                    (all coordinates in mm)
+        -v                                     (verbose)
+        -help
+
+ Notes:
+  (1) if '-' is used as coordinate filename then coordinates are read from standard input
+  (2) the first three options are compulsory
+
+=== Output of 'img2imgcoord' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/img2imgcoord [options] <filename containing coordinates>
+
+  Options are:
+        -src <filename of source image>        
+        -dest <filename of destination image>  
+        -xfm <filename of affine transform     (e.g. source2dest.mat)>
+        -warp <filename of warpfield (e.g. intermediate2dest_warp.nii.gz)>
+        -premat <filename of pre-warp affine transform  (e.g. source2intermediate.mat)>   (default=identity)
+        -vox                                   (all coordinates in voxels - default)
+        -mm                                    (all coordinates in mm)
+        -v                                     (verbose)
+        -help
+
+ Notes:
+  (1) if '-' is used as coordinate filename then coordinates are read from standard input
+  (2) the first three options are compulsory

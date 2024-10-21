@@ -1,0 +1,45 @@
+
+=== Output of 'mris_label_calc --help' ===
+
+
+> mris_label_calc command input1 input2 output
+
+   To calculate stuff on surface labels...
+
+   commands: 
+      union         union (OR) of both input labels
+      intersect     intersection (AND) of both input labels
+      invert        inverse (NOT) of label on surface (input2)
+      erode <n>     erode  label <n> times on surface (input2)
+      dilate <n>    dilate label <n> times on surface (input2)
+
+
+=== Output of 'mris_label_calc -help' ===
+
+
+> mris_label_calc command input1 input2 output
+
+   To calculate stuff on surface labels...
+
+   commands: 
+      union         union (OR) of both input labels
+      intersect     intersection (AND) of both input labels
+      invert        inverse (NOT) of label on surface (input2)
+      erode <n>     erode  label <n> times on surface (input2)
+      dilate <n>    dilate label <n> times on surface (input2)
+
+
+=== Output of 'mris_label_calc' (no arguments) ===
+
+
+> mris_label_calc command input1 input2 output
+
+   To calculate stuff on surface labels...
+
+   commands: 
+      union         union (OR) of both input labels
+      intersect     intersection (AND) of both input labels
+      invert        inverse (NOT) of label on surface (input2)
+      erode <n>     erode  label <n> times on surface (input2)
+      dilate <n>    dilate label <n> times on surface (input2)
+

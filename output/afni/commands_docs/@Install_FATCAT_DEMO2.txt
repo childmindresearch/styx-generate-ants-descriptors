@@ -1,0 +1,22 @@
+
+=== Output of '@Install_FATCAT_DEMO2 --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Install_FATCAT_DEMO2 -help' ===
+
+Installs the demo archive for Paul Taylor's tractography tools
+After the archive is downloaded and unpacked, see its README.txt
+for details.
+Options:
+[-wget]: Use wget to download archive. Script chooses by default
+         with preference for curl
+[-curl]: Use curl to download archive. Script chooses by default
+         with preference for curl
+
+=== Output of '@Install_FATCAT_DEMO2' (no arguments) ===
+
+/usr/bin/curl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  1  831M    1 12.8M    0     0  21.0M      0  0:00:39 --:--:--  0:00:39 20.9M  4  831M    4 34.5M    0     0  21.3M      0  0:00:38  0:00:01  0:00:37 21.3M  6  831M    6 53.4M    0     0  20.4M      0  0:00:40  0:00:02  0:00:38 20.4M  9  831M    9 78.2M    0     0  21.6M      0  0:00:38  0:00:03  0:00:35 21.6M 12  831M   12  104M    0     0  22.6M      0  0:00:36  0:00:04  0:00:32 22.6M 14  831M   14  124M    0     0  22.2M      0  0:00:37  0:00:05  0:00:32 22.3M 17  831M   17  143M    0     0  21.7M      0  0:00:38  0:00:06  0:00:32 21.8M 19  831M   19  164M    0     0  21.5M      0  0:00:38  0:00:07  0:00:31 22.1M 22  831M   22  185M    0     0  21.4M      0  0:00:38  0:00:08  0:00:30 21.3M 24  831M   24  203M    0     0  21.1M      0  0:00:39  0:00:09  0:00:30 19.7MCommand timed out after 10 seconds

@@ -1,0 +1,24 @@
+
+=== Output of 'split_parts_gpu --help' ===
+
+
+split_parts_gpu. Wrong number of parameters
+Usage:
+split_parts_gpu  Datafile  Maskfile   bvals_file   bvecs_file  Grad_file(can be null)  Use_grad_file(0 or 1)  TotalNumParts  OutputDirectory
+
+
+=== Output of 'split_parts_gpu -help' ===
+
+
+split_parts_gpu. Wrong number of parameters
+Usage:
+split_parts_gpu  Datafile  Maskfile   bvals_file   bvecs_file  Grad_file(can be null)  Use_grad_file(0 or 1)  TotalNumParts  OutputDirectory
+
+
+=== Output of 'split_parts_gpu' (no arguments) ===
+
+
+split_parts_gpu. Wrong number of parameters
+Usage:
+split_parts_gpu  Datafile  Maskfile   bvals_file   bvecs_file  Grad_file(can be null)  Use_grad_file(0 or 1)  TotalNumParts  OutputDirectory
+

@@ -1,0 +1,24 @@
+
+=== Output of 'renderhighres --help' ===
+
+Usage: renderhighres <feat_directory> <space> <background> <autothresh> [minZ maxZ]
+<space>: either highres or standard
+<background>: either highres or standard
+<autothresh>: either 0 or 1 (colour-code using existing post-threshold range? If 0 then minZ and maxZ are used)
+
+
+=== Output of 'renderhighres -help' ===
+
+Usage: renderhighres <feat_directory> <space> <background> <autothresh> [minZ maxZ]
+<space>: either highres or standard
+<background>: either highres or standard
+<autothresh>: either 0 or 1 (colour-code using existing post-threshold range? If 0 then minZ and maxZ are used)
+
+
+=== Output of 'renderhighres' (no arguments) ===
+
+Usage: renderhighres <feat_directory> <space> <background> <autothresh> [minZ maxZ]
+<space>: either highres or standard
+<background>: either highres or standard
+<autothresh>: either 0 or 1 (colour-code using existing post-threshold range? If 0 then minZ and maxZ are used)
+

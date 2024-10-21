@@ -1,0 +1,27 @@
+
+=== Output of '@djunct_json_value.py --help' ===
+
+ 
+Subsidiary of apqc*py, not really a program deserving a
+help message.
+
+Just a little, *tiny* wafer...
+
+
+=== Output of '@djunct_json_value.py -help' ===
+
+ 
+Subsidiary of apqc*py, not really a program deserving a
+help message.
+
+Just a little, *tiny* wafer...
+
+
+=== Output of '@djunct_json_value.py' (no arguments) ===
+
+ 
+Subsidiary of apqc*py, not really a program deserving a
+help message.
+
+Just a little, *tiny* wafer...
+

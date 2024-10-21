@@ -1,0 +1,89 @@
+
+=== Output of 'fslvbm_2_template --help' ===
+
+--help_struc
+-help_struc
+Running segmentation: ID=11356
+Running initial registration: ID=11430
+Image Exception : #63 :: No image files match: --help_struc_GM_to_T
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: --help_struc_GM_to_T
+./fslvbm2c: line 13: 11654 Aborted                 (core dumped) $FSLDIR/bin/fslmerge -t template_4D_GM $mergelist
+Image Exception : #63 :: No image files match: template_4D_GM
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: template_4D_GM
+./fslvbm2c: line 14: 11655 Aborted                 (core dumped) $FSLDIR/bin/fslmaths template_4D_GM -Tmean template_GM
+Image Exception : #63 :: No image files match: template_GM
+No image files match: template_GM
+/usr/local/fsl/bin/fslswapdim: line 107: [: =: unary operator expected
+Image Exception : #63 :: No image files match: template_GM
+No image files match: template_GM
+/usr/local/fsl/bin/fslswapdim: line 115: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: template_GM
+No image files match: template_GM
+/usr/local/fsl/bin/fslswapdim: line 117: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: template_GM
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: template_GM
+/usr/local/fsl/bin/fslswapdim: line 184: 11684 Aborted                 (core dumped) $comm
+Image Exception : #63 :: No image files match: template_GM
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: template_GM
+./fslvbm2c: line 16: 11685 Aborted                 (core dumped) $FSLDIR/bin/fslmaths template_GM -add template_GM_flipped -div 2 template_GM_init
+Creating first-pass template: ID=
+Running registration to first-pass template: ID=The command you have requested cannot be found or is not executable
+Creating second-pass template: ID=The command you have requested cannot be found or is not executable
+Study-specific template will be created, when complete, check results with:
+fslview struc/template_4D_GM
+and turn on the movie loop to check all subjects, then run:
+fslview  /usr/local/fsl/data/standard/tissuepriors/avg152T1_gray  struc/template_GM
+to check general alignment of mean GM template vs. original standard space template.
+
+=== Output of 'fslvbm_2_template -help' ===
+
+--help_struc
+-help_struc
+Running segmentation: ID=11763
+Running initial registration: ID=11837
+Image Exception : #63 :: No image files match: --help_struc_GM_to_T
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: --help_struc_GM_to_T
+./fslvbm2c: line 13: 12061 Aborted                 (core dumped) $FSLDIR/bin/fslmerge -t template_4D_GM $mergelist
+Image Exception : #63 :: No image files match: template_4D_GM
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: template_4D_GM
+./fslvbm2c: line 14: 12062 Aborted                 (core dumped) $FSLDIR/bin/fslmaths template_4D_GM -Tmean template_GM
+Image Exception : #63 :: No image files match: template_GM
+No image files match: template_GM
+/usr/local/fsl/bin/fslswapdim: line 107: [: =: unary operator expected
+Image Exception : #63 :: No image files match: template_GM
+No image files match: template_GM
+/usr/local/fsl/bin/fslswapdim: line 115: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: template_GM
+No image files match: template_GM
+/usr/local/fsl/bin/fslswapdim: line 117: [: -gt: unary operator expected
+Image Exception : #63 :: No image files match: template_GM
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: template_GM
+/usr/local/fsl/bin/fslswapdim: line 184: 12091 Aborted                 (core dumped) $comm
+Image Exception : #63 :: No image files match: template_GM
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: template_GM
+./fslvbm2c: line 16: 12092 Aborted                 (core dumped) $FSLDIR/bin/fslmaths template_GM -add template_GM_flipped -div 2 template_GM_init
+Creating first-pass template: ID=
+Running registration to first-pass template: ID=The command you have requested cannot be found or is not executable
+Creating second-pass template: ID=The command you have requested cannot be found or is not executable
+Study-specific template will be created, when complete, check results with:
+fslview struc/template_4D_GM
+and turn on the movie loop to check all subjects, then run:
+fslview  /usr/local/fsl/data/standard/tissuepriors/avg152T1_gray  struc/template_GM
+to check general alignment of mean GM template vs. original standard space template.
+
+=== Output of 'fslvbm_2_template' (no arguments) ===
+
+
+Usage: fslvbm_2_template [options]
+
+-n  : nonlinear registration (recommended)
+-a  : affine registration (discouraged)
+

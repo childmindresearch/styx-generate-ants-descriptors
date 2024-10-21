@@ -1,0 +1,15 @@
+
+=== Output of 'medianfilter --help' ===
+
+Usage: medianfilter <input> <output>
+performs 26 neighbourhood median filtering
+
+=== Output of 'medianfilter -help' ===
+
+Usage: medianfilter <input> <output>
+performs 26 neighbourhood median filtering
+
+=== Output of 'medianfilter' (no arguments) ===
+
+Usage: medianfilter <input> <output>
+performs 26 neighbourhood median filtering

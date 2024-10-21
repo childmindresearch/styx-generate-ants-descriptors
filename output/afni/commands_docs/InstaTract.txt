@@ -1,0 +1,25 @@
+
+=== Output of 'InstaTract --help' ===
+
+++ InstaTract: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+++ Authored by: LEGROSCHAT
+[7m** ERROR:[0m What is with parameter --help
+
+=== Output of 'InstaTract -help' ===
+
+++ InstaTract: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+++ Authored by: LEGROSCHAT
+A promise of a program
+
+
+  Example:
+     Run the following two commands, preferably from different shells.
+     suma -niml &
+     InstaTract -grid SOMEVOLUME &
+
+
+=== Output of 'InstaTract' (no arguments) ===
+
+++ InstaTract: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+++ Authored by: LEGROSCHAT
+[7m** ERROR:[0m Need grid dset

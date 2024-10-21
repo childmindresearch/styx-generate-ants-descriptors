@@ -1,0 +1,64 @@
+
+=== Output of 'tksurferfv --help' ===
+
+
+This is a script that runs freeview with arguments like tksurfer.
+Not all tksurfer functionality is replicated.
+
+tksurferfv subject hemi surface ...
+
+-tksurfer : use tksurfer instead of freeview
+Can have multiple annotations
+
+-all : load white, pial, inflated
+-vgl : runs freeview with /usr/pubsw/bin/vglrun
+-no-vgl : does not run freeview with /usr/pubsw/bin/vglrun
+-no-outline : do not show annots as outline
+-neuro : use neurological orientation instead of radiological
+-rotate-around-cursor (-rca) : in 3d view, rotate around cursor (use -no- to turn off)
+-linear, -linearopaque, -piecewise, -min_to_max (default) : overlay heat scale
+
+tksurferfv 7.4.1
+
+
+=== Output of 'tksurferfv -help' ===
+
+
+This is a script that runs freeview with arguments like tksurfer.
+Not all tksurfer functionality is replicated.
+
+tksurferfv subject hemi surface ...
+
+-tksurfer : use tksurfer instead of freeview
+Can have multiple annotations
+
+-all : load white, pial, inflated
+-vgl : runs freeview with /usr/pubsw/bin/vglrun
+-no-vgl : does not run freeview with /usr/pubsw/bin/vglrun
+-no-outline : do not show annots as outline
+-neuro : use neurological orientation instead of radiological
+-rotate-around-cursor (-rca) : in 3d view, rotate around cursor (use -no- to turn off)
+-linear, -linearopaque, -piecewise, -min_to_max (default) : overlay heat scale
+
+tksurferfv 7.4.1
+
+
+=== Output of 'tksurferfv' (no arguments) ===
+
+
+This is a script that runs freeview with arguments like tksurfer.
+Not all tksurfer functionality is replicated.
+
+tksurferfv subject hemi surface ...
+
+-tksurfer : use tksurfer instead of freeview
+Can have multiple annotations
+
+-all : load white, pial, inflated
+-vgl : runs freeview with /usr/pubsw/bin/vglrun
+-no-vgl : does not run freeview with /usr/pubsw/bin/vglrun
+-no-outline : do not show annots as outline
+-neuro : use neurological orientation instead of radiological
+-rotate-around-cursor (-rca) : in 3d view, rotate around cursor (use -no- to turn off)
+-linear, -linearopaque, -piecewise, -min_to_max (default) : overlay heat scale
+

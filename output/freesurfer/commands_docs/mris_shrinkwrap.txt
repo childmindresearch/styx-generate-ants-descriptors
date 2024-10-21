@@ -1,0 +1,35 @@
+
+=== Output of 'mris_shrinkwrap --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_shrinkwrap [options] <volume> <output name>
+
+This program produces three surface files which are
+shrink-wrapped tesselations of the input volume:
+  inner_skull.tri
+  outer_skull.tri
+  outer_skin.tri
+	-t <threshold>  apply threshold to image then deform on distance transform
+
+valid options are:
+
+(see the source code!)
+
+=== Output of 'mris_shrinkwrap -help' ===
+
+unknown option -help
+usage: /usr/local/freesurfer/bin/mris_shrinkwrap [options] <volume> <output name>
+
+This program produces three surface files which are
+shrink-wrapped tesselations of the input volume:
+  inner_skull.tri
+  outer_skull.tri
+  outer_skin.tri
+	-t <threshold>  apply threshold to image then deform on distance transform
+
+valid options are:
+
+(see the source code!)
+
+=== Output of 'mris_shrinkwrap' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_shrinkwrap [options] <volume> <output name>

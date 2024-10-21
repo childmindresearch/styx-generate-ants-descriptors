@@ -1,0 +1,15 @@
+
+=== Output of 'ms_refine_subject --help' ===
+
+SUBJECTS_DIR=/usr/local/freesurfer/subjects
+/usr/local/freesurfer/subjects/--help/mri/flash/parameter_maps: No such file or directory.
+
+=== Output of 'ms_refine_subject -help' ===
+
+SUBJECTS_DIR=/usr/local/freesurfer/subjects
+/usr/local/freesurfer/subjects/-help/mri/flash/parameter_maps: No such file or directory.
+
+=== Output of 'ms_refine_subject' (no arguments) ===
+
+SUBJECTS_DIR=/usr/local/freesurfer/subjects
+/usr/local/freesurfer/subjects//mri/flash/parameter_maps: No such file or directory.

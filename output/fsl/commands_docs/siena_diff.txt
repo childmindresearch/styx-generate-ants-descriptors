@@ -1,0 +1,42 @@
+
+=== Output of 'siena_diff --help' ===
+
+
+Usage: siena_diff <input1_basename> <input2_basename> [options] [-s segmentation options]
+
+[-d]            debug - generate edge images and don't remove temporary images
+[-2]            don't segment grey+white separately (because there is poor grey-white contrast)
+[-c <corr>]     apply self-calibrating correction factor
+[-i]            ignore flow in z (may be good if top of brain is missing)
+[-m]            apply <input1_basename>_stdmask to brain edge points
+[-s <options>]  <options> to be passed to segmentation (type "fast" to get these)
+
+
+
+=== Output of 'siena_diff -help' ===
+
+
+Usage: siena_diff <input1_basename> <input2_basename> [options] [-s segmentation options]
+
+[-d]            debug - generate edge images and don't remove temporary images
+[-2]            don't segment grey+white separately (because there is poor grey-white contrast)
+[-c <corr>]     apply self-calibrating correction factor
+[-i]            ignore flow in z (may be good if top of brain is missing)
+[-m]            apply <input1_basename>_stdmask to brain edge points
+[-s <options>]  <options> to be passed to segmentation (type "fast" to get these)
+
+
+
+=== Output of 'siena_diff' (no arguments) ===
+
+
+Usage: siena_diff <input1_basename> <input2_basename> [options] [-s segmentation options]
+
+[-d]            debug - generate edge images and don't remove temporary images
+[-2]            don't segment grey+white separately (because there is poor grey-white contrast)
+[-c <corr>]     apply self-calibrating correction factor
+[-i]            ignore flow in z (may be good if top of brain is missing)
+[-m]            apply <input1_basename>_stdmask to brain edge points
+[-s <options>]  <options> to be passed to segmentation (type "fast" to get these)
+
+

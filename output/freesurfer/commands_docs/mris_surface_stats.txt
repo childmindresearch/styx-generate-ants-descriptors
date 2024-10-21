@@ -1,0 +1,257 @@
+
+=== Output of 'mris_surface_stats --help' ===
+
+unknown option --help
+Usage: /usr/local/freesurfer/bin/mris_surface_stats [options] <data1> ... <dataN>
+
+This program computes the group-wise mean and std of the 
+thickness differences at every vertex of the template surface.
+
+Options include:
+
+ -nsmooth %d     specify number of smoothing steps
+ -surf_name %s   set the surface filename
+ -mask_name %s   set the filename for surface mask 
+ -out_name %s    set the output filename (std of data)
+ -mean %s        set the output filename for mean
+ -absmean %s     set the output filename for abs-mean
+ -absstd %s      set the output filename for std-of-abs-mean 
+ -zscore %s      set the output filename for zscore
+                 (only if first_group_size > 0) 
+ -first_group_size %d:   specify how many subjects in the 
+                         beginning belong to first group 
+ -src_type %s    input surface data format (default = paint) 
+ -trg_type %s    output format (default = paint) 
+ -debug %d       specify which surface vertex number to debug
+
+Example:
+
+  mris_surface_stats -mask some_mask.label \
+    -nsmooth $N \
+    -surf_name $SUBJECTS_DIR/1000/surf/${hemi}.white \
+    -src_type paint \
+    -out_name $SUBJECTS_DIR/groupstudy/${hemi}_std_${N}.mgh \
+    -absmean $SUBJECTS_DIR/groupstudy/${hemi}_absmean_${N}.mgh \
+    -mean $SUBJECTS_DIR/groupstudy/${hemi}_mean_${N}.mgh \
+    -absstd $SUBJECTS_DIR/groupstudy/${hemi}_absstd_${N}.mgh \
+    $SUBJECTS_DIR/groupstudy/1???_${hemi}_thickness_diff_resampled_to_1001.mgh
+
+This command computes the mean and std of both the signed and 
+unsigned thickness differences and outputs the results to 
+different files as specified by the different options. The user 
+can define the hemisphere ${hemi}$, and the number of smoothing
+iterations $N applied to the input difference maps. The other 
+options are:
+
+ -mask  specifies a surface mask, where vertices within the 
+ mask will be excluded in all the computation (smoothing and 
+ statistics). If not specified, all vertices are used.
+
+ -nsmooth  specifies the number of smoothing iterations before 
+ statistics are computed; N=60 roughly corresponds to a surface 
+ based Gaussian kernel of size 6mm. If not specified, no 
+ smoothing is performed.
+
+ -surf_name  is the template surface (can be any surface of 
+ the template subject, named 1000 in this example). 
+ This option is required.
+
+ -src_type   means the same as in mri_surf2surf or 
+ mris_thickness_diff.
+
+ -out_name  stores the standard deviation map of the input 
+ thickness difference maps. This option is required.
+
+ -absmean  stores the absolute average map of the input 
+ thickness difference maps.
+
+ -mean  stores the average map of the input thickness 
+ difference maps.
+
+ -absstd  stores the standard deviation map of the absolute 
+ differences.
+
+ 1???_${hemi}_thickness_diff_resampled_to_1001.mgh  refers to 
+ the list of .mgh files created in a prior step that are to be 
+ used as input for this step. If those files are stored under 
+ the same directory, you can indeed use 
+ 1???_${hemi}_thickness_diff_resampled.mgh instead of listing 
+ each individual file explicitly, or 
+ 1*_${hemi}_thickness_diff_resampled.mgh.  Note: this assumes 
+ the subject id's begin with 1.
+
+The statistical maps can be displayed on the template subject's 
+surfaces, which can be used to visualize the spatially varying 
+pattern of the thickness measurement variability.
+
+
+=== Output of 'mris_surface_stats -help' ===
+
+unknown option -help
+Usage: /usr/local/freesurfer/bin/mris_surface_stats [options] <data1> ... <dataN>
+
+This program computes the group-wise mean and std of the 
+thickness differences at every vertex of the template surface.
+
+Options include:
+
+ -nsmooth %d     specify number of smoothing steps
+ -surf_name %s   set the surface filename
+ -mask_name %s   set the filename for surface mask 
+ -out_name %s    set the output filename (std of data)
+ -mean %s        set the output filename for mean
+ -absmean %s     set the output filename for abs-mean
+ -absstd %s      set the output filename for std-of-abs-mean 
+ -zscore %s      set the output filename for zscore
+                 (only if first_group_size > 0) 
+ -first_group_size %d:   specify how many subjects in the 
+                         beginning belong to first group 
+ -src_type %s    input surface data format (default = paint) 
+ -trg_type %s    output format (default = paint) 
+ -debug %d       specify which surface vertex number to debug
+
+Example:
+
+  mris_surface_stats -mask some_mask.label \
+    -nsmooth $N \
+    -surf_name $SUBJECTS_DIR/1000/surf/${hemi}.white \
+    -src_type paint \
+    -out_name $SUBJECTS_DIR/groupstudy/${hemi}_std_${N}.mgh \
+    -absmean $SUBJECTS_DIR/groupstudy/${hemi}_absmean_${N}.mgh \
+    -mean $SUBJECTS_DIR/groupstudy/${hemi}_mean_${N}.mgh \
+    -absstd $SUBJECTS_DIR/groupstudy/${hemi}_absstd_${N}.mgh \
+    $SUBJECTS_DIR/groupstudy/1???_${hemi}_thickness_diff_resampled_to_1001.mgh
+
+This command computes the mean and std of both the signed and 
+unsigned thickness differences and outputs the results to 
+different files as specified by the different options. The user 
+can define the hemisphere ${hemi}$, and the number of smoothing
+iterations $N applied to the input difference maps. The other 
+options are:
+
+ -mask  specifies a surface mask, where vertices within the 
+ mask will be excluded in all the computation (smoothing and 
+ statistics). If not specified, all vertices are used.
+
+ -nsmooth  specifies the number of smoothing iterations before 
+ statistics are computed; N=60 roughly corresponds to a surface 
+ based Gaussian kernel of size 6mm. If not specified, no 
+ smoothing is performed.
+
+ -surf_name  is the template surface (can be any surface of 
+ the template subject, named 1000 in this example). 
+ This option is required.
+
+ -src_type   means the same as in mri_surf2surf or 
+ mris_thickness_diff.
+
+ -out_name  stores the standard deviation map of the input 
+ thickness difference maps. This option is required.
+
+ -absmean  stores the absolute average map of the input 
+ thickness difference maps.
+
+ -mean  stores the average map of the input thickness 
+ difference maps.
+
+ -absstd  stores the standard deviation map of the absolute 
+ differences.
+
+ 1???_${hemi}_thickness_diff_resampled_to_1001.mgh  refers to 
+ the list of .mgh files created in a prior step that are to be 
+ used as input for this step. If those files are stored under 
+ the same directory, you can indeed use 
+ 1???_${hemi}_thickness_diff_resampled.mgh instead of listing 
+ each individual file explicitly, or 
+ 1*_${hemi}_thickness_diff_resampled.mgh.  Note: this assumes 
+ the subject id's begin with 1.
+
+The statistical maps can be displayed on the template subject's 
+surfaces, which can be used to visualize the spatially varying 
+pattern of the thickness measurement variability.
+
+
+=== Output of 'mris_surface_stats' (no arguments) ===
+
+Usage: /usr/local/freesurfer/bin/mris_surface_stats [options] <data1> ... <dataN>
+
+This program computes the group-wise mean and std of the 
+thickness differences at every vertex of the template surface.
+
+Options include:
+
+ -nsmooth %d     specify number of smoothing steps
+ -surf_name %s   set the surface filename
+ -mask_name %s   set the filename for surface mask 
+ -out_name %s    set the output filename (std of data)
+ -mean %s        set the output filename for mean
+ -absmean %s     set the output filename for abs-mean
+ -absstd %s      set the output filename for std-of-abs-mean 
+ -zscore %s      set the output filename for zscore
+                 (only if first_group_size > 0) 
+ -first_group_size %d:   specify how many subjects in the 
+                         beginning belong to first group 
+ -src_type %s    input surface data format (default = paint) 
+ -trg_type %s    output format (default = paint) 
+ -debug %d       specify which surface vertex number to debug
+
+Example:
+
+  mris_surface_stats -mask some_mask.label \
+    -nsmooth $N \
+    -surf_name $SUBJECTS_DIR/1000/surf/${hemi}.white \
+    -src_type paint \
+    -out_name $SUBJECTS_DIR/groupstudy/${hemi}_std_${N}.mgh \
+    -absmean $SUBJECTS_DIR/groupstudy/${hemi}_absmean_${N}.mgh \
+    -mean $SUBJECTS_DIR/groupstudy/${hemi}_mean_${N}.mgh \
+    -absstd $SUBJECTS_DIR/groupstudy/${hemi}_absstd_${N}.mgh \
+    $SUBJECTS_DIR/groupstudy/1???_${hemi}_thickness_diff_resampled_to_1001.mgh
+
+This command computes the mean and std of both the signed and 
+unsigned thickness differences and outputs the results to 
+different files as specified by the different options. The user 
+can define the hemisphere ${hemi}$, and the number of smoothing
+iterations $N applied to the input difference maps. The other 
+options are:
+
+ -mask  specifies a surface mask, where vertices within the 
+ mask will be excluded in all the computation (smoothing and 
+ statistics). If not specified, all vertices are used.
+
+ -nsmooth  specifies the number of smoothing iterations before 
+ statistics are computed; N=60 roughly corresponds to a surface 
+ based Gaussian kernel of size 6mm. If not specified, no 
+ smoothing is performed.
+
+ -surf_name  is the template surface (can be any surface of 
+ the template subject, named 1000 in this example). 
+ This option is required.
+
+ -src_type   means the same as in mri_surf2surf or 
+ mris_thickness_diff.
+
+ -out_name  stores the standard deviation map of the input 
+ thickness difference maps. This option is required.
+
+ -absmean  stores the absolute average map of the input 
+ thickness difference maps.
+
+ -mean  stores the average map of the input thickness 
+ difference maps.
+
+ -absstd  stores the standard deviation map of the absolute 
+ differences.
+
+ 1???_${hemi}_thickness_diff_resampled_to_1001.mgh  refers to 
+ the list of .mgh files created in a prior step that are to be 
+ used as input for this step. If those files are stored under 
+ the same directory, you can indeed use 
+ 1???_${hemi}_thickness_diff_resampled.mgh instead of listing 
+ each individual file explicitly, or 
+ 1*_${hemi}_thickness_diff_resampled.mgh.  Note: this assumes 
+ the subject id's begin with 1.
+
+The statistical maps can be displayed on the template subject's 
+surfaces, which can be used to visualize the spatially varying 
+pattern of the thickness measurement variability.
+

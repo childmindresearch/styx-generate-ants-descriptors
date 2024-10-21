@@ -1,0 +1,29 @@
+
+=== Output of 'mris_compute_acorr --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_compute_acorr -o <output subject> [options] 
+	<hemi> <surf> <curv> 
+	<c1_subject1> <c1_subject2>... : 
+	<c2_subject1> <c2_subject2>...
+where surf must be a spherical surface suitable for computing geodesics
+The <c1_subject> ... is a list of subjects from one class
+and the <c2_subject>... is a list of subjects from another class.
+
+This program will compute the autocorrelation function of a curvature file
+
+valid options are:
+
+
+=== Output of 'mris_compute_acorr -help' ===
+
+unknown option -help
+
+=== Output of 'mris_compute_acorr' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_compute_acorr -o <output subject> [options] 
+	<hemi> <surf> <curv> 
+	<c1_subject1> <c1_subject2>... : 
+	<c2_subject1> <c2_subject2>...
+where surf must be a spherical surface suitable for computing geodesics
+The <c1_subject> ... is a list of subjects from one class
+and the <c2_subject>... is a list of subjects from another class.

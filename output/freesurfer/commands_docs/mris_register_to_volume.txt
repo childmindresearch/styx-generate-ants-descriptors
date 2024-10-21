@@ -1,0 +1,86 @@
+
+=== Output of 'mris_register_to_volume --help' ===
+
+
+mris_register_to_volume
+  --surf surface
+  --pial pial surface name
+  --pial_only pial surface name
+  --reg regfile
+  --noglobal
+  --median
+  --mri_reg fvol
+
+  --tx-mmd txmin txmax txdelta : translation (mm) in x
+  --ty-mmd tymin tymax tydelta : translation (mm) in y
+  --tz-mmd tzmin tzmax tzdelta : translation (mm) in z
+  --ax-mmd axmin axmax axdelta : rotation (deg) about x
+  --ay-mmd aymin aymax aydelta : rotation (deg) about y
+  --az-mmd azmin azmax azdelta : rotation (deg) about z
+
+  --cost costfile
+
+  --interp interptype : interpolation trilinear or nearest (def is trilin)
+
+  --noise stddev : add noise with stddev to input for testing sensitivity
+  --seed randseed : for use with --noise
+  --skip min max  : # of vertices to skip (starting at max and reducing)
+  --sigma min max  : size of blurring kernels to use (starting at max and reducing)
+  --CNR           : use CNR-based similarity function
+  --max_rot angle : max angle (degrees) to search over
+  --max_trans dist :max translation (mm) to search over
+  --border border : size of the border region to ignore
+  --s subject     : specify name of subject (for register.dat file)
+  --dilate ndil   : dilate ripflags ndil times (only with --patch)
+  --patch <patch>   : load patch <patch> and limit calculations to it
+  --label <label>   : load label <label> and limit calculations to it
+
+  --out-reg outreg : reg at lowest cost (updated continuously)
+
+
+7.4.1
+
+
+=== Output of 'mris_register_to_volume -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mris_register_to_volume' (no arguments) ===
+
+
+mris_register_to_volume
+  --surf surface
+  --pial pial surface name
+  --pial_only pial surface name
+  --reg regfile
+  --noglobal
+  --median
+  --mri_reg fvol
+
+  --tx-mmd txmin txmax txdelta : translation (mm) in x
+  --ty-mmd tymin tymax tydelta : translation (mm) in y
+  --tz-mmd tzmin tzmax tzdelta : translation (mm) in z
+  --ax-mmd axmin axmax axdelta : rotation (deg) about x
+  --ay-mmd aymin aymax aydelta : rotation (deg) about y
+  --az-mmd azmin azmax azdelta : rotation (deg) about z
+
+  --cost costfile
+
+  --interp interptype : interpolation trilinear or nearest (def is trilin)
+
+  --noise stddev : add noise with stddev to input for testing sensitivity
+  --seed randseed : for use with --noise
+  --skip min max  : # of vertices to skip (starting at max and reducing)
+  --sigma min max  : size of blurring kernels to use (starting at max and reducing)
+  --CNR           : use CNR-based similarity function
+  --max_rot angle : max angle (degrees) to search over
+  --max_trans dist :max translation (mm) to search over
+  --border border : size of the border region to ignore
+  --s subject     : specify name of subject (for register.dat file)
+  --dilate ndil   : dilate ripflags ndil times (only with --patch)
+  --patch <patch>   : load patch <patch> and limit calculations to it
+  --label <label>   : load label <label> and limit calculations to it
+
+  --out-reg outreg : reg at lowest cost (updated continuously)
+

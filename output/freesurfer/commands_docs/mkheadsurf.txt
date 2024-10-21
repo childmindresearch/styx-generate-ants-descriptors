@@ -1,0 +1,163 @@
+
+=== Output of 'mkheadsurf --help' ===
+
+
+mkheadsurf
+
+Required Arguments:
+  -i inputvol
+  -o outputvol
+  -surf ouputsurf
+
+  -s subjectid
+    Sets inputvol to be subject/mri/T1.mgz
+    Sets outputvol to be subject/mri/seghead.mgz
+    Sets outputsurf to be subject/surf/lh.smseghead
+
+Other Arguments (Optional)
+   -nsmooth N : number of smoothing iterations (def 10)
+   -noseghead : do not seg the head, just tess and smooth existing
+   -thresh1 threshold : default is 20
+   -thresh2 threshold : default is 20
+   -nhitsmin N        : default is 2
+   -ndilate  N        : default is 0
+   -nerode   N        : default is 0
+   -fillval value     : default is 1
+   -fhi fhi           : fhi for MRIchangeType(); default is to use default in mri_seghead
+   -no-rescale        : do not  rescale input when converting to uchar (-no-rescale)
+   -no-fill-holes-islands : do not fill holes and remove islands
+   -or-mask ormask.mgz : include all voxels in ormask in the head seg (-no-or-mask)
+   -tess/-mc : tessellation method using mri_tessellate or mri_mc (default is -mc)
+   -inflate : inflate and compute sulc
+   -curv : compute curv with smoothing
+   -srcvol volid      : default is T1
+   -headvol volid     : default is seghead
+   -headsurf surfid   : default is seghead
+   -smheadsurf surfid : default is smseghead
+   -hemi hemi         : default is lh
+   -sd subjectsdir    : default is SUBJECTS_DIR
+   -umask umask       : default is 2 (ie, group and individ writable)
+   -log logfile
+
+See also: mri_seghead, mri_tessellate, and mris_smooth
+
+mkheadsurf 7.4.1
+
+This will segment and create a surface representation of the head that
+can be displayed using tksurfer. The output is lh.seghead and will
+be stored in the subject's surf directory. There will also be a new
+volume called seghead in the subject's mri directory. The volume will
+be segmented and filled with 255. If the final head surface does not
+look good enough, this volume can be edited (eg, tkmedit subjid
+seghead -aux T1), then mkheadsurf can be re-run with -noseghead. The
+segmenation surface can be loaded by File->Load Main Surface:
+lh.smseghead.
+
+For notes on setting the head segmentation parameters thresh1,
+thresh2, and nhitsmin, see mri_seghead --help.
+
+tksurfer subject lh seghead
+
+
+=== Output of 'mkheadsurf -help' ===
+
+
+mkheadsurf
+
+Required Arguments:
+  -i inputvol
+  -o outputvol
+  -surf ouputsurf
+
+  -s subjectid
+    Sets inputvol to be subject/mri/T1.mgz
+    Sets outputvol to be subject/mri/seghead.mgz
+    Sets outputsurf to be subject/surf/lh.smseghead
+
+Other Arguments (Optional)
+   -nsmooth N : number of smoothing iterations (def 10)
+   -noseghead : do not seg the head, just tess and smooth existing
+   -thresh1 threshold : default is 20
+   -thresh2 threshold : default is 20
+   -nhitsmin N        : default is 2
+   -ndilate  N        : default is 0
+   -nerode   N        : default is 0
+   -fillval value     : default is 1
+   -fhi fhi           : fhi for MRIchangeType(); default is to use default in mri_seghead
+   -no-rescale        : do not  rescale input when converting to uchar (-no-rescale)
+   -no-fill-holes-islands : do not fill holes and remove islands
+   -or-mask ormask.mgz : include all voxels in ormask in the head seg (-no-or-mask)
+   -tess/-mc : tessellation method using mri_tessellate or mri_mc (default is -mc)
+   -inflate : inflate and compute sulc
+   -curv : compute curv with smoothing
+   -srcvol volid      : default is T1
+   -headvol volid     : default is seghead
+   -headsurf surfid   : default is seghead
+   -smheadsurf surfid : default is smseghead
+   -hemi hemi         : default is lh
+   -sd subjectsdir    : default is SUBJECTS_DIR
+   -umask umask       : default is 2 (ie, group and individ writable)
+   -log logfile
+
+See also: mri_seghead, mri_tessellate, and mris_smooth
+
+mkheadsurf 7.4.1
+
+This will segment and create a surface representation of the head that
+can be displayed using tksurfer. The output is lh.seghead and will
+be stored in the subject's surf directory. There will also be a new
+volume called seghead in the subject's mri directory. The volume will
+be segmented and filled with 255. If the final head surface does not
+look good enough, this volume can be edited (eg, tkmedit subjid
+seghead -aux T1), then mkheadsurf can be re-run with -noseghead. The
+segmenation surface can be loaded by File->Load Main Surface:
+lh.smseghead.
+
+For notes on setting the head segmentation parameters thresh1,
+thresh2, and nhitsmin, see mri_seghead --help.
+
+tksurfer subject lh seghead
+
+
+=== Output of 'mkheadsurf' (no arguments) ===
+
+
+mkheadsurf
+
+Required Arguments:
+  -i inputvol
+  -o outputvol
+  -surf ouputsurf
+
+  -s subjectid
+    Sets inputvol to be subject/mri/T1.mgz
+    Sets outputvol to be subject/mri/seghead.mgz
+    Sets outputsurf to be subject/surf/lh.smseghead
+
+Other Arguments (Optional)
+   -nsmooth N : number of smoothing iterations (def 10)
+   -noseghead : do not seg the head, just tess and smooth existing
+   -thresh1 threshold : default is 20
+   -thresh2 threshold : default is 20
+   -nhitsmin N        : default is 2
+   -ndilate  N        : default is 0
+   -nerode   N        : default is 0
+   -fillval value     : default is 1
+   -fhi fhi           : fhi for MRIchangeType(); default is to use default in mri_seghead
+   -no-rescale        : do not  rescale input when converting to uchar (-no-rescale)
+   -no-fill-holes-islands : do not fill holes and remove islands
+   -or-mask ormask.mgz : include all voxels in ormask in the head seg (-no-or-mask)
+   -tess/-mc : tessellation method using mri_tessellate or mri_mc (default is -mc)
+   -inflate : inflate and compute sulc
+   -curv : compute curv with smoothing
+   -srcvol volid      : default is T1
+   -headvol volid     : default is seghead
+   -headsurf surfid   : default is seghead
+   -smheadsurf surfid : default is smseghead
+   -hemi hemi         : default is lh
+   -sd subjectsdir    : default is SUBJECTS_DIR
+   -umask umask       : default is 2 (ie, group and individ writable)
+   -log logfile
+
+See also: mri_seghead, mri_tessellate, and mris_smooth
+

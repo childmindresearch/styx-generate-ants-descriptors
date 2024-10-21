@@ -1,0 +1,15 @@
+
+=== Output of 'mri_rigid_register --help' ===
+
+unknown option --help
+
+=== Output of 'mri_rigid_register -help' ===
+
+unknown option -help
+
+=== Output of 'mri_rigid_register' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_rigid_register [options] <src volume> <target volume> <transform fname>
+
+Consider _not running with -v for vox2vox transform.  The default, coronal-ras-to-coronal-ras is pretty useful...
+

@@ -1,0 +1,14 @@
+
+=== Output of 'SUMA_glxdino --help' ===
+
+glxdino: bad option
+
+=== Output of 'SUMA_glxdino -help' ===
+
+A simple openGL test program using GLX.
+If it does not run, then SUMA certainly won't.
+Copyright (c) Mark J. Kilgard, 1996.
+
+=== Output of 'SUMA_glxdino' (no arguments) ===
+
+glxdino: could not open display

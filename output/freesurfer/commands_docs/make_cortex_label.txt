@@ -1,0 +1,19 @@
+
+=== Output of 'make_cortex_label --help' ===
+
+ERROR: --help not regocnized
+
+=== Output of 'make_cortex_label -help' ===
+
+ERROR: -help not regocnized
+
+=== Output of 'make_cortex_label' (no arguments) ===
+
+
+USAGE: make_cortex_label
+
+   --s subject
+   --h hemi (default is both)
+   --a2009s : use aparc.a2009 insteda of aparc
+   --o outname : output will be ?h.outname.label (def is cortex)
+

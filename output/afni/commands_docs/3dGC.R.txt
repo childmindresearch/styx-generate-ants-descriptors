@@ -1,0 +1,15 @@
+
+=== Output of '3dGC.R --help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dGC.R --args /opt/afni/src/../install/3dGC.R --help
+
+=== Output of '3dGC.R -help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dGC.R --args /opt/afni/src/../install/3dGC.R -help
+
+=== Output of '3dGC.R' (no arguments) ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dGC.R --args /opt/afni/src/../install/3dGC.R

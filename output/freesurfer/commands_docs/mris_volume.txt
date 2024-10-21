@@ -1,0 +1,14 @@
+
+=== Output of 'mris_volume --help' ===
+
+unknown option --help
+
+=== Output of 'mris_volume -help' ===
+
+unknown option -help
+
+=== Output of 'mris_volume' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_volume surface_file_name
+	 This program computes the volume of the given closed surface using a divergence formula 
+	 use -v option to output more messages

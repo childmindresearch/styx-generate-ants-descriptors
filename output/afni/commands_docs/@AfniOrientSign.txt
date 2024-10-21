@@ -1,0 +1,12 @@
+
+=== Output of '@AfniOrientSign --help' ===
+
+1 1 1
+
+=== Output of '@AfniOrientSign -help' ===
+
+No help, see where this is used instead
+
+=== Output of '@AfniOrientSign' (no arguments) ===
+
+No help, see where this is used instead

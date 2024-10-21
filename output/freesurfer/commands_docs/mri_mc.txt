@@ -1,0 +1,24 @@
+
+=== Output of 'mri_mc --help' ===
+
+
+
+USAGE: mri_mc input_volume label_value output_surface [connectivity]
+option connectivity: 1=6+,2=18,3=6,4=26 (default=1)
+
+
+=== Output of 'mri_mc -help' ===
+
+
+
+USAGE: mri_mc input_volume label_value output_surface [connectivity]
+option connectivity: 1=6+,2=18,3=6,4=26 (default=1)
+
+
+=== Output of 'mri_mc' (no arguments) ===
+
+
+
+USAGE: mri_mc input_volume label_value output_surface [connectivity]
+option connectivity: 1=6+,2=18,3=6,4=26 (default=1)
+

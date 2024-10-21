@@ -1,0 +1,14 @@
+
+=== Output of 'ztop --help' ===
+
+0.500000
+
+=== Output of 'ztop -help' ===
+
+0.500000
+
+=== Output of 'ztop' (no arguments) ===
+
+Usage: ztop <z> [-2] [-g <number_of_resels>]
+-2 : use 2-tailed conversion (default is 1-tailed)
+-g : use GRF maximum-height theory instead of Gaussian pdf

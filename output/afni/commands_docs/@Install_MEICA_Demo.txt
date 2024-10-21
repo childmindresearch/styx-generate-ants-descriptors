@@ -1,0 +1,28 @@
+
+=== Output of '@Install_MEICA_Demo --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Install_MEICA_Demo -help' ===
+
+Installs the demo archive for Prantik Kundu MEICA denoising tools
+After the archive is downloaded and unpacked, see its README.txt
+for details.
+
+=== Output of '@Install_MEICA_Demo' (no arguments) ===
+
+/usr/bin/curl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 15  105M   15 16.2M    0     0  21.9M      0  0:00:04 --:--:--  0:00:04 21.8M 36  105M   36 38.3M    0     0  22.0M      0  0:00:04  0:00:01  0:00:03 22.0M 60  105M   60 63.5M    0     0  23.1M      0  0:00:04  0:00:02  0:00:02 23.1M 84  105M   84 89.1M    0     0  23.8M      0  0:00:04  0:00:03  0:00:01 23.8M100  105M  100  105M    0     0  23.3M      0  0:00:04  0:00:04 --:--:-- 23.3M
+pkundu_meica_sample/
+pkundu_meica_sample/README.txt
+pkundu_meica_sample/Siemens_4echo_Rest/
+pkundu_meica_sample/Siemens_4echo_Rest/mo1_brainmask.nii.gz
+pkundu_meica_sample/Siemens_4echo_Rest/mo1_e1.nii.gz
+pkundu_meica_sample/Siemens_4echo_Rest/mo1_e2.nii.gz
+pkundu_meica_sample/Siemens_4echo_Rest/mo1_e3.nii.gz
+pkundu_meica_sample/Siemens_4echo_Rest/mo1_e4.nii.gz
+********************************************************
+Follow examples in ./pkundu_meica_sample/README.txt 
+********************************************************

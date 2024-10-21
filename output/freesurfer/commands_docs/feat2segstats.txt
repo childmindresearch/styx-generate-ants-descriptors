@@ -1,0 +1,84 @@
+
+=== Output of 'feat2segstats --help' ===
+
+
+feat2segstats
+
+ --feat dir  <--feat dir>  : Feat output directory
+ --featdirfile file : file with a list of feat directories
+
+ --seg segvol
+ --aseg
+ --aparc+aseg
+ 
+ --ctab ctab : default is FREESURFER_HOME/FreeSurferColorLUT.txt
+ --all-segs : report on all segs, even empty ones
+ 
+ --copes : do all copes
+ --varcopes : do all varcopes
+ --zstats : do all zstats
+ --pes : do all pes
+ 
+ --rvar : sigmasquareds
+ --exf : example_func
+ --mask : probably not too useful
+ --mean_func : 
+ 
+ --stat stat <--stat stat>
+ 
+ --version : print version and exit
+ --help    : print help and exit
+ --debug   : turn on debugging
+ --nolog   : do not create a log file
+
+feat2segstats 7.4.1
+
+Computes segmentation summaries.  Stores output in
+featdir/freesurfer/segstats/segvol/statname.dat
+
+Once you have run this on several feat dirs, you can then
+
+asegstats2table --inputs \
+  featdir1/freesurfer/segstats/aparc+aseg/cope1.dat \
+  featdir2/freesurfer/segstats/aparc+aseg/cope1.dat \
+  featdir3/freesurfer/segstats/aparc+aseg/cope1.dat \
+  --meas mean --t cope1.table.dat 
+
+
+
+=== Output of 'feat2segstats -help' ===
+
+ERROR: flag -help not recognized
+
+=== Output of 'feat2segstats' (no arguments) ===
+
+
+feat2segstats
+
+ --feat dir  <--feat dir>  : Feat output directory
+ --featdirfile file : file with a list of feat directories
+
+ --seg segvol
+ --aseg
+ --aparc+aseg
+ 
+ --ctab ctab : default is FREESURFER_HOME/FreeSurferColorLUT.txt
+ --all-segs : report on all segs, even empty ones
+ 
+ --copes : do all copes
+ --varcopes : do all varcopes
+ --zstats : do all zstats
+ --pes : do all pes
+ 
+ --rvar : sigmasquareds
+ --exf : example_func
+ --mask : probably not too useful
+ --mean_func : 
+ 
+ --stat stat <--stat stat>
+ 
+ --version : print version and exit
+ --help    : print help and exit
+ --debug   : turn on debugging
+ --nolog   : do not create a log file
+

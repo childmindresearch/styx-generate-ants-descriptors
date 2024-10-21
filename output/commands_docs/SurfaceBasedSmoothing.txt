@@ -1,4 +1,0 @@
- usage :  SurfaceBasedSmoothing ImageToSmooth  sigma SurfaceImage  outname  {numrepeatsofsmoothing}
- We assume the SurfaceImage has a label == 1 that defines the surface 
- sigma  defines the geodesic n-hood radius --- numrepeats allows one to use 
- a small geodesic n-hood repeatedly applied many times -- faster computation, same effect 

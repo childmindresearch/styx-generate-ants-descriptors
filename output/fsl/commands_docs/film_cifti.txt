@@ -1,0 +1,35 @@
+
+=== Output of 'film_cifti --help' ===
+
+usage: film_cifti [-h] -i INPUTNAME -o BASENAME -l LEFTSURFACE -r RIGHTSURFACE
+                  [--st SUSANTHRESHOLD] [--sm SUSANEXTENT] [--ss SURFACESIGMA]
+                  [--se SURFACEEXTENT] [--filmOptions FILMOPTIONS]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUTNAME          input ciftiFile
+  -o BASENAME           output basename
+  -l LEFTSURFACE        geometry for left cortex
+  -r RIGHTSURFACE       geometry for right cortex
+  --st SUSANTHRESHOLD   susan brightness threshold for volumetric analysis (
+                        default: 0 )
+  --sm SUSANEXTENT      susan mask size for volumetric analysis ( default: 4 )
+  --ss SURFACESIGMA     smoothing sigma for surface analysis ( default: 0 )
+  --se SURFACEEXTENT    smoothing extent for surface analysis ( default: 4 )
+  --filmOptions FILMOPTIONS
+                        film options to be used with all modes, list must be
+                        wrapped by quotes
+
+=== Output of 'film_cifti -help' ===
+
+usage: film_cifti [-h] -i INPUTNAME -o BASENAME -l LEFTSURFACE -r RIGHTSURFACE
+                  [--st SUSANTHRESHOLD] [--sm SUSANEXTENT] [--ss SURFACESIGMA]
+                  [--se SURFACEEXTENT] [--filmOptions FILMOPTIONS]
+film_cifti: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'film_cifti' (no arguments) ===
+
+usage: film_cifti [-h] -i INPUTNAME -o BASENAME -l LEFTSURFACE -r RIGHTSURFACE
+                  [--st SUSANTHRESHOLD] [--sm SUSANEXTENT] [--ss SURFACESIGMA]
+                  [--se SURFACEEXTENT] [--filmOptions FILMOPTIONS]
+film_cifti: error: the following arguments are required: -i, -o, -l, -r

@@ -1,0 +1,15 @@
+
+=== Output of 'check_subject --help' ===
+
+CHECKING SUBJECT --help
+ERROR: cannot cd to /usr/local/freesurfer/subjects/--help
+
+=== Output of 'check_subject -help' ===
+
+CHECKING SUBJECT -help
+ERROR: cannot cd to /usr/local/freesurfer/subjects/-help
+
+=== Output of 'check_subject' (no arguments) ===
+
+CHECKING SUBJECT 
+ERROR:  has no surf directory

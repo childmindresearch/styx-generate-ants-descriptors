@@ -1,0 +1,12 @@
+
+=== Output of 'usbtree --help' ===
+
+/usr/local/freesurfer/bin/usbtree: cannot open '--help'
+
+=== Output of 'usbtree -help' ===
+
+/usr/local/freesurfer/bin/usbtree: cannot open '-help'
+
+=== Output of 'usbtree' (no arguments) ===
+
+/usr/local/freesurfer/bin/usbtree: cannot open '/proc/bus/usb/devices'

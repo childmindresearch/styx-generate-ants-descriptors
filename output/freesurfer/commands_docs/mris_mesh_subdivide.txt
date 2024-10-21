@@ -1,0 +1,60 @@
+
+=== Output of 'mris_mesh_subdivide --help' ===
+
+USAGE: mris_mesh_subdivide  [options]
+
+   --surf <filename>       name of input surface
+   --out  <filename>       name for output surface (if does not
+                           contain '/' outputs to same directory
+                           as input surface)
+   --method <methodname>   subdivision method options are:
+                           'butterfly' (default), 'loop', or 'linear'
+   --iter <N>              number of subdivision iterations
+
+
+   --help        print out information on how to use this program
+   --version     print out version and exit
+
+7.4.1
+
+
+This program will subdivide a triangular mesh surface.
+
+The available subdivision schemes are: 'modified butterfly', 'loop', 
+or 'linear'
+
+The modified butterfly method does not alter the positions of the
+original vertices and is the desired method for most cases (since the
+original vertices have been carefully positioned along the cortical
+gray matter based on image intensity).
+
+The loop subdivision method alters the positions of the original
+vertices.
+
+The linear subdivision method is the simplest in that it only adds
+new vertices to existing edges, which increases the triangle count
+but does not affect the geometry of the mesh surface.
+
+
+=== Output of 'mris_mesh_subdivide -help' ===
+
+timeout: the monitored command dumped core
+
+=== Output of 'mris_mesh_subdivide' (no arguments) ===
+
+USAGE: mris_mesh_subdivide  [options]
+
+   --surf <filename>       name of input surface
+   --out  <filename>       name for output surface (if does not
+                           contain '/' outputs to same directory
+                           as input surface)
+   --method <methodname>   subdivision method options are:
+                           'butterfly' (default), 'loop', or 'linear'
+   --iter <N>              number of subdivision iterations
+
+
+   --help        print out information on how to use this program
+   --version     print out version and exit
+
+7.4.1
+

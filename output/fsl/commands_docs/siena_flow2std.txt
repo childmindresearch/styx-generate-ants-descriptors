@@ -1,0 +1,27 @@
+
+=== Output of 'siena_flow2std --help' ===
+
+
+Usage: siena_flow2std <fileroot2> <fileroot2> [options]
+
+-s <sigma> : spatial smoothing of standard-space edge-flow image, sigma (HWHM) in mm (default=5)
+-d         : debug (don't delete intermediate files)
+
+
+=== Output of 'siena_flow2std -help' ===
+
+
+Usage: siena_flow2std <fileroot2> <fileroot2> [options]
+
+-s <sigma> : spatial smoothing of standard-space edge-flow image, sigma (HWHM) in mm (default=5)
+-d         : debug (don't delete intermediate files)
+
+
+=== Output of 'siena_flow2std' (no arguments) ===
+
+
+Usage: siena_flow2std <fileroot2> <fileroot2> [options]
+
+-s <sigma> : spatial smoothing of standard-space edge-flow image, sigma (HWHM) in mm (default=5)
+-d         : debug (don't delete intermediate files)
+

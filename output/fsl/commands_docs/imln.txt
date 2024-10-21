@@ -1,0 +1,18 @@
+
+=== Output of 'imln --help' ===
+
+Usage: /usr/local/fsl/bin/imln <file1> <file2>
+  Makes a link (called file2) to file1
+  NB: filenames can be basenames or include an extension
+
+=== Output of 'imln -help' ===
+
+Usage: /usr/local/fsl/bin/imln <file1> <file2>
+  Makes a link (called file2) to file1
+  NB: filenames can be basenames or include an extension
+
+=== Output of 'imln' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/imln <file1> <file2>
+  Makes a link (called file2) to file1
+  NB: filenames can be basenames or include an extension

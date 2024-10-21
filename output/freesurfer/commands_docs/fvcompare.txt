@@ -1,0 +1,136 @@
+
+=== Output of 'fvcompare --help' ===
+
+
+fvcompare
+  --s1 subject1 --s2 subject2
+  --s subject --sd1 SD1 --sd2 SD2
+  --n1 name1 --n2 name2 (default s1 and s2)
+  --c1 whitecolor1 pialcolor1 ... : set surface colors
+ Note you can add two more subjects using --s3, --n3, --c3, --s4, etc
+  --vol volname (as found in subject/mri; default is brainmask.mgz, can have multiple)
+  --seg segname (as found in subject/mri; default is aparc+aseg.mgz, can have multiple)
+  --aseg : add aseg.mgz to seglist
+  --no-seg : do not display segmentations
+  --lh, --rh : only display left or right hemi
+  --no-surf : do not display surfaces
+  --gray min max : set gray scale levels (default is 0 255)
+  --crs col row slice : place cursor at given location and center FoV
+  --zoom Zoom : set zoom level
+  --annot annotname :  loads annotname.annot onto surfaces
+  --aparc : load aparc.annot onto surfaces
+  --inflated : load inflated surfaces in addition to white and pial
+  --white : only show white surfaces
+  --orig : only show orig.nofix and orig surfaces
+  --surf surfname : only show surfname
+  --p pointset : load point set file
+  --wot2 : include the ?h.woT2.pial surfs
+
+Note: unrecognized arguments are appended to freeview command line
+
+fvcompare 7.4.1
+
+Simultaneously loads volume, segmentation, and surface data from two
+subjects in freeview, eg, for comparing across time or for comparing
+across different analysis methods. The two subjects can be in the same
+or different SUBJECTS_DIRs. No registration is applied.  If the name
+option is used, then the given name is prepended to the volume or
+surface name (default is "s1" and "s2")
+
+If the two subjects are in the same SUBJECTS_DIR, then run something
+like
+
+fvcompare --s1  subject1 --s2 subject2
+
+If they are in different SUBJECTS_DIRs, then run something like
+
+fvcompare --s1 subject1 --sd1 DEV_SUBJECTS_DIR --s2 subject2 --sd2 STD_SUBJECTS_DIR \
+  --n1 dev --n2 stable 
+
+If the subjects have the same name but in different SUBJECTS_DIR, then 
+
+fvcompare --s  subject --sd1 SUBJECTS_DIR1 --sd2 SUBJECTS_DIR2
+
+
+=== Output of 'fvcompare -help' ===
+
+
+fvcompare
+  --s1 subject1 --s2 subject2
+  --s subject --sd1 SD1 --sd2 SD2
+  --n1 name1 --n2 name2 (default s1 and s2)
+  --c1 whitecolor1 pialcolor1 ... : set surface colors
+ Note you can add two more subjects using --s3, --n3, --c3, --s4, etc
+  --vol volname (as found in subject/mri; default is brainmask.mgz, can have multiple)
+  --seg segname (as found in subject/mri; default is aparc+aseg.mgz, can have multiple)
+  --aseg : add aseg.mgz to seglist
+  --no-seg : do not display segmentations
+  --lh, --rh : only display left or right hemi
+  --no-surf : do not display surfaces
+  --gray min max : set gray scale levels (default is 0 255)
+  --crs col row slice : place cursor at given location and center FoV
+  --zoom Zoom : set zoom level
+  --annot annotname :  loads annotname.annot onto surfaces
+  --aparc : load aparc.annot onto surfaces
+  --inflated : load inflated surfaces in addition to white and pial
+  --white : only show white surfaces
+  --orig : only show orig.nofix and orig surfaces
+  --surf surfname : only show surfname
+  --p pointset : load point set file
+  --wot2 : include the ?h.woT2.pial surfs
+
+Note: unrecognized arguments are appended to freeview command line
+
+fvcompare 7.4.1
+
+Simultaneously loads volume, segmentation, and surface data from two
+subjects in freeview, eg, for comparing across time or for comparing
+across different analysis methods. The two subjects can be in the same
+or different SUBJECTS_DIRs. No registration is applied.  If the name
+option is used, then the given name is prepended to the volume or
+surface name (default is "s1" and "s2")
+
+If the two subjects are in the same SUBJECTS_DIR, then run something
+like
+
+fvcompare --s1  subject1 --s2 subject2
+
+If they are in different SUBJECTS_DIRs, then run something like
+
+fvcompare --s1 subject1 --sd1 DEV_SUBJECTS_DIR --s2 subject2 --sd2 STD_SUBJECTS_DIR \
+  --n1 dev --n2 stable 
+
+If the subjects have the same name but in different SUBJECTS_DIR, then 
+
+fvcompare --s  subject --sd1 SUBJECTS_DIR1 --sd2 SUBJECTS_DIR2
+
+
+=== Output of 'fvcompare' (no arguments) ===
+
+
+fvcompare
+  --s1 subject1 --s2 subject2
+  --s subject --sd1 SD1 --sd2 SD2
+  --n1 name1 --n2 name2 (default s1 and s2)
+  --c1 whitecolor1 pialcolor1 ... : set surface colors
+ Note you can add two more subjects using --s3, --n3, --c3, --s4, etc
+  --vol volname (as found in subject/mri; default is brainmask.mgz, can have multiple)
+  --seg segname (as found in subject/mri; default is aparc+aseg.mgz, can have multiple)
+  --aseg : add aseg.mgz to seglist
+  --no-seg : do not display segmentations
+  --lh, --rh : only display left or right hemi
+  --no-surf : do not display surfaces
+  --gray min max : set gray scale levels (default is 0 255)
+  --crs col row slice : place cursor at given location and center FoV
+  --zoom Zoom : set zoom level
+  --annot annotname :  loads annotname.annot onto surfaces
+  --aparc : load aparc.annot onto surfaces
+  --inflated : load inflated surfaces in addition to white and pial
+  --white : only show white surfaces
+  --orig : only show orig.nofix and orig surfaces
+  --surf surfname : only show surfname
+  --p pointset : load point set file
+  --wot2 : include the ?h.woT2.pial surfs
+
+Note: unrecognized arguments are appended to freeview command line
+

@@ -1,0 +1,15 @@
+
+=== Output of '@djunct_4d_slices_to_3d_vol --help' ===
+
+** unexpected option #1 = '--help'
+BAD_EXIT: label not found.
+
+=== Output of '@djunct_4d_slices_to_3d_vol -help' ===
+
+   @djunct_4d_slices_to_3d_vol           - do something really useful
+
+
+=== Output of '@djunct_4d_slices_to_3d_vol' (no arguments) ===
+
+   @djunct_4d_slices_to_3d_vol           - do something really useful
+

@@ -1,0 +1,36 @@
+
+=== Output of 'bedpostx_postproc_gpu.sh --help' ===
+
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 81: --help/bin/merge_parts_gpu: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 84: [: 1: unary operator expected
+Removing intermediate files
+Creating identity xfm
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 129: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 130: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 131: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 132: .bedpostX/xfms/eye.mat: No such file or directory
+Done
+
+=== Output of 'bedpostx_postproc_gpu.sh -help' ===
+
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 81: -help/bin/merge_parts_gpu: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 84: [: 1: unary operator expected
+Removing intermediate files
+Creating identity xfm
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 129: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 130: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 131: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 132: .bedpostX/xfms/eye.mat: No such file or directory
+Done
+
+=== Output of 'bedpostx_postproc_gpu.sh' (no arguments) ===
+
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 81: /bin/merge_parts_gpu: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 84: [: 1: unary operator expected
+Removing intermediate files
+Creating identity xfm
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 129: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 130: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 131: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc_gpu.sh: line 132: .bedpostX/xfms/eye.mat: No such file or directory
+Done

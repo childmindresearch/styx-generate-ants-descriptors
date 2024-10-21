@@ -1,0 +1,36 @@
+
+=== Output of 'fslcreatehd --help' ===
+
+
+Usage: fslcreatehd <xsize> <ysize> <zsize> <tsize> <xvoxsize> <yvoxsize> <zvoxsize> <tr> <xorigin> <yorigin> <zorigin> <datatype> <headername>
+       fslcreatehd <nifti_xml_file> <headername>
+  Datatype values: 2=char, 4=short, 8=int, 16=float, 64=double
+  In the first form, a radiological image will be created, with the origin input as a voxel co-ordinate.
+  If the output file already exists, its data ( but not geometric information ) will be copied if it has
+  a matching number of elements.
+  In the second form, an XML-ish form of nifti header is read (as output by fslhd -x)
+  Note that stdin is used if '-' is used in place of a filename
+
+=== Output of 'fslcreatehd -help' ===
+
+
+Usage: fslcreatehd <xsize> <ysize> <zsize> <tsize> <xvoxsize> <yvoxsize> <zvoxsize> <tr> <xorigin> <yorigin> <zorigin> <datatype> <headername>
+       fslcreatehd <nifti_xml_file> <headername>
+  Datatype values: 2=char, 4=short, 8=int, 16=float, 64=double
+  In the first form, a radiological image will be created, with the origin input as a voxel co-ordinate.
+  If the output file already exists, its data ( but not geometric information ) will be copied if it has
+  a matching number of elements.
+  In the second form, an XML-ish form of nifti header is read (as output by fslhd -x)
+  Note that stdin is used if '-' is used in place of a filename
+
+=== Output of 'fslcreatehd' (no arguments) ===
+
+
+Usage: fslcreatehd <xsize> <ysize> <zsize> <tsize> <xvoxsize> <yvoxsize> <zvoxsize> <tr> <xorigin> <yorigin> <zorigin> <datatype> <headername>
+       fslcreatehd <nifti_xml_file> <headername>
+  Datatype values: 2=char, 4=short, 8=int, 16=float, 64=double
+  In the first form, a radiological image will be created, with the origin input as a voxel co-ordinate.
+  If the output file already exists, its data ( but not geometric information ) will be copied if it has
+  a matching number of elements.
+  In the second form, an XML-ish form of nifti header is read (as output by fslhd -x)
+  Note that stdin is used if '-' is used in place of a filename

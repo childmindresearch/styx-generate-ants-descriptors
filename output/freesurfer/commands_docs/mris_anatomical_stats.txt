@@ -1,0 +1,313 @@
+
+=== Output of 'mris_anatomical_stats --help' ===
+
+				Help
+
+NAME
+	mris_anatomical_stats
+
+SYNOPSIS
+	mris_anatomical_stats [options] <subjectname> <hemi> [<surfacename>]
+
+DESCRIPTION
+	This program computes a number of anatomical properties.
+
+POSITIONAL ARGUMENTS
+	<subjectname>
+		subject name
+
+	<hemi>
+		hemisphere
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-i <low thresh> <hi thresh>
+		only consider thicknesses in the specified range.
+
+	-l <label file>
+		limit calculations to specified label
+
+	-t <thickness file>
+		use specified file for computing thickness statistics
+
+	-a <annotation file>
+		compute properties for each label in the annotation file 
+		separately
+
+	-b
+		tabular output
+
+	-f <tablefile>
+		table output to tablefile (different format than -b). Must use
+		-a or -l options to spec input.
+
+	-log <logfile>
+		Write stats to file named log
+
+	-nsmooth <#>
+		Smooth thicknessmap # of iterations before using it
+
+	-c <ctab file>
+		Output annotation files's colortable to text file
+
+	-noglobal
+		Do not compute global brain stats
+
+	-th3
+		Compute vertex-wise volume by dividing each obliquely 
+		truncated trilateral pyramid into three tetrahedra
+
+OUTPUTS
+	Structure Name
+
+	Number of Vertices
+		unitless
+
+	Surface Area
+		mm^2, total surface area
+
+	Gray Matter
+		Volume mm, total gray matter volume
+
+	Average Thickness
+		mm, average cortical thickness
+
+	Thickness Std Dev
+		mm, +- standard error (mm)
+
+	Integrated Rectified Mean Curvature
+		mm^-1
+
+	Integrated Rectified Gaussian Curvature
+		mm^-2
+
+	Folding Index
+		unitless, a la Van Essen
+
+	Intrinsic Curvature Index
+		unitless, a la Van Essen
+
+EXAMPLE 1
+	mris_anatomical_stats -a subjid/label/lh.aparc.annot -b subjid lh
+
+EXAMPLE 2
+	mris_anatomical_stats -l lh.cortex.label -b subjid lh
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_curvature_stats
+
+
+
+=== Output of 'mris_anatomical_stats -help' ===
+
+writing histograms of intensity distributions to (null)...
+				Help
+
+NAME
+	mris_anatomical_stats
+
+SYNOPSIS
+	mris_anatomical_stats [options] <subjectname> <hemi> [<surfacename>]
+
+DESCRIPTION
+	This program computes a number of anatomical properties.
+
+POSITIONAL ARGUMENTS
+	<subjectname>
+		subject name
+
+	<hemi>
+		hemisphere
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-i <low thresh> <hi thresh>
+		only consider thicknesses in the specified range.
+
+	-l <label file>
+		limit calculations to specified label
+
+	-t <thickness file>
+		use specified file for computing thickness statistics
+
+	-a <annotation file>
+		compute properties for each label in the annotation file 
+		separately
+
+	-b
+		tabular output
+
+	-f <tablefile>
+		table output to tablefile (different format than -b). Must use
+		-a or -l options to spec input.
+
+	-log <logfile>
+		Write stats to file named log
+
+	-nsmooth <#>
+		Smooth thicknessmap # of iterations before using it
+
+	-c <ctab file>
+		Output annotation files's colortable to text file
+
+	-noglobal
+		Do not compute global brain stats
+
+	-th3
+		Compute vertex-wise volume by dividing each obliquely 
+		truncated trilateral pyramid into three tetrahedra
+
+OUTPUTS
+	Structure Name
+
+	Number of Vertices
+		unitless
+
+	Surface Area
+		mm^2, total surface area
+
+	Gray Matter
+		Volume mm, total gray matter volume
+
+	Average Thickness
+		mm, average cortical thickness
+
+	Thickness Std Dev
+		mm, +- standard error (mm)
+
+	Integrated Rectified Mean Curvature
+		mm^-1
+
+	Integrated Rectified Gaussian Curvature
+		mm^-2
+
+	Folding Index
+		unitless, a la Van Essen
+
+	Intrinsic Curvature Index
+		unitless, a la Van Essen
+
+EXAMPLE 1
+	mris_anatomical_stats -a subjid/label/lh.aparc.annot -b subjid lh
+
+EXAMPLE 2
+	mris_anatomical_stats -l lh.cortex.label -b subjid lh
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_curvature_stats
+
+
+
+=== Output of 'mris_anatomical_stats' (no arguments) ===
+
+				Help
+
+NAME
+	mris_anatomical_stats
+
+SYNOPSIS
+	mris_anatomical_stats [options] <subjectname> <hemi> [<surfacename>]
+
+DESCRIPTION
+	This program computes a number of anatomical properties.
+
+POSITIONAL ARGUMENTS
+	<subjectname>
+		subject name
+
+	<hemi>
+		hemisphere
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-i <low thresh> <hi thresh>
+		only consider thicknesses in the specified range.
+
+	-l <label file>
+		limit calculations to specified label
+
+	-t <thickness file>
+		use specified file for computing thickness statistics
+
+	-a <annotation file>
+		compute properties for each label in the annotation file 
+		separately
+
+	-b
+		tabular output
+
+	-f <tablefile>
+		table output to tablefile (different format than -b). Must use
+		-a or -l options to spec input.
+
+	-log <logfile>
+		Write stats to file named log
+
+	-nsmooth <#>
+		Smooth thicknessmap # of iterations before using it
+
+	-c <ctab file>
+		Output annotation files's colortable to text file
+
+	-noglobal
+		Do not compute global brain stats
+
+	-th3
+		Compute vertex-wise volume by dividing each obliquely 
+		truncated trilateral pyramid into three tetrahedra
+
+OUTPUTS
+	Structure Name
+
+	Number of Vertices
+		unitless
+
+	Surface Area
+		mm^2, total surface area
+
+	Gray Matter
+		Volume mm, total gray matter volume
+
+	Average Thickness
+		mm, average cortical thickness
+
+	Thickness Std Dev
+		mm, +- standard error (mm)
+
+	Integrated Rectified Mean Curvature
+		mm^-1
+
+	Integrated Rectified Gaussian Curvature
+		mm^-2
+
+	Folding Index
+		unitless, a la Van Essen
+
+	Intrinsic Curvature Index
+		unitless, a la Van Essen
+
+EXAMPLE 1
+	mris_anatomical_stats -a subjid/label/lh.aparc.annot -b subjid lh
+
+EXAMPLE 2
+	mris_anatomical_stats -l lh.cortex.label -b subjid lh
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_curvature_stats
+
+

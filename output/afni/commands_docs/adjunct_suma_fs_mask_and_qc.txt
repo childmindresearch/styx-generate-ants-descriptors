@@ -1,0 +1,190 @@
+
+=== Output of 'adjunct_suma_fs_mask_and_qc --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of 'adjunct_suma_fs_mask_and_qc -help' ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+In brief, this script is for quickly making some QC images for the
+SUMA/ directory created by @SUMA_Make_Spec_FS after running
+FreeSurfer's recon-all.  Phew, we made it.
+
+written by PA Taylor.
+
+# --------------------------------------------------------------------
+
+USAGE ~1~
+
+This program has the following options:
+
+    -sid          SUBJ_ID    :(req) subject ID
+
+    -suma_dir     SUMA_DIR   :(req) SUMA/ directory output by AFNI's
+                              @SUMA_Make_Spec_FS
+
+    -no_clean                :(opt) do not remove temporary working 
+                              subdirectory (def: remove it)
+
+    -help                    :(opt) show help
+
+    -hview                   :(opt) show help in text editor
+
+    -ver                     :(opt) show version
+
+OUTPUTS ~1~
+
+1) This script creates one new dset in the SUMA/ directory, called
+fs_parc_wb_mask.nii.gz.  This dset is a whole brain mask based on the
+FS parcellation.  Note that this is *different* than the
+brainmask.nii* dset that FS creates.  This mask is created in the
+following way:
+
+    + binarize aparc+aseg_REN_all.nii.*
+    + inflate by 2 voxels (3dmask_tool)
+    + infill holes (3dmask_tool)
+    + erode by 2 voxels (3dmask_tool)
+
+The final mask seems much more specific to the brain structure than
+brainmask.nii*.  It also removes several small gaps and holes in the
+parcellation dset.  In general, it seems like quite a useful whole
+brain mask.
+
+2) This script also makes three *.jpg files in the specified SUMA/
+directory. The underlay in each is the *SurfVol.nii* dset.  Each JPG
+is row of axial, sagittal and coronal montages around the volumes
+defined by the brainmask.nii*:
+
+    qc_00*.jpg  : the overlay is the brainmask.nii* volume in red, and
+                  the subset of that volume that was parcellated by FS
+                  (in either the "2000" or "2009" atlases) is outlined
+                  in black.
+
+                  The idea for this formatting is that we do want to
+                  see the official FS brainmask, but we might also
+                  want to note its differences with the the binarized
+                  aparc+aseg file.  We might prefer using one or the
+                  other dsets as a mask for other work.
+
+    qc_01*.jpg  : the overlay is the fs_parc_wb_mask.nii.gz dset that
+                  this script has created (see details just above).
+
+    qc_02*.jpg  : the overlay is a set of tissues, like a segmentation
+                  map of 4 classes: 
+                        red    - GM - red
+                        blue   - WM                
+                        green  - ventricles        
+                        violet - CSF+other+unknown 
+                  (from the *REN* files made by AFNI/SUMA).
+
+    qc_03*.jpg  : the GM only 
+
+    qc_04*.jpg  : the WM only
+
+    qc_05*.jpg  : the overlay is the "2000" atlas parcellation (from
+                  the file: aparc+aseg*REN*all*)
+
+EXAMPLE ~1~
+
+  adjunct_suma_fs_mask_and_qc             \
+      -sid       sub-001                  \
+      -suma_dir  group/sub-001/SUMA
+
+
+=== Output of 'adjunct_suma_fs_mask_and_qc' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+In brief, this script is for quickly making some QC images for the
+SUMA/ directory created by @SUMA_Make_Spec_FS after running
+FreeSurfer's recon-all.  Phew, we made it.
+
+written by PA Taylor.
+
+# --------------------------------------------------------------------
+
+USAGE ~1~
+
+This program has the following options:
+
+    -sid          SUBJ_ID    :(req) subject ID
+
+    -suma_dir     SUMA_DIR   :(req) SUMA/ directory output by AFNI's
+                              @SUMA_Make_Spec_FS
+
+    -no_clean                :(opt) do not remove temporary working 
+                              subdirectory (def: remove it)
+
+    -help                    :(opt) show help
+
+    -hview                   :(opt) show help in text editor
+
+    -ver                     :(opt) show version
+
+OUTPUTS ~1~
+
+1) This script creates one new dset in the SUMA/ directory, called
+fs_parc_wb_mask.nii.gz.  This dset is a whole brain mask based on the
+FS parcellation.  Note that this is *different* than the
+brainmask.nii* dset that FS creates.  This mask is created in the
+following way:
+
+    + binarize aparc+aseg_REN_all.nii.*
+    + inflate by 2 voxels (3dmask_tool)
+    + infill holes (3dmask_tool)
+    + erode by 2 voxels (3dmask_tool)
+
+The final mask seems much more specific to the brain structure than
+brainmask.nii*.  It also removes several small gaps and holes in the
+parcellation dset.  In general, it seems like quite a useful whole
+brain mask.
+
+2) This script also makes three *.jpg files in the specified SUMA/
+directory. The underlay in each is the *SurfVol.nii* dset.  Each JPG
+is row of axial, sagittal and coronal montages around the volumes
+defined by the brainmask.nii*:
+
+    qc_00*.jpg  : the overlay is the brainmask.nii* volume in red, and
+                  the subset of that volume that was parcellated by FS
+                  (in either the "2000" or "2009" atlases) is outlined
+                  in black.
+
+                  The idea for this formatting is that we do want to
+                  see the official FS brainmask, but we might also
+                  want to note its differences with the the binarized
+                  aparc+aseg file.  We might prefer using one or the
+                  other dsets as a mask for other work.
+
+    qc_01*.jpg  : the overlay is the fs_parc_wb_mask.nii.gz dset that
+                  this script has created (see details just above).
+
+    qc_02*.jpg  : the overlay is a set of tissues, like a segmentation
+                  map of 4 classes: 
+                        red    - GM - red
+                        blue   - WM                
+                        green  - ventricles        
+                        violet - CSF+other+unknown 
+                  (from the *REN* files made by AFNI/SUMA).
+
+    qc_03*.jpg  : the GM only 
+
+    qc_04*.jpg  : the WM only
+
+    qc_05*.jpg  : the overlay is the "2000" atlas parcellation (from
+                  the file: aparc+aseg*REN*all*)
+
+EXAMPLE ~1~
+
+  adjunct_suma_fs_mask_and_qc             \
+      -sid       sub-001                  \
+      -suma_dir  group/sub-001/SUMA
+

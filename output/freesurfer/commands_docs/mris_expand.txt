@@ -1,0 +1,20 @@
+
+=== Output of 'mris_expand --help' ===
+
+unknown option --help
+
+=== Output of 'mris_expand -help' ===
+
+unknown option -help
+
+=== Output of 'mris_expand' (no arguments) ===
+
+Usage: /usr/local/freesurfer/bin/mris_expand [options] <input surface> <mm> <output surface>
+  Example: mris_expand -thickness lh.white 0.5 lh.graymid
+  Example: mris_expand -label labelfile lh.white 0.5 lh.graymid
+  Example: mris_expand -tmap thickness_pct_target.mgz lh.white 0.5 lh.graymid
+     use a prespecified map of percent thickness to compute the target locations for expansion
+  Example: mris_expand -tmap random 2 .25 .75 100 -wd tmap.mgz lh.white 0.5 lh.graymid
+     creates a random target distance map with gaussian sampling (mean=.5, std=2) and cropping to .25/.75
+     and spatial averaging 100 times (cropping is average averaging). The map will be written to 
+     file tmap.mgz

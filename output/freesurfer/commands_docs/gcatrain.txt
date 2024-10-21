@@ -1,0 +1,169 @@
+
+=== Output of 'gcatrain --help' ===
+
+
+gcatrain --help
+ --g gcadir : (to be the new SUBJECTS_DIR)
+ --niters niters : number of iterations
+ --nthreads nthreads
+ --no-submit : run serially, do not pbsubmit
+ --pb-m : mail to user when jobs are pbsubmitted or finished
+ The first time you run it you must specify the following
+   --f subjectlistfile
+   --seg seg_edited.mgz 
+   --init initsubject talairach_man.xfm
+   --sd SUBJECTS_DIR : for source data
+   --sym (only specify to make a symmetric atlas)
+   --ctab colortable (not needed)
+
+ --x xfile : exclude the subjects in xfile, good for jack-knifing
+ --xs subject : exclude subject, good for jack-knifing
+ --no-strict : do not require FS build stamps to match across iteration
+ --gcareg-iters : set to 1 for testing
+ --prep-only
+ --nu10
+ --nu12 : default
+ --no-emreg : do not use mri_em_register
+
+gcatrain 7.4.1
+
+gcatrain builds a GCA from a group of manually labeled subjects.
+It is meant to replace rebuild_gca_atlas.csh.
+
+Example - build gca from all the subjects listed in subjestlist.txt
+using 990104_vc700 as the initialization subject. Use the file
+called talairach_man.xfm in 990104_vc700/mri/transforms as the
+initial registration. Use seg_edited10.mgz as the manually defined
+segmentation. Two iterations will be performed (the first being the
+simple creation of the GCA from the initial subject). Four threads
+will be used. The output will go into a folder called rb10-gcatrain
+
+gcatrain --f subjectlist.txt --init 990104_vc700 talairach_man.xfm 
+  --seg seg_edited10.mgz --niters 2 --g rb10-gcatrain --nthreads 4 
+
+This script creates a new SUBJECTS_DIR tree in rb10-gcatrain.  For
+each subject, the "prepone" script is run. This copies the raw data
+from each subjects mri/orig folder to the subjects dir in the output
+folder and runs recon-all far enough to create the nu.mgz. It also
+copies the manual segmentations and the xfm for the init subject.
+Once this is done, the source data are no longer used. 
+
+It then runs "grcainit" on the initial subject. This run
+mri_ca_normalize on the init subject and builds the first gca (stored
+in outdir/gca/gca.i01.gca).
+
+It then loops through all subjects pbsubmitting recon-all to perform
+mri_em_register, mri_ca_normalize, and mri_ca_register to gca.i01.gca
+(outputs are coded with i02). When all subjects are finished for this
+loop, then mri_ca_train is run to create gca.i02.gca. If more than two
+iterations were specified, then the above loop is repeated.
+
+If you want to perform more iterations, run gcatrain like this
+
+gcatrain --niters 3 --g rb10-gcatrain --nthreads 4 
+
+It will see that the first two iterations have already been performed
+and will proceed with the third iteration.
+
+Future modifications may be to allow for more than one init subject.
+
+To perform jackknife testing, see jkgcatrain.
+
+
+=== Output of 'gcatrain -help' ===
+
+
+gcatrain --help
+ --g gcadir : (to be the new SUBJECTS_DIR)
+ --niters niters : number of iterations
+ --nthreads nthreads
+ --no-submit : run serially, do not pbsubmit
+ --pb-m : mail to user when jobs are pbsubmitted or finished
+ The first time you run it you must specify the following
+   --f subjectlistfile
+   --seg seg_edited.mgz 
+   --init initsubject talairach_man.xfm
+   --sd SUBJECTS_DIR : for source data
+   --sym (only specify to make a symmetric atlas)
+   --ctab colortable (not needed)
+
+ --x xfile : exclude the subjects in xfile, good for jack-knifing
+ --xs subject : exclude subject, good for jack-knifing
+ --no-strict : do not require FS build stamps to match across iteration
+ --gcareg-iters : set to 1 for testing
+ --prep-only
+ --nu10
+ --nu12 : default
+ --no-emreg : do not use mri_em_register
+
+gcatrain 7.4.1
+
+gcatrain builds a GCA from a group of manually labeled subjects.
+It is meant to replace rebuild_gca_atlas.csh.
+
+Example - build gca from all the subjects listed in subjestlist.txt
+using 990104_vc700 as the initialization subject. Use the file
+called talairach_man.xfm in 990104_vc700/mri/transforms as the
+initial registration. Use seg_edited10.mgz as the manually defined
+segmentation. Two iterations will be performed (the first being the
+simple creation of the GCA from the initial subject). Four threads
+will be used. The output will go into a folder called rb10-gcatrain
+
+gcatrain --f subjectlist.txt --init 990104_vc700 talairach_man.xfm 
+  --seg seg_edited10.mgz --niters 2 --g rb10-gcatrain --nthreads 4 
+
+This script creates a new SUBJECTS_DIR tree in rb10-gcatrain.  For
+each subject, the "prepone" script is run. This copies the raw data
+from each subjects mri/orig folder to the subjects dir in the output
+folder and runs recon-all far enough to create the nu.mgz. It also
+copies the manual segmentations and the xfm for the init subject.
+Once this is done, the source data are no longer used. 
+
+It then runs "grcainit" on the initial subject. This run
+mri_ca_normalize on the init subject and builds the first gca (stored
+in outdir/gca/gca.i01.gca).
+
+It then loops through all subjects pbsubmitting recon-all to perform
+mri_em_register, mri_ca_normalize, and mri_ca_register to gca.i01.gca
+(outputs are coded with i02). When all subjects are finished for this
+loop, then mri_ca_train is run to create gca.i02.gca. If more than two
+iterations were specified, then the above loop is repeated.
+
+If you want to perform more iterations, run gcatrain like this
+
+gcatrain --niters 3 --g rb10-gcatrain --nthreads 4 
+
+It will see that the first two iterations have already been performed
+and will proceed with the third iteration.
+
+Future modifications may be to allow for more than one init subject.
+
+To perform jackknife testing, see jkgcatrain.
+
+
+=== Output of 'gcatrain' (no arguments) ===
+
+
+gcatrain --help
+ --g gcadir : (to be the new SUBJECTS_DIR)
+ --niters niters : number of iterations
+ --nthreads nthreads
+ --no-submit : run serially, do not pbsubmit
+ --pb-m : mail to user when jobs are pbsubmitted or finished
+ The first time you run it you must specify the following
+   --f subjectlistfile
+   --seg seg_edited.mgz 
+   --init initsubject talairach_man.xfm
+   --sd SUBJECTS_DIR : for source data
+   --sym (only specify to make a symmetric atlas)
+   --ctab colortable (not needed)
+
+ --x xfile : exclude the subjects in xfile, good for jack-knifing
+ --xs subject : exclude subject, good for jack-knifing
+ --no-strict : do not require FS build stamps to match across iteration
+ --gcareg-iters : set to 1 for testing
+ --prep-only
+ --nu10
+ --nu12 : default
+ --no-emreg : do not use mri_em_register
+

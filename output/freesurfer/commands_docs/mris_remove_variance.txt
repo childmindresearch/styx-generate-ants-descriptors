@@ -1,0 +1,20 @@
+
+=== Output of 'mris_remove_variance --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_remove_variance [options] <input surface file> <curv. file>
+	<curv. file to remove> <output curvature file>.
+
+This program will remove the linear component of the variance 
+	accounted for by one curvature vector from another.
+
+valid options are:
+
+
+=== Output of 'mris_remove_variance -help' ===
+
+unknown option -help
+
+=== Output of 'mris_remove_variance' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_remove_variance [options] <input surface file> <curv. file>
+	<curv. file to remove> <output curvature file>.

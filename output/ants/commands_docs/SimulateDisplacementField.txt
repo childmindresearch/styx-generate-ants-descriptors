@@ -1,0 +1,18 @@
+
+=== Output of 'SimulateDisplacementField --help' ===
+
+SimulateDisplacementField imageDimension displacementFieldType domainImage outputField <numberOfRandomPoints=1000> <standardDeviationDisplacementField=10> <enforceStationaryBoundary=1> [options]
+Usage 1 [options] (displacementFieldType = "BSpline"): <numberOfFittingLevels=4> <numberOfControlPoints=4>
+Usage 2 [options] (displacementFieldType = "Exponential"): <smoothingStandardDeviation=4>
+
+=== Output of 'SimulateDisplacementField -help' ===
+
+SimulateDisplacementField imageDimension displacementFieldType domainImage outputField <numberOfRandomPoints=1000> <standardDeviationDisplacementField=10> <enforceStationaryBoundary=1> [options]
+Usage 1 [options] (displacementFieldType = "BSpline"): <numberOfFittingLevels=4> <numberOfControlPoints=4>
+Usage 2 [options] (displacementFieldType = "Exponential"): <smoothingStandardDeviation=4>
+
+=== Output of 'SimulateDisplacementField' (no arguments) ===
+
+SimulateDisplacementField imageDimension displacementFieldType domainImage outputField <numberOfRandomPoints=1000> <standardDeviationDisplacementField=10> <enforceStationaryBoundary=1> [options]
+Usage 1 [options] (displacementFieldType = "BSpline"): <numberOfFittingLevels=4> <numberOfControlPoints=4>
+Usage 2 [options] (displacementFieldType = "Exponential"): <smoothingStandardDeviation=4>

@@ -1,0 +1,151 @@
+
+=== Output of 'fugue --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fugue 
+FMRIB's Utility for Geometric Unwarping of EPIs
+Copyright(c) 2000-2008, University of Oxford (Mark Jenkinson)
+
+Usage: 
+fugue -i <epi> -p <unwrapped phase map> -d <dwell-to-asym-ratio> -u <result> [options]
+fugue  -i <unwarped-image> -p <unwrapped phase map> -d <dwell-to-asym-ratio> -w <epi-like-result> [options]
+fugue -p <unwrapped phase map> -d <dwell-to-asym-ratio> --saveshift=<shiftmap> [options]
+
+Optional arguments (You may optionally specify one or more of):
+	-i,--in	filename of input volume
+	-u,--unwarp	apply unwarping and save as filename
+	-w,--warp	apply forward warp and save as filename
+	-p,--phasemap	filename for input phase image
+	-d,--dwelltoasym	set the dwell to asym time ratio
+	--dwell	set the EPI dwell time per phase-encode line - same as echo spacing - (sec)
+	--asym	set the fieldmap asymmetric spin echo time (sec)
+	--savefmap	filename for saving fieldmap (rad/s)
+	--loadfmap	filename for loading fieldmap (rad/s)
+	--saveshift	filename for saving pixel shift volume
+	--loadshift	filename for reading pixel shift volume
+	-m,--median	apply 2D median filtering
+	--despike	apply a 2D de-spiking filter
+	--nofill	do not apply gap-filling measure to the fieldmap
+	--noextend	do not apply rigid-body extrapolation to the fieldmap
+	--smooth2	apply 2D Gaussian smoothing of sigma N (in mm)
+	-s,--smooth3	apply 3D Gaussian smoothing of sigma N (in mm)
+	--poly	apply polynomial fitting of order N
+	--fourier	apply Fourier (sinusoidal) fitting of order N
+	--pava	apply monotonic enforcement via PAVA
+	--despikethreshold	specify the threshold for de-spiking (default=3.0)
+	--unwarpdir	specifies direction of warping [x/y/z/x-/y-/z-] (default y)
+	--phaseconj	apply phase conjugate method of unwarping
+	--icorr	apply intensity correction to unwarping (pixel shift method only)
+	--icorronly	apply intensity correction only (must specify output with -u,--unwarp)
+	--mask	filename for loading valid mask
+	--unmaskfmap	saves the unmasked fieldmap when using --savefmap
+	--unmaskshift	saves the unmasked shiftmap when using --saveshift
+	--nokspace	do not use k-space forward warping
+	--nocheck	turn off all checking
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'fugue -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fugue 
+FMRIB's Utility for Geometric Unwarping of EPIs
+Copyright(c) 2000-2008, University of Oxford (Mark Jenkinson)
+
+Usage: 
+fugue -i <epi> -p <unwrapped phase map> -d <dwell-to-asym-ratio> -u <result> [options]
+fugue  -i <unwarped-image> -p <unwrapped phase map> -d <dwell-to-asym-ratio> -w <epi-like-result> [options]
+fugue -p <unwrapped phase map> -d <dwell-to-asym-ratio> --saveshift=<shiftmap> [options]
+
+Optional arguments (You may optionally specify one or more of):
+	-i,--in	filename of input volume
+	-u,--unwarp	apply unwarping and save as filename
+	-w,--warp	apply forward warp and save as filename
+	-p,--phasemap	filename for input phase image
+	-d,--dwelltoasym	set the dwell to asym time ratio
+	--dwell	set the EPI dwell time per phase-encode line - same as echo spacing - (sec)
+	--asym	set the fieldmap asymmetric spin echo time (sec)
+	--savefmap	filename for saving fieldmap (rad/s)
+	--loadfmap	filename for loading fieldmap (rad/s)
+	--saveshift	filename for saving pixel shift volume
+	--loadshift	filename for reading pixel shift volume
+	-m,--median	apply 2D median filtering
+	--despike	apply a 2D de-spiking filter
+	--nofill	do not apply gap-filling measure to the fieldmap
+	--noextend	do not apply rigid-body extrapolation to the fieldmap
+	--smooth2	apply 2D Gaussian smoothing of sigma N (in mm)
+	-s,--smooth3	apply 3D Gaussian smoothing of sigma N (in mm)
+	--poly	apply polynomial fitting of order N
+	--fourier	apply Fourier (sinusoidal) fitting of order N
+	--pava	apply monotonic enforcement via PAVA
+	--despikethreshold	specify the threshold for de-spiking (default=3.0)
+	--unwarpdir	specifies direction of warping [x/y/z/x-/y-/z-] (default y)
+	--phaseconj	apply phase conjugate method of unwarping
+	--icorr	apply intensity correction to unwarping (pixel shift method only)
+	--icorronly	apply intensity correction only (must specify output with -u,--unwarp)
+	--mask	filename for loading valid mask
+	--unmaskfmap	saves the unmasked fieldmap when using --savefmap
+	--unmaskshift	saves the unmasked shiftmap when using --saveshift
+	--nokspace	do not use k-space forward warping
+	--nocheck	turn off all checking
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'fugue' (no arguments) ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fugue 
+FMRIB's Utility for Geometric Unwarping of EPIs
+Copyright(c) 2000-2008, University of Oxford (Mark Jenkinson)
+
+Usage: 
+fugue -i <epi> -p <unwrapped phase map> -d <dwell-to-asym-ratio> -u <result> [options]
+fugue  -i <unwarped-image> -p <unwrapped phase map> -d <dwell-to-asym-ratio> -w <epi-like-result> [options]
+fugue -p <unwrapped phase map> -d <dwell-to-asym-ratio> --saveshift=<shiftmap> [options]
+
+Optional arguments (You may optionally specify one or more of):
+	-i,--in	filename of input volume
+	-u,--unwarp	apply unwarping and save as filename
+	-w,--warp	apply forward warp and save as filename
+	-p,--phasemap	filename for input phase image
+	-d,--dwelltoasym	set the dwell to asym time ratio
+	--dwell	set the EPI dwell time per phase-encode line - same as echo spacing - (sec)
+	--asym	set the fieldmap asymmetric spin echo time (sec)
+	--savefmap	filename for saving fieldmap (rad/s)
+	--loadfmap	filename for loading fieldmap (rad/s)
+	--saveshift	filename for saving pixel shift volume
+	--loadshift	filename for reading pixel shift volume
+	-m,--median	apply 2D median filtering
+	--despike	apply a 2D de-spiking filter
+	--nofill	do not apply gap-filling measure to the fieldmap
+	--noextend	do not apply rigid-body extrapolation to the fieldmap
+	--smooth2	apply 2D Gaussian smoothing of sigma N (in mm)
+	-s,--smooth3	apply 3D Gaussian smoothing of sigma N (in mm)
+	--poly	apply polynomial fitting of order N
+	--fourier	apply Fourier (sinusoidal) fitting of order N
+	--pava	apply monotonic enforcement via PAVA
+	--despikethreshold	specify the threshold for de-spiking (default=3.0)
+	--unwarpdir	specifies direction of warping [x/y/z/x-/y-/z-] (default y)
+	--phaseconj	apply phase conjugate method of unwarping
+	--icorr	apply intensity correction to unwarping (pixel shift method only)
+	--icorronly	apply intensity correction only (must specify output with -u,--unwarp)
+	--mask	filename for loading valid mask
+	--unmaskfmap	saves the unmasked fieldmap when using --savefmap
+	--unmaskshift	saves the unmasked shiftmap when using --saveshift
+	--nokspace	do not use k-space forward warping
+	--nocheck	turn off all checking
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+Either --phasemap , --loadshift or --loadfmap MUST be used.

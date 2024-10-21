@@ -1,0 +1,25 @@
+
+=== Output of '@IsoMasks --help' ===
+
+Parsing ...
+Error: Option or parameter '--help' not understood
+
+=== Output of '@IsoMasks -help' ===
+
+Parsing ...
+Usage: @IsoMasks -mask DSET -isovals v1 v1 ...
+Creates isosurfaces from isovolume envelopes.
+
+For example, to create contours of TLRC regions:
+ @IsoMasks -mask ~/abin/TTatlas+tlrc'[0]' -isovals  `count_afni -digits 1 1 77` 
+
+
+=== Output of '@IsoMasks' (no arguments) ===
+
+Parsing ...
+Usage: @IsoMasks -mask DSET -isovals v1 v1 ...
+Creates isosurfaces from isovolume envelopes.
+
+For example, to create contours of TLRC regions:
+ @IsoMasks -mask ~/abin/TTatlas+tlrc'[0]' -isovals  `count_afni -digits 1 1 77` 
+

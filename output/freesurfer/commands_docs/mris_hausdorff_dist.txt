@@ -1,0 +1,26 @@
+
+=== Output of 'mris_hausdorff_dist --help' ===
+
+This program computes the Hausdorff distance between two labels on the surface
+
+valid options are:
+
+(see the source code!)
+usage: /usr/local/freesurfer/bin/mris_hausdorff_dist [options] <surface> <label1> <label2>
+	-a <annot name>    compute pairwise HD between all annotations
+
+=== Output of 'mris_hausdorff_dist -help' ===
+
+unknown option -help
+This program computes the Hausdorff distance between two labels on the surface
+
+valid options are:
+
+(see the source code!)
+usage: /usr/local/freesurfer/bin/mris_hausdorff_dist [options] <surface> <label1> <label2>
+	-a <annot name>    compute pairwise HD between all annotations
+
+=== Output of 'mris_hausdorff_dist' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_hausdorff_dist [options] <surface> <label1> <label2>
+	-a <annot name>    compute pairwise HD between all annotations

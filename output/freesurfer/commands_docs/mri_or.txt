@@ -1,0 +1,21 @@
+
+=== Output of 'mri_or --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_or  <options> fname1 fname2 .. 
+
+
+Performs a logical voxel-wise OR on a series of volumes
+
+Options:
+
+  -o : The logical OR operation will keep the original label values in the input files when creating the output.
+  -help : print usage
+
+=== Output of 'mri_or -help' ===
+
+unknown option -help
+
+=== Output of 'mri_or' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_or  <options> fname1 fname2 .. 
+

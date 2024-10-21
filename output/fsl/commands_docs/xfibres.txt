@@ -1,0 +1,95 @@
+
+=== Output of 'xfibres --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+xfibres
+
+Usage: 
+xfibres --help (for list of options)
+
+
+Compulsory arguments (You MUST set one or more of):
+	-k,--data,--datafile	data file
+	-m,--mask, --maskfile	mask file
+	-r,--bvecs	b vectors file
+	-b,--bvals	b values file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--ld,--logdir	log directory (default is logdir)
+	--forcedir	Use the actual directory name given - i.e. don't add + to make a new directory
+	--nf,--nfibres	Maximum number of fibres to fit in each voxel (default 1)
+	--model	Which model to use. 1=deconv. with sticks (default). 2=deconv. with sticks and a range of diffusivities. 3=deconv. with zeppelins
+	--fudge	ARD fudge factor
+	--nj,--njumps	Num of jumps to be made by MCMC (default is 1250)
+	--bi,--burnin	Total num of jumps at start of MCMC to be discarded (default is 1000)
+	--bn,--burnin_noard	num of burnin jumps before the ard is imposed (default is 0)
+	--se,--sampleevery	Num of jumps for each sample (MCMC) (default is 25)
+	--upe,--updateproposalevery	Num of jumps for each update to the proposal density std (MCMC) (default is 40)
+	--seed	seed for pseudo random number generator
+	--noard	Turn ARD off on all fibres
+	--allard	Turn ARD on on all fibres
+	--nospat	Initialise with tensor, not spatially
+	--nonlinear	Initialise with nonlinear fitting
+	--cnonlinear	Initialise with constrained nonlinear fitting
+	--rician	Use Rician noise modelling
+	--f0	Add to the model an unattenuated signal compartment
+	--ardf0	Use ard on f0
+	--Rmean	Set the prior mean for R of model 3 (default:0.13- Must be<0.5)
+	--Rstd	Set the prior standard deviation for R of model 3 (default:0.03)
+
+
+
+=== Output of 'xfibres -help' ===
+
+
+-e: Option doesn't exist!
+
+=== Output of 'xfibres' (no arguments) ===
+
+
+
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+xfibres
+
+Usage: 
+xfibres --help (for list of options)
+
+
+Compulsory arguments (You MUST set one or more of):
+	-k,--data,--datafile	data file
+	-m,--mask, --maskfile	mask file
+	-r,--bvecs	b vectors file
+	-b,--bvals	b values file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--ld,--logdir	log directory (default is logdir)
+	--forcedir	Use the actual directory name given - i.e. don't add + to make a new directory
+	--nf,--nfibres	Maximum number of fibres to fit in each voxel (default 1)
+	--model	Which model to use. 1=deconv. with sticks (default). 2=deconv. with sticks and a range of diffusivities. 3=deconv. with zeppelins
+	--fudge	ARD fudge factor
+	--nj,--njumps	Num of jumps to be made by MCMC (default is 1250)
+	--bi,--burnin	Total num of jumps at start of MCMC to be discarded (default is 1000)
+	--bn,--burnin_noard	num of burnin jumps before the ard is imposed (default is 0)
+	--se,--sampleevery	Num of jumps for each sample (MCMC) (default is 25)
+	--upe,--updateproposalevery	Num of jumps for each update to the proposal density std (MCMC) (default is 40)
+	--seed	seed for pseudo random number generator
+	--noard	Turn ARD off on all fibres
+	--allard	Turn ARD on on all fibres
+	--nospat	Initialise with tensor, not spatially
+	--nonlinear	Initialise with nonlinear fitting
+	--cnonlinear	Initialise with constrained nonlinear fitting
+	--rician	Use Rician noise modelling
+	--f0	Add to the model an unattenuated signal compartment
+	--ardf0	Use ard on f0
+	--Rmean	Set the prior mean for R of model 3 (default:0.13- Must be<0.5)
+	--Rstd	Set the prior standard deviation for R of model 3 (default:0.03)
+
+

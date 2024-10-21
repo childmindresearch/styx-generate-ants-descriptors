@@ -1,0 +1,21 @@
+
+=== Output of 'probtrack --help' ===
+
+
+Error - probtrack has been superceded by probtrackx!
+Please see the FDT documentation for the new probtrackx syntax
+
+
+=== Output of 'probtrack -help' ===
+
+
+Error - probtrack has been superceded by probtrackx!
+Please see the FDT documentation for the new probtrackx syntax
+
+
+=== Output of 'probtrack' (no arguments) ===
+
+
+Error - probtrack has been superceded by probtrackx!
+Please see the FDT documentation for the new probtrackx syntax
+

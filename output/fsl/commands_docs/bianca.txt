@@ -1,0 +1,153 @@
+
+=== Output of 'bianca --help' ===
+
+
+Usage: /usr/local/fsl/bin/bianca --singlefile=<masterlistfile> --labelfeaturenum=<num> --brainmaskfeaturenum=<num> --querysubjectnum=<num> [options]
+
+
+Compulsory arguments:
+ * --singlefile=<masterlistfile>    name of the master file
+ * --querysubjectnum=<num>          row number of query subject (in masterlistfile)
+ * --brainmaskfeaturenum=<num>      column number (in the master file) of images to derive non-zero mask from.
+ * Training dataset specification:
+   If the training subjects to use are listed in the master file, the following two arguments need to be specified:
+       --labelfeaturenum=<num>          column number (in the master file) of the manual masks (or any placehold name for query subjects)
+       and
+       --trainingnums=<val>             subjects to be used in training. List of row numbers (comma separated, no spaces) or "all" to use all the subjects in the master file.
+   Alternatively load from file (previously saved with --saveclassifierdata, see below):
+       --loadclassifierdata=<name>      load training data from file
+
+Optional arguments:
+  -o <outname>                     specify (base) output name of files (default: output_bianca)
+  --featuresubset=<num>,<num>,...  set of column numbers (comma separated and no spaces) for features/images to use (default: use all available modalities as intensity features). The image used to derive non-zero mask from must be part of the features subset.
+  --matfeaturenum=<num>            column number of matrix files (in masterlistfile). Needed to extract spatial features (MNI coordinates)
+  --spatialweight=<value>          weighting for spatial coordinates (default = 1, i.e. variance-normalised MNI coordinates). Requires --matfeaturenum to be specified.
+  --patchsizes=<num>,<num>,...     list of patch sizes for local averaging
+  --patch3D                        use 3D patches (default is 2D)
+  --selectpts=<val>                "any" (default) or "surround" or "noborder"
+  --trainingpts=<val>              number (max) of (lesion) points to use (per training subject) or "equalpoints" to selec all lesion points and equal number of non-lesion points
+  --nonlespts=<val>                number (max) of non-lesion points to use. If not specified will be set to the same amount of lesion points.
+  --saveclassifierdata=<name>      save training data to file
+  -v                               use verbose mode
+
+Notes:
+   (i) The masterlistfile should contain a row per subject (training or testing) and on each row a list of all files needed for that subject (image data [and matrix transform])
+   (ii) --labelfeaturenum specified the column that contains the manual mask for the training subjects, counting from 1 and using the ordering that is used in the masterlistfile. For query subjects, use any placehold name in the masterlistfile, to keep the same column order of the training subjects.
+   (iii) the featuresubset should be a list of numbers (comma separated and no spaces) that specify the modalities to be used, counting from 1 and using the ordering that is used in the masterlistfile.  If this is not specified the default is to use all modalities as features.
+   (iv) either the --trainingnums=<val> or the  --loadclassifierdata=<name> *must* be used.
+
+ An example call is:
+   ./bianca --singlefile=masterfilelist.txt --labelfeaturenum=3 --brainmaskfeaturenum=1 --querysubjectnum=2 --trainingnums=1,2,3,4,5,6,7,8,9,10, --featuresubset=1,2 --matfeaturenum=4 --trainingpts=2000 --nonlespts=10000 --selectpts=noborder -o sub2_bianca -v
+
+ An example script for creating a master list file is:
+   for fn in Pz* ; do
+      mods="";
+      for gg in $fn/[A-Z]*.nii.gz $fn/*.mat ; do
+        mods="$mods $gg" ;
+      done ;
+      echo $mods ;
+   done
+
+
+=== Output of 'bianca -help' ===
+
+
+ERROR:: unrecognised option[s]
+
+
+Usage: /usr/local/fsl/bin/bianca --singlefile=<masterlistfile> --labelfeaturenum=<num> --brainmaskfeaturenum=<num> --querysubjectnum=<num> [options]
+
+
+Compulsory arguments:
+ * --singlefile=<masterlistfile>    name of the master file
+ * --querysubjectnum=<num>          row number of query subject (in masterlistfile)
+ * --brainmaskfeaturenum=<num>      column number (in the master file) of images to derive non-zero mask from.
+ * Training dataset specification:
+   If the training subjects to use are listed in the master file, the following two arguments need to be specified:
+       --labelfeaturenum=<num>          column number (in the master file) of the manual masks (or any placehold name for query subjects)
+       and
+       --trainingnums=<val>             subjects to be used in training. List of row numbers (comma separated, no spaces) or "all" to use all the subjects in the master file.
+   Alternatively load from file (previously saved with --saveclassifierdata, see below):
+       --loadclassifierdata=<name>      load training data from file
+
+Optional arguments:
+  -o <outname>                     specify (base) output name of files (default: output_bianca)
+  --featuresubset=<num>,<num>,...  set of column numbers (comma separated and no spaces) for features/images to use (default: use all available modalities as intensity features). The image used to derive non-zero mask from must be part of the features subset.
+  --matfeaturenum=<num>            column number of matrix files (in masterlistfile). Needed to extract spatial features (MNI coordinates)
+  --spatialweight=<value>          weighting for spatial coordinates (default = 1, i.e. variance-normalised MNI coordinates). Requires --matfeaturenum to be specified.
+  --patchsizes=<num>,<num>,...     list of patch sizes for local averaging
+  --patch3D                        use 3D patches (default is 2D)
+  --selectpts=<val>                "any" (default) or "surround" or "noborder"
+  --trainingpts=<val>              number (max) of (lesion) points to use (per training subject) or "equalpoints" to selec all lesion points and equal number of non-lesion points
+  --nonlespts=<val>                number (max) of non-lesion points to use. If not specified will be set to the same amount of lesion points.
+  --saveclassifierdata=<name>      save training data to file
+  -v                               use verbose mode
+
+Notes:
+   (i) The masterlistfile should contain a row per subject (training or testing) and on each row a list of all files needed for that subject (image data [and matrix transform])
+   (ii) --labelfeaturenum specified the column that contains the manual mask for the training subjects, counting from 1 and using the ordering that is used in the masterlistfile. For query subjects, use any placehold name in the masterlistfile, to keep the same column order of the training subjects.
+   (iii) the featuresubset should be a list of numbers (comma separated and no spaces) that specify the modalities to be used, counting from 1 and using the ordering that is used in the masterlistfile.  If this is not specified the default is to use all modalities as features.
+   (iv) either the --trainingnums=<val> or the  --loadclassifierdata=<name> *must* be used.
+
+ An example call is:
+   ./bianca --singlefile=masterfilelist.txt --labelfeaturenum=3 --brainmaskfeaturenum=1 --querysubjectnum=2 --trainingnums=1,2,3,4,5,6,7,8,9,10, --featuresubset=1,2 --matfeaturenum=4 --trainingpts=2000 --nonlespts=10000 --selectpts=noborder -o sub2_bianca -v
+
+ An example script for creating a master list file is:
+   for fn in Pz* ; do
+      mods="";
+      for gg in $fn/[A-Z]*.nii.gz $fn/*.mat ; do
+        mods="$mods $gg" ;
+      done ;
+      echo $mods ;
+   done
+
+
+=== Output of 'bianca' (no arguments) ===
+
+
+Usage: /usr/local/fsl/bin/bianca --singlefile=<masterlistfile> --labelfeaturenum=<num> --brainmaskfeaturenum=<num> --querysubjectnum=<num> [options]
+
+
+Compulsory arguments:
+ * --singlefile=<masterlistfile>    name of the master file
+ * --querysubjectnum=<num>          row number of query subject (in masterlistfile)
+ * --brainmaskfeaturenum=<num>      column number (in the master file) of images to derive non-zero mask from.
+ * Training dataset specification:
+   If the training subjects to use are listed in the master file, the following two arguments need to be specified:
+       --labelfeaturenum=<num>          column number (in the master file) of the manual masks (or any placehold name for query subjects)
+       and
+       --trainingnums=<val>             subjects to be used in training. List of row numbers (comma separated, no spaces) or "all" to use all the subjects in the master file.
+   Alternatively load from file (previously saved with --saveclassifierdata, see below):
+       --loadclassifierdata=<name>      load training data from file
+
+Optional arguments:
+  -o <outname>                     specify (base) output name of files (default: output_bianca)
+  --featuresubset=<num>,<num>,...  set of column numbers (comma separated and no spaces) for features/images to use (default: use all available modalities as intensity features). The image used to derive non-zero mask from must be part of the features subset.
+  --matfeaturenum=<num>            column number of matrix files (in masterlistfile). Needed to extract spatial features (MNI coordinates)
+  --spatialweight=<value>          weighting for spatial coordinates (default = 1, i.e. variance-normalised MNI coordinates). Requires --matfeaturenum to be specified.
+  --patchsizes=<num>,<num>,...     list of patch sizes for local averaging
+  --patch3D                        use 3D patches (default is 2D)
+  --selectpts=<val>                "any" (default) or "surround" or "noborder"
+  --trainingpts=<val>              number (max) of (lesion) points to use (per training subject) or "equalpoints" to selec all lesion points and equal number of non-lesion points
+  --nonlespts=<val>                number (max) of non-lesion points to use. If not specified will be set to the same amount of lesion points.
+  --saveclassifierdata=<name>      save training data to file
+  -v                               use verbose mode
+
+Notes:
+   (i) The masterlistfile should contain a row per subject (training or testing) and on each row a list of all files needed for that subject (image data [and matrix transform])
+   (ii) --labelfeaturenum specified the column that contains the manual mask for the training subjects, counting from 1 and using the ordering that is used in the masterlistfile. For query subjects, use any placehold name in the masterlistfile, to keep the same column order of the training subjects.
+   (iii) the featuresubset should be a list of numbers (comma separated and no spaces) that specify the modalities to be used, counting from 1 and using the ordering that is used in the masterlistfile.  If this is not specified the default is to use all modalities as features.
+   (iv) either the --trainingnums=<val> or the  --loadclassifierdata=<name> *must* be used.
+
+ An example call is:
+   ./bianca --singlefile=masterfilelist.txt --labelfeaturenum=3 --brainmaskfeaturenum=1 --querysubjectnum=2 --trainingnums=1,2,3,4,5,6,7,8,9,10, --featuresubset=1,2 --matfeaturenum=4 --trainingpts=2000 --nonlespts=10000 --selectpts=noborder -o sub2_bianca -v
+
+ An example script for creating a master list file is:
+   for fn in Pz* ; do
+      mods="";
+      for gg in $fn/[A-Z]*.nii.gz $fn/*.mat ; do
+        mods="$mods $gg" ;
+      done ;
+      echo $mods ;
+   done
+

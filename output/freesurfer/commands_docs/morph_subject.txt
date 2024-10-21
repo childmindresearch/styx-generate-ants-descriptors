@@ -1,0 +1,15 @@
+
+=== Output of 'morph_subject --help' ===
+
+/usr/local/freesurfer/subjects/--help ~ 
+hostname: Command not found.
+
+=== Output of 'morph_subject -help' ===
+
+/usr/local/freesurfer/subjects/-help ~ 
+hostname: Command not found.
+
+=== Output of 'morph_subject' (no arguments) ===
+
+USAGE: morph_subject subjid
+morph_subject 7.4.1

@@ -1,0 +1,15 @@
+
+=== Output of 'fslFixText --help' ===
+
+Usage: fslFixText <input text file> <output text file>
+Ensures standard UNIX line endings in output text file
+
+=== Output of 'fslFixText -help' ===
+
+Usage: fslFixText <input text file> <output text file>
+Ensures standard UNIX line endings in output text file
+
+=== Output of 'fslFixText' (no arguments) ===
+
+Usage: fslFixText <input text file> <output text file>
+Ensures standard UNIX line endings in output text file

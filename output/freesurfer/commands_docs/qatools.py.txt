@@ -1,0 +1,98 @@
+
+=== Output of 'qatools.py --help' ===
+
+
+-----------------------------
+qatools-python
+-----------------------------
+
+usage: qatools.py --subjects_dir <directory> --output_dir <directory>
+                  [--subjects SubjectID [SubjectID ...]] [--screenshots]
+                  [--fornix] [--outlier] [--outlier-table <filename>] [-h]
+
+        This program takes existing Freesurfer 6.0 analysis results of one
+        or more subjects and computes a set of quality metrics. These will be 
+        reported in a summary csv table.
+
+        For a description of these metrics, see the gitlab/github page or the 
+        header section of this script.
+
+        The (optional) analysis of shape features requires additional scripts 
+        that can be obtained from https://reuter.mit.edu
+        
+
+required arguments:
+  --subjects_dir <directory>
+                        subjects directory with a set of Freesurfer 6.0 
+                        processed individual datasets.
+  --output_dir <directory>
+                        output directory
+
+optional arguments:
+  --subjects SubjectID [SubjectID ...]
+                        list of subject IDs. If omitted, all suitable sub-
+                        directories witin the subjects directory will be 
+                        used.
+  --screenshots         create screenshots of individual brains
+  --fornix              check fornix segmentation
+  --outlier             run outlier detection
+  --outlier-table <filename>
+                        specify normative values
+
+getting help:
+  -h, --help            display this help message and exit
+
+=== Output of 'qatools.py -help' ===
+
+usage: qatools.py --subjects_dir <directory> --output_dir <directory>
+                  [--subjects SubjectID [SubjectID ...]] [--screenshots]
+                  [--fornix] [--outlier] [--outlier-table <filename>] [-h]
+qatools.py: error: argument -h/--help: ignored explicit argument 'elp'
+
+-----------------------------
+qatools-python
+-----------------------------
+
+
+=== Output of 'qatools.py' (no arguments) ===
+
+
+-----------------------------
+qatools-python
+-----------------------------
+
+usage: qatools.py --subjects_dir <directory> --output_dir <directory>
+                  [--subjects SubjectID [SubjectID ...]] [--screenshots]
+                  [--fornix] [--outlier] [--outlier-table <filename>] [-h]
+
+        This program takes existing Freesurfer 6.0 analysis results of one
+        or more subjects and computes a set of quality metrics. These will be 
+        reported in a summary csv table.
+
+        For a description of these metrics, see the gitlab/github page or the 
+        header section of this script.
+
+        The (optional) analysis of shape features requires additional scripts 
+        that can be obtained from https://reuter.mit.edu
+        
+
+required arguments:
+  --subjects_dir <directory>
+                        subjects directory with a set of Freesurfer 6.0 
+                        processed individual datasets.
+  --output_dir <directory>
+                        output directory
+
+optional arguments:
+  --subjects SubjectID [SubjectID ...]
+                        list of subject IDs. If omitted, all suitable sub-
+                        directories witin the subjects directory will be 
+                        used.
+  --screenshots         create screenshots of individual brains
+  --fornix              check fornix segmentation
+  --outlier             run outlier detection
+  --outlier-table <filename>
+                        specify normative values
+
+getting help:
+  -h, --help            display this help message and exit

@@ -1,0 +1,19 @@
+
+=== Output of 'isnifti --help' ===
+
+set: Variable name must begin with a letter.
+
+=== Output of 'isnifti -help' ===
+
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+
+=== Output of 'isnifti' (no arguments) ===
+
+isnifti filename

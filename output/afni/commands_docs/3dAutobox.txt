@@ -1,0 +1,293 @@
+
+=== Output of '3dAutobox --help' ===
+
+++ 3dAutobox: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+[7m** ERROR:[0m ** 3dAutobox: --help makes no sense here.
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dAutobox -help' enlighten:
+        '-input DATASET  :An alternate way to specify the input dataset.'
+        '-prefix PREFIX  :Crop the input dataset to the size of the box, and'
+        '-extent         :Write to standard out the spatial extent of the box'
+
+=== Output of '3dAutobox -help' ===
+
+++ 3dAutobox: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+Usage: 3dAutobox [options] DATASET
+Computes size of a box that fits around the volume.
+Also can be used to crop the volume to that box.
+
+The default 'info message'-based terminal text is a set of IJK coords.
+See below for options to display coordinates in other ways, as well as
+to save them in a text file.  Please note in particular the difference
+between *ijk* and *ijkord* outputs, for scripting.
+
+OPTIONS: ~1~
+
+-prefix PREFIX  :Crop the input dataset to the size of the box, and
+                 write an output dataset with PREFIX for the name.
+                 *If -prefix is not used, no new volume is written out,
+                 just the (x,y,z) extents of the voxels to be kept.
+
+-input DATASET  :An alternate way to specify the input dataset.
+                 The default method is to pass DATASET as
+                 the last parameter on the command line.
+
+-noclust        :Don't do any clustering to find box. Any non-zero
+                 voxel will be preserved in the cropped volume.
+                 The default method uses some clustering to find the
+                 cropping box, and will clip off small isolated blobs.
+
+-extent         :Write to standard out the spatial extent of the box
+
+-extent_xyz_quiet :The same numbers as '-extent', but only numbers and
+                 no string content. Ordering is RLAPIS.
+
+-extent_ijk     :Write out the 6 auto bbox ijk slice numbers to
+                 screen:
+                     imin imax jmin jmax kmin kmax
+                 Note that resampling would affect the ijk vals (but
+                 not necessarily the xyz ones).
+
+-extent_ijk_to_file FF
+                :Write out the 6 auto bbox ijk slice numbers to
+                 a simple-formatted text file FF (single row file):
+                     imin imax jmin jmax kmin kmax
+                 (same notes as above apply).
+
+-extent_ijk_midslice  :Write out the 3 ijk midslices of the autobox to
+                 the screen:
+                     imid jmid kmid
+                 These are obtained via: (imin + imax)/2, etc.
+
+-extent_ijkord  :Write out the 6 auto bbox ijk slice numbers to screen
+                 but in a particular order and format (see 'NOTE on
+                 *ijkord* format', below).
+                   NB: This ordering is useful if you want to use
+                 the output indices in 3dcalc expressions.
+
+-extent_ijkord_to_file FFORRD
+                :Write out the 6 auto bbox ijk slice numbers to a file
+                  but in a particular order and format (see 'NOTE on
+                  *ijkord* format', below).
+                   NB: This option is quite useful if you want to use
+                 the output indices in 3dcalc expressions.
+
+-extent_xyz_to_file GG
+                :Write out the 6 auto bbox xyz coords to
+                 a simple-formatted text file GG (single row file):
+                     xmin xmax ymin ymax zmin zmax
+                 (same values as '-extent').
+
+-extent_xyz_midslice  :Write out the 3 xyz midslices of the autobox to
+                 the screen:
+                     xmid ymid zmid
+                 These are obtained via: (xmin + xmax)/2, etc.
+                 These follow the same meaning as '-extent'.
+
+-npad NNN       :Number of extra voxels to pad on each side of box,
+                 since some troublesome people (that's you, LRF) want
+                 this feature for no apparent reason.
+                 ** With this option, it is possible to get a dataset
+                 thatis actually bigger than the input.
+                 ** You can input a negative value for NNN, which will
+                 crop the dataset even more than the automatic method.
+
+-npad_safety_on :Constrain npad-ded extents to be within dset.  So, 
+                 each index is bounded to be in range [0, L-1], where L
+                 is matrix length along that dimension.
+
+
+NOTE on *ijkord* format  ~1~
+
+Using any of the '-*ijkord*' options above will output pairs of ijk
+indices just like the regular ijk options, **but** they will be ordered
+in a way that you can associate each of the i, j, and k indices with
+a standard x, y and z coordinate direction.  Without this ordering,
+resampling a dataset could change what index is associated with which
+coordinate axis.  That situation can be confusing for scripting (and
+by confusing, we mean 'bad').
+
+The output format for any '-*ijkord*' options is a 3x3 table, where
+the first column is the index value (i, j or k), and the next two
+columns are the min and max interval boundaries for the autobox.
+Importantly, the rows are placed in order so that the top corresponds
+to the x-axis, the middle to the y-axis and the bottom to the z-axis.
+
+So, if you had the following table output for a dset:
+     k       10      170
+     i       35      254
+     j       21      199
+
+... you would look at the third row for the min/max slice values
+along the z-axis, and you would use the index 'j' to refer to it in,
+say, a 3dcalc expression.
+
+Note that the above example table output came from a dataset with ASL
+orientation.  We can see how that fits, recalling that the first,
+second and third rows tell us about x, y and z info, respectively; and
+that i, j and k refer to the first, second and third characters in the
+orientation string.  So, the third (z-like) row contains a j, which
+points us at the middle character in the orientation, which is S, which
+is along the z-axis---all consistent!  Similarly, the top (x-like) row
+contains a k, which points us at the last char in the orientation,
+which is L and that is along the x-axis---phew!
+
+The main point of this would be to extra this information and use it
+in a script.  If you knew that you wanted the z-slice range to use
+in a 3dcalc 'within()' expression, then you could extract the 3rd row
+to get the correct index and slice ranges, e.g., in tcsh:
+    set vvv = `sed -n 3p FILE_ijkord.txt`
+
+... where now ${vvv} will have 3 values, the first of which is the
+relevant index letter, then the min and max slice range values.
+So an example 3dcalc expression to keep values only within
+that slice range:
+    3dcalc                                                   \
+        -a      DSET                                         \
+        -expr   "a*within(${vvv[1]},${vvv[2]},${vvv[3]})"    \
+        -prefix DSET_SUBSET
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dAutobox' (no arguments) ===
+
+++ 3dAutobox: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+Usage: 3dAutobox [options] DATASET
+Computes size of a box that fits around the volume.
+Also can be used to crop the volume to that box.
+
+The default 'info message'-based terminal text is a set of IJK coords.
+See below for options to display coordinates in other ways, as well as
+to save them in a text file.  Please note in particular the difference
+between *ijk* and *ijkord* outputs, for scripting.
+
+OPTIONS: ~1~
+
+-prefix PREFIX  :Crop the input dataset to the size of the box, and
+                 write an output dataset with PREFIX for the name.
+                 *If -prefix is not used, no new volume is written out,
+                 just the (x,y,z) extents of the voxels to be kept.
+
+-input DATASET  :An alternate way to specify the input dataset.
+                 The default method is to pass DATASET as
+                 the last parameter on the command line.
+
+-noclust        :Don't do any clustering to find box. Any non-zero
+                 voxel will be preserved in the cropped volume.
+                 The default method uses some clustering to find the
+                 cropping box, and will clip off small isolated blobs.
+
+-extent         :Write to standard out the spatial extent of the box
+
+-extent_xyz_quiet :The same numbers as '-extent', but only numbers and
+                 no string content. Ordering is RLAPIS.
+
+-extent_ijk     :Write out the 6 auto bbox ijk slice numbers to
+                 screen:
+                     imin imax jmin jmax kmin kmax
+                 Note that resampling would affect the ijk vals (but
+                 not necessarily the xyz ones).
+
+-extent_ijk_to_file FF
+                :Write out the 6 auto bbox ijk slice numbers to
+                 a simple-formatted text file FF (single row file):
+                     imin imax jmin jmax kmin kmax
+                 (same notes as above apply).
+
+-extent_ijk_midslice  :Write out the 3 ijk midslices of the autobox to
+                 the screen:
+                     imid jmid kmid
+                 These are obtained via: (imin + imax)/2, etc.
+
+-extent_ijkord  :Write out the 6 auto bbox ijk slice numbers to screen
+                 but in a particular order and format (see 'NOTE on
+                 *ijkord* format', below).
+                   NB: This ordering is useful if you want to use
+                 the output indices in 3dcalc expressions.
+
+-extent_ijkord_to_file FFORRD
+                :Write out the 6 auto bbox ijk slice numbers to a file
+                  but in a particular order and format (see 'NOTE on
+                  *ijkord* format', below).
+                   NB: This option is quite useful if you want to use
+                 the output indices in 3dcalc expressions.
+
+-extent_xyz_to_file GG
+                :Write out the 6 auto bbox xyz coords to
+                 a simple-formatted text file GG (single row file):
+                     xmin xmax ymin ymax zmin zmax
+                 (same values as '-extent').
+
+-extent_xyz_midslice  :Write out the 3 xyz midslices of the autobox to
+                 the screen:
+                     xmid ymid zmid
+                 These are obtained via: (xmin + xmax)/2, etc.
+                 These follow the same meaning as '-extent'.
+
+-npad NNN       :Number of extra voxels to pad on each side of box,
+                 since some troublesome people (that's you, LRF) want
+                 this feature for no apparent reason.
+                 ** With this option, it is possible to get a dataset
+                 thatis actually bigger than the input.
+                 ** You can input a negative value for NNN, which will
+                 crop the dataset even more than the automatic method.
+
+-npad_safety_on :Constrain npad-ded extents to be within dset.  So, 
+                 each index is bounded to be in range [0, L-1], where L
+                 is matrix length along that dimension.
+
+
+NOTE on *ijkord* format  ~1~
+
+Using any of the '-*ijkord*' options above will output pairs of ijk
+indices just like the regular ijk options, **but** they will be ordered
+in a way that you can associate each of the i, j, and k indices with
+a standard x, y and z coordinate direction.  Without this ordering,
+resampling a dataset could change what index is associated with which
+coordinate axis.  That situation can be confusing for scripting (and
+by confusing, we mean 'bad').
+
+The output format for any '-*ijkord*' options is a 3x3 table, where
+the first column is the index value (i, j or k), and the next two
+columns are the min and max interval boundaries for the autobox.
+Importantly, the rows are placed in order so that the top corresponds
+to the x-axis, the middle to the y-axis and the bottom to the z-axis.
+
+So, if you had the following table output for a dset:
+     k       10      170
+     i       35      254
+     j       21      199
+
+... you would look at the third row for the min/max slice values
+along the z-axis, and you would use the index 'j' to refer to it in,
+say, a 3dcalc expression.
+
+Note that the above example table output came from a dataset with ASL
+orientation.  We can see how that fits, recalling that the first,
+second and third rows tell us about x, y and z info, respectively; and
+that i, j and k refer to the first, second and third characters in the
+orientation string.  So, the third (z-like) row contains a j, which
+points us at the middle character in the orientation, which is S, which
+is along the z-axis---all consistent!  Similarly, the top (x-like) row
+contains a k, which points us at the last char in the orientation,
+which is L and that is along the x-axis---phew!
+
+The main point of this would be to extra this information and use it
+in a script.  If you knew that you wanted the z-slice range to use
+in a 3dcalc 'within()' expression, then you could extract the 3rd row
+to get the correct index and slice ranges, e.g., in tcsh:
+    set vvv = `sed -n 3p FILE_ijkord.txt`
+
+... where now ${vvv} will have 3 values, the first of which is the
+relevant index letter, then the min and max slice range values.
+So an example 3dcalc expression to keep values only within
+that slice range:
+    3dcalc                                                   \
+        -a      DSET                                         \
+        -expr   "a*within(${vvv[1]},${vvv[2]},${vvv[3]})"    \
+        -prefix DSET_SUBSET
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

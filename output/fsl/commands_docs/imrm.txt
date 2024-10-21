@@ -1,0 +1,17 @@
+
+=== Output of 'imrm --help' ===
+
+/bin/rm: unrecognized option '--help.img'
+Try '/bin/rm ./--help.nii.gz' to remove the file '--help.nii.gz'.
+Try '/bin/rm --help' for more information.
+
+=== Output of 'imrm -help' ===
+
+/bin/rm: invalid option -- 'h'
+Try '/bin/rm ./-help.nii.gz' to remove the file '-help.nii.gz'.
+Try '/bin/rm --help' for more information.
+
+=== Output of 'imrm' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/imrm <list of image names to remove>
+NB: filenames can be basenames or not

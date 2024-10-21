@@ -1,0 +1,117 @@
+
+=== Output of 'ConvertTransformFile --help' ===
+
+USAGE:  
+ ConvertTransformFile dimensions inputTransfromFile.ext outputTransformFile.ext [OPTIONS]
+
+COMMAND: 
+ Utility to read in a transform file (presumed to be in binary format) 
+ and output it in various formats. Default output is legacy human-readable
+ text format.  Without any options, the output filename extension must be 
+ .txt or .tfm to signify a text-formatted transform file. 
+
+ OPTIONS: 
+
+ --matrix, -m 
+   Output only the transform matrix (from transform::GetMatrix() )
+   to a text file, one row per line with space-delimited values. 
+   Only works for transforms of type identity, translation or 
+   MatrixOffsetTransformBase and its derived types.
+   The output filename must end in '.mat'.
+
+ --homogeneousMatrix, --hm
+   Output an N+1 square homogeneous matrix from the transform matrix and offset.
+   Only works for transforms of type identity, translation or 
+   MatrixOffsetTransformBase and its derived types.
+   The output filename must end in '.mat'.
+
+ --RAS, --ras
+   Combined with the 'matrix' or 'homogeneousMatrix' options, this will convert
+   the output into the RAS coordinate system (Right, Anterior, Superior).
+   Otherwise, the output is in the LPS coordinate system (Left, Posterior,
+   Superior), which is used by ITK. RAS is used, for example, by Slicer. 
+
+ --convertToAffineType
+   Convert the input transform type to AffineTransform using the transform's 
+   matrix and offset, and output again as as a binary transform file.
+   This is useful for using transforms in programs
+   that do not register all available Transform factory types.
+
+
+=== Output of 'ConvertTransformFile -help' ===
+
+USAGE:  
+ ConvertTransformFile dimensions inputTransfromFile.ext outputTransformFile.ext [OPTIONS]
+
+COMMAND: 
+ Utility to read in a transform file (presumed to be in binary format) 
+ and output it in various formats. Default output is legacy human-readable
+ text format.  Without any options, the output filename extension must be 
+ .txt or .tfm to signify a text-formatted transform file. 
+
+ OPTIONS: 
+
+ --matrix, -m 
+   Output only the transform matrix (from transform::GetMatrix() )
+   to a text file, one row per line with space-delimited values. 
+   Only works for transforms of type identity, translation or 
+   MatrixOffsetTransformBase and its derived types.
+   The output filename must end in '.mat'.
+
+ --homogeneousMatrix, --hm
+   Output an N+1 square homogeneous matrix from the transform matrix and offset.
+   Only works for transforms of type identity, translation or 
+   MatrixOffsetTransformBase and its derived types.
+   The output filename must end in '.mat'.
+
+ --RAS, --ras
+   Combined with the 'matrix' or 'homogeneousMatrix' options, this will convert
+   the output into the RAS coordinate system (Right, Anterior, Superior).
+   Otherwise, the output is in the LPS coordinate system (Left, Posterior,
+   Superior), which is used by ITK. RAS is used, for example, by Slicer. 
+
+ --convertToAffineType
+   Convert the input transform type to AffineTransform using the transform's 
+   matrix and offset, and output again as as a binary transform file.
+   This is useful for using transforms in programs
+   that do not register all available Transform factory types.
+
+
+=== Output of 'ConvertTransformFile' (no arguments) ===
+
+USAGE:  
+ ConvertTransformFile dimensions inputTransfromFile.ext outputTransformFile.ext [OPTIONS]
+
+COMMAND: 
+ Utility to read in a transform file (presumed to be in binary format) 
+ and output it in various formats. Default output is legacy human-readable
+ text format.  Without any options, the output filename extension must be 
+ .txt or .tfm to signify a text-formatted transform file. 
+
+ OPTIONS: 
+
+ --matrix, -m 
+   Output only the transform matrix (from transform::GetMatrix() )
+   to a text file, one row per line with space-delimited values. 
+   Only works for transforms of type identity, translation or 
+   MatrixOffsetTransformBase and its derived types.
+   The output filename must end in '.mat'.
+
+ --homogeneousMatrix, --hm
+   Output an N+1 square homogeneous matrix from the transform matrix and offset.
+   Only works for transforms of type identity, translation or 
+   MatrixOffsetTransformBase and its derived types.
+   The output filename must end in '.mat'.
+
+ --RAS, --ras
+   Combined with the 'matrix' or 'homogeneousMatrix' options, this will convert
+   the output into the RAS coordinate system (Right, Anterior, Superior).
+   Otherwise, the output is in the LPS coordinate system (Left, Posterior,
+   Superior), which is used by ITK. RAS is used, for example, by Slicer. 
+
+ --convertToAffineType
+   Convert the input transform type to AffineTransform using the transform's 
+   matrix and offset, and output again as as a binary transform file.
+   This is useful for using transforms in programs
+   that do not register all available Transform factory types.
+

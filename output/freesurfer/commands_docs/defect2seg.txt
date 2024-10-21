@@ -1,0 +1,90 @@
+
+=== Output of 'defect2seg --help' ===
+
+
+defect2seg
+  --o outputseg
+  --t template
+  --lh lh_surf lh_defect_labels lh_pointset lhoffset
+  --rh rh_surf rh_defect_labels rh_pointset rhoffset
+  --s subject
+     sets template to orig.mgz
+     sets output to surface.defects.mgz
+     sets lh.orig lh.defect_labels lh.defects.pointset 1000
+     sets rh.orig rh.defect_labels rh.defects.pointset 2000
+  --lh-only, --rh-only
+  --cortex : constrain to defects within cortex (also --no-cortex)
+    Note: does not renumber the defects
+  These only apply to --s. Changes the ouutput to ?h.surface.defects.mgz
+
+
+defect2seg 7.4.1
+
+Converts surface defect labels into a segmentation volume and
+pointsets to make it easier to examine and evaluate.
+
+The most simple way to run it is with --s. You can then
+view it in freeview with something like
+
+tkmeditfv $subject brain.finalsurfs.mgz -defect
+
+This script is similar to defect-seg but does not create annotations
+or sample onto fsaverage.
+
+
+
+
+=== Output of 'defect2seg -help' ===
+
+
+defect2seg
+  --o outputseg
+  --t template
+  --lh lh_surf lh_defect_labels lh_pointset lhoffset
+  --rh rh_surf rh_defect_labels rh_pointset rhoffset
+  --s subject
+     sets template to orig.mgz
+     sets output to surface.defects.mgz
+     sets lh.orig lh.defect_labels lh.defects.pointset 1000
+     sets rh.orig rh.defect_labels rh.defects.pointset 2000
+  --lh-only, --rh-only
+  --cortex : constrain to defects within cortex (also --no-cortex)
+    Note: does not renumber the defects
+  These only apply to --s. Changes the ouutput to ?h.surface.defects.mgz
+
+
+defect2seg 7.4.1
+
+Converts surface defect labels into a segmentation volume and
+pointsets to make it easier to examine and evaluate.
+
+The most simple way to run it is with --s. You can then
+view it in freeview with something like
+
+tkmeditfv $subject brain.finalsurfs.mgz -defect
+
+This script is similar to defect-seg but does not create annotations
+or sample onto fsaverage.
+
+
+
+
+=== Output of 'defect2seg' (no arguments) ===
+
+
+defect2seg
+  --o outputseg
+  --t template
+  --lh lh_surf lh_defect_labels lh_pointset lhoffset
+  --rh rh_surf rh_defect_labels rh_pointset rhoffset
+  --s subject
+     sets template to orig.mgz
+     sets output to surface.defects.mgz
+     sets lh.orig lh.defect_labels lh.defects.pointset 1000
+     sets rh.orig rh.defect_labels rh.defects.pointset 2000
+  --lh-only, --rh-only
+  --cortex : constrain to defects within cortex (also --no-cortex)
+    Note: does not renumber the defects
+  These only apply to --s. Changes the ouutput to ?h.surface.defects.mgz
+
+

@@ -1,0 +1,81 @@
+
+=== Output of 'mean --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+mean
+
+Usage: 
+mean --verbose
+
+
+Compulsory arguments (You MUST set one or more of):
+	--data,--datafile	data regressor data file
+	--mask,--maskfile	mask file
+
+Optional arguments (You may optionally specify one or more of):
+	-v,-V,--verbose	switch on diagnostic messages
+	--debug,--debuglevel	set debug level
+	--to,--timingon	turn timing on
+	-h,--help	display this message
+	--ld,--logdir	log directory (default is logdir)
+	--forcedir	Use the actual directory name given - i.e. don't add + to make a new directory
+	--inf,--inference	inference technique: mcmc
+ laplace
+ (default is mcmc)
+	--nj,--njumps	Num of jumps to be made by MCMC (default is 5000)
+	--bi,--burnin	Num of jumps at start of MCMC to be discarded (default is 500)
+	--se,--sampleevery	Num of jumps for each sample (MCMC) (default is 1)
+	--upe,--updateproposalevery	Num of jumps for each update to the proposal density std (MCMC) (default is 40)
+	--arate,--acceptancerate	Acceptance rate to aim for (MCMC) (default is 0.6)
+	--seed	seed for pseudo random number generator
+	--prec	value to fix error precision to (default is -1, which means error precision is not fixed)
+	--noamp	turn off Analytical Marginalisation of error Precision
+	--pm,--priormean	priormean
+	--ps,--priorstd	priorstd
+
+
+
+=== Output of 'mean -help' ===
+
+
+-e: Option doesn't exist!
+
+=== Output of 'mean' (no arguments) ===
+
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+mean
+
+Usage: 
+mean --verbose
+
+
+Compulsory arguments (You MUST set one or more of):
+	--data,--datafile	data regressor data file
+	--mask,--maskfile	mask file
+
+Optional arguments (You may optionally specify one or more of):
+	-v,-V,--verbose	switch on diagnostic messages
+	--debug,--debuglevel	set debug level
+	--to,--timingon	turn timing on
+	-h,--help	display this message
+	--ld,--logdir	log directory (default is logdir)
+	--forcedir	Use the actual directory name given - i.e. don't add + to make a new directory
+	--inf,--inference	inference technique: mcmc
+ laplace
+ (default is mcmc)
+	--nj,--njumps	Num of jumps to be made by MCMC (default is 5000)
+	--bi,--burnin	Num of jumps at start of MCMC to be discarded (default is 500)
+	--se,--sampleevery	Num of jumps for each sample (MCMC) (default is 1)
+	--upe,--updateproposalevery	Num of jumps for each update to the proposal density std (MCMC) (default is 40)
+	--arate,--acceptancerate	Acceptance rate to aim for (MCMC) (default is 0.6)
+	--seed	seed for pseudo random number generator
+	--prec	value to fix error precision to (default is -1, which means error precision is not fixed)
+	--noamp	turn off Analytical Marginalisation of error Precision
+	--pm,--priormean	priormean
+	--ps,--priorstd	priorstd
+
+

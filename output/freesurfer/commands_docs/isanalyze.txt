@@ -1,0 +1,15 @@
+
+=== Output of 'isanalyze --help' ===
+
+set: Variable name must begin with a letter.
+
+=== Output of 'isanalyze -help' ===
+
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+
+=== Output of 'isanalyze' (no arguments) ===
+
+isanalyze filename

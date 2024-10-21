@@ -1,0 +1,91 @@
+
+=== Output of 'mris_reposition_surface --help' ===
+
+				Help
+
+NAME
+	mris_reposition_surface
+
+SYNOPSIS
+	mris_reposition_surface [options] -s <surface> -v <volume> -p <points>
+	-o <surface>
+
+DESCRIPTION
+	Reposition a surface based on the given control points (in json 
+	format)
+
+REQUIRED FLAGGED ARGUMENTS
+	-s, --surf FILE
+		Input surface
+
+	-v, --volume FILE
+		Input volume
+
+	-p, --points FILE
+		Input points
+
+	-o, --output FILE
+		Output surface filename
+
+OPTIONAL FLAGGED ARGUMENTS
+	-z, --size
+		Size parameter for repositioning. default is 1.
+
+	-g, --sigma
+		Sigma. default is 2.0.
+
+	-i, --iterations
+		Number of iterations. default is 1.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_reposition_surface -help' ===
+
+error: unexpected argument '-help'
+
+=== Output of 'mris_reposition_surface' (no arguments) ===
+
+				Help
+
+NAME
+	mris_reposition_surface
+
+SYNOPSIS
+	mris_reposition_surface [options] -s <surface> -v <volume> -p <points>
+	-o <surface>
+
+DESCRIPTION
+	Reposition a surface based on the given control points (in json 
+	format)
+
+REQUIRED FLAGGED ARGUMENTS
+	-s, --surf FILE
+		Input surface
+
+	-v, --volume FILE
+		Input volume
+
+	-p, --points FILE
+		Input points
+
+	-o, --output FILE
+		Output surface filename
+
+OPTIONAL FLAGGED ARGUMENTS
+	-z, --size
+		Size parameter for repositioning. default is 1.
+
+	-g, --sigma
+		Sigma. default is 2.0.
+
+	-i, --iterations
+		Number of iterations. default is 1.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+error: missing required input '--surf'

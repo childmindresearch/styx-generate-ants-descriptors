@@ -1,0 +1,116 @@
+
+=== Output of 'column_cat --help' ===
+
+v R
+isre3 no4.4.02( 0-8151-3-- )oS" noemot eaeL nO noC
+"iryp thg )C(8102ehT F R dnuooitaof ntS rsitaacitoC ltupm
+gnitalPmrof8x :46_6-cp-unilng-x6( uib-4
+
+)tsi Rerf os eawtfa erc dnsemotiw BA hULOSYLET ON RRAWYTNAoY
+.ra uew emoclot eder rtsitubiti ednu c reatrec niidnonoitT
+.s epycil'esne ')(' roecil(ecnf ')d rortsitubi noiated.sli  
+
+utaN largnalegaupus troptub nur gnin ni E nailgnl hslacoR
+
+e si oc aballtaro evijorp tcehtiwnam oc yirtnotub
+.srepyToc' irtnotub)(srof 'om ri errofnitama no'
+dnaticnoit ')(h not woic oR et ro ap Rgakci seup ncilboita
+.snpyT
+d' e(omef ')s ro emoomed' ,spleh ')( rofl-no eniplehro ,eh'
+s.pltrat ')( rofH na LMTworb resetnicafrot eleh T
+.p epy)(q'ot 'iuq .R t >
+
+u/!#b/rse/nia vn_inf_nur >
+RleW#emoc ot CId3,R.A na INFAAVI caP egak >
+!---#--------------------------------------------------------# >
+sreV noi.0.0J ,49 nu02 ,>
+22uA# rohtaG :C gn nehnag(ehcgam@nn.lig.hi
+)voW# >isbe :etptth//:sinfamin.in.hog.hss/vg/cccgnaaci/mth. >
+lCSS#IN/C ,HMitaNlanosnI utit setH fotlaeB ,hehte ads2 DM2980# >
+--------------------------------------------------------
+--->
+ >C # ammol dn enir ott nu sihircs :tpVId3 R.AptuO( tuptuOi tu a selif# >
+ ni cihwht hur eninnrp gergoi ssulcngnidrre m roassew eg llis eberot>
+)d >
+ elC#u na >
+pl(mr tsisl =
+))(>
+ >rif i.tsap.n< htuf -itcnf(no)eli+
+{     < ffap -(etssrtstilpsyS(teg.(vneTAP',)'H)':']1[[/',]f ,',elipes )''=  +
+ff  ff-<pal[(ylpf,ff.elisixe=)stURT=
+;]E   +ac# U'(tgnis ,' 1[ff\',];)'n  +
+er  nrutusg(/'(b','/f,'/]1[fif ,=dexEURT
+ ))
+} +os >ecrurif(i.tsap.n'(htINFAR.oi
+))'orrEni rbil yrartad(at.a)elbt : ereh si p onakcac egella€â dtad˜at.aâelbC
+™€sllaos :ecru... pus serpcaPsegakratSMputasse segw >-ChtiillaaHgneldn- sril >rarbxE
+ytuce noitlah
+=== Output of 'column_cat -help' ===
+
+
+  /opt/afni/src/../install/column_cat : catenate files horizontally
+
+  Output is sent to stdout, so redirection of output to
+  a file may be desirable.
+
+  Each line of output is the concatenation of each current
+  line from the input files, all on the same line, and
+  separated by a space.  If different separation is desired,
+  such as a tab, please use the -sep option.
+
+  ** Note that using '-' or 'stdin' for an input file means
+     to read from stdin.  One such stream is allowed.
+
+  Optionos:
+     -line LINE_NUM : print only line #LINE_NUM (1-based)
+                      e.g. -line 1   (shows top line)
+     -sep sep_str   : use sep_str as separation string
+
+  Examples:
+
+     /opt/afni/src/../install/column_cat -help
+     /opt/afni/src/../install/column_cat file_a file_b
+     /opt/afni/src/../install/column_cat file_a file_b file_c > output_file
+     /opt/afni/src/../install/column_cat -line 17 file_a file_b file_c > output_file
+     /opt/afni/src/../install/column_cat -sep : file_a file_b > output_file
+     /opt/afni/src/../install/column_cat -sep '\t' file_a file_b > output_file
+     /opt/afni/src/../install/column_cat -sep ' : ' file_a file_b > output_file
+     cat file_a | /opt/afni/src/../install/column_cat -line 27 stdin
+
+R Reynolds    Jan, 2002 (distributed Aug, 2012)
+
+
+=== Output of 'column_cat' (no arguments) ===
+
+
+  /opt/afni/src/../install/column_cat : catenate files horizontally
+
+  Output is sent to stdout, so redirection of output to
+  a file may be desirable.
+
+  Each line of output is the concatenation of each current
+  line from the input files, all on the same line, and
+  separated by a space.  If different separation is desired,
+  such as a tab, please use the -sep option.
+
+  ** Note that using '-' or 'stdin' for an input file means
+     to read from stdin.  One such stream is allowed.
+
+  Optionos:
+     -line LINE_NUM : print only line #LINE_NUM (1-based)
+                      e.g. -line 1   (shows top line)
+     -sep sep_str   : use sep_str as separation string
+
+  Examples:
+
+     /opt/afni/src/../install/column_cat -help
+     /opt/afni/src/../install/column_cat file_a file_b
+     /opt/afni/src/../install/column_cat file_a file_b file_c > output_file
+     /opt/afni/src/../install/column_cat -line 17 file_a file_b file_c > output_file
+     /opt/afni/src/../install/column_cat -sep : file_a file_b > output_file
+     /opt/afni/src/../install/column_cat -sep '\t' file_a file_b > output_file
+     /opt/afni/src/../install/column_cat -sep ' : ' file_a file_b > output_file
+     cat file_a | /opt/afni/src/../install/column_cat -line 27 stdin
+
+R Reynolds    Jan, 2002 (distributed Aug, 2012)
+

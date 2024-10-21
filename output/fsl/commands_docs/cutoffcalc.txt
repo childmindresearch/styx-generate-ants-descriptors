@@ -1,0 +1,81 @@
+
+=== Output of 'cutoffcalc --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+Cut-off calcualtor (Version 1.1)
+Copyright(c) 2009, University of Oxford (Mark Jenkinson and Matthew Webster)
+Calculates the minimal period for the highpass filter that still preserves a specified amount of variance in all the design matrix regressors.
+
+Usage: 
+cutoffcalc [options] -i design.mat
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input design matrix
+
+Optional arguments (You may optionally specify one or more of):
+	-t,--thresh	Threshold for retained variance (default=0.9)
+	--tr	Time between successive data points (default=3.0s)
+	--limit	Lower limit on period due to autocorr estimation (default=90s)
+	--example_sig	Example sigma (in sec) to produce output called example_filt.mtx
+	-v,--verbose	switch on diagnostic messages
+	--debug	switch on debugging messages
+	-h,--help	display this message
+
+
+
+=== Output of 'cutoffcalc -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+Cut-off calcualtor (Version 1.1)
+Copyright(c) 2009, University of Oxford (Mark Jenkinson and Matthew Webster)
+Calculates the minimal period for the highpass filter that still preserves a specified amount of variance in all the design matrix regressors.
+
+Usage: 
+cutoffcalc [options] -i design.mat
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input design matrix
+
+Optional arguments (You may optionally specify one or more of):
+	-t,--thresh	Threshold for retained variance (default=0.9)
+	--tr	Time between successive data points (default=3.0s)
+	--limit	Lower limit on period due to autocorr estimation (default=90s)
+	--example_sig	Example sigma (in sec) to produce output called example_filt.mtx
+	-v,--verbose	switch on diagnostic messages
+	--debug	switch on debugging messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'cutoffcalc' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	input design matrix
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+Cut-off calcualtor (Version 1.1)
+Copyright(c) 2009, University of Oxford (Mark Jenkinson and Matthew Webster)
+Calculates the minimal period for the highpass filter that still preserves a specified amount of variance in all the design matrix regressors.
+
+Usage: 
+cutoffcalc [options] -i design.mat
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input design matrix
+
+Optional arguments (You may optionally specify one or more of):
+	-t,--thresh	Threshold for retained variance (default=0.9)
+	--tr	Time between successive data points (default=3.0s)
+	--limit	Lower limit on period due to autocorr estimation (default=90s)
+	--example_sig	Example sigma (in sec) to produce output called example_filt.mtx
+	-v,--verbose	switch on diagnostic messages
+	--debug	switch on debugging messages
+	-h,--help	display this message
+
+

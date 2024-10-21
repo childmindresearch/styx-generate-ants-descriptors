@@ -1,0 +1,22 @@
+
+=== Output of 'mri_align_long.csh --help' ===
+
+Using SUBJECTS_DIR /usr/local/freesurfer/subjects
+/usr/local/freesurfer/subjects/--help/base-tps does not exist!
+Is this really the base subject?
+
+=== Output of 'mri_align_long.csh -help' ===
+
+Using SUBJECTS_DIR /usr/local/freesurfer/subjects
+/usr/local/freesurfer/subjects/-help/base-tps does not exist!
+Is this really the base subject?
+
+=== Output of 'mri_align_long.csh' (no arguments) ===
+
+
+ mri_align_long.csh base-id 
+
+   Aligns all longitudinal norm and aseg files to the base space.
+   Creates norm-base.mgz and aseg.base.mgz in each tpN.long.base/mri dir.
+
+

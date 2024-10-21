@@ -1,0 +1,17 @@
+
+=== Output of 'hiam_register --help' ===
+
+usage: /usr/local/freesurfer/bin/hiam_register [options] <input surface> <average surface> <output surface>
+
+This program register a surface with  an average surface.
+
+valid options are:
+
+
+=== Output of 'hiam_register -help' ===
+
+unknown option -help
+
+=== Output of 'hiam_register' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/hiam_register [options] <input surface> <average surface> <output surface>

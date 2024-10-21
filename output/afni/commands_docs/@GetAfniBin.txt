@@ -1,0 +1,12 @@
+
+=== Output of '@GetAfniBin --help' ===
+
+/opt/afni/src/../install
+
+=== Output of '@GetAfniBin -help' ===
+
+@GetAfniBin  : Returns path where afni executable resides.
+
+=== Output of '@GetAfniBin' (no arguments) ===
+
+/opt/afni/src/../install

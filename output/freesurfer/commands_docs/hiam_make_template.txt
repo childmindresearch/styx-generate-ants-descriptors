@@ -1,0 +1,17 @@
+
+=== Output of 'hiam_make_template --help' ===
+
+usage: /usr/local/freesurfer/bin/hiam_make_template [options] <hemi> <surface name> <subject> <subject> ... <output name>
+
+This program will add a template into an average surface.
+
+valid options are:
+
+
+=== Output of 'hiam_make_template -help' ===
+
+unknown option -help
+
+=== Output of 'hiam_make_template' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/hiam_make_template [options] <hemi> <surface name> <subject> <subject> ... <output name>

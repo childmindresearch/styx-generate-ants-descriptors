@@ -1,0 +1,110 @@
+
+=== Output of 'surfreg --help' ===
+
+
+surfreg
+
+  --s subject : subject to register
+  --t target  : average subject to use as a target
+  --xhemi     : for performing cross-hemi registration
+
+  --lh : only reg lh (default for --xhemi)
+  --rh : only reg rh
+  --lhrh : reg both lh and rh (default when not using --xhemi)
+  --no-annot  : do not use annot to rip (default is aparc.annot)
+  --annot annotname : uses label/hemi.annotname (rips medial)
+      NOTE: using an annot is not currently the default in recon-all
+  --aparc : sets annotname to aparc.annot (default)
+  --noneg 
+  --init-reg initregname : default is sphere (do not include hemi)
+  --lta reg.lta : apply rotational components of affine reg
+  --init-from-tal : use talaiach.xfm.lta to init spherical reg
+  --o outsurfname : default is target.sphere.reg (do not include hemi)
+      If target is fsaverage, then default is sphere.reg
+  --no-set-vol-geom : do not set volume geometry and center the sphere
+  --threads threads : run in parallel
+
+surfreg 7.4.1
+
+Performs surface registration (mris_register) between a subject and a
+target average subject based on the hemi.reg.template.tif atlas in the
+average subject. The source surface is subject/surf/hemi.sphere
+unless changed with --init-reg. 
+
+Creates hemi.target.sphere.reg (unless changed with --o) in the
+subject/surf dir. If --xhemi is used, then the subject name is
+replaced with subject/xhemi. If this directrory is not there, then
+xhemireg is run on the subject. If --xhemi is NOT used, then both
+hemispheres are registered by default.  If --xhemi IS used, then only
+the left hemispheres is registered by default (can be changed by
+adding --rh or --lhrh AFTER --xhemi). If the output already exists,
+then it throws an error.
+
+
+=== Output of 'surfreg -help' ===
+
+
+surfreg
+
+  --s subject : subject to register
+  --t target  : average subject to use as a target
+  --xhemi     : for performing cross-hemi registration
+
+  --lh : only reg lh (default for --xhemi)
+  --rh : only reg rh
+  --lhrh : reg both lh and rh (default when not using --xhemi)
+  --no-annot  : do not use annot to rip (default is aparc.annot)
+  --annot annotname : uses label/hemi.annotname (rips medial)
+      NOTE: using an annot is not currently the default in recon-all
+  --aparc : sets annotname to aparc.annot (default)
+  --noneg 
+  --init-reg initregname : default is sphere (do not include hemi)
+  --lta reg.lta : apply rotational components of affine reg
+  --init-from-tal : use talaiach.xfm.lta to init spherical reg
+  --o outsurfname : default is target.sphere.reg (do not include hemi)
+      If target is fsaverage, then default is sphere.reg
+  --no-set-vol-geom : do not set volume geometry and center the sphere
+  --threads threads : run in parallel
+
+surfreg 7.4.1
+
+Performs surface registration (mris_register) between a subject and a
+target average subject based on the hemi.reg.template.tif atlas in the
+average subject. The source surface is subject/surf/hemi.sphere
+unless changed with --init-reg. 
+
+Creates hemi.target.sphere.reg (unless changed with --o) in the
+subject/surf dir. If --xhemi is used, then the subject name is
+replaced with subject/xhemi. If this directrory is not there, then
+xhemireg is run on the subject. If --xhemi is NOT used, then both
+hemispheres are registered by default.  If --xhemi IS used, then only
+the left hemispheres is registered by default (can be changed by
+adding --rh or --lhrh AFTER --xhemi). If the output already exists,
+then it throws an error.
+
+
+=== Output of 'surfreg' (no arguments) ===
+
+
+surfreg
+
+  --s subject : subject to register
+  --t target  : average subject to use as a target
+  --xhemi     : for performing cross-hemi registration
+
+  --lh : only reg lh (default for --xhemi)
+  --rh : only reg rh
+  --lhrh : reg both lh and rh (default when not using --xhemi)
+  --no-annot  : do not use annot to rip (default is aparc.annot)
+  --annot annotname : uses label/hemi.annotname (rips medial)
+      NOTE: using an annot is not currently the default in recon-all
+  --aparc : sets annotname to aparc.annot (default)
+  --noneg 
+  --init-reg initregname : default is sphere (do not include hemi)
+  --lta reg.lta : apply rotational components of affine reg
+  --init-from-tal : use talaiach.xfm.lta to init spherical reg
+  --o outsurfname : default is target.sphere.reg (do not include hemi)
+      If target is fsaverage, then default is sphere.reg
+  --no-set-vol-geom : do not set volume geometry and center the sphere
+  --threads threads : run in parallel
+

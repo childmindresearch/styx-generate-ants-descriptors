@@ -1,0 +1,112 @@
+
+=== Output of 'vol2symsurf --help' ===
+
+
+vol2symsurf --reg reg.dat --i vol.nii 
+  --fwhm FWHMmm : surface smooth by FWHMmm
+  --o outstem (default instem.fsaverage_sym.smFWHM.lh.hemi)
+  --regheader subject
+  --projfrac ProjFrac (default is .5)
+  --no-diff : do not compute lh-rh difference
+  --li : compute laterality index instead of simple difference
+
+  --help : get help
+
+vol2symsurf 7.4.1
+
+This program samples a volume onto the surface of the left-right
+symmetric subject (fsaverage_sym). The volume is first sampled onto
+the left and right surfaces of the native subject using a default
+projection fraction of 0.5. These surfaces are then mapped onto the
+left hemisphere of fsaverage_sym after which they will be in
+vertex-to-vertex alignment. Note that since fsaverage_sym is left-right
+symmetric, it does not matter whether data are sampled onto the left
+hemi or the right hemi. The lh-rh difference is also computed (unless 
+--no-diff is specified). If --li is used then the laterality index
+(LI) is computed as (lh-rh)/(lh+rh).
+
+The source subject must have been surface registered to the symmetric
+subject with something like:
+
+surfreg --s $subject --t fsaverage_sym --lh
+surfreg --s $subject --t fsaverage_sym --lh --xhemi
+
+This will take a couple of hours but only needs to be done once.
+
+
+EXAMPLE:
+
+vol2symsurf --reg register.dat --i func.nii --fwhm 7
+
+Creates func.fsaverage_sym.sm07.lh.lh.nii and 
+        func.fsaverage_sym.sm07.lh.rh.nii and
+        func.fsaverage_sym.sm07.lh.lh-rh.nii
+
+vol2symsurf --reg register.dat --i func.nii --fwhm 7 --li
+
+Same as above but creates func.fsaverage_sym.sm07.lh.li.lh-rh.nii
+
+
+
+=== Output of 'vol2symsurf -help' ===
+
+
+vol2symsurf --reg reg.dat --i vol.nii 
+  --fwhm FWHMmm : surface smooth by FWHMmm
+  --o outstem (default instem.fsaverage_sym.smFWHM.lh.hemi)
+  --regheader subject
+  --projfrac ProjFrac (default is .5)
+  --no-diff : do not compute lh-rh difference
+  --li : compute laterality index instead of simple difference
+
+  --help : get help
+
+vol2symsurf 7.4.1
+
+This program samples a volume onto the surface of the left-right
+symmetric subject (fsaverage_sym). The volume is first sampled onto
+the left and right surfaces of the native subject using a default
+projection fraction of 0.5. These surfaces are then mapped onto the
+left hemisphere of fsaverage_sym after which they will be in
+vertex-to-vertex alignment. Note that since fsaverage_sym is left-right
+symmetric, it does not matter whether data are sampled onto the left
+hemi or the right hemi. The lh-rh difference is also computed (unless 
+--no-diff is specified). If --li is used then the laterality index
+(LI) is computed as (lh-rh)/(lh+rh).
+
+The source subject must have been surface registered to the symmetric
+subject with something like:
+
+surfreg --s $subject --t fsaverage_sym --lh
+surfreg --s $subject --t fsaverage_sym --lh --xhemi
+
+This will take a couple of hours but only needs to be done once.
+
+
+EXAMPLE:
+
+vol2symsurf --reg register.dat --i func.nii --fwhm 7
+
+Creates func.fsaverage_sym.sm07.lh.lh.nii and 
+        func.fsaverage_sym.sm07.lh.rh.nii and
+        func.fsaverage_sym.sm07.lh.lh-rh.nii
+
+vol2symsurf --reg register.dat --i func.nii --fwhm 7 --li
+
+Same as above but creates func.fsaverage_sym.sm07.lh.li.lh-rh.nii
+
+
+
+=== Output of 'vol2symsurf' (no arguments) ===
+
+
+vol2symsurf --reg reg.dat --i vol.nii 
+  --fwhm FWHMmm : surface smooth by FWHMmm
+  --o outstem (default instem.fsaverage_sym.smFWHM.lh.hemi)
+  --regheader subject
+  --projfrac ProjFrac (default is .5)
+  --no-diff : do not compute lh-rh difference
+  --li : compute laterality index instead of simple difference
+
+  --help : get help
+

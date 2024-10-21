@@ -1,0 +1,46 @@
+
+=== Output of 'mri_cvs_data_copy --help' ===
+
+USAGE: mri_cvs_data_copy
+
+Required Arguments:
+   --subjid subjid       : subjid for subject to be moved / registered
+   --olddir dir          : directory where data (FS reconned output files for the subject) is currently located in -- use full path
+   --newdir dir          : directory where data (FS reconned output files for the subject) should be moved to -- use full path
+
+Optional Arguments
+
+   --version    : print version and exit
+   --help       : print help and exit
+
+
+Packs and copies files that are required for mri_cvs_register.
+
+Required Arguments:
+
+--subjid subjid
+
+Subject id of the subject (as found in SUBJECTS_DIR) who will be involved in the mri_cvs_register processing. 
+
+--olddir source directory
+--newdir destination directory
+
+=== Output of 'mri_cvs_data_copy -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'mri_cvs_data_copy' (no arguments) ===
+
+USAGE: mri_cvs_data_copy
+
+Required Arguments:
+   --subjid subjid       : subjid for subject to be moved / registered
+   --olddir dir          : directory where data (FS reconned output files for the subject) is currently located in -- use full path
+   --newdir dir          : directory where data (FS reconned output files for the subject) should be moved to -- use full path
+
+Optional Arguments
+
+   --version    : print version and exit
+   --help       : print help and exit
+

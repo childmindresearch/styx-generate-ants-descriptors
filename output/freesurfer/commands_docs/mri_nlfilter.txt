@@ -1,0 +1,48 @@
+
+=== Output of 'mri_nlfilter --help' ===
+
+usage: /usr/local/freesurfer/bin/mri_nlfilter [options] <input image file> <output image file>
+
+This program will process the image contained in <input image file>
+using a nonlocal filter, and write the results to <output image file>.
+
+The default filter is the median, but either Gaussian or mean filtering
+can be specified through command line options (see below).
+
+By default the image is smoothed using a Gaussian kernel (sigma=0.500)
+before the offset field is calculated. This can be modified using
+the -blur command line option.
+
+The input and output image formats are specified by the file name extensions.
+Supported formats are:
+
+   HIPS   (.hipl or .hips)
+   MATLAB (.mat)
+   TIFF   (.tif or .tiff).
+
+Note that 8-bit output images, which are generated if the input
+image is 8-bit, are scaled to be in the range 0-255.
+
+valid options are:
+
+  -blur <sigma>     - specify sigma of blurring kernel (default=0.500).
+  -gaussian <sigma> - filter with Gaussian instead of median.
+  -mean             - filter with mean instead of median.
+  -w <window size>  - specify window used for offset calculation (default=3).
+  --version         - display version #.
+  --help            - display this help message.
+
+  use --help to get help
+  -cplov    - filter with cplov (whatever that is).
+  -minmax   - filter with minmax (whatever that is)
+  -n        - don't use offsets (just apply standard filters)
+  -nc       - don't crop to >0 region of image
+
+=== Output of 'mri_nlfilter -help' ===
+
+unknown option -help
+
+=== Output of 'mri_nlfilter' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_nlfilter [options] <input image file> <output image file>
+  use --help to get help

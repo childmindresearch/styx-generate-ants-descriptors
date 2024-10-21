@@ -1,0 +1,62 @@
+
+=== Output of '3dSpatNorm --help' ===
+
+**ERROR: --help is unknown option!
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dSpatNorm -help' enlighten:
+        '-verb       = Write out progress reports'
+        '-human: Bone head (default)'
+        '-prefix ppp = Write output dataset using 'ppp' for the prefix.'
+
+=== Output of '3dSpatNorm -help' ===
+
+Usage: 3dSpatNorm [options] dataset
+
+Options:
+  -prefix ppp = Write output dataset using 'ppp' for the prefix.
+  -orig_space = Write output dataset using the same grid as dataset.
+  -verb       = Write out progress reports
+  -monkey : Monkey business
+  -marmost: Marmoset head
+  -rat: Rat head
+  -human: Bone head (default)
+  -bottom_cuts CUTFLAGS = Make approximate cuts at the bottom to shave
+                          non brain areas. CUTFLAGS is a string of 
+                          characters indicating which sides to cut.
+                          An 'A' cuts along the anterior side
+                          'P' for posterior, and 'R', 'L' for right, and
+                          left, respectively.
+                          To cut all four, use: -bottom_cuts APLR
+                    Note: -bottom_cuts only works for Human heads.
+--------------------------------------------------------------------
+* This program is obsolete, and should not be used by most people. *
+--------------------------------------------------------------------
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dSpatNorm' (no arguments) ===
+
+Usage: 3dSpatNorm [options] dataset
+
+Options:
+  -prefix ppp = Write output dataset using 'ppp' for the prefix.
+  -orig_space = Write output dataset using the same grid as dataset.
+  -verb       = Write out progress reports
+  -monkey : Monkey business
+  -marmost: Marmoset head
+  -rat: Rat head
+  -human: Bone head (default)
+  -bottom_cuts CUTFLAGS = Make approximate cuts at the bottom to shave
+                          non brain areas. CUTFLAGS is a string of 
+                          characters indicating which sides to cut.
+                          An 'A' cuts along the anterior side
+                          'P' for posterior, and 'R', 'L' for right, and
+                          left, respectively.
+                          To cut all four, use: -bottom_cuts APLR
+                    Note: -bottom_cuts only works for Human heads.
+--------------------------------------------------------------------
+* This program is obsolete, and should not be used by most people. *
+--------------------------------------------------------------------
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

@@ -1,0 +1,72 @@
+
+=== Output of 'dual_regression --help' ===
+
+
+dual_regression v0.6
+
+***NOTE*** ORDER OF COMMAND-LINE ARGUMENTS IS DIFFERENT FROM PREVIOUS VERSION
+
+Usage: dual_regression <group_IC_maps> <des_norm> <design.mat> <design.con> <n_perm> [--thr] <output_directory> <input1> <input2> <input3> .........
+e.g.   dual_regression groupICA.gica/groupmelodic.ica/melodic_IC 1 design.mat design.con 500 0 grot `cat groupICA.gica/.filelist`
+
+<group_IC_maps_4D>            4D image containing spatial IC maps (melodic_IC) from the whole-group ICA analysis
+<des_norm>                    0 or 1 (1 is recommended). Whether to variance-normalise the timecourses used as the stage-2 regressors
+<design.mat>                  Design matrix for final cross-subject modelling with randomise
+<design.con>                  Design contrasts for final cross-subject modelling with randomise
+<n_perm>                      Number of permutations for randomise; set to 1 for just raw tstat output, set to 0 to not run randomise at all.
+[--thr]                       Perform thresholded dual regression to obtain unbiased timeseries for connectomics analyses (e.g., with FSLnets)
+<output_directory>            This directory will be created to hold all output and logfilesg
+<input1> <input2> ...         List all subjects' preprocessed, standard-space 4D datasets
+
+<design.mat> <design.con>     can be replaced with just
+-1                            for group-mean (one-group t-test) modelling.
+If you need to add other randomise options then edit the line after "EDIT HERE" in the dual_regression script
+
+
+=== Output of 'dual_regression -help' ===
+
+
+dual_regression v0.6
+
+***NOTE*** ORDER OF COMMAND-LINE ARGUMENTS IS DIFFERENT FROM PREVIOUS VERSION
+
+Usage: dual_regression <group_IC_maps> <des_norm> <design.mat> <design.con> <n_perm> [--thr] <output_directory> <input1> <input2> <input3> .........
+e.g.   dual_regression groupICA.gica/groupmelodic.ica/melodic_IC 1 design.mat design.con 500 0 grot `cat groupICA.gica/.filelist`
+
+<group_IC_maps_4D>            4D image containing spatial IC maps (melodic_IC) from the whole-group ICA analysis
+<des_norm>                    0 or 1 (1 is recommended). Whether to variance-normalise the timecourses used as the stage-2 regressors
+<design.mat>                  Design matrix for final cross-subject modelling with randomise
+<design.con>                  Design contrasts for final cross-subject modelling with randomise
+<n_perm>                      Number of permutations for randomise; set to 1 for just raw tstat output, set to 0 to not run randomise at all.
+[--thr]                       Perform thresholded dual regression to obtain unbiased timeseries for connectomics analyses (e.g., with FSLnets)
+<output_directory>            This directory will be created to hold all output and logfilesg
+<input1> <input2> ...         List all subjects' preprocessed, standard-space 4D datasets
+
+<design.mat> <design.con>     can be replaced with just
+-1                            for group-mean (one-group t-test) modelling.
+If you need to add other randomise options then edit the line after "EDIT HERE" in the dual_regression script
+
+
+=== Output of 'dual_regression' (no arguments) ===
+
+
+dual_regression v0.6
+
+***NOTE*** ORDER OF COMMAND-LINE ARGUMENTS IS DIFFERENT FROM PREVIOUS VERSION
+
+Usage: dual_regression <group_IC_maps> <des_norm> <design.mat> <design.con> <n_perm> [--thr] <output_directory> <input1> <input2> <input3> .........
+e.g.   dual_regression groupICA.gica/groupmelodic.ica/melodic_IC 1 design.mat design.con 500 0 grot `cat groupICA.gica/.filelist`
+
+<group_IC_maps_4D>            4D image containing spatial IC maps (melodic_IC) from the whole-group ICA analysis
+<des_norm>                    0 or 1 (1 is recommended). Whether to variance-normalise the timecourses used as the stage-2 regressors
+<design.mat>                  Design matrix for final cross-subject modelling with randomise
+<design.con>                  Design contrasts for final cross-subject modelling with randomise
+<n_perm>                      Number of permutations for randomise; set to 1 for just raw tstat output, set to 0 to not run randomise at all.
+[--thr]                       Perform thresholded dual regression to obtain unbiased timeseries for connectomics analyses (e.g., with FSLnets)
+<output_directory>            This directory will be created to hold all output and logfilesg
+<input1> <input2> ...         List all subjects' preprocessed, standard-space 4D datasets
+
+<design.mat> <design.con>     can be replaced with just
+-1                            for group-mean (one-group t-test) modelling.
+If you need to add other randomise options then edit the line after "EDIT HERE" in the dual_regression script
+

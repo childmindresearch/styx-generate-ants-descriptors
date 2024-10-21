@@ -1,0 +1,91 @@
+
+=== Output of '3dTsplit4D --help' ===
+
+[7m** FATAL ERROR:[0m unknown option --help
+** Program compile date = Sep 12 2024
+
+=== Output of '3dTsplit4D -help' ===
+
+USAGE: 3dTsplit4D [options] dataset
+
+This program converts a 3D+time dataset into multiple 3D single-brick
+files.  The main purpose of this is to accelerate the process of
+export AFNI/NIFTI datasets if you have the unfortunate need to work
+with Some other PrograM that doesn't like datasets in the pseudo-4D
+nature that AFNI knows and loves.
+
+examples:
+
+   1. Write the 152 time point dataset, epi_r1+orig, to 152 single
+      volume datasets, out/epi.000+orig ... epi.151+orig.
+
+         mkdir out
+         3dTsplit4D -prefix out/epi epi_r1+orig
+
+   2. Do the same thing, but write to 152 NIFTI volume datasets,
+      out/epi.000.nii ... out/epi.151.nii.  Include .nii in -prefix.
+
+         mkdir out
+         3dTsplit4D -prefix out/epi.nii epi_r1+orig
+
+   3. Convert an AFNI stats dataset (betas, t-stats, F-stats) into
+      a set of NIFTI volume datasets, including the volume labels
+      in the file names.
+
+         3dTsplit4D -prefix stats.FT.nii -label_prefix stats.FT+tlrc
+
+ -prefix PREFIX : Prefix of the output datasets
+                  Numbers will be added after the prefix to denote
+                  prior sub-brick.
+ -digits DIGITS : number of digits to use for output filenames
+ -keep_datum    : output uses original datum (no conversion to float)
+ -label_prefix  : include volume label in each output prefix
+ -bids_deriv    : format string for BIDS-Derivative-style naming
+
+
+Authored by: Peter Molfese, UConn
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dTsplit4D' (no arguments) ===
+
+USAGE: 3dTsplit4D [options] dataset
+
+This program converts a 3D+time dataset into multiple 3D single-brick
+files.  The main purpose of this is to accelerate the process of
+export AFNI/NIFTI datasets if you have the unfortunate need to work
+with Some other PrograM that doesn't like datasets in the pseudo-4D
+nature that AFNI knows and loves.
+
+examples:
+
+   1. Write the 152 time point dataset, epi_r1+orig, to 152 single
+      volume datasets, out/epi.000+orig ... epi.151+orig.
+
+         mkdir out
+         3dTsplit4D -prefix out/epi epi_r1+orig
+
+   2. Do the same thing, but write to 152 NIFTI volume datasets,
+      out/epi.000.nii ... out/epi.151.nii.  Include .nii in -prefix.
+
+         mkdir out
+         3dTsplit4D -prefix out/epi.nii epi_r1+orig
+
+   3. Convert an AFNI stats dataset (betas, t-stats, F-stats) into
+      a set of NIFTI volume datasets, including the volume labels
+      in the file names.
+
+         3dTsplit4D -prefix stats.FT.nii -label_prefix stats.FT+tlrc
+
+ -prefix PREFIX : Prefix of the output datasets
+                  Numbers will be added after the prefix to denote
+                  prior sub-brick.
+ -digits DIGITS : number of digits to use for output filenames
+ -keep_datum    : output uses original datum (no conversion to float)
+ -label_prefix  : include volume label in each output prefix
+ -bids_deriv    : format string for BIDS-Derivative-style naming
+
+
+Authored by: Peter Molfese, UConn
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

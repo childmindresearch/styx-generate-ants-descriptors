@@ -1,0 +1,98 @@
+
+=== Output of '@ROI_decluster --help' ===
+
+No input dataset provided
+
+=== Output of '@ROI_decluster -help' ===
+
+
+Overview ~1~
+
+Script to remove small clusters or standalone voxels from an ROI/atlas dataset
+
+Usage Example ~1~
+
+    @ROI_decluster                                       \
+      -input  mydset.nii.gz                              \
+      -outdir myoutdir                                   \
+      -fracthresh  0.15                                  \
+      -prefix newroi_name                                  
+
+   Note only the input dataset and a threshold are required.
+
+Options ~1~
+
+    -input input_dset   :required input dataset. This dataset should be
+                         set of integer values. The program mostly assumes
+                         approximate isotropic voxels.
+
+    -outdir outdirname  :directory name for output. All output goes to
+                         this directory. Default is roidc.
+
+    -nvox_thresh nn     :number of voxels in a cluster to keep
+    -frac_thresh nn     :fraction of voxels in a cluster to keep [0.0-1.0]
+                         Both types of threshold can be specified at the same
+                         time, in which case, the minimum value would be used.
+                         For example, an nvox_thresh of 10 and a frac_thresh
+                         of 0.15 would remove all voxels that occupied at least
+                         15% of the number of voxels in the region and at least
+                         10 voxels.
+
+    -prefix baseprefix  :base name of final output dataset, i.e. baseprefix.nii.gz
+                         Default is rdc, so output would be rdc.nii.gz
+
+    -NN [1,2,3]         :neighborhood type using in finding mode, 
+                         1 - facing neighbors, 2-edges, 3-corners
+
+Also see these programs with these related functions:
+   3dClusterize - reports and extracts clusters (main program called by this one)  
+   @ROI_modal_grow - grows regions using non-zero modal smoothing
+   3dROImaker - grows regions using regular dilation iteratively
+
+
+=== Output of '@ROI_decluster' (no arguments) ===
+
+
+Overview ~1~
+
+Script to remove small clusters or standalone voxels from an ROI/atlas dataset
+
+Usage Example ~1~
+
+    @ROI_decluster                                       \
+      -input  mydset.nii.gz                              \
+      -outdir myoutdir                                   \
+      -fracthresh  0.15                                  \
+      -prefix newroi_name                                  
+
+   Note only the input dataset and a threshold are required.
+
+Options ~1~
+
+    -input input_dset   :required input dataset. This dataset should be
+                         set of integer values. The program mostly assumes
+                         approximate isotropic voxels.
+
+    -outdir outdirname  :directory name for output. All output goes to
+                         this directory. Default is roidc.
+
+    -nvox_thresh nn     :number of voxels in a cluster to keep
+    -frac_thresh nn     :fraction of voxels in a cluster to keep [0.0-1.0]
+                         Both types of threshold can be specified at the same
+                         time, in which case, the minimum value would be used.
+                         For example, an nvox_thresh of 10 and a frac_thresh
+                         of 0.15 would remove all voxels that occupied at least
+                         15% of the number of voxels in the region and at least
+                         10 voxels.
+
+    -prefix baseprefix  :base name of final output dataset, i.e. baseprefix.nii.gz
+                         Default is rdc, so output would be rdc.nii.gz
+
+    -NN [1,2,3]         :neighborhood type using in finding mode, 
+                         1 - facing neighbors, 2-edges, 3-corners
+
+Also see these programs with these related functions:
+   3dClusterize - reports and extracts clusters (main program called by this one)  
+   @ROI_modal_grow - grows regions using non-zero modal smoothing
+   3dROImaker - grows regions using regular dilation iteratively
+

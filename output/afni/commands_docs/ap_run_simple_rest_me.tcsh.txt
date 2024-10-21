@@ -1,0 +1,288 @@
+
+=== Output of 'ap_run_simple_rest_me.tcsh --help' ===
+
+** unknown option '--help'
+
+=== Output of 'ap_run_simple_rest_me.tcsh -help' ===
+
+
+------------------------------------------------------------------------------
+ap_run_simple_rest_me.tcsh  - run a quick afni_proc.py analysis for QC on multi-echo data
+
+   usage: ap_run_simple_rest_me.tcsh [options] -anat ANAT -epi_me_run epi_run1_echo_*.nii ...
+
+This program is meant to run a moderately quick single subject analysis,
+treating the EPI as resting state data.
+
+Overview:
+
+   0. This program will change over time.  Do not rely on a fixed version.
+      See "ap_run_simple_rest_me.tcsh -ver" for the current version number.
+   1. Output files are placed in the current directory, so it is suggested
+      to run from a "clean" location, generally away from the raw inputs.
+   2. Template registration is merely affine, to be fast.
+   3. By default, the first 2 time points are removed as pre-steady state.
+      It is a good idea to set -nt_rm appropriately.
+
+   inputs   : anat (optional), EPI echos (one set of echoes per run),
+              echo times
+
+   controls : recommended opts: -subjid, -nt_rm
+
+   outputs  : run_ap_SUBJID   - afni_proc.py command script
+            : proc.SUBJID     -_proc script (if AP is run)
+            : SUBJID.results  - proc results dir (if run)
+            : out.*           - text output files from AP and proc scripts
+
+This program may be devoured by afni_proc.py itself, at some point.
+
+------------------------------------------------------------------------------
+example 0: just create an afni_proc.py script, run_ap_SUBJ, no data required
+
+      ap_run_simple_rest_me.tcsh -anat anat.nii -epi_me_run epi_echo_*.nii -echo_times 20 30 40
+
+
+example 1: quickly process EPI (no anat, so no align/tlrc blocks)
+
+      ap_run_simple_rest_me.tcsh -epi_me_run epi_echo_*.nii -echo_times 20 30 40
+
+
+example 2: run an analysis from a clean directory
+
+   We should really not run from a data source directory, but it is done to
+   keep paths short.  The test.ap directory can be removed once run.
+
+      cd APMULTI_Demo1_rest/data_00_basic/sub-005/ses-01
+      mkdir test.ap
+      cd test.ap
+
+      ap_run_simple_rest_me.tcsh                                       \
+          -subjid sub-005                                              \
+          -anat       ../anat/sub-*_mprage_run-1_T1w.nii.gz            \
+          -epi_me_run ../func/sub-*_task-rest_run-1_echo-*_bold.nii.gz \
+          -echo_times 12.5 27.6 42.7                                   \
+          -nt_rm 4                                                     \
+          -run_proc
+
+
+example 3: similar to 2, but assuming there are 4 runs, 3 echoes in each
+
+      ap_run_simple_rest_me.tcsh                                       \
+          -subjid sub-005                                              \
+          -epi_me_run ../func/sub-*_task-rest_run-1_echo-*_bold.nii.gz \
+          -epi_me_run ../func/sub-*_task-rest_run-2_echo-*_bold.nii.gz \
+          -epi_me_run ../func/sub-*_task-rest_run-3_echo-*_bold.nii.gz \
+          -epi_me_run ../func/sub-*_task-rest_run-4_echo-*_bold.nii.gz \
+          -echo_times 12.5 27.6 42.7                                   \
+          -nt_rm 4                                                     \
+          -run_proc
+
+
+------------------------------------------------------------------------------
+terminal options:
+
+   -help                   : show this help
+   -hist                   : show the program history
+   -ver                    : show the version number
+
+required parameters:
+
+   -epi_me_run EPI_echo_1 EPI_echo_2 ...  : specify one run of EPI echo dsets
+
+         example: -epi_me_run  epi_run-1_echo-*.nii.gz
+
+         example: -epi_me_run  epi_run-1_echo-*.nii.gz
+                  -epi_me_run  epi_run-2_echo-*.nii.gz
+                  -epi_me_run  epi_run-3_echo-*.nii.gz
+                  -epi_me_run  epi_run-4_echo-*.nii.gz
+
+      This option specifies the EPI data, but each such option specifies one
+      run of all echoes.  If there are 5 runs, then 5 such option sets should
+      be used.
+
+   -echo_times e1_time e2_time e3_time ... : specify echo times, in ms
+
+         example: -echo_times 12.5 27.6 42.7
+
+optional parameters:
+
+   -anat ANAT              : specify single anatomical dataset
+
+      This is used for anat/EPI alignment, as well as anat/template alignment.
+
+   -nt_rm NT               : num time points to remove from starts of runs
+                             def: 2
+
+   -run_ap                 : actually run the afni_proc.py command
+                             def: do not, just generate AP command script
+
+   -run_proc               : do the processing (run the proc script from AP)
+                             def: do not run AP or proc script
+
+   -subjid SUBJ_ID         : specify subject ID for file names
+                             def: SUBJ
+
+   -template TEMPLATE      : specify template for standard space
+                             def: MNI152_2009_template_SSW.nii.gz
+
+   -compressor COMP        : control automatic compression of *.BRIK files.
+                             'COMP' must be one of the allowed keywords for
+                             the AFNI_COMPRESSOR environment variable:
+                                GZIP  COMPRESS  BZIP2  PIGZ
+                             and you must have the associated program for
+                             compression installed (e.g., 'gzip')
+                             def: not set here
+
+   -verb VERB              : specify verbosity level (3 == -echo)
+                             def: 1
+
+   -echo                   : set 'echo' in the shell, as if run via 'tcsh -x'
+                             (same as '-verb 3')
+
+------------------------------------------------------------------------------
+R Reynolds March, 2024
+version 0.0
+------------------------------------------------------------------------------
+
+
+=== Output of 'ap_run_simple_rest_me.tcsh' (no arguments) ===
+
+
+------------------------------------------------------------------------------
+ap_run_simple_rest_me.tcsh  - run a quick afni_proc.py analysis for QC on multi-echo data
+
+   usage: ap_run_simple_rest_me.tcsh [options] -anat ANAT -epi_me_run epi_run1_echo_*.nii ...
+
+This program is meant to run a moderately quick single subject analysis,
+treating the EPI as resting state data.
+
+Overview:
+
+   0. This program will change over time.  Do not rely on a fixed version.
+      See "ap_run_simple_rest_me.tcsh -ver" for the current version number.
+   1. Output files are placed in the current directory, so it is suggested
+      to run from a "clean" location, generally away from the raw inputs.
+   2. Template registration is merely affine, to be fast.
+   3. By default, the first 2 time points are removed as pre-steady state.
+      It is a good idea to set -nt_rm appropriately.
+
+   inputs   : anat (optional), EPI echos (one set of echoes per run),
+              echo times
+
+   controls : recommended opts: -subjid, -nt_rm
+
+   outputs  : run_ap_SUBJID   - afni_proc.py command script
+            : proc.SUBJID     -_proc script (if AP is run)
+            : SUBJID.results  - proc results dir (if run)
+            : out.*           - text output files from AP and proc scripts
+
+This program may be devoured by afni_proc.py itself, at some point.
+
+------------------------------------------------------------------------------
+example 0: just create an afni_proc.py script, run_ap_SUBJ, no data required
+
+      ap_run_simple_rest_me.tcsh -anat anat.nii -epi_me_run epi_echo_*.nii -echo_times 20 30 40
+
+
+example 1: quickly process EPI (no anat, so no align/tlrc blocks)
+
+      ap_run_simple_rest_me.tcsh -epi_me_run epi_echo_*.nii -echo_times 20 30 40
+
+
+example 2: run an analysis from a clean directory
+
+   We should really not run from a data source directory, but it is done to
+   keep paths short.  The test.ap directory can be removed once run.
+
+      cd APMULTI_Demo1_rest/data_00_basic/sub-005/ses-01
+      mkdir test.ap
+      cd test.ap
+
+      ap_run_simple_rest_me.tcsh                                       \
+          -subjid sub-005                                              \
+          -anat       ../anat/sub-*_mprage_run-1_T1w.nii.gz            \
+          -epi_me_run ../func/sub-*_task-rest_run-1_echo-*_bold.nii.gz \
+          -echo_times 12.5 27.6 42.7                                   \
+          -nt_rm 4                                                     \
+          -run_proc
+
+
+example 3: similar to 2, but assuming there are 4 runs, 3 echoes in each
+
+      ap_run_simple_rest_me.tcsh                                       \
+          -subjid sub-005                                              \
+          -epi_me_run ../func/sub-*_task-rest_run-1_echo-*_bold.nii.gz \
+          -epi_me_run ../func/sub-*_task-rest_run-2_echo-*_bold.nii.gz \
+          -epi_me_run ../func/sub-*_task-rest_run-3_echo-*_bold.nii.gz \
+          -epi_me_run ../func/sub-*_task-rest_run-4_echo-*_bold.nii.gz \
+          -echo_times 12.5 27.6 42.7                                   \
+          -nt_rm 4                                                     \
+          -run_proc
+
+
+------------------------------------------------------------------------------
+terminal options:
+
+   -help                   : show this help
+   -hist                   : show the program history
+   -ver                    : show the version number
+
+required parameters:
+
+   -epi_me_run EPI_echo_1 EPI_echo_2 ...  : specify one run of EPI echo dsets
+
+         example: -epi_me_run  epi_run-1_echo-*.nii.gz
+
+         example: -epi_me_run  epi_run-1_echo-*.nii.gz
+                  -epi_me_run  epi_run-2_echo-*.nii.gz
+                  -epi_me_run  epi_run-3_echo-*.nii.gz
+                  -epi_me_run  epi_run-4_echo-*.nii.gz
+
+      This option specifies the EPI data, but each such option specifies one
+      run of all echoes.  If there are 5 runs, then 5 such option sets should
+      be used.
+
+   -echo_times e1_time e2_time e3_time ... : specify echo times, in ms
+
+         example: -echo_times 12.5 27.6 42.7
+
+optional parameters:
+
+   -anat ANAT              : specify single anatomical dataset
+
+      This is used for anat/EPI alignment, as well as anat/template alignment.
+
+   -nt_rm NT               : num time points to remove from starts of runs
+                             def: 2
+
+   -run_ap                 : actually run the afni_proc.py command
+                             def: do not, just generate AP command script
+
+   -run_proc               : do the processing (run the proc script from AP)
+                             def: do not run AP or proc script
+
+   -subjid SUBJ_ID         : specify subject ID for file names
+                             def: SUBJ
+
+   -template TEMPLATE      : specify template for standard space
+                             def: MNI152_2009_template_SSW.nii.gz
+
+   -compressor COMP        : control automatic compression of *.BRIK files.
+                             'COMP' must be one of the allowed keywords for
+                             the AFNI_COMPRESSOR environment variable:
+                                GZIP  COMPRESS  BZIP2  PIGZ
+                             and you must have the associated program for
+                             compression installed (e.g., 'gzip')
+                             def: not set here
+
+   -verb VERB              : specify verbosity level (3 == -echo)
+                             def: 1
+
+   -echo                   : set 'echo' in the shell, as if run via 'tcsh -x'
+                             (same as '-verb 3')
+
+------------------------------------------------------------------------------
+R Reynolds March, 2024
+version 0.0
+------------------------------------------------------------------------------
+

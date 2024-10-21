@@ -1,0 +1,154 @@
+
+=== Output of 'cluster --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+cluster 
+Copyright(c) 2000-2013, University of Oxford (Mark Jenkinson, Matthew Webster)
+
+Usage: 
+cluster --in=<filename> --thresh=<value> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in,-z,--zstat	filename of input volume
+	-t,--thresh,--zthresh	threshold for input volume
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--oindex	filename for output of cluster index (in size order)
+	--othresh	filename for output of thresholded image
+	--olmax	filename for output of local maxima text file
+	--olmaxim	filename for output of local maxima volume
+	--osize	filename for output of size image
+	--omax	filename for output of max image
+	--omean	filename for output of mean image
+	--opvals	filename for image output of log pvals
+	-p,--pthresh	p-threshold
+	--peakdist	minimum distance between local maxima/minima, in mm (default 0)
+	-c,--cope	filename of input cope volume
+	--volume	number of voxels in the mask
+	-d,--dlh	smoothness estimate = sqrt(det(Lambda))
+	-r,--resels	Size of one resel in voxel units
+	--fractional	interprets the threshold as a fraction of the robust range
+	--connectivity	the connectivity of voxels (default 26)
+	--mm	use mm, not voxel, coordinates
+	--min	find minima instead of maxima
+	--no_table	suppresses printing of the table info
+	--minclustersize	prints out minimum significant cluster size
+	--minextent	do not report clusters with less than extent voxels
+	-x,--xfm	filename for Linear: input->standard-space transform. Non-linear: input->highres transform
+	--stdvol	filename for standard-space volume
+	--scalarname	give name of scalars (e.g. Z) - to be used in printing output tables
+	-n,--num	no of local maxima to report
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--warpvol	filename for warpfield
+	--voxthresh	voxel-wise thresholding (corrected)
+	--voxuncthresh	voxel-wise uncorrected thresholding
+	--empiricalNull	Use a (1-p) input image to calculate p-values and cluster-map
+
+
+
+=== Output of 'cluster -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+cluster 
+Copyright(c) 2000-2013, University of Oxford (Mark Jenkinson, Matthew Webster)
+
+Usage: 
+cluster --in=<filename> --thresh=<value> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in,-z,--zstat	filename of input volume
+	-t,--thresh,--zthresh	threshold for input volume
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--oindex	filename for output of cluster index (in size order)
+	--othresh	filename for output of thresholded image
+	--olmax	filename for output of local maxima text file
+	--olmaxim	filename for output of local maxima volume
+	--osize	filename for output of size image
+	--omax	filename for output of max image
+	--omean	filename for output of mean image
+	--opvals	filename for image output of log pvals
+	-p,--pthresh	p-threshold
+	--peakdist	minimum distance between local maxima/minima, in mm (default 0)
+	-c,--cope	filename of input cope volume
+	--volume	number of voxels in the mask
+	-d,--dlh	smoothness estimate = sqrt(det(Lambda))
+	-r,--resels	Size of one resel in voxel units
+	--fractional	interprets the threshold as a fraction of the robust range
+	--connectivity	the connectivity of voxels (default 26)
+	--mm	use mm, not voxel, coordinates
+	--min	find minima instead of maxima
+	--no_table	suppresses printing of the table info
+	--minclustersize	prints out minimum significant cluster size
+	--minextent	do not report clusters with less than extent voxels
+	-x,--xfm	filename for Linear: input->standard-space transform. Non-linear: input->highres transform
+	--stdvol	filename for standard-space volume
+	--scalarname	give name of scalars (e.g. Z) - to be used in printing output tables
+	-n,--num	no of local maxima to report
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--warpvol	filename for warpfield
+	--voxthresh	voxel-wise thresholding (corrected)
+	--voxuncthresh	voxel-wise uncorrected thresholding
+	--empiricalNull	Use a (1-p) input image to calculate p-values and cluster-map
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'cluster' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in,-z,--zstat	filename of input volume
+	-t,--thresh,--zthresh	threshold for input volume
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+cluster 
+Copyright(c) 2000-2013, University of Oxford (Mark Jenkinson, Matthew Webster)
+
+Usage: 
+cluster --in=<filename> --thresh=<value> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in,-z,--zstat	filename of input volume
+	-t,--thresh,--zthresh	threshold for input volume
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--oindex	filename for output of cluster index (in size order)
+	--othresh	filename for output of thresholded image
+	--olmax	filename for output of local maxima text file
+	--olmaxim	filename for output of local maxima volume
+	--osize	filename for output of size image
+	--omax	filename for output of max image
+	--omean	filename for output of mean image
+	--opvals	filename for image output of log pvals
+	-p,--pthresh	p-threshold
+	--peakdist	minimum distance between local maxima/minima, in mm (default 0)
+	-c,--cope	filename of input cope volume
+	--volume	number of voxels in the mask
+	-d,--dlh	smoothness estimate = sqrt(det(Lambda))
+	-r,--resels	Size of one resel in voxel units
+	--fractional	interprets the threshold as a fraction of the robust range
+	--connectivity	the connectivity of voxels (default 26)
+	--mm	use mm, not voxel, coordinates
+	--min	find minima instead of maxima
+	--no_table	suppresses printing of the table info
+	--minclustersize	prints out minimum significant cluster size
+	--minextent	do not report clusters with less than extent voxels
+	-x,--xfm	filename for Linear: input->standard-space transform. Non-linear: input->highres transform
+	--stdvol	filename for standard-space volume
+	--scalarname	give name of scalars (e.g. Z) - to be used in printing output tables
+	-n,--num	no of local maxima to report
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--warpvol	filename for warpfield
+	--voxthresh	voxel-wise thresholding (corrected)
+	--voxuncthresh	voxel-wise uncorrected thresholding
+	--empiricalNull	Use a (1-p) input image to calculate p-values and cluster-map
+
+

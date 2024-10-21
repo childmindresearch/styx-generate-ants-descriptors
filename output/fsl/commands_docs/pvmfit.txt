@@ -1,0 +1,74 @@
+
+=== Output of 'pvmfit --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+pvmfit
+
+Usage: 
+pvmfit -k <datafile> -m <maskfile> -r <bvecsfile> -b <bvalsfile> [-n 2]
+
+
+Compulsory arguments (You MUST set one or more of):
+	-k,--data	data file
+	-m,--mask	Bet binary mask file
+	-r,--bvecs	b vectors file
+	-b,--bvals	b values file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-o,--out	Output basename - default='pvm'
+	-n,--nfibres	number of fibres to fit - default=1
+	--model		1:Ball-Sticks (single-shell); 2:Ball-Sticks (multi-shells); 4:Ball-Binghams
+	--all		Fanning models: Fit all models from 1 up to N fibres and choose the best using BIC
+	--cnonlinear	Model1: Apply constrained nonlinear optimization on the diffusivity, volume fractions and their sum
+	--cnonlinear_F	Model1: Apply constrained nonlinear optimization on the diffusivity, volume fractions and their sum.
+			Return n fanning angle estimates, using the Hessian of the cost function
+	--gridsearch	Use grid search (on the fanning eigenvalues). Default=off
+	--f0		Include noise floor parameter in the model
+	--BIC		Save BIC for certain models
+
+
+
+=== Output of 'pvmfit -help' ===
+
+terminate called after throwing an instance of 'Utilities::X_OptionError'
+  what():  -e: Option doesn't exist!
+timeout: the monitored command dumped core
+
+=== Output of 'pvmfit' (no arguments) ===
+
+
+
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+pvmfit
+
+Usage: 
+pvmfit -k <datafile> -m <maskfile> -r <bvecsfile> -b <bvalsfile> [-n 2]
+
+
+Compulsory arguments (You MUST set one or more of):
+	-k,--data	data file
+	-m,--mask	Bet binary mask file
+	-r,--bvecs	b vectors file
+	-b,--bvals	b values file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-o,--out	Output basename - default='pvm'
+	-n,--nfibres	number of fibres to fit - default=1
+	--model		1:Ball-Sticks (single-shell); 2:Ball-Sticks (multi-shells); 4:Ball-Binghams
+	--all		Fanning models: Fit all models from 1 up to N fibres and choose the best using BIC
+	--cnonlinear	Model1: Apply constrained nonlinear optimization on the diffusivity, volume fractions and their sum
+	--cnonlinear_F	Model1: Apply constrained nonlinear optimization on the diffusivity, volume fractions and their sum.
+			Return n fanning angle estimates, using the Hessian of the cost function
+	--gridsearch	Use grid search (on the fanning eigenvalues). Default=off
+	--f0		Include noise floor parameter in the model
+	--BIC		Save BIC for certain models
+
+

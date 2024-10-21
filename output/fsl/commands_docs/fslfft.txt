@@ -1,0 +1,18 @@
+
+=== Output of 'fslfft --help' ===
+
+Usage: /usr/local/fsl/bin/fslfft <input volume> <output volume> [-inv]
+
+e.g.   /usr/local/fsl/bin/fslfft invol outvol
+
+=== Output of 'fslfft -help' ===
+
+Usage: /usr/local/fsl/bin/fslfft <input volume> <output volume> [-inv]
+
+e.g.   /usr/local/fsl/bin/fslfft invol outvol
+
+=== Output of 'fslfft' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/fslfft <input volume> <output volume> [-inv]
+
+e.g.   /usr/local/fsl/bin/fslfft invol outvol

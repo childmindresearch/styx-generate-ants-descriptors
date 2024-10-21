@@ -1,0 +1,264 @@
+
+=== Output of 'p2dsetstat --help' ===
+
+[7m** ERROR:[0m Bad option '--help'
+   Here's hoping these excerpts from '/opt/afni/src/../install/p2dsetstat -help' enlighten:
+        '-inset  DDD"[i]"'
+        '-quiet     :an optional flag so that output ONLY the final statistic'
+        '-1sided    :one of these sidedness options MUST be chosen, and it is'
+
+=== Output of 'p2dsetstat -help' ===
+
+
+Overview ~1~ 
+
+This program converts a p-value to a statistic of choice, with
+reference to a particular dataset.
+
+Often to convert a p-value to a statistic, supplementary
+information is needed, such as number of degrees of freedom.  AFNI
+programs that write statistics *do* store that info in headers, and
+this program is meant to be a useful to do conversions based on
+that info.  Here, the user provides the p-value and the specific [i]th
+brick of the dataset in question, and a statistic (either as single number,
+or with supplementary info) is output to screen.
+
+This program should give equivalent results to other AFNI programs
+like ccalc and cdf, but with less work by the user.
+
+See also the complementary program for doing the inverse, converting
+a statistic to an equivalent p-value:  dsetstat2p.
+
+**Note that the user will have to choose explicitly whether they
+  are doing one-sided or bi-sided/two-sided testing!** This is
+  equivalent to choosing "Pos&Neg" or just "Pos" (or just "Neg",
+  if the user multiplies the output by a negative) in the AFNI
+  GUI's clickable p-to-statistic calculator.
+
+written by : PA Taylor and RC Reynolds (SSCC, NIMH, NIH)
+version    : 2.0
+rev date   : Nov 04, 2023
+
+--------------------------------------------------------------------------
+
+Options ~1~ 
+
+  p2dsetstat                                  \
+        -inset   DDD"[i]"                     \
+        -pval    P                            \
+        -bisided|-2sided|-1sided              \
+        {-quiet}
+
+  where:
+    -inset  DDD"[i]"
+               :specify a dataset DDD and, if it has multiple sub-bricks,
+                the [i]th subbrick with the statistic of interest MUST
+                be selected explicitly; note the use of quotation marks 
+                around the brick selector (because of the square-brackets).
+                Note that 'i' can be either a number of a string label
+                selector.
+                NB: we refer to "sub-bricks" here, but the inset\
+                could also be a surface dataset, too.\
+
+    -pval  P   :input p-value P, which MUST be in the interval (0,1).
+
+    -bisided
+       or
+    -2sided
+       or
+    -1sided    :one of these sidedness options MUST be chosen, and it is
+                up to the researcher to choose which is appropriate.
+
+    -quiet     :an optional flag so that output ONLY the final statistic
+                value is output to standard output; this can be then be
+                viewed, redirected to a text file or saved as a shell
+                variable.  (Default: display supplementary text.)
+
+--------------------------------------------------------------------------
+
+Outputs ~1~ 
+
+The types of statistic values that can be calculated are:
+    corr coef, t-stat, F-stat or z-score.
+
+If "-quiet" is used, then basically just a single number (the converted
+statistic value) is output.  See examples for saving this in a file or
+variable.
+
+Without the "-quiet" option, some descriptive text is also output with
+the calculation, stating what kind of statistic is being output, etc.
+
+Sidenote: another way to get stat+parameter information is via 3dAttribute,
+and in particular asking for the "BRICK_STATAUX" information. That output
+is probably a bit more cryptic, but it is described on the attributes page,
+which users may look upon here:
+https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.attributes.html
+and tremble.
+
+--------------------------------------------------------------------------
+
+Examples ~1~ 
+
+In all cases note the use of the single quotes around the subbrick
+selector-- these are necessary in some shell types!
+
+1) Do a calculation and display various information to screen:
+     p2dsetstat                                       \
+         -inset stats.sub01+tlrc"[2]"                 \
+         -pval 0.001                                  \
+         -bisided
+
+2) Do a calculation and just display a single number (and also
+   use a string label to conveniently select the subbrick):
+     p2dsetstat                                       \
+         -inset stats.sub01+tlrc"[Full_Fstat]"      \
+         -pval 0.0005                                 \
+         -1sided                                      \
+         -quiet
+
+3) Do a calculation and store the output number as a variable,
+   here using tcsh syntax:
+     set my_stat = `p2dsetstat                        \
+                     -inset stats.sub02+tlrc"[8]"     \
+                     -pval 0.001                      \
+                     -bisided                         \
+                     -quiet`
+
+4) Do a calculation and store the output number into a text
+   file:
+     p2dsetstat                                       \
+         -inset stats.sub02+tlrc"[8]"                 \
+         -pval 0.001                                  \
+         -bisided                                     \
+         -quiet > MY_STAT_FILE.txt
+
+==========================================================================
+
+
+=== Output of 'p2dsetstat' (no arguments) ===
+
+
+Overview ~1~ 
+
+This program converts a p-value to a statistic of choice, with
+reference to a particular dataset.
+
+Often to convert a p-value to a statistic, supplementary
+information is needed, such as number of degrees of freedom.  AFNI
+programs that write statistics *do* store that info in headers, and
+this program is meant to be a useful to do conversions based on
+that info.  Here, the user provides the p-value and the specific [i]th
+brick of the dataset in question, and a statistic (either as single number,
+or with supplementary info) is output to screen.
+
+This program should give equivalent results to other AFNI programs
+like ccalc and cdf, but with less work by the user.
+
+See also the complementary program for doing the inverse, converting
+a statistic to an equivalent p-value:  dsetstat2p.
+
+**Note that the user will have to choose explicitly whether they
+  are doing one-sided or bi-sided/two-sided testing!** This is
+  equivalent to choosing "Pos&Neg" or just "Pos" (or just "Neg",
+  if the user multiplies the output by a negative) in the AFNI
+  GUI's clickable p-to-statistic calculator.
+
+written by : PA Taylor and RC Reynolds (SSCC, NIMH, NIH)
+version    : 2.0
+rev date   : Nov 04, 2023
+
+--------------------------------------------------------------------------
+
+Options ~1~ 
+
+  p2dsetstat                                  \
+        -inset   DDD"[i]"                     \
+        -pval    P                            \
+        -bisided|-2sided|-1sided              \
+        {-quiet}
+
+  where:
+    -inset  DDD"[i]"
+               :specify a dataset DDD and, if it has multiple sub-bricks,
+                the [i]th subbrick with the statistic of interest MUST
+                be selected explicitly; note the use of quotation marks 
+                around the brick selector (because of the square-brackets).
+                Note that 'i' can be either a number of a string label
+                selector.
+                NB: we refer to "sub-bricks" here, but the inset\
+                could also be a surface dataset, too.\
+
+    -pval  P   :input p-value P, which MUST be in the interval (0,1).
+
+    -bisided
+       or
+    -2sided
+       or
+    -1sided    :one of these sidedness options MUST be chosen, and it is
+                up to the researcher to choose which is appropriate.
+
+    -quiet     :an optional flag so that output ONLY the final statistic
+                value is output to standard output; this can be then be
+                viewed, redirected to a text file or saved as a shell
+                variable.  (Default: display supplementary text.)
+
+--------------------------------------------------------------------------
+
+Outputs ~1~ 
+
+The types of statistic values that can be calculated are:
+    corr coef, t-stat, F-stat or z-score.
+
+If "-quiet" is used, then basically just a single number (the converted
+statistic value) is output.  See examples for saving this in a file or
+variable.
+
+Without the "-quiet" option, some descriptive text is also output with
+the calculation, stating what kind of statistic is being output, etc.
+
+Sidenote: another way to get stat+parameter information is via 3dAttribute,
+and in particular asking for the "BRICK_STATAUX" information. That output
+is probably a bit more cryptic, but it is described on the attributes page,
+which users may look upon here:
+https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.attributes.html
+and tremble.
+
+--------------------------------------------------------------------------
+
+Examples ~1~ 
+
+In all cases note the use of the single quotes around the subbrick
+selector-- these are necessary in some shell types!
+
+1) Do a calculation and display various information to screen:
+     p2dsetstat                                       \
+         -inset stats.sub01+tlrc"[2]"                 \
+         -pval 0.001                                  \
+         -bisided
+
+2) Do a calculation and just display a single number (and also
+   use a string label to conveniently select the subbrick):
+     p2dsetstat                                       \
+         -inset stats.sub01+tlrc"[Full_Fstat]"      \
+         -pval 0.0005                                 \
+         -1sided                                      \
+         -quiet
+
+3) Do a calculation and store the output number as a variable,
+   here using tcsh syntax:
+     set my_stat = `p2dsetstat                        \
+                     -inset stats.sub02+tlrc"[8]"     \
+                     -pval 0.001                      \
+                     -bisided                         \
+                     -quiet`
+
+4) Do a calculation and store the output number into a text
+   file:
+     p2dsetstat                                       \
+         -inset stats.sub02+tlrc"[8]"                 \
+         -pval 0.001                                  \
+         -bisided                                     \
+         -quiet > MY_STAT_FILE.txt
+
+==========================================================================
+

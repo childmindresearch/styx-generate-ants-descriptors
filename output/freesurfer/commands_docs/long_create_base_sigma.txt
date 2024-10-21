@@ -1,0 +1,45 @@
+
+=== Output of 'long_create_base_sigma --help' ===
+
+
+  long_create_base_sigma <base-id> <sigma> [optional params]
+
+  Performs a joint normalization and atlas renormalization at specific
+  sigma smoothing level. This is usually done as part of the base stream
+  but can be performed to add files for a different sigma level to an
+  existing base. 
+
+  Positional parameters:
+   <base-id> : subject ID of the base
+   <sigma>   : int of sigma smoothing (usually 2..6)
+Unmatched '"'.
+
+=== Output of 'long_create_base_sigma -help' ===
+
+
+  long_create_base_sigma <base-id> <sigma> [optional params]
+
+  Performs a joint normalization and atlas renormalization at specific
+  sigma smoothing level. This is usually done as part of the base stream
+  but can be performed to add files for a different sigma level to an
+  existing base. 
+
+  Positional parameters:
+   <base-id> : subject ID of the base
+   <sigma>   : int of sigma smoothing (usually 2..6)
+Unmatched '"'.
+
+=== Output of 'long_create_base_sigma' (no arguments) ===
+
+
+  long_create_base_sigma <base-id> <sigma> [optional params]
+
+  Performs a joint normalization and atlas renormalization at specific
+  sigma smoothing level. This is usually done as part of the base stream
+  but can be performed to add files for a different sigma level to an
+  existing base. 
+
+  Positional parameters:
+   <base-id> : subject ID of the base
+   <sigma>   : int of sigma smoothing (usually 2..6)
+Unmatched '"'.

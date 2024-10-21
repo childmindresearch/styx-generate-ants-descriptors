@@ -1,0 +1,103 @@
+
+=== Output of 'basil --help' ===
+
+Bayesian Inference for Arterial Spin Labelling MRI
+v4.0.3-dirty (Fri May 15 12:05:26 2020)
+
+Usage (optional parameters in {}):
+ -i         : specify input/data file
+ {-o}       : specify output directory
+ -m         : specify brain mask file
+ --optfile  : specify parameter options file
+ 
+ Extended options:
+ --infertau : Infer bolus duration
+ --inferart : Inlcude a macro vascular (arterial) signal component
+ --inferpc  : Include a pre-capiliary signal component
+ --infert1  : Include uncertainty in T1 values
+  
+ --spatial  : Add step that implements adaptive spatial smoothing on CBF
+ --fast     : Do faster analysis, options are: 0,1,2 {default: 0}
+
+ Model options:
+ --disp     : Choose a model for label dispersion {default: none}
+ --exch     : Choose a model for tissue exchange (residue function) {default: mix}
+
+ Special options:
+ --t1im   : voxelwise T1 (tissue) estimates
+ --batim  : voxelwise BAT (ATT) estimates (seconds)
+  Partial volume correction / CBF estimation
+           (enforces --spatial)
+ --pgm    : Gray matter PV map
+ --pwm    : White matter PV map
+
+Error! Unrecognised option on command line: --help
+
+
+=== Output of 'basil -help' ===
+
+Bayesian Inference for Arterial Spin Labelling MRI
+v4.0.3-dirty (Fri May 15 12:05:26 2020)
+
+Usage (optional parameters in {}):
+ -i         : specify input/data file
+ {-o}       : specify output directory
+ -m         : specify brain mask file
+ --optfile  : specify parameter options file
+ 
+ Extended options:
+ --infertau : Infer bolus duration
+ --inferart : Inlcude a macro vascular (arterial) signal component
+ --inferpc  : Include a pre-capiliary signal component
+ --infert1  : Include uncertainty in T1 values
+  
+ --spatial  : Add step that implements adaptive spatial smoothing on CBF
+ --fast     : Do faster analysis, options are: 0,1,2 {default: 0}
+
+ Model options:
+ --disp     : Choose a model for label dispersion {default: none}
+ --exch     : Choose a model for tissue exchange (residue function) {default: mix}
+
+ Special options:
+ --t1im   : voxelwise T1 (tissue) estimates
+ --batim  : voxelwise BAT (ATT) estimates (seconds)
+  Partial volume correction / CBF estimation
+           (enforces --spatial)
+ --pgm    : Gray matter PV map
+ --pwm    : White matter PV map
+
+Error! Unrecognised option on command line: -help
+
+
+=== Output of 'basil' (no arguments) ===
+
+Bayesian Inference for Arterial Spin Labelling MRI
+v4.0.3-dirty (Fri May 15 12:05:26 2020)
+
+Usage (optional parameters in {}):
+ -i         : specify input/data file
+ {-o}       : specify output directory
+ -m         : specify brain mask file
+ --optfile  : specify parameter options file
+ 
+ Extended options:
+ --infertau : Infer bolus duration
+ --inferart : Inlcude a macro vascular (arterial) signal component
+ --inferpc  : Include a pre-capiliary signal component
+ --infert1  : Include uncertainty in T1 values
+  
+ --spatial  : Add step that implements adaptive spatial smoothing on CBF
+ --fast     : Do faster analysis, options are: 0,1,2 {default: 0}
+
+ Model options:
+ --disp     : Choose a model for label dispersion {default: none}
+ --exch     : Choose a model for tissue exchange (residue function) {default: mix}
+
+ Special options:
+ --t1im   : voxelwise T1 (tissue) estimates
+ --batim  : voxelwise BAT (ATT) estimates (seconds)
+  Partial volume correction / CBF estimation
+           (enforces --spatial)
+ --pgm    : Gray matter PV map
+ --pwm    : White matter PV map
+

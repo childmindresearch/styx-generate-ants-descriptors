@@ -1,0 +1,83 @@
+
+=== Output of 'swap_subjectwise --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+swap_subjectwise
+ Reordering of the dyadic vectors and fsamples according to average inter-subject modal orientations
+
+Usage: 
+swap_subjectwise -r <ListOfListOfDyads> -f <ListOfListOfFsamples>[-m mask -b <obase>]
+
+
+Compulsory arguments (You MUST set one or more of):
+	-m,--mask	filename of brain mask
+	-r,--dyads	list of list of dyads
+	-f,--fmean	list of list of meanfsamples
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	-v,--verbose	switch on diagnostic messages
+	-b,--obasename	output obasename [default=swapped]
+	--xthresh	A.R.D. threshold - default=0.1
+	--averageonly	average only?
+
+
+
+=== Output of 'swap_subjectwise -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+swap_subjectwise
+ Reordering of the dyadic vectors and fsamples according to average inter-subject modal orientations
+
+Usage: 
+swap_subjectwise -r <ListOfListOfDyads> -f <ListOfListOfFsamples>[-m mask -b <obase>]
+
+
+Compulsory arguments (You MUST set one or more of):
+	-m,--mask	filename of brain mask
+	-r,--dyads	list of list of dyads
+	-f,--fmean	list of list of meanfsamples
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	-v,--verbose	switch on diagnostic messages
+	-b,--obasename	output obasename [default=swapped]
+	--xthresh	A.R.D. threshold - default=0.1
+	--averageonly	average only?
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'swap_subjectwise' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-m,--mask	filename of brain mask
+	-r,--dyads	list of list of dyads
+	-f,--fmean	list of list of meanfsamples
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+swap_subjectwise
+ Reordering of the dyadic vectors and fsamples according to average inter-subject modal orientations
+
+Usage: 
+swap_subjectwise -r <ListOfListOfDyads> -f <ListOfListOfFsamples>[-m mask -b <obase>]
+
+
+Compulsory arguments (You MUST set one or more of):
+	-m,--mask	filename of brain mask
+	-r,--dyads	list of list of dyads
+	-f,--fmean	list of list of meanfsamples
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	-v,--verbose	switch on diagnostic messages
+	-b,--obasename	output obasename [default=swapped]
+	--xthresh	A.R.D. threshold - default=0.1
+	--averageonly	average only?
+
+

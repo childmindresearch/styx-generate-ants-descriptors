@@ -1,0 +1,28 @@
+
+=== Output of '3dnvals --help' ===
+
+-1
+
+=== Output of '3dnvals -help' ===
+
+Usage: 3dnvals [-all] [-verbose] dataset [dataset dataset ...]
+* Prints (to stdout) the number of sub-bricks in a 3D dataset.
+* If -all is specified, prints out all 4 dimensions:
+    Nx, Ny, Nz, Nvals
+* If -verbose is used then the header name of the dataset is printed first.
+* The function of this simple program is to help in scripting.
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dnvals' (no arguments) ===
+
+Usage: 3dnvals [-all] [-verbose] dataset [dataset dataset ...]
+* Prints (to stdout) the number of sub-bricks in a 3D dataset.
+* If -all is specified, prints out all 4 dimensions:
+    Nx, Ny, Nz, Nvals
+* If -verbose is used then the header name of the dataset is printed first.
+* The function of this simple program is to help in scripting.
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

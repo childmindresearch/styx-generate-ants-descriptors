@@ -1,0 +1,65 @@
+
+=== Output of 'createMorph --help' ===
+
+				Help
+
+NAME
+	createMorph
+
+REQUIRED FLAGGED ARGUMENTS
+	--in [STR...]
+		Input transforms - affine|volume|morph|mesh|gcam + filename.
+
+	--out FILE
+		Output transform file (tm3d).
+
+OPTIONAL FLAGGED ARGUMENTS
+	--template FILE
+		Template volume (only for geometry). If a gcam is present, it 
+		needs to be specified.
+
+	--subject FILE
+		Subject volume (only for geometry).
+
+	--dbg INT INT INT
+		Debugging coordinates.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'createMorph -help' ===
+
+error: unexpected argument '-help'
+
+=== Output of 'createMorph' (no arguments) ===
+
+				Help
+
+NAME
+	createMorph
+
+REQUIRED FLAGGED ARGUMENTS
+	--in [STR...]
+		Input transforms - affine|volume|morph|mesh|gcam + filename.
+
+	--out FILE
+		Output transform file (tm3d).
+
+OPTIONAL FLAGGED ARGUMENTS
+	--template FILE
+		Template volume (only for geometry). If a gcam is present, it 
+		needs to be specified.
+
+	--subject FILE
+		Subject volume (only for geometry).
+
+	--dbg INT INT INT
+		Debugging coordinates.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+error: missing required input '--in'

@@ -1,0 +1,465 @@
+
+=== Output of 'mris_place_surface --help' ===
+
+				Help
+
+NAME
+	mris_place_surface
+
+DESCRIPTION
+	This program positions the triangular mesh representing a cortical 
+	surface, either the "white" surface (ie, white/gray boundary) or the 
+	"pial" surface (ie, the gray/csf boundary).  This is meant to replace 
+	mris_make_surfaces
+	       
+
+REQUIRED ARGUMENTS
+	--o output surface
+		Output surface
+
+	--i input surface
+		Input surface
+
+	--adgw AutoDetectGrayWhiteStats
+		Intensity stats created by mris_autodet_gwstats
+
+	--invol invol.mgz
+		T1-weighed intensity volume used to find white/gray/csf 
+		gradients (usually brain.finalsurf.mgz)
+
+	--white, --pial
+		Place the white surface (boundary between white and gray) or 
+		on the pial surface (boundary between gray and csf). Must 
+		choose one.
+
+	--lh, --rh
+		Left or right hemi (must choose one)
+
+OPTIONAL ARGUMENTS
+	--wm wm.mgz
+		White matter "segmentation"
+
+	--outvol outvol.mgz
+		Save input volume after preprocessing
+
+	--outvol-only outvol.mgz
+		Save input volume after preprocessing and then exit
+
+	--restore-255
+		After all volume preprocessing, set voxels in the input volume
+		that start off as 255 to 110 (white surf only).
+
+	--seg seg.mgz
+		Whole-brain segmentation (usually aseg.presurf.mgz)
+
+	--aparc cortical parcellation
+		Set cortical parcellation used to rip vertices (usually 
+		?h.aparc.annot)
+
+	--nsmooth nsmooth
+		Smooth input surface by number of iterations
+
+	--smooth-after-rip
+		When --nsmooth is used, smooth after ripping 
+
+	--max-cbv-dist distmm
+		Limit distance MRIScomputeBorderValues() can search from the 
+		input
+
+	--rip-label cortexlabel
+		Do not move vertices that are NOT in the cortex label
+
+	--rip-midline (--no-rip-midline)
+		Do not move vertices that are in the midline as indicated by 
+		the seg
+
+	--rip-bg (--no-rip-bg)
+		Do not move vertices near basal ganglia (as defined by seg)
+
+	--rip-bg-no-annot
+		Do not require surface have an annotation when ripping BG
+
+	--no-rip-freeze
+		Do NOT move vertices in/near freeze voxels (247 as defined in 
+		seg)
+
+	--rip-wmsa (--no-rip-wmsa)
+		Do not move vertices in/near white-matter signal abnormalities
+		(77,78,79 as defined in seg)
+
+	--rip-lesion  (--no-rip-lesion)
+		Do not move vertices in/near lesions (25 and 57 as defined in 
+		seg)
+
+	--no-rip
+		Turn off all ripping
+
+	--rip-overlay surfaceoverlayfile
+		Rip vertices > 0.5 in the surface overlay file
+
+	--ripsurface rip-surface
+		Use this surface with ripping midline, BG, Freezes, Lesions, 
+		and WMSA.
+
+	--rip-projection dmin dmax dstep
+		Control projection depth along normal to ripsurface when 
+		sampling seg 
+
+	--repulse-surf repulse-surface
+		Force input surface away from this surface (usually the white 
+		surface when placing the pial). Sets the orig{xyz} coords of 
+		the input surface to this surface
+
+	--white-surf surface
+		Set the white{xyz} coorinates of the input surface using this 
+		surface. Used in T2/FLAIR placement and when pinning the 
+		medial wall
+
+	--blend-surf weight blend-surface
+		Recompute the xyz coorindates of the input surface by 
+		computing a weighted average with the blend surface. new = 
+		(1-weight)*input + weight*blend
+
+	--mmvol MultiModalInput Type
+		Specify a T2 or FLAIR input volume used for placing the pial 
+		surface (Type must be T2 or FLAIR). It must be in registration
+		with the input volume 
+
+	--mm-refine
+		Use Siless' MultimodalRefinement. Sets tspring=nspring=0.3
+
+	--pin-medial-wall cortexlabel
+		Set coordinates in vertices NOT in cortexlabel to be that of 
+		the white{xyz} coordinates. Done after the surface is placed.
+
+	--no-intensity-proc 
+		Do not process the input intensity volume (eg, to remove parts
+		of eye socket)
+
+	--debug-vertex vertexno 
+
+	--ripflag-out ripfile 
+		Save ripflag as overlay. Spec full path including hemi, 
+		suffix, etc
+
+	--local-max LocalMaxFoundFlagFile 
+		Save LocalMaxFoundFlag as overlay. Spec full path including 
+		hemi, suffix, etc
+
+	--target TargetSurf 
+		Save CBV target surface
+
+	--stop 
+		Stop mask to stop search along normal for max gradient
+
+	--mm_{min,max}_{inside,outside} 
+		Intensity limits for placing pial on multimodal input (ie, T2/
+		FLAIR). Specifying --mm will set these values to defaults. If 
+		you want to change using this option, then put the option 
+		AFTER --mm
+
+	--cover-seg SegVol 
+		Force surface to cover the segmentation (or --cover_seg)
+
+	--first-peak-d1 
+		Use find-first-peak option with 1st derivative in 
+		ComputeBorderValues
+
+	--first-peak-d2 
+		Use find-first-peak option with 2nd derivative in 
+		ComputeBorderValues
+
+	--white_border_low_factor f
+		white_border_low = f*adgws.gray_mean + (1-f)*adgws.white_mean;
+
+	--fill-lat-vents DillMM Topo Nnbrs
+		Fill lateral ventricles with 110
+
+COST FUNCTION ARGUMENTS
+	--intensity weight
+
+	--location  weight
+
+	--spring    weight
+
+	--tspring   weight
+
+	--nspring   weight
+
+	--curv weight
+
+	--hinge weight
+
+	--spring_nzr weight
+
+	--shrink factor
+
+	--repluse weight
+
+	--surf-repluse weight
+
+	--tps weight pointset nhops fill01 angleprune01 AngleDegThresh 
+	distprune01 DistMmThresh
+		Target point set to locally influence where surface goes
+
+	--tps-debug
+		turn on target point set debugging
+
+	--tps-targetpointset
+		output final target point set
+
+	--tps-vertexpointset
+		output vertices targeted
+
+	--tps-mask
+		outpout surface mask of targeted vertices (mgz)
+
+	--tps-vector
+		freeview/trackviz tract file connecting the target points to 
+		vertices (file.trk)
+
+	--tps-patch
+		surface patch of targeted vertices vertices
+
+	--location-mov-len LOCATION_MOVE_LEN
+		Used in mrisComputeTargetLocationTerm() 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_place_surface -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mris_place_surface' (no arguments) ===
+
+				Help
+
+NAME
+	mris_place_surface
+
+DESCRIPTION
+	This program positions the triangular mesh representing a cortical 
+	surface, either the "white" surface (ie, white/gray boundary) or the 
+	"pial" surface (ie, the gray/csf boundary).  This is meant to replace 
+	mris_make_surfaces
+	       
+
+REQUIRED ARGUMENTS
+	--o output surface
+		Output surface
+
+	--i input surface
+		Input surface
+
+	--adgw AutoDetectGrayWhiteStats
+		Intensity stats created by mris_autodet_gwstats
+
+	--invol invol.mgz
+		T1-weighed intensity volume used to find white/gray/csf 
+		gradients (usually brain.finalsurf.mgz)
+
+	--white, --pial
+		Place the white surface (boundary between white and gray) or 
+		on the pial surface (boundary between gray and csf). Must 
+		choose one.
+
+	--lh, --rh
+		Left or right hemi (must choose one)
+
+OPTIONAL ARGUMENTS
+	--wm wm.mgz
+		White matter "segmentation"
+
+	--outvol outvol.mgz
+		Save input volume after preprocessing
+
+	--outvol-only outvol.mgz
+		Save input volume after preprocessing and then exit
+
+	--restore-255
+		After all volume preprocessing, set voxels in the input volume
+		that start off as 255 to 110 (white surf only).
+
+	--seg seg.mgz
+		Whole-brain segmentation (usually aseg.presurf.mgz)
+
+	--aparc cortical parcellation
+		Set cortical parcellation used to rip vertices (usually 
+		?h.aparc.annot)
+
+	--nsmooth nsmooth
+		Smooth input surface by number of iterations
+
+	--smooth-after-rip
+		When --nsmooth is used, smooth after ripping 
+
+	--max-cbv-dist distmm
+		Limit distance MRIScomputeBorderValues() can search from the 
+		input
+
+	--rip-label cortexlabel
+		Do not move vertices that are NOT in the cortex label
+
+	--rip-midline (--no-rip-midline)
+		Do not move vertices that are in the midline as indicated by 
+		the seg
+
+	--rip-bg (--no-rip-bg)
+		Do not move vertices near basal ganglia (as defined by seg)
+
+	--rip-bg-no-annot
+		Do not require surface have an annotation when ripping BG
+
+	--no-rip-freeze
+		Do NOT move vertices in/near freeze voxels (247 as defined in 
+		seg)
+
+	--rip-wmsa (--no-rip-wmsa)
+		Do not move vertices in/near white-matter signal abnormalities
+		(77,78,79 as defined in seg)
+
+	--rip-lesion  (--no-rip-lesion)
+		Do not move vertices in/near lesions (25 and 57 as defined in 
+		seg)
+
+	--no-rip
+		Turn off all ripping
+
+	--rip-overlay surfaceoverlayfile
+		Rip vertices > 0.5 in the surface overlay file
+
+	--ripsurface rip-surface
+		Use this surface with ripping midline, BG, Freezes, Lesions, 
+		and WMSA.
+
+	--rip-projection dmin dmax dstep
+		Control projection depth along normal to ripsurface when 
+		sampling seg 
+
+	--repulse-surf repulse-surface
+		Force input surface away from this surface (usually the white 
+		surface when placing the pial). Sets the orig{xyz} coords of 
+		the input surface to this surface
+
+	--white-surf surface
+		Set the white{xyz} coorinates of the input surface using this 
+		surface. Used in T2/FLAIR placement and when pinning the 
+		medial wall
+
+	--blend-surf weight blend-surface
+		Recompute the xyz coorindates of the input surface by 
+		computing a weighted average with the blend surface. new = 
+		(1-weight)*input + weight*blend
+
+	--mmvol MultiModalInput Type
+		Specify a T2 or FLAIR input volume used for placing the pial 
+		surface (Type must be T2 or FLAIR). It must be in registration
+		with the input volume 
+
+	--mm-refine
+		Use Siless' MultimodalRefinement. Sets tspring=nspring=0.3
+
+	--pin-medial-wall cortexlabel
+		Set coordinates in vertices NOT in cortexlabel to be that of 
+		the white{xyz} coordinates. Done after the surface is placed.
+
+	--no-intensity-proc 
+		Do not process the input intensity volume (eg, to remove parts
+		of eye socket)
+
+	--debug-vertex vertexno 
+
+	--ripflag-out ripfile 
+		Save ripflag as overlay. Spec full path including hemi, 
+		suffix, etc
+
+	--local-max LocalMaxFoundFlagFile 
+		Save LocalMaxFoundFlag as overlay. Spec full path including 
+		hemi, suffix, etc
+
+	--target TargetSurf 
+		Save CBV target surface
+
+	--stop 
+		Stop mask to stop search along normal for max gradient
+
+	--mm_{min,max}_{inside,outside} 
+		Intensity limits for placing pial on multimodal input (ie, T2/
+		FLAIR). Specifying --mm will set these values to defaults. If 
+		you want to change using this option, then put the option 
+		AFTER --mm
+
+	--cover-seg SegVol 
+		Force surface to cover the segmentation (or --cover_seg)
+
+	--first-peak-d1 
+		Use find-first-peak option with 1st derivative in 
+		ComputeBorderValues
+
+	--first-peak-d2 
+		Use find-first-peak option with 2nd derivative in 
+		ComputeBorderValues
+
+	--white_border_low_factor f
+		white_border_low = f*adgws.gray_mean + (1-f)*adgws.white_mean;
+
+	--fill-lat-vents DillMM Topo Nnbrs
+		Fill lateral ventricles with 110
+
+COST FUNCTION ARGUMENTS
+	--intensity weight
+
+	--location  weight
+
+	--spring    weight
+
+	--tspring   weight
+
+	--nspring   weight
+
+	--curv weight
+
+	--hinge weight
+
+	--spring_nzr weight
+
+	--shrink factor
+
+	--repluse weight
+
+	--surf-repluse weight
+
+	--tps weight pointset nhops fill01 angleprune01 AngleDegThresh 
+	distprune01 DistMmThresh
+		Target point set to locally influence where surface goes
+
+	--tps-debug
+		turn on target point set debugging
+
+	--tps-targetpointset
+		output final target point set
+
+	--tps-vertexpointset
+		output vertices targeted
+
+	--tps-mask
+		outpout surface mask of targeted vertices (mgz)
+
+	--tps-vector
+		freeview/trackviz tract file connecting the target points to 
+		vertices (file.trk)
+
+	--tps-patch
+		surface patch of targeted vertices vertices
+
+	--location-mov-len LOCATION_MOVE_LEN
+		Used in mrisComputeTargetLocationTerm() 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

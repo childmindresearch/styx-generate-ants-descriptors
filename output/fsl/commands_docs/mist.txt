@@ -1,0 +1,56 @@
+
+=== Output of 'mist --help' ===
+
+[2024-10-21 20:16:55.042975] [info]	Multimodal image segmentation tool (MIST), built Jul 25 2020 18:39:34.
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+Multimodal image segmentation tool (MIST)
+Copyright(c) 2015, University of Oxford (Eelke Visser)
+
+Usage: 
+mist [options] <train|fit|maskmedians> <options>
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	Show help
+	--loglevel	Set logging level
+
+
+[2024-10-21 20:16:55.043082] [info]	Done
+
+=== Output of 'mist -help' ===
+
+[2024-10-21 20:16:55.058228] [info]	Multimodal image segmentation tool (MIST), built Jul 25 2020 18:39:34.
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+Multimodal image segmentation tool (MIST)
+Copyright(c) 2015, University of Oxford (Eelke Visser)
+
+Usage: 
+mist [options] <train|fit|maskmedians> <options>
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	Show help
+	--loglevel	Set logging level
+
+
+
+Error: -e: Option doesn't exist!
+
+=== Output of 'mist' (no arguments) ===
+
+[2024-10-21 20:16:55.074971] [info]	Multimodal image segmentation tool (MIST), built Jul 25 2020 18:39:34.
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+Multimodal image segmentation tool (MIST)
+Copyright(c) 2015, University of Oxford (Eelke Visser)
+
+Usage: 
+mist [options] <train|fit|maskmedians> <options>
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	Show help
+	--loglevel	Set logging level
+
+
+
+Error: No mode specified (type 'mist <mode>' to get help on using that mode).

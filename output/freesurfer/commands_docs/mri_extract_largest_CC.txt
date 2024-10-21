@@ -1,0 +1,19 @@
+
+=== Output of 'mri_extract_largest_CC --help' ===
+
+unknown option --help
+
+=== Output of 'mri_extract_largest_CC -help' ===
+
+unknown option -help
+
+=== Output of 'mri_extract_largest_CC' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_extract_largest_CC <input vol> <output vol>
+this program extracts the largest connected component of the input volume 
+	 Options are: 
+		 -T #: threshold for object 
+		 -hemi lh/rh: set the target value corresponding to lh (255) or rh (127) 
+		 -I : find the largest CC in the background
+		 -O <orig volume> : clone values from <orig volume> into output (used with -I)
+		 -L <label val> : perform connected components on voxels with value <label val>

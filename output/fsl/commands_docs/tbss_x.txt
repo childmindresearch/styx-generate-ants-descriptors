@@ -1,0 +1,73 @@
+
+=== Output of 'tbss_x --help' ===
+
+/usr/local/fsl/bin/tbss_x: line 85: bc: command not found
+upsampling scalar images into standard space
+upsampling vector images into standard space
+merging scalar and vector images into single 4D images
+projecting onto mean FA skeleton
+creating files and textfiles for voxewise reassignments
+Voxelwise reassignments
+Image Exception : #63 :: No image files match: mean_FA_skeleton_mask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_skeleton_mask
+/usr/local/fsl/bin/tbss_x: line 228: 21413 Aborted                 (core dumped) fslmaths mean_FA_skeleton_mask mfibresmask
+cat: '.scalist????.txt': No such file or directory
+Image Exception : #63 :: No image files match: mfibresmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mfibresmask
+/usr/local/fsl/bin/tbss_x: line 228: 21415 Aborted                 (core dumped) fslmaths mfibresmask -sub 1 -abs -mas mean_FA_skeleton_mask -bin initmask$n
+Image Exception : #63 :: No image files match: mean_FA_skeleton_mask
+Image Exception : #22 :: Failed to read volume mean_FA_skeleton_mask
+Error : No image files match: mean_FA_skeleton_mask
+Failed to read volume mean_FA_skeleton_mask
+Error : No image files match: mean_FA_skeleton_mask
+creating textfiles for subjectwise reassignments
+Subjectwise reassignments
+reading file names
+.veclist.txt does not exist
+merging final results
+rm: cannot remove '.scalist*.txt': No such file or directory
+rm: cannot remove '.veclist*.txt': No such file or directory
+rm: cannot remove 'initmask????.*': No such file or directory
+Now run randomise on the newly created files: all_F1_x_skeletonised etc.
+
+=== Output of 'tbss_x -help' ===
+
+/usr/local/fsl/bin/tbss_x: line 85: bc: command not found
+upsampling scalar images into standard space
+upsampling vector images into standard space
+merging scalar and vector images into single 4D images
+projecting onto mean FA skeleton
+creating files and textfiles for voxewise reassignments
+Voxelwise reassignments
+Image Exception : #63 :: No image files match: mean_FA_skeleton_mask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_skeleton_mask
+/usr/local/fsl/bin/tbss_x: line 228: 21573 Aborted                 (core dumped) fslmaths mean_FA_skeleton_mask mfibresmask
+cat: '.scalist????.txt': No such file or directory
+Image Exception : #63 :: No image files match: mfibresmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mfibresmask
+/usr/local/fsl/bin/tbss_x: line 228: 21575 Aborted                 (core dumped) fslmaths mfibresmask -sub 1 -abs -mas mean_FA_skeleton_mask -bin initmask$n
+Image Exception : #63 :: No image files match: mean_FA_skeleton_mask
+Image Exception : #22 :: Failed to read volume mean_FA_skeleton_mask
+Error : No image files match: mean_FA_skeleton_mask
+Failed to read volume mean_FA_skeleton_mask
+Error : No image files match: mean_FA_skeleton_mask
+creating textfiles for subjectwise reassignments
+Subjectwise reassignments
+reading file names
+.veclist.txt does not exist
+merging final results
+rm: cannot remove '.scalist*.txt': No such file or directory
+rm: cannot remove '.veclist*.txt': No such file or directory
+rm: cannot remove 'initmask????.*': No such file or directory
+Now run randomise on the newly created files: all_F1_x_skeletonised etc.
+
+=== Output of 'tbss_x' (no arguments) ===
+
+
+Usage: tbss_x <listOfScalarDirectories> <listOfVectorDirectories>
+e.g. tbss_x F1 F2 D1 D2
+

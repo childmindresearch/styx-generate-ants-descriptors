@@ -1,0 +1,62 @@
+
+=== Output of 'qhull --help' ===
+
+QH7035 qhull warning: unknown flag -(2d)
+QH7036 qhull warning: missing space after flag -(2d); reserved for menu. Skipped.
+QH6075 qhull input error: short input file.  Did not find dimension and number of points
+
+While executing:  | qhull --help
+Options selected for Qhull 2010.1 2010/01/14:
+  run-id 67512812
+
+=== Output of 'qhull -help' ===
+
+
+qhull- compute convex hulls and related structures.  Qhull 2010.1 2010/01/14
+    input (stdin): dimension, n, point coordinates
+    comments start with a non-numeric character
+    halfspace: use dim+1 and put offsets after coefficients
+
+options (qh-quick.htm):
+    d    - Delaunay triangulation by lifting points to a paraboloid
+    d Qu - furthest-site Delaunay triangulation (upper convex hull)
+    v    - Voronoi diagram as the dual of the Delaunay triangulation
+    v Qu - furthest-site Voronoi diagram
+    H1,1 - Halfspace intersection about [1,1,0,...] via polar duality
+    Qt   - triangulated output
+    QJ   - joggled input instead of merged facets
+    Tv   - verify result: structure, convexity, and point inclusion
+    .    - concise list of all options
+    -    - one-line description of each option
+
+Output options (subset):
+    s    - summary of results (default)
+    i    - vertices incident to each facet
+    n    - normals with offsets
+    p    - vertex coordinates (if 'Qc', includes coplanar points)
+           if 'v', Voronoi vertices
+    Fp   - halfspace intersections
+    Fx   - extreme points (convex hull vertices)
+    FA   - compute total area and volume
+    o    - OFF format (if 'v', outputs Voronoi regions)
+    G    - Geomview output (2-d, 3-d and 4-d)
+    m    - Mathematica output (2-d and 3-d)
+    QVn  - print facets that include point n, -n if not
+    TO file- output results to file, may be enclosed in single quotes
+
+examples:
+    rbox c d D2 | qhull Qc s f Fx | more      rbox 1000 s | qhull Tv s FA
+    rbox 10 D2 | qhull d QJ s i TO result     rbox 10 D2 | qhull v Qbb Qt p
+    rbox 10 D2 | qhull d Qu QJ m              rbox 10 D2 | qhull v Qu QJ o
+    rbox c | qhull n                          rbox c | qhull FV n | qhull H Fp
+    rbox d D12 | qhull QR0 FA                 rbox c D7 | qhull FA TF1000
+    rbox y 1000 W0 | qhull                    rbox 10 | qhull v QJ o Fv
+
+
+=== Output of 'qhull' (no arguments) ===
+
+QH6075 qhull input error: short input file.  Did not find dimension and number of points
+
+While executing:  | qhull
+Options selected for Qhull 2010.1 2010/01/14:
+  run-id 67512812

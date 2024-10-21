@@ -1,0 +1,158 @@
+
+=== Output of 'dmri_train --help' ===
+
+
+USAGE: /usr/local/freesurfer/bin/dmri_train
+
+Basic inputs (all volumes in common space)
+   --slist <file>:
+     Text file with list of training subject directories
+   --trk <file> [...]:
+     Name(s) of input .trk file(s), one per path
+     (Names relative to training subject directory)
+   --rois <file1> <file2> [...]:
+     Optional, names of input tract labeling ROIs, two per path
+     (Names relative to training subject directory)
+   --seg <file>:
+     Name of input aparc+aseg volume
+     (Name relative to training subject directory)
+   --cmask <file>:
+     Name of input cortex mask volume
+   --lmask <id> [...]:
+     Add a label ID from aparc+aseg to cortex mask, one per path
+     (0 doesn't add any label)
+
+Inputs used to prep training data (all volumes in common space)
+   --bmask <file> [...]:
+     Input brain mask volume(s)
+   --outtrk <file> [...]:
+     Name(s) of output, pre-sorted .trk file(s), one per path
+     (Names relative to training subject directory)
+
+Inputs used to compute priors (all volumes in common space)
+   --bmask <file> [...]:
+     Input brain mask volume(s) for test subject
+   --fa <file> [...]:
+     Input FA volume(s) for test subject (optional)
+   --reg <file>:
+     Affine registration from atlas to base space (optional)
+   --regnl <file>:
+     Nonlinear registration from atlas to base space (optional)
+   --refnl <file>:
+     Nonlinear registration source reference volume (optional)
+   --basereg <file> [...]:
+     Affine registration(s) from base to FA volume(s) (optional)
+   --baseref <file> [...]:
+     Base space reference volume (optional)
+   --ncpts <num> [...]:
+     Number of control points for initial spline, one per path
+     or one for all paths
+   --max <num>:
+     Maximum number of training streamlines to keep per path
+   --xstr:
+     Exclude previously chosen center streamline(s) (Default: No)
+   --aprior:
+     Compute priors on underlying anatomy (Default: No)
+   --sprior:
+     Compute priors on shape (Default: No)
+   --trunc:
+     Use all training streamlines, truncated or not
+     (Default: Only save results using non-truncated streamlines)
+   --out <base> [...]:
+     Base name(s) of output(s) for test subject, one per path
+   --outdir <dir>:
+     Output directory (optional)
+   --cptdir <dir>:
+     Output directory for control points in test subject's space
+     (optional, requires registration files)
+     If specified, base names of outputs are relative to this
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+
+
+...
+
+
+=== Output of 'dmri_train -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'dmri_train' (no arguments) ===
+
+
+USAGE: /usr/local/freesurfer/bin/dmri_train
+
+Basic inputs (all volumes in common space)
+   --slist <file>:
+     Text file with list of training subject directories
+   --trk <file> [...]:
+     Name(s) of input .trk file(s), one per path
+     (Names relative to training subject directory)
+   --rois <file1> <file2> [...]:
+     Optional, names of input tract labeling ROIs, two per path
+     (Names relative to training subject directory)
+   --seg <file>:
+     Name of input aparc+aseg volume
+     (Name relative to training subject directory)
+   --cmask <file>:
+     Name of input cortex mask volume
+   --lmask <id> [...]:
+     Add a label ID from aparc+aseg to cortex mask, one per path
+     (0 doesn't add any label)
+
+Inputs used to prep training data (all volumes in common space)
+   --bmask <file> [...]:
+     Input brain mask volume(s)
+   --outtrk <file> [...]:
+     Name(s) of output, pre-sorted .trk file(s), one per path
+     (Names relative to training subject directory)
+
+Inputs used to compute priors (all volumes in common space)
+   --bmask <file> [...]:
+     Input brain mask volume(s) for test subject
+   --fa <file> [...]:
+     Input FA volume(s) for test subject (optional)
+   --reg <file>:
+     Affine registration from atlas to base space (optional)
+   --regnl <file>:
+     Nonlinear registration from atlas to base space (optional)
+   --refnl <file>:
+     Nonlinear registration source reference volume (optional)
+   --basereg <file> [...]:
+     Affine registration(s) from base to FA volume(s) (optional)
+   --baseref <file> [...]:
+     Base space reference volume (optional)
+   --ncpts <num> [...]:
+     Number of control points for initial spline, one per path
+     or one for all paths
+   --max <num>:
+     Maximum number of training streamlines to keep per path
+   --xstr:
+     Exclude previously chosen center streamline(s) (Default: No)
+   --aprior:
+     Compute priors on underlying anatomy (Default: No)
+   --sprior:
+     Compute priors on shape (Default: No)
+   --trunc:
+     Use all training streamlines, truncated or not
+     (Default: Only save results using non-truncated streamlines)
+   --out <base> [...]:
+     Base name(s) of output(s) for test subject, one per path
+   --outdir <dir>:
+     Output directory (optional)
+   --cptdir <dir>:
+     Output directory for control points in test subject's space
+     (optional, requires registration files)
+     If specified, base names of outputs are relative to this
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+

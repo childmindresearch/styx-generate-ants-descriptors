@@ -1,0 +1,22 @@
+
+=== Output of 'mris_BA_segment --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_BA_segment [options] <surface> <profiles> <prior label> <output label>
+
+This program segments a Brodmann area (MT currently) from a laminar intensity profile overlay
+
+valid options are:
+
+
+=== Output of 'mris_BA_segment -help' ===
+
+unknown option -help
+
+=== Output of 'mris_BA_segment' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_BA_segment [options] <surface> <profiles> <prior label> <output label>
+
+This program segments a Brodmann area (MT currently) from a laminar intensity profile overlay
+
+valid options are:
+

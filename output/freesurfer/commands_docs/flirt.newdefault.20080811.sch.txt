@@ -1,0 +1,429 @@
+
+=== Output of 'flirt.newdefault.20080811.sch --help' ===
+
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 15: setscale: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 16: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 19: search: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 21: setscale: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 22: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 29: measurecost: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 30: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 32: measurecost: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 33: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 34: dualsort: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 37: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 38: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 41: setrow: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 42: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 44: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 47: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 48: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 49: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 50: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 51: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 52: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 53: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 54: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 55: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 56: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 57: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 59: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 61: setscale: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 62: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 69: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 71: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 73: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 74: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 75: setoption: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 96: syntax error: unexpected end of file
+
+=== Output of 'flirt.newdefault.20080811.sch -help' ===
+
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 15: setscale: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 16: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 19: search: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 21: setscale: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 22: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 29: measurecost: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 30: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 32: measurecost: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 33: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 34: dualsort: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 37: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 38: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 41: setrow: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 42: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 44: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 47: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 48: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 49: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 50: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 51: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 52: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 53: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 54: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 55: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 56: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 57: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 59: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 61: setscale: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 62: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 69: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 71: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 73: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 74: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 75: setoption: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 96: syntax error: unexpected end of file
+
+=== Output of 'flirt.newdefault.20080811.sch' (no arguments) ===
+
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 15: setscale: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 16: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 19: search: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 21: setscale: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 22: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 29: measurecost: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 30: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 32: measurecost: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 33: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 34: dualsort: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 37: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 38: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 41: setrow: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 42: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 44: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 47: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 48: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 49: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 50: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 51: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 52: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 53: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 54: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 55: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 56: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 57: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 59: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 61: setscale: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 62: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 69: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 71: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 73: optimise: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 74: copy: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 75: setoption: command not found
+/usr/local/freesurfer/bin/flirt.newdefault.20080811.sch: line 96: syntax error: unexpected end of file

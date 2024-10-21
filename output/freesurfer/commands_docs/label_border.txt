@@ -1,0 +1,12 @@
+
+=== Output of 'label_border --help' ===
+
+error: label_border has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'label_border -help' ===
+
+error: label_border has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'label_border' (no arguments) ===
+
+error: label_border has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

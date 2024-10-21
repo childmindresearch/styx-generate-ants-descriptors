@@ -1,0 +1,621 @@
+
+=== Output of 'mris_make_surfaces --help' ===
+
+				Help
+
+NAME
+	mris_make_surfaces
+
+SYNOPSIS
+	mris_make_surfaces [options] <subject name> <hemisphere>
+
+DESCRIPTION
+	This program positions the tessellation of the cortical surface at the
+	white matter surface, then the gray matter surface and generate 
+	surface files for these surfaces as well as a 'curvature' file for the
+	cortical thickness, and a surface file which approximates layer IV of 
+	the cortical sheet.
+
+POSITIONAL ARGUMENTS
+	<Subject Name>
+
+	<Hemisphere>
+		r(right) or l(left) brain hemisphere
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-white
+		output name for white surface (def is white). Set to NOWHITE 
+		to generate but not save white surface. Not to be confused 
+		with -nowhite 
+
+	-pial
+		output name for pial surface (def is pial) 
+
+	-whiteonly
+		Only generate white matter surface
+
+	-nowhite
+		Only generate pial surface (use ?h.white or whatever is 
+		specified with -orig_white as white surface)
+
+	-orig_white <surf>
+		specify a white surface to start with
+
+	-orig_pial <surf>
+		specify a pial surface to start with
+
+	-q
+		Omit self-intersection and only generate gray/white surface
+
+	-max_gray_scale  mgs
+		in white deformation set outside_hi = (max_border_white + 
+		mgs*max_gray) / (mgs+1.0)
+
+	-c
+		Do not create curvature and area files from white matter 
+		surface
+
+	-cortex 0-or-1
+		Set to 0 to turn off creation of cortex label file 
+
+	-a <avgs>
+		Average curvature values <avgs> times (default=10)
+
+	-first_wm_peak
+		Settle WM surface at first peak in intensity
+		     profile instead of highest
+
+	-w <value>
+		unknown
+
+	-pa <avgs>
+		average pial curvature values a max of <avgs> times 
+		(default=16)
+
+	-wa <avgs>
+		average white curvature values a max of <avgs> times 
+		(default=4)
+
+	-T1 T1vol
+		default is brain
+
+	-wvol whitevol <hires>
+
+	-long
+		longitudinal
+
+	-dura_thresh <threshold>
+		set a threshold for the multi-echo mprage dura avoidance 
+		instead of automatically estimating it
+
+	-SDIR
+		SUBJECTS_DIR
+
+	-erase_cerebellum
+		if aseg is loaded erases cerebellar labled voxels in the input
+		image
+
+	-wm_weight w
+		weighting of wm mean in calculating T2 threshold of disallowed
+		gm values (w*wm+gm)/(w+1)), default=3
+
+	-nsigma_above n
+		# of sigmas above the mean to allow gray matter T2 intensities
+
+	-nsigma_below n
+		# of sigmas below the mean to allow gray matter T2 intensities
+
+	-T2_min_inside threshold
+		specify threshold for min T2 value allowed to be interior to 
+		the cortical ribbon
+
+	-T2_max_inside threshold
+		specify threshold for max T2 value allowed to be interior to 
+		the cortical ribbon
+
+	-T2_outside_min threshold
+		specify threshold for min T2 value outside of pial surface 
+		that will cause surface to deform outwards
+
+	-T2_outside_max threshold
+		specify threshold for max T2 value outside of pial surface 
+		that will cause surface to deform outwards
+
+	-min_peak_pct  inside_pct outside_pct
+		specify the pct of the histo peak in the local gm histogram to
+		use as threshold for finding the local inside and outside gm 
+		thresholds. Smaller values will cause more intensities to be 
+		included as gm 
+
+	-border-vals-hires
+		Turn on hires options in MRIScomputeBorderValues_new(). May 
+		not be helpful. 
+
+	-no-unitize
+		Turn off face normal unitization 
+
+	-intensity intensitycostweight
+		Set weight of intensity cost 
+
+	-curv curvcostweight
+		Set weight of curv cost 
+
+	-tspring tspringcostweight
+		Set weight of tangiential spring cost 
+
+	-nspring nspringcostweight
+		Set weight of normal spring cost 
+
+	-repulse repulsecostweight
+		Set weight of repulsion force 
+
+	-save-target (-no-save-target)
+		save target surface (for debugging)
+
+	-save-res (-no-save-res)
+		save residual (for debugging)
+
+	-v vertexno 
+		set Gdiag_no to vertexno
+
+	-diag-vertex vertexno 
+		set Gdiag_no to vertexno, turn off writing of  cortex label or
+		curv files. Set output suffix to debug-vertex-vertexno
+
+	-rip ripfile 
+		Save ripflag as overlay. Spec full path including hemi, 
+		suffix, etc
+
+	-sigma-white sigmawhitefile 
+		Save white surface sigma as overlay. Spec full path including 
+		hemi, suffix, etc
+
+	-sigma-pial sigmapialfile 
+		Save pial surface sigma as overlay. Spec full path including 
+		hemi, suffix, etc
+
+	-output suffix 
+		Append suffix to all outputs (prevents over-writing)
+
+	-min_border_white MinBW 
+		Min border white
+
+	-max_border_white MaxBW 
+		Max border white
+
+	-min_gray_at_white_border MinGWB 
+		MinGWB 
+
+	-max_gray MaxG 
+		MaxG
+
+	-max_gray_at_csf_border MaxGCSFB 
+		MaxGCSFB
+
+	-min_gray_at_csf_border MinGCSFB 
+		MinGCSFB
+
+	-max_csf MaxCSF 
+		MaxCSF
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_make_surfaces -help' ===
+
+				Help
+
+NAME
+	mris_make_surfaces
+
+SYNOPSIS
+	mris_make_surfaces [options] <subject name> <hemisphere>
+
+DESCRIPTION
+	This program positions the tessellation of the cortical surface at the
+	white matter surface, then the gray matter surface and generate 
+	surface files for these surfaces as well as a 'curvature' file for the
+	cortical thickness, and a surface file which approximates layer IV of 
+	the cortical sheet.
+
+POSITIONAL ARGUMENTS
+	<Subject Name>
+
+	<Hemisphere>
+		r(right) or l(left) brain hemisphere
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-white
+		output name for white surface (def is white). Set to NOWHITE 
+		to generate but not save white surface. Not to be confused 
+		with -nowhite 
+
+	-pial
+		output name for pial surface (def is pial) 
+
+	-whiteonly
+		Only generate white matter surface
+
+	-nowhite
+		Only generate pial surface (use ?h.white or whatever is 
+		specified with -orig_white as white surface)
+
+	-orig_white <surf>
+		specify a white surface to start with
+
+	-orig_pial <surf>
+		specify a pial surface to start with
+
+	-q
+		Omit self-intersection and only generate gray/white surface
+
+	-max_gray_scale  mgs
+		in white deformation set outside_hi = (max_border_white + 
+		mgs*max_gray) / (mgs+1.0)
+
+	-c
+		Do not create curvature and area files from white matter 
+		surface
+
+	-cortex 0-or-1
+		Set to 0 to turn off creation of cortex label file 
+
+	-a <avgs>
+		Average curvature values <avgs> times (default=10)
+
+	-first_wm_peak
+		Settle WM surface at first peak in intensity
+		     profile instead of highest
+
+	-w <value>
+		unknown
+
+	-pa <avgs>
+		average pial curvature values a max of <avgs> times 
+		(default=16)
+
+	-wa <avgs>
+		average white curvature values a max of <avgs> times 
+		(default=4)
+
+	-T1 T1vol
+		default is brain
+
+	-wvol whitevol <hires>
+
+	-long
+		longitudinal
+
+	-dura_thresh <threshold>
+		set a threshold for the multi-echo mprage dura avoidance 
+		instead of automatically estimating it
+
+	-SDIR
+		SUBJECTS_DIR
+
+	-erase_cerebellum
+		if aseg is loaded erases cerebellar labled voxels in the input
+		image
+
+	-wm_weight w
+		weighting of wm mean in calculating T2 threshold of disallowed
+		gm values (w*wm+gm)/(w+1)), default=3
+
+	-nsigma_above n
+		# of sigmas above the mean to allow gray matter T2 intensities
+
+	-nsigma_below n
+		# of sigmas below the mean to allow gray matter T2 intensities
+
+	-T2_min_inside threshold
+		specify threshold for min T2 value allowed to be interior to 
+		the cortical ribbon
+
+	-T2_max_inside threshold
+		specify threshold for max T2 value allowed to be interior to 
+		the cortical ribbon
+
+	-T2_outside_min threshold
+		specify threshold for min T2 value outside of pial surface 
+		that will cause surface to deform outwards
+
+	-T2_outside_max threshold
+		specify threshold for max T2 value outside of pial surface 
+		that will cause surface to deform outwards
+
+	-min_peak_pct  inside_pct outside_pct
+		specify the pct of the histo peak in the local gm histogram to
+		use as threshold for finding the local inside and outside gm 
+		thresholds. Smaller values will cause more intensities to be 
+		included as gm 
+
+	-border-vals-hires
+		Turn on hires options in MRIScomputeBorderValues_new(). May 
+		not be helpful. 
+
+	-no-unitize
+		Turn off face normal unitization 
+
+	-intensity intensitycostweight
+		Set weight of intensity cost 
+
+	-curv curvcostweight
+		Set weight of curv cost 
+
+	-tspring tspringcostweight
+		Set weight of tangiential spring cost 
+
+	-nspring nspringcostweight
+		Set weight of normal spring cost 
+
+	-repulse repulsecostweight
+		Set weight of repulsion force 
+
+	-save-target (-no-save-target)
+		save target surface (for debugging)
+
+	-save-res (-no-save-res)
+		save residual (for debugging)
+
+	-v vertexno 
+		set Gdiag_no to vertexno
+
+	-diag-vertex vertexno 
+		set Gdiag_no to vertexno, turn off writing of  cortex label or
+		curv files. Set output suffix to debug-vertex-vertexno
+
+	-rip ripfile 
+		Save ripflag as overlay. Spec full path including hemi, 
+		suffix, etc
+
+	-sigma-white sigmawhitefile 
+		Save white surface sigma as overlay. Spec full path including 
+		hemi, suffix, etc
+
+	-sigma-pial sigmapialfile 
+		Save pial surface sigma as overlay. Spec full path including 
+		hemi, suffix, etc
+
+	-output suffix 
+		Append suffix to all outputs (prevents over-writing)
+
+	-min_border_white MinBW 
+		Min border white
+
+	-max_border_white MaxBW 
+		Max border white
+
+	-min_gray_at_white_border MinGWB 
+		MinGWB 
+
+	-max_gray MaxG 
+		MaxG
+
+	-max_gray_at_csf_border MaxGCSFB 
+		MaxGCSFB
+
+	-min_gray_at_csf_border MinGCSFB 
+		MinGCSFB
+
+	-max_csf MaxCSF 
+		MaxCSF
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_make_surfaces' (no arguments) ===
+
+				Help
+
+NAME
+	mris_make_surfaces
+
+SYNOPSIS
+	mris_make_surfaces [options] <subject name> <hemisphere>
+
+DESCRIPTION
+	This program positions the tessellation of the cortical surface at the
+	white matter surface, then the gray matter surface and generate 
+	surface files for these surfaces as well as a 'curvature' file for the
+	cortical thickness, and a surface file which approximates layer IV of 
+	the cortical sheet.
+
+POSITIONAL ARGUMENTS
+	<Subject Name>
+
+	<Hemisphere>
+		r(right) or l(left) brain hemisphere
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-white
+		output name for white surface (def is white). Set to NOWHITE 
+		to generate but not save white surface. Not to be confused 
+		with -nowhite 
+
+	-pial
+		output name for pial surface (def is pial) 
+
+	-whiteonly
+		Only generate white matter surface
+
+	-nowhite
+		Only generate pial surface (use ?h.white or whatever is 
+		specified with -orig_white as white surface)
+
+	-orig_white <surf>
+		specify a white surface to start with
+
+	-orig_pial <surf>
+		specify a pial surface to start with
+
+	-q
+		Omit self-intersection and only generate gray/white surface
+
+	-max_gray_scale  mgs
+		in white deformation set outside_hi = (max_border_white + 
+		mgs*max_gray) / (mgs+1.0)
+
+	-c
+		Do not create curvature and area files from white matter 
+		surface
+
+	-cortex 0-or-1
+		Set to 0 to turn off creation of cortex label file 
+
+	-a <avgs>
+		Average curvature values <avgs> times (default=10)
+
+	-first_wm_peak
+		Settle WM surface at first peak in intensity
+		     profile instead of highest
+
+	-w <value>
+		unknown
+
+	-pa <avgs>
+		average pial curvature values a max of <avgs> times 
+		(default=16)
+
+	-wa <avgs>
+		average white curvature values a max of <avgs> times 
+		(default=4)
+
+	-T1 T1vol
+		default is brain
+
+	-wvol whitevol <hires>
+
+	-long
+		longitudinal
+
+	-dura_thresh <threshold>
+		set a threshold for the multi-echo mprage dura avoidance 
+		instead of automatically estimating it
+
+	-SDIR
+		SUBJECTS_DIR
+
+	-erase_cerebellum
+		if aseg is loaded erases cerebellar labled voxels in the input
+		image
+
+	-wm_weight w
+		weighting of wm mean in calculating T2 threshold of disallowed
+		gm values (w*wm+gm)/(w+1)), default=3
+
+	-nsigma_above n
+		# of sigmas above the mean to allow gray matter T2 intensities
+
+	-nsigma_below n
+		# of sigmas below the mean to allow gray matter T2 intensities
+
+	-T2_min_inside threshold
+		specify threshold for min T2 value allowed to be interior to 
+		the cortical ribbon
+
+	-T2_max_inside threshold
+		specify threshold for max T2 value allowed to be interior to 
+		the cortical ribbon
+
+	-T2_outside_min threshold
+		specify threshold for min T2 value outside of pial surface 
+		that will cause surface to deform outwards
+
+	-T2_outside_max threshold
+		specify threshold for max T2 value outside of pial surface 
+		that will cause surface to deform outwards
+
+	-min_peak_pct  inside_pct outside_pct
+		specify the pct of the histo peak in the local gm histogram to
+		use as threshold for finding the local inside and outside gm 
+		thresholds. Smaller values will cause more intensities to be 
+		included as gm 
+
+	-border-vals-hires
+		Turn on hires options in MRIScomputeBorderValues_new(). May 
+		not be helpful. 
+
+	-no-unitize
+		Turn off face normal unitization 
+
+	-intensity intensitycostweight
+		Set weight of intensity cost 
+
+	-curv curvcostweight
+		Set weight of curv cost 
+
+	-tspring tspringcostweight
+		Set weight of tangiential spring cost 
+
+	-nspring nspringcostweight
+		Set weight of normal spring cost 
+
+	-repulse repulsecostweight
+		Set weight of repulsion force 
+
+	-save-target (-no-save-target)
+		save target surface (for debugging)
+
+	-save-res (-no-save-res)
+		save residual (for debugging)
+
+	-v vertexno 
+		set Gdiag_no to vertexno
+
+	-diag-vertex vertexno 
+		set Gdiag_no to vertexno, turn off writing of  cortex label or
+		curv files. Set output suffix to debug-vertex-vertexno
+
+	-rip ripfile 
+		Save ripflag as overlay. Spec full path including hemi, 
+		suffix, etc
+
+	-sigma-white sigmawhitefile 
+		Save white surface sigma as overlay. Spec full path including 
+		hemi, suffix, etc
+
+	-sigma-pial sigmapialfile 
+		Save pial surface sigma as overlay. Spec full path including 
+		hemi, suffix, etc
+
+	-output suffix 
+		Append suffix to all outputs (prevents over-writing)
+
+	-min_border_white MinBW 
+		Min border white
+
+	-max_border_white MaxBW 
+		Max border white
+
+	-min_gray_at_white_border MinGWB 
+		MinGWB 
+
+	-max_gray MaxG 
+		MaxG
+
+	-max_gray_at_csf_border MaxGCSFB 
+		MaxGCSFB
+
+	-min_gray_at_csf_border MinGCSFB 
+		MinGCSFB
+
+	-max_csf MaxCSF 
+		MaxCSF
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

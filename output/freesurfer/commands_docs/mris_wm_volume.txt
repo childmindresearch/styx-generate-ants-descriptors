@@ -1,0 +1,18 @@
+
+=== Output of 'mris_wm_volume --help' ===
+
+unknown option --help
+
+=== Output of 'mris_wm_volume -help' ===
+
+unknown option -help
+
+=== Output of 'mris_wm_volume' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_wm_volume <subject> <hemi>
+	 This program computes the volume of the enclosed ?h.white surface,
+	ignoring non-wm voxels in the aseg.
+	 use -v option to output more messages
+  -SDIR SUBJECTS_DIR 
+  -white whitesurfname 
+  -aseg  asegname 

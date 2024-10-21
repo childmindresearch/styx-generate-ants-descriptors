@@ -1,0 +1,164 @@
+
+=== Output of 'mri_nl_align --help' ===
+
+unknown option --HELP
+usage: /usr/local/freesurfer/bin/mri_nl_align [options] <source> <target> <warp>
+
+Options:
+
+  -debug_voxel Gx Gy Gz
+  -debug_node Gx Gy Gz
+  -noneg val		: val = 0 or 1; <not> allowing temporary folds during numerical minimization (default = True)
+  -renormalize val	: val = 0 or 1; <not> renormalizing intensities
+  -aseg			: treating inputs as segmentations; no intenisty renormalization; log_likelihood = 0; distance transform coefficient (dtrans) = 1
+  -diag2 volname	: writing d2 diagnostics for input volume (*volname*)
+  -OPTIMAL		: using line search optimization (default = GCAM_INTEGRATE_BOTH)
+  -MOMENTUM		: using fixed time-step integration (default = GCAM_INTEGRATE_BOTH)
+  -FIXED		: using fixed time-step integration (default = GCAM_INTEGRATE_BOTH)
+  -distance val		: expanding border by *val* mm every outer cycle
+  -dtrans val		: setting distance transform coefficient to *val*
+  -match_peak		: matching peak of intensity ratio histogram
+  -erode val		: eroding source and target image *val* times before morphing
+  -match_mean val	: val = 0 or 1; <not> matching peak of intensity ratio histogram
+  -intensity val	: setting l_log_likelihood to *val* (default = 0.025)
+  -ll val		: setting l_log_likelihood to *val* (default = 0.025)
+  -noregrid		: disable regridding
+  -regrid		: enable regridding
+  -view Gx Gy Gz	: viewing voxel (Gx, Gy, Gz)
+  -levels val		: setting levels to *val* (default = 6)
+  -areasmoothness val	: setting l_area_smoothness to *val*
+  -asmooth val		: setting l_area_smoothness to *val*
+  -area val		: seeting l_area to *val*
+  -tol val		: setting tol to *val* (default = .1)
+  -sigma val		: seeting sigma to *val* (default = 8)
+  -min_sigma val	: setting minimum value for sigma to be *val* (default = .4)
+  -ribbon fname		: reading ribbon from *fname* and inserting into aseg
+  -rthresh val		: setting compression ratio threshold to *val*
+  -scale val		: scaling input values by *val*
+  -dt val		: setting dt to *val* (default = 0.005)
+  -passes	val	: integrating in *val* number of passes / go through all levels *val* number of times (default=3)
+  -skip val		: skipping *val* number of voxels in source data
+  -apply val		: val = 0 or 1; <not> applying transform after registration
+  -D val		: setting l_distance to *val* (default = 0)
+  -M val		: setting momentum to *val* (default = .9)
+  -N val		: setting number of iterations to *val* (default = 1000)
+  -s val		: setting l_smoothness to *val* (default = 2)
+  -T fname		: reading the forward transform / deformation from *fname*
+  -I fname		: reading the inverse of the transform / deformation in *fname* 
+  -B val		: setting l_binary to *val*
+  -J val		: setting l_jacobian to *val* (default = 1)
+  -Z val		: val = 0 or 1; <not> disabling zero image locations
+  -a val		: smoothing gradient with *val* number of averages
+  -K val		: setting exp_k to val (default=20.0)
+  -W val		: write diagnostics at each *val* iteration
+  -?			: print usage
+  -U			: print usage 
+
+=== Output of 'mri_nl_align -help' ===
+
+unknown option -HELP
+usage: /usr/local/freesurfer/bin/mri_nl_align [options] <source> <target> <warp>
+
+Options:
+
+  -debug_voxel Gx Gy Gz
+  -debug_node Gx Gy Gz
+  -noneg val		: val = 0 or 1; <not> allowing temporary folds during numerical minimization (default = True)
+  -renormalize val	: val = 0 or 1; <not> renormalizing intensities
+  -aseg			: treating inputs as segmentations; no intenisty renormalization; log_likelihood = 0; distance transform coefficient (dtrans) = 1
+  -diag2 volname	: writing d2 diagnostics for input volume (*volname*)
+  -OPTIMAL		: using line search optimization (default = GCAM_INTEGRATE_BOTH)
+  -MOMENTUM		: using fixed time-step integration (default = GCAM_INTEGRATE_BOTH)
+  -FIXED		: using fixed time-step integration (default = GCAM_INTEGRATE_BOTH)
+  -distance val		: expanding border by *val* mm every outer cycle
+  -dtrans val		: setting distance transform coefficient to *val*
+  -match_peak		: matching peak of intensity ratio histogram
+  -erode val		: eroding source and target image *val* times before morphing
+  -match_mean val	: val = 0 or 1; <not> matching peak of intensity ratio histogram
+  -intensity val	: setting l_log_likelihood to *val* (default = 0.025)
+  -ll val		: setting l_log_likelihood to *val* (default = 0.025)
+  -noregrid		: disable regridding
+  -regrid		: enable regridding
+  -view Gx Gy Gz	: viewing voxel (Gx, Gy, Gz)
+  -levels val		: setting levels to *val* (default = 6)
+  -areasmoothness val	: setting l_area_smoothness to *val*
+  -asmooth val		: setting l_area_smoothness to *val*
+  -area val		: seeting l_area to *val*
+  -tol val		: setting tol to *val* (default = .1)
+  -sigma val		: seeting sigma to *val* (default = 8)
+  -min_sigma val	: setting minimum value for sigma to be *val* (default = .4)
+  -ribbon fname		: reading ribbon from *fname* and inserting into aseg
+  -rthresh val		: setting compression ratio threshold to *val*
+  -scale val		: scaling input values by *val*
+  -dt val		: setting dt to *val* (default = 0.005)
+  -passes	val	: integrating in *val* number of passes / go through all levels *val* number of times (default=3)
+  -skip val		: skipping *val* number of voxels in source data
+  -apply val		: val = 0 or 1; <not> applying transform after registration
+  -D val		: setting l_distance to *val* (default = 0)
+  -M val		: setting momentum to *val* (default = .9)
+  -N val		: setting number of iterations to *val* (default = 1000)
+  -s val		: setting l_smoothness to *val* (default = 2)
+  -T fname		: reading the forward transform / deformation from *fname*
+  -I fname		: reading the inverse of the transform / deformation in *fname* 
+  -B val		: setting l_binary to *val*
+  -J val		: setting l_jacobian to *val* (default = 1)
+  -Z val		: val = 0 or 1; <not> disabling zero image locations
+  -a val		: smoothing gradient with *val* number of averages
+  -K val		: setting exp_k to val (default=20.0)
+  -W val		: write diagnostics at each *val* iteration
+  -?			: print usage
+  -U			: print usage 
+
+=== Output of 'mri_nl_align' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_nl_align [options] <source> <target> <warp>
+
+Options:
+
+  -debug_voxel Gx Gy Gz
+  -debug_node Gx Gy Gz
+  -noneg val		: val = 0 or 1; <not> allowing temporary folds during numerical minimization (default = True)
+  -renormalize val	: val = 0 or 1; <not> renormalizing intensities
+  -aseg			: treating inputs as segmentations; no intenisty renormalization; log_likelihood = 0; distance transform coefficient (dtrans) = 1
+  -diag2 volname	: writing d2 diagnostics for input volume (*volname*)
+  -OPTIMAL		: using line search optimization (default = GCAM_INTEGRATE_BOTH)
+  -MOMENTUM		: using fixed time-step integration (default = GCAM_INTEGRATE_BOTH)
+  -FIXED		: using fixed time-step integration (default = GCAM_INTEGRATE_BOTH)
+  -distance val		: expanding border by *val* mm every outer cycle
+  -dtrans val		: setting distance transform coefficient to *val*
+  -match_peak		: matching peak of intensity ratio histogram
+  -erode val		: eroding source and target image *val* times before morphing
+  -match_mean val	: val = 0 or 1; <not> matching peak of intensity ratio histogram
+  -intensity val	: setting l_log_likelihood to *val* (default = 0.025)
+  -ll val		: setting l_log_likelihood to *val* (default = 0.025)
+  -noregrid		: disable regridding
+  -regrid		: enable regridding
+  -view Gx Gy Gz	: viewing voxel (Gx, Gy, Gz)
+  -levels val		: setting levels to *val* (default = 6)
+  -areasmoothness val	: setting l_area_smoothness to *val*
+  -asmooth val		: setting l_area_smoothness to *val*
+  -area val		: seeting l_area to *val*
+  -tol val		: setting tol to *val* (default = .1)
+  -sigma val		: seeting sigma to *val* (default = 8)
+  -min_sigma val	: setting minimum value for sigma to be *val* (default = .4)
+  -ribbon fname		: reading ribbon from *fname* and inserting into aseg
+  -rthresh val		: setting compression ratio threshold to *val*
+  -scale val		: scaling input values by *val*
+  -dt val		: setting dt to *val* (default = 0.005)
+  -passes	val	: integrating in *val* number of passes / go through all levels *val* number of times (default=3)
+  -skip val		: skipping *val* number of voxels in source data
+  -apply val		: val = 0 or 1; <not> applying transform after registration
+  -D val		: setting l_distance to *val* (default = 0)
+  -M val		: setting momentum to *val* (default = .9)
+  -N val		: setting number of iterations to *val* (default = 1000)
+  -s val		: setting l_smoothness to *val* (default = 2)
+  -T fname		: reading the forward transform / deformation from *fname*
+  -I fname		: reading the inverse of the transform / deformation in *fname* 
+  -B val		: setting l_binary to *val*
+  -J val		: setting l_jacobian to *val* (default = 1)
+  -Z val		: val = 0 or 1; <not> disabling zero image locations
+  -a val		: smoothing gradient with *val* number of averages
+  -K val		: setting exp_k to val (default=20.0)
+  -W val		: write diagnostics at each *val* iteration
+  -?			: print usage
+  -U			: print usage 

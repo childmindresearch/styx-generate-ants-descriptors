@@ -1,0 +1,81 @@
+
+=== Output of 'tbss_skeleton --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+tbss_skeleton (Version 1.03)
+Copyright(c) 2005-2007, University of Oxford (Stephen Smith)
+
+Usage: 
+tbss_skeleton -i <inputimage> -o <skeleton>
+tbss_skeleton -i <inputimage> -p <skel_thresh> <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata> [-a <alt_4D>] [-s <alt_skeleton>]}
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	output image
+	-p <skel_thresh> <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata>
+	-a	alternative 4Ddata (e.g. L1)
+	-s	alternative skeleton
+	-h,--help	display this message
+	-d,--debug	switch on debugging image outputs
+	-D,--debug2 <skelpoints>	de-project <skelpoints> points on skeleton back to all_FA space
+
+
+
+=== Output of 'tbss_skeleton -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+tbss_skeleton (Version 1.03)
+Copyright(c) 2005-2007, University of Oxford (Stephen Smith)
+
+Usage: 
+tbss_skeleton -i <inputimage> -o <skeleton>
+tbss_skeleton -i <inputimage> -p <skel_thresh> <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata> [-a <alt_4D>] [-s <alt_skeleton>]}
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	output image
+	-p <skel_thresh> <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata>
+	-a	alternative 4Ddata (e.g. L1)
+	-s	alternative skeleton
+	-h,--help	display this message
+	-d,--debug	switch on debugging image outputs
+	-D,--debug2 <skelpoints>	de-project <skelpoints> points on skeleton back to all_FA space
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'tbss_skeleton' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	input image
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+tbss_skeleton (Version 1.03)
+Copyright(c) 2005-2007, University of Oxford (Stephen Smith)
+
+Usage: 
+tbss_skeleton -i <inputimage> -o <skeleton>
+tbss_skeleton -i <inputimage> -p <skel_thresh> <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata> [-a <alt_4D>] [-s <alt_skeleton>]}
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	output image
+	-p <skel_thresh> <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata>
+	-a	alternative 4Ddata (e.g. L1)
+	-s	alternative skeleton
+	-h,--help	display this message
+	-d,--debug	switch on debugging image outputs
+	-D,--debug2 <skelpoints>	de-project <skelpoints> points on skeleton back to all_FA space
+
+

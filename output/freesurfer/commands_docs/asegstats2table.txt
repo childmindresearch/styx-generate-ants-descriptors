@@ -1,0 +1,275 @@
+
+=== Output of 'asegstats2table --help' ===
+
+Usage: 
+Converts a subcortical stats file created by recon-all and/or
+mri_segstats (eg, aseg.stats) into a table in which each line is a
+subject and each column is a segmentation ( there is an option to transpose that). 
+The values are the volume of the segmentation in mm3 or the mean intensity over the structure.
+The first row is a list of the segmentation names. The first column
+is the subject name. If the measure is volume, then the estimated
+intracranial volume (eTIV) is printed as the 2nd to last column 
+(if present in the input), and BrainSegVol is the last column.
+
+The subjects list can be specified in one of four ways:
+  1. Specify each subject after -s 
+  
+          -s subject1 -s subject2 ..
+  
+  2. specify all subjects after --subjects.  
+     --subjects does not have
+     to be the last argument. Eg:
+     
+          --subjects subject1 subject2 ... 
+
+  3. Specify each input file after -i 
+
+          -i subject1/stats/aseg.stats -i subject2/stat/aseg.stats ..
+  
+  4. Specify all the input stat files after --inputs. --inputs does not have
+     to be the last argument. Eg:
+       
+          --inputs subject1/stats/aseg.stats subject2/stats/aseg.stats ...
+
+The first two methods assume the freesurfer directory structure. The
+last two are general and can be used with any file produced by
+mri_segstats regardless of whether it was created with recon-all or not,
+however, the subject name is not printed in the file (just the row
+number). Note that the first two and last two are mutually exclusive. i.e
+don't specify --subjects when you are providing --inputs and vice versa.
+
+By default, the volume (mm3) of each segmentation is reported. This
+can be changed with '--meas measure', where measure can be 
+volume or mean. If mean, it reports the mean intensity value from
+the 6th column.
+
+By default, all segmentations found in the input stats file are
+reported. This can be changed by specifying the maximum segmentation
+number with --maxsegno. This can be convenient for removing
+segmentations that are always empty.
+
+With methods 1 and 2 above uses stats/aseg.stats by default. 
+This can be changed to subdir/statsfile with --subdir subdir
+--statsfile statsfile.
+
+The --common-segs flag outputs only the segmentations which are common to *all*
+the statsfiles. This option is helpful if one or more statsfile contains
+segmentations different from the segs of other files ( which results in the
+script exiting which is the default behavior ). This option makes the
+script to continue.
+
+The --all-segs flag outputs segmentations which are the union of all
+segmentations in all statsfiles. This option is helpful if one or more statsfile
+contains segs different from the segs of other files ( which results in the
+script exiting, the default behavior ). Subjects which don't have a certain
+segmentation show a value of 0.
+
+The --segids-from-file <file> option outputs only the segmentations present in the file.
+There has to be one segmentation id per line in the file. The output table will maintain the 
+order of the segmentation ids
+
+The --segno option outputs only the segmentation id requested.
+This is useful because if the number of segmentations is large,
+the table becomes huge.
+The order of the specified seg ids is maintained. 
+
+The --no-segno options doesn't output the segmentations. 
+This can be convenient for removing segs that are always empty.
+
+The --transpose flag writes the transpose of the table. 
+This might be a useful way to see the table when the number of subjects is
+relatively less than the number of segmentations.
+
+The --delimiter option controls what character comes between the measures
+in the table. Valid options are 'tab' ( default), 'space', 'comma' and  'semicolon'.
+
+The --skip option skips if it can't find a .stats file. Default behavior is
+exit the program.
+
+
+Options:
+  -h, --help            show this help message and exit
+  --subjects            (REQUIRED) subject1 <subject2 subject3..>
+  -s SUBJECTS            subjectname
+  --subjectsfile=SUBJECTSFILE
+                        name of the file which has the list of subjects ( one
+                        subject per line)
+  --qdec=QDEC           name of the qdec table which has the column of
+                        subjects ids (fsid)
+  --qdec-long=QDECLONG  name of the longitudinal qdec table which has the
+                        column of tp ids (fsid) and subject templates (fsid-
+                        base)
+  --fsgd=FSGD           name of the fsgd file to extract subjects from
+  --inputs               input1 <input2 input3..>
+  -i INPUTS              inputname
+  -t OUTPUTFILE, --tablefile=OUTPUTFILE
+                        (REQUIRED) the output tablefile
+  --sd=SUBJECTS_DIR     
+  -m MEAS, --meas=MEAS  measure: default is volume ( alt: mean, std)
+  --maxsegno=MAXSEGNO    input1 <input2 input3..>
+  --segids-from-file=SEGIDSFILE
+                        filename : output seg ids specified in the file
+  --segno               segno1 <segno2 segno3..> : only include given
+                        segmentation numbers
+  --no-segno            segno1 <segno2 segno3..> : exclude given segmentation
+                        numbers
+  --common-segs         output only the common segmentations of all the
+                        statsfiles given
+  --all-segs            output all the segmentations of the statsfiles given
+  --no-vol-extras       Do not include global volume measures like BrainSegVol
+  --stats=STATSFNAME    use `fname` instead of "aseg.stats"
+  --statsfile=STATSFNAME
+                        use `fname` instead of "aseg.stats"
+  --subdir=SUBDIR       use `subdir` instead of "stats/"
+  -d DELIMITER, --delimiter=DELIMITER
+                        delimiter between measures in the table. default is
+                        tab (alt comma, space, semicolon )
+  --transpose           transpose the table ( default is subjects in rows and
+                        segmentations in cols)
+  --etiv                report volume as percent estimated total intracranial
+                        volume
+  --skip                if a subject does not have stats file, skip it
+  -v, --debug           increase verbosity
+  --scale=SCALE         scale factor for all values written to outputfile,
+                        default value=1
+  --replace53           replace 5.3 structure names with later names
+
+=== Output of 'asegstats2table -help' ===
+
+Usage: 
+Converts a subcortical stats file created by recon-all and/or
+mri_segstats (eg, aseg.stats) into a table in which each line is a
+subject and each column is a segmentation ( there is an option to transpose that). 
+The values are the volume of the segmentation in mm3 or the mean intensity over the structure.
+The first row is a list of the segmentation names. The first column
+is the subject name. If the measure is volume, then the estimated
+intracranial volume (eTIV) is printed as the 2nd to last column 
+(if present in the input), and BrainSegVol is the last column.
+
+The subjects list can be specified in one of four ways:
+  1. Specify each subject after -s 
+  
+          -s subject1 -s subject2 ..
+  
+  2. specify all subjects after --subjects.  
+     --subjects does not have
+     to be the last argument. Eg:
+     
+          --subjects subject1 subject2 ... 
+
+  3. Specify each input file after -i 
+
+          -i subject1/stats/aseg.stats -i subject2/stat/aseg.stats ..
+  
+  4. Specify all the input stat files after --inputs. --inputs does not have
+     to be the last argument. Eg:
+       
+          --inputs subject1/stats/aseg.stats subject2/stats/aseg.stats ...
+
+The first two methods assume the freesurfer directory structure. The
+last two are general and can be used with any file produced by
+mri_segstats regardless of whether it was created with recon-all or not,
+however, the subject name is not printed in the file (just the row
+number). Note that the first two and last two are mutually exclusive. i.e
+don't specify --subjects when you are providing --inputs and vice versa.
+
+By default, the volume (mm3) of each segmentation is reported. This
+can be changed with '--meas measure', where measure can be 
+volume or mean. If mean, it reports the mean intensity value from
+the 6th column.
+
+By default, all segmentations found in the input stats file are
+reported. This can be changed by specifying the maximum segmentation
+number with --maxsegno. This can be convenient for removing
+segmentations that are always empty.
+
+With methods 1 and 2 above uses stats/aseg.stats by default. 
+This can be changed to subdir/statsfile with --subdir subdir
+--statsfile statsfile.
+
+The --common-segs flag outputs only the segmentations which are common to *all*
+the statsfiles. This option is helpful if one or more statsfile contains
+segmentations different from the segs of other files ( which results in the
+script exiting which is the default behavior ). This option makes the
+script to continue.
+
+The --all-segs flag outputs segmentations which are the union of all
+segmentations in all statsfiles. This option is helpful if one or more statsfile
+contains segs different from the segs of other files ( which results in the
+script exiting, the default behavior ). Subjects which don't have a certain
+segmentation show a value of 0.
+
+The --segids-from-file <file> option outputs only the segmentations present in the file.
+There has to be one segmentation id per line in the file. The output table will maintain the 
+order of the segmentation ids
+
+The --segno option outputs only the segmentation id requested.
+This is useful because if the number of segmentations is large,
+the table becomes huge.
+The order of the specified seg ids is maintained. 
+
+The --no-segno options doesn't output the segmentations. 
+This can be convenient for removing segs that are always empty.
+
+The --transpose flag writes the transpose of the table. 
+This might be a useful way to see the table when the number of subjects is
+relatively less than the number of segmentations.
+
+The --delimiter option controls what character comes between the measures
+in the table. Valid options are 'tab' ( default), 'space', 'comma' and  'semicolon'.
+
+The --skip option skips if it can't find a .stats file. Default behavior is
+exit the program.
+
+
+Options:
+  -h, --help            show this help message and exit
+  --subjects            (REQUIRED) subject1 <subject2 subject3..>
+  -s SUBJECTS            subjectname
+  --subjectsfile=SUBJECTSFILE
+                        name of the file which has the list of subjects ( one
+                        subject per line)
+  --qdec=QDEC           name of the qdec table which has the column of
+                        subjects ids (fsid)
+  --qdec-long=QDECLONG  name of the longitudinal qdec table which has the
+                        column of tp ids (fsid) and subject templates (fsid-
+                        base)
+  --fsgd=FSGD           name of the fsgd file to extract subjects from
+  --inputs               input1 <input2 input3..>
+  -i INPUTS              inputname
+  -t OUTPUTFILE, --tablefile=OUTPUTFILE
+                        (REQUIRED) the output tablefile
+  --sd=SUBJECTS_DIR     
+  -m MEAS, --meas=MEAS  measure: default is volume ( alt: mean, std)
+  --maxsegno=MAXSEGNO    input1 <input2 input3..>
+  --segids-from-file=SEGIDSFILE
+                        filename : output seg ids specified in the file
+  --segno               segno1 <segno2 segno3..> : only include given
+                        segmentation numbers
+  --no-segno            segno1 <segno2 segno3..> : exclude given segmentation
+                        numbers
+  --common-segs         output only the common segmentations of all the
+                        statsfiles given
+  --all-segs            output all the segmentations of the statsfiles given
+  --no-vol-extras       Do not include global volume measures like BrainSegVol
+  --stats=STATSFNAME    use `fname` instead of "aseg.stats"
+  --statsfile=STATSFNAME
+                        use `fname` instead of "aseg.stats"
+  --subdir=SUBDIR       use `subdir` instead of "stats/"
+  -d DELIMITER, --delimiter=DELIMITER
+                        delimiter between measures in the table. default is
+                        tab (alt comma, space, semicolon )
+  --transpose           transpose the table ( default is subjects in rows and
+                        segmentations in cols)
+  --etiv                report volume as percent estimated total intracranial
+                        volume
+  --skip                if a subject does not have stats file, skip it
+  -v, --debug           increase verbosity
+  --scale=SCALE         scale factor for all values written to outputfile,
+                        default value=1
+  --replace53           replace 5.3 structure names with later names
+
+=== Output of 'asegstats2table' (no arguments) ===
+
+ERROR: Specify one of --subjects, --inputs, --subjectsfile --qdec or --qdec-long
+       or run with --help for help.

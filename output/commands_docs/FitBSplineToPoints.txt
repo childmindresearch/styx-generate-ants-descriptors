@@ -1,5 +1,0 @@
-Usage: FitBSplineToPoints pointDimension inputLandmarksFile  [order=3] [nlevels=10]  [numberOfControlPoints=4] [sampleSpacing=0.001] [closed?=0]
-Usage 2: FitBSplineToPoints pointDimension inputPointFile inputDisplacementFile  domainImage outputDisplacementField controlPointMeshSize [nlevels=1]
-  Note:  1. Points are assumed to be parametrically ordered for fitting to a curve. 
-         2. The last column (pointDimension+1) is used for weights.
-         3. To specify a warp field, add a 'w' to the dimension argument, e.g. 2w.

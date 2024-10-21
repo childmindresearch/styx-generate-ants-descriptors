@@ -1,0 +1,12 @@
+
+=== Output of 'help_xml_validate --help' ===
+
+ls: No match.
+
+=== Output of 'help_xml_validate -help' ===
+
+ls: No match.
+
+=== Output of 'help_xml_validate' (no arguments) ===
+
+ls: No match.

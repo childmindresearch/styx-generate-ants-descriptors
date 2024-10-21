@@ -1,0 +1,65 @@
+
+=== Output of 'ccops --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+ccops
+
+Usage: 
+
+
+Compulsory arguments (You MUST set one or more of):
+	-b,--basename	Output basename
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	-i,--in	input matrix
+	-d,--dir	Tractography Results Directory
+	-x	exclusion mask (in tract space)
+	--r1	do seedspace reordering (default no)
+	--r2	do tractspace reordering (default no)
+	--tractreord	propagate seed reordering onto tract space
+	--con	add connexity constraint - value between 0 and 1 (0 is no constraint). default=0
+	--bin	binarise at (default 0 - no binarisation)
+	-p,--power	power to raise the correlation matrix to (default 1)
+	-m,--mask	brain mask used to output the clustered roi mask (not necessary if --dir set)
+	-s,--scheme	Reordering algorithm. Can be either spectral (default) or kmeans or fuzzy
+	-k,--nclusters	Number of clusters to be used in kmeans or fuzzy
+
+
+
+=== Output of 'ccops -help' ===
+
+terminate called after throwing an instance of 'Utilities::X_OptionError'
+  what():  -e: Option doesn't exist!
+timeout: the monitored command dumped core
+
+=== Output of 'ccops' (no arguments) ===
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+ccops
+
+Usage: 
+
+
+Compulsory arguments (You MUST set one or more of):
+	-b,--basename	Output basename
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	-i,--in	input matrix
+	-d,--dir	Tractography Results Directory
+	-x	exclusion mask (in tract space)
+	--r1	do seedspace reordering (default no)
+	--r2	do tractspace reordering (default no)
+	--tractreord	propagate seed reordering onto tract space
+	--con	add connexity constraint - value between 0 and 1 (0 is no constraint). default=0
+	--bin	binarise at (default 0 - no binarisation)
+	-p,--power	power to raise the correlation matrix to (default 1)
+	-m,--mask	brain mask used to output the clustered roi mask (not necessary if --dir set)
+	-s,--scheme	Reordering algorithm. Can be either spectral (default) or kmeans or fuzzy
+	-k,--nclusters	Number of clusters to be used in kmeans or fuzzy
+
+

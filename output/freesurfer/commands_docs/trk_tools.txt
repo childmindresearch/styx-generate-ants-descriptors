@@ -1,0 +1,25 @@
+
+=== Output of 'trk_tools --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/trk_tools -i referenceImage -f input.trk[options]
+ -o output.trk: output trk
+ -e output.nii.gz: export trk into an image
+ -u :update trk header with reference image
+ -v output.vtk: outputs streamlines in vtk format 
+
+=== Output of 'trk_tools -help' ===
+
+terminate called after throwing an instance of 'itk::ImageFileReaderException'
+  what():  /usr/pubsw/packages/itk/4.13.2_centos8/include/ITK-4.13/itkImageFileReader.hxx:87:
+FileName must be specified
+timeout: the monitored command dumped core
+
+=== Output of 'trk_tools' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/trk_tools -i referenceImage -f input.trk[options]
+ -o output.trk: output trk
+ -e output.nii.gz: export trk into an image
+ -u :update trk header with reference image
+ -v output.vtk: outputs streamlines in vtk format 

@@ -1,0 +1,64 @@
+
+=== Output of '@djunct_slice_space --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of '@djunct_slice_space -help' ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+Just a tiny adjunct program for @chauffeur_afni.
+
+Small program to calculate how to evenly space a certain number of
+slices within each view plane of a dset.  Returns three numbers: the
+'delta slices' in the three view planes (in the order of the input
+dset's orientation).
+
+++ constructed by PA Taylor (NIMH, NIH, USA).
+
+# =========================================================================
+
+COMMAND OPTIONS ~1~
+
+-help, -h          :see helpfile (here!)
+-ver               :see version number
+
+-inset   UUU       :name of input dset (req).
+
+-nwin    NN        :number of windows (i.e., slices) that you want
+                    across each view plane (req).
+
+
+=== Output of '@djunct_slice_space' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+Just a tiny adjunct program for @chauffeur_afni.
+
+Small program to calculate how to evenly space a certain number of
+slices within each view plane of a dset.  Returns three numbers: the
+'delta slices' in the three view planes (in the order of the input
+dset's orientation).
+
+++ constructed by PA Taylor (NIMH, NIH, USA).
+
+# =========================================================================
+
+COMMAND OPTIONS ~1~
+
+-help, -h          :see helpfile (here!)
+-ver               :see version number
+
+-inset   UUU       :name of input dset (req).
+
+-nwin    NN        :number of windows (i.e., slices) that you want
+                    across each view plane (req).
+

@@ -1,0 +1,317 @@
+
+=== Output of 'mri_synthmorph --help' ===
+
+mri_synthmorph
+
+NAME
+        mri_synthmorph - register a landscape of unprocessed 3D brain images
+
+SYNOPSIS
+        mri_synthmorph [OPTIONS] MOVING FIXED
+
+DESCRIPTION
+        SynthMorph is an easy-to-use deep-learning (DL) tool for brain-specific
+        registration of images without preprocessing right off the MRI scanner.
+        In contrast to registration methods which are agnostic to the anatomy,
+        SynthMorph can distinguish between anatomy of interest and irrelevant
+        structures, removing the need for preprocessing to exclude content that
+        would otherwise reduce the accuracy of anatomy-specific registration.
+
+ARGUMENTS
+        MOVING
+                Moving input image. See IMAGE FORMAT.
+
+        FIXED
+                Fixed input image. See IMAGE FORMAT.
+
+OPTIONS
+        -o, --moved MOVED
+                Moved output image. See IMAGE FORMAT.
+
+        -t, --trans TRANS
+                Output transform. A text file for linear or an image file for
+                deformable registration, including any initialization. See
+                TRANSFORMS.
+
+        -H, --header-only
+                Set the output image orientation by adapting the voxel-to-world
+                matrix instead of resampling. For linear registration only.
+
+        -m, --model MODEL
+                Transformation model ('deform', 'affine', 'rigid'). Defaults to
+                'deform'. Rigid is experimental.
+
+        -i, --init INIT
+                Linear transform to initialize with. See TRANSFORMS.
+
+        -j, --threads THREADS
+                Number of TensorFlow threads. Defaults to the number of cores.
+
+        -g, --gpu
+                Instead of the CPU, use the GPU specified by environment
+                variable CUDA_VISIBLE_DEVICES or GPU 0 if unset or empty.
+
+        -s, --smooth SMOOTH
+                Regularization parameter for deformable registration (1,).
+                Higher values mean smoother displacement fields. Defaults to 1.
+
+        -e, --extent EXTENT
+                Isotropic extent of the registration space in unit voxels (192,
+                256). Lower values can improve speed and memory usage but may
+                crop the anatomy of interest. Defaults to 256.
+
+        -w, --weights WEIGHTS
+                Alternative model weights as an H5 file. The weights have to
+                match the architecture of the specified registration model.
+
+        --inspect DIR
+                Save model inputs resampled into network space for inspection.
+                Files existing in the folder may be overwritten.
+
+        -h, --help
+                Print this help text and exit.
+
+IMAGE FORMAT
+        The registration networks expect input images of cubic shape with
+        isotropic 1-mm voxels min-max normalized into the interval [0, 1]. They
+        also assume that the axes of the image-data array have approximate LIA
+        orientation (left-inferior-anterior).
+
+        Internally, the model converts images to LIA orientation based on the
+        image-to-world matrices in their headers. This conversion assumes HFS
+        (head-first-supine) subject positioning in the scanner. In other words,
+        the brain must show the correct anatomical orientation in FreeView.
+
+        Acceptable image formats are those supported by NiBabel and include: MGH
+        format (.mgz) and NIfTI (.nii.gz, .nii). The model supports three-
+        dimensional images with a single frame.
+
+TRANSFORMS
+        The output transforms of this script are defined in physical RAS space,
+        transforming world coordinates of the fixed image to the moving image.
+        Likewise, we will assume that any linear transform passed to initialize
+        the registration operates in RAS space. We save linear transforms as a
+        4-by-4 matrix in text format and non-linear displacements fields as a
+        vector image. See IMAGE FORMAT.
+
+        For converting, concatenating, and applying transforms to other images,
+        consider the FreeSurfer tools listed under SEE ALSO.
+
+EXAMPLES
+        Deformable registration:
+                mri_synthmorph -t def.mgz mov.nii.gz fix.nii
+
+        Rigid registration:
+                mri_synthmorph -m rigid -t rig.txt mov.mgz fix.mgz
+
+        Affine registration updating only the output image header:
+                mri_synthmorph -m affine --header-only -o out.mgz mov.mgz
+                fix.mgz
+
+        Initialize deformable registration with an affine transform:
+                mri_synthmorph -i aff.txt -t def.nii.gz mov.mgz fix.mgz
+
+SEE ALSO
+        Useful FreeSurfer tools for applying and manipulating transforms
+        include: mri_concatenate_lta, mri_concatenate_gcam, mri_warp_convert,
+        lta_convert, mri_convert, mri_info.
+
+        Convert a linear transform to FreeSurfer's LTA format:
+                lta_convert --src mov.mgz --trg fix.nii.gz --inras aff.txt
+                --outlta aff.lta
+
+        Apply an LTA to another image:
+                mri_convert -at aff.lta in.mgz out.mgz
+
+        Convert a deformable transform to FreeSurfer's GCAM format (.m3z):
+                mri_warp_convert -g mov.mgz --inras def.mgz --outm3z def.m3z
+
+        Apply a GCAM (.m3z) to another image:
+                mri_convert -at def.m3z in.nii.gz out.nii.gz
+
+BUGS
+        Report bugs to freesurfer@nmr.mgh.harvard.edu or at
+        https://github.com/freesurfer/freesurfer/issues.
+
+REFERENCES
+        If you use SynthMorph in a publication, please cite:
+
+        Hoffmann M, Billot B, Greve DN, Iglesias JE, Fischl B, Dalca AV
+        SynthMorph: learning contrast-invariant registration without acquired
+        images
+        IEEE Transactions on Medical Imaging, 41 (3), 543-558, 2022
+        https://doi.org/10.1109/TMI.2021.3116879
+
+        Website: https://w3id.org/synthmorph
+
+
+=== Output of 'mri_synthmorph -help' ===
+
+usage: mri_synthmorph [-h] [-o MOVED] [-t TRANS] [-H] [-i TRANS] [-j THREADS]
+                      [-g] [-s {1}] [-e {192,256}] [-m {deform,affine,rigid}]
+                      [-w WEIGHTS] [--inspect OUT_DIR]
+                      MOVING FIXED
+
+positional arguments:
+  MOVING
+  FIXED
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o MOVED, --moved MOVED
+  -t TRANS, --trans TRANS
+  -H, --header-only
+  -i TRANS, --init TRANS
+  -j THREADS, --threads THREADS
+  -g, --gpu
+  -s {1}, --smooth {1}
+  -e {192,256}, --extent {192,256}
+  -m {deform,affine,rigid}, --model {deform,affine,rigid}
+  -w WEIGHTS, --weights WEIGHTS
+  --inspect OUT_DIR
+
+=== Output of 'mri_synthmorph' (no arguments) ===
+
+mri_synthmorph
+
+NAME
+        mri_synthmorph - register a landscape of unprocessed 3D brain images
+
+SYNOPSIS
+        mri_synthmorph [OPTIONS] MOVING FIXED
+
+DESCRIPTION
+        SynthMorph is an easy-to-use deep-learning (DL) tool for brain-specific
+        registration of images without preprocessing right off the MRI scanner.
+        In contrast to registration methods which are agnostic to the anatomy,
+        SynthMorph can distinguish between anatomy of interest and irrelevant
+        structures, removing the need for preprocessing to exclude content that
+        would otherwise reduce the accuracy of anatomy-specific registration.
+
+ARGUMENTS
+        MOVING
+                Moving input image. See IMAGE FORMAT.
+
+        FIXED
+                Fixed input image. See IMAGE FORMAT.
+
+OPTIONS
+        -o, --moved MOVED
+                Moved output image. See IMAGE FORMAT.
+
+        -t, --trans TRANS
+                Output transform. A text file for linear or an image file for
+                deformable registration, including any initialization. See
+                TRANSFORMS.
+
+        -H, --header-only
+                Set the output image orientation by adapting the voxel-to-world
+                matrix instead of resampling. For linear registration only.
+
+        -m, --model MODEL
+                Transformation model ('deform', 'affine', 'rigid'). Defaults to
+                'deform'. Rigid is experimental.
+
+        -i, --init INIT
+                Linear transform to initialize with. See TRANSFORMS.
+
+        -j, --threads THREADS
+                Number of TensorFlow threads. Defaults to the number of cores.
+
+        -g, --gpu
+                Instead of the CPU, use the GPU specified by environment
+                variable CUDA_VISIBLE_DEVICES or GPU 0 if unset or empty.
+
+        -s, --smooth SMOOTH
+                Regularization parameter for deformable registration (1,).
+                Higher values mean smoother displacement fields. Defaults to 1.
+
+        -e, --extent EXTENT
+                Isotropic extent of the registration space in unit voxels (192,
+                256). Lower values can improve speed and memory usage but may
+                crop the anatomy of interest. Defaults to 256.
+
+        -w, --weights WEIGHTS
+                Alternative model weights as an H5 file. The weights have to
+                match the architecture of the specified registration model.
+
+        --inspect DIR
+                Save model inputs resampled into network space for inspection.
+                Files existing in the folder may be overwritten.
+
+        -h, --help
+                Print this help text and exit.
+
+IMAGE FORMAT
+        The registration networks expect input images of cubic shape with
+        isotropic 1-mm voxels min-max normalized into the interval [0, 1]. They
+        also assume that the axes of the image-data array have approximate LIA
+        orientation (left-inferior-anterior).
+
+        Internally, the model converts images to LIA orientation based on the
+        image-to-world matrices in their headers. This conversion assumes HFS
+        (head-first-supine) subject positioning in the scanner. In other words,
+        the brain must show the correct anatomical orientation in FreeView.
+
+        Acceptable image formats are those supported by NiBabel and include: MGH
+        format (.mgz) and NIfTI (.nii.gz, .nii). The model supports three-
+        dimensional images with a single frame.
+
+TRANSFORMS
+        The output transforms of this script are defined in physical RAS space,
+        transforming world coordinates of the fixed image to the moving image.
+        Likewise, we will assume that any linear transform passed to initialize
+        the registration operates in RAS space. We save linear transforms as a
+        4-by-4 matrix in text format and non-linear displacements fields as a
+        vector image. See IMAGE FORMAT.
+
+        For converting, concatenating, and applying transforms to other images,
+        consider the FreeSurfer tools listed under SEE ALSO.
+
+EXAMPLES
+        Deformable registration:
+                mri_synthmorph -t def.mgz mov.nii.gz fix.nii
+
+        Rigid registration:
+                mri_synthmorph -m rigid -t rig.txt mov.mgz fix.mgz
+
+        Affine registration updating only the output image header:
+                mri_synthmorph -m affine --header-only -o out.mgz mov.mgz
+                fix.mgz
+
+        Initialize deformable registration with an affine transform:
+                mri_synthmorph -i aff.txt -t def.nii.gz mov.mgz fix.mgz
+
+SEE ALSO
+        Useful FreeSurfer tools for applying and manipulating transforms
+        include: mri_concatenate_lta, mri_concatenate_gcam, mri_warp_convert,
+        lta_convert, mri_convert, mri_info.
+
+        Convert a linear transform to FreeSurfer's LTA format:
+                lta_convert --src mov.mgz --trg fix.nii.gz --inras aff.txt
+                --outlta aff.lta
+
+        Apply an LTA to another image:
+                mri_convert -at aff.lta in.mgz out.mgz
+
+        Convert a deformable transform to FreeSurfer's GCAM format (.m3z):
+                mri_warp_convert -g mov.mgz --inras def.mgz --outm3z def.m3z
+
+        Apply a GCAM (.m3z) to another image:
+                mri_convert -at def.m3z in.nii.gz out.nii.gz
+
+BUGS
+        Report bugs to freesurfer@nmr.mgh.harvard.edu or at
+        https://github.com/freesurfer/freesurfer/issues.
+
+REFERENCES
+        If you use SynthMorph in a publication, please cite:
+
+        Hoffmann M, Billot B, Greve DN, Iglesias JE, Fischl B, Dalca AV
+        SynthMorph: learning contrast-invariant registration without acquired
+        images
+        IEEE Transactions on Medical Imaging, 41 (3), 543-558, 2022
+        https://doi.org/10.1109/TMI.2021.3116879
+
+        Website: https://w3id.org/synthmorph
+

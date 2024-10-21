@@ -1,0 +1,31 @@
+
+=== Output of 'im2niml --help' ===
+
+
+** Error: Failed parsing data row 0 of 1D file '--help'
+          Check for illegal non-numeric characters in:
+          'v R'
+          You can have text entries set to 0 with -ok_1D_text or by 
+          setting environment variable AFNI_1D_ZERO_TEXT to YES.
+[7m** ERROR:[0m mri_read: do not recognize image file --help
+[7m** ERROR:[0m           -- FWIW: length seen as 1716 bytes
+[7m** ERROR:[0m Can't read file --help
+++ Wrote 0 bytes to stdout
+
+=== Output of 'im2niml -help' ===
+
+Usage: im2niml imagefile [imagefile ...]
+Converts the input image(s) to a text-based NIML element
+and writes the result to stdout.  Sample usage:
+ aiv -p 4444 &
+ im2niml zork.jpg | nicat tcp:localhost:4444
+-- Author: RW Cox.
+
+=== Output of 'im2niml' (no arguments) ===
+
+Usage: im2niml imagefile [imagefile ...]
+Converts the input image(s) to a text-based NIML element
+and writes the result to stdout.  Sample usage:
+ aiv -p 4444 &
+ im2niml zork.jpg | nicat tcp:localhost:4444
+-- Author: RW Cox.

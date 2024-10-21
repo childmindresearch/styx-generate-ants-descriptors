@@ -1,0 +1,147 @@
+
+=== Output of '3dCompareAffine --help' ===
+
+[7m** FATAL ERROR:[0m Don't understand option '--help'
+** Program compile date = Sep 12 2024
+
+=== Output of '3dCompareAffine -help' ===
+
+
+Usage: 3dCompareAffine [options]   ~1
+
+This program compares two (or more) affine spatial transformations
+on a dataset, and outputs various measurements of how much these
+transformations differ in spatial displacements.
+
+One use for this program is to compare affine alignment matrices
+from different methods for aligning 3D brain images.
+
+Transformation matrices are specified in a few different ways:
+  * ASCII filename containing 12 numbers arranged in 3 lines:
+     u11 u12 u13 v1
+     u21 u22 u23 v2
+     u31 u32 u33 v3
+  * ASCII filename containing with 12 numbers in a single line:
+     u11 u12 u13 v1 u21 u22 u23 v2 u31 u32 u33 v3
+    This is the '.aff12.1D' format output by 3dAllineate,
+    and this is the only format that can contain more than
+    one matrix in one file.
+  * Directly on the command line:
+     'MATRIX(u11,u12,u13,v1,u21,u22,u23,v2,u31,u32,u33,v3)'
+
+-------
+Options
+-------
+-mask mmm    = Read in dataset 'mmm' and use non-zero voxels
+               as the region over which to compare the two
+               affine transformations.
+              * You can specify the use of the MNI152 built-in template
+                mask by '-mask MNI152'.
+              * In the future, perhaps other built-in masks will be created?
+ *OR*
+-dset ddd    = Read in dataset 'mmm', compute an automask from
+               it (via program 3dAutomask), and use that mask
+               as the spatial region for comparison.
+              * If you don't give EITHER '-mask' or '-dset', then
+                this program will use an internal mask derived from
+                the MNI152 template (skull off).
+
+-affine aaa  = Input an affine transformation (file or 'MATRIX').
+ *OR*         * You can give more than one '-affine' option to
+-matrix aaa     input multiple files.
+              * You can also put multiple filenames after the
+                '-affine' option, as in '-affine aaa.aff12.1D bbb.aff12.1D'
+              * The first matrix found in the first '-affine' option
+                is the base transformation to which all following
+                transformations will be compared.
+------
+Method
+------
+1) The input mask is hollowed out -- that is, all nonzero mask voxels that
+    do NOT neighbor a zero voxel are turned to zero. Thus, only the 'edge'
+    voxels are used in the computations below. For example, the default
+    MNI152 mask has 1818562 nonzero voxels before hollowing out, and
+    has 74668 after hollowing out. The hollowing out algorithm is described
+    in the help for program 3dAutomask.
+2) For each surviving voxel, the xyz coordinates are calculated and then
+   transformed by the pair of matrices being compared. Then the Euclidean
+   distance between these two sets of transformed xyz vectors is calculated.
+   The outputs for each comparison are the maximum distance and the
+   root-mean-square (RMS) distance, over the set of hollowed out mask voxels.
+
+The purpose of this program is to compare the results from 3dAllineate
+and other registration programs, run under different conditions.
+
+-- Author: RWCox - Mar 2020 at the Tulsa bootcamp
+
+
+=== Output of '3dCompareAffine' (no arguments) ===
+
+
+Usage: 3dCompareAffine [options]   ~1
+
+This program compares two (or more) affine spatial transformations
+on a dataset, and outputs various measurements of how much these
+transformations differ in spatial displacements.
+
+One use for this program is to compare affine alignment matrices
+from different methods for aligning 3D brain images.
+
+Transformation matrices are specified in a few different ways:
+  * ASCII filename containing 12 numbers arranged in 3 lines:
+     u11 u12 u13 v1
+     u21 u22 u23 v2
+     u31 u32 u33 v3
+  * ASCII filename containing with 12 numbers in a single line:
+     u11 u12 u13 v1 u21 u22 u23 v2 u31 u32 u33 v3
+    This is the '.aff12.1D' format output by 3dAllineate,
+    and this is the only format that can contain more than
+    one matrix in one file.
+  * Directly on the command line:
+     'MATRIX(u11,u12,u13,v1,u21,u22,u23,v2,u31,u32,u33,v3)'
+
+-------
+Options
+-------
+-mask mmm    = Read in dataset 'mmm' and use non-zero voxels
+               as the region over which to compare the two
+               affine transformations.
+              * You can specify the use of the MNI152 built-in template
+                mask by '-mask MNI152'.
+              * In the future, perhaps other built-in masks will be created?
+ *OR*
+-dset ddd    = Read in dataset 'mmm', compute an automask from
+               it (via program 3dAutomask), and use that mask
+               as the spatial region for comparison.
+              * If you don't give EITHER '-mask' or '-dset', then
+                this program will use an internal mask derived from
+                the MNI152 template (skull off).
+
+-affine aaa  = Input an affine transformation (file or 'MATRIX').
+ *OR*         * You can give more than one '-affine' option to
+-matrix aaa     input multiple files.
+              * You can also put multiple filenames after the
+                '-affine' option, as in '-affine aaa.aff12.1D bbb.aff12.1D'
+              * The first matrix found in the first '-affine' option
+                is the base transformation to which all following
+                transformations will be compared.
+------
+Method
+------
+1) The input mask is hollowed out -- that is, all nonzero mask voxels that
+    do NOT neighbor a zero voxel are turned to zero. Thus, only the 'edge'
+    voxels are used in the computations below. For example, the default
+    MNI152 mask has 1818562 nonzero voxels before hollowing out, and
+    has 74668 after hollowing out. The hollowing out algorithm is described
+    in the help for program 3dAutomask.
+2) For each surviving voxel, the xyz coordinates are calculated and then
+   transformed by the pair of matrices being compared. Then the Euclidean
+   distance between these two sets of transformed xyz vectors is calculated.
+   The outputs for each comparison are the maximum distance and the
+   root-mean-square (RMS) distance, over the set of hollowed out mask voxels.
+
+The purpose of this program is to compare the results from 3dAllineate
+and other registration programs, run under different conditions.
+
+-- Author: RWCox - Mar 2020 at the Tulsa bootcamp
+

@@ -1,0 +1,94 @@
+
+=== Output of 'mri_compute_volume_fractions --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_compute_volume_fractions 
+
+   --o   outstem : output will be oustem.{cortex,subcort_gm,wm,csf}.mgz
+   --reg regfile : can be LTA or reg.dat (if reg.dat, then need template volume)
+   --regheader subject
+
+   --usf USF : set anatomical upsample factor (default 2)
+   --r res   : resolution, sets USF = round(1/res)
+   --resmm resmm : set functional upsampling resolution (default is aseg->xsize/(USF))
+   --seg  segfile : use segfile instead of aseg.mgz
+   --wsurf wsurf : white surface (default is white)
+   --psurf psurf : pial surface (default is pial)
+   --no-aseg : do not include aseg (good for testing)
+   --stack stackfile : put ctx,subcortgm,wm,csf into a single multi-frame file
+   --gm gmfile : put ctx+subcortgm into a single-frame file
+   --no-fill-csf : do not attempt to fill voxels surrounding seg with the extracerebral CSF segmetation 
+     Note: when the fill is done, there is no attempt to actually segment xCSF voxels.
+     The passed segmentation is dilated and the new voxels become xCSF
+     Note: if the passed seg already has the CSF_ExtraCerebral seg, nothing will be done
+   --dil N : for xCSF fill, dilate by N (default is 3); use -1 to fill the entire volume 
+   --out-seg outseg : save seg (after adding xcsf voxels)
+   --ttseg ttseg : save tissue type segmentation (probably not that useful)
+   --ttseg-ctab ctab : save tissue type segmentation ctab (probably not that useful)
+
+   --mgz    : use mgz format (default)
+   --mgh    : use mgh format
+   --nii    : use nii format
+   --nii.gz : use nii.gz format
+   --ttype+head : use default+head instead of default tissue type info for seg
+
+   --vg-thresh thrshold : threshold for  'ERROR: LTAconcat(): LTAs 0 and 1 do not match'
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+Computes partial volume fractions for cortex, subcortical GM, WM and CSF
+
+Example
+   mri_compute_volume_fractions --nii.gz --reg reg.lta --usf 3 --o pvf.
+This will create files called pvf.{cortex,subcort_gm,wm,csf}.nii.gz
+The value at each voxel will be between 0 and 1 and represent the fraction of 
+the given tissue type
+
+=== Output of 'mri_compute_volume_fractions -help' ===
+
+Setting registration file to -help
+ERROR: no output specified
+
+=== Output of 'mri_compute_volume_fractions' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_compute_volume_fractions 
+
+   --o   outstem : output will be oustem.{cortex,subcort_gm,wm,csf}.mgz
+   --reg regfile : can be LTA or reg.dat (if reg.dat, then need template volume)
+   --regheader subject
+
+   --usf USF : set anatomical upsample factor (default 2)
+   --r res   : resolution, sets USF = round(1/res)
+   --resmm resmm : set functional upsampling resolution (default is aseg->xsize/(USF))
+   --seg  segfile : use segfile instead of aseg.mgz
+   --wsurf wsurf : white surface (default is white)
+   --psurf psurf : pial surface (default is pial)
+   --no-aseg : do not include aseg (good for testing)
+   --stack stackfile : put ctx,subcortgm,wm,csf into a single multi-frame file
+   --gm gmfile : put ctx+subcortgm into a single-frame file
+   --no-fill-csf : do not attempt to fill voxels surrounding seg with the extracerebral CSF segmetation 
+     Note: when the fill is done, there is no attempt to actually segment xCSF voxels.
+     The passed segmentation is dilated and the new voxels become xCSF
+     Note: if the passed seg already has the CSF_ExtraCerebral seg, nothing will be done
+   --dil N : for xCSF fill, dilate by N (default is 3); use -1 to fill the entire volume 
+   --out-seg outseg : save seg (after adding xcsf voxels)
+   --ttseg ttseg : save tissue type segmentation (probably not that useful)
+   --ttseg-ctab ctab : save tissue type segmentation ctab (probably not that useful)
+
+   --mgz    : use mgz format (default)
+   --mgh    : use mgh format
+   --nii    : use nii format
+   --nii.gz : use nii.gz format
+   --ttype+head : use default+head instead of default tissue type info for seg
+
+   --vg-thresh thrshold : threshold for  'ERROR: LTAconcat(): LTAs 0 and 1 do not match'
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

@@ -1,0 +1,69 @@
+
+=== Output of 'cblumwmgyri --help' ===
+
+
+cblumwmgyri --s subject
+  --seg source seg (default aparc+aseg.mgz)
+  --n nerodes/dilates (default 2)
+  --o outseg (default sourceseg+cblumwmgyri.mgz)
+  --no-segstats : do not compute segstats
+  --sd SUBJECS_DIR
+
+cblumwmgyri 7.4.1
+
+This script segments cerebellar WM into gyral and core components
+using geometrical constaints.  The input seg (default aparc+aseg.mgz)
+must have cerebellum segmented into cortex and WM. The output will
+have cortex, core WM, and gyral WM.  The core WM will have IDs 7 and
+46 (for left and right) and a gyral segmentation (690 and 691). None
+of the other segmentations, including cerebellar GM, will be affected.
+
+The geometrical constraints are just taking the cerebellum WM and eroding
+it by N voxels, then dilating it by N voxels to give the core. The gyri
+are anthing in the orginal WM segmentation but not in the core and
+in the cerebellum GM when dilated by N. N is controlled by --n.
+
+Example:
+
+cblumwmgyri --s bert
+
+
+=== Output of 'cblumwmgyri -help' ===
+
+
+cblumwmgyri --s subject
+  --seg source seg (default aparc+aseg.mgz)
+  --n nerodes/dilates (default 2)
+  --o outseg (default sourceseg+cblumwmgyri.mgz)
+  --no-segstats : do not compute segstats
+  --sd SUBJECS_DIR
+
+cblumwmgyri 7.4.1
+
+This script segments cerebellar WM into gyral and core components
+using geometrical constaints.  The input seg (default aparc+aseg.mgz)
+must have cerebellum segmented into cortex and WM. The output will
+have cortex, core WM, and gyral WM.  The core WM will have IDs 7 and
+46 (for left and right) and a gyral segmentation (690 and 691). None
+of the other segmentations, including cerebellar GM, will be affected.
+
+The geometrical constraints are just taking the cerebellum WM and eroding
+it by N voxels, then dilating it by N voxels to give the core. The gyri
+are anthing in the orginal WM segmentation but not in the core and
+in the cerebellum GM when dilated by N. N is controlled by --n.
+
+Example:
+
+cblumwmgyri --s bert
+
+
+=== Output of 'cblumwmgyri' (no arguments) ===
+
+
+cblumwmgyri --s subject
+  --seg source seg (default aparc+aseg.mgz)
+  --n nerodes/dilates (default 2)
+  --o outseg (default sourceseg+cblumwmgyri.mgz)
+  --no-segstats : do not compute segstats
+  --sd SUBJECS_DIR
+

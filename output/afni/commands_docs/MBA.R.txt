@@ -1,0 +1,15 @@
+
+=== Output of 'MBA.R --help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/MBA.R --args /opt/afni/src/../install/MBA.R --help
+
+=== Output of 'MBA.R -help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/MBA.R --args /opt/afni/src/../install/MBA.R -help
+
+=== Output of 'MBA.R' (no arguments) ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/MBA.R --args /opt/afni/src/../install/MBA.R

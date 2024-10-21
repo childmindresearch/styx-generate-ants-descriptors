@@ -1,0 +1,102 @@
+
+=== Output of 'dcmsplit --help' ===
+
+
+dcmsplit 
+  --dcm dcmdir
+  --o outdir
+  --cp : copy instead of link
+  --link : link instead of copy (default)
+  --name     : split by patient name instead of uid
+  --uid      : split by Study UID instead of name (the default)
+  --seriesno : split by series number
+  --series+ : split by series number and either name or uid
+  --t group element : split by given dicom tag
+  --studyDes : split by Study Description
+
+dcmsplit 7.4.1
+
+The purpose of this progam is to separate dicom files into separate
+folders based on a unique identifier (UID). This is useful when
+multiple subjects or studies are mixed in one folder in which case
+dcmunpack will no work properly. Each UID will get its own folder in
+the output directory. Once this program is run, then dcmunpack can be
+run on the output as normal.
+
+By default, the UID is the Study UID (dicom tag 20 d) but it can be
+changed to Patient Name (tag 10 10) with --name, Series Number with
+--seriesno or some other tag with --t group element.  
+
+If --series+ is used, then the folder will be UID/SeriesNo. This can
+be used to prevent name collisions.
+
+By default, all the files for a given UID will by symlinked to 
+a file of the same name in the folder for that UID. The files 
+can be copied instead with --cp.
+
+Any file that causes mri_probedicom to exit with error is ignored. 
+
+If dcmdir has a space anywhere in its path (going back to root),
+then the program will exit with error.
+
+
+
+
+=== Output of 'dcmsplit -help' ===
+
+
+dcmsplit 
+  --dcm dcmdir
+  --o outdir
+  --cp : copy instead of link
+  --link : link instead of copy (default)
+  --name     : split by patient name instead of uid
+  --uid      : split by Study UID instead of name (the default)
+  --seriesno : split by series number
+  --series+ : split by series number and either name or uid
+  --t group element : split by given dicom tag
+  --studyDes : split by Study Description
+
+dcmsplit 7.4.1
+
+The purpose of this progam is to separate dicom files into separate
+folders based on a unique identifier (UID). This is useful when
+multiple subjects or studies are mixed in one folder in which case
+dcmunpack will no work properly. Each UID will get its own folder in
+the output directory. Once this program is run, then dcmunpack can be
+run on the output as normal.
+
+By default, the UID is the Study UID (dicom tag 20 d) but it can be
+changed to Patient Name (tag 10 10) with --name, Series Number with
+--seriesno or some other tag with --t group element.  
+
+If --series+ is used, then the folder will be UID/SeriesNo. This can
+be used to prevent name collisions.
+
+By default, all the files for a given UID will by symlinked to 
+a file of the same name in the folder for that UID. The files 
+can be copied instead with --cp.
+
+Any file that causes mri_probedicom to exit with error is ignored. 
+
+If dcmdir has a space anywhere in its path (going back to root),
+then the program will exit with error.
+
+
+
+
+=== Output of 'dcmsplit' (no arguments) ===
+
+
+dcmsplit 
+  --dcm dcmdir
+  --o outdir
+  --cp : copy instead of link
+  --link : link instead of copy (default)
+  --name     : split by patient name instead of uid
+  --uid      : split by Study UID instead of name (the default)
+  --seriesno : split by series number
+  --series+ : split by series number and either name or uid
+  --t group element : split by given dicom tag
+  --studyDes : split by Study Description
+

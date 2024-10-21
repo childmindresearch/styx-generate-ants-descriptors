@@ -1,0 +1,127 @@
+
+=== Output of 'xcerebralseg --help' ===
+
+
+xcerebralseg --help
+ --s subject (required)
+ --o outvol (default: apas+head.mgz)
+ --atlas headgca (default: /usr/local/freesurfer/average/aseg+spmhead+vermis+pons.ixi.gca)
+ --m mergevol : merge with mergevol (default is aparc+aseg.mgz)
+ --srcvol source intensity volume (default is nu.mgz)
+ --no-stats : do not  run mri_segstats
+ --seg1 seg1name : full-head seg (usually computed with mri_ca_label)
+
+ --no-pons
+ --no-vermis
+ --threads nthreads : set OPENMP threads
+
+xcerebralseg 7.4.1
+
+Performs labeling of extracerebral structures including sulcal CSF,
+skull/bone, head soft tissue, and air inside the head (eg, sinuses).
+This is merged with the aparc+aseg.mgz segmentation to give a whole
+head segmentation.  It uses a GCA (aseg+spmhead.ixi.gca) generated
+from 79 subjects from the IXI database (www.brain-development.org);
+see below for a demographic break down of the 79. The 79 were analyzed
+using SPM New Segment, and then FreeSurfer code was used to generate
+the GCA based on the SPM segmentation. It has been tested against a CT
+data set and performs about as well as SPM in terms of detecting the
+skull. Still, the results are far from perfect, so one should still
+treat them as approximate. This segmentation is primarily intended to
+be used to create nuisance variables for fMRI and PET. Note that the
+"Skull" segmentation includes any kind of bone.
+
+ntotal 79 
+males 34 
+females 45 
+white 39 
+asian 14 
+black 13 
+chinese 13 
+Philips-1.5T 39  (Guys)
+Philips-3T 22    (HH)
+GE-1.5T 18       (IOP)
+mean age: 58.0995
+min age: 20.21
+max age: 86.32
+age decade break down
+ 20-30  5 
+ 30-40 10 
+ 40-50 10 
+ 50-60 13 
+ 60-70 17 
+ 70-80 16 
+ 80-90  8 
+
+
+=== Output of 'xcerebralseg -help' ===
+
+
+xcerebralseg --help
+ --s subject (required)
+ --o outvol (default: apas+head.mgz)
+ --atlas headgca (default: /usr/local/freesurfer/average/aseg+spmhead+vermis+pons.ixi.gca)
+ --m mergevol : merge with mergevol (default is aparc+aseg.mgz)
+ --srcvol source intensity volume (default is nu.mgz)
+ --no-stats : do not  run mri_segstats
+ --seg1 seg1name : full-head seg (usually computed with mri_ca_label)
+
+ --no-pons
+ --no-vermis
+ --threads nthreads : set OPENMP threads
+
+xcerebralseg 7.4.1
+
+Performs labeling of extracerebral structures including sulcal CSF,
+skull/bone, head soft tissue, and air inside the head (eg, sinuses).
+This is merged with the aparc+aseg.mgz segmentation to give a whole
+head segmentation.  It uses a GCA (aseg+spmhead.ixi.gca) generated
+from 79 subjects from the IXI database (www.brain-development.org);
+see below for a demographic break down of the 79. The 79 were analyzed
+using SPM New Segment, and then FreeSurfer code was used to generate
+the GCA based on the SPM segmentation. It has been tested against a CT
+data set and performs about as well as SPM in terms of detecting the
+skull. Still, the results are far from perfect, so one should still
+treat them as approximate. This segmentation is primarily intended to
+be used to create nuisance variables for fMRI and PET. Note that the
+"Skull" segmentation includes any kind of bone.
+
+ntotal 79 
+males 34 
+females 45 
+white 39 
+asian 14 
+black 13 
+chinese 13 
+Philips-1.5T 39  (Guys)
+Philips-3T 22    (HH)
+GE-1.5T 18       (IOP)
+mean age: 58.0995
+min age: 20.21
+max age: 86.32
+age decade break down
+ 20-30  5 
+ 30-40 10 
+ 40-50 10 
+ 50-60 13 
+ 60-70 17 
+ 70-80 16 
+ 80-90  8 
+
+
+=== Output of 'xcerebralseg' (no arguments) ===
+
+
+xcerebralseg --help
+ --s subject (required)
+ --o outvol (default: apas+head.mgz)
+ --atlas headgca (default: /usr/local/freesurfer/average/aseg+spmhead+vermis+pons.ixi.gca)
+ --m mergevol : merge with mergevol (default is aparc+aseg.mgz)
+ --srcvol source intensity volume (default is nu.mgz)
+ --no-stats : do not  run mri_segstats
+ --seg1 seg1name : full-head seg (usually computed with mri_ca_label)
+
+ --no-pons
+ --no-vermis
+ --threads nthreads : set OPENMP threads
+

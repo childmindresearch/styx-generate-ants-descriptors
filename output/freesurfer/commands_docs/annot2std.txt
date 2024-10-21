@@ -1,0 +1,139 @@
+
+=== Output of 'annot2std --help' ===
+
+
+annot2std 
+
+  --o outannotpath : full output path (also creates outannotpath.p.mgh)
+
+  --s subj1 <--s subj2 ... --s subjN>
+  --fsgd fsgdfile
+  --f subjectlistfile
+  --t target : target subject (eg, fsaverage)
+
+  --lh or --rh (but not both)
+
+  --xhemi (for interhemispheric analysis)
+  --surfreg surfreg (default is sphere.reg)
+  --srcsurfreg srcsurfreg (default is sphere.reg)
+  --trgsurfreg trgsurfreg (default is sphere.reg)
+
+  --a annotname : input annot (?h.annotname.annot)
+    --aparc : annotname=aparc
+    --a2009s : annotname=aparc.a2009s
+
+ Good for debuggin'
+  --seg outseg.mgh : save output as a surface segmentation (2 frames, 2nd=p)
+  --stack segstack : stack of individual annots as segmentation
+
+  --help
+  --version
+
+annot2std 7.4.1
+
+Creates an average annotation in a standard space based on
+transforming the annotations of the individual subjects to the
+standard space through the surface registration. A vote is taken at
+each vertex in standard space to determine which label will represent
+that vertex.
+
+The other output outannotpath.p.mgh gives a value between 0 and 1
+indicating the fraction of inputs that were assigned to the winning
+label.
+
+EXAMPLE
+
+annot2std --f b40.slist.dat --lh --aparc --o lh.aparc.std.annot --t fsaverage
+
+This will create lh.aparc.std.annot and lh.aparc.std.annot.p.mgh
+
+tksurfer fsaverage lh inflated -annot ./lh.aparc.std.annot -ov lh.aparc.std.annot.p.mgh -fminmax .01 1
+
+
+
+
+
+=== Output of 'annot2std -help' ===
+
+
+annot2std 
+
+  --o outannotpath : full output path (also creates outannotpath.p.mgh)
+
+  --s subj1 <--s subj2 ... --s subjN>
+  --fsgd fsgdfile
+  --f subjectlistfile
+  --t target : target subject (eg, fsaverage)
+
+  --lh or --rh (but not both)
+
+  --xhemi (for interhemispheric analysis)
+  --surfreg surfreg (default is sphere.reg)
+  --srcsurfreg srcsurfreg (default is sphere.reg)
+  --trgsurfreg trgsurfreg (default is sphere.reg)
+
+  --a annotname : input annot (?h.annotname.annot)
+    --aparc : annotname=aparc
+    --a2009s : annotname=aparc.a2009s
+
+ Good for debuggin'
+  --seg outseg.mgh : save output as a surface segmentation (2 frames, 2nd=p)
+  --stack segstack : stack of individual annots as segmentation
+
+  --help
+  --version
+
+annot2std 7.4.1
+
+Creates an average annotation in a standard space based on
+transforming the annotations of the individual subjects to the
+standard space through the surface registration. A vote is taken at
+each vertex in standard space to determine which label will represent
+that vertex.
+
+The other output outannotpath.p.mgh gives a value between 0 and 1
+indicating the fraction of inputs that were assigned to the winning
+label.
+
+EXAMPLE
+
+annot2std --f b40.slist.dat --lh --aparc --o lh.aparc.std.annot --t fsaverage
+
+This will create lh.aparc.std.annot and lh.aparc.std.annot.p.mgh
+
+tksurfer fsaverage lh inflated -annot ./lh.aparc.std.annot -ov lh.aparc.std.annot.p.mgh -fminmax .01 1
+
+
+
+
+
+=== Output of 'annot2std' (no arguments) ===
+
+
+annot2std 
+
+  --o outannotpath : full output path (also creates outannotpath.p.mgh)
+
+  --s subj1 <--s subj2 ... --s subjN>
+  --fsgd fsgdfile
+  --f subjectlistfile
+  --t target : target subject (eg, fsaverage)
+
+  --lh or --rh (but not both)
+
+  --xhemi (for interhemispheric analysis)
+  --surfreg surfreg (default is sphere.reg)
+  --srcsurfreg srcsurfreg (default is sphere.reg)
+  --trgsurfreg trgsurfreg (default is sphere.reg)
+
+  --a annotname : input annot (?h.annotname.annot)
+    --aparc : annotname=aparc
+    --a2009s : annotname=aparc.a2009s
+
+ Good for debuggin'
+  --seg outseg.mgh : save output as a surface segmentation (2 frames, 2nd=p)
+  --stack segstack : stack of individual annots as segmentation
+
+  --help
+  --version
+

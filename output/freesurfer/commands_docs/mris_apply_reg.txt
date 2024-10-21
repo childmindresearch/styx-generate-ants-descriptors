@@ -1,0 +1,184 @@
+
+=== Output of 'mris_apply_reg --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mris_apply_reg 
+
+ Input specifcation (pick one):
+   --src srcvalfile : source values (surface overlay) Can also use --i
+   --src-annot srcannotfile : source annotation (implies --no-rev)
+   --src-label labelfile : source label (implies --no-rev)
+   --src-xyz surfacefile : use xyz coords from given surface as input
+ Output specifcation (format depends on type of input):
+   --trg trgvalfile : (Can also use --o)
+ Registration specifcation (srcreg1->trgreg1->srcreg2->trgreg2...):
+ Need at least one --streg pair but can have any number
+   --streg srcreg1 trgreg1 : source and target reg files
+   --streg srcreg2 trgreg2 : more source and target reg files ...
+
+   --jac : use jacobian correction
+   --no-rev : do not do reverse mapping
+   --randn : replace input with WGN
+   --ones  : replace input with ones
+   --center  : place the center of the output surface at (0,0,0)
+   --curv  : save output in curv file format (spec full path)
+
+   --lta source-surf ltafile output-surf : apply LTA transform
+     automatically determins direction; other options do not apply to --lta
+   --lta-patch source-surf surfpatch ltafile output-patch : apply LTA transform to patch
+   --reverse surf patchopt output : LR reverse suface. patchopt=patchfile or nopatch
+   --patch srcregNpatch trgregNpatch : patches, one for each --streg
+   --stvpair stvpairfile : save srcvtxno srcx srcy srcz trgvtxno trgx trgy trgz from first and last surfs 
+
+   --m3z source-surf m3zfile output-surf : apply m3z transform
+   --inv-m3z source-surf m3zfile output-surf : apply inverse m3z transform
+     except for --center, other options do not apply to --m3z or --inv-m3z
+
+   --src-reg-scale Scale : Scale the coords of the first surface
+   --trg-reg-scale Scale : Scale the coords of the last surface
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+				Help
+
+NAME
+	mris_apply_reg
+
+SYNOPSIS
+	mris_apply_reg
+
+DESCRIPTION
+	mris_apply_reg applys surface registration.
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+	--src srcvalfile (or use --i)
+		Input file that supplies the source values to convert
+
+	--trg trgvalfile (or use --o)
+		Output file
+
+	--streg srcreg1 trgreg1
+		source-target registration pair
+
+	--lta source-surf ltafile outputsurf
+		apply an LTA registration to a surface
+
+	--lta-rot source-surf ltafile outputsurf
+		apply just the rotational components of an LTA registration to
+		a surface
+
+	--m3z source-surf m3zfile outputsurf
+		apply an M3Z registration to a surface
+
+OPTIONAL FLAGGED ARGUMENTS
+	--streg srcreg2 trgreg2
+		source-target registration pair
+
+	--curv
+		Save output in curv format
+
+	--map-vertex vertexno srcsurf trgsurf outfile
+		Map vertex from source to target (stand-alone)
+
+EXAMPLE 1
+	
+	Map the lh thickness into the symmetric space
+	mris_apply_reg --src lh.thickness --trg xhemi.lh.thickness \
+	  --streg $SUBJECTS_DIR/$subject/surf/lh.fsaverage_sym.sphere.reg \
+	             $SUBJECTS_DIR/fsaverage_sym/surf/lh.sphere.reg
+	 
+
+EXAMPLE 2
+	
+	
+	Map the rh thickness into the symmetric space
+	mris_apply_reg --src rh.thickness --trg xhemi.rh.thickness \
+	  --streg $SUBJECTS_DIR/$subject/xhemi/surf/lh.fsaverage_
+	sym.sphere.reg \
+	             $SUBJECTS_DIR/fsaverage_sym/surf/lh.sphere.reg
+	
+	Note that lh.fsaverage_sym.sphere.reg is used.  This is intentional; 
+	the left hemis in the xhemi folder are actually right hemis.
+	
+	 
+
+EXAMPLE 3
+	
+	   Map a label from the left hemi to the right hemi
+	   mris_apply_reg --src-label lh.source.label \
+	    --streg lh.sphere.left_right rh.sphere.left_right \
+	    --trg rh.lh.source.label
+	 
+
+EXAMPLE 4
+	
+	   Map a surface from the anatomical space to fMRI space.
+	   First, you have to get an LTA registration file (eg, with 
+	bbregister)
+	   mris_apply_reg --lta lh.white fmri.reg.lta ./lh.white.fmri
+	 
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_convert
+
+
+
+=== Output of 'mris_apply_reg -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mris_apply_reg' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mris_apply_reg 
+
+ Input specifcation (pick one):
+   --src srcvalfile : source values (surface overlay) Can also use --i
+   --src-annot srcannotfile : source annotation (implies --no-rev)
+   --src-label labelfile : source label (implies --no-rev)
+   --src-xyz surfacefile : use xyz coords from given surface as input
+ Output specifcation (format depends on type of input):
+   --trg trgvalfile : (Can also use --o)
+ Registration specifcation (srcreg1->trgreg1->srcreg2->trgreg2...):
+ Need at least one --streg pair but can have any number
+   --streg srcreg1 trgreg1 : source and target reg files
+   --streg srcreg2 trgreg2 : more source and target reg files ...
+
+   --jac : use jacobian correction
+   --no-rev : do not do reverse mapping
+   --randn : replace input with WGN
+   --ones  : replace input with ones
+   --center  : place the center of the output surface at (0,0,0)
+   --curv  : save output in curv file format (spec full path)
+
+   --lta source-surf ltafile output-surf : apply LTA transform
+     automatically determins direction; other options do not apply to --lta
+   --lta-patch source-surf surfpatch ltafile output-patch : apply LTA transform to patch
+   --reverse surf patchopt output : LR reverse suface. patchopt=patchfile or nopatch
+   --patch srcregNpatch trgregNpatch : patches, one for each --streg
+   --stvpair stvpairfile : save srcvtxno srcx srcy srcz trgvtxno trgx trgy trgz from first and last surfs 
+
+   --m3z source-surf m3zfile output-surf : apply m3z transform
+   --inv-m3z source-surf m3zfile output-surf : apply inverse m3z transform
+     except for --center, other options do not apply to --m3z or --inv-m3z
+
+   --src-reg-scale Scale : Scale the coords of the first surface
+   --trg-reg-scale Scale : Scale the coords of the last surface
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

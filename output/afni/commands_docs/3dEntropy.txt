@@ -1,0 +1,29 @@
+
+=== Output of '3dEntropy --help' ===
+
+[7m** FATAL ERROR:[0m Unknown option '-permax'
+** Program compile date = Sep 12 2024
+
+=== Output of '3dEntropy -help' ===
+
+
+Usage: 3dEntropy [-zskip] dataset ...
+
+ * Datasets must be stored as 16 bit shorts.
+ * -zskip option means to skip 0 values in the computation.
+ * This program is not very useful :) :(
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dEntropy' (no arguments) ===
+
+
+Usage: 3dEntropy [-zskip] dataset ...
+
+ * Datasets must be stored as 16 bit shorts.
+ * -zskip option means to skip 0 values in the computation.
+ * This program is not very useful :) :(
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

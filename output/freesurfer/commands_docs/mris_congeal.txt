@@ -1,0 +1,79 @@
+
+=== Output of 'mris_congeal --help' ===
+
+
+USAGE:
+/usr/local/freesurfer/bin/mris_congeal [options] <input surface name> <hemi> <subject 1>  <subject 2> ... <output surface name>
+
+Options:
+
+  -SDIR SUBJECTS_DIR 
+  -norot            : disable initial rigid alignment
+  -nosulc           : disable initial sulc alignment
+  -curv             : use smoothwm curvature for final alignment
+  -jacobian <fname> : write-out jacobian overlay data to fname
+  -dist <num>       : specify distance term
+  -l <label file> <atlas (*.gcs)> <label name>
+                    : this option will specify a manual label
+                      to align with atlas label <label name>
+  -addframe <which_field> <where_in_atlas> <l_corr> <l_pcorr>
+  -overlay <surfvals> <navgs> : subject/labels/hemi.surfvals
+  -overlay-dir <dir> : subject/dir/hemi.surfvals
+  -1                 : target specifies a subject's surface,
+                       not a template file
+
+This program registers a set of input surfaces together, and generates an atlas.
+
+
+=== Output of 'mris_congeal -help' ===
+
+
+USAGE:
+/usr/local/freesurfer/bin/mris_congeal [options] <input surface name> <hemi> <subject 1>  <subject 2> ... <output surface name>
+
+Options:
+
+  -SDIR SUBJECTS_DIR 
+  -norot            : disable initial rigid alignment
+  -nosulc           : disable initial sulc alignment
+  -curv             : use smoothwm curvature for final alignment
+  -jacobian <fname> : write-out jacobian overlay data to fname
+  -dist <num>       : specify distance term
+  -l <label file> <atlas (*.gcs)> <label name>
+                    : this option will specify a manual label
+                      to align with atlas label <label name>
+  -addframe <which_field> <where_in_atlas> <l_corr> <l_pcorr>
+  -overlay <surfvals> <navgs> : subject/labels/hemi.surfvals
+  -overlay-dir <dir> : subject/dir/hemi.surfvals
+  -1                 : target specifies a subject's surface,
+                       not a template file
+
+This program registers a set of input surfaces together, and generates an atlas.
+
+
+=== Output of 'mris_congeal' (no arguments) ===
+
+processing -3 subjects and writing output to /usr/local/freesurfer/bin/mris_congeal
+
+USAGE:
+/usr/local/freesurfer/bin/mris_congeal [options] <input surface name> <hemi> <subject 1>  <subject 2> ... <output surface name>
+
+Options:
+
+  -SDIR SUBJECTS_DIR 
+  -norot            : disable initial rigid alignment
+  -nosulc           : disable initial sulc alignment
+  -curv             : use smoothwm curvature for final alignment
+  -jacobian <fname> : write-out jacobian overlay data to fname
+  -dist <num>       : specify distance term
+  -l <label file> <atlas (*.gcs)> <label name>
+                    : this option will specify a manual label
+                      to align with atlas label <label name>
+  -addframe <which_field> <where_in_atlas> <l_corr> <l_pcorr>
+  -overlay <surfvals> <navgs> : subject/labels/hemi.surfvals
+  -overlay-dir <dir> : subject/dir/hemi.surfvals
+  -1                 : target specifies a subject's surface,
+                       not a template file
+
+This program registers a set of input surfaces together, and generates an atlas.
+

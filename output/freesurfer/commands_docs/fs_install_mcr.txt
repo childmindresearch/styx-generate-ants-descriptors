@@ -1,0 +1,13 @@
+
+=== Output of 'fs_install_mcr --help' ===
+
+Unsupported runtime version --help
+
+=== Output of 'fs_install_mcr -help' ===
+
+Unsupported runtime version -help
+
+=== Output of 'fs_install_mcr' (no arguments) ===
+
+ERROR: must specify MCR version as argument
+EXAMPLE: fs_install_mcr R2019b

@@ -1,0 +1,60 @@
+
+=== Output of 'smoothest --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+smoothest 
+Copyright(c) 2000-2002, University of Oxford (Dave Flitney and Mark Jenkinson)
+
+Usage: 
+	smoothest -d <number> -r <filename> -m <filename>
+	smoothest -z <filename> -m <filename>
+
+Compulsory arguments (You MUST set one or more of):
+	-d,--dof	number of degrees of freedom
+	-m,--mask	brain mask volume
+	-r,--res	filename of `residual-fit' image (use -d)
+	-z,--zstat	filename of zstat image (not with -d)
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'smoothest -help' ===
+
+terminate called after throwing an instance of 'Utilities::X_OptionError'
+  what():  -e: Option doesn't exist!
+timeout: the monitored command dumped core
+
+=== Output of 'smoothest' (no arguments) ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+smoothest 
+Copyright(c) 2000-2002, University of Oxford (Dave Flitney and Mark Jenkinson)
+
+Usage: 
+	smoothest -d <number> -r <filename> -m <filename>
+	smoothest -z <filename> -m <filename>
+
+Compulsory arguments (You MUST set one or more of):
+	-d,--dof	number of degrees of freedom
+	-m,--mask	brain mask volume
+	-r,--res	filename of `residual-fit' image (use -d)
+	-z,--zstat	filename of zstat image (not with -d)
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+***************************************************************************
+You must specify either a zstat image OR a 4d residual image.
+If processing a zstat image then you should not set degrees of freedom.
+You must specify a mask volume image filename
+You must specify the degrees of freedom for processing a 4d residual image.
+***************************************************************************
+

@@ -1,0 +1,42 @@
+
+=== Output of 'msmapplywarp --help' ===
+
+ msmapplywarp <to-be-transformedmesh> <outputname> -options  
+ Projects the to-be-transformed mesh though a transformation defined by an original mesh and its deformed counterpart
+ It is optional to supply the undeformed (original) mesh, but if no original mesh is supplied the algorithm will assume that the warp is prescribed by an icospheric template
+ -options 
+ -original X.surf.gii 
+ -deformed DEFORMED.surf.gii (MUST be supplied in order to warp data)
+ -anat TARGET_SPHERE.surf.gii TARGET_ANAT.surf (2 inputs!). This will effectively project the INPUT anatomical mesh through the spherical warp.
+ -nospherical don't save spherical warp 
+ -affine (estimate affine transformation between input (-original) and deformed (-deformed) meshes and apply this to the to-be-transformed-mesh 
+ -readaffine X; where X  is an affine transformation matrix 
+ -writeaffine write out affine transformation matrix
+
+=== Output of 'msmapplywarp -help' ===
+
+ msmapplywarp <to-be-transformedmesh> <outputname> -options  
+ Projects the to-be-transformed mesh though a transformation defined by an original mesh and its deformed counterpart
+ It is optional to supply the undeformed (original) mesh, but if no original mesh is supplied the algorithm will assume that the warp is prescribed by an icospheric template
+ -options 
+ -original X.surf.gii 
+ -deformed DEFORMED.surf.gii (MUST be supplied in order to warp data)
+ -anat TARGET_SPHERE.surf.gii TARGET_ANAT.surf (2 inputs!). This will effectively project the INPUT anatomical mesh through the spherical warp.
+ -nospherical don't save spherical warp 
+ -affine (estimate affine transformation between input (-original) and deformed (-deformed) meshes and apply this to the to-be-transformed-mesh 
+ -readaffine X; where X  is an affine transformation matrix 
+ -writeaffine write out affine transformation matrix
+
+=== Output of 'msmapplywarp' (no arguments) ===
+
+ msmapplywarp <to-be-transformedmesh> <outputname> -options  
+ Projects the to-be-transformed mesh though a transformation defined by an original mesh and its deformed counterpart
+ It is optional to supply the undeformed (original) mesh, but if no original mesh is supplied the algorithm will assume that the warp is prescribed by an icospheric template
+ -options 
+ -original X.surf.gii 
+ -deformed DEFORMED.surf.gii (MUST be supplied in order to warp data)
+ -anat TARGET_SPHERE.surf.gii TARGET_ANAT.surf (2 inputs!). This will effectively project the INPUT anatomical mesh through the spherical warp.
+ -nospherical don't save spherical warp 
+ -affine (estimate affine transformation between input (-original) and deformed (-deformed) meshes and apply this to the to-be-transformed-mesh 
+ -readaffine X; where X  is an affine transformation matrix 
+ -writeaffine write out affine transformation matrix

@@ -1,0 +1,63 @@
+
+=== Output of 'mri_create_tests --help' ===
+
+7.4.1
+Option: --HELP unknown !! 
+
+=== Output of 'mri_create_tests -help' ===
+
+7.4.1
+Option: -HELP unknown !! 
+
+=== Output of 'mri_create_tests' (no arguments) ===
+
+7.4.1
+
+
+Usage: mri_create_tests <required arguments>
+
+Creates test cases for the registraition by mapping
+the input to a source (half way backward) and to a
+target (half way forward).
+
+Required arguments
+
+  --in   invol.mgz       input volume to be modified
+  --outs outsrc.mgz      output source volume name
+  --outt outtarget.mgz   output target volume name
+
+Optional arguments
+
+  --int  intvol.mgz      input target volume to be modified
+                           must be in same space as invol.mgz
+                           default: use invol to create outtarget
+  --lta-in lta           specify lta for mapping input to outtarget
+                           (inverse will be used to create outsource)
+                           cannot be used with --rotation or --translation
+  --mask mask.mgz        mask src mri with mask.mgz
+  --noise <float>        add global Gaussian noise
+  --outlier <int>        add <int> outlier voxel randomly
+  --outlier-box <int>    add box 0..<int> containing random voxels
+  --translation          apply random translation
+  --transdist            set maximal trans. distance in mm (default 11)
+  --rotation             apply random rotation
+  --maxdeg               maximal rotation in degree (default 25)
+  --intensity            apply random intensity scaling
+  --iscale <double>      use as fixed intensity scaling parameter
+  --lta-out lta          write used random transform to lta
+  --lta-outs lta         write half way lta for source
+  --lta-outt lta         write half way lta for target
+  --iscale-out <string>  write used intensity scaling parameter
+
+
+ If --translation and/or --rotation is specified, a matrix A is generated 
+ (for mapping the input to the outtarget), then the input is also mapped via 
+ the inverse of A to outsource. Therefore, --lta-out is A*A (the map from
+ outsource to outtarget), --lta-outs is Inv(A) and --lta-outt is A.
+ If the same transform is to be applied to a different input image, 
+ you need to first output the --lta-outt (A) and then pass it for the 
+ different input via --lta-in in a subsequent call.
+
+
+ Report bugs to: Freesurfer@nmr.mgh.harvard.edu
+

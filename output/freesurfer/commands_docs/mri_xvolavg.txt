@@ -1,0 +1,60 @@
+
+=== Output of 'mri_xvolavg --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_xvolavg 
+
+   --vol  path to input volume, ... 
+   --vol_type  input volume format 
+   --out       path to output volume
+   --out_type  output format 
+
+ Other Options
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+This program will average multiple volumes together (including 4D volumes).
+
+OPTIONS
+
+  --vol path to input volume (repeat for each input volume)
+  --vol_type format type of all input volumes 
+
+  --out path to output volume 
+  --out_type format type of out volume (default is that of input)
+
+  --version : print version and exit.
+
+SPECIFYING THE INPUT/OUTPUT PATH and TYPE
+
+mri_xvolavg accepts all input types as mri_convert (see mri_convert --help 
+for more information).
+
+NOTES
+
+There is another program called mri_average which has similar functionality.
+mri_average can align the input volumes and force them to conform to the COR
+format. However, it cannot process volumes with multiple frames.
+
+
+=== Output of 'mri_xvolavg -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_xvolavg' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_xvolavg 
+
+   --vol  path to input volume, ... 
+   --vol_type  input volume format 
+   --out       path to output volume
+   --out_type  output format 
+
+ Other Options
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

@@ -1,0 +1,13 @@
+
+=== Output of 'antsMultivariateTemplateConstruction2.sh --help' ===
+
+/opt/ants/bin/antsMultivariateTemplateConstruction2.sh: illegal option -- -
+/opt/ants/bin/antsMultivariateTemplateConstruction2.sh: line 695: USAGE: unbound variable
+
+=== Output of 'antsMultivariateTemplateConstruction2.sh -help' ===
+
+/opt/ants/bin/antsMultivariateTemplateConstruction2.sh: line 42: OutputPrefix: unbound variable
+
+=== Output of 'antsMultivariateTemplateConstruction2.sh' (no arguments) ===
+
+/opt/ants/bin/antsMultivariateTemplateConstruction2.sh: line 592: $1: unbound variable

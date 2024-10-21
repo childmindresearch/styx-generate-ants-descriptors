@@ -1,0 +1,25 @@
+
+=== Output of 'mri_jacobian --help' ===
+
+unknown option --help
+
+=== Output of 'mri_jacobian -help' ===
+
+unknown option -help
+
+=== Output of 'mri_jacobian' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_jacobian [options] <3d morph> <template volume> <output volume>
+
+Options:
+
+  -dt
+  -debug_voxel Gx Gy Gz
+  -remove
+  -a output is written in atlas coordinate system
+  -w writing area volumes 
+  -l taking log of jacoian values before saving
+  -s <sigma>: smoothing jacobian volume with sigma
+  -z making log jacobian zero mean
+  -tm3d: the input morph (m3z) originated from tm3d (mri_cvs_register)
+  -? / -u: writing out help 

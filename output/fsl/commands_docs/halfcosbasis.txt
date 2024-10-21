@@ -1,0 +1,62 @@
+
+=== Output of 'halfcosbasis --help' ===
+
+Log directory is: logdir++
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+halfcosbasis
+
+Usage: 
+halfcosbasis --help
+
+Compulsory arguments (You MUST set one or more of):
+	--hcprf,--hf	Half cosine HRF parameter ranges file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	--db,--debug,--debuglevel	set debug level
+	--to,--timingon	turn timing on
+	-l,--ld,--logdir	log directory
+	--nhs	Num of HRF samples to use (default is 1000)
+	--nbfs	Num of HRF basis functions to use (default is 3)
+	--ns,--nsecs	Num of secs (default is 40)
+	--res	Temporal resolution (default is 0.05)
+	-h,--help	display this message
+
+
+
+Not all of the compulsory arguments have been provided
+
+=== Output of 'halfcosbasis -help' ===
+
+
+-e: Option doesn't exist!
+
+=== Output of 'halfcosbasis' (no arguments) ===
+
+Log directory is: logdir+++
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+halfcosbasis
+
+Usage: 
+halfcosbasis --help
+
+Compulsory arguments (You MUST set one or more of):
+	--hcprf,--hf	Half cosine HRF parameter ranges file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	--db,--debug,--debuglevel	set debug level
+	--to,--timingon	turn timing on
+	-l,--ld,--logdir	log directory
+	--nhs	Num of HRF samples to use (default is 1000)
+	--nbfs	Num of HRF basis functions to use (default is 3)
+	--ns,--nsecs	Num of secs (default is 40)
+	--res	Temporal resolution (default is 0.05)
+	-h,--help	display this message
+
+
+
+Not all of the compulsory arguments have been provided

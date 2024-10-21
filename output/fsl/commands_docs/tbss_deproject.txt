@@ -1,0 +1,36 @@
+
+=== Output of 'tbss_deproject --help' ===
+
+
+Usage: tbss_deproject <skeleton-space-input-image> <final-space> [-n]
+
+Final-space options:
+1: just deproject <skeleton-space-input-image> onto the space of each subject in all_FA (output in "stats" directory)
+2: do the above and also invert nonlinear warping, to get back to subjects' native space in FA (outputs in "FA" directory)
+
+-n : assume that <skeleton-space-input-image> contains one or more integer index numbers and ensure that those exact values are deprojected without being changed by interpolations
+
+
+=== Output of 'tbss_deproject -help' ===
+
+
+Usage: tbss_deproject <skeleton-space-input-image> <final-space> [-n]
+
+Final-space options:
+1: just deproject <skeleton-space-input-image> onto the space of each subject in all_FA (output in "stats" directory)
+2: do the above and also invert nonlinear warping, to get back to subjects' native space in FA (outputs in "FA" directory)
+
+-n : assume that <skeleton-space-input-image> contains one or more integer index numbers and ensure that those exact values are deprojected without being changed by interpolations
+
+
+=== Output of 'tbss_deproject' (no arguments) ===
+
+
+Usage: tbss_deproject <skeleton-space-input-image> <final-space> [-n]
+
+Final-space options:
+1: just deproject <skeleton-space-input-image> onto the space of each subject in all_FA (output in "stats" directory)
+2: do the above and also invert nonlinear warping, to get back to subjects' native space in FA (outputs in "FA" directory)
+
+-n : assume that <skeleton-space-input-image> contains one or more integer index numbers and ensure that those exact values are deprojected without being changed by interpolations
+

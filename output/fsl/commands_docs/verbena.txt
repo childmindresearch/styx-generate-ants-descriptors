@@ -1,0 +1,73 @@
+
+=== Output of 'verbena --help' ===
+
+VERBENA version tag 'v4.0.2-dirty'
+last commit 'Thu Mar 5 14:51:27 2020'
+
+Perfusion quantification from DSC-MRI using the Vascular Model
+
+Usage (optional parameters in {}):
+ -i         : specify data file
+ -a         : specify aif data
+ {-o}       : specify output directory
+ -m         : specify brain mask file
+ {-tr}     : TR (in s) {default: 1.5 s}
+ {-te}     : TE (in s) {default: 0.065 s}
+
+Options:
+ -aifconc       : AIF curve is a concentration curve rather than a signal curve
+ -mv            : Add a macro vascular component
+ -sigadd        : Add MV component in signal domain (rather than concentrations)
+ -modelfree     : Run a 'model free' SVD analysis
+ -modelfreeinit : Use a 'model free' analysis as initialization for the VM
+
+Error! Unrecognised option on command line: --help
+
+
+=== Output of 'verbena -help' ===
+
+VERBENA version tag 'v4.0.2-dirty'
+last commit 'Thu Mar 5 14:51:27 2020'
+
+Perfusion quantification from DSC-MRI using the Vascular Model
+
+Usage (optional parameters in {}):
+ -i         : specify data file
+ -a         : specify aif data
+ {-o}       : specify output directory
+ -m         : specify brain mask file
+ {-tr}     : TR (in s) {default: 1.5 s}
+ {-te}     : TE (in s) {default: 0.065 s}
+
+Options:
+ -aifconc       : AIF curve is a concentration curve rather than a signal curve
+ -mv            : Add a macro vascular component
+ -sigadd        : Add MV component in signal domain (rather than concentrations)
+ -modelfree     : Run a 'model free' SVD analysis
+ -modelfreeinit : Use a 'model free' analysis as initialization for the VM
+
+Error! Unrecognised option on command line: -help
+
+
+=== Output of 'verbena' (no arguments) ===
+
+VERBENA version tag 'v4.0.2-dirty'
+last commit 'Thu Mar 5 14:51:27 2020'
+
+Perfusion quantification from DSC-MRI using the Vascular Model
+
+Usage (optional parameters in {}):
+ -i         : specify data file
+ -a         : specify aif data
+ {-o}       : specify output directory
+ -m         : specify brain mask file
+ {-tr}     : TR (in s) {default: 1.5 s}
+ {-te}     : TE (in s) {default: 0.065 s}
+
+Options:
+ -aifconc       : AIF curve is a concentration curve rather than a signal curve
+ -mv            : Add a macro vascular component
+ -sigadd        : Add MV component in signal domain (rather than concentrations)
+ -modelfree     : Run a 'model free' SVD analysis
+ -modelfreeinit : Use a 'model free' analysis as initialization for the VM
+

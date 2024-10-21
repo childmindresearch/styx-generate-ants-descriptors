@@ -1,0 +1,137 @@
+
+=== Output of 'talsegprob --help' ===
+
+
+USAGE: talsegprob
+
+Specifying subject list:
+   --subjects <subj1> <subj2> ... <subjN>
+   --fsgd fsgdfile : get subject list from fsgd
+   or declare subjects in SUBJECTS env var
+
+Segmentations
+   --seg segno : segmentation number
+   <--seg segno : 2nd segmentation number>
+   --hippo       : use 17 and 53
+   --left-hippo  : use 17
+   --right-hippo : use 53
+   --segmentation segfile : use subject/mri/segfile.mgz instead of aseg
+
+Outputs
+   --p    probfname   : output file name (not with --vote)
+   --vote votefname   : output file name (not with --p)
+   --c  concatfname : output file name
+
+Optional Arguments
+   --xform xformname : use mri/transforms/xformname (def is talairach.xfm)
+   --sdir <SUBJECTS_DIR to use instead of the one in the env>
+   --sd      : same as --sdir
+
+   --tmpdir dir : temporary dir (implies --nocleanup)
+   --nocleanup  : do not delete temp dir
+   --help       : short descriptive help
+   --version : script version info
+   --echo    : enable command echo, for debug
+   --debug   : same as --echo
+
+Version: talsegprob 7.4.1
+
+For each subject, creates a binary volume from the aseg.mgz based on
+the segmentation number(s) passed with --seg. This binary volume is
+then resliced to talirach/MNI305/fsaverage space using the 12 DOF
+talaiach.xfm. The volumes for all the subjects are concatenated
+together and the mean computed.  The value at each voxel is then the
+fraction of subjects that had that segmentation at that voxel. It can
+also be thought of as a probability that the talairach voxel is part
+of the segmentation. --vote works in the same way but produces 
+an volume that can be used like an aseg.
+
+The list of subjects to include in the analysis can be specified 
+in one of three ways:
+
+1. Explicitly on the command-line with --subjects subj1 subj2 ...
+2. With an FSGD file
+3. By setting an environment variable called 'SUBJECTS' with the list
+
+By default, subject/mri/aseg.mgz is used, but this can be changed
+with --segmentation. 
+
+For aseg.mgz, the segmentation is specified with the segmentation
+number as found in $FREESURFER_HOME/FreeSurferColorLUT.txt. Eg, left
+putamen would be specified with --seg 12. The left and right putamen
+would be specified with --seg 12 --seg 51. There is a shortcut for
+hippocampus, use --hippo, --left-hippo, --right-hippo.
+
+There are two possible outputs:
+
+--p probfname
+
+The values in each voxel are the fraction of subjects that had
+that segmentation at that voxel as described above.
+
+--c concatfname
+
+This is an optional output. This is just the segmentations for all
+subjects concatenated together. This can be viewed as a movie in
+tkmedit.
+
+Both of the outputs are 1mm3, but the FOV has been reduced to
+151 x 151 x 186 to save space and time.
+
+EXAMPLES:
+
+Map the left and right hippocampi for subjects tl-wm and sh-wm:
+
+talsegprob --subjects tl-wm sh-wm \
+  --hippo  --p hip.mgz --c hip.cat.mgz
+
+To view the probability map:
+
+tkmedit fsaverage orig.mgz -overlay hip.mgz -fthresh .01 -fmax 1
+
+To view each subject:
+
+tkmedit fsaverage orig.mgz -overlay hip.cat.mgz -fthresh .01 -fmax 1
+  Then Configure->Overlay and hit the "|>" button to see the movie.
+
+
+=== Output of 'talsegprob -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'talsegprob' (no arguments) ===
+
+
+USAGE: talsegprob
+
+Specifying subject list:
+   --subjects <subj1> <subj2> ... <subjN>
+   --fsgd fsgdfile : get subject list from fsgd
+   or declare subjects in SUBJECTS env var
+
+Segmentations
+   --seg segno : segmentation number
+   <--seg segno : 2nd segmentation number>
+   --hippo       : use 17 and 53
+   --left-hippo  : use 17
+   --right-hippo : use 53
+   --segmentation segfile : use subject/mri/segfile.mgz instead of aseg
+
+Outputs
+   --p    probfname   : output file name (not with --vote)
+   --vote votefname   : output file name (not with --p)
+   --c  concatfname : output file name
+
+Optional Arguments
+   --xform xformname : use mri/transforms/xformname (def is talairach.xfm)
+   --sdir <SUBJECTS_DIR to use instead of the one in the env>
+   --sd      : same as --sdir
+
+   --tmpdir dir : temporary dir (implies --nocleanup)
+   --nocleanup  : do not delete temp dir
+   --help       : short descriptive help
+   --version : script version info
+   --echo    : enable command echo, for debug
+   --debug   : same as --echo
+

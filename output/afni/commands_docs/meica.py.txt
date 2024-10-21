@@ -1,0 +1,21 @@
+
+=== Output of 'meica.py --help' ===
+
+  File "/opt/afni/src/../install/meica.py", line 79
+    print '++ Checking system for dependencies...'
+                                                 ^
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print('++ Checking system for dependencies...')?
+
+=== Output of 'meica.py -help' ===
+
+  File "/opt/afni/src/../install/meica.py", line 79
+    print '++ Checking system for dependencies...'
+                                                 ^
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print('++ Checking system for dependencies...')?
+
+=== Output of 'meica.py' (no arguments) ===
+
+  File "/opt/afni/src/../install/meica.py", line 79
+    print '++ Checking system for dependencies...'
+                                                 ^
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print('++ Checking system for dependencies...')?

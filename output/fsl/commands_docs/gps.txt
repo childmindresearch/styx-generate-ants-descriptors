@@ -1,0 +1,78 @@
+
+=== Output of 'gps --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+gps (Version 1.0)
+Copyright(c) 2011, University of Oxford (Jesper Andersson)
+
+Usage: 
+gps --ndir=128 --optws --out=my_128_directions.txt
+
+Compulsory arguments (You MUST set one or more of):
+	--ndir	Number of directions
+
+Optional arguments (You may optionally specify one or more of):
+	--out	Name of output file (default: bvecs#.txt)
+	--optws	Perform additional optimisation on the whole sphere (needed for eddy)
+	--ranseed	Seed random generator with supplied number
+	--init	File with bvecs to use as initialisation
+	--report	Report coulomb forces for inital configuration
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'gps -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+gps (Version 1.0)
+Copyright(c) 2011, University of Oxford (Jesper Andersson)
+
+Usage: 
+gps --ndir=128 --optws --out=my_128_directions.txt
+
+Compulsory arguments (You MUST set one or more of):
+	--ndir	Number of directions
+
+Optional arguments (You may optionally specify one or more of):
+	--out	Name of output file (default: bvecs#.txt)
+	--optws	Perform additional optimisation on the whole sphere (needed for eddy)
+	--ranseed	Seed random generator with supplied number
+	--init	File with bvecs to use as initialisation
+	--report	Report coulomb forces for inital configuration
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'gps' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	--ndir	Number of directions
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+gps (Version 1.0)
+Copyright(c) 2011, University of Oxford (Jesper Andersson)
+
+Usage: 
+gps --ndir=128 --optws --out=my_128_directions.txt
+
+Compulsory arguments (You MUST set one or more of):
+	--ndir	Number of directions
+
+Optional arguments (You may optionally specify one or more of):
+	--out	Name of output file (default: bvecs#.txt)
+	--optws	Perform additional optimisation on the whole sphere (needed for eddy)
+	--ranseed	Seed random generator with supplied number
+	--init	File with bvecs to use as initialisation
+	--report	Report coulomb forces for inital configuration
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

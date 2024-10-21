@@ -1,0 +1,318 @@
+
+=== Output of 'fs-check-version --help' ===
+
+
+fs-check-version
+ --sd SUBJECTS_DIR
+ --o outfile
+ --s subject (optional)
+ --require-match, --no-require-match : set or unset REQUIRE_FS_MATCH for testing
+ --test, --test-debug : go through permutations
+$Id$
+
+This script manages which version of freesurfer can be used to analyze
+data in an effort to make sure that all data are analyzed with the
+desired version of FS.  The idea is that the build stamp of the
+currently sourced version of FS needs to match that of some
+specification. If there is a match, then a 1 will be put into the
+output text file, otherwise it will have a 0. This functionality
+can allow a match to more than one version to handle cases where
+multiple version of FS will give the same answer. This can happen
+when you want to upgrade to a new version of FS because it has
+some new functionality.
+
+Version information for the currently source FS can be found in
+$FREESURFER_HOME/build-stamp.txt
+
+There will be the file $SUBJECTS_DIR/$subject/scripts/build-stamp.txt 
+with the version that the given subject was created with.
+
+In 7.3+ versions, if one wants to be able to analyze data using
+multiple versions of FS, then either create a
+$SUBJECTS_DIR/fs-allowed-versions.txt file with the list of allowed
+versions or set REQUIRE_FS_MATCH to a colon-separaeted list of allowed
+versions. A match will be declared if both the current version and the
+version in $SUBJECTS_DIR/$subject/scripts/build-stamp.txt are in the
+list.
+
+
+The version specification can take one of two forms:
+
+Setting environment variable REQUIRE_FS_MATCH and/or creating a file
+called $SUBJECTS_DIR/fs-allowed-versions.txt
+
+REQUIRE_FS_MATCH has been in all versions of FS whereas
+fs-allowed-versions.txt is new to 7.3+.
+
+If REQUIRE_FS_MATCH is set to 0 or 1, then it defaults to the standard
+behavior of pre-7.3 versions, ie, if 0, then there are no constraints
+(the output file will contain 1). If 1, then this script checks the
+build stamp found in $SUBJECTS_DIR/$subject/scripts/build-stamp.txt.
+If it matches the current version, then the output file will contain
+1, otherwise 0. If the subject buildstamp file does not exist, the
+current FS build stamp is copied into it (regardless of
+REQUIRE_FS_MATCH).  If a subject is not specified, then other criteria
+area used to determine whether there is match.
+
+With 7.3+ versions, REQUIRE_FS_MATCH can be set to 2. If
+fs-allowed-versions.txt does not exist, then it has the same
+behavior as if it were set to 1. This allows some slight backwards
+compatibility in that pre-7.3 versions will treat 2 the same as 1 (but 
+will not be aware of the fs-allowed-versions.txt file). 
+
+With 7.3+ versions, REQUIRE_FS_MATCH can be set to a colon-separaeted
+list of allowable versions. The current FS version must match one
+of them. This will not be compatable with pre-7.3 versions (recon-all
+will crash). If a subject is specified, the the subject build stamp
+must also match one of the versions.
+
+In 7.3+, if REQUIRE_FS_MATCH is not set or is set to 2 and
+fs-allowed-versions.txt exists, then a list of one or more versions is
+read from that file. The current FS version must match one of them. If
+a subject is specified, the the subject build stamp must also match
+one of the versions.
+
+Below is some logic used to help program
+
+REQ 5 states:       NotSet, 0, 1, 2, or VerList
+FsVerFile 2 states: There or NotThere
+Subject 2 states:   Speced or UnSpeced
+5x2x2 = 20 possible branches
+
+PrevBehav = if subject version exists, requires a match with current version
+
+Regardless of which fork gets taken, copy current version into subject
+if the version file if the subject does not exist (part of previous
+behavior). 
+
+REQ=NotSet AND FsVerFile=NotThere
+- no constraints regardless of Subject
+
+REQ=0 
+- no constraints regardless of FsVerFile and Subject
+
+REQ=1 AND
+  Subject=Speced 
+   - reverts to previous behavior regardless of FsVerFile, ie,
+     subjectVer = currentVer
+  Subject=UnSpeced 
+   - no constraints regardless of FsVerFile (same as prev behav)
+
+REQ=VerList
+  - current FS version must be in the list
+  Subject=Speced 
+   - subject version must be in the list
+     Note: it is ok if current FS and subject may have different 
+     versions as long as they are both in the list
+
+REQ=2 AND
+ FsVerFile=NotThere
+  - reverts to previous behavior (like REQ=1)
+    - continues to behave in the same as REQ=1 in pre-7.3 FS versions
+ FsVerFile=There
+  - current FS version must be in the list
+  Subject=Speced 
+   - subject version must be in the list
+     Note: it is ok if current FS and subject may have different 
+     versions as long as they are both in the list
+
+FsVerFile=There AND (REQ=NotSet OR REQ=2)
+  - current FS version must be in the list
+  Subject=Speced 
+   - subject version must be in the list
+     Note: it is ok if current FS and subject may have different 
+     versions as long as they are both in the list
+
+
+Outcomes:
+
+No constraints: (REQ=0 OR (REQ=NotSet AND FsVerFile=NotThere) OR (REQ=1 AND Subject=Unspeced))
+
+Reverts: (REQ=1 OR (REQ=2 AND FsVerFile=NotThere))
+
+VerList in REQ: (REQ!=0 AND REQ!=1 AND REQ!=2 AND AND REQ is set)
+
+FsVerFile: (REQ=NotSet OR REQ=2) AND FsVerFile=There
+
+Use cases:
+
+Have several studies which use different FS versions. Have REQ=1 set in
+cshrc file. This simply breaks any mixed version. Can change it to
+REQ=2 and it will behave the same in pre-7.3 versions but allows new
+behavior in 7.3+ versions.
+
+Starting a new study in 7.3+. Can use REQ=1 or REQ=2 or REQ=ver or FsVerFile.
+
+Have data analyzed in 7.2 but using 7.3 too. Can set REQ=2 to have the same behavior
+in 7.2 but new behavior in 7.3. Howver, if analyzed a subject in 7.3, then it would 
+fail if tried to run in 7.2 regardless.
+
+
+
+
+
+
+
+=== Output of 'fs-check-version -help' ===
+
+
+fs-check-version
+ --sd SUBJECTS_DIR
+ --o outfile
+ --s subject (optional)
+ --require-match, --no-require-match : set or unset REQUIRE_FS_MATCH for testing
+ --test, --test-debug : go through permutations
+$Id$
+
+This script manages which version of freesurfer can be used to analyze
+data in an effort to make sure that all data are analyzed with the
+desired version of FS.  The idea is that the build stamp of the
+currently sourced version of FS needs to match that of some
+specification. If there is a match, then a 1 will be put into the
+output text file, otherwise it will have a 0. This functionality
+can allow a match to more than one version to handle cases where
+multiple version of FS will give the same answer. This can happen
+when you want to upgrade to a new version of FS because it has
+some new functionality.
+
+Version information for the currently source FS can be found in
+$FREESURFER_HOME/build-stamp.txt
+
+There will be the file $SUBJECTS_DIR/$subject/scripts/build-stamp.txt 
+with the version that the given subject was created with.
+
+In 7.3+ versions, if one wants to be able to analyze data using
+multiple versions of FS, then either create a
+$SUBJECTS_DIR/fs-allowed-versions.txt file with the list of allowed
+versions or set REQUIRE_FS_MATCH to a colon-separaeted list of allowed
+versions. A match will be declared if both the current version and the
+version in $SUBJECTS_DIR/$subject/scripts/build-stamp.txt are in the
+list.
+
+
+The version specification can take one of two forms:
+
+Setting environment variable REQUIRE_FS_MATCH and/or creating a file
+called $SUBJECTS_DIR/fs-allowed-versions.txt
+
+REQUIRE_FS_MATCH has been in all versions of FS whereas
+fs-allowed-versions.txt is new to 7.3+.
+
+If REQUIRE_FS_MATCH is set to 0 or 1, then it defaults to the standard
+behavior of pre-7.3 versions, ie, if 0, then there are no constraints
+(the output file will contain 1). If 1, then this script checks the
+build stamp found in $SUBJECTS_DIR/$subject/scripts/build-stamp.txt.
+If it matches the current version, then the output file will contain
+1, otherwise 0. If the subject buildstamp file does not exist, the
+current FS build stamp is copied into it (regardless of
+REQUIRE_FS_MATCH).  If a subject is not specified, then other criteria
+area used to determine whether there is match.
+
+With 7.3+ versions, REQUIRE_FS_MATCH can be set to 2. If
+fs-allowed-versions.txt does not exist, then it has the same
+behavior as if it were set to 1. This allows some slight backwards
+compatibility in that pre-7.3 versions will treat 2 the same as 1 (but 
+will not be aware of the fs-allowed-versions.txt file). 
+
+With 7.3+ versions, REQUIRE_FS_MATCH can be set to a colon-separaeted
+list of allowable versions. The current FS version must match one
+of them. This will not be compatable with pre-7.3 versions (recon-all
+will crash). If a subject is specified, the the subject build stamp
+must also match one of the versions.
+
+In 7.3+, if REQUIRE_FS_MATCH is not set or is set to 2 and
+fs-allowed-versions.txt exists, then a list of one or more versions is
+read from that file. The current FS version must match one of them. If
+a subject is specified, the the subject build stamp must also match
+one of the versions.
+
+Below is some logic used to help program
+
+REQ 5 states:       NotSet, 0, 1, 2, or VerList
+FsVerFile 2 states: There or NotThere
+Subject 2 states:   Speced or UnSpeced
+5x2x2 = 20 possible branches
+
+PrevBehav = if subject version exists, requires a match with current version
+
+Regardless of which fork gets taken, copy current version into subject
+if the version file if the subject does not exist (part of previous
+behavior). 
+
+REQ=NotSet AND FsVerFile=NotThere
+- no constraints regardless of Subject
+
+REQ=0 
+- no constraints regardless of FsVerFile and Subject
+
+REQ=1 AND
+  Subject=Speced 
+   - reverts to previous behavior regardless of FsVerFile, ie,
+     subjectVer = currentVer
+  Subject=UnSpeced 
+   - no constraints regardless of FsVerFile (same as prev behav)
+
+REQ=VerList
+  - current FS version must be in the list
+  Subject=Speced 
+   - subject version must be in the list
+     Note: it is ok if current FS and subject may have different 
+     versions as long as they are both in the list
+
+REQ=2 AND
+ FsVerFile=NotThere
+  - reverts to previous behavior (like REQ=1)
+    - continues to behave in the same as REQ=1 in pre-7.3 FS versions
+ FsVerFile=There
+  - current FS version must be in the list
+  Subject=Speced 
+   - subject version must be in the list
+     Note: it is ok if current FS and subject may have different 
+     versions as long as they are both in the list
+
+FsVerFile=There AND (REQ=NotSet OR REQ=2)
+  - current FS version must be in the list
+  Subject=Speced 
+   - subject version must be in the list
+     Note: it is ok if current FS and subject may have different 
+     versions as long as they are both in the list
+
+
+Outcomes:
+
+No constraints: (REQ=0 OR (REQ=NotSet AND FsVerFile=NotThere) OR (REQ=1 AND Subject=Unspeced))
+
+Reverts: (REQ=1 OR (REQ=2 AND FsVerFile=NotThere))
+
+VerList in REQ: (REQ!=0 AND REQ!=1 AND REQ!=2 AND AND REQ is set)
+
+FsVerFile: (REQ=NotSet OR REQ=2) AND FsVerFile=There
+
+Use cases:
+
+Have several studies which use different FS versions. Have REQ=1 set in
+cshrc file. This simply breaks any mixed version. Can change it to
+REQ=2 and it will behave the same in pre-7.3 versions but allows new
+behavior in 7.3+ versions.
+
+Starting a new study in 7.3+. Can use REQ=1 or REQ=2 or REQ=ver or FsVerFile.
+
+Have data analyzed in 7.2 but using 7.3 too. Can set REQ=2 to have the same behavior
+in 7.2 but new behavior in 7.3. Howver, if analyzed a subject in 7.3, then it would 
+fail if tried to run in 7.2 regardless.
+
+
+
+
+
+
+
+=== Output of 'fs-check-version' (no arguments) ===
+
+
+fs-check-version
+ --sd SUBJECTS_DIR
+ --o outfile
+ --s subject (optional)
+ --require-match, --no-require-match : set or unset REQUIRE_FS_MATCH for testing
+ --test, --test-debug : go through permutations

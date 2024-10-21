@@ -1,0 +1,578 @@
+
+=== Output of 'mri_glmfit --help' ===
+
+
+USAGE: ./mri_glmfit
+
+   --glmdir dir : save outputs to dir
+
+   --y inputfile
+   --table stats-table : as output by asegstats2table or aparcstats2table 
+   --fsgd FSGDF <gd2mtx> : freesurfer descriptor file
+   --X design matrix file
+   --C contrast1.mtx <--C contrast2.mtx ...>
+   --osgm : construct X and C as a one-sample group mean
+   --no-contrasts-ok : do not fail if no contrasts specified
+   --dti bvals bvecs : do DTI analysis using bvals and bvecs
+   --dti siemensdicom : do DTI analysis extracting bvals and bvecs from dicom
+   --dti-X X.txt : do DTI analysis using provided matrix
+
+   --pvr pvr1 <--prv pvr2 ...> : per-voxel regressors
+   --selfreg col row slice   : self-regressor from index col row slice
+
+   --wls yffxvar : weighted least squares
+   --yffxvar yffxvar : for fixed effects analysis
+   --ffxdof DOF : dof for fixed effects analysis
+   --ffxdofdat ffxdof.dat : text file with dof for fixed effects analysis
+
+   --w weightfile : weight for each input at each voxel
+   --w-inv : invert weights
+   --w-sqrt : sqrt of (inverted) weights
+
+   --fwhm fwhm : smooth input by fwhm
+   --var-fwhm fwhm : smooth variance by fwhm
+   --no-mask-smooth : do not mask when smoothing
+   --no-est-fwhm : turn off FWHM output estimation
+
+   --mask maskfile : binary mask
+   --label labelfile : use label as mask, surfaces only
+   --no-mask : do NOT use a mask (same as --no-cortex)
+   --no-cortex : do NOT use subjects ?h.cortex.label as --label
+   --mask-inv : invert mask
+   --prune : remove voxels that do not have a non-zero value at each frame (def)
+   --no-prune : do not prune
+   --logy : compute natural log of y prior to analysis
+   --no-logy : do not compute natural log of y prior to analysis
+   --rm-spatial-mean : subtract the (masked) mean from each frame
+   --yhat-save : save signal estimate (yhat)
+   --eres-save : save residual error (eres)
+   --eres-scm : save residual error spatial correlation matrix (eres.scm). Big!
+   --save-fwhm-map : save voxel-wise map of FWHM estimates
+   --y-out y.out.mgh : save input after any pre-processing
+
+   --surf subject hemi <surfname> : needed for some flags (uses white by default)
+
+   --skew : compute skew and p-value for skew
+   --kurtosis : compute kurtosis and p-value for kurtosis
+
+   --sim nulltype nsim thresh csdbasename : simulation perm, mc-full, mc-z
+   --sim-sign signstring : abs, pos, or neg. Default is abs.
+   --uniform min max : use uniform distribution instead of gaussian
+   --permute-input : good for testing (not related to sim)
+
+   --pca : perform pca/svd analysis on residual
+   --tar1 : compute and save temporal AR1 of residual
+   --save-yhat : flag to save signal estimate
+   --save-cond  : flag to save design matrix condition at each voxel
+   --voxdump col row slice  : dump voxel GLM and exit
+
+   --seed seed : used for synthesizing noise
+   --synth : replace input with gaussian
+
+   --resynthtest niters : test GLM by resynthsis
+   --profile     niters : test speed
+
+   --mrtm1 RefTac TimeSec : perform MRTM1 kinetic modeling
+   --mrtm2 RefTac TimeSec k2prime : perform MRTM2 kinetic modeling
+   --logan RefTac TimeSec tstar   : perform Logan kinetic modeling
+   --bp-clip-neg : set negative BP voxels to 0
+   --bp-clip-max maxval : set BP voxels above max to max
+
+   --perm-force : force perumtation test, even when design matrix is not orthog
+   --diag Gdiag_no : set diagnositc level
+   --diag-cluster : save sig volume and exit from first sim loop
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+   --no-fix-vertex-area : turn off fixing of vertex area (for back comapt only)
+   --allowsubjrep allow subject names to repeat in the fsgd file (must appear
+                  before --fsgd)
+   --allow-zero-dof : mostly for very special purposes
+   --illcond : allow ill-conditioned design matrices
+   --sim-done SimDoneFile : create DoneFile when simulation finished 
+   --no-sig-double : compute sig = -log10(p) from a float precision p rather than double 
+
+
+
+OUTLINE:
+  SUMMARY
+  MATHEMATICAL BACKGROUND
+  COMMAND-LINE ARGUMENTS
+  MONTE CARLO SIMULATION AND CORRECTION FOR MULTIPLE COMPARISONS
+
+SUMMARY
+
+Performs general linear model (GLM) analysis in the volume or the
+surface.  Options include simulation for correction for multiple
+comparisons, weighted LMS, variance smoothing, PCA/SVD analysis of
+residuals, per-voxel design matrices, and 'self' regressors. This
+program performs both the estimation and inference. This program
+is meant to replace mris_glm (which only operated on surfaces).
+This program can be run in conjunction with mris_preproc.
+
+MATHEMATICAL BACKGROUND
+
+This brief intoduction to GLM theory is provided to help the user
+understand what the inputs and outputs are and how to set the
+various parameters. These operations are performed at each voxel
+or vertex separately (except with --var-fwhm).
+
+The forward model is given by:
+
+    y = W*X*B + n
+
+where X is the Ns-by-Nb design matrix, y is the Ns-by-Nv input data
+set, B is the Nb-by-Nv regression parameters, and n is noise. Ns is
+the number of inputs, Nb is the number of regressors, and Nv is the
+number of voxels/vertices (all cols/rows/slices). y may be surface
+or volume data and may or may not have been spatially smoothed. W
+is a diagonal weighing matrix.
+
+During the estimation stage, the forward model is inverted to
+solve for B:
+
+    B = inv(X'W'*W*X)*X'W'y
+
+The signal estimate is computed as
+
+    yhat = B*X
+
+The residual error is computed as
+
+    eres = y - yhat
+
+For random effects analysis, the noise variance estimate (rvar) is
+computed as the sum of the squares of the residual error divided by
+the DOF.  The DOF equals the number of rows of X minus the number of
+columns. For fixed effects analysis, the noise variance is estimated
+from the lower-level variances passed with --yffxvar, and the DOF
+is the sum of the DOFs from the lower level.
+
+A contrast matrix C has J rows and as many columns as columns of
+X. The contrast is then computed as:
+
+   G = C*B
+
+The F-ratio for the contrast is then given by:
+
+   F = G'*inv(C*inv(X'W'*W*X))*C')*G/(J*rvar)
+
+The F is then used to compute a p-value.  Note that when J=1, this
+reduces to a two-tailed t-test.
+
+
+COMMAND-LINE ARGUMENTS
+
+--glmdir dir
+
+Directory where output will be saved. Not needed with --sim.
+
+The outputs will be saved in mgh format as:
+  mri_glmfit.log - execution parameters (send with bug reports)
+  beta.mgh - all regression coefficients (B above)
+  eres.mgh - residual error
+  rvar.mgh - residual error variance
+  rstd.mgh - residual error stddev (just sqrt of rvar)
+  y.fsgd - fsgd file (if one was input)
+  wn.mgh - normalized weights (with --w or --wls)
+  yhat.mgh - signal estimate (with --save-yhat)
+  mask.mgh - final mask (when a mask is used)
+  cond.mgh - design matrix condition at each voxel (with --save-cond)
+  contrast1name/ - directory for each contrast (see --C)
+    C.dat - copy of contrast matrix
+    gamma.mgh - contrast (G above)
+    F.mgh - F-ratio (t = sign(gamma)*sqrt(F) for t-test contrasts)
+    sig.mgh - significance from F-test (actually -log10(p))
+    z.mgh - z map computed from the p-value
+    pcc.mgh - partial correlation coefficient (for t-tests)
+
+--y inputfile
+
+Path to input file with each frame being a separate input. This can be
+volume or surface-based, but the file must be one of the 'volume'
+formats (eg, mgh, img, nii, etc) accepted by mri_convert. See
+mris_preproc for an easy way to generate this file for surface data.
+Not with --table.
+
+--table stats-table
+
+Use text table as input instead of --y. The stats-table is that of
+the form produced by asegstats2table or aparcstats2table.
+
+--fsgd fname <gd2mtx>
+
+Specify the global design matrix with a FreeSurfer Group Descriptor
+File (FSGDF).  See http://surfer.nmr.mgh.harvard.edu/docs/fsgdf.txt
+for more info.  The gd2mtx is the method by which the group
+description is converted into a design matrix. Legal values are doss
+(Different Offset, Same Slope) and dods (Different Offset, Different
+Slope). doss will create a design matrix in which each class has it's
+own offset but forces all classes to have the same slope. dods models
+each class with it's own offset and slope. In either case, you'll need
+to know the order of the regressors in order to correctly specify the
+contrast vector. For doss, the first NClass columns refer to the
+offset for each class.  The remaining columns are for the continuous
+variables. In dods, the first NClass columns again refer to the offset
+for each class.  However, there will be NClass*NVar more columns (ie,
+one column for each variable for each class). The first NClass columns
+are for the first variable, etc. If neither of these models works for
+you, you will have to specify the design matrix manually (with --X).
+
+--no-rescale-x
+
+By default the inverse of the covariance of the desgin matrix is
+computed by rescaling each column of the design matrix prior to the 
+inverse computation, then rescaling back afterwards. This helps
+with designs that are badly scaled. This is completely transparent
+to the user. This flag turns this feature off so that the inverse
+is computed directly from the design matrix.
+
+--X design matrix file
+
+Explicitly specify the design matrix. Can be in simple text or in matlab4
+format. If matlab4, you can save a matrix with save('X.mat','X','-v4');
+
+--C contrast1.mtx <--C contrast2.mtx ...>
+
+Specify one or more contrasts to test. The contrast.mtx file is an
+ASCII text file with the contrast matrix in it (make sure the last
+line is blank). The name can be (almost) anything. If the extension is
+.mtx, .mat, .dat, or .con, the extension will be stripped of to form
+the directory output name.  The output will be saved in
+glmdir/contrast1, glmdir/contrast2, etc. Eg, if --C norm-v-cont.mtx,
+then the ouput will be glmdir/norm-v-cont.
+
+--osgm
+
+Construct X and C as a one-sample group mean. X is then a one-column
+matrix filled with all 1s, and C is a 1-by-1 matrix with value 1.
+You cannot specify both --X and --osgm. A contrast cannot be specified
+either. The contrast name will be osgm.
+
+--pvr pvr1 <--prv pvr2 ...>
+
+Per-voxel (or vertex) regressors (PVR). Normally, the design matrix is
+'global', ie, the same matrix is used at each voxel. This option allows the
+user to specify voxel-specific regressors to append to the design
+matrix. Note: the contrast matrices must include columns for these
+components.
+
+--selfreg col row slice
+
+Create a 'self-regressor' from the input data based on the waveform at
+index col row slice. This waveform is residualized and then added as a
+column to the design matrix. Note: the contrast matrices must include
+columns for this component.
+
+--wls yffxvar : weighted least squares
+
+Perform weighted least squares (WLS) random effects analysis instead
+of ordinary least squares (OLS).  This requires that the lower-level
+variances be available.  This is often the case with fMRI analysis but
+not with an anatomical analysis. Note: this should not be confused
+with fixed effects analysis. The weights will be inverted,
+square-rooted, and normalized to sum to the number of inputs for each
+voxel. Same as --w yffxvar --w-inv --w-sqrt (see --w below).
+
+--yffxvar yffxvar      : for fixed effects analysis
+--ffxdof DOF           : DOF for fixed effects analysis
+--ffxdofdat ffxdof.dat : text file with DOF for fixed effects analysis
+
+Perform fixed-effect analysis. This requires that the lower-level variances
+be available.  This is often the case with fMRI analysis but not with
+an anatomical analysis. Note: this should not be confused with weighted
+random effects analysis (wls). The dof is the sum of the DOFs from the
+lower levels.
+
+--w weightfile
+--w-inv
+--w-sqrt
+
+Perform weighted LMS using per-voxel weights from the weightfile. The
+data in weightfile must have the same dimensions as the input y
+file. If --w-inv is flagged, then the inverse of each weight is used
+as the weight.  If --w-sqrt is flagged, then the square root of each
+weight is used as the weight.  If both are flagged, the inverse is
+done first. The final weights are normalized so that the sum at each
+voxel equals the number of inputs. The normalized weights are then
+saved in glmdir/wn.mgh.  The --w-inv and --w-sqrt flags are useful
+when passing contrast variances from a lower level analysis to a
+higher level analysis (as is often done in fMRI).
+
+--fwhm fwhm
+
+Smooth input with a Gaussian kernel with the given full-width/half-maximum
+(fwhm) specified in mm. If the data are surface-based, then you must
+specify --surf, otherwise mri_glmfit assumes that the input is a volume
+and will perform volume smoothing.
+
+--var-fwhm fwhm
+
+Smooth residual variance map with a Gaussian kernel with the given
+full-width/half-maximum (fwhm) specified in mm. If the data are
+surface-based, then you must specify --surf, otherwise mri_glmfit
+assumes that the input is a volume and will perform volume smoothing.
+
+--mask maskfile
+--label labelfile
+--mask-inv
+--cortex 
+
+Only perform analysis where mask=1. All other voxels will be set to 0.
+If using surface, then labelfile will be converted to a binary mask
+(requires --surf). By default, the label file for surfaces is 
+?h.cortex.label. To force a no-mask with surfaces, use --no-mask or 
+--no-cortex. If --mask-inv is flagged, then performs analysis
+only where mask=0. If performing a simulation (--sim), map maximums
+and clusters will only be searched for in the mask. The final binary
+mask will automatically be saved in glmdir/mask.mgh
+
+--scale-by-etiv
+
+Normalize values in table by eTIV measure.
+
+--prune
+--no-prune
+
+This happens by default. Use --no-prune to turn it off. Remove voxels
+from the analysis if the ALL the frames at that voxel
+do not have an absolute value that exceeds zero (actually FLT_MIN, 
+or whatever is set by --prune_thr). This helps to prevent the situation 
+where some frames are 0 and others are not. If no mask is supplied, 
+a mask is created and saved. If a mask is supplied, it is pruned, and 
+the final mask is saved. Do not use with --sim. Rather, run the non-sim 
+analysis with --prune, then pass the created mask when running simulation. 
+It is generally a good idea to prune. --no-prune will turn off pruning 
+if it had been turned on. For DTI, only the first frame is used to 
+create the mask.
+
+--prune_thr threshold
+
+Use threshold to create the mask using pruning. Default is FLT_MIN
+
+--surf subject hemi <surfname>
+
+Specify that the input has a surface geometry from the hemisphere of the
+given FreeSurfer subject. This is necessary for smoothing surface data
+(--fwhm or --var-fwhm), specifying a label as a mask (--label), or
+running a simulation (--sim) on surface data. If --surf is not specified,
+then mri_glmfit will assume that the data are volume-based and use
+the geometry as specified in the header to make spatial calculations.
+By default, the white surface is used, but this can be overridden by
+specifying surfname.
+
+--pca
+
+Flag to perform PCA/SVD analysis on the residual. The result is stored
+in glmdir/pca-eres as v.mgh (spatial eigenvectors), u.mtx (frame
+eigenvectors), sdiag.mat (singular values). eres = u*s*v'. The matfiles
+are just ASCII text. The spatial EVs can be loaded as overlays in
+tkmedit or tksurfer. In addition, there is stats.dat with 5 columns:
+  (1) component number
+  (2) variance spanned by that component
+  (3) cumulative variance spanned up to that component
+  (4) percent variance spanned by that component
+  (5) cumulative percent variance spanned up to that component
+
+--save-yhat
+
+Flag to save the signal estimate (yhat) as glmdir/yhat.mgh. Normally, this
+pis not very useful except for debugging.
+
+--save-cond
+
+Flag to save the condition number of the design matrix at eaach voxel.
+Normally, this is not very useful except for debugging. It is totally
+useless if not using weights or PVRs.
+
+--nii, --nii.gz
+
+Use nifti (or compressed nifti) as output format instead of mgh. This
+will work with surfaces, but you will not be able to open the output
+nifti files with non-freesurfer software.
+
+--seed seed
+
+Use seed as the seed for the random number generator. By default, mri_glmfit
+will select a seed based on time-of-day. This only has an effect with
+--sim or --synth.
+
+--synth
+
+Replace input data with whise gaussian noise. This is good for testing.
+
+--voxdump col row slice
+
+Save GLM data for a single voxel in directory glmdir/voxdump-col-row-slice.
+Exits immediately. Good for debugging.
+
+
+MONTE CARLO SIMULATION AND CORRECTION FOR MULTIPLE COMPARISONS
+
+One method for correcting for multiple comparisons is to perform simulations
+under the null hypothesis and see how often the value of a statistic
+from the 'true' analysis is exceeded. This frequency is then interpreted
+as a p-value which has been corrected for multiple comparisons. This
+is especially useful with surface-based data as traditional random
+field theory is harder to implement. This simulator is roughly based
+on FSLs permuation simulator (randomise) and AFNIs null-z simulator
+(AlphaSim). Note that FreeSurfer also offers False Discovery Rate (FDR)
+correction in tkmedit and tksurfer.
+
+The estimation, simulation, and correction are done in three distinct
+phases:
+  1. Estimation: run the analysis on your data without simulation.
+     At this point you can view your results (see if FDR is
+     sufficient:).
+  2. Simulation: run the simulator with the same parameters
+     as the estimation to get the Cluster Simulation Data (CSD).
+  3. Clustering: run mri_surfcluster or mri_volcluster with the CSD
+     from the simulator and the output of the estimation. These
+     programs will print out clusters along with their p-values.
+
+The Estimation step is described in detail above. The simulation
+is invoked by calling mri_glmfit with the following arguments:
+
+--sim nulltype nsim thresh csdbasename
+--sim-sign sign
+
+It is not necessary to specify --glmdir (it will be ignored). If
+you are analyzing surface data, then include --surf.
+
+nulltype is the method of generating the null data. Legal values are:
+  (1) perm - perumation, randomly permute rows of X (cf FSL randomise)
+  (2) mc-full - replace input with white gaussian noise
+  (3) mc-z - do not actually do analysis, just assume the output
+      is z-distributed (cf ANFI AlphaSim)
+nsim - number of simulation iterations to run (see below)
+thresh - threshold, specified as -log10(pvalue) to use for clustering
+csdbasename - base name of the file to store the CSD data in. Each
+  contrast will get its own file (created by appending the contrast
+  name to the base name). A '.csd' is appended to each file name.
+
+Multiple simulations can be run in parallel by specifying different
+csdbasenames. Then pass the multiple CSD files to mri_surfcluster
+and mri_volcluster. The Full CSD file is written on each iteration,
+which means that the CSD file will be valid if the simulation
+is aborted or crashes.
+
+In the cases where the design matrix is a single columns of ones
+(ie, one-sample group mean), it makes no sense to permute the
+rows of the design matrix. mri_glmfit automatically checks
+for this case. If found, the design matrix is rebuilt on each
+permutation with randomly selected +1 and -1s. Same as the -1
+option to FSLs randomise.
+
+--sim-sign sign
+
+sign is either abs (default), pos, or neg. pos/neg tell mri_glmfit to
+perform a one-tailed test. In this case, the contrast matrix can
+only have one row.
+
+--uniform min max
+
+For mc-full, synthesize input as a uniform distribution between min
+and max. 
+
+
+=== Output of 'mri_glmfit -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_glmfit' (no arguments) ===
+
+
+USAGE: ./mri_glmfit
+
+   --glmdir dir : save outputs to dir
+
+   --y inputfile
+   --table stats-table : as output by asegstats2table or aparcstats2table 
+   --fsgd FSGDF <gd2mtx> : freesurfer descriptor file
+   --X design matrix file
+   --C contrast1.mtx <--C contrast2.mtx ...>
+   --osgm : construct X and C as a one-sample group mean
+   --no-contrasts-ok : do not fail if no contrasts specified
+   --dti bvals bvecs : do DTI analysis using bvals and bvecs
+   --dti siemensdicom : do DTI analysis extracting bvals and bvecs from dicom
+   --dti-X X.txt : do DTI analysis using provided matrix
+
+   --pvr pvr1 <--prv pvr2 ...> : per-voxel regressors
+   --selfreg col row slice   : self-regressor from index col row slice
+
+   --wls yffxvar : weighted least squares
+   --yffxvar yffxvar : for fixed effects analysis
+   --ffxdof DOF : dof for fixed effects analysis
+   --ffxdofdat ffxdof.dat : text file with dof for fixed effects analysis
+
+   --w weightfile : weight for each input at each voxel
+   --w-inv : invert weights
+   --w-sqrt : sqrt of (inverted) weights
+
+   --fwhm fwhm : smooth input by fwhm
+   --var-fwhm fwhm : smooth variance by fwhm
+   --no-mask-smooth : do not mask when smoothing
+   --no-est-fwhm : turn off FWHM output estimation
+
+   --mask maskfile : binary mask
+   --label labelfile : use label as mask, surfaces only
+   --no-mask : do NOT use a mask (same as --no-cortex)
+   --no-cortex : do NOT use subjects ?h.cortex.label as --label
+   --mask-inv : invert mask
+   --prune : remove voxels that do not have a non-zero value at each frame (def)
+   --no-prune : do not prune
+   --logy : compute natural log of y prior to analysis
+   --no-logy : do not compute natural log of y prior to analysis
+   --rm-spatial-mean : subtract the (masked) mean from each frame
+   --yhat-save : save signal estimate (yhat)
+   --eres-save : save residual error (eres)
+   --eres-scm : save residual error spatial correlation matrix (eres.scm). Big!
+   --save-fwhm-map : save voxel-wise map of FWHM estimates
+   --y-out y.out.mgh : save input after any pre-processing
+
+   --surf subject hemi <surfname> : needed for some flags (uses white by default)
+
+   --skew : compute skew and p-value for skew
+   --kurtosis : compute kurtosis and p-value for kurtosis
+
+   --sim nulltype nsim thresh csdbasename : simulation perm, mc-full, mc-z
+   --sim-sign signstring : abs, pos, or neg. Default is abs.
+   --uniform min max : use uniform distribution instead of gaussian
+   --permute-input : good for testing (not related to sim)
+
+   --pca : perform pca/svd analysis on residual
+   --tar1 : compute and save temporal AR1 of residual
+   --save-yhat : flag to save signal estimate
+   --save-cond  : flag to save design matrix condition at each voxel
+   --voxdump col row slice  : dump voxel GLM and exit
+
+   --seed seed : used for synthesizing noise
+   --synth : replace input with gaussian
+
+   --resynthtest niters : test GLM by resynthsis
+   --profile     niters : test speed
+
+   --mrtm1 RefTac TimeSec : perform MRTM1 kinetic modeling
+   --mrtm2 RefTac TimeSec k2prime : perform MRTM2 kinetic modeling
+   --logan RefTac TimeSec tstar   : perform Logan kinetic modeling
+   --bp-clip-neg : set negative BP voxels to 0
+   --bp-clip-max maxval : set BP voxels above max to max
+
+   --perm-force : force perumtation test, even when design matrix is not orthog
+   --diag Gdiag_no : set diagnositc level
+   --diag-cluster : save sig volume and exit from first sim loop
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+   --no-fix-vertex-area : turn off fixing of vertex area (for back comapt only)
+   --allowsubjrep allow subject names to repeat in the fsgd file (must appear
+                  before --fsgd)
+   --allow-zero-dof : mostly for very special purposes
+   --illcond : allow ill-conditioned design matrices
+   --sim-done SimDoneFile : create DoneFile when simulation finished 
+   --no-sig-double : compute sig = -log10(p) from a float precision p rather than double 
+
+

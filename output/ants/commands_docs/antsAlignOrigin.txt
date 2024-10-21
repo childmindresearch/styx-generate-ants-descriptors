@@ -1,0 +1,78 @@
+
+=== Output of 'antsAlignOrigin --help' ===
+
+
+COMMAND: 
+     antsAlignOrigin
+          antsAlignOrigin, applied to an input image, transforms it according to a 
+          reference image and a transform (or a set of transforms). 
+
+OPTIONS: 
+     -d, --dimensionality 2/3
+          This option forces the image to be treated as a specified-dimensional image. If 
+          not specified, antsWarp tries to infer the dimensionality from the input image. 
+
+     -i, --input inputFileName
+          Currently, the only input objects supported are image objects. However, the 
+          current framework allows for warping of other objects such as meshes and point 
+          sets. 
+
+     -r, --reference-image imageFileName
+          For warping input images, the reference image defines the spacing, origin, size, 
+          and direction of the output warped image. 
+
+     -o, --output warpedOutputFileName
+                  [transform,alignedImage]
+          One can either output the warped image or, if the boolean is set, one can print 
+          out the displacement field based on thecomposite transform and the reference 
+          image. 
+
+     -h 
+          Print the help menu (short version). 
+          <VALUES>: 0
+
+     --help 
+          Print the help menu. 
+          <VALUES>: 1, 0
+
+=== Output of 'antsAlignOrigin -help' ===
+
+ERROR:  Invalid flag provided he
+ERROR:  Invalid command line flags found! Aborting execution.
+
+=== Output of 'antsAlignOrigin' (no arguments) ===
+
+
+COMMAND: 
+     antsAlignOrigin
+          antsAlignOrigin, applied to an input image, transforms it according to a 
+          reference image and a transform (or a set of transforms). 
+
+OPTIONS: 
+     -d, --dimensionality 2/3
+          This option forces the image to be treated as a specified-dimensional image. If 
+          not specified, antsWarp tries to infer the dimensionality from the input image. 
+
+     -i, --input inputFileName
+          Currently, the only input objects supported are image objects. However, the 
+          current framework allows for warping of other objects such as meshes and point 
+          sets. 
+
+     -r, --reference-image imageFileName
+          For warping input images, the reference image defines the spacing, origin, size, 
+          and direction of the output warped image. 
+
+     -o, --output warpedOutputFileName
+                  [transform,alignedImage]
+          One can either output the warped image or, if the boolean is set, one can print 
+          out the displacement field based on thecomposite transform and the reference 
+          image. 
+
+     -h 
+          Print the help menu (short version). 
+          <VALUES>: 0
+
+     --help 
+          Print the help menu. 
+          <VALUES>: 0
+

@@ -1,0 +1,23 @@
+
+=== Output of 'mris_extract_values --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/mris_extract_values -i surface -v overlay -a annotation -o csvfile -m numberOfImages image1 image2 imaga3
+
+=== Output of 'mris_extract_values -help' ===
+
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+
+=== Output of 'mris_extract_values' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/mris_extract_values -i surface -v overlay -a annotation -o csvfile -m numberOfImages image1 image2 imaga3

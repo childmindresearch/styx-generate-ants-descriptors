@@ -1,0 +1,12 @@
+
+=== Output of 'ResetDirection --help' ===
+
+Usage:   ResetDirection  infile.nii outfile.nii 
+
+=== Output of 'ResetDirection -help' ===
+
+Usage:   ResetDirection  infile.nii outfile.nii 
+
+=== Output of 'ResetDirection' (no arguments) ===
+
+Usage:   ResetDirection  infile.nii outfile.nii 

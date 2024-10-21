@@ -1,0 +1,75 @@
+
+=== Output of 'makerot --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+makerot 
+Copyright(c) 2003, University of Oxford (Mark Jenkinson)
+
+Usage: 
+makerot [options] --theta=angle
+
+Compulsory arguments (You MUST set one or more of):
+	-t,--theta	angle of rotation (in degrees)
+
+Optional arguments (You may optionally specify one or more of):
+	-a,--axis <ax,ay,az>	unnormalised axis vector (comma separated)
+	--cov	image filename used for centre of volume
+	-c,--centre <cx,cy,cz>	centre of rotation in mm (comma separated)
+	-o,--out	output filename for matrix
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'makerot -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+makerot 
+Copyright(c) 2003, University of Oxford (Mark Jenkinson)
+
+Usage: 
+makerot [options] --theta=angle
+
+Compulsory arguments (You MUST set one or more of):
+	-t,--theta	angle of rotation (in degrees)
+
+Optional arguments (You may optionally specify one or more of):
+	-a,--axis <ax,ay,az>	unnormalised axis vector (comma separated)
+	--cov	image filename used for centre of volume
+	-c,--centre <cx,cy,cz>	centre of rotation in mm (comma separated)
+	-o,--out	output filename for matrix
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'makerot' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-t,--theta	angle of rotation (in degrees)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+makerot 
+Copyright(c) 2003, University of Oxford (Mark Jenkinson)
+
+Usage: 
+makerot [options] --theta=angle
+
+Compulsory arguments (You MUST set one or more of):
+	-t,--theta	angle of rotation (in degrees)
+
+Optional arguments (You may optionally specify one or more of):
+	-a,--axis <ax,ay,az>	unnormalised axis vector (comma separated)
+	--cov	image filename used for centre of volume
+	-c,--centre <cx,cy,cz>	centre of rotation in mm (comma separated)
+	-o,--out	output filename for matrix
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

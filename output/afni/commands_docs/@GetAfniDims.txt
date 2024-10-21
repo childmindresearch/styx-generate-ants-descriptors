@@ -1,0 +1,18 @@
+
+=== Output of '@GetAfniDims --help' ===
+
+*** Can't open dataset --help
+*** Can't open dataset --help
+d2: Subscript out of range.
+
+=== Output of '@GetAfniDims -help' ===
+
+@GetAfniDims dset
+Return the dimensions of dset
+
+
+=== Output of '@GetAfniDims' (no arguments) ===
+
+@GetAfniDims dset
+Return the dimensions of dset
+

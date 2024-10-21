@@ -1,0 +1,12 @@
+
+=== Output of 'mris_annot_to_segmentation --help' ===
+
+unknown option --help
+
+=== Output of 'mris_annot_to_segmentation -help' ===
+
+unknown option -help
+
+=== Output of 'mris_annot_to_segmentation' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_annot_to_segmentation <subject name> <hemi> <surface> <annot file> <color table> <output volume>

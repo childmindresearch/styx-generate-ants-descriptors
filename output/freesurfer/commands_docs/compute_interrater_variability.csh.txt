@@ -1,0 +1,50 @@
+
+=== Output of 'compute_interrater_variability.csh --help' ===
+
+USAGE: compute_interrater_variability
+
+Required Arguments:
+   --vol1 labelvol1   : rater1 label volume
+   --vol1 labelvol2   : rater2 label volume
+   --out outputprefix : text file prefix where the results are written; a total of 3 files are produced
+   --version          : print version and exit
+   --help             : print help and exit
+
+
+Computes the interrater variability between the input files. The input volumes are 
+expected to be label files segmented by two different users or the same user at 
+different time points. The three types of comparisons that are made are the following:
+(1) mean hausdorff distance (smaller number means higher consistency)
+(2) max hausdorff distance  (smaller number means higher consistency)
+(3) label volume difference, Dice and Jaccard overlap measures (smaller difference and higher overlap 
+    means higher consistency)
+
+Required Arguments:
+
+--vol1 labelvol1
+--vol2 labelvol2
+
+Label volumes to be analyzed
+
+--out outputprefix 
+
+Text file prefix where the results are written. A total of three files are produced.
+
+BUGS:
+
+=== Output of 'compute_interrater_variability.csh -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'compute_interrater_variability.csh' (no arguments) ===
+
+USAGE: compute_interrater_variability
+
+Required Arguments:
+   --vol1 labelvol1   : rater1 label volume
+   --vol1 labelvol2   : rater2 label volume
+   --out outputprefix : text file prefix where the results are written; a total of 3 files are produced
+   --version          : print version and exit
+   --help             : print help and exit
+

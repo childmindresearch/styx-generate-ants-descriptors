@@ -1,0 +1,63 @@
+
+=== Output of 'test_recon-all.csh --help' ===
+
+test_recon-all.csh [-rsd <reference subj source dir>]
+                   [-rs <reference subjid>]
+                   [-tsd <test subject dest dir>]
+                   [-ts <test subjid>]
+                   [-fshome <FREESURFER_HOME>]
+                   [-norecon]
+
+the defaults are:
+  <reference subj source dir> = /space/freesurfer/subjects/test/weekly_test/subjects/x86_64
+  <reference subjid> = bert
+  <test subject dest dir> = /tmp
+  <test subjid> = bert
+  <FREESURFER_HOME> = /usr/local/freesurfer/stable
+
+the utilities run by this script include:
+  recon-all (unless -norecon is specified)
+  mri_diff
+  mri_compute_seg_overlap
+  mris_diff
+  mri_surf2surf
+  mris_compute_parc_overlap
+  diff
+  asegstatsdiff
+  aparcstatsdiff
+
+=== Output of 'test_recon-all.csh -help' ===
+
+test_recon-all.csh [-rsd <reference subj source dir>]
+                   [-rs <reference subjid>]
+                   [-tsd <test subject dest dir>]
+                   [-ts <test subjid>]
+                   [-fshome <FREESURFER_HOME>]
+                   [-norecon]
+
+the defaults are:
+  <reference subj source dir> = /space/freesurfer/subjects/test/weekly_test/subjects/x86_64
+  <reference subjid> = bert
+  <test subject dest dir> = /tmp
+  <test subjid> = bert
+  <FREESURFER_HOME> = /usr/local/freesurfer/stable
+
+the utilities run by this script include:
+  recon-all (unless -norecon is specified)
+  mri_diff
+  mri_compute_seg_overlap
+  mris_diff
+  mri_surf2surf
+  mris_compute_parc_overlap
+  diff
+  asegstatsdiff
+  aparcstatsdiff
+
+=== Output of 'test_recon-all.csh' (no arguments) ===
+
+SUBJ_REF_DIR:    /space/freesurfer/subjects/test/weekly_test/subjects/x86_64
+REF_SUBJ:        bert
+SUBJECTS_DIR:    /tmp
+TEST_SUBJ:       bert
+FREESURFER_HOME: /usr/local/freesurfer/stable
+/usr/local/freesurfer/stable/SetUpFreeSurfer.csh: No such file or directory.

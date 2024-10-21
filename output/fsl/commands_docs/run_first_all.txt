@@ -1,0 +1,55 @@
+
+=== Output of 'run_first_all --help' ===
+
+getopt: unrecognized option '--help'
+
+Usage: run_first_all [options] -i <input_image> -o <output_image>
+
+Optional arguments:
+  -m <method>      : method must be one of auto, fast, none or a (numerical) threshold value
+  -b               : input is already brain extracted
+  -s <name>        : run only on one specified structure (e.g. L_Hipp) or a comma separated list (no spaces)
+  -a <img2std.mat> : use affine matrix (do not re-run registration)
+  -3               : use 3-stage affine registration (only currently for hippocampus)
+  -d               : do not cleanup image output files (useful for debugging)
+  -v               : verbose output
+  -h               : display this help message
+
+e.g.:  run_first_all -i im1 -o output_name 
+
+=== Output of 'run_first_all -help' ===
+
+getopt: invalid option -- 'e'
+getopt: invalid option -- 'l'
+getopt: invalid option -- 'p'
+
+Usage: run_first_all [options] -i <input_image> -o <output_image>
+
+Optional arguments:
+  -m <method>      : method must be one of auto, fast, none or a (numerical) threshold value
+  -b               : input is already brain extracted
+  -s <name>        : run only on one specified structure (e.g. L_Hipp) or a comma separated list (no spaces)
+  -a <img2std.mat> : use affine matrix (do not re-run registration)
+  -3               : use 3-stage affine registration (only currently for hippocampus)
+  -d               : do not cleanup image output files (useful for debugging)
+  -v               : verbose output
+  -h               : display this help message
+
+e.g.:  run_first_all -i im1 -o output_name 
+
+=== Output of 'run_first_all' (no arguments) ===
+
+
+Usage: run_first_all [options] -i <input_image> -o <output_image>
+
+Optional arguments:
+  -m <method>      : method must be one of auto, fast, none or a (numerical) threshold value
+  -b               : input is already brain extracted
+  -s <name>        : run only on one specified structure (e.g. L_Hipp) or a comma separated list (no spaces)
+  -a <img2std.mat> : use affine matrix (do not re-run registration)
+  -3               : use 3-stage affine registration (only currently for hippocampus)
+  -d               : do not cleanup image output files (useful for debugging)
+  -v               : verbose output
+  -h               : display this help message
+
+e.g.:  run_first_all -i im1 -o output_name 

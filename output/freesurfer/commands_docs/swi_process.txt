@@ -1,0 +1,75 @@
+
+=== Output of 'swi_process --help' ===
+
+
+ --------- 
+ PrintHelp for /usr/local/freesurfer/bin/swi_process
+ General syntax : /usr/local/freesurfer/bin/swi_process <options> <io> 
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+ 
+ Options : 
+--stddev	 pars = 1	Specify the standard deviation of the Gaussian Smoothing Filter. Default is 2.0
+--phase_mask_cutoff	 pars = 1	Specify the negative phase mask cutoff frequency ( in radianѕ). Default is the minimum value of the phase image.
+--phase_mask_right_cutoff	 pars = 1	Specify the positive phase mask cutoff frequency ( in radianѕ). Default is the maximum value of the phase image.
+--sigmoid_a	 pars = 1	Specify 'a' for the sigmoid formula f(phase)=1/(1+exp(-a*(phase-b))). Default is 1.0. Meaningless with phase_method != sigmoid
+--sigmoid_b	 pars = 1	Specify 'b' for the sigmoid formula f(phase)=1/(1+exp(-a*(phase-b))). Default is 0.0. Meaningless with phase_method != sigmoid
+--phase_multiplications	 pars = 1	Specify the number of phase multiplications. Default is 4
+--mip_level	 pars = 1	Specify the number of levels of mIP across the y direction. Default is 4
+--mag_file	 pars = 1	The magnitude image ( Output from the PRELUDE program)
+--phase_file	 pars = 1	The phase image ( Output from the PRELUDE program)
+--swi_output	 pars = 1	Name of the SWI processed output image
+--phase_mask_method	 pars = 1	Specify the phase mask method. One of negative, positive, symmetric, asymmetric, sigmoid. Default is negative
+
+ IO items 
+
+ --------------- 
+Reading the input file(s)
+
+=== Output of 'swi_process -help' ===
+
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+Reading the input file(s)
+
+=== Output of 'swi_process' (no arguments) ===
+
+
+ Process the Susceptibility-weighted images. Make sure the inputs to this program is after the phase unwrapping step using PRELUDE
+
+ --------- 
+ PrintHelp for /usr/local/freesurfer/bin/swi_process
+ General syntax : /usr/local/freesurfer/bin/swi_process <options> <io> 
+ 
+ Options : 
+--stddev	 pars = 1	Specify the standard deviation of the Gaussian Smoothing Filter. Default is 2.0
+--phase_mask_cutoff	 pars = 1	Specify the negative phase mask cutoff frequency ( in radianѕ). Default is the minimum value of the phase image.
+--phase_mask_right_cutoff	 pars = 1	Specify the positive phase mask cutoff frequency ( in radianѕ). Default is the maximum value of the phase image.
+--sigmoid_a	 pars = 1	Specify 'a' for the sigmoid formula f(phase)=1/(1+exp(-a*(phase-b))). Default is 1.0. Meaningless with phase_method != sigmoid
+--sigmoid_b	 pars = 1	Specify 'b' for the sigmoid formula f(phase)=1/(1+exp(-a*(phase-b))). Default is 0.0. Meaningless with phase_method != sigmoid
+--phase_multiplications	 pars = 1	Specify the number of phase multiplications. Default is 4
+--mip_level	 pars = 1	Specify the number of levels of mIP across the y direction. Default is 4
+--mag_file	 pars = 1	The magnitude image ( Output from the PRELUDE program)
+--phase_file	 pars = 1	The phase image ( Output from the PRELUDE program)
+--swi_output	 pars = 1	Name of the SWI processed output image
+--phase_mask_method	 pars = 1	Specify the phase mask method. One of negative, positive, symmetric, asymmetric, sigmoid. Default is negative
+
+ IO items 
+
+ --------------- 

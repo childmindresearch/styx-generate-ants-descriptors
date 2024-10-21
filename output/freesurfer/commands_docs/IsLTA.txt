@@ -1,0 +1,27 @@
+
+=== Output of 'IsLTA --help' ===
+
+IsLTA --r candidatefile --o outfile
+
+IsLTA 7.4.1
+
+Echos 1 to the terminal (and/or outputfile) if the given file is an LTA,
+otherwise echos 0.
+
+
+
+=== Output of 'IsLTA -help' ===
+
+IsLTA --r candidatefile --o outfile
+
+IsLTA 7.4.1
+
+Echos 1 to the terminal (and/or outputfile) if the given file is an LTA,
+otherwise echos 0.
+
+
+
+=== Output of 'IsLTA' (no arguments) ===
+
+IsLTA --r candidatefile --o outfile
+

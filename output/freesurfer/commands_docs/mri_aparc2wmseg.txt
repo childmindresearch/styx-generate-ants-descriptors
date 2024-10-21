@@ -1,0 +1,32 @@
+
+=== Output of 'mri_aparc2wmseg --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_aparc2wmseg 
+
+   --s subject 
+   --wmseg wmsegfile
+
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+WARNING: this program is not yet tested!
+
+=== Output of 'mri_aparc2wmseg -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_aparc2wmseg' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_aparc2wmseg 
+
+   --s subject 
+   --wmseg wmsegfile
+
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

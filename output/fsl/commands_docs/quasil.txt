@@ -1,0 +1,94 @@
+
+=== Output of 'quasil --help' ===
+
+QUASAR Bayesian Inference for Arterial Spin Labelling MRI
+
+Usage (optional parameters in {}):
+ -i         : specify data file
+ {-o}       : specify output directory
+ {-m}       : specify brain mask file
+
+ Extended options:
+ --t1b      : Set the value for T1 of arterial blood {default: 1.6 s}
+ --disp     : include bolus dispersion in the model (gamma kernel)
+ --infertau : estimate bolus duration from data
+ --mfree    : Do model-free (SVD deconvolution) analysis
+ --corrcal  : Correct partial volume effects on the edge of calibration image M0a
+ --alpha    : Inversion efficiency {default: 0.91}
+
+ Partial volume effects correction options:
+ --pvcorr   : Set partial volume effect correction on. You should provide high resolution partial volume estimates and a structural image.
+ --fslanat  : Name of the directory containing the output from fsl_anat
+ --t1wm     : T1 for WM {default: 1.1 s}
+
+ Sequence parameters:
+ --slicedt  : Set the increase in TI with slice {default: 0.035 s}
+ --fa       : Flip angle for LL readout {default: 35 degrees}
+ --lfa      : Lower flip angle for final phase of data {default: 11.7 degrees}
+ --tis      : comma separated list of TI values
+            {default: 0.04,0.34,0.64,0.94,1.24,1.54,1.84,2.14,2.44,2.74,3.04,3.34,3.64}
+
+Error! Unrecognised option on command line: --help
+
+
+=== Output of 'quasil -help' ===
+
+QUASAR Bayesian Inference for Arterial Spin Labelling MRI
+
+Usage (optional parameters in {}):
+ -i         : specify data file
+ {-o}       : specify output directory
+ {-m}       : specify brain mask file
+
+ Extended options:
+ --t1b      : Set the value for T1 of arterial blood {default: 1.6 s}
+ --disp     : include bolus dispersion in the model (gamma kernel)
+ --infertau : estimate bolus duration from data
+ --mfree    : Do model-free (SVD deconvolution) analysis
+ --corrcal  : Correct partial volume effects on the edge of calibration image M0a
+ --alpha    : Inversion efficiency {default: 0.91}
+
+ Partial volume effects correction options:
+ --pvcorr   : Set partial volume effect correction on. You should provide high resolution partial volume estimates and a structural image.
+ --fslanat  : Name of the directory containing the output from fsl_anat
+ --t1wm     : T1 for WM {default: 1.1 s}
+
+ Sequence parameters:
+ --slicedt  : Set the increase in TI with slice {default: 0.035 s}
+ --fa       : Flip angle for LL readout {default: 35 degrees}
+ --lfa      : Lower flip angle for final phase of data {default: 11.7 degrees}
+ --tis      : comma separated list of TI values
+            {default: 0.04,0.34,0.64,0.94,1.24,1.54,1.84,2.14,2.44,2.74,3.04,3.34,3.64}
+
+Error! Unrecognised option on command line: -help
+
+
+=== Output of 'quasil' (no arguments) ===
+
+QUASAR Bayesian Inference for Arterial Spin Labelling MRI
+
+Usage (optional parameters in {}):
+ -i         : specify data file
+ {-o}       : specify output directory
+ {-m}       : specify brain mask file
+
+ Extended options:
+ --t1b      : Set the value for T1 of arterial blood {default: 1.6 s}
+ --disp     : include bolus dispersion in the model (gamma kernel)
+ --infertau : estimate bolus duration from data
+ --mfree    : Do model-free (SVD deconvolution) analysis
+ --corrcal  : Correct partial volume effects on the edge of calibration image M0a
+ --alpha    : Inversion efficiency {default: 0.91}
+
+ Partial volume effects correction options:
+ --pvcorr   : Set partial volume effect correction on. You should provide high resolution partial volume estimates and a structural image.
+ --fslanat  : Name of the directory containing the output from fsl_anat
+ --t1wm     : T1 for WM {default: 1.1 s}
+
+ Sequence parameters:
+ --slicedt  : Set the increase in TI with slice {default: 0.035 s}
+ --fa       : Flip angle for LL readout {default: 35 degrees}
+ --lfa      : Lower flip angle for final phase of data {default: 11.7 degrees}
+ --tis      : comma separated list of TI values
+            {default: 0.04,0.34,0.64,0.94,1.24,1.54,1.84,2.14,2.44,2.74,3.04,3.34,3.64}
+

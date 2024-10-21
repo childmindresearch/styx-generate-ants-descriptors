@@ -1,0 +1,186 @@
+
+=== Output of '3dNwarpFuncs --help' ===
+
+++ 3dNwarpFuncs: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+++ Authored by: Zhark the Warped
+[7m** ERROR:[0m Bogusly Unknown option '--help' :-( :-( :-(
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dNwarpFuncs -help' enlighten:
+        '-shear       = Compute the shear energy.'
+        '-nwarp  www  = 'www' is the name of the 3D warp dataset'
+        '-bulk        = Compute the (fractional) bulk volume change.'
+
+=== Output of '3dNwarpFuncs -help' ===
+
+Usage: 3dNwarpFuncs [options]
+
+This program reads in a nonlinear 3D warp (from 3dQwarp, etc.) and
+computes some functions of the displacements.  See the OPTIONS below
+for information on what can be computed. The NOTES sections describes
+the formulae of the functions that are available.
+
+--------
+OPTIONS:
+--------
+ -nwarp  www  = 'www' is the name of the 3D warp dataset
+                (this is a mandatory option!)
+               ++ This can be computed on the fly, as in 3dNwarpApply.
+
+ -prefix ppp  = 'ppp' is the name of the new output dataset
+
+ -bulk        = Compute the (fractional) bulk volume change.
+               ++ e.g., Jacobian determinant minus 1.
+               ++ see 'MORE...' (below) for interpreting the sign of '-bulk'.
+ -shear       = Compute the shear energy.
+ -vorticity   = Compute the vorticity enerty.
+ -all         = Compute all 3 of these fun fun functions.
+
+If none of '-bulk', '-shear', or '-vorticity' are given, then '-bulk'
+will be assumed.
+
+------
+NOTES:
+------
+Denote the displacement vector field (warp) by
+   [ p(x,y,z) , q(x,y,z) , r(x,y,z) ]
+Define the Jacobian matrix by
+
+      [ 1+dp/dx   dp/dy    dp/dz  ]   [ Jxx Jxy Jxz ]
+  J = [  dq/dx   1+dq/dy   dq/dz  ] = [ Jyx Jyy Jyz ]
+      [  dr/dx    dr/dy   1+dr/dz ]   [ Jzx Jzy Jzz ]
+
+* The '-bulk' output is the determinant of this matrix (det[J]), minus 1.
+* It measures the fractional amount of volume distortion.
+* Negative means the warped coordinates are shrunken (closer together)
+  than the input coordinates. Also see the 'MORE...' section below.
+
+* The '-shear' output is the sum of squares of the J matrix elements --
+  which equals the sum of squares of its eigenvalues -- divided by
+  det[J]^(2/3), then minus 3.
+* It measures the amount of shearing distortion (normalized by the amount
+  of volume distortion).
+
+* The '-vorticity' output is the sum of squares of the skew part of
+  the J matrix = [ Jxy-Jyx , Jxz-Jzx , Jyz-Jzy ], divided by det[J]^(2/3).
+* It measures the amount of twisting distortion (also normalized).
+
+* All 3 of these functions are dimensionless.
+
+* The penalty used in 3dQwarp is a combination of the bulk, shear,
+  and vorticity functions.
+
+------------------------------
+MORE about interpreting -bulk:
+------------------------------
+If the warp N(x,y,z) is the '_WARP' output from 3dQwarp, then N(x,y,z)
+maps the base dataset (x,y,z) coordinates to the source dataset (x,y,z)
+coordinates. If the source dataset has to expand in size to match
+the base dataset, then going from base coordinates to source must
+be a shrinkage. Thus, negative '-bulk' in this '_WARP' dataset
+corresponds to expansion going from source to base. Conversely,
+in this situation, positive '-bulk' will show up in the '_WARPINV'
+dataset from 3dQwarp as that is the map from source (x,y,z) to
+base (x,y,z).
+
+The situation above happens a lot when using one of the MNI152 human
+brain templates as the base dataset. This family of datasets is larger
+than the average human brain, due to the averaging process used to
+define the first MNI152 template back in the 1990s.
+
+I have no easy interpretation handy for the '-shear' and '-vorticity'
+outputs, alas. They are computed as part of the penalty function used
+to control weirdness in the 3dQwarp optimization process.
+
+---------------------------
+AUTHOR -- RWCox == @AFNIman
+---------------------------
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dNwarpFuncs' (no arguments) ===
+
+Usage: 3dNwarpFuncs [options]
+
+This program reads in a nonlinear 3D warp (from 3dQwarp, etc.) and
+computes some functions of the displacements.  See the OPTIONS below
+for information on what can be computed. The NOTES sections describes
+the formulae of the functions that are available.
+
+--------
+OPTIONS:
+--------
+ -nwarp  www  = 'www' is the name of the 3D warp dataset
+                (this is a mandatory option!)
+               ++ This can be computed on the fly, as in 3dNwarpApply.
+
+ -prefix ppp  = 'ppp' is the name of the new output dataset
+
+ -bulk        = Compute the (fractional) bulk volume change.
+               ++ e.g., Jacobian determinant minus 1.
+               ++ see 'MORE...' (below) for interpreting the sign of '-bulk'.
+ -shear       = Compute the shear energy.
+ -vorticity   = Compute the vorticity enerty.
+ -all         = Compute all 3 of these fun fun functions.
+
+If none of '-bulk', '-shear', or '-vorticity' are given, then '-bulk'
+will be assumed.
+
+------
+NOTES:
+------
+Denote the displacement vector field (warp) by
+   [ p(x,y,z) , q(x,y,z) , r(x,y,z) ]
+Define the Jacobian matrix by
+
+      [ 1+dp/dx   dp/dy    dp/dz  ]   [ Jxx Jxy Jxz ]
+  J = [  dq/dx   1+dq/dy   dq/dz  ] = [ Jyx Jyy Jyz ]
+      [  dr/dx    dr/dy   1+dr/dz ]   [ Jzx Jzy Jzz ]
+
+* The '-bulk' output is the determinant of this matrix (det[J]), minus 1.
+* It measures the fractional amount of volume distortion.
+* Negative means the warped coordinates are shrunken (closer together)
+  than the input coordinates. Also see the 'MORE...' section below.
+
+* The '-shear' output is the sum of squares of the J matrix elements --
+  which equals the sum of squares of its eigenvalues -- divided by
+  det[J]^(2/3), then minus 3.
+* It measures the amount of shearing distortion (normalized by the amount
+  of volume distortion).
+
+* The '-vorticity' output is the sum of squares of the skew part of
+  the J matrix = [ Jxy-Jyx , Jxz-Jzx , Jyz-Jzy ], divided by det[J]^(2/3).
+* It measures the amount of twisting distortion (also normalized).
+
+* All 3 of these functions are dimensionless.
+
+* The penalty used in 3dQwarp is a combination of the bulk, shear,
+  and vorticity functions.
+
+------------------------------
+MORE about interpreting -bulk:
+------------------------------
+If the warp N(x,y,z) is the '_WARP' output from 3dQwarp, then N(x,y,z)
+maps the base dataset (x,y,z) coordinates to the source dataset (x,y,z)
+coordinates. If the source dataset has to expand in size to match
+the base dataset, then going from base coordinates to source must
+be a shrinkage. Thus, negative '-bulk' in this '_WARP' dataset
+corresponds to expansion going from source to base. Conversely,
+in this situation, positive '-bulk' will show up in the '_WARPINV'
+dataset from 3dQwarp as that is the map from source (x,y,z) to
+base (x,y,z).
+
+The situation above happens a lot when using one of the MNI152 human
+brain templates as the base dataset. This family of datasets is larger
+than the average human brain, due to the averaging process used to
+define the first MNI152 template back in the 1990s.
+
+I have no easy interpretation handy for the '-shear' and '-vorticity'
+outputs, alas. They are computed as part of the penalty function used
+to control weirdness in the 3dQwarp optimization process.
+
+---------------------------
+AUTHOR -- RWCox == @AFNIman
+---------------------------
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

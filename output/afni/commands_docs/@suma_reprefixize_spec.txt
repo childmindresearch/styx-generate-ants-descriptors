@@ -1,0 +1,34 @@
+
+=== Output of '@suma_reprefixize_spec --help' ===
+
+** unexpected option #1 = '--help'
+
+=== Output of '@suma_reprefixize_spec -help' ===
+
+# -----------------------------------------------------------------------
+
+Input opts:
+
+-input      III
+-preprefix  PPP
+-odir       OOO
+-workdir    WWW
+-no_clean
+
+# -----------------------------------------------------------------------
+
+
+=== Output of '@suma_reprefixize_spec' (no arguments) ===
+
+# -----------------------------------------------------------------------
+
+Input opts:
+
+-input      III
+-preprefix  PPP
+-odir       OOO
+-workdir    WWW
+-no_clean
+
+# -----------------------------------------------------------------------
+

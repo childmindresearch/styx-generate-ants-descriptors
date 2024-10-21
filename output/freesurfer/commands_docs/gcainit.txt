@@ -1,0 +1,25 @@
+
+=== Output of 'gcainit --help' ===
+
+
+gcainit
+ --g gcadir : output of gcaprep
+
+gcainit 7.4.1
+
+
+=== Output of 'gcainit -help' ===
+
+
+gcainit
+ --g gcadir : output of gcaprep
+
+gcainit 7.4.1
+
+
+=== Output of 'gcainit' (no arguments) ===
+
+
+gcainit
+ --g gcadir : output of gcaprep
+

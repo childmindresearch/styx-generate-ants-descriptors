@@ -1,0 +1,21 @@
+
+=== Output of 'ResampleImageBySpacing --help' ===
+
+Usage: 
+ResampleImageBySpacing  ImageDimension inputImageFile  outputImageFile outxspc outyspc {outzspacing}  {dosmooth?}  {addvox} {nn-interp?}
+ addvox pads each dimension by addvox 
+  
+
+=== Output of 'ResampleImageBySpacing -help' ===
+
+Usage: 
+ResampleImageBySpacing  ImageDimension inputImageFile  outputImageFile outxspc outyspc {outzspacing}  {dosmooth?}  {addvox} {nn-interp?}
+ addvox pads each dimension by addvox 
+  
+
+=== Output of 'ResampleImageBySpacing' (no arguments) ===
+
+Usage: 
+ResampleImageBySpacing  ImageDimension inputImageFile  outputImageFile outxspc outyspc {outzspacing}  {dosmooth?}  {addvox} {nn-interp?}
+ addvox pads each dimension by addvox 
+  

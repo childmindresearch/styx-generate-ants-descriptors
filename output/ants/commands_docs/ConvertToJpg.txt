@@ -1,0 +1,12 @@
+
+=== Output of 'ConvertToJpg --help' ===
+
+Usage:   ConvertToJpg infile.nii out.jpg 
+
+=== Output of 'ConvertToJpg -help' ===
+
+Usage:   ConvertToJpg infile.nii out.jpg 
+
+=== Output of 'ConvertToJpg' (no arguments) ===
+
+Usage:   ConvertToJpg infile.nii out.jpg 

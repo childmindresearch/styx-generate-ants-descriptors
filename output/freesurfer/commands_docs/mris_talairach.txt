@@ -1,0 +1,17 @@
+
+=== Output of 'mris_talairach --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_talairach [options] <input image file>
+
+This program will transform an MRI surface into Talairach space.
+
+valid options are:
+
+
+=== Output of 'mris_talairach -help' ===
+
+unknown option -help
+
+=== Output of 'mris_talairach' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_talairach [options] <input image file>

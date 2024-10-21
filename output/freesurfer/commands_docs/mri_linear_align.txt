@@ -1,0 +1,14 @@
+
+=== Output of 'mri_linear_align --help' ===
+
+unknown option --HELP
+usage: /usr/local/freesurfer/bin/mri_linear_align <source> <target> <output xform>
+
+=== Output of 'mri_linear_align -help' ===
+
+unknown option -HELP
+usage: /usr/local/freesurfer/bin/mri_linear_align <source> <target> <output xform>
+
+=== Output of 'mri_linear_align' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_linear_align <source> <target> <output xform>

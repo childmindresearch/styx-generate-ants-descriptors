@@ -1,0 +1,60 @@
+
+=== Output of 'fsl_motion_outliers --help' ===
+
+Usage: fsl_motion_outliers -i <input 4D image> -o <output confound file> [options]
+   (old version)  fsl_motion_outliers <unfiltered 4D image> <number of dummy scans> <output confound file>
+ 
+Options: -m <mask image>      use supplied mask image for calculating metric
+         -s <filename>        save metric values (e.g. DVARS) as text into specified file
+         -p <filename>        save metric values (e.g. DVARS) as a graphical plot (png format)
+         -t <path>            [Optional] Path to the location where temporary files should be created. Defaults to /tmp
+         --refrms             use RMS intensity difference to reference volume as metric [default metric]
+         --dvars              use DVARS as metric
+         --refmse             Mean Square Error version of --refrms (used in original version of fsl_motion_outliers)
+         --fd                 use FD (framewise displacement) as metric
+         --fdrms              use FD with RMS matrix calculation as metric
+         --thresh=<val>       specify absolute threshold value (otherwise use box-plot cutoff = P75 + 1.5*IQR)
+         --nomoco             do not run motion correction (assumed already done)
+         --dummy=<val>        number of dummy scans to delete (before running anything and creating EVs)
+         -v                   verbose mode
+ 
+
+=== Output of 'fsl_motion_outliers -help' ===
+
+Usage: fsl_motion_outliers -i <input 4D image> -o <output confound file> [options]
+   (old version)  fsl_motion_outliers <unfiltered 4D image> <number of dummy scans> <output confound file>
+ 
+Options: -m <mask image>      use supplied mask image for calculating metric
+         -s <filename>        save metric values (e.g. DVARS) as text into specified file
+         -p <filename>        save metric values (e.g. DVARS) as a graphical plot (png format)
+         -t <path>            [Optional] Path to the location where temporary files should be created. Defaults to /tmp
+         --refrms             use RMS intensity difference to reference volume as metric [default metric]
+         --dvars              use DVARS as metric
+         --refmse             Mean Square Error version of --refrms (used in original version of fsl_motion_outliers)
+         --fd                 use FD (framewise displacement) as metric
+         --fdrms              use FD with RMS matrix calculation as metric
+         --thresh=<val>       specify absolute threshold value (otherwise use box-plot cutoff = P75 + 1.5*IQR)
+         --nomoco             do not run motion correction (assumed already done)
+         --dummy=<val>        number of dummy scans to delete (before running anything and creating EVs)
+         -v                   verbose mode
+ 
+
+=== Output of 'fsl_motion_outliers' (no arguments) ===
+
+Usage: fsl_motion_outliers -i <input 4D image> -o <output confound file> [options]
+   (old version)  fsl_motion_outliers <unfiltered 4D image> <number of dummy scans> <output confound file>
+ 
+Options: -m <mask image>      use supplied mask image for calculating metric
+         -s <filename>        save metric values (e.g. DVARS) as text into specified file
+         -p <filename>        save metric values (e.g. DVARS) as a graphical plot (png format)
+         -t <path>            [Optional] Path to the location where temporary files should be created. Defaults to /tmp
+         --refrms             use RMS intensity difference to reference volume as metric [default metric]
+         --dvars              use DVARS as metric
+         --refmse             Mean Square Error version of --refrms (used in original version of fsl_motion_outliers)
+         --fd                 use FD (framewise displacement) as metric
+         --fdrms              use FD with RMS matrix calculation as metric
+         --thresh=<val>       specify absolute threshold value (otherwise use box-plot cutoff = P75 + 1.5*IQR)
+         --nomoco             do not run motion correction (assumed already done)
+         --dummy=<val>        number of dummy scans to delete (before running anything and creating EVs)
+         -v                   verbose mode
+ 

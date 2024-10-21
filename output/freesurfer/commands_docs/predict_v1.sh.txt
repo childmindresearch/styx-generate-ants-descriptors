@@ -1,0 +1,27 @@
+
+=== Output of 'predict_v1.sh --help' ===
+
+/usr/local/freesurfer/bin/predict_v1.sh [options] subject1 subject2 ...
+ options:
+   -t <template> target image for registration 
+                 (exvivo or invivo [default])
+   -i: dont use inflated surface as initial 
+       registration (backward compatibility)
+   -h <hemi>  hemisphere (rh or lh) default is both hemis
+   -p: print mode (do not run commands, just print them)
+   -u, -?: print usage
+
+=== Output of 'predict_v1.sh -help' ===
+
+
+=== Output of 'predict_v1.sh' (no arguments) ===
+
+/usr/local/freesurfer/bin/predict_v1.sh [options] subject1 subject2 ...
+ options:
+   -t <template> target image for registration 
+                 (exvivo or invivo [default])
+   -i: dont use inflated surface as initial 
+       registration (backward compatibility)
+   -h <hemi>  hemisphere (rh or lh) default is both hemis
+   -p: print mode (do not run commands, just print them)
+   -u, -?: print usage

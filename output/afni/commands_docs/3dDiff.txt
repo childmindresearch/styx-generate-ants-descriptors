@@ -1,0 +1,513 @@
+
+=== Output of '3dDiff --help' ===
+
+
+This is a program to examine element-wise differences between two images.
+
+Usage ~1~
+
+3dDiff  [display opt] [-tol TOLERANCE] [-mask MASK] <DSET_1> <DSET_2>
+
+where: 
+
+  -tol TOLERANCE   :(opt) the floating-point tolerance/epsilon
+
+  -mask MASK:      :(opt) the mask to use when comparing
+
+  -a DSET_1        :(req) input dataset a
+
+  -b DSET_2        :(req) input dataset b
+
+... and there are the following (mutually exclusive) display options:
+
+  -q               :(opt) quiet mode, indicate 0 for no differences and
+                          1 for differences. -1 indicates that an error has 
+                          occurred (aka "Rick Mode").
+  -tabular         :(opt) display only a table of differences, plus
+                          a summary line (the same one as -brutalist)
+                          Mostly for use with 4D data.
+  -brutalist       :(opt) display one-liner. The first number indicates
+                          whether there is a difference, the second number 
+                          indicates how many elements (3D) or volumes (4D)
+                          were different, and the last number indicates the
+                          total number of elements/volumes compared.
+                          if there is a dataset dimension mismatch or an
+                          error, then this will be a line of all -1s.
+                          See examples below for sample output.
+  -long_report      :(opt) print a large report with lots of information.
+
+If no display options are used, a short message with a summary will print.
+
+===========================================================================
+
+Examples ~1~
+
+1) Basic Example: comparing two images
+   A) In the 3D case, you get a short message indicating if there is no
+      difference:
+      $ 3dDiff -a image.nii -b image.nii
+      ++ Images do NOT differ
+
+      ... or a bit more information if there is a difference:
+      $ 3dDiff -a mine.nii -b yours.nii
+      ++ Images differ: 126976 of 126976 elements differ (100.00%)
+
+   B) In the 4D case, the total number of elements AND total number of
+      volumes which differ are reported:
+      $ 3dDiff -a mine.nii -b yours.nii
+      ++ Images differ: 10 of 10 volumes differ (100.00%) and 5965461 of 6082560 elements (98.07%)
+
+2) A tolerance can be used to be more permissive of differences.  In this
+   example, any voxel difference of 100 or less is considered equal:
+   $ 3dDiff -tol 100 -a mine.nii -b yours.nii
+   ++ Images differ: 234529 of 608256 elements differ (38.56%)
+
+3) A mask can be used to limit which regions are being compared:
+   $ 3dDiff -mask roi.nii -a mine.nii -b yours.nii
+   ++ Images differ: 5 of 10 volumes differ (50.00%) and 675225 of 1350450 elements (50.00%)
+
+   NB: The mask is assumed to have a single time point;  volumes in the mask
+   beyond the [0]th are ignored.
+
+===========================================================================
+
+Modes of output/reporting ~1~
+
+There are a variety of reporting modes for 3dDiff, with varying levels
+of verbosity. They can be used to view the image comparison in both human
+and machine-readable formats. The default mode is the version shown in the
+above examples, where a short statement is made summarizing the differences.
+Reporting modes are mutually exclusive, but may be used with any of the
+other program options without restriction.
+
+1) Quiet Mode (-q) ~2~
+   Returns a single integer value in the range [-1, 1]:      -1 indicates a program error (e.g., grids do not match)
+       0 indicates that the images have no differences
+       1 indicates that the images have differences
+
+   Examples:
+   $ 3dDiff -q -a image.nii # no image b supplied
+   -1
+
+   $ 3dDiff -q -a image.nii -b image.nii # an image agrees with itself
+   0
+
+   $ 3dDiff -q -a mine.nii -b yours.nii # two different images
+   1
+
+2) Tabular Mode (-tabular) ~2~
+   Prints out a table of values. Useful for 4D data, but not recommended
+   for 3D data.
+   Each row of the table will indicate the volume index and number of
+   differing elements.  At the end of the table, a summary line will
+   appear (see -brutalist).
+
+   Example (just using the first 10 volumes of two datasets):
+   $ 3dDiff -tabular -a "mine.nii[0..9]" -b "yours.nii[0..9]"
+   0:	596431
+   1:	596465
+   2:	596576
+   3:	596644
+   4:	596638
+   5:	596658
+   6:	596517
+   7:	596512
+   8:	596500
+   9:	596520
+   1 10 10 1.00000
+
+3) Brutalist Mode (-brutalist) ~2~
+   Creates a one-line summary of the differences. The numbers appear in the
+   following order:
+     Summary         [-1, 1], -1 failure, 1 differences, 0 agreement
+     Differences     [0, NV/NT], the number of differing elements (3D) or
+                     volumes (4D)
+     Total Compared  NV/NT,      the number of elements/volumes compared
+     Fraction Diff   [0, 1.0],   the fraction of differing elements/volumes
+
+   Examples:
+   $ 3dDiff -brutalist -a "mine.nii[0]" -b "yours.nii[0]" # 3D
+   1 596431 608256 0.98056
+
+   ... which means: There is a difference, 596431 elements differed,
+   608256 elements were compared. The fraction of differing elements is
+   0.98056.)
+
+   $ 3dDiff -brutalist -a "mine.nii[0..9]" -b "yours.nii[0..9]" # 4D
+   1 10 10 1.00000
+
+   ... which means: There is a difference, 10 volumes differed, 10 volumes
+   were compared.  The fraction of differing volumes is 1.0).
+
+   If the program fails for some reason, brutalist output will be an array
+   of all -1s, like this:
+   $ 3dDiff -brutalist -a image.nii # no dataset b to compare to
+   -1 -1 -1 -1
+
+4) Long Report Mode (-long_report)
+   Prints a very large report with lots of information.
+   **WARNING:** this report is intended for use with humans, not machines!
+   The author makes no guarantee of backwards compatibility for this mode,
+   and will add or remove report outputs at his own (shocking whimsical)
+   discretion.
+
+===========================================================================
+
+Note on unhappy comparisons ~1~
+
+If this program reports that the images cannot be element-wise compared,
+you can examine the header information with 3dinfo. In particular, check out
+the section, "Options requiring dataset pairing at input", most notably
+options starting with "same", for example, -same_grid.
+===========================================================================
+
+Author note: ~1~
+Written by JB Teves, who notes:
+  "Perfection is achieved not when there is no data left to
+  add, but when there is no data left to throw away."
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dDiff -help' ===
+
+
+This is a program to examine element-wise differences between two images.
+
+Usage ~1~
+
+3dDiff  [display opt] [-tol TOLERANCE] [-mask MASK] <DSET_1> <DSET_2>
+
+where: 
+
+  -tol TOLERANCE   :(opt) the floating-point tolerance/epsilon
+
+  -mask MASK:      :(opt) the mask to use when comparing
+
+  -a DSET_1        :(req) input dataset a
+
+  -b DSET_2        :(req) input dataset b
+
+... and there are the following (mutually exclusive) display options:
+
+  -q               :(opt) quiet mode, indicate 0 for no differences and
+                          1 for differences. -1 indicates that an error has 
+                          occurred (aka "Rick Mode").
+  -tabular         :(opt) display only a table of differences, plus
+                          a summary line (the same one as -brutalist)
+                          Mostly for use with 4D data.
+  -brutalist       :(opt) display one-liner. The first number indicates
+                          whether there is a difference, the second number 
+                          indicates how many elements (3D) or volumes (4D)
+                          were different, and the last number indicates the
+                          total number of elements/volumes compared.
+                          if there is a dataset dimension mismatch or an
+                          error, then this will be a line of all -1s.
+                          See examples below for sample output.
+  -long_report      :(opt) print a large report with lots of information.
+
+If no display options are used, a short message with a summary will print.
+
+===========================================================================
+
+Examples ~1~
+
+1) Basic Example: comparing two images
+   A) In the 3D case, you get a short message indicating if there is no
+      difference:
+      $ 3dDiff -a image.nii -b image.nii
+      ++ Images do NOT differ
+
+      ... or a bit more information if there is a difference:
+      $ 3dDiff -a mine.nii -b yours.nii
+      ++ Images differ: 126976 of 126976 elements differ (100.00%)
+
+   B) In the 4D case, the total number of elements AND total number of
+      volumes which differ are reported:
+      $ 3dDiff -a mine.nii -b yours.nii
+      ++ Images differ: 10 of 10 volumes differ (100.00%) and 5965461 of 6082560 elements (98.07%)
+
+2) A tolerance can be used to be more permissive of differences.  In this
+   example, any voxel difference of 100 or less is considered equal:
+   $ 3dDiff -tol 100 -a mine.nii -b yours.nii
+   ++ Images differ: 234529 of 608256 elements differ (38.56%)
+
+3) A mask can be used to limit which regions are being compared:
+   $ 3dDiff -mask roi.nii -a mine.nii -b yours.nii
+   ++ Images differ: 5 of 10 volumes differ (50.00%) and 675225 of 1350450 elements (50.00%)
+
+   NB: The mask is assumed to have a single time point;  volumes in the mask
+   beyond the [0]th are ignored.
+
+===========================================================================
+
+Modes of output/reporting ~1~
+
+There are a variety of reporting modes for 3dDiff, with varying levels
+of verbosity. They can be used to view the image comparison in both human
+and machine-readable formats. The default mode is the version shown in the
+above examples, where a short statement is made summarizing the differences.
+Reporting modes are mutually exclusive, but may be used with any of the
+other program options without restriction.
+
+1) Quiet Mode (-q) ~2~
+   Returns a single integer value in the range [-1, 1]:      -1 indicates a program error (e.g., grids do not match)
+       0 indicates that the images have no differences
+       1 indicates that the images have differences
+
+   Examples:
+   $ 3dDiff -q -a image.nii # no image b supplied
+   -1
+
+   $ 3dDiff -q -a image.nii -b image.nii # an image agrees with itself
+   0
+
+   $ 3dDiff -q -a mine.nii -b yours.nii # two different images
+   1
+
+2) Tabular Mode (-tabular) ~2~
+   Prints out a table of values. Useful for 4D data, but not recommended
+   for 3D data.
+   Each row of the table will indicate the volume index and number of
+   differing elements.  At the end of the table, a summary line will
+   appear (see -brutalist).
+
+   Example (just using the first 10 volumes of two datasets):
+   $ 3dDiff -tabular -a "mine.nii[0..9]" -b "yours.nii[0..9]"
+   0:	596431
+   1:	596465
+   2:	596576
+   3:	596644
+   4:	596638
+   5:	596658
+   6:	596517
+   7:	596512
+   8:	596500
+   9:	596520
+   1 10 10 1.00000
+
+3) Brutalist Mode (-brutalist) ~2~
+   Creates a one-line summary of the differences. The numbers appear in the
+   following order:
+     Summary         [-1, 1], -1 failure, 1 differences, 0 agreement
+     Differences     [0, NV/NT], the number of differing elements (3D) or
+                     volumes (4D)
+     Total Compared  NV/NT,      the number of elements/volumes compared
+     Fraction Diff   [0, 1.0],   the fraction of differing elements/volumes
+
+   Examples:
+   $ 3dDiff -brutalist -a "mine.nii[0]" -b "yours.nii[0]" # 3D
+   1 596431 608256 0.98056
+
+   ... which means: There is a difference, 596431 elements differed,
+   608256 elements were compared. The fraction of differing elements is
+   0.98056.)
+
+   $ 3dDiff -brutalist -a "mine.nii[0..9]" -b "yours.nii[0..9]" # 4D
+   1 10 10 1.00000
+
+   ... which means: There is a difference, 10 volumes differed, 10 volumes
+   were compared.  The fraction of differing volumes is 1.0).
+
+   If the program fails for some reason, brutalist output will be an array
+   of all -1s, like this:
+   $ 3dDiff -brutalist -a image.nii # no dataset b to compare to
+   -1 -1 -1 -1
+
+4) Long Report Mode (-long_report)
+   Prints a very large report with lots of information.
+   **WARNING:** this report is intended for use with humans, not machines!
+   The author makes no guarantee of backwards compatibility for this mode,
+   and will add or remove report outputs at his own (shocking whimsical)
+   discretion.
+
+===========================================================================
+
+Note on unhappy comparisons ~1~
+
+If this program reports that the images cannot be element-wise compared,
+you can examine the header information with 3dinfo. In particular, check out
+the section, "Options requiring dataset pairing at input", most notably
+options starting with "same", for example, -same_grid.
+===========================================================================
+
+Author note: ~1~
+Written by JB Teves, who notes:
+  "Perfection is achieved not when there is no data left to
+  add, but when there is no data left to throw away."
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dDiff' (no arguments) ===
+
+
+This is a program to examine element-wise differences between two images.
+
+Usage ~1~
+
+3dDiff  [display opt] [-tol TOLERANCE] [-mask MASK] <DSET_1> <DSET_2>
+
+where: 
+
+  -tol TOLERANCE   :(opt) the floating-point tolerance/epsilon
+
+  -mask MASK:      :(opt) the mask to use when comparing
+
+  -a DSET_1        :(req) input dataset a
+
+  -b DSET_2        :(req) input dataset b
+
+... and there are the following (mutually exclusive) display options:
+
+  -q               :(opt) quiet mode, indicate 0 for no differences and
+                          1 for differences. -1 indicates that an error has 
+                          occurred (aka "Rick Mode").
+  -tabular         :(opt) display only a table of differences, plus
+                          a summary line (the same one as -brutalist)
+                          Mostly for use with 4D data.
+  -brutalist       :(opt) display one-liner. The first number indicates
+                          whether there is a difference, the second number 
+                          indicates how many elements (3D) or volumes (4D)
+                          were different, and the last number indicates the
+                          total number of elements/volumes compared.
+                          if there is a dataset dimension mismatch or an
+                          error, then this will be a line of all -1s.
+                          See examples below for sample output.
+  -long_report      :(opt) print a large report with lots of information.
+
+If no display options are used, a short message with a summary will print.
+
+===========================================================================
+
+Examples ~1~
+
+1) Basic Example: comparing two images
+   A) In the 3D case, you get a short message indicating if there is no
+      difference:
+      $ 3dDiff -a image.nii -b image.nii
+      ++ Images do NOT differ
+
+      ... or a bit more information if there is a difference:
+      $ 3dDiff -a mine.nii -b yours.nii
+      ++ Images differ: 126976 of 126976 elements differ (100.00%)
+
+   B) In the 4D case, the total number of elements AND total number of
+      volumes which differ are reported:
+      $ 3dDiff -a mine.nii -b yours.nii
+      ++ Images differ: 10 of 10 volumes differ (100.00%) and 5965461 of 6082560 elements (98.07%)
+
+2) A tolerance can be used to be more permissive of differences.  In this
+   example, any voxel difference of 100 or less is considered equal:
+   $ 3dDiff -tol 100 -a mine.nii -b yours.nii
+   ++ Images differ: 234529 of 608256 elements differ (38.56%)
+
+3) A mask can be used to limit which regions are being compared:
+   $ 3dDiff -mask roi.nii -a mine.nii -b yours.nii
+   ++ Images differ: 5 of 10 volumes differ (50.00%) and 675225 of 1350450 elements (50.00%)
+
+   NB: The mask is assumed to have a single time point;  volumes in the mask
+   beyond the [0]th are ignored.
+
+===========================================================================
+
+Modes of output/reporting ~1~
+
+There are a variety of reporting modes for 3dDiff, with varying levels
+of verbosity. They can be used to view the image comparison in both human
+and machine-readable formats. The default mode is the version shown in the
+above examples, where a short statement is made summarizing the differences.
+Reporting modes are mutually exclusive, but may be used with any of the
+other program options without restriction.
+
+1) Quiet Mode (-q) ~2~
+   Returns a single integer value in the range [-1, 1]:      -1 indicates a program error (e.g., grids do not match)
+       0 indicates that the images have no differences
+       1 indicates that the images have differences
+
+   Examples:
+   $ 3dDiff -q -a image.nii # no image b supplied
+   -1
+
+   $ 3dDiff -q -a image.nii -b image.nii # an image agrees with itself
+   0
+
+   $ 3dDiff -q -a mine.nii -b yours.nii # two different images
+   1
+
+2) Tabular Mode (-tabular) ~2~
+   Prints out a table of values. Useful for 4D data, but not recommended
+   for 3D data.
+   Each row of the table will indicate the volume index and number of
+   differing elements.  At the end of the table, a summary line will
+   appear (see -brutalist).
+
+   Example (just using the first 10 volumes of two datasets):
+   $ 3dDiff -tabular -a "mine.nii[0..9]" -b "yours.nii[0..9]"
+   0:	596431
+   1:	596465
+   2:	596576
+   3:	596644
+   4:	596638
+   5:	596658
+   6:	596517
+   7:	596512
+   8:	596500
+   9:	596520
+   1 10 10 1.00000
+
+3) Brutalist Mode (-brutalist) ~2~
+   Creates a one-line summary of the differences. The numbers appear in the
+   following order:
+     Summary         [-1, 1], -1 failure, 1 differences, 0 agreement
+     Differences     [0, NV/NT], the number of differing elements (3D) or
+                     volumes (4D)
+     Total Compared  NV/NT,      the number of elements/volumes compared
+     Fraction Diff   [0, 1.0],   the fraction of differing elements/volumes
+
+   Examples:
+   $ 3dDiff -brutalist -a "mine.nii[0]" -b "yours.nii[0]" # 3D
+   1 596431 608256 0.98056
+
+   ... which means: There is a difference, 596431 elements differed,
+   608256 elements were compared. The fraction of differing elements is
+   0.98056.)
+
+   $ 3dDiff -brutalist -a "mine.nii[0..9]" -b "yours.nii[0..9]" # 4D
+   1 10 10 1.00000
+
+   ... which means: There is a difference, 10 volumes differed, 10 volumes
+   were compared.  The fraction of differing volumes is 1.0).
+
+   If the program fails for some reason, brutalist output will be an array
+   of all -1s, like this:
+   $ 3dDiff -brutalist -a image.nii # no dataset b to compare to
+   -1 -1 -1 -1
+
+4) Long Report Mode (-long_report)
+   Prints a very large report with lots of information.
+   **WARNING:** this report is intended for use with humans, not machines!
+   The author makes no guarantee of backwards compatibility for this mode,
+   and will add or remove report outputs at his own (shocking whimsical)
+   discretion.
+
+===========================================================================
+
+Note on unhappy comparisons ~1~
+
+If this program reports that the images cannot be element-wise compared,
+you can examine the header information with 3dinfo. In particular, check out
+the section, "Options requiring dataset pairing at input", most notably
+options starting with "same", for example, -same_grid.
+===========================================================================
+
+Author note: ~1~
+Written by JB Teves, who notes:
+  "Perfection is achieved not when there is no data left to
+  add, but when there is no data left to throw away."
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

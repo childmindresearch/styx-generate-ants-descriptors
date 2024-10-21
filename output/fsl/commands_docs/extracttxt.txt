@@ -1,0 +1,12 @@
+
+=== Output of 'extracttxt --help' ===
+
+Usage: /usr/local/fsl/bin/extracttxt search_word file [num_trailing_lines [relative_start]]
+
+=== Output of 'extracttxt -help' ===
+
+Usage: /usr/local/fsl/bin/extracttxt search_word file [num_trailing_lines [relative_start]]
+
+=== Output of 'extracttxt' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/extracttxt search_word file [num_trailing_lines [relative_start]]

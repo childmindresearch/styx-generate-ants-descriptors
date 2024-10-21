@@ -1,0 +1,73 @@
+
+=== Output of 'systemnoise --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+systemnoise
+Copyright(c) 2004, University of Oxford (Mark Jenkinson)
+
+Usage: 
+systemnoise [options] --in=<signal> --out=<signal> --sigma=<value>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input signal (possum output matrix)
+	-o,--out	output signal (possum matrix form)
+
+Optional arguments (You may optionally specify one or more of):
+	-s,--sigma	set noise standard deviation (units of intensity)
+	--seed	input seed value for the sequence
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'systemnoise -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+systemnoise
+Copyright(c) 2004, University of Oxford (Mark Jenkinson)
+
+Usage: 
+systemnoise [options] --in=<signal> --out=<signal> --sigma=<value>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input signal (possum output matrix)
+	-o,--out	output signal (possum matrix form)
+
+Optional arguments (You may optionally specify one or more of):
+	-s,--sigma	set noise standard deviation (units of intensity)
+	--seed	input seed value for the sequence
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'systemnoise' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	input signal (possum output matrix)
+	-o,--out	output signal (possum matrix form)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+systemnoise
+Copyright(c) 2004, University of Oxford (Mark Jenkinson)
+
+Usage: 
+systemnoise [options] --in=<signal> --out=<signal> --sigma=<value>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input signal (possum output matrix)
+	-o,--out	output signal (possum matrix form)
+
+Optional arguments (You may optionally specify one or more of):
+	-s,--sigma	set noise standard deviation (units of intensity)
+	--seed	input seed value for the sequence
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

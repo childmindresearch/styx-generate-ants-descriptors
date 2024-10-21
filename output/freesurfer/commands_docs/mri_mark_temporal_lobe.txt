@@ -1,0 +1,14 @@
+
+=== Output of 'mri_mark_temporal_lobe --help' ===
+
+unknown option --help
+
+=== Output of 'mri_mark_temporal_lobe -help' ===
+
+unknown option -help
+
+=== Output of 'mri_mark_temporal_lobe' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_mark_temporal_lobe [options] <subject 1> <subject 2> ... <output file>
+	-spacing  - spacing of classifiers in canonical space
+	-gradient - use intensity gradient as input to classifier.

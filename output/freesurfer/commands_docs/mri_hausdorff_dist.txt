@@ -1,0 +1,28 @@
+
+=== Output of 'mri_hausdorff_dist --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_hausdorff_dist <options> <vol1> <vol2> ... <output text file> 
+	where options are:
+	-b <thresh>        binarize input volumes with threshold <thresh>
+	-F                 read volumes from an input file (first argument is the input filename)
+	-g <sigma>         blur the input image with Gaussian <sigma>
+	-max               compute the max of the min distances instead of the mean
+	-l <label index>   use <label index> as the target label
+
+
+Computes the mean of the min distances between point sets
+
+=== Output of 'mri_hausdorff_dist -help' ===
+
+unknown option -help
+
+=== Output of 'mri_hausdorff_dist' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_hausdorff_dist <options> <vol1> <vol2> ... <output text file> 
+	where options are:
+	-b <thresh>        binarize input volumes with threshold <thresh>
+	-F                 read volumes from an input file (first argument is the input filename)
+	-g <sigma>         blur the input image with Gaussian <sigma>
+	-max               compute the max of the min distances instead of the mean
+	-l <label index>   use <label index> as the target label
+

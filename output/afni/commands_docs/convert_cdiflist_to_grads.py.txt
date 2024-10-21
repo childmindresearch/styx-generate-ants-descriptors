@@ -1,0 +1,186 @@
+
+=== Output of 'convert_cdiflist_to_grads.py --help' ===
+
+** ERROR: unknown opt: '--help'
+
+=== Output of 'convert_cdiflist_to_grads.py -help' ===
+
+
+  PURPOSE ~1~
+
+  This program reads in a GE cdiflist and outputs gradient file + file
+  of bvalues, which can be used in subsequent processing.
+
+  Ver  : 0.4
+  Date : Jan 10, 2023
+  Auth : PA Taylor
+
+------------------------------------------------------------------------------
+
+INPUTS ~1~
+
+  + cdiflist (from GE DWI scanning)
+  + max bvalue used (in using s/mm^2), e.g., 1000 or 1100. 
+
+------------------------------------------------------------------------------
+
+OUTPUTS ~1~
+
+  + row gradient file (unscaled, unit-magnitude)
+  + col gradient file (scaled by b-magn)
+  + row bval file     (bvalues)
+
+------------------------------------------------------------------------------
+
+RUNNING ~1~
+
+ -cdiflist CDIFLIST
+                :(req) name(s) of cdiflist text file, which can be
+                 output by GE scanners when acquiring DWIs and has the
+                 following format:
+                 + first line is 1 number, which is the number of grads N
+                   used in the acquisition
+                 + N rows of 3 values each, which relate to the gradient
+                   direction+strength (but they are *not* directly the 
+                   grads themselves)
+
+ -bval_max BBB  :(req) max bvalue used, which provides a reference value
+                 for scaling everything else
+
+ -prefix PP     :(req) output basename for the subsequent grad and bvalue
+                 files.
+                 Note that this can include path information, but both 
+                 a suffix and a file extensions will be added for the
+                 main outputs: 
+                    _rvec.dat  (row-format of gradients, unit magn)
+                    _bval.dat  (row-format of bvals)
+                    _cvec.dat  (col-format of grads, scaled by b-values)
+
+ -ver           :display current version
+                 (0.4)
+
+ -date          :display release/editing date of current version
+                 (Jan 10, 2023)
+
+ -help          :display help (in terminal)
+ -h             :display help (in terminal)
+
+ -hview         :display help (in separate text editor)
+
+------------------------------------------------------------------------------
+
+NOTES ~1~
+
+At this point in time, this program should only be used if the DWI
+acquisition used *axial slices*.  This tends to be (by far) the most
+common way to acquire the data, so this probably isn't a very
+prohibitive restriction.  However, more option(s) would need to be
+added for dealing with other slice acquisitions (based on how GE
+stores the data).
+
+Also, if you have any questions/uncertainty about the gradient info,
+just ask.  And if you *really* want a correct answer, of course you
+should ask Joelle, the real expert!
+
+------------------------------------------------------------------------------
+
+EXAMPLES ~1~
+
+convert_cdiflist_to_grads.py             \
+    -cdiflist  cdiflist45                \
+    -bval_max  1100                      \
+    -prefix    grads_ge_45
+
+
+
+
+=== Output of 'convert_cdiflist_to_grads.py' (no arguments) ===
+
+
+  PURPOSE ~1~
+
+  This program reads in a GE cdiflist and outputs gradient file + file
+  of bvalues, which can be used in subsequent processing.
+
+  Ver  : 0.4
+  Date : Jan 10, 2023
+  Auth : PA Taylor
+
+------------------------------------------------------------------------------
+
+INPUTS ~1~
+
+  + cdiflist (from GE DWI scanning)
+  + max bvalue used (in using s/mm^2), e.g., 1000 or 1100. 
+
+------------------------------------------------------------------------------
+
+OUTPUTS ~1~
+
+  + row gradient file (unscaled, unit-magnitude)
+  + col gradient file (scaled by b-magn)
+  + row bval file     (bvalues)
+
+------------------------------------------------------------------------------
+
+RUNNING ~1~
+
+ -cdiflist CDIFLIST
+                :(req) name(s) of cdiflist text file, which can be
+                 output by GE scanners when acquiring DWIs and has the
+                 following format:
+                 + first line is 1 number, which is the number of grads N
+                   used in the acquisition
+                 + N rows of 3 values each, which relate to the gradient
+                   direction+strength (but they are *not* directly the 
+                   grads themselves)
+
+ -bval_max BBB  :(req) max bvalue used, which provides a reference value
+                 for scaling everything else
+
+ -prefix PP     :(req) output basename for the subsequent grad and bvalue
+                 files.
+                 Note that this can include path information, but both 
+                 a suffix and a file extensions will be added for the
+                 main outputs: 
+                    _rvec.dat  (row-format of gradients, unit magn)
+                    _bval.dat  (row-format of bvals)
+                    _cvec.dat  (col-format of grads, scaled by b-values)
+
+ -ver           :display current version
+                 (0.4)
+
+ -date          :display release/editing date of current version
+                 (Jan 10, 2023)
+
+ -help          :display help (in terminal)
+ -h             :display help (in terminal)
+
+ -hview         :display help (in separate text editor)
+
+------------------------------------------------------------------------------
+
+NOTES ~1~
+
+At this point in time, this program should only be used if the DWI
+acquisition used *axial slices*.  This tends to be (by far) the most
+common way to acquire the data, so this probably isn't a very
+prohibitive restriction.  However, more option(s) would need to be
+added for dealing with other slice acquisitions (based on how GE
+stores the data).
+
+Also, if you have any questions/uncertainty about the gradient info,
+just ask.  And if you *really* want a correct answer, of course you
+should ask Joelle, the real expert!
+
+------------------------------------------------------------------------------
+
+EXAMPLES ~1~
+
+convert_cdiflist_to_grads.py             \
+    -cdiflist  cdiflist45                \
+    -bval_max  1100                      \
+    -prefix    grads_ge_45
+
+
+

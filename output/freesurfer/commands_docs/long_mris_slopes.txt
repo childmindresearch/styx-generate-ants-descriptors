@@ -1,0 +1,951 @@
+
+=== Output of 'long_mris_slopes --help' ===
+
+Usage: 
+
+SUMMARY
+=======
+
+Computes slope maps (e.g. of thickness) in a longitudinal study.
+The slope is computed within subject from the longitudinally processed
+results (taken from the <tpNid>.long.<template> directories) and the
+output is written into the subjects <template>/surf directory for further
+processing (e.g. group analysis). Will also output the intersections of
+all within-subject cortex labels in <template>/label/?h.long.cortex.label
+if an input label is not specified with --inlabel <name> or if no different
+output name is specified with --outlabel <name> .
+
+
+DETAILS
+=======
+
+
+QDEC.TABLE
+==========
+
+Pass a qdec table file, where the first 2 columns need to be 'fsid  fsid-base'.
+fsid is the id of the individual time points an 'fsid-base' the template/base
+id (grouping the timepoints that belong to the same subject). By default the
+third column is taken as the time variable, but this can be overwritten with
+--time <name>. 
+
+QDEC.TABLE-EXAMPLE:
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+If you like, you can create an independent qdec table file for each subject,
+containing only the time points of that subject (e.g. to process stuff
+simultaneously). You can also run left and right hemisphere in parallel.
+
+
+ANALYSIS
+========
+
+Choose one or more of the following options:
+
+* 'do-rate' for rate, this will compute the slope of a linear fit across
+     time within each subject. Depending on the time variable this will
+     yield the thickening in mm/time_unit (if the time variable is measured
+     in years, such as age: mm/year). Negative values mean thinning!
+* 'do-pc1' is the percent change, this is the rate normalized by the
+     measure at the first time point times 100, e.g. percent thickening per
+     year.
+* 'do-pc1fit' is the percent change with respect to the value at
+     tp1, evalutated from the linear fit. This is the rate normalized by the
+     estimated measure at the first time point times 100, e.g. percent
+     thickening per year. Using the linear fit instead of the measure at time
+     point 1 directly reduces noise as tp1 data is more noisy than the fit,
+     therefore we recommend pc1fit over pc1.
+* 'do-spc' for symmetrized percent change. Here we normalize by the temporal
+     average instead of taking it from the first time point. The average
+     is computed from the linear fit at the middle of the time interval. So
+     it is the rate normalized by the temporal average times 100. This is a
+     symmetric 'percent thickening per year' and more robust, as the value 
+     at time point 1 is more noisy than the average. Note, however, that the
+     temporal average will change when adding new time points!
+* 'do-avg' for output of the temporal average (linear fit evaluated at mid
+     time).
+
+NOTE that for percent change (pc1fit, pc1 and spc) prior smoothing (--fwhm)
+is highly recommended as the division can produce very large values!
+
+
+WITHIN SUBJECT OUTPUT
+=====================
+
+The output of the within subject surface maps will be written into the
+template's surf directory:
+
+     <template>/surf/<hemi>.<NAME>(.fwhm<fwhm>).mgh
+
+For each of the above analysis, the <NAME> can be manually specified
+using --name-rate, --name-pc1fit, --name-pc1, --name-spc, --name-avg.
+Defaults are:  long.<meas>-rate, long.<meas>-pc1 etc.
+
+It is possible to also store the stack of the measure across time in each
+subject using -do-stack. The default is destination is
+<template>/surf/<hemi>.<NAME>(.fwhm<fwhm>).mgh
+with <NAME> = 'long.<meas>-stack' which can be overwritten with
+--out-stack <NAME>
+
+
+CORTEX LABELS
+=============
+
+Create within subject intersections:
+It is recommended to specify --do-label which will intersect the cortex label
+of all time points within each subject. The intersected label is saved to 
+<template>/label/<HEMI>.<OUT_LABEL> (default: <OUT_LABEL>=long.cortex).
+The <OUT_LABEL> part can be manually specified by --out-label <OUT_LABEL>.
+
+Map to common target subject (qcache, see also below):
+If additionally --qcache and --isec-labels <name> is specified, these labels
+will be mapped and intersected on the <qtarget> and output will be written
+to <name> (where <name> is the full path and filename of the output label).
+
+Use existing labels:
+An existing label can be used and is specified with --in-label <name> where
+<name> is the label name without the hemisphere as found in each subjects
+template label dir: template/label/<hemi>.<name>
+for example 'long.cortex.label' to use previously created intersected labels
+or just 'cortex.label' to use the label from each template.
+
+Only intersect existing qtarget labels:
+If labels were mapped to qtarget (with --qcache) before and need to be
+intersected again (e.g. if subjects were removed) use
+--in-label <name>.<qtarget>.label --qcache <qtarget> --iscec-labels <outlabel>
+but don't specify any do-??? flags as within subject analysis will fail
+using the qtarget labels.
+
+
+
+QCACHE
+======
+
+In order to run a group analysis with QDEC all surface measures need to be 
+resampled to some target. If you plant to use QDEC, specify --qcache <qtarget>.
+You can select the qtarget (needs to be in the subjectsdir), usually fsaverage
+is fine, which is automatically created in the subjectsdir during recon-all.
+
+If --qcache <qtarget> is specified, it will resample all the analyses
+specified with --do-??? (and the labels if --do-label) to the qtarget. 
+
+It will also work on different smoothing levels if --fwhm is NOT specified:
+0,5,10,15,20,25
+If --fwhm is specified it will only work on the specified level.
+Smoothing will be done in the subject space before the division (spc or pc1).
+
+Output can be found in <template>/surf folder under each subject template.
+<template>/surf/<HEMI>.<NAME>(.fwhm<fwhm>).mgh  (for subject space)
+<template>/surf/<HEMI>.<NAME>(.fwhm<fwhm>).<QTARGET>.mgh
+
+If cortex labels are intersected (--do-label), it will also be mapped to
+the qtarget and output as:
+<template>/label/<HEMI>.<NAME>(.fwhm<fwhm>).<QTARGET>.mgh
+
+Stacking all maps on QTARGET:
+You can specify --stack-??? to stack all maps on qtarget, this is needed
+if you plan to run your own GLM's (mri_glmfit). It is possible to stack
+previously created qtarget maps, simply do not run any subject analysis
+with do-???.
+
+
+
+EXAMPLES
+========
+
+Simply create avg, rate, pc1, spc for each subject. Also will output
+the stacked thickness files and will intersect the cortex label. Here we
+work on the left hemisphere (lh) and use smoothing of 15 fwhm. Note that
+'age' is the column secifying the age in the long.qdec.table.dat file:
+
+long_mris_slopes --qdec ./long.qdec.table.dat --meas thickness --hemi lh \ 
+  --do-avg --do-rate --do-pc1fit --do-spc --do-stack --do-label \ 
+  --fwhm 15 --time age --sd ./
+
+To create Qdec cache on fsaverage (several fwhm levels):
+
+long_mris_slopes --qdec ./long.qdec.table.dat --meas thickness --hemi lh \ 
+  --do-avg --do-rate --do-pc1fit --do-spc --do-stack --do-label \ 
+  --time age --qcache fsaverage --sd ./ 
+ 
+To stack results for spc and fwhm 15:
+
+long_mris_slopes --qdec ./long.qdec.table.dat --meas thickness --hemi lh \ 
+   --fwhm 15 --qcache fsaverage --stack-spc ./lh.thickness-spc.stack.mgh \ 
+   --sd ./
+
+To intersect previously mapped cortex labels:
+
+long_mris_slopes --qdec ./long.qdec.table.dat --hemi lh \ 
+   --qcache fsaverage --in-label long.cortex.fsaverage.label \ 
+   --isec-labels ./lh.long.isec.fsaverage.cotex.label --sd ./
+  
+  
+  
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+  
+
+
+Options:
+  -h, --help            show this help message and exit
+
+  Required Arguments:
+    --qdec=QDEC         (REQUIRED) qdec table file specifying the subjects and
+                        time points
+    --meas=MEAS         (REQUIRED) the surface input measure (e.g. thickness)
+    --hemi=HEMI         (REQUIRED) run one hemisphere: lh or rh or both
+    --sd=SD             (REQUIRED) full path to FreeSurfer subjects dir
+
+  Computations:
+    Select one or more of the following options:
+
+    --do-avg            compute and output the temporal average (recommended)
+    --do-rate           compute and output the rate (recommended)
+    --do-pc1fit         compute and output the pct. change (w.r.t. tp1 from
+                        linear fit)
+    --do-pc1            compute and output the pct. change (w.r.t. tp1)
+    --do-spc            compute and output the sym. pct. change (w.r.t. temp.
+                        average) (recommended)
+    --do-stack          save the stacked within subject file (time series)
+    --resid=RESID       residual tp (pass 1 for tp1 etc., pass 0 for average)
+                        to export (default no export)
+    --do-label          compute and output intersected cortex label
+                        (recommended)
+    --qcache=QCACHE     create cache for qdec (resample to subject <QCACHE>,
+                        e.g. fsaverage, and smooth at differnt levels. Also
+                        specify qcache output names (see below))
+
+  Parameters:
+    --fwhm=FWHM         smoothing at specific fwhm (required for pct. change)
+    --nosmooth          do not smooth the data (overwrite requirement to not
+                        smooth pct change computations)
+    --time=TIME         variable name for time column variable (e.g. age) in
+                        qdec table
+    --generic-time      time points are ordered in qdec file, assume
+                        time=1,2,3...
+    --in-label=IN_LABEL
+                        use pre-existing label for smoothing and to mask the
+                        output
+    --jac               use this flag when mapping area or volume maps to
+                        correct Jacobian (passed to mri_surf2surf)
+
+  Within-Subject Output:
+    Select these to overwrite the default names:
+
+    --name-avg=NAME_AVG
+                        filename (without hemi ?h) to store temporal average
+                        in <template>/surf/<hemi>.<NAME_AVG>.mgh (default:
+                        long.<meas>-avg)
+    --name-rate=NAME_RATE
+                        filename (without hemi ?h) to store rate in
+                        <template>/surf/<hemi>.<NAME_RATE>.mgh (default:
+                        long.<meas>-rate)
+    --name-pc1fit=NAME_PC1FIT
+                        filename (without hemi ?h) to store pct. change (to
+                        TP1fit) in <template>/surf/<hemi>.<NAME_PC1FIT>.mgh
+                        (default: long.<meas>-pc1fit)
+    --name-pc1=NAME_PC1
+                        filename (without hemi ?h) to store pct. change (to
+                        TP1) in <template>/surf/<hemi>.<NAME_PC1>.mgh
+                        (default: long.<meas>-pc1)
+    --name-spc=NAME_SPC
+                        filename (without hemi ?h) to store sym. pct. change
+                        in <template>/surf/<hemi>.<NAME_SPC>.mgh (default:
+                        long.<meas>-spc)
+    --name-resid=NAME_RESID
+                        filename (without hemi ?h) to store residual in
+                        <template>/surf/<hemi>.<NAME_RESID>.mgh (default:
+                        long.<meas>-resid<resid>), requires --resid <int>
+    --out-stack=OUT_STACK
+                        filename to store stacked measure file
+                        <template>/surf/<hemi>.<OUT_STACK>.mgh (default:
+                        long.<meas>-stack)
+    --out-label=OUT_LABEL
+                        filename to store within-subject intersected cortex
+                        labels in <template>/label/<hemi>.<OUT_LABEL>.label
+                        (default: long.cortex)
+
+  Outputs on Common <qcache> Target:
+    To specify outputs when running --qcache <id>
+
+    --isec-labels=ISEC_LABELS
+                        intersect labels on <qtarget> (usually cortex labels),
+                        requires --qcache
+    --stack-avg=STACK_AVG
+                        output stacked avg maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-rate=STACK_RATE
+                        output stacked rate maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-pc1fit=STACK_PC1FIT
+                        output stacked pc1fit maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-pc1=STACK_PC1
+                        output stacked pc1 maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-spc=STACK_SPC
+                        output stacked spc maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-resid=STACK_RESID
+                        output stacked residual maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+
+=== Output of 'long_mris_slopes -help' ===
+
+Usage: 
+
+SUMMARY
+=======
+
+Computes slope maps (e.g. of thickness) in a longitudinal study.
+The slope is computed within subject from the longitudinally processed
+results (taken from the <tpNid>.long.<template> directories) and the
+output is written into the subjects <template>/surf directory for further
+processing (e.g. group analysis). Will also output the intersections of
+all within-subject cortex labels in <template>/label/?h.long.cortex.label
+if an input label is not specified with --inlabel <name> or if no different
+output name is specified with --outlabel <name> .
+
+
+DETAILS
+=======
+
+
+QDEC.TABLE
+==========
+
+Pass a qdec table file, where the first 2 columns need to be 'fsid  fsid-base'.
+fsid is the id of the individual time points an 'fsid-base' the template/base
+id (grouping the timepoints that belong to the same subject). By default the
+third column is taken as the time variable, but this can be overwritten with
+--time <name>. 
+
+QDEC.TABLE-EXAMPLE:
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+If you like, you can create an independent qdec table file for each subject,
+containing only the time points of that subject (e.g. to process stuff
+simultaneously). You can also run left and right hemisphere in parallel.
+
+
+ANALYSIS
+========
+
+Choose one or more of the following options:
+
+* 'do-rate' for rate, this will compute the slope of a linear fit across
+     time within each subject. Depending on the time variable this will
+     yield the thickening in mm/time_unit (if the time variable is measured
+     in years, such as age: mm/year). Negative values mean thinning!
+* 'do-pc1' is the percent change, this is the rate normalized by the
+     measure at the first time point times 100, e.g. percent thickening per
+     year.
+* 'do-pc1fit' is the percent change with respect to the value at
+     tp1, evalutated from the linear fit. This is the rate normalized by the
+     estimated measure at the first time point times 100, e.g. percent
+     thickening per year. Using the linear fit instead of the measure at time
+     point 1 directly reduces noise as tp1 data is more noisy than the fit,
+     therefore we recommend pc1fit over pc1.
+* 'do-spc' for symmetrized percent change. Here we normalize by the temporal
+     average instead of taking it from the first time point. The average
+     is computed from the linear fit at the middle of the time interval. So
+     it is the rate normalized by the temporal average times 100. This is a
+     symmetric 'percent thickening per year' and more robust, as the value 
+     at time point 1 is more noisy than the average. Note, however, that the
+     temporal average will change when adding new time points!
+* 'do-avg' for output of the temporal average (linear fit evaluated at mid
+     time).
+
+NOTE that for percent change (pc1fit, pc1 and spc) prior smoothing (--fwhm)
+is highly recommended as the division can produce very large values!
+
+
+WITHIN SUBJECT OUTPUT
+=====================
+
+The output of the within subject surface maps will be written into the
+template's surf directory:
+
+     <template>/surf/<hemi>.<NAME>(.fwhm<fwhm>).mgh
+
+For each of the above analysis, the <NAME> can be manually specified
+using --name-rate, --name-pc1fit, --name-pc1, --name-spc, --name-avg.
+Defaults are:  long.<meas>-rate, long.<meas>-pc1 etc.
+
+It is possible to also store the stack of the measure across time in each
+subject using -do-stack. The default is destination is
+<template>/surf/<hemi>.<NAME>(.fwhm<fwhm>).mgh
+with <NAME> = 'long.<meas>-stack' which can be overwritten with
+--out-stack <NAME>
+
+
+CORTEX LABELS
+=============
+
+Create within subject intersections:
+It is recommended to specify --do-label which will intersect the cortex label
+of all time points within each subject. The intersected label is saved to 
+<template>/label/<HEMI>.<OUT_LABEL> (default: <OUT_LABEL>=long.cortex).
+The <OUT_LABEL> part can be manually specified by --out-label <OUT_LABEL>.
+
+Map to common target subject (qcache, see also below):
+If additionally --qcache and --isec-labels <name> is specified, these labels
+will be mapped and intersected on the <qtarget> and output will be written
+to <name> (where <name> is the full path and filename of the output label).
+
+Use existing labels:
+An existing label can be used and is specified with --in-label <name> where
+<name> is the label name without the hemisphere as found in each subjects
+template label dir: template/label/<hemi>.<name>
+for example 'long.cortex.label' to use previously created intersected labels
+or just 'cortex.label' to use the label from each template.
+
+Only intersect existing qtarget labels:
+If labels were mapped to qtarget (with --qcache) before and need to be
+intersected again (e.g. if subjects were removed) use
+--in-label <name>.<qtarget>.label --qcache <qtarget> --iscec-labels <outlabel>
+but don't specify any do-??? flags as within subject analysis will fail
+using the qtarget labels.
+
+
+
+QCACHE
+======
+
+In order to run a group analysis with QDEC all surface measures need to be 
+resampled to some target. If you plant to use QDEC, specify --qcache <qtarget>.
+You can select the qtarget (needs to be in the subjectsdir), usually fsaverage
+is fine, which is automatically created in the subjectsdir during recon-all.
+
+If --qcache <qtarget> is specified, it will resample all the analyses
+specified with --do-??? (and the labels if --do-label) to the qtarget. 
+
+It will also work on different smoothing levels if --fwhm is NOT specified:
+0,5,10,15,20,25
+If --fwhm is specified it will only work on the specified level.
+Smoothing will be done in the subject space before the division (spc or pc1).
+
+Output can be found in <template>/surf folder under each subject template.
+<template>/surf/<HEMI>.<NAME>(.fwhm<fwhm>).mgh  (for subject space)
+<template>/surf/<HEMI>.<NAME>(.fwhm<fwhm>).<QTARGET>.mgh
+
+If cortex labels are intersected (--do-label), it will also be mapped to
+the qtarget and output as:
+<template>/label/<HEMI>.<NAME>(.fwhm<fwhm>).<QTARGET>.mgh
+
+Stacking all maps on QTARGET:
+You can specify --stack-??? to stack all maps on qtarget, this is needed
+if you plan to run your own GLM's (mri_glmfit). It is possible to stack
+previously created qtarget maps, simply do not run any subject analysis
+with do-???.
+
+
+
+EXAMPLES
+========
+
+Simply create avg, rate, pc1, spc for each subject. Also will output
+the stacked thickness files and will intersect the cortex label. Here we
+work on the left hemisphere (lh) and use smoothing of 15 fwhm. Note that
+'age' is the column secifying the age in the long.qdec.table.dat file:
+
+long_mris_slopes --qdec ./long.qdec.table.dat --meas thickness --hemi lh \ 
+  --do-avg --do-rate --do-pc1fit --do-spc --do-stack --do-label \ 
+  --fwhm 15 --time age --sd ./
+
+To create Qdec cache on fsaverage (several fwhm levels):
+
+long_mris_slopes --qdec ./long.qdec.table.dat --meas thickness --hemi lh \ 
+  --do-avg --do-rate --do-pc1fit --do-spc --do-stack --do-label \ 
+  --time age --qcache fsaverage --sd ./ 
+ 
+To stack results for spc and fwhm 15:
+
+long_mris_slopes --qdec ./long.qdec.table.dat --meas thickness --hemi lh \ 
+   --fwhm 15 --qcache fsaverage --stack-spc ./lh.thickness-spc.stack.mgh \ 
+   --sd ./
+
+To intersect previously mapped cortex labels:
+
+long_mris_slopes --qdec ./long.qdec.table.dat --hemi lh \ 
+   --qcache fsaverage --in-label long.cortex.fsaverage.label \ 
+   --isec-labels ./lh.long.isec.fsaverage.cotex.label --sd ./
+  
+  
+  
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+  
+
+
+Options:
+  -h, --help            show this help message and exit
+
+  Required Arguments:
+    --qdec=QDEC         (REQUIRED) qdec table file specifying the subjects and
+                        time points
+    --meas=MEAS         (REQUIRED) the surface input measure (e.g. thickness)
+    --hemi=HEMI         (REQUIRED) run one hemisphere: lh or rh or both
+    --sd=SD             (REQUIRED) full path to FreeSurfer subjects dir
+
+  Computations:
+    Select one or more of the following options:
+
+    --do-avg            compute and output the temporal average (recommended)
+    --do-rate           compute and output the rate (recommended)
+    --do-pc1fit         compute and output the pct. change (w.r.t. tp1 from
+                        linear fit)
+    --do-pc1            compute and output the pct. change (w.r.t. tp1)
+    --do-spc            compute and output the sym. pct. change (w.r.t. temp.
+                        average) (recommended)
+    --do-stack          save the stacked within subject file (time series)
+    --resid=RESID       residual tp (pass 1 for tp1 etc., pass 0 for average)
+                        to export (default no export)
+    --do-label          compute and output intersected cortex label
+                        (recommended)
+    --qcache=QCACHE     create cache for qdec (resample to subject <QCACHE>,
+                        e.g. fsaverage, and smooth at differnt levels. Also
+                        specify qcache output names (see below))
+
+  Parameters:
+    --fwhm=FWHM         smoothing at specific fwhm (required for pct. change)
+    --nosmooth          do not smooth the data (overwrite requirement to not
+                        smooth pct change computations)
+    --time=TIME         variable name for time column variable (e.g. age) in
+                        qdec table
+    --generic-time      time points are ordered in qdec file, assume
+                        time=1,2,3...
+    --in-label=IN_LABEL
+                        use pre-existing label for smoothing and to mask the
+                        output
+    --jac               use this flag when mapping area or volume maps to
+                        correct Jacobian (passed to mri_surf2surf)
+
+  Within-Subject Output:
+    Select these to overwrite the default names:
+
+    --name-avg=NAME_AVG
+                        filename (without hemi ?h) to store temporal average
+                        in <template>/surf/<hemi>.<NAME_AVG>.mgh (default:
+                        long.<meas>-avg)
+    --name-rate=NAME_RATE
+                        filename (without hemi ?h) to store rate in
+                        <template>/surf/<hemi>.<NAME_RATE>.mgh (default:
+                        long.<meas>-rate)
+    --name-pc1fit=NAME_PC1FIT
+                        filename (without hemi ?h) to store pct. change (to
+                        TP1fit) in <template>/surf/<hemi>.<NAME_PC1FIT>.mgh
+                        (default: long.<meas>-pc1fit)
+    --name-pc1=NAME_PC1
+                        filename (without hemi ?h) to store pct. change (to
+                        TP1) in <template>/surf/<hemi>.<NAME_PC1>.mgh
+                        (default: long.<meas>-pc1)
+    --name-spc=NAME_SPC
+                        filename (without hemi ?h) to store sym. pct. change
+                        in <template>/surf/<hemi>.<NAME_SPC>.mgh (default:
+                        long.<meas>-spc)
+    --name-resid=NAME_RESID
+                        filename (without hemi ?h) to store residual in
+                        <template>/surf/<hemi>.<NAME_RESID>.mgh (default:
+                        long.<meas>-resid<resid>), requires --resid <int>
+    --out-stack=OUT_STACK
+                        filename to store stacked measure file
+                        <template>/surf/<hemi>.<OUT_STACK>.mgh (default:
+                        long.<meas>-stack)
+    --out-label=OUT_LABEL
+                        filename to store within-subject intersected cortex
+                        labels in <template>/label/<hemi>.<OUT_LABEL>.label
+                        (default: long.cortex)
+
+  Outputs on Common <qcache> Target:
+    To specify outputs when running --qcache <id>
+
+    --isec-labels=ISEC_LABELS
+                        intersect labels on <qtarget> (usually cortex labels),
+                        requires --qcache
+    --stack-avg=STACK_AVG
+                        output stacked avg maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-rate=STACK_RATE
+                        output stacked rate maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-pc1fit=STACK_PC1FIT
+                        output stacked pc1fit maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-pc1=STACK_PC1
+                        output stacked pc1 maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-spc=STACK_SPC
+                        output stacked spc maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-resid=STACK_RESID
+                        output stacked residual maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+
+=== Output of 'long_mris_slopes' (no arguments) ===
+
+Usage: 
+
+SUMMARY
+=======
+
+Computes slope maps (e.g. of thickness) in a longitudinal study.
+The slope is computed within subject from the longitudinally processed
+results (taken from the <tpNid>.long.<template> directories) and the
+output is written into the subjects <template>/surf directory for further
+processing (e.g. group analysis). Will also output the intersections of
+all within-subject cortex labels in <template>/label/?h.long.cortex.label
+if an input label is not specified with --inlabel <name> or if no different
+output name is specified with --outlabel <name> .
+
+
+DETAILS
+=======
+
+
+QDEC.TABLE
+==========
+
+Pass a qdec table file, where the first 2 columns need to be 'fsid  fsid-base'.
+fsid is the id of the individual time points an 'fsid-base' the template/base
+id (grouping the timepoints that belong to the same subject). By default the
+third column is taken as the time variable, but this can be overwritten with
+--time <name>. 
+
+QDEC.TABLE-EXAMPLE:
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+If you like, you can create an independent qdec table file for each subject,
+containing only the time points of that subject (e.g. to process stuff
+simultaneously). You can also run left and right hemisphere in parallel.
+
+
+ANALYSIS
+========
+
+Choose one or more of the following options:
+
+* 'do-rate' for rate, this will compute the slope of a linear fit across
+     time within each subject. Depending on the time variable this will
+     yield the thickening in mm/time_unit (if the time variable is measured
+     in years, such as age: mm/year). Negative values mean thinning!
+* 'do-pc1' is the percent change, this is the rate normalized by the
+     measure at the first time point times 100, e.g. percent thickening per
+     year.
+* 'do-pc1fit' is the percent change with respect to the value at
+     tp1, evalutated from the linear fit. This is the rate normalized by the
+     estimated measure at the first time point times 100, e.g. percent
+     thickening per year. Using the linear fit instead of the measure at time
+     point 1 directly reduces noise as tp1 data is more noisy than the fit,
+     therefore we recommend pc1fit over pc1.
+* 'do-spc' for symmetrized percent change. Here we normalize by the temporal
+     average instead of taking it from the first time point. The average
+     is computed from the linear fit at the middle of the time interval. So
+     it is the rate normalized by the temporal average times 100. This is a
+     symmetric 'percent thickening per year' and more robust, as the value 
+     at time point 1 is more noisy than the average. Note, however, that the
+     temporal average will change when adding new time points!
+* 'do-avg' for output of the temporal average (linear fit evaluated at mid
+     time).
+
+NOTE that for percent change (pc1fit, pc1 and spc) prior smoothing (--fwhm)
+is highly recommended as the division can produce very large values!
+
+
+WITHIN SUBJECT OUTPUT
+=====================
+
+The output of the within subject surface maps will be written into the
+template's surf directory:
+
+     <template>/surf/<hemi>.<NAME>(.fwhm<fwhm>).mgh
+
+For each of the above analysis, the <NAME> can be manually specified
+using --name-rate, --name-pc1fit, --name-pc1, --name-spc, --name-avg.
+Defaults are:  long.<meas>-rate, long.<meas>-pc1 etc.
+
+It is possible to also store the stack of the measure across time in each
+subject using -do-stack. The default is destination is
+<template>/surf/<hemi>.<NAME>(.fwhm<fwhm>).mgh
+with <NAME> = 'long.<meas>-stack' which can be overwritten with
+--out-stack <NAME>
+
+
+CORTEX LABELS
+=============
+
+Create within subject intersections:
+It is recommended to specify --do-label which will intersect the cortex label
+of all time points within each subject. The intersected label is saved to 
+<template>/label/<HEMI>.<OUT_LABEL> (default: <OUT_LABEL>=long.cortex).
+The <OUT_LABEL> part can be manually specified by --out-label <OUT_LABEL>.
+
+Map to common target subject (qcache, see also below):
+If additionally --qcache and --isec-labels <name> is specified, these labels
+will be mapped and intersected on the <qtarget> and output will be written
+to <name> (where <name> is the full path and filename of the output label).
+
+Use existing labels:
+An existing label can be used and is specified with --in-label <name> where
+<name> is the label name without the hemisphere as found in each subjects
+template label dir: template/label/<hemi>.<name>
+for example 'long.cortex.label' to use previously created intersected labels
+or just 'cortex.label' to use the label from each template.
+
+Only intersect existing qtarget labels:
+If labels were mapped to qtarget (with --qcache) before and need to be
+intersected again (e.g. if subjects were removed) use
+--in-label <name>.<qtarget>.label --qcache <qtarget> --iscec-labels <outlabel>
+but don't specify any do-??? flags as within subject analysis will fail
+using the qtarget labels.
+
+
+
+QCACHE
+======
+
+In order to run a group analysis with QDEC all surface measures need to be 
+resampled to some target. If you plant to use QDEC, specify --qcache <qtarget>.
+You can select the qtarget (needs to be in the subjectsdir), usually fsaverage
+is fine, which is automatically created in the subjectsdir during recon-all.
+
+If --qcache <qtarget> is specified, it will resample all the analyses
+specified with --do-??? (and the labels if --do-label) to the qtarget. 
+
+It will also work on different smoothing levels if --fwhm is NOT specified:
+0,5,10,15,20,25
+If --fwhm is specified it will only work on the specified level.
+Smoothing will be done in the subject space before the division (spc or pc1).
+
+Output can be found in <template>/surf folder under each subject template.
+<template>/surf/<HEMI>.<NAME>(.fwhm<fwhm>).mgh  (for subject space)
+<template>/surf/<HEMI>.<NAME>(.fwhm<fwhm>).<QTARGET>.mgh
+
+If cortex labels are intersected (--do-label), it will also be mapped to
+the qtarget and output as:
+<template>/label/<HEMI>.<NAME>(.fwhm<fwhm>).<QTARGET>.mgh
+
+Stacking all maps on QTARGET:
+You can specify --stack-??? to stack all maps on qtarget, this is needed
+if you plan to run your own GLM's (mri_glmfit). It is possible to stack
+previously created qtarget maps, simply do not run any subject analysis
+with do-???.
+
+
+
+EXAMPLES
+========
+
+Simply create avg, rate, pc1, spc for each subject. Also will output
+the stacked thickness files and will intersect the cortex label. Here we
+work on the left hemisphere (lh) and use smoothing of 15 fwhm. Note that
+'age' is the column secifying the age in the long.qdec.table.dat file:
+
+long_mris_slopes --qdec ./long.qdec.table.dat --meas thickness --hemi lh \ 
+  --do-avg --do-rate --do-pc1fit --do-spc --do-stack --do-label \ 
+  --fwhm 15 --time age --sd ./
+
+To create Qdec cache on fsaverage (several fwhm levels):
+
+long_mris_slopes --qdec ./long.qdec.table.dat --meas thickness --hemi lh \ 
+  --do-avg --do-rate --do-pc1fit --do-spc --do-stack --do-label \ 
+  --time age --qcache fsaverage --sd ./ 
+ 
+To stack results for spc and fwhm 15:
+
+long_mris_slopes --qdec ./long.qdec.table.dat --meas thickness --hemi lh \ 
+   --fwhm 15 --qcache fsaverage --stack-spc ./lh.thickness-spc.stack.mgh \ 
+   --sd ./
+
+To intersect previously mapped cortex labels:
+
+long_mris_slopes --qdec ./long.qdec.table.dat --hemi lh \ 
+   --qcache fsaverage --in-label long.cortex.fsaverage.label \ 
+   --isec-labels ./lh.long.isec.fsaverage.cotex.label --sd ./
+  
+  
+  
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+  
+
+
+Options:
+  -h, --help            show this help message and exit
+
+  Required Arguments:
+    --qdec=QDEC         (REQUIRED) qdec table file specifying the subjects and
+                        time points
+    --meas=MEAS         (REQUIRED) the surface input measure (e.g. thickness)
+    --hemi=HEMI         (REQUIRED) run one hemisphere: lh or rh or both
+    --sd=SD             (REQUIRED) full path to FreeSurfer subjects dir
+
+  Computations:
+    Select one or more of the following options:
+
+    --do-avg            compute and output the temporal average (recommended)
+    --do-rate           compute and output the rate (recommended)
+    --do-pc1fit         compute and output the pct. change (w.r.t. tp1 from
+                        linear fit)
+    --do-pc1            compute and output the pct. change (w.r.t. tp1)
+    --do-spc            compute and output the sym. pct. change (w.r.t. temp.
+                        average) (recommended)
+    --do-stack          save the stacked within subject file (time series)
+    --resid=RESID       residual tp (pass 1 for tp1 etc., pass 0 for average)
+                        to export (default no export)
+    --do-label          compute and output intersected cortex label
+                        (recommended)
+    --qcache=QCACHE     create cache for qdec (resample to subject <QCACHE>,
+                        e.g. fsaverage, and smooth at differnt levels. Also
+                        specify qcache output names (see below))
+
+  Parameters:
+    --fwhm=FWHM         smoothing at specific fwhm (required for pct. change)
+    --nosmooth          do not smooth the data (overwrite requirement to not
+                        smooth pct change computations)
+    --time=TIME         variable name for time column variable (e.g. age) in
+                        qdec table
+    --generic-time      time points are ordered in qdec file, assume
+                        time=1,2,3...
+    --in-label=IN_LABEL
+                        use pre-existing label for smoothing and to mask the
+                        output
+    --jac               use this flag when mapping area or volume maps to
+                        correct Jacobian (passed to mri_surf2surf)
+
+  Within-Subject Output:
+    Select these to overwrite the default names:
+
+    --name-avg=NAME_AVG
+                        filename (without hemi ?h) to store temporal average
+                        in <template>/surf/<hemi>.<NAME_AVG>.mgh (default:
+                        long.<meas>-avg)
+    --name-rate=NAME_RATE
+                        filename (without hemi ?h) to store rate in
+                        <template>/surf/<hemi>.<NAME_RATE>.mgh (default:
+                        long.<meas>-rate)
+    --name-pc1fit=NAME_PC1FIT
+                        filename (without hemi ?h) to store pct. change (to
+                        TP1fit) in <template>/surf/<hemi>.<NAME_PC1FIT>.mgh
+                        (default: long.<meas>-pc1fit)
+    --name-pc1=NAME_PC1
+                        filename (without hemi ?h) to store pct. change (to
+                        TP1) in <template>/surf/<hemi>.<NAME_PC1>.mgh
+                        (default: long.<meas>-pc1)
+    --name-spc=NAME_SPC
+                        filename (without hemi ?h) to store sym. pct. change
+                        in <template>/surf/<hemi>.<NAME_SPC>.mgh (default:
+                        long.<meas>-spc)
+    --name-resid=NAME_RESID
+                        filename (without hemi ?h) to store residual in
+                        <template>/surf/<hemi>.<NAME_RESID>.mgh (default:
+                        long.<meas>-resid<resid>), requires --resid <int>
+    --out-stack=OUT_STACK
+                        filename to store stacked measure file
+                        <template>/surf/<hemi>.<OUT_STACK>.mgh (default:
+                        long.<meas>-stack)
+    --out-label=OUT_LABEL
+                        filename to store within-subject intersected cortex
+                        labels in <template>/label/<hemi>.<OUT_LABEL>.label
+                        (default: long.cortex)
+
+  Outputs on Common <qcache> Target:
+    To specify outputs when running --qcache <id>
+
+    --isec-labels=ISEC_LABELS
+                        intersect labels on <qtarget> (usually cortex labels),
+                        requires --qcache
+    --stack-avg=STACK_AVG
+                        output stacked avg maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-rate=STACK_RATE
+                        output stacked rate maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-pc1fit=STACK_PC1FIT
+                        output stacked pc1fit maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-pc1=STACK_PC1
+                        output stacked pc1 maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-spc=STACK_SPC
+                        output stacked spc maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+    --stack-resid=STACK_RESID
+                        output stacked residual maps on <qtarget> for all fwhm
+                        levels, requires --qcache
+
+ERROR: Specify --qdec (and other required arguments)
+

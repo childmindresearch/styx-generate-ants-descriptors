@@ -1,0 +1,12 @@
+
+=== Output of 'mris_svm_train --help' ===
+
+error: mris_svm_train has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mris_svm_train -help' ===
+
+error: mris_svm_train has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mris_svm_train' (no arguments) ===
+
+error: mris_svm_train has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

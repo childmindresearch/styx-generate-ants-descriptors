@@ -1,0 +1,15 @@
+
+=== Output of 'mvntool --help' ===
+
+FABBER: MVNtool
+No value given for mandatory option: input
+
+=== Output of 'mvntool -help' ===
+
+FABBER: MVNtool
+Option '-help' doesn't begin with --
+
+=== Output of 'mvntool' (no arguments) ===
+
+FABBER: MVNtool
+No value given for mandatory option: input

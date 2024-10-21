@@ -1,0 +1,12 @@
+
+=== Output of 'tal_compare --help' ===
+
+mri_show: Command not found.
+
+=== Output of 'tal_compare -help' ===
+
+mri_show: Command not found.
+
+=== Output of 'tal_compare' (no arguments) ===
+
+mri_show: Command not found.

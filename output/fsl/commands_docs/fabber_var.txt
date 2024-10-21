@@ -1,0 +1,21 @@
+
+=== Output of 'fabber_var --help' ===
+
+Fabber variance calculator
+Working in 
+cat: /paramnames.txt: No such file or directory
+Done.
+
+=== Output of 'fabber_var -help' ===
+
+Fabber variance calculator
+Working in 
+cat: /paramnames.txt: No such file or directory
+Done.
+
+=== Output of 'fabber_var' (no arguments) ===
+
+Fabber variance calculator
+Working in 
+cat: /paramnames.txt: No such file or directory
+Done.

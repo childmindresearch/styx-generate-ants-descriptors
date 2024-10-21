@@ -1,0 +1,42 @@
+
+=== Output of '3dAFNIto3D --help' ===
+
+[7m*+ WARNING:[0m This program (3dAFNIto3D) is old, not maintained, and probably useless!
+++ 3dAFNIto3D: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+** ERROR: unknown option: --help
+
+=== Output of '3dAFNIto3D -help' ===
+
+[7m*+ WARNING:[0m This program (3dAFNIto3D) is old, not maintained, and probably useless!
+Usage: 3dAFNIto3D [options] dataset
+Reads in an AFNI dataset, and writes it out as a 3D file.
+
+OPTIONS:
+ -prefix ppp  = Write result into file ppp.3D;
+                  default prefix is same as AFNI dataset's.
+ -bin         = Write data in binary format, not text.
+ -txt         = Write data in text format, not binary.
+
+NOTES:
+* At present, all bricks are written out in float format.
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dAFNIto3D' (no arguments) ===
+
+[7m*+ WARNING:[0m This program (3dAFNIto3D) is old, not maintained, and probably useless!
+Usage: 3dAFNIto3D [options] dataset
+Reads in an AFNI dataset, and writes it out as a 3D file.
+
+OPTIONS:
+ -prefix ppp  = Write result into file ppp.3D;
+                  default prefix is same as AFNI dataset's.
+ -bin         = Write data in binary format, not text.
+ -txt         = Write data in text format, not binary.
+
+NOTES:
+* At present, all bricks are written out in float format.
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

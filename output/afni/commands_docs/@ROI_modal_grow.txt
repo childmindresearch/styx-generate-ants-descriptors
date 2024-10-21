@@ -1,0 +1,108 @@
+
+=== Output of '@ROI_modal_grow --help' ===
+
+No input dataset provided
+
+=== Output of '@ROI_modal_grow -help' ===
+
+
+Overview ~1~
+
+Script to grow a set of regions in a volumetric dataset using modal
+smoothing.
+
+Usage Example ~1~
+
+    @ROI_modal_grow                                      \
+      -input  mydset.nii.gz                              \
+      -outdir myoutdir                                   \
+      -niters 5                                          \
+      -mask mymask.nii.gz                                \
+      -prefix rmg_name                                  
+
+   Note only the input dataset and the number of iteration levels
+   are required.
+
+Options ~1~
+
+    -input input_dset   :required input dataset. This dataset should be
+                         set of integer values. The program mostly assumes
+                         approximate isotropic voxels.
+
+    -outdir outdirname  :directory name for output. All output goes to
+                         this directory. Default is rmgrow.
+
+    -niters nn          :number of iterations for modal growth - 
+                         something like dilation level here - generally
+                         this will make sense for values from about 1-10
+
+    -mask maskset       :mask dataset at same grid as the input dataset.
+                         this could be a dilated version of the original mask
+                         or a larger region like a cortical ribbon mask.
+                         Not required but often desirable.
+
+    -prefix baseprefix  :base name of final output dataset, i.e. baseprefix.nii.gz
+                         Default is rmg, so output would be rmg.nii.gz
+
+    -NN [1,2,3]         :neighborhood type using in finding mode, 
+                         1 - facing neighbors, 2-edges, 3-corners
+
+Also see these programs with these similar functions: 
+   3dROImaker - grows regions using regular dilation iteratively
+   3dmask_tool - dilates and erodes sets of input files or a single output mask
+   3dmerge, 3dAutomask, 3dcalc - all can do dilation
+   3dLocalstat - modal and nonzero modal smoothing
+   ROIgrow - dilates surface ROI (patches) within the mesh of the surface
+
+
+=== Output of '@ROI_modal_grow' (no arguments) ===
+
+
+Overview ~1~
+
+Script to grow a set of regions in a volumetric dataset using modal
+smoothing.
+
+Usage Example ~1~
+
+    @ROI_modal_grow                                      \
+      -input  mydset.nii.gz                              \
+      -outdir myoutdir                                   \
+      -niters 5                                          \
+      -mask mymask.nii.gz                                \
+      -prefix rmg_name                                  
+
+   Note only the input dataset and the number of iteration levels
+   are required.
+
+Options ~1~
+
+    -input input_dset   :required input dataset. This dataset should be
+                         set of integer values. The program mostly assumes
+                         approximate isotropic voxels.
+
+    -outdir outdirname  :directory name for output. All output goes to
+                         this directory. Default is rmgrow.
+
+    -niters nn          :number of iterations for modal growth - 
+                         something like dilation level here - generally
+                         this will make sense for values from about 1-10
+
+    -mask maskset       :mask dataset at same grid as the input dataset.
+                         this could be a dilated version of the original mask
+                         or a larger region like a cortical ribbon mask.
+                         Not required but often desirable.
+
+    -prefix baseprefix  :base name of final output dataset, i.e. baseprefix.nii.gz
+                         Default is rmg, so output would be rmg.nii.gz
+
+    -NN [1,2,3]         :neighborhood type using in finding mode, 
+                         1 - facing neighbors, 2-edges, 3-corners
+
+Also see these programs with these similar functions: 
+   3dROImaker - grows regions using regular dilation iteratively
+   3dmask_tool - dilates and erodes sets of input files or a single output mask
+   3dmerge, 3dAutomask, 3dcalc - all can do dilation
+   3dLocalstat - modal and nonzero modal smoothing
+   ROIgrow - dilates surface ROI (patches) within the mesh of the surface
+

@@ -1,0 +1,57 @@
+
+=== Output of 'make_upright --help' ===
+
+
+   Usage: make_upright input.mgz output.mgz map.lta
+
+   Description: 
+    Registers input to the left/right reversed version using 
+    mri_robust_register and making use of the half-way space, resulting
+    in an upright, forward facing head position
+
+   Reference:
+    Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+    Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+    DOI-Link http://dx.doi.org/10.1016/j.neuroimage.2010.07.020 
+    Pre-Print http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+make_upright 7.4.1
+
+
+=== Output of 'make_upright -help' ===
+
+
+   Usage: make_upright input.mgz output.mgz map.lta
+
+   Description: 
+    Registers input to the left/right reversed version using 
+    mri_robust_register and making use of the half-way space, resulting
+    in an upright, forward facing head position
+
+   Reference:
+    Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+    Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+    DOI-Link http://dx.doi.org/10.1016/j.neuroimage.2010.07.020 
+    Pre-Print http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+make_upright 7.4.1
+
+
+=== Output of 'make_upright' (no arguments) ===
+
+
+   Usage: make_upright input.mgz output.mgz map.lta
+
+   Description: 
+    Registers input to the left/right reversed version using 
+    mri_robust_register and making use of the half-way space, resulting
+    in an upright, forward facing head position
+
+   Reference:
+    Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+    Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+    DOI-Link http://dx.doi.org/10.1016/j.neuroimage.2010.07.020 
+    Pre-Print http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+make_upright 7.4.1
+

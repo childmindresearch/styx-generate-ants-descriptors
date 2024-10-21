@@ -1,0 +1,42 @@
+
+=== Output of 'mris_refine_surfaces --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_refine_surfaces [options] <subject_name> <hemi> <hires volume> <label> [<lowtohires.xfm>]
+options:
+       -sdir $(SUBJECTS_DIR) : specifies SUBJECTS_DIR
+       -mgz                  : use .mgz volumes
+       -suffix $(SUFFIX)     : add $(SUFFIX) to the final surfaces
+
+sample: mris_refine_surface agt rh hires rh_hires.label
+        where hires is located at $(SUBJECTS_DIR)/agt/mri/hires, 
+        rh_hires.label is located at $(SUBJECTS_DIR)/agt/label/rh_hires.label.
+
+This program refines the surfaces lh(rh).pial and lh(rh).white
+around the region specified by the label file, producing lh(rh).pialhires
+and lh(rh).whitehires. The subject must be processed beforehand to have
+mri/filled, mri/wm, surf/lh(rh).orig, surf/lh(rh).white, surf/lh(rh).pial in the 
+subject directory.  The lowtohires.xfm is an optional argument to give.
+
+=== Output of 'mris_refine_surfaces -help' ===
+
+usage: /usr/local/freesurfer/bin/mris_refine_surfaces [options] <subject_name> <hemi> <hires volume> <label> [<lowtohires.xfm>]
+options:
+       -sdir $(SUBJECTS_DIR) : specifies SUBJECTS_DIR
+       -mgz                  : use .mgz volumes
+       -suffix $(SUFFIX)     : add $(SUFFIX) to the final surfaces
+
+sample: mris_refine_surface agt rh hires rh_hires.label
+        where hires is located at $(SUBJECTS_DIR)/agt/mri/hires, 
+        rh_hires.label is located at $(SUBJECTS_DIR)/agt/label/rh_hires.label.
+
+=== Output of 'mris_refine_surfaces' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_refine_surfaces [options] <subject_name> <hemi> <hires volume> <label> [<lowtohires.xfm>]
+options:
+       -sdir $(SUBJECTS_DIR) : specifies SUBJECTS_DIR
+       -mgz                  : use .mgz volumes
+       -suffix $(SUFFIX)     : add $(SUFFIX) to the final surfaces
+
+sample: mris_refine_surface agt rh hires rh_hires.label
+        where hires is located at $(SUBJECTS_DIR)/agt/mri/hires, 
+        rh_hires.label is located at $(SUBJECTS_DIR)/agt/label/rh_hires.label.

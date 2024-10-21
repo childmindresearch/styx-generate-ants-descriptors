@@ -1,0 +1,114 @@
+
+=== Output of 'prelude --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+prelude (Version 2.0 in c# minor)
+Phase Region Expanding Labeller for Unwrapping Discrete Estimates
+Copyright(c) 2001, University of Oxford (Mark Jenkinson)
+
+Usage: 
+prelude -c <rawphase> -o <unwrappedphase> [options]
+prelude -p <phasevol> -a <absvol> -o <unwrappedphase> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-o,--out,-u,--unwrap	filename for saving the unwrapped phase output
+
+Optional arguments (You may optionally specify one or more of):
+	-c,--complex	filename of complex phase input volume
+	-a,--abs	filename of absolute input volume
+	-p,--phase	filename of raw phase input volume
+	-n,--numphasesplit	number of phase partitions to use
+	--labelslices	does label processing in 2D (slice at a time)
+	-s,--slices	does all processing in 2D (slice at a time)
+	-f,--force3D	forces all processing to be full 3D
+	-t,--thresh	intensity threshold for masking
+	-m,--mask	filename of mask input volume
+	--start	first image number to process (default 0)
+	--end	final image number to process (default Inf)
+	--savemask	filename for saving the mask volume
+	-r,--rawphase	filename for saving the raw phase output
+	-l,--labels	filename for saving the area labels output
+	--removeramps	remove phase ramps during unwrapping
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'prelude -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+prelude (Version 2.0 in c# minor)
+Phase Region Expanding Labeller for Unwrapping Discrete Estimates
+Copyright(c) 2001, University of Oxford (Mark Jenkinson)
+
+Usage: 
+prelude -c <rawphase> -o <unwrappedphase> [options]
+prelude -p <phasevol> -a <absvol> -o <unwrappedphase> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-o,--out,-u,--unwrap	filename for saving the unwrapped phase output
+
+Optional arguments (You may optionally specify one or more of):
+	-c,--complex	filename of complex phase input volume
+	-a,--abs	filename of absolute input volume
+	-p,--phase	filename of raw phase input volume
+	-n,--numphasesplit	number of phase partitions to use
+	--labelslices	does label processing in 2D (slice at a time)
+	-s,--slices	does all processing in 2D (slice at a time)
+	-f,--force3D	forces all processing to be full 3D
+	-t,--thresh	intensity threshold for masking
+	-m,--mask	filename of mask input volume
+	--start	first image number to process (default 0)
+	--end	final image number to process (default Inf)
+	--savemask	filename for saving the mask volume
+	-r,--rawphase	filename for saving the raw phase output
+	-l,--labels	filename for saving the area labels output
+	--removeramps	remove phase ramps during unwrapping
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'prelude' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-o,--out,-u,--unwrap	filename for saving the unwrapped phase output
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+prelude (Version 2.0 in c# minor)
+Phase Region Expanding Labeller for Unwrapping Discrete Estimates
+Copyright(c) 2001, University of Oxford (Mark Jenkinson)
+
+Usage: 
+prelude -c <rawphase> -o <unwrappedphase> [options]
+prelude -p <phasevol> -a <absvol> -o <unwrappedphase> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-o,--out,-u,--unwrap	filename for saving the unwrapped phase output
+
+Optional arguments (You may optionally specify one or more of):
+	-c,--complex	filename of complex phase input volume
+	-a,--abs	filename of absolute input volume
+	-p,--phase	filename of raw phase input volume
+	-n,--numphasesplit	number of phase partitions to use
+	--labelslices	does label processing in 2D (slice at a time)
+	-s,--slices	does all processing in 2D (slice at a time)
+	-f,--force3D	forces all processing to be full 3D
+	-t,--thresh	intensity threshold for masking
+	-m,--mask	filename of mask input volume
+	--start	first image number to process (default 0)
+	--end	final image number to process (default Inf)
+	--savemask	filename for saving the mask volume
+	-r,--rawphase	filename for saving the raw phase output
+	-l,--labels	filename for saving the area labels output
+	--removeramps	remove phase ramps during unwrapping
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

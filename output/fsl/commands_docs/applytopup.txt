@@ -1,0 +1,94 @@
+
+=== Output of 'applytopup --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+applytopup (Version 1.0)
+Copyright(c) 2009, University of Oxford (Jesper Andersson)
+
+Usage: 
+applytopup -in=topdn,botup --topup=mytu --inindex=1,2 --out=hifi
+applytopup -in=topdn --topup=mytu --inindex=1 --method=jac --interp=spline --out=hifi
+
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--imain	comma separated list of names of input image (to be corrected)
+	-a,--datain	name of text file with PE directions/times
+	-x,--inindex	comma separated list of indicies into --datain of the input image (to be corrected)
+	-t,--topup	name of field/movements (from topup)
+	-o,--out	basename for output (warped) image
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--method	Use jacobian modulation (jac) or least-squares resampling (lsr), default=lsr.
+	-n,--interp	interpolation method {trilinear,spline}, default=spline
+	-d,--datatype	Force output data type [char short int float double].
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'applytopup -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+applytopup (Version 1.0)
+Copyright(c) 2009, University of Oxford (Jesper Andersson)
+
+Usage: 
+applytopup -in=topdn,botup --topup=mytu --inindex=1,2 --out=hifi
+applytopup -in=topdn --topup=mytu --inindex=1 --method=jac --interp=spline --out=hifi
+
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--imain	comma separated list of names of input image (to be corrected)
+	-a,--datain	name of text file with PE directions/times
+	-x,--inindex	comma separated list of indicies into --datain of the input image (to be corrected)
+	-t,--topup	name of field/movements (from topup)
+	-o,--out	basename for output (warped) image
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--method	Use jacobian modulation (jac) or least-squares resampling (lsr), default=lsr.
+	-n,--interp	interpolation method {trilinear,spline}, default=spline
+	-d,--datatype	Force output data type [char short int float double].
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'applytopup' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--imain	comma separated list of names of input image (to be corrected)
+	-a,--datain	name of text file with PE directions/times
+	-x,--inindex	comma separated list of indicies into --datain of the input image (to be corrected)
+	-t,--topup	name of field/movements (from topup)
+	-o,--out	basename for output (warped) image
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+applytopup (Version 1.0)
+Copyright(c) 2009, University of Oxford (Jesper Andersson)
+
+Usage: 
+applytopup -in=topdn,botup --topup=mytu --inindex=1,2 --out=hifi
+applytopup -in=topdn --topup=mytu --inindex=1 --method=jac --interp=spline --out=hifi
+
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--imain	comma separated list of names of input image (to be corrected)
+	-a,--datain	name of text file with PE directions/times
+	-x,--inindex	comma separated list of indicies into --datain of the input image (to be corrected)
+	-t,--topup	name of field/movements (from topup)
+	-o,--out	basename for output (warped) image
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--method	Use jacobian modulation (jac) or least-squares resampling (lsr), default=lsr.
+	-n,--interp	interpolation method {trilinear,spline}, default=spline
+	-d,--datatype	Force output data type [char short int float double].
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

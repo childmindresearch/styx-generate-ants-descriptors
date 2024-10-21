@@ -1,0 +1,47 @@
+
+=== Output of 'dmri_bset --help' ===
+
+ERROR: --help not regocnized
+
+=== Output of 'dmri_bset -help' ===
+
+ERROR: -help not regocnized
+
+=== Output of 'dmri_bset' (no arguments) ===
+
+
+USAGE: dmri_bset
+
+Required inputs
+   --in  <file>:
+     Input DWI series
+   --out <file>:
+     Output DWI series
+
+Optional inputs
+   --b <num> [--b <num> ...]:
+     Extract one or more b-values
+   --btol <num>:
+     Tolerance around each single b-value (default: 0.05)
+     This means that --b 1000 will give 950<=b<=1050 by default
+   --bsort:
+     Reorder output data by b-shell (default: maintain original order)
+
+   --bmax <num>:
+     Extract all b-values less than or equal to a maximum
+
+   --inb <file>:
+     Input b-value table (default: input DWI base, .bvals extension)
+   --ing <file>:
+     Input gradient table (default: input DWI base, .bvecs extension)
+   --outb <file>:
+     Output b-value table (default: output DWI base, .bvals extension)
+   --outg <file>:
+     Output gradient table (default: output DWI base, .bvecs extension)
+
+This is a simple script that extracts a subset of volumes, b-values,
+and gradient directions from a diffusion MRI data set. Available
+options are extracting data acquired with specific b-values or with
+all b-values below a maximum. The minimum b-value found in the input
+data (usually b=0) is always included in the output data.
+

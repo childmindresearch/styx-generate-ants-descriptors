@@ -1,0 +1,12 @@
+
+=== Output of 'SetDirectionByMatrix --help' ===
+
+Usage:   SetDirectionByMatrix  infile.nii outfile.nii  d01 d02 d03 d10 .... 
+
+=== Output of 'SetDirectionByMatrix -help' ===
+
+Usage:   SetDirectionByMatrix  infile.nii outfile.nii  d01 d02 d03 d10 .... 
+
+=== Output of 'SetDirectionByMatrix' (no arguments) ===
+
+Usage:   SetDirectionByMatrix  infile.nii outfile.nii  d01 d02 d03 d10 .... 

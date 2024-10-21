@@ -1,0 +1,24 @@
+
+=== Output of 'connectedcomp --help' ===
+
+Image Exception : #63 :: No image files match: --help
+Image Exception : #22 :: Failed to read volume --help
+Error : No image files match: --help
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume --help
+Error : No image files match: --help
+timeout: the monitored command dumped core
+
+=== Output of 'connectedcomp -help' ===
+
+Image Exception : #63 :: No image files match: -help
+Image Exception : #22 :: Failed to read volume -help
+Error : No image files match: -help
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume -help
+Error : No image files match: -help
+timeout: the monitored command dumped core
+
+=== Output of 'connectedcomp' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/connectedcomp <in_volume> [outputvol [num_connect]]

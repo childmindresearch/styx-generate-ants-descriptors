@@ -1,0 +1,222 @@
+
+=== Output of 'mris_skeletonize --help' ===
+
+				Help
+
+NAME
+	mris_skeletonize
+
+DESCRIPTION
+	Computes the skeleton of gyri (ie, the crowns) or sulci (ie, the 
+	fundi)
+	       
+
+REQUIRED ARGUMENTS
+	--surf surfacepath
+		surfacepath
+
+	--surfvals surfvalspath
+		Pass input explicitly rather than computing it
+
+	--k1
+		Use k1 from surface (not with --curv-nonmaxsup)
+
+	--curv-nonmaxsup (not with --k1)
+		Use curvature H computed from surface with non-max suppression
+
+	--gyrus
+		skeletonize the crowns of the gyri (with --k1 or 
+		--curv-nonmaxsup)
+
+	--sulcus
+		skeletonize the fundi of the sulci (with --k1 or 
+		--curv-nonmaxsup)
+
+	--mask mask
+		final skeletonized mask
+
+OPTIONAL ARGUMENTS
+	--outdir outdir
+		Save all outputs into outdir (names will be supplied)
+
+	--sphere spherepath
+		sphere, only needed for nonmax suppression
+
+	--surfvals surfvals.mgz
+		Surfaces values used to create the initial mask after any 
+		preprocessing (eg, scale, smoothing)
+
+	--ps PointSet.json
+		Point set of the skeleton
+
+	--label labelfile
+		Surface label of the skeleton
+
+	--nbrsize N
+		Neighborhood size for 2nd FF (default is 2) 
+
+	--threshold threshold
+		Used to create initial mask that will be skeletonized 
+		(typically about 0.3).
+
+	--cluster nkeep
+		Cluster the thresholded input and keep the largets nkeep 
+		clusters
+
+	--fwhm fwhm
+		Smooth surface values by this FWHM.
+
+EXAMPLE 1
+	
+	 
+
+
+
+=== Output of 'mris_skeletonize -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+				Help
+
+NAME
+	mris_skeletonize
+
+DESCRIPTION
+	Computes the skeleton of gyri (ie, the crowns) or sulci (ie, the 
+	fundi)
+	       
+
+REQUIRED ARGUMENTS
+	--surf surfacepath
+		surfacepath
+
+	--surfvals surfvalspath
+		Pass input explicitly rather than computing it
+
+	--k1
+		Use k1 from surface (not with --curv-nonmaxsup)
+
+	--curv-nonmaxsup (not with --k1)
+		Use curvature H computed from surface with non-max suppression
+
+	--gyrus
+		skeletonize the crowns of the gyri (with --k1 or 
+		--curv-nonmaxsup)
+
+	--sulcus
+		skeletonize the fundi of the sulci (with --k1 or 
+		--curv-nonmaxsup)
+
+	--mask mask
+		final skeletonized mask
+
+OPTIONAL ARGUMENTS
+	--outdir outdir
+		Save all outputs into outdir (names will be supplied)
+
+	--sphere spherepath
+		sphere, only needed for nonmax suppression
+
+	--surfvals surfvals.mgz
+		Surfaces values used to create the initial mask after any 
+		preprocessing (eg, scale, smoothing)
+
+	--ps PointSet.json
+		Point set of the skeleton
+
+	--label labelfile
+		Surface label of the skeleton
+
+	--nbrsize N
+		Neighborhood size for 2nd FF (default is 2) 
+
+	--threshold threshold
+		Used to create initial mask that will be skeletonized 
+		(typically about 0.3).
+
+	--cluster nkeep
+		Cluster the thresholded input and keep the largets nkeep 
+		clusters
+
+	--fwhm fwhm
+		Smooth surface values by this FWHM.
+
+EXAMPLE 1
+	
+	 
+
+
+
+=== Output of 'mris_skeletonize' (no arguments) ===
+
+				Help
+
+NAME
+	mris_skeletonize
+
+DESCRIPTION
+	Computes the skeleton of gyri (ie, the crowns) or sulci (ie, the 
+	fundi)
+	       
+
+REQUIRED ARGUMENTS
+	--surf surfacepath
+		surfacepath
+
+	--surfvals surfvalspath
+		Pass input explicitly rather than computing it
+
+	--k1
+		Use k1 from surface (not with --curv-nonmaxsup)
+
+	--curv-nonmaxsup (not with --k1)
+		Use curvature H computed from surface with non-max suppression
+
+	--gyrus
+		skeletonize the crowns of the gyri (with --k1 or 
+		--curv-nonmaxsup)
+
+	--sulcus
+		skeletonize the fundi of the sulci (with --k1 or 
+		--curv-nonmaxsup)
+
+	--mask mask
+		final skeletonized mask
+
+OPTIONAL ARGUMENTS
+	--outdir outdir
+		Save all outputs into outdir (names will be supplied)
+
+	--sphere spherepath
+		sphere, only needed for nonmax suppression
+
+	--surfvals surfvals.mgz
+		Surfaces values used to create the initial mask after any 
+		preprocessing (eg, scale, smoothing)
+
+	--ps PointSet.json
+		Point set of the skeleton
+
+	--label labelfile
+		Surface label of the skeleton
+
+	--nbrsize N
+		Neighborhood size for 2nd FF (default is 2) 
+
+	--threshold threshold
+		Used to create initial mask that will be skeletonized 
+		(typically about 0.3).
+
+	--cluster nkeep
+		Cluster the thresholded input and keep the largets nkeep 
+		clusters
+
+	--fwhm fwhm
+		Smooth surface values by this FWHM.
+
+EXAMPLE 1
+	
+	 
+
+

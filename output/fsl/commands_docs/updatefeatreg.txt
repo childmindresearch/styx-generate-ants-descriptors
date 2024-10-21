@@ -1,0 +1,31 @@
+
+=== Output of 'updatefeatreg --help' ===
+
+Usage: updatefeatreg <feat_directory> [-pngs]
+   Updates all inverse and concatenated transforms in a first-level
+        FEAT run, as well as the images in the FEAT report,
+        based on the fundamental registration matrices:
+          i.e. example_func2highres.mat , highres2standard.mat
+        This allows for manual/other correction of the registrations
+ 
+--help is not a valid directory
+
+=== Output of 'updatefeatreg -help' ===
+
+Usage: updatefeatreg <feat_directory> [-pngs]
+   Updates all inverse and concatenated transforms in a first-level
+        FEAT run, as well as the images in the FEAT report,
+        based on the fundamental registration matrices:
+          i.e. example_func2highres.mat , highres2standard.mat
+        This allows for manual/other correction of the registrations
+ 
+-help is not a valid directory
+
+=== Output of 'updatefeatreg' (no arguments) ===
+
+Usage: updatefeatreg <feat_directory> [-pngs]
+   Updates all inverse and concatenated transforms in a first-level
+        FEAT run, as well as the images in the FEAT report,
+        based on the fundamental registration matrices:
+          i.e. example_func2highres.mat , highres2standard.mat
+        This allows for manual/other correction of the registrations

@@ -1,0 +1,78 @@
+
+=== Output of 'fsl_anat --help' ===
+
+Usage: fsl_anat [options] -i <structural image>
+       fsl_anat [options] -d <existing anat directory>
+ 
+Arguments (You may specify one or more of):
+  -i <strucural image>         filename of input image (for one image only)
+  -d <anat dir>                directory name for existing .anat directory where this script will be run in place
+  -o <output directory>        basename of directory for output (default is input image basename followed by .anat)
+  --clobber                    if .anat directory exist (as specified by -o or default from -i) then delete it and make a new one
+  --strongbias                 used for images with very strong bias fields
+  --weakbias                   used for images with smoother, more typical, bias fields (default setting)
+  --noreorient                 turn off step that does reorientation 2 standard (fslreorient2std)
+  --nocrop                     turn off step that does automated cropping (robustfov)
+  --nobias                     turn off steps that do bias field correction (via FAST)
+  --noreg                      turn off steps that do registration to standard (FLIRT and FNIRT)
+  --nononlinreg                turn off step that does non-linear registration (FNIRT)
+  --noseg                      turn off step that does tissue-type segmentation (FAST)
+  --nosubcortseg               turn off step that does sub-cortical segmentation (FIRST)
+  -s <value>                   specify the value for bias field smoothing (the -l option in FAST)
+  -t <type>                    specify the type of image (choose one of T1 T2 PD - default is T1)
+  --nosearch                   specify that linear registration uses the -nosearch option (FLIRT)
+  --betfparam                  specify f parameter for BET (only used if not running non-linear reg and also wanting brain extraction done)
+  --nocleanup                  do not remove intermediate files
+ 
+
+=== Output of 'fsl_anat -help' ===
+
+Usage: fsl_anat [options] -i <structural image>
+       fsl_anat [options] -d <existing anat directory>
+ 
+Arguments (You may specify one or more of):
+  -i <strucural image>         filename of input image (for one image only)
+  -d <anat dir>                directory name for existing .anat directory where this script will be run in place
+  -o <output directory>        basename of directory for output (default is input image basename followed by .anat)
+  --clobber                    if .anat directory exist (as specified by -o or default from -i) then delete it and make a new one
+  --strongbias                 used for images with very strong bias fields
+  --weakbias                   used for images with smoother, more typical, bias fields (default setting)
+  --noreorient                 turn off step that does reorientation 2 standard (fslreorient2std)
+  --nocrop                     turn off step that does automated cropping (robustfov)
+  --nobias                     turn off steps that do bias field correction (via FAST)
+  --noreg                      turn off steps that do registration to standard (FLIRT and FNIRT)
+  --nononlinreg                turn off step that does non-linear registration (FNIRT)
+  --noseg                      turn off step that does tissue-type segmentation (FAST)
+  --nosubcortseg               turn off step that does sub-cortical segmentation (FIRST)
+  -s <value>                   specify the value for bias field smoothing (the -l option in FAST)
+  -t <type>                    specify the type of image (choose one of T1 T2 PD - default is T1)
+  --nosearch                   specify that linear registration uses the -nosearch option (FLIRT)
+  --betfparam                  specify f parameter for BET (only used if not running non-linear reg and also wanting brain extraction done)
+  --nocleanup                  do not remove intermediate files
+ 
+
+=== Output of 'fsl_anat' (no arguments) ===
+
+Usage: fsl_anat [options] -i <structural image>
+       fsl_anat [options] -d <existing anat directory>
+ 
+Arguments (You may specify one or more of):
+  -i <strucural image>         filename of input image (for one image only)
+  -d <anat dir>                directory name for existing .anat directory where this script will be run in place
+  -o <output directory>        basename of directory for output (default is input image basename followed by .anat)
+  --clobber                    if .anat directory exist (as specified by -o or default from -i) then delete it and make a new one
+  --strongbias                 used for images with very strong bias fields
+  --weakbias                   used for images with smoother, more typical, bias fields (default setting)
+  --noreorient                 turn off step that does reorientation 2 standard (fslreorient2std)
+  --nocrop                     turn off step that does automated cropping (robustfov)
+  --nobias                     turn off steps that do bias field correction (via FAST)
+  --noreg                      turn off steps that do registration to standard (FLIRT and FNIRT)
+  --nononlinreg                turn off step that does non-linear registration (FNIRT)
+  --noseg                      turn off step that does tissue-type segmentation (FAST)
+  --nosubcortseg               turn off step that does sub-cortical segmentation (FIRST)
+  -s <value>                   specify the value for bias field smoothing (the -l option in FAST)
+  -t <type>                    specify the type of image (choose one of T1 T2 PD - default is T1)
+  --nosearch                   specify that linear registration uses the -nosearch option (FLIRT)
+  --betfparam                  specify f parameter for BET (only used if not running non-linear reg and also wanting brain extraction done)
+  --nocleanup                  do not remove intermediate files
+ 

@@ -1,0 +1,207 @@
+
+=== Output of 'tedana_wrapper.py --help' ===
+
+usage: /opt/afni/src/../install/tedana_wrapper.py [-h] -input DSETS
+                                                  [DSETS ...] -TE ms [ms ...]
+                                                  -mask MASK [-help]
+                                                  [-results_dir DIR]
+                                                  [-prefix PREFIX] [-save_all]
+                                                  [-prep_only]
+                                                  [-tedana_prog TEDANA_PROG]
+                                                  [-tedana_is_exec]
+                                                  [-ted_label LABEL]
+                                                  [-tedana_opts 'OPTS']
+
+------------------------------------------
+Overview ~1~
+
+    Internal wrapper to run tedana.py.
+    Usually only run from within afni_proc.py.
+
+Caveats ~1~
+
+    Nearly all of the tedana.py options will be the defaults unless the user
+    specifies them with the -tedana_prog argument. See the help from tedana.py
+    for valid options.
+
+Example ~1~
+
+    tedana_wrapper.py -TE 11 22.72 34.44 \
+    -mask masked_bandit+tlrc \
+    -input echo_01+tlrc echo_02+tlrc echo_03+tlrc \
+    -tedana_opts "--initcost=tanh --conv=2.5e-5 --kdaw=10"
+
+------------------------------------------
+
+Options ~1~
+
+Required arguments:
+  -input DSETS [DSETS ...]
+                        4D dataset for each echo.
+  -TE ms [ms ...]       Echo time (ms) for each echo.
+  -mask MASK            Mask in same space/grid as the input datasets.
+
+tedana arguments:
+  -prep_only            Do not run tedana.py, stop at 3dZcat.
+  -tedana_prog TEDANA_PROG
+                        Path and name of the version of tedana.py that will be
+                        run.Default is meica.libs/tedana.py in the afni
+                        binaries directory.
+  -tedana_is_exec       Run 'tedana.py' rather than 'python tedana.py'.
+  -ted_label LABEL      Suffix for output folder. Adds suffix like TED.LABEL
+                        (NOT A PATH)
+  -tedana_opts 'OPTS'   Additional options to pass to tedana.py. (In quotes)
+                        Example: '--initcost=tanh --conv=2.5e-5'
+
+Optional arguments:
+  -h, --help            show this help message and exit
+  -help                 Show this help.
+  -results_dir DIR      Folder to be created for all outputs. Default
+                        [./Bunnymen].
+  -prefix PREFIX        Prefix for dataset names. Default [Bunnymen].
+  -save_all             Save intermediate datasets. Default is to save only
+                        the 3dZcat stacked dataset (and tedana stuff)
+
+------------------------------------------
+Justin Rajendra circa 02/2018
+I hope this will be useful for someone...
+Keep on keeping on!
+------------------------------------------
+
+=== Output of 'tedana_wrapper.py -help' ===
+
+usage: /opt/afni/src/../install/tedana_wrapper.py [-h] -input DSETS
+                                                  [DSETS ...] -TE ms [ms ...]
+                                                  -mask MASK [-help]
+                                                  [-results_dir DIR]
+                                                  [-prefix PREFIX] [-save_all]
+                                                  [-prep_only]
+                                                  [-tedana_prog TEDANA_PROG]
+                                                  [-tedana_is_exec]
+                                                  [-ted_label LABEL]
+                                                  [-tedana_opts 'OPTS']
+
+------------------------------------------
+Overview ~1~
+
+    Internal wrapper to run tedana.py.
+    Usually only run from within afni_proc.py.
+
+Caveats ~1~
+
+    Nearly all of the tedana.py options will be the defaults unless the user
+    specifies them with the -tedana_prog argument. See the help from tedana.py
+    for valid options.
+
+Example ~1~
+
+    tedana_wrapper.py -TE 11 22.72 34.44 \
+    -mask masked_bandit+tlrc \
+    -input echo_01+tlrc echo_02+tlrc echo_03+tlrc \
+    -tedana_opts "--initcost=tanh --conv=2.5e-5 --kdaw=10"
+
+------------------------------------------
+
+Options ~1~
+
+Required arguments:
+  -input DSETS [DSETS ...]
+                        4D dataset for each echo.
+  -TE ms [ms ...]       Echo time (ms) for each echo.
+  -mask MASK            Mask in same space/grid as the input datasets.
+
+tedana arguments:
+  -prep_only            Do not run tedana.py, stop at 3dZcat.
+  -tedana_prog TEDANA_PROG
+                        Path and name of the version of tedana.py that will be
+                        run.Default is meica.libs/tedana.py in the afni
+                        binaries directory.
+  -tedana_is_exec       Run 'tedana.py' rather than 'python tedana.py'.
+  -ted_label LABEL      Suffix for output folder. Adds suffix like TED.LABEL
+                        (NOT A PATH)
+  -tedana_opts 'OPTS'   Additional options to pass to tedana.py. (In quotes)
+                        Example: '--initcost=tanh --conv=2.5e-5'
+
+Optional arguments:
+  -h, --help            show this help message and exit
+  -help                 Show this help.
+  -results_dir DIR      Folder to be created for all outputs. Default
+                        [./Bunnymen].
+  -prefix PREFIX        Prefix for dataset names. Default [Bunnymen].
+  -save_all             Save intermediate datasets. Default is to save only
+                        the 3dZcat stacked dataset (and tedana stuff)
+
+------------------------------------------
+Justin Rajendra circa 02/2018
+I hope this will be useful for someone...
+Keep on keeping on!
+------------------------------------------
+
+=== Output of 'tedana_wrapper.py' (no arguments) ===
+
+usage: /opt/afni/src/../install/tedana_wrapper.py [-h] -input DSETS
+                                                  [DSETS ...] -TE ms [ms ...]
+                                                  -mask MASK [-help]
+                                                  [-results_dir DIR]
+                                                  [-prefix PREFIX] [-save_all]
+                                                  [-prep_only]
+                                                  [-tedana_prog TEDANA_PROG]
+                                                  [-tedana_is_exec]
+                                                  [-ted_label LABEL]
+                                                  [-tedana_opts 'OPTS']
+
+------------------------------------------
+Overview ~1~
+
+    Internal wrapper to run tedana.py.
+    Usually only run from within afni_proc.py.
+
+Caveats ~1~
+
+    Nearly all of the tedana.py options will be the defaults unless the user
+    specifies them with the -tedana_prog argument. See the help from tedana.py
+    for valid options.
+
+Example ~1~
+
+    tedana_wrapper.py -TE 11 22.72 34.44 \
+    -mask masked_bandit+tlrc \
+    -input echo_01+tlrc echo_02+tlrc echo_03+tlrc \
+    -tedana_opts "--initcost=tanh --conv=2.5e-5 --kdaw=10"
+
+------------------------------------------
+
+Options ~1~
+
+Required arguments:
+  -input DSETS [DSETS ...]
+                        4D dataset for each echo.
+  -TE ms [ms ...]       Echo time (ms) for each echo.
+  -mask MASK            Mask in same space/grid as the input datasets.
+
+tedana arguments:
+  -prep_only            Do not run tedana.py, stop at 3dZcat.
+  -tedana_prog TEDANA_PROG
+                        Path and name of the version of tedana.py that will be
+                        run.Default is meica.libs/tedana.py in the afni
+                        binaries directory.
+  -tedana_is_exec       Run 'tedana.py' rather than 'python tedana.py'.
+  -ted_label LABEL      Suffix for output folder. Adds suffix like TED.LABEL
+                        (NOT A PATH)
+  -tedana_opts 'OPTS'   Additional options to pass to tedana.py. (In quotes)
+                        Example: '--initcost=tanh --conv=2.5e-5'
+
+Optional arguments:
+  -h, --help            show this help message and exit
+  -help                 Show this help.
+  -results_dir DIR      Folder to be created for all outputs. Default
+                        [./Bunnymen].
+  -prefix PREFIX        Prefix for dataset names. Default [Bunnymen].
+  -save_all             Save intermediate datasets. Default is to save only
+                        the 3dZcat stacked dataset (and tedana stuff)
+
+------------------------------------------
+Justin Rajendra circa 02/2018
+I hope this will be useful for someone...
+Keep on keeping on!
+------------------------------------------

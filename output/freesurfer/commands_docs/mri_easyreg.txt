@@ -1,0 +1,55 @@
+
+=== Output of 'mri_easyreg --help' ===
+
+2024-10-21 20:20:23.251841: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+2024-10-21 20:20:23.418742: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+2024-10-21 20:20:23.419346: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-10-21 20:20:24.486939: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+usage: mri_easyreg [-h] [--ref REF] [--ref_seg REF_SEG] [--flo FLO]
+                   [--flo_seg FLO_SEG] [--ref_reg REF_REG] [--flo_reg FLO_REG]
+                   [--fwd_field FWD_FIELD] [--bak_field BAK_FIELD]
+                   [--affine_only] [--threads THREADS]
+
+EasyReg: deep learning registration simple and easy
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --ref REF             Reference image .
+  --ref_seg REF_SEG     Reference SynthSeg segmentation (will be created if it
+                        does not exist).
+  --flo FLO             Floating image.
+  --flo_seg FLO_SEG     Floating SynthSeg segmentation (will be created if it
+                        does not exist).
+  --ref_reg REF_REG     (optional) Registered referenced.
+  --flo_reg FLO_REG     (optional) Registetred floating images (in space of
+                        reference).
+  --fwd_field FWD_FIELD
+                        (optional) Forward field
+  --bak_field BAK_FIELD
+                        (optional) Inverse field
+  --affine_only         (optional) Skips nonlinear part
+  --threads THREADS     (optional) Number of cores to be used. Default is 1.
+                        You can use -1 to use all available cores
+
+=== Output of 'mri_easyreg -help' ===
+
+2024-10-21 20:20:28.503007: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+2024-10-21 20:20:28.556965: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+2024-10-21 20:20:28.557473: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-10-21 20:20:29.238488: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+usage: mri_easyreg [-h] [--ref REF] [--ref_seg REF_SEG] [--flo FLO]
+                   [--flo_seg FLO_SEG] [--ref_reg REF_REG] [--flo_reg FLO_REG]
+                   [--fwd_field FWD_FIELD] [--bak_field BAK_FIELD]
+                   [--affine_only] [--threads THREADS]
+mri_easyreg: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'mri_easyreg' (no arguments) ===
+
+2024-10-21 20:20:32.569968: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+2024-10-21 20:20:32.602015: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+2024-10-21 20:20:32.602359: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-10-21 20:20:33.243221: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Error: Reference image must be provided

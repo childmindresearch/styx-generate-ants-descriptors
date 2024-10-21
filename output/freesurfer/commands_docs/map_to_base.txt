@@ -1,0 +1,66 @@
+
+=== Output of 'map_to_base --help' ===
+
+
+map_to_base baseid tpid input rt [cross]
+
+  baseid:    id of base
+  tpid  :    id of tp (without .long.baseid)
+  input :    input image, e.g. norm.mgz, aseg.mgz, lh.white
+  rt    :    resample-type 
+               'interpolate' for norm, T1, orig..
+               'nearest'     for aseg ..
+               'surface'     for surfaces ..
+  cross :    if '1' input from cross sectionals
+             default: use longitudinal directories
+
+ Will map single image or surface from tp dir (cross or long)
+ to the base space and place output in base dir.
+
+ Output will be in base/mri directory or base/surf
+ Naming will be: tpid-long.input or tpid-cross.input
+
+
+=== Output of 'map_to_base -help' ===
+
+
+map_to_base baseid tpid input rt [cross]
+
+  baseid:    id of base
+  tpid  :    id of tp (without .long.baseid)
+  input :    input image, e.g. norm.mgz, aseg.mgz, lh.white
+  rt    :    resample-type 
+               'interpolate' for norm, T1, orig..
+               'nearest'     for aseg ..
+               'surface'     for surfaces ..
+  cross :    if '1' input from cross sectionals
+             default: use longitudinal directories
+
+ Will map single image or surface from tp dir (cross or long)
+ to the base space and place output in base dir.
+
+ Output will be in base/mri directory or base/surf
+ Naming will be: tpid-long.input or tpid-cross.input
+
+
+=== Output of 'map_to_base' (no arguments) ===
+
+
+map_to_base baseid tpid input rt [cross]
+
+  baseid:    id of base
+  tpid  :    id of tp (without .long.baseid)
+  input :    input image, e.g. norm.mgz, aseg.mgz, lh.white
+  rt    :    resample-type 
+               'interpolate' for norm, T1, orig..
+               'nearest'     for aseg ..
+               'surface'     for surfaces ..
+  cross :    if '1' input from cross sectionals
+             default: use longitudinal directories
+
+ Will map single image or surface from tp dir (cross or long)
+ to the base space and place output in base dir.
+
+ Output will be in base/mri directory or base/surf
+ Naming will be: tpid-long.input or tpid-cross.input
+

@@ -1,0 +1,138 @@
+
+=== Output of 'desphinxify --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of 'desphinxify -help' ===
+
+-------------------------------------------------------------------------
+
+Overview ~1~
+
+This is a simple program that *might* be useful for desphinxifying
+datasets. That is, when datasets are acquired in "sphinx" position,
+this will try to reorient them to match with axial/coronal/sagittal
+definitions standard to human neuroimaging. This may be useful
+particularly when processing nonhuman datasets
+
+Importantly, this program really only reliable **if** the user knows
+the correct final dataset orientation, to verify. We can recommend a
+useful intermediate orientation to reorient the data correctly, but
+the user is in charge of being user.
+
+ver  = 0.0
+auth = PA Taylor (SSCC, NIMH, NIH)
+-------------------------------------------------------------------------
+
+Options ~1~
+
+-input II         :(req) input dset name
+
+-prefix PP        :(req) output dset name (can include path)
+
+-orient_mid OM    :(req) intermediate orientation value, which determines
+                   how the input dataset is effectively rotated (from
+                   RAI orientation) in order to desphinxify it.  
+                   **NB:** a commonly used value here is: RIP.  
+                   However, users must verify this, particularly to get
+                   left and right correct (other mistakes in orientation
+                   tend to be more visually apparent). That is why there is
+                   no default value: please check this with a pilot dataset
+                   for your study.
+
+-workdir WD      : working directory name (just name, no path;
+                   will be subdirectory of the output location)
+
+-overwrite       : when writing output, overwrite any preexisting
+                   dataset (def: do not overwrite)
+
+-no_clean        : when done, do not remove temporary working
+                   directory (def: do remove woroking directory
+
+-echo            : run very verbosely (with 'set echo' on)
+
+-ver             : display program version
+
+-help            : show help
+
+-hview           : show help in text editor
+
+-------------------------------------------------------------------------
+
+Examples ~1~
+
+1) Basic usage:
+     desphinxify                                \
+        -orient_mid  RPI                        \
+        -input       sub-001_T1w.nii.gz         \
+        -prefix      sub-001_T1w_DSPH.nii.gz
+
+
+=== Output of 'desphinxify' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+Overview ~1~
+
+This is a simple program that *might* be useful for desphinxifying
+datasets. That is, when datasets are acquired in "sphinx" position,
+this will try to reorient them to match with axial/coronal/sagittal
+definitions standard to human neuroimaging. This may be useful
+particularly when processing nonhuman datasets
+
+Importantly, this program really only reliable **if** the user knows
+the correct final dataset orientation, to verify. We can recommend a
+useful intermediate orientation to reorient the data correctly, but
+the user is in charge of being user.
+
+ver  = 0.0
+auth = PA Taylor (SSCC, NIMH, NIH)
+-------------------------------------------------------------------------
+
+Options ~1~
+
+-input II         :(req) input dset name
+
+-prefix PP        :(req) output dset name (can include path)
+
+-orient_mid OM    :(req) intermediate orientation value, which determines
+                   how the input dataset is effectively rotated (from
+                   RAI orientation) in order to desphinxify it.  
+                   **NB:** a commonly used value here is: RIP.  
+                   However, users must verify this, particularly to get
+                   left and right correct (other mistakes in orientation
+                   tend to be more visually apparent). That is why there is
+                   no default value: please check this with a pilot dataset
+                   for your study.
+
+-workdir WD      : working directory name (just name, no path;
+                   will be subdirectory of the output location)
+
+-overwrite       : when writing output, overwrite any preexisting
+                   dataset (def: do not overwrite)
+
+-no_clean        : when done, do not remove temporary working
+                   directory (def: do remove woroking directory
+
+-echo            : run very verbosely (with 'set echo' on)
+
+-ver             : display program version
+
+-help            : show help
+
+-hview           : show help in text editor
+
+-------------------------------------------------------------------------
+
+Examples ~1~
+
+1) Basic usage:
+     desphinxify                                \
+        -orient_mid  RPI                        \
+        -input       sub-001_T1w.nii.gz         \
+        -prefix      sub-001_T1w_DSPH.nii.gz
+

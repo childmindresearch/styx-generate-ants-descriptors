@@ -1,0 +1,162 @@
+
+=== Output of '@xyz_to_ijk --help' ===
+
+** unexpected option #1 = '--help'
+
+=== Output of '@xyz_to_ijk -help' ===
+
+
+OVERVIEW ~1~
+
+Basic helper script to convert a set of (x, y, z) coordinates to (i,
+j, k) indices for a dset.  
+
+Essentially, this was created by stealing sage advice written by DR
+Glen in a helpful Message Board post.
+
+Ver. 1.4 (PA Taylor, Feb 12, 2019)
+
+# ========================================================================
+
+USAGE ~1~
+
+Inputs:
+    + the name of a volumetric file
+    + 3 coordinates: x y z
+
+Outputs:
+    + 3 indices: i j k
+
+The IJK output is output to screen and can be saved directly to a
+variable in a script or redirected to a file with ">" or ">>".  There
+is also a '-prefix ...' option to write to a text file directly
+(screen output is still produced).
+
+If any of 'i j k' are outside the dset's matrix, an error is returned.
+
+If you just get an error message "argv: Subscript out of range.",
+then you have probably provided too few coordinates.  The user is
+required to put in all three (and only three).
+
+Make sure you are interpreting your input xyz and output ijk trios as
+you wish, if you are using a dset with non-xyz-like orientation (such
+as AIL, SPR, etc.).
+
+# =========================================================================
+
+COMMAND OPTIONS ~1~
+
+  -inset VV  :(req) volume VV whose header information sets the FOV and
+              coordinates
+
+  -xyz X Y Z :(req) three coordinates (in units of the dset, like mm),
+              that will be translated to 'i j k' values by the
+              program.
+
+  -prefix PP :(opt) file name, which can include path, to output the
+              three indices
+
+# ========================================================================
+
+EXAMPLES ~1~
+
+    ### Output to screen.
+    @xyz_to_ijk                 \
+        -inset FILE.nii.gz      \
+        -xyz 30 -10.5 0
+
+    ### Script example, save result to a variable: tcsh syntax.
+    set IJK = `@xyz_to_ijk                 \
+                   -inset FILE.nii.gz      \
+                   -xyz 30 -10.5 0`
+
+    ### Redirect result to a file.
+    @xyz_to_ijk                 \
+        -inset FILE.nii.gz      \
+        -xyz 30 -10.5 0         > ../saved_ijk.txt
+
+    ### Another way to write to a file.
+    @xyz_to_ijk                 \
+        -inset FILE.nii.gz      \
+        -xyz 30 -10.5 0         \
+        -prefix ../saved_ijk.txt
+
+
+=== Output of '@xyz_to_ijk' (no arguments) ===
+
+
+OVERVIEW ~1~
+
+Basic helper script to convert a set of (x, y, z) coordinates to (i,
+j, k) indices for a dset.  
+
+Essentially, this was created by stealing sage advice written by DR
+Glen in a helpful Message Board post.
+
+Ver. 1.4 (PA Taylor, Feb 12, 2019)
+
+# ========================================================================
+
+USAGE ~1~
+
+Inputs:
+    + the name of a volumetric file
+    + 3 coordinates: x y z
+
+Outputs:
+    + 3 indices: i j k
+
+The IJK output is output to screen and can be saved directly to a
+variable in a script or redirected to a file with ">" or ">>".  There
+is also a '-prefix ...' option to write to a text file directly
+(screen output is still produced).
+
+If any of 'i j k' are outside the dset's matrix, an error is returned.
+
+If you just get an error message "argv: Subscript out of range.",
+then you have probably provided too few coordinates.  The user is
+required to put in all three (and only three).
+
+Make sure you are interpreting your input xyz and output ijk trios as
+you wish, if you are using a dset with non-xyz-like orientation (such
+as AIL, SPR, etc.).
+
+# =========================================================================
+
+COMMAND OPTIONS ~1~
+
+  -inset VV  :(req) volume VV whose header information sets the FOV and
+              coordinates
+
+  -xyz X Y Z :(req) three coordinates (in units of the dset, like mm),
+              that will be translated to 'i j k' values by the
+              program.
+
+  -prefix PP :(opt) file name, which can include path, to output the
+              three indices
+
+# ========================================================================
+
+EXAMPLES ~1~
+
+    ### Output to screen.
+    @xyz_to_ijk                 \
+        -inset FILE.nii.gz      \
+        -xyz 30 -10.5 0
+
+    ### Script example, save result to a variable: tcsh syntax.
+    set IJK = `@xyz_to_ijk                 \
+                   -inset FILE.nii.gz      \
+                   -xyz 30 -10.5 0`
+
+    ### Redirect result to a file.
+    @xyz_to_ijk                 \
+        -inset FILE.nii.gz      \
+        -xyz 30 -10.5 0         > ../saved_ijk.txt
+
+    ### Another way to write to a file.
+    @xyz_to_ijk                 \
+        -inset FILE.nii.gz      \
+        -xyz 30 -10.5 0         \
+        -prefix ../saved_ijk.txt
+

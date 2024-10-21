@@ -1,0 +1,37 @@
+
+=== Output of 'gcaprepone --help' ===
+
+
+gcaprepone
+ --o gcadir : (to be the new SUBJECTS_DIR)
+ --s subject
+ --init-subject : this is the init subject
+ --sd SUBJECTS_DIR : for source data 
+ --done DoneFile
+ --no-emreg
+gcaprepone 7.4.1
+
+
+=== Output of 'gcaprepone -help' ===
+
+
+gcaprepone
+ --o gcadir : (to be the new SUBJECTS_DIR)
+ --s subject
+ --init-subject : this is the init subject
+ --sd SUBJECTS_DIR : for source data 
+ --done DoneFile
+ --no-emreg
+gcaprepone 7.4.1
+
+
+=== Output of 'gcaprepone' (no arguments) ===
+
+
+gcaprepone
+ --o gcadir : (to be the new SUBJECTS_DIR)
+ --s subject
+ --init-subject : this is the init subject
+ --sd SUBJECTS_DIR : for source data 
+ --done DoneFile
+ --no-emreg

@@ -1,0 +1,12 @@
+
+=== Output of 'get_afni_model_PRF --help' ===
+
+** usage: /opt/afni/src/../install/get_afni_model_PRF A x y sigma
+
+=== Output of 'get_afni_model_PRF -help' ===
+
+** usage: /opt/afni/src/../install/get_afni_model_PRF A x y sigma
+
+=== Output of 'get_afni_model_PRF' (no arguments) ===
+
+** usage: /opt/afni/src/../install/get_afni_model_PRF A x y sigma

@@ -1,0 +1,12 @@
+
+=== Output of 'mris_map_cuts --help' ===
+
+unknown option --help
+
+=== Output of 'mris_map_cuts -help' ===
+
+unknown option -help
+
+=== Output of 'mris_map_cuts' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_map_cuts [options] <input patch> <output patch>

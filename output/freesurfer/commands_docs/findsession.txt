@@ -1,0 +1,12 @@
+
+=== Output of 'findsession --help' ===
+
+/usr/local/freesurfer/bin/findsession: line 19: /usr/pubsw/bin/findsession: No such file or directory
+
+=== Output of 'findsession -help' ===
+
+/usr/local/freesurfer/bin/findsession: line 19: /usr/pubsw/bin/findsession: No such file or directory
+
+=== Output of 'findsession' (no arguments) ===
+
+/usr/local/freesurfer/bin/findsession: line 19: /usr/pubsw/bin/findsession: No such file or directory

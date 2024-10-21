@@ -1,0 +1,39 @@
+
+=== Output of 'generate_b0calc --help' ===
+
+makeb0.sh  --  Tejas Pendse 14.12.12
+
+Compulsory Options:
+  -i <input-file>    -   Input Air-tissue segmentation
+  -o <output-file>   -   Output B0 file(s) basename
+
+Optional Options:
+  -f <field-str>     -   Field Strength (in Tesla)
+  -m                 -   Motion (generates 9 volumes)
+
+
+=== Output of 'generate_b0calc -help' ===
+
+makeb0.sh  --  Tejas Pendse 14.12.12
+
+Compulsory Options:
+  -i <input-file>    -   Input Air-tissue segmentation
+  -o <output-file>   -   Output B0 file(s) basename
+
+Optional Options:
+  -f <field-str>     -   Field Strength (in Tesla)
+  -m                 -   Motion (generates 9 volumes)
+
+
+=== Output of 'generate_b0calc' (no arguments) ===
+
+makeb0.sh  --  Tejas Pendse 14.12.12
+
+Compulsory Options:
+  -i <input-file>    -   Input Air-tissue segmentation
+  -o <output-file>   -   Output B0 file(s) basename
+
+Optional Options:
+  -f <field-str>     -   Field Strength (in Tesla)
+  -m                 -   Motion (generates 9 volumes)
+

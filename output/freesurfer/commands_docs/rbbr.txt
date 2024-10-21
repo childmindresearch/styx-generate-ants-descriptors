@@ -1,0 +1,77 @@
+
+=== Output of 'rbbr --help' ===
+
+
+rbbr : robust version of bbregister
+  --s subject : FreeSurfer subject (not needed with --init-reg)
+  --mov mov
+  --t1 or --t2 : tissue contrast (can use --bold and --dti)
+  --init-reg, --init-spm, --init-fsl --init-header
+  --cthresh thresh : cost threshold to define outlier (1.5)
+  --gtm segname FWHM : use gtm to synthesize
+  --tt-reduce : reduce GTM Seg to tissue types (faster)
+  --iters n : number of iterations (3)
+  --reg outputreg
+  --lta outputlta
+  --lh-only : only use left hemi
+  --rh-only : only use right hemi
+  --gm-proj-frac frac : default is to use bbregister default
+  --gm-proj-abs abs : default is to use bbregister default
+  --wm-proj-abs abs : default is to use bbregister default
+  --frame frameno : use 0-based frameno as template
+  --template outtemplate : save template as an output (good with --frame)
+  --no-merge : do not merge GTM Ids (ie, do not --default-seg-merge)
+
+
+rbbr 7.4.1
+
+=== Output of 'rbbr -help' ===
+
+
+rbbr : robust version of bbregister
+  --s subject : FreeSurfer subject (not needed with --init-reg)
+  --mov mov
+  --t1 or --t2 : tissue contrast (can use --bold and --dti)
+  --init-reg, --init-spm, --init-fsl --init-header
+  --cthresh thresh : cost threshold to define outlier (1.5)
+  --gtm segname FWHM : use gtm to synthesize
+  --tt-reduce : reduce GTM Seg to tissue types (faster)
+  --iters n : number of iterations (3)
+  --reg outputreg
+  --lta outputlta
+  --lh-only : only use left hemi
+  --rh-only : only use right hemi
+  --gm-proj-frac frac : default is to use bbregister default
+  --gm-proj-abs abs : default is to use bbregister default
+  --wm-proj-abs abs : default is to use bbregister default
+  --frame frameno : use 0-based frameno as template
+  --template outtemplate : save template as an output (good with --frame)
+  --no-merge : do not merge GTM Ids (ie, do not --default-seg-merge)
+
+
+rbbr 7.4.1
+
+=== Output of 'rbbr' (no arguments) ===
+
+
+rbbr : robust version of bbregister
+  --s subject : FreeSurfer subject (not needed with --init-reg)
+  --mov mov
+  --t1 or --t2 : tissue contrast (can use --bold and --dti)
+  --init-reg, --init-spm, --init-fsl --init-header
+  --cthresh thresh : cost threshold to define outlier (1.5)
+  --gtm segname FWHM : use gtm to synthesize
+  --tt-reduce : reduce GTM Seg to tissue types (faster)
+  --iters n : number of iterations (3)
+  --reg outputreg
+  --lta outputlta
+  --lh-only : only use left hemi
+  --rh-only : only use right hemi
+  --gm-proj-frac frac : default is to use bbregister default
+  --gm-proj-abs abs : default is to use bbregister default
+  --wm-proj-abs abs : default is to use bbregister default
+  --frame frameno : use 0-based frameno as template
+  --template outtemplate : save template as an output (good with --frame)
+  --no-merge : do not merge GTM Ids (ie, do not --default-seg-merge)
+
+

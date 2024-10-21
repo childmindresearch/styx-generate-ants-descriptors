@@ -1,0 +1,31 @@
+
+=== Output of 'sratio --help' ===
+
+sratio options A B sAdivB
+  A/B if A>B, -B/A if B>A
+ Options:
+   --abs : compute absolute value of both A and B before sratio
+   --mask-thresh thresh : theshold based on max(abs(A),abs(B))>thresh
+
+sratio 7.4.1
+
+
+=== Output of 'sratio -help' ===
+
+sratio options A B sAdivB
+  A/B if A>B, -B/A if B>A
+ Options:
+   --abs : compute absolute value of both A and B before sratio
+   --mask-thresh thresh : theshold based on max(abs(A),abs(B))>thresh
+
+sratio 7.4.1
+
+
+=== Output of 'sratio' (no arguments) ===
+
+sratio options A B sAdivB
+  A/B if A>B, -B/A if B>A
+ Options:
+   --abs : compute absolute value of both A and B before sratio
+   --mask-thresh thresh : theshold based on max(abs(A),abs(B))>thresh
+

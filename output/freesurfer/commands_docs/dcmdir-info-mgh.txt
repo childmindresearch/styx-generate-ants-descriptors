@@ -1,0 +1,79 @@
+
+=== Output of 'dcmdir-info-mgh --help' ===
+
+
+USAGE: dcmdir-info-mgh dicomdir <unpackdir>
+
+   --version : print version and exit
+   --help    : print help and exit
+   --nopre   : do not assume NNNNNN-
+
+
+Scans a DICOM directory and extracts information about each series.
+The files in the directory must conform to the following naming
+convention:
+
+        NNNNNN-S-MMMMM.dcm
+
+where NNNNNN and MMMMM are any strings of any length as long as thay
+do not contain dashes (-). S is the series/run number. This is the
+naming convention of the data at MGH after being pushed from the scanner
+to the network archive. This function will not work on data burned to
+CD from the scanner.  Example: 953000-2-9.dcm
+
+This function is considerably faster than using unpacksdcmdir with
+the -scanonly option, but it does require that the files be named
+appropriately.
+
+The output is a list of series/runs with the pulse sequence, 
+protocol, and file name from the series. The Patient Name, Study Date,
+and Study Time are echo also printed out.
+
+If an unpackdir is given, the the dicom files are converted to mgz 
+format with the following name: sequencename_runR.mgz, where R is the 
+run number. 
+
+=== Output of 'dcmdir-info-mgh -help' ===
+
+
+USAGE: dcmdir-info-mgh dicomdir <unpackdir>
+
+   --version : print version and exit
+   --help    : print help and exit
+   --nopre   : do not assume NNNNNN-
+
+
+Scans a DICOM directory and extracts information about each series.
+The files in the directory must conform to the following naming
+convention:
+
+        NNNNNN-S-MMMMM.dcm
+
+where NNNNNN and MMMMM are any strings of any length as long as thay
+do not contain dashes (-). S is the series/run number. This is the
+naming convention of the data at MGH after being pushed from the scanner
+to the network archive. This function will not work on data burned to
+CD from the scanner.  Example: 953000-2-9.dcm
+
+This function is considerably faster than using unpacksdcmdir with
+the -scanonly option, but it does require that the files be named
+appropriately.
+
+The output is a list of series/runs with the pulse sequence, 
+protocol, and file name from the series. The Patient Name, Study Date,
+and Study Time are echo also printed out.
+
+If an unpackdir is given, the the dicom files are converted to mgz 
+format with the following name: sequencename_runR.mgz, where R is the 
+run number. 
+
+=== Output of 'dcmdir-info-mgh' (no arguments) ===
+
+
+USAGE: dcmdir-info-mgh dicomdir <unpackdir>
+
+   --version : print version and exit
+   --help    : print help and exit
+   --nopre   : do not assume NNNNNN-
+
+PrintHelp: Undefined variable.

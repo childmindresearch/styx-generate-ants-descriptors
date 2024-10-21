@@ -1,0 +1,209 @@
+
+=== Output of 'vol2subfield --help' ===
+
+
+vol2subfield (run with --help to get more info)
+
+ Required inputs
+  --i input volume
+  --sf subfield volume : full path or relative to subject/mri
+  --reg reg.lta : registration that maps input volume to conformed
+
+ Outputs
+  --o output volume
+  --outreg outreg.lta : registration between invol and subfield
+  --stats stats.dat : run mri_segstats with --sum stats.dat output
+  --avgwf avgwf.dat : run mri_segstats with --avgwf avgwf.dat output
+  --avgwfvol avgwfvol : run mri_segstats with --avgwfvol avgwfvol output
+
+ Other options
+  --ctab ctab : color table to use with mri_segstats. Default is /usr/local/freesurfer/FreeSurferColorLUT.txt
+  --nearest : use nearest neighbor interpolation (default)
+  --trilin  : use triliear interpolation
+  --cubic   : use cubic interpolation
+  --tmp tmpdir : for debugging
+
+ These are meant to make it easy to interface with the various subfield segs produced by FS
+   --lh.hippoamyg : set subfield to  lh.hippoAmygLabels-T1.v21.mgz
+   --rh.hippoamyg : set subfield to  rh.hippoAmygLabels-T1.v21.mgz
+   --lh.hbt       : set subfield to  lh.hippoAmygLabels-T1.v21.HBT.mgz
+   --rh.hbt       : set subfield to  rh.hippoAmygLabels-T1.v21.HBT.mgz
+   --thalamus     : set subfield to  ThalamicNuclei.v10.T1.mgz
+   --brainstem    : set subfield to  brainstemSsLabels.v12.mgz
+
+vol2subfield 7.4.1
+
+vol2subfield provides routines that make it easier to integrate
+arbitrary volumes with volumes that share a RAS space ("header
+registration") with the orig volume in the FreeSurfer mri folder.
+This script was written to manage "subfield" segmentations (eg,
+hippocampal, amygdalar, thalamic, and brainstem), but it can be used
+much more generally.
+
+The input registration is the LTA registration between the input
+volume and the orig.mgz (eg, computed with bbregister or
+mri_coreg). IF THIS REGISTRATION IS INACCURATE THEN THE OUTPUT OF THIS
+SCRIPT WILL BE WRONG!! To check the input registration run
+tkregisterfv --mov invol --reg reg.lta --surfs
+
+This script can have three types of outputs:
+
+1. To get a registration between an input volume and a subfield volume
+
+vol2subfield --i fa.nii.gz --reg reg.lta --sf rh.hippoAmygLabels-T1.v21.HBT.mgz --outreg outreg.lta
+
+outreg.lta will map fa.nii.gz to
+rh.hippoAmygLabels-T1.v21.HBT.mgz. Note that the "subfield" volume can
+be anything that shares a RAS space with the orig.mgz (eg,
+orig/001.mgz).  It does not need to be a segmentation volume.
+
+2. To map the input volume into the subfield volume space
+
+vol2subfield --i fa.nii.gz --reg reg.lta --sf rh.hippoAmygLabels-T1.v21.HBT.mgz --o fa.rh.hbt.mgz
+
+fa.rh.hbt.mgz will be the fa.nii.gz sampled into the space of
+rh.hippoAmygLabels-T1.v21.HBT.mgz (ie, it will be in voxel-for-voxel
+registration). Again, the "subfield" volume can be anything that
+shares a RAS space with the orig.mgz (eg, orig/001.mgz).  It does not
+need to be a segmentation volume. This volume is appropriate for running
+mri_segstats. Note that there is not an output registration, but, if you
+want to save it, just use --outreg as above.
+
+3. To compute segmentation statistics of the input volume 
+
+vol2subfield --i fa.nii.gz --reg reg.lta --sf rh.hippoAmygLabels-T1.v21.HBT.mgz \
+  --o fa.rh.hbt.mgz --stats stats.dat --avgwf avgwf.dat --avgwfvol avgwfvol.mgz
+
+This will create three files (but you do not need to specify all of
+them) using mri_segstats (and excluding the 0 segmentation). See
+mri_segstats --help for what each of these outputs mean. Note that
+there is not an output registration, but, if you want to save it, just
+use --outreg as above.
+
+
+For information about the subfields created by FS, see
+https://surfer.nmr.mgh.harvard.edu/fswiki/HippocampalSubfieldsAndNucleiOfAmygdala
+http://freesurfer.net/fswiki/ThalamicNuclei
+https://surfer.nmr.mgh.harvard.edu/fswiki/BrainstemSubstructures
+
+
+=== Output of 'vol2subfield -help' ===
+
+
+vol2subfield (run with --help to get more info)
+
+ Required inputs
+  --i input volume
+  --sf subfield volume : full path or relative to subject/mri
+  --reg reg.lta : registration that maps input volume to conformed
+
+ Outputs
+  --o output volume
+  --outreg outreg.lta : registration between invol and subfield
+  --stats stats.dat : run mri_segstats with --sum stats.dat output
+  --avgwf avgwf.dat : run mri_segstats with --avgwf avgwf.dat output
+  --avgwfvol avgwfvol : run mri_segstats with --avgwfvol avgwfvol output
+
+ Other options
+  --ctab ctab : color table to use with mri_segstats. Default is /usr/local/freesurfer/FreeSurferColorLUT.txt
+  --nearest : use nearest neighbor interpolation (default)
+  --trilin  : use triliear interpolation
+  --cubic   : use cubic interpolation
+  --tmp tmpdir : for debugging
+
+ These are meant to make it easy to interface with the various subfield segs produced by FS
+   --lh.hippoamyg : set subfield to  lh.hippoAmygLabels-T1.v21.mgz
+   --rh.hippoamyg : set subfield to  rh.hippoAmygLabels-T1.v21.mgz
+   --lh.hbt       : set subfield to  lh.hippoAmygLabels-T1.v21.HBT.mgz
+   --rh.hbt       : set subfield to  rh.hippoAmygLabels-T1.v21.HBT.mgz
+   --thalamus     : set subfield to  ThalamicNuclei.v10.T1.mgz
+   --brainstem    : set subfield to  brainstemSsLabels.v12.mgz
+
+vol2subfield 7.4.1
+
+vol2subfield provides routines that make it easier to integrate
+arbitrary volumes with volumes that share a RAS space ("header
+registration") with the orig volume in the FreeSurfer mri folder.
+This script was written to manage "subfield" segmentations (eg,
+hippocampal, amygdalar, thalamic, and brainstem), but it can be used
+much more generally.
+
+The input registration is the LTA registration between the input
+volume and the orig.mgz (eg, computed with bbregister or
+mri_coreg). IF THIS REGISTRATION IS INACCURATE THEN THE OUTPUT OF THIS
+SCRIPT WILL BE WRONG!! To check the input registration run
+tkregisterfv --mov invol --reg reg.lta --surfs
+
+This script can have three types of outputs:
+
+1. To get a registration between an input volume and a subfield volume
+
+vol2subfield --i fa.nii.gz --reg reg.lta --sf rh.hippoAmygLabels-T1.v21.HBT.mgz --outreg outreg.lta
+
+outreg.lta will map fa.nii.gz to
+rh.hippoAmygLabels-T1.v21.HBT.mgz. Note that the "subfield" volume can
+be anything that shares a RAS space with the orig.mgz (eg,
+orig/001.mgz).  It does not need to be a segmentation volume.
+
+2. To map the input volume into the subfield volume space
+
+vol2subfield --i fa.nii.gz --reg reg.lta --sf rh.hippoAmygLabels-T1.v21.HBT.mgz --o fa.rh.hbt.mgz
+
+fa.rh.hbt.mgz will be the fa.nii.gz sampled into the space of
+rh.hippoAmygLabels-T1.v21.HBT.mgz (ie, it will be in voxel-for-voxel
+registration). Again, the "subfield" volume can be anything that
+shares a RAS space with the orig.mgz (eg, orig/001.mgz).  It does not
+need to be a segmentation volume. This volume is appropriate for running
+mri_segstats. Note that there is not an output registration, but, if you
+want to save it, just use --outreg as above.
+
+3. To compute segmentation statistics of the input volume 
+
+vol2subfield --i fa.nii.gz --reg reg.lta --sf rh.hippoAmygLabels-T1.v21.HBT.mgz \
+  --o fa.rh.hbt.mgz --stats stats.dat --avgwf avgwf.dat --avgwfvol avgwfvol.mgz
+
+This will create three files (but you do not need to specify all of
+them) using mri_segstats (and excluding the 0 segmentation). See
+mri_segstats --help for what each of these outputs mean. Note that
+there is not an output registration, but, if you want to save it, just
+use --outreg as above.
+
+
+For information about the subfields created by FS, see
+https://surfer.nmr.mgh.harvard.edu/fswiki/HippocampalSubfieldsAndNucleiOfAmygdala
+http://freesurfer.net/fswiki/ThalamicNuclei
+https://surfer.nmr.mgh.harvard.edu/fswiki/BrainstemSubstructures
+
+
+=== Output of 'vol2subfield' (no arguments) ===
+
+
+vol2subfield (run with --help to get more info)
+
+ Required inputs
+  --i input volume
+  --sf subfield volume : full path or relative to subject/mri
+  --reg reg.lta : registration that maps input volume to conformed
+
+ Outputs
+  --o output volume
+  --outreg outreg.lta : registration between invol and subfield
+  --stats stats.dat : run mri_segstats with --sum stats.dat output
+  --avgwf avgwf.dat : run mri_segstats with --avgwf avgwf.dat output
+  --avgwfvol avgwfvol : run mri_segstats with --avgwfvol avgwfvol output
+
+ Other options
+  --ctab ctab : color table to use with mri_segstats. Default is /usr/local/freesurfer/FreeSurferColorLUT.txt
+  --nearest : use nearest neighbor interpolation (default)
+  --trilin  : use triliear interpolation
+  --cubic   : use cubic interpolation
+  --tmp tmpdir : for debugging
+
+ These are meant to make it easy to interface with the various subfield segs produced by FS
+   --lh.hippoamyg : set subfield to  lh.hippoAmygLabels-T1.v21.mgz
+   --rh.hippoamyg : set subfield to  rh.hippoAmygLabels-T1.v21.mgz
+   --lh.hbt       : set subfield to  lh.hippoAmygLabels-T1.v21.HBT.mgz
+   --rh.hbt       : set subfield to  rh.hippoAmygLabels-T1.v21.HBT.mgz
+   --thalamus     : set subfield to  ThalamicNuclei.v10.T1.mgz
+   --brainstem    : set subfield to  brainstemSsLabels.v12.mgz
+

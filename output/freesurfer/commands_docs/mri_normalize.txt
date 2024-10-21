@@ -1,0 +1,456 @@
+
+=== Output of 'mri_normalize --help' ===
+
+				Help
+
+NAME
+	mri_normalize
+
+SYNOPSIS
+	mri_normalize <input vol> <output vol>
+
+DESCRIPTION
+	Normalize the white-matter, optionally based on control points. The 
+	input volume is converted into a new volume where white matter image 
+	values all range around 110.
+
+POSITIONAL ARGUMENTS
+	<input vol>
+		input mri volume file
+
+	<output vol>
+		output mri volume file
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-n <int n>
+		use n 3d normalization iterations (default=2)
+
+	-no1d
+		disable 1d normalization
+
+	-nonmax_suppress (1/0)
+		turn non-maximum suppression on (1) or off (0) when using 
+		interior of surfaces
+
+	-conform
+		interpolate and embed volume to be 256^3
+
+	-noconform
+		do not conform the volume
+
+	-gentle
+		perform kinder gentler normalization
+
+	-f <path to file>
+		use control points file (usually control.dat)
+
+	-fonly <fname>
+		use only control points file
+
+	-lonly <fname>
+		use only control points in label file
+
+	-label <fname>
+		use control points in label file
+
+	-w <mri_vol c> <mri_vol b>
+		write ctrl point(c) and bias field(b) volumes
+
+	-a <float a>
+		use control point with intensity a above target (default=25.0)
+
+	-b <float b>
+		use control point with intensity b below target (default=10.0)
+
+	-g <float g>
+		use max intensity/mm gradient g (default=1.000)
+
+	-prune <boolean>
+		turn pruning of control points on/off (default=off). pruning 
+		useful if white is expanding into gm
+
+	-no-gentle-cp
+		Do not use gentle normalization with control points file 
+
+	-MASK maskfile
+
+	-atlas <path to gca><path to gca transform> <min distance of control 
+	points from non-brain>
+		use atlas to exlude control-points from being in non-brain 
+		regions
+
+	-noskull
+
+	-monkey
+		turns off 1d, sets num_3d_iter=1
+
+	-nosnr
+		disable snr normalization
+
+	-sigma sigma
+		smooth bias field
+
+	-aseg aseg
+
+	-v Gvx Gvy Gvz
+		for debugging
+
+	-d Gx Gy Gz
+		for debugging
+
+	-renorm volume 
+		load volume and use all points in it that are exactly 110 as 
+		control points
+
+	-checknorm volume min max 
+		load volume and remove all control points that aren't in [min 
+		max] in volume
+
+	-r controlpoints biasfield
+		for reading
+
+	-c output controlpoints volume
+		Output final control points as a volume (only with -aseg)
+
+	-surface <surface> <xform>
+		normalize based on the skelton of the interior of the 
+		transformed surface
+
+	-seed N
+		set random number generator to seed N
+
+	-u or -h
+		print usage
+
+EXAMPLE 1
+	mri_normalize SUBJECT/mri/nu.mgz SUBJECT/mri/T1.mgz
+	
+	Uses the nu volume (nonuniformity corrected volume), and creates the 
+	T1 volume, with white matter voxels around 110 image value
+
+EXAMPLE 2
+	mri_normalize -noskull -aseg aseg.mgz -mask brainmask.mgz norm.mgz 
+	brain.mgz
+	
+	Uses the norm volume, and creates the brain volume, making use of the 
+	aseg and masking with brainmask
+
+REFERENCES
+	"Cortical Surface-Based Analysis I: Segmentation and Surface 
+	Reconstruction", Dale, A.M., Fischl, B., Sereno, M.I. (1999) 
+	NeuroImage 9(2):179-194
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	nu_correct, mri_fill
+
+
+
+=== Output of 'mri_normalize -help' ===
+
+				Help
+
+NAME
+	mri_normalize
+
+SYNOPSIS
+	mri_normalize <input vol> <output vol>
+
+DESCRIPTION
+	Normalize the white-matter, optionally based on control points. The 
+	input volume is converted into a new volume where white matter image 
+	values all range around 110.
+
+POSITIONAL ARGUMENTS
+	<input vol>
+		input mri volume file
+
+	<output vol>
+		output mri volume file
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-n <int n>
+		use n 3d normalization iterations (default=2)
+
+	-no1d
+		disable 1d normalization
+
+	-nonmax_suppress (1/0)
+		turn non-maximum suppression on (1) or off (0) when using 
+		interior of surfaces
+
+	-conform
+		interpolate and embed volume to be 256^3
+
+	-noconform
+		do not conform the volume
+
+	-gentle
+		perform kinder gentler normalization
+
+	-f <path to file>
+		use control points file (usually control.dat)
+
+	-fonly <fname>
+		use only control points file
+
+	-lonly <fname>
+		use only control points in label file
+
+	-label <fname>
+		use control points in label file
+
+	-w <mri_vol c> <mri_vol b>
+		write ctrl point(c) and bias field(b) volumes
+
+	-a <float a>
+		use control point with intensity a above target (default=25.0)
+
+	-b <float b>
+		use control point with intensity b below target (default=10.0)
+
+	-g <float g>
+		use max intensity/mm gradient g (default=1.000)
+
+	-prune <boolean>
+		turn pruning of control points on/off (default=off). pruning 
+		useful if white is expanding into gm
+
+	-no-gentle-cp
+		Do not use gentle normalization with control points file 
+
+	-MASK maskfile
+
+	-atlas <path to gca><path to gca transform> <min distance of control 
+	points from non-brain>
+		use atlas to exlude control-points from being in non-brain 
+		regions
+
+	-noskull
+
+	-monkey
+		turns off 1d, sets num_3d_iter=1
+
+	-nosnr
+		disable snr normalization
+
+	-sigma sigma
+		smooth bias field
+
+	-aseg aseg
+
+	-v Gvx Gvy Gvz
+		for debugging
+
+	-d Gx Gy Gz
+		for debugging
+
+	-renorm volume 
+		load volume and use all points in it that are exactly 110 as 
+		control points
+
+	-checknorm volume min max 
+		load volume and remove all control points that aren't in [min 
+		max] in volume
+
+	-r controlpoints biasfield
+		for reading
+
+	-c output controlpoints volume
+		Output final control points as a volume (only with -aseg)
+
+	-surface <surface> <xform>
+		normalize based on the skelton of the interior of the 
+		transformed surface
+
+	-seed N
+		set random number generator to seed N
+
+	-u or -h
+		print usage
+
+EXAMPLE 1
+	mri_normalize SUBJECT/mri/nu.mgz SUBJECT/mri/T1.mgz
+	
+	Uses the nu volume (nonuniformity corrected volume), and creates the 
+	T1 volume, with white matter voxels around 110 image value
+
+EXAMPLE 2
+	mri_normalize -noskull -aseg aseg.mgz -mask brainmask.mgz norm.mgz 
+	brain.mgz
+	
+	Uses the norm volume, and creates the brain volume, making use of the 
+	aseg and masking with brainmask
+
+REFERENCES
+	"Cortical Surface-Based Analysis I: Segmentation and Surface 
+	Reconstruction", Dale, A.M., Fischl, B., Sereno, M.I. (1999) 
+	NeuroImage 9(2):179-194
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	nu_correct, mri_fill
+
+
+
+=== Output of 'mri_normalize' (no arguments) ===
+
+				Help
+
+NAME
+	mri_normalize
+
+SYNOPSIS
+	mri_normalize <input vol> <output vol>
+
+DESCRIPTION
+	Normalize the white-matter, optionally based on control points. The 
+	input volume is converted into a new volume where white matter image 
+	values all range around 110.
+
+POSITIONAL ARGUMENTS
+	<input vol>
+		input mri volume file
+
+	<output vol>
+		output mri volume file
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-n <int n>
+		use n 3d normalization iterations (default=2)
+
+	-no1d
+		disable 1d normalization
+
+	-nonmax_suppress (1/0)
+		turn non-maximum suppression on (1) or off (0) when using 
+		interior of surfaces
+
+	-conform
+		interpolate and embed volume to be 256^3
+
+	-noconform
+		do not conform the volume
+
+	-gentle
+		perform kinder gentler normalization
+
+	-f <path to file>
+		use control points file (usually control.dat)
+
+	-fonly <fname>
+		use only control points file
+
+	-lonly <fname>
+		use only control points in label file
+
+	-label <fname>
+		use control points in label file
+
+	-w <mri_vol c> <mri_vol b>
+		write ctrl point(c) and bias field(b) volumes
+
+	-a <float a>
+		use control point with intensity a above target (default=25.0)
+
+	-b <float b>
+		use control point with intensity b below target (default=10.0)
+
+	-g <float g>
+		use max intensity/mm gradient g (default=1.000)
+
+	-prune <boolean>
+		turn pruning of control points on/off (default=off). pruning 
+		useful if white is expanding into gm
+
+	-no-gentle-cp
+		Do not use gentle normalization with control points file 
+
+	-MASK maskfile
+
+	-atlas <path to gca><path to gca transform> <min distance of control 
+	points from non-brain>
+		use atlas to exlude control-points from being in non-brain 
+		regions
+
+	-noskull
+
+	-monkey
+		turns off 1d, sets num_3d_iter=1
+
+	-nosnr
+		disable snr normalization
+
+	-sigma sigma
+		smooth bias field
+
+	-aseg aseg
+
+	-v Gvx Gvy Gvz
+		for debugging
+
+	-d Gx Gy Gz
+		for debugging
+
+	-renorm volume 
+		load volume and use all points in it that are exactly 110 as 
+		control points
+
+	-checknorm volume min max 
+		load volume and remove all control points that aren't in [min 
+		max] in volume
+
+	-r controlpoints biasfield
+		for reading
+
+	-c output controlpoints volume
+		Output final control points as a volume (only with -aseg)
+
+	-surface <surface> <xform>
+		normalize based on the skelton of the interior of the 
+		transformed surface
+
+	-seed N
+		set random number generator to seed N
+
+	-u or -h
+		print usage
+
+EXAMPLE 1
+	mri_normalize SUBJECT/mri/nu.mgz SUBJECT/mri/T1.mgz
+	
+	Uses the nu volume (nonuniformity corrected volume), and creates the 
+	T1 volume, with white matter voxels around 110 image value
+
+EXAMPLE 2
+	mri_normalize -noskull -aseg aseg.mgz -mask brainmask.mgz norm.mgz 
+	brain.mgz
+	
+	Uses the norm volume, and creates the brain volume, making use of the 
+	aseg and masking with brainmask
+
+REFERENCES
+	"Cortical Surface-Based Analysis I: Segmentation and Surface 
+	Reconstruction", Dale, A.M., Fischl, B., Sereno, M.I. (1999) 
+	NeuroImage 9(2):179-194
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	nu_correct, mri_fill
+
+

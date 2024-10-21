@@ -1,0 +1,43 @@
+
+=== Output of 'longmc --help' ===
+
+
+longmc 
+ -long CrossTPname Basename
+ -conf2hires, -no-conf2hires
+ -sd SUBJECTS_DIR
+ -s subjectname : override, must be after -long
+ -no-force-update : or setenv RCA_LONGMC_FORCE_UPDATE 0
+
+longmc 7.4.1
+
+Performes the motion correction step for the longitudinal recon-all stream
+when creating the longitudinal timepoint of a subject.
+
+
+=== Output of 'longmc -help' ===
+
+
+longmc 
+ -long CrossTPname Basename
+ -conf2hires, -no-conf2hires
+ -sd SUBJECTS_DIR
+ -s subjectname : override, must be after -long
+ -no-force-update : or setenv RCA_LONGMC_FORCE_UPDATE 0
+
+longmc 7.4.1
+
+Performes the motion correction step for the longitudinal recon-all stream
+when creating the longitudinal timepoint of a subject.
+
+
+=== Output of 'longmc' (no arguments) ===
+
+
+longmc 
+ -long CrossTPname Basename
+ -conf2hires, -no-conf2hires
+ -sd SUBJECTS_DIR
+ -s subjectname : override, must be after -long
+ -no-force-update : or setenv RCA_LONGMC_FORCE_UPDATE 0
+

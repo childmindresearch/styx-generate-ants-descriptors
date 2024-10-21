@@ -1,0 +1,12 @@
+
+=== Output of 'drawmesh --help' ===
+
+Usage : drawmesh  [volume.hdr] [mesh.off] (-m for the mask)
+
+=== Output of 'drawmesh -help' ===
+
+Usage : drawmesh  [volume.hdr] [mesh.off] (-m for the mask)
+
+=== Output of 'drawmesh' (no arguments) ===
+
+Usage : drawmesh  [volume.hdr] [mesh.off] (-m for the mask)

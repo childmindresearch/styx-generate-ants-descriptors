@@ -1,0 +1,12 @@
+
+=== Output of 'quantifyThalamicNuclei.sh --help' ===
+
+Usage: /usr/local/freesurfer/bin/quantifyThalamicNuclei.sh  outputFile analysisID [subjectsDirectory]
+
+=== Output of 'quantifyThalamicNuclei.sh -help' ===
+
+Usage: /usr/local/freesurfer/bin/quantifyThalamicNuclei.sh  outputFile analysisID [subjectsDirectory]
+
+=== Output of 'quantifyThalamicNuclei.sh' (no arguments) ===
+
+Usage: /usr/local/freesurfer/bin/quantifyThalamicNuclei.sh  outputFile analysisID [subjectsDirectory]

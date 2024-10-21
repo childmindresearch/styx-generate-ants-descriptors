@@ -1,0 +1,35 @@
+
+=== Output of 'bedpostx --help' ===
+
+subjectdir is --help
+subject directory  not found
+
+=== Output of 'bedpostx -help' ===
+
+subjectdir is -help
+subject directory  not found
+
+=== Output of 'bedpostx' (no arguments) ===
+
+
+Usage: bedpostx <subject directory> [options]
+
+expects to find bvals and bvecs in subject directory
+expects to find data and nodif_brain_mask in subject directory
+expects to find grad_dev in subject directory, if -g is set
+options (old syntax)
+-n (number of fibres per voxel, default 3)
+-w (ARD weight, more weight means less secondary fibres per voxel, default 1)
+-b (burnin period, default 1000)
+-j (number of jumps, default 1250)
+-s (sample every, default 25)
+-model (Deconvolution model. 1: with sticks, 2: with sticks with a range of diffusivities (default), 3: with zeppelins)
+-g (consider gradient nonlinearities, default off)
+
+
+ALTERNATIVELY: you can pass on xfibres options onto directly bedpostx
+ For example:  bedpostx <subject directory> --noard --cnonlinear
+ Type 'xfibres --help' for a list of available options 
+ Default options will be bedpostx default (see above), and not xfibres default.
+
+Note: Use EITHER old OR new syntax.

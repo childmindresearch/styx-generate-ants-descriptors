@@ -1,0 +1,64 @@
+
+=== Output of 'mri_z2p --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_z2p 
+
+   --z zvolfile : z volume 
+   --p pvolfile : p volume 
+   --log10p sigvolfile : sig volume 
+
+   --mask maskfile : mask volume 
+   --two-sided : (default) assume a two-sided, unsigned test (keeps sign of input)
+   --one-sided : assume a one-sided, signed test
+   --signed : two-sided/signed pvalue (p = 2*(1-p))
+
+   --feat featdir : convert all zstats and zfstats to sigs
+   --featfmt extension : use given format (eg, nii, nii.gz, mgh, etc)
+   --nii : use nii output format
+   --nii.gz : use nii.gz output format
+   --mgh : use mgh output format
+   --mgz : use mgz output format
+   --img : use img output format (analyze)
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+Have not gotten to this yet:)
+
+=== Output of 'mri_z2p -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_z2p' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_z2p 
+
+   --z zvolfile : z volume 
+   --p pvolfile : p volume 
+   --log10p sigvolfile : sig volume 
+
+   --mask maskfile : mask volume 
+   --two-sided : (default) assume a two-sided, unsigned test (keeps sign of input)
+   --one-sided : assume a one-sided, signed test
+   --signed : two-sided/signed pvalue (p = 2*(1-p))
+
+   --feat featdir : convert all zstats and zfstats to sigs
+   --featfmt extension : use given format (eg, nii, nii.gz, mgh, etc)
+   --nii : use nii output format
+   --nii.gz : use nii.gz output format
+   --mgh : use mgh output format
+   --mgz : use mgz output format
+   --img : use img output format (analyze)
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

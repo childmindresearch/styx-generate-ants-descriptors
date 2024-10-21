@@ -1,0 +1,50 @@
+
+=== Output of '@Install_ClustScat_Demo --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Install_ClustScat_Demo -help' ===
+
+Installs and sets up AFNI's ClustScat demo archive
+After setup, read file /home/afni_user/work/AFNI_ClustScatDemo/AAA_README.txt
+for further instructions.
+*****************
+
+The instructions for interactive graphing of
+Clusterize ROI averages vs. an external 1D
+file (e.g., a subject-level covariate) are
+in file /home/afni_user/work/AFNI_ClustScatDemo/AAA_README.txt
+
+*****************
+
+It takes a while to download and unpack the data archive.
+
+
+=== Output of '@Install_ClustScat_Demo' (no arguments) ===
+
+/usr/bin/curl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 28 54.9M   28 15.8M    0     0  21.5M      0  0:00:02 --:--:--  0:00:02 21.5M 71 54.9M   71 39.2M    0     0  22.6M      0  0:00:02  0:00:01  0:00:01 22.6M100 54.9M  100 54.9M    0     0  21.9M      0  0:00:02  0:00:02 --:--:-- 21.9M
+AFNI_ClustScatDemo/
+AFNI_ClustScatDemo/@RunGIC
+AFNI_ClustScatDemo/@RunTask
+AFNI_ClustScatDemo/AAA_README.txt
+AFNI_ClustScatDemo/GICrest.cov.txt
+AFNI_ClustScatDemo/GICrest.grpincorr.data
+AFNI_ClustScatDemo/GICrest.grpincorr.niml
+AFNI_ClustScatDemo/MNI152_1mm_uni+tlrc.BRIK
+AFNI_ClustScatDemo/MNI152_1mm_uni+tlrc.HEAD
+AFNI_ClustScatDemo/TaskParam+tlrc.BRIK
+AFNI_ClustScatDemo/TaskParam+tlrc.HEAD
+AFNI_ClustScatDemo/TaskParam_cov.1D
+AFNI_ClustScatDemo/TaskParam_stats+tlrc.BRIK
+AFNI_ClustScatDemo/TaskParam_stats+tlrc.HEAD
+*****************
+
+The instructions for interactive graphing of
+Clusterize ROI averages vs. an external 1D
+file (e.g., a subject-level covariate) are
+in file /home/afni_user/work/AFNI_ClustScatDemo/AAA_README.txt
+
+*****************

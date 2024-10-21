@@ -1,1 +1,0 @@
-Usage:   SetSpacing  Dimension infile.hdr outfile.nii  SpacingX SpacingY {SpacingZ} 

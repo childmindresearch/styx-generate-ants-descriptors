@@ -1,0 +1,18 @@
+
+=== Output of 'fslmodhd --help' ===
+
+
+Usage: fslmodhd <image> <keyword> <value>
+
+
+=== Output of 'fslmodhd -help' ===
+
+
+Usage: fslmodhd <image> <keyword> <value>
+
+
+=== Output of 'fslmodhd' (no arguments) ===
+
+
+Usage: fslmodhd <image> <keyword> <value>
+

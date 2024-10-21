@@ -1,0 +1,270 @@
+
+=== Output of '3dSliceNDice --help' ===
+
+[7m** ERROR:[0m Bad option '--help'
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dSliceNDice -help' enlighten:
+        '-insetA    AA   :name of an input set to make a mask from; mask will'
+        '-insetB    BB   :name of an input set to make a mask from; mask will'
+        '-prefix    PP   :prefix of output files.'
+
+=== Output of '3dSliceNDice -help' ===
+
+ OVERVIEW ~1~
+ 
+ This program is for calculating the Dice coefficient between two
+ volumes on a slice-by-slice basis.  The user enters two volumes on the
+ same grid, and Dice coefficients along each axis are calculated; three
+ separate text (*.1D) files are output.
+ 
+ The Dice coefficient (Dice, 1945) is known by many names and in many
+ applications.  In the present context it is defined as follows.
+ Consider two sets voxels (i.e., masks), A and B.  The Dice coefficient
+ D is the ratio of their intersection to their union. Let N(x) be a
+ function that calculates the number of voxels in a set x. Then:
+ 
+     D = 2*N(intersection of A and B)/(N(A) + N(B)).
+ 
+ The range of D is 0 (no overlap of A and B at all) to 1 (perfect
+ overlap of A and B), inclusively.
+ 
+ This program calculates D in a slicewise manner across all 3 major
+ axes of a dset; other programs of interest for a volumewise Dice
+ coefficient or more general overlap calculations include 3dABoverlap,
+ for example.
+ 
+ Nonzero values in a dset are considered part of the mask.  3dcalc
+ might be useful in creating a mask from a dset if things like
+ thresholding are required.
+ 
+ written by PA Taylor (NIMH, NIH).
+ 
+   
+ USAGE ~1~
+ 
+     Input: 
+       + two single-volume datasets
+ 
+     Output:
+ 
+       + three text files, each a *.1D file of columns of numbers (and
+         note that the executed 3dSliceNDice command is echoed into a
+         comment in the top line of each 1D file by output). File name
+         indicates along which axis the particular results were
+         calculated, such as ending in '0_RL.1D', '1_AP.1D', '2_IS.1D',
+         etc.
+ 
+         For each file, there are currently 5 columns of data output,
+         in the following order:
+         [index] the i, j, or k index of the slice (starting from 0).
+         [coord] the x, y, or z coordinate of the slice.
+         [size of A ROI] the number of voxels in set A's ROI in the slice.
+         [size of B ROI] the number of voxels in set B's ROI in the slice.
+         [Dice coef] the Dice coefficient of that slice.
+ 
+         1dplot can be useful for viewing output results quickly.
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ COMMAND ~1~
+ 
+     3dSliceNDice                                  \
+         -insetA    AA                             \
+         -insetB    BB                             \
+         -prefix    PP                             \
+         {-out_range all|AorB|AandB}
+ 
+     where
+ 
+   -insetA    AA   :name of an input set to make a mask from; mask will
+                    be made from nonzero values in AA;
+   -insetB    BB   :name of an input set to make a mask from; mask will
+                    be made from nonzero values in BB;
+ 
+   -prefix    PP   :prefix of output files.
+                    Three output text files will be named
+                    according to the orientation of the input AA
+                    and BB files.  So, outputs might look like:
+                      PP_0_RL.1D or PP_0_RL.1D,
+                      PP_1_AP.1D or PP_0_PA.1D,
+                      PP_2_IS.1D or PP_0_SI.1D.
+ 
+   -out_domain all|AorB|AandB
+                   :optional specification of the slices over which to
+                    output Dice coefficient results along each axis,
+                    via keyword.  Argument options at present:
+                    'all':   report Dice values for all slices (default);
+                    'AorB':  report values only in slices where sets A or
+                             B (or both) have at least one nonzero voxel;
+                    'AandB': report values only in slices where both sets
+                             A and B have at least one nonzero voxel;
+                    'Amask': report values only in slices where set A 
+                             has at least one nonzero voxel;
+                    'Bmask': report values only in slices where set B 
+                             has at least one nonzero voxel;
+ 
+   -no_cmd_echo    :turn OFF recording the command line call to
+                    3dSliceNDice in the output *.1D files (default is
+                    to do the recording).
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ EXAMPLES ~1~
+ 
+   1. Report slicewise overlap of two masks through full FOV along each 
+      axis.
+        3dSliceNDice                  \
+            -insetA mask_1.nii.gz     \
+            -insetB mask_2.nii.gz     \
+            -prefix mask_olap_all
+ 
+   2. Report slicewise overlap of two masks only for slices where both 
+      dsets have >0 voxels in their masks
+        3dSliceNDice                  \
+            -insetA mask_1.nii.gz     \
+            -insetB mask_2.nii.gz     \
+            -out_domain AandB         \
+            -prefix mask_olap_AandB
+ 
+   To view the SliceNDice results: NB, you can use 1dplot for viewing
+   either of the about output results, choosing slice number or DICOM
+   coordinate value for the abscissa (x-axis) value.
+ 
+   # use integer index values along x-axis of the plot, for one
+   # encoding direction of the volume:
+   1dplot -x mask_olap_all_1_PA.1D'[0]' mask_olap_all_1_PA.1D'[4]'
+ 
+   # use DICOM coordinate values along x-axis of the plot: 
+   1dplot -x mask_olap_all_1_PA.1D'[1]' mask_olap_all_1_PA.1D'[4]'
+ 
+ # ----------------------------------------------------------------------
+
+=== Output of '3dSliceNDice' (no arguments) ===
+
+ OVERVIEW ~1~
+ 
+ This program is for calculating the Dice coefficient between two
+ volumes on a slice-by-slice basis.  The user enters two volumes on the
+ same grid, and Dice coefficients along each axis are calculated; three
+ separate text (*.1D) files are output.
+ 
+ The Dice coefficient (Dice, 1945) is known by many names and in many
+ applications.  In the present context it is defined as follows.
+ Consider two sets voxels (i.e., masks), A and B.  The Dice coefficient
+ D is the ratio of their intersection to their union. Let N(x) be a
+ function that calculates the number of voxels in a set x. Then:
+ 
+     D = 2*N(intersection of A and B)/(N(A) + N(B)).
+ 
+ The range of D is 0 (no overlap of A and B at all) to 1 (perfect
+ overlap of A and B), inclusively.
+ 
+ This program calculates D in a slicewise manner across all 3 major
+ axes of a dset; other programs of interest for a volumewise Dice
+ coefficient or more general overlap calculations include 3dABoverlap,
+ for example.
+ 
+ Nonzero values in a dset are considered part of the mask.  3dcalc
+ might be useful in creating a mask from a dset if things like
+ thresholding are required.
+ 
+ written by PA Taylor (NIMH, NIH).
+ 
+   
+ USAGE ~1~
+ 
+     Input: 
+       + two single-volume datasets
+ 
+     Output:
+ 
+       + three text files, each a *.1D file of columns of numbers (and
+         note that the executed 3dSliceNDice command is echoed into a
+         comment in the top line of each 1D file by output). File name
+         indicates along which axis the particular results were
+         calculated, such as ending in '0_RL.1D', '1_AP.1D', '2_IS.1D',
+         etc.
+ 
+         For each file, there are currently 5 columns of data output,
+         in the following order:
+         [index] the i, j, or k index of the slice (starting from 0).
+         [coord] the x, y, or z coordinate of the slice.
+         [size of A ROI] the number of voxels in set A's ROI in the slice.
+         [size of B ROI] the number of voxels in set B's ROI in the slice.
+         [Dice coef] the Dice coefficient of that slice.
+ 
+         1dplot can be useful for viewing output results quickly.
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ COMMAND ~1~
+ 
+     3dSliceNDice                                  \
+         -insetA    AA                             \
+         -insetB    BB                             \
+         -prefix    PP                             \
+         {-out_range all|AorB|AandB}
+ 
+     where
+ 
+   -insetA    AA   :name of an input set to make a mask from; mask will
+                    be made from nonzero values in AA;
+   -insetB    BB   :name of an input set to make a mask from; mask will
+                    be made from nonzero values in BB;
+ 
+   -prefix    PP   :prefix of output files.
+                    Three output text files will be named
+                    according to the orientation of the input AA
+                    and BB files.  So, outputs might look like:
+                      PP_0_RL.1D or PP_0_RL.1D,
+                      PP_1_AP.1D or PP_0_PA.1D,
+                      PP_2_IS.1D or PP_0_SI.1D.
+ 
+   -out_domain all|AorB|AandB
+                   :optional specification of the slices over which to
+                    output Dice coefficient results along each axis,
+                    via keyword.  Argument options at present:
+                    'all':   report Dice values for all slices (default);
+                    'AorB':  report values only in slices where sets A or
+                             B (or both) have at least one nonzero voxel;
+                    'AandB': report values only in slices where both sets
+                             A and B have at least one nonzero voxel;
+                    'Amask': report values only in slices where set A 
+                             has at least one nonzero voxel;
+                    'Bmask': report values only in slices where set B 
+                             has at least one nonzero voxel;
+ 
+   -no_cmd_echo    :turn OFF recording the command line call to
+                    3dSliceNDice in the output *.1D files (default is
+                    to do the recording).
+ 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ EXAMPLES ~1~
+ 
+   1. Report slicewise overlap of two masks through full FOV along each 
+      axis.
+        3dSliceNDice                  \
+            -insetA mask_1.nii.gz     \
+            -insetB mask_2.nii.gz     \
+            -prefix mask_olap_all
+ 
+   2. Report slicewise overlap of two masks only for slices where both 
+      dsets have >0 voxels in their masks
+        3dSliceNDice                  \
+            -insetA mask_1.nii.gz     \
+            -insetB mask_2.nii.gz     \
+            -out_domain AandB         \
+            -prefix mask_olap_AandB
+ 
+   To view the SliceNDice results: NB, you can use 1dplot for viewing
+   either of the about output results, choosing slice number or DICOM
+   coordinate value for the abscissa (x-axis) value.
+ 
+   # use integer index values along x-axis of the plot, for one
+   # encoding direction of the volume:
+   1dplot -x mask_olap_all_1_PA.1D'[0]' mask_olap_all_1_PA.1D'[4]'
+ 
+   # use DICOM coordinate values along x-axis of the plot: 
+   1dplot -x mask_olap_all_1_PA.1D'[1]' mask_olap_all_1_PA.1D'[4]'
+ 
+ # ----------------------------------------------------------------------

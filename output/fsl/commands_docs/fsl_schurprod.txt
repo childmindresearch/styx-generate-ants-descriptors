@@ -1,0 +1,98 @@
+
+=== Output of 'fsl_schurprod --help' ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        input file name (4D image file)
+	-d,--design	ASCII text matrix of time series to be correlated
+	-o,--out	output file base name
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_schurprod (Version 1.0)
+Author: Christian F. Beckmann 
+Copyright(C) University of Oxford
+ 
+ Generates element-wise matrix products or product of matrices against vectors from 4D data
+ 
+
+Usage: 
+fsl_schurprod -i <input> -d <time series> -o <basename> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (4D image file)
+	-d,--design	ASCII text matrix of time series to be correlated
+	-o,--out	output file base name
+
+Optional arguments (You may optionally specify one or more of):
+	-r,--regression	use regression rather than correlation
+	-i,--index	index of column in the design to be used for matrix product calculation
+	-m,--mask	mask image file name
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this help text
+
+
+
+=== Output of 'fsl_schurprod -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_schurprod (Version 1.0)
+Author: Christian F. Beckmann 
+Copyright(C) University of Oxford
+ 
+ Generates element-wise matrix products or product of matrices against vectors from 4D data
+ 
+
+Usage: 
+fsl_schurprod -i <input> -d <time series> -o <basename> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (4D image file)
+	-d,--design	ASCII text matrix of time series to be correlated
+	-o,--out	output file base name
+
+Optional arguments (You may optionally specify one or more of):
+	-r,--regression	use regression rather than correlation
+	-i,--index	index of column in the design to be used for matrix product calculation
+	-m,--mask	mask image file name
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this help text
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'fsl_schurprod' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        input file name (4D image file)
+	-d,--design	ASCII text matrix of time series to be correlated
+	-o,--out	output file base name
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_schurprod (Version 1.0)
+Author: Christian F. Beckmann 
+Copyright(C) University of Oxford
+ 
+ Generates element-wise matrix products or product of matrices against vectors from 4D data
+ 
+
+Usage: 
+fsl_schurprod -i <input> -d <time series> -o <basename> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (4D image file)
+	-d,--design	ASCII text matrix of time series to be correlated
+	-o,--out	output file base name
+
+Optional arguments (You may optionally specify one or more of):
+	-r,--regression	use regression rather than correlation
+	-i,--index	index of column in the design to be used for matrix product calculation
+	-m,--mask	mask image file name
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this help text
+
+

@@ -1,0 +1,132 @@
+
+=== Output of 'possum --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+possum
+Copyright(c) 2007, University of Oxford (Ivana Drobnjak)
+
+Usage: 
+possum -i <input phantom volume> -x <MR parameters matrix> -p <pulse> -f <RF slice profile> -m <motion file> -o <output signal matrix> [optional arguments]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--inp	<input4Dvol-filename> (Input object)
+	-x,--mrpar	<inputmatrix-filename> (MR parameters)
+	-m,--motion	<inputmatrix-filename> (Motion matrix [time(s) Tx(m) Ty(m) Tz(m) Rx(rad) Ry(rad) Rz(rad)]) 
+	-p,--pulse	<inputmatrix-basename> (Pulse sequence - all additional files .posx,.posy, etc,  expected to be in the same directory)
+	-o,--out	<outputmatrix-filename> (Signal - [sreal, simag])
+	-f,--slcprof	<inputmatrix-filename> (RF slice profile)
+	-e,--mainmatx	<inputmatrix-filename> (Main event matrix [t(s),rf_ang(rad),rf_freq_band(Hz),(4)=rf_cent_freq(Hz),read(1/0),Gx,Gy,Gz(T/m),Tx,Ty,Tz(m),angle_of_rot B(rad),rot_axis Bx,By,Bz(m),angle_of_rot A(rad),rot_axis Ax,Ay,Az(m)]) 
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-k,--kcoord	If this option is ON it will save the kspace coordinates
+	-b,--b0p	<input3Dvol-basename> (B0 inhomogeneities due to the susceptibility differences - base name, without extras z_dz, z_dx etc)
+	--b0extra	<input3Dvol-filename> (B0 inhomogeneities due to an extra field - see b0time)
+	--b0time	<inputmatrix-filename> (B0inhomogeneities_timecourse [time(s) multiply_factor(perc 0 to 1)] - see b0extra) 
+	-r,--rfr	<input3Dvol-filename> ( RF inhomogeneity - receive. NOTE: not yet to be used ) 
+	-s,--rft	<input3Dvol-filename> ( RF inhomogeneity - transmit. NOTE: not yet to be used )
+	-a,--activ	<input3Dvol-filename> (Activation volume)
+	-t,--activt	<inputmatrix-filename> (Activation_timecourse [time(s) multiply_factor(perc 0 to 1)])
+	-q,--activ4D	<input4Dvol-filename> (Activation volume) 
+	-u,--activt4D	<inputmatrix-filename> (Activation4D_timecourse [time(s)])
+	-l,--lev	{1,2,3,4} (Levels: 1.no motion//basic B0 2.motion//basic B0, 3.motion//full B0, 4.no motion//time changing B0)
+	--nproc	<int> (INPUT for the paralelisation -- Number of processors we have available)
+	--procid	<int> (INPUT for the paralelisation -- ID of the processor we are on)
+	--nospeedup	If this option is ON it will NOT do the speedup but will do signal for all the slices for each voxel.
+	--rfavg	If this option is ON it will use RF angle averging
+
+
+
+=== Output of 'possum -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+possum
+Copyright(c) 2007, University of Oxford (Ivana Drobnjak)
+
+Usage: 
+possum -i <input phantom volume> -x <MR parameters matrix> -p <pulse> -f <RF slice profile> -m <motion file> -o <output signal matrix> [optional arguments]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--inp	<input4Dvol-filename> (Input object)
+	-x,--mrpar	<inputmatrix-filename> (MR parameters)
+	-m,--motion	<inputmatrix-filename> (Motion matrix [time(s) Tx(m) Ty(m) Tz(m) Rx(rad) Ry(rad) Rz(rad)]) 
+	-p,--pulse	<inputmatrix-basename> (Pulse sequence - all additional files .posx,.posy, etc,  expected to be in the same directory)
+	-o,--out	<outputmatrix-filename> (Signal - [sreal, simag])
+	-f,--slcprof	<inputmatrix-filename> (RF slice profile)
+	-e,--mainmatx	<inputmatrix-filename> (Main event matrix [t(s),rf_ang(rad),rf_freq_band(Hz),(4)=rf_cent_freq(Hz),read(1/0),Gx,Gy,Gz(T/m),Tx,Ty,Tz(m),angle_of_rot B(rad),rot_axis Bx,By,Bz(m),angle_of_rot A(rad),rot_axis Ax,Ay,Az(m)]) 
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-k,--kcoord	If this option is ON it will save the kspace coordinates
+	-b,--b0p	<input3Dvol-basename> (B0 inhomogeneities due to the susceptibility differences - base name, without extras z_dz, z_dx etc)
+	--b0extra	<input3Dvol-filename> (B0 inhomogeneities due to an extra field - see b0time)
+	--b0time	<inputmatrix-filename> (B0inhomogeneities_timecourse [time(s) multiply_factor(perc 0 to 1)] - see b0extra) 
+	-r,--rfr	<input3Dvol-filename> ( RF inhomogeneity - receive. NOTE: not yet to be used ) 
+	-s,--rft	<input3Dvol-filename> ( RF inhomogeneity - transmit. NOTE: not yet to be used )
+	-a,--activ	<input3Dvol-filename> (Activation volume)
+	-t,--activt	<inputmatrix-filename> (Activation_timecourse [time(s) multiply_factor(perc 0 to 1)])
+	-q,--activ4D	<input4Dvol-filename> (Activation volume) 
+	-u,--activt4D	<inputmatrix-filename> (Activation4D_timecourse [time(s)])
+	-l,--lev	{1,2,3,4} (Levels: 1.no motion//basic B0 2.motion//basic B0, 3.motion//full B0, 4.no motion//time changing B0)
+	--nproc	<int> (INPUT for the paralelisation -- Number of processors we have available)
+	--procid	<int> (INPUT for the paralelisation -- ID of the processor we are on)
+	--nospeedup	If this option is ON it will NOT do the speedup but will do signal for all the slices for each voxel.
+	--rfavg	If this option is ON it will use RF angle averging
+
+
+
+-e: Missing non-optional argument!
+
+=== Output of 'possum' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--inp	<input4Dvol-filename> (Input object)
+	-x,--mrpar	<inputmatrix-filename> (MR parameters)
+	-m,--motion	<inputmatrix-filename> (Motion matrix [time(s) Tx(m) Ty(m) Tz(m) Rx(rad) Ry(rad) Rz(rad)]) 
+	-p,--pulse	<inputmatrix-basename> (Pulse sequence - all additional files .posx,.posy, etc,  expected to be in the same directory)
+	-o,--out	<outputmatrix-filename> (Signal - [sreal, simag])
+	-f,--slcprof	<inputmatrix-filename> (RF slice profile)
+	-e,--mainmatx	<inputmatrix-filename> (Main event matrix [t(s),rf_ang(rad),rf_freq_band(Hz),(4)=rf_cent_freq(Hz),read(1/0),Gx,Gy,Gz(T/m),Tx,Ty,Tz(m),angle_of_rot B(rad),rot_axis Bx,By,Bz(m),angle_of_rot A(rad),rot_axis Ax,Ay,Az(m)]) 
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+possum
+Copyright(c) 2007, University of Oxford (Ivana Drobnjak)
+
+Usage: 
+possum -i <input phantom volume> -x <MR parameters matrix> -p <pulse> -f <RF slice profile> -m <motion file> -o <output signal matrix> [optional arguments]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--inp	<input4Dvol-filename> (Input object)
+	-x,--mrpar	<inputmatrix-filename> (MR parameters)
+	-m,--motion	<inputmatrix-filename> (Motion matrix [time(s) Tx(m) Ty(m) Tz(m) Rx(rad) Ry(rad) Rz(rad)]) 
+	-p,--pulse	<inputmatrix-basename> (Pulse sequence - all additional files .posx,.posy, etc,  expected to be in the same directory)
+	-o,--out	<outputmatrix-filename> (Signal - [sreal, simag])
+	-f,--slcprof	<inputmatrix-filename> (RF slice profile)
+	-e,--mainmatx	<inputmatrix-filename> (Main event matrix [t(s),rf_ang(rad),rf_freq_band(Hz),(4)=rf_cent_freq(Hz),read(1/0),Gx,Gy,Gz(T/m),Tx,Ty,Tz(m),angle_of_rot B(rad),rot_axis Bx,By,Bz(m),angle_of_rot A(rad),rot_axis Ax,Ay,Az(m)]) 
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-k,--kcoord	If this option is ON it will save the kspace coordinates
+	-b,--b0p	<input3Dvol-basename> (B0 inhomogeneities due to the susceptibility differences - base name, without extras z_dz, z_dx etc)
+	--b0extra	<input3Dvol-filename> (B0 inhomogeneities due to an extra field - see b0time)
+	--b0time	<inputmatrix-filename> (B0inhomogeneities_timecourse [time(s) multiply_factor(perc 0 to 1)] - see b0extra) 
+	-r,--rfr	<input3Dvol-filename> ( RF inhomogeneity - receive. NOTE: not yet to be used ) 
+	-s,--rft	<input3Dvol-filename> ( RF inhomogeneity - transmit. NOTE: not yet to be used )
+	-a,--activ	<input3Dvol-filename> (Activation volume)
+	-t,--activt	<inputmatrix-filename> (Activation_timecourse [time(s) multiply_factor(perc 0 to 1)])
+	-q,--activ4D	<input4Dvol-filename> (Activation volume) 
+	-u,--activt4D	<inputmatrix-filename> (Activation4D_timecourse [time(s)])
+	-l,--lev	{1,2,3,4} (Levels: 1.no motion//basic B0 2.motion//basic B0, 3.motion//full B0, 4.no motion//time changing B0)
+	--nproc	<int> (INPUT for the paralelisation -- Number of processors we have available)
+	--procid	<int> (INPUT for the paralelisation -- ID of the processor we are on)
+	--nospeedup	If this option is ON it will NOT do the speedup but will do signal for all the slices for each voxel.
+	--rfavg	If this option is ON it will use RF angle averging
+
+

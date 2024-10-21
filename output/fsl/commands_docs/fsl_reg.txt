@@ -1,0 +1,39 @@
+
+=== Output of 'fsl_reg --help' ===
+
+
+Usage: fsl_reg <input> <reference> <output> [options]
+
+Options:
+ -e   : estimate transformation but don't apply it
+ -a   : affine-only registration
+ -FA  : use FNIRT config file optimised for FA data (FA_2_FMRIB58_1mm)
+ -flirt "flirt options" : options to be passed onto flirt (inside double-quotes)
+ -fnirt "fnirt options" : options to be passed onto fnirt (inside double-quotes)
+
+
+=== Output of 'fsl_reg -help' ===
+
+
+Usage: fsl_reg <input> <reference> <output> [options]
+
+Options:
+ -e   : estimate transformation but don't apply it
+ -a   : affine-only registration
+ -FA  : use FNIRT config file optimised for FA data (FA_2_FMRIB58_1mm)
+ -flirt "flirt options" : options to be passed onto flirt (inside double-quotes)
+ -fnirt "fnirt options" : options to be passed onto fnirt (inside double-quotes)
+
+
+=== Output of 'fsl_reg' (no arguments) ===
+
+
+Usage: fsl_reg <input> <reference> <output> [options]
+
+Options:
+ -e   : estimate transformation but don't apply it
+ -a   : affine-only registration
+ -FA  : use FNIRT config file optimised for FA data (FA_2_FMRIB58_1mm)
+ -flirt "flirt options" : options to be passed onto flirt (inside double-quotes)
+ -fnirt "fnirt options" : options to be passed onto fnirt (inside double-quotes)
+

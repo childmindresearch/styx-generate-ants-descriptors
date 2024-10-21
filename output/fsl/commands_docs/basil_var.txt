@@ -1,0 +1,24 @@
+
+=== Output of 'basil_var --help' ===
+
+BASIL variance calcualtor 'v4.0.3-dirty' 'Fri May 15 12:05:26 2020'
+Working in 
+ls: cannot access '/step[0-9]': No such file or directory
+Done.
+
+=== Output of 'basil_var -help' ===
+
+BASIL variance calcualtor 'v4.0.3-dirty' 'Fri May 15 12:05:26 2020'
+Working in 
+ls: cannot access '/step[0-9]': No such file or directory
+Done.
+
+=== Output of 'basil_var' (no arguments) ===
+
+Variance calculator for BASIL v4.0.3-dirty (Fri May 15 12:05:26 2020)
+
+Usage:
+-d     : BASIL results directory
+-m     : mask
+
+Done.

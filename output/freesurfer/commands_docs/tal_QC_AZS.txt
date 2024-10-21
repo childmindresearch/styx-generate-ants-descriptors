@@ -1,0 +1,14 @@
+
+=== Output of 'tal_QC_AZS --help' ===
+
+logfile=--help
+tal_QC_AZS: --help not found
+
+=== Output of 'tal_QC_AZS -help' ===
+
+logfile=-help
+tal_QC_AZS: -help not found
+
+=== Output of 'tal_QC_AZS' (no arguments) ===
+
+usage:    tal_QC_AZS <logfile>

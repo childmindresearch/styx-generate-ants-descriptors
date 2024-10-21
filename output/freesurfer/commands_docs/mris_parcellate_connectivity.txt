@@ -1,0 +1,13 @@
+
+=== Output of 'mris_parcellate_connectivity --help' ===
+
+unknown option --help
+
+=== Output of 'mris_parcellate_connectivity -help' ===
+
+unknown option -help
+
+=== Output of 'mris_parcellate_connectivity' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_parcellate_connectivity [options] <input surface> <input correlations> <output parcellation>
+	n <avgs> - iteratively smooth correlation matrix

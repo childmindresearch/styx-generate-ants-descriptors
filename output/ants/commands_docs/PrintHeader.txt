@@ -1,0 +1,24 @@
+
+=== Output of 'PrintHeader --help' ===
+
+Usage:  PrintHeader image.ext [whatInformation]
+  whatInformation:  
+    0 = origin
+    1 = spacing
+    2 = size
+    3 = index
+    4 = direction
+
+=== Output of 'PrintHeader -help' ===
+
+ file -help does not exist . 
+
+=== Output of 'PrintHeader' (no arguments) ===
+
+Usage:  PrintHeader image.ext [whatInformation]
+  whatInformation:  
+    0 = origin
+    1 = spacing
+    2 = size
+    3 = index
+    4 = direction

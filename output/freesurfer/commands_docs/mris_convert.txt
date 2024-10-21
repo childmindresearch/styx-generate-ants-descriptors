@@ -1,0 +1,672 @@
+
+=== Output of 'mris_convert --help' ===
+
+				Help
+
+NAME
+	mris_convert
+
+DESCRIPTION
+	This program will convert MRI-surface data formats.
+	
+	       These file formats are supported:
+	       ASCII:       .asc
+	       ICO:         .ico, .tri
+	       GEO:         .geo
+	       STL:         .stl
+	       VTK:         .vtk
+	       GIFTI:       .gii
+	       MGH surface-encoded 'volume': .mgh, .mgz
+	       Freesurfer binary format assumed for all other extensions.
+	       
+
+REQUIRED ARGUMENTS
+	Required positional parameters (these need to be placed after any 
+	options):
+
+	in-file
+		input filename
+
+	[second-in-file]
+		input second filename to be combined with in-file, required 
+		for --combinesurfs
+
+	out-file
+		output filename
+
+OPTIONAL ARGUMENTS
+	-? | -u | -h
+		help page
+
+	-p
+		in-file is a patch file, not a full surface
+
+	-c scalar-file1, scalar-file2, ...
+		input scalar curv overlay files (must still specify surface)
+
+	-f scalar-file
+		input functional time-series or other multi-frame data (must 
+		specify surface)
+
+	-o origname
+		read orig positions
+
+	-s scale
+		scale vertex xyz by scale
+
+	-r
+		rescale vertex xyz so total area is same as group average
+
+	-t subjec
+		apply talairach xfm of subject to vertex xyz
+
+	-n
+		output ascii file where vertex data is the surface normal 
+		vector
+
+	-v
+		write out neighbors of a vertex in each row. The first column 
+		is the vertex number, the 2nd col is the number of neighbors, 
+		the remaining cols are the vertex numbers of the neighbors. 
+		Note: there can be a different number of neighbors for each 
+		vertex.
+
+	-a
+		print only surface xyz to ascii file (out-file)
+
+	--annot annot-file
+		input annotation or gifti label data
+
+	--parcstats parcstats-file
+		input text file containing label/val pairs, where label is an 
+		annot name and val is a value associated with that label. The 
+		output file will be a scalar file.
+
+	--da_num gifti-dataarray-num
+		input gifti dataarray num, specifies which data array to use. 
+		Only works if input is GIFTI.
+
+	--label label-file lable-name
+		input .label file and name for this label
+
+	--labelstats label-stats
+		output gifti file to which label stats will be written
+
+	--combinesurfs
+		combine surface files, two input surface files required
+
+	--mergegifti
+		generate combined gifti file with surface and multiple 
+		curvature data
+
+	--splitgifti
+		separate surface and data array from combined gifti file, 
+		output them into individual files
+
+	--giftioutdir
+		outout directory for generated gifiti files, used with 
+		--splitgifti only
+
+	--delete-cmds
+		delete command lines in surface
+
+	--center
+		put center of surface at (0,0,0)
+
+	--vol-geom MRIVol
+		use MRIVol to set the volume geometry
+
+	--remove-vol-geom
+		set the valid flag in vg to 0
+
+	--to-surf surfcoords
+		copy coordinates from surfcoords to output (good for patches)
+
+	--to-scanner
+		convert coordinates from native FS (tkr) coords to scanner 
+		coords
+
+	--to-tkr
+		convert coordinates from scanner coords to native FS (tkr) 
+		coords
+
+	--userealras
+		same as --to-scanner
+
+	--usesurfras
+		same as --to-tkr
+
+	--upsample N SortType
+		upsample N times by spliting edges/faces, SortType=1 starts 
+		with longest edges, SortType=3 starts with biggest triangles
+
+	--volume ?h.white ?h.pial ?h.volume
+		compute vertex-wise volume, no other args needed (uses th3)
+
+	--area surface area.mgz
+		compute vertex-wise area (no other args needed); rescales 
+		group if needed
+
+	--angle surface angles.mgz
+		compute cortical orientation angles (no other args needed)
+
+	--label2mask surface label mask.mgz
+		convert a surface-based label to a binary mask (no other args 
+		needed)
+
+	Note: --cras_add and --cras_subtract are depricated. They are included
+	for backwards compatability. Use --to-tkr and --to-scanner instead. 
+
+	--cras_add
+		shift center to scanner coordinate center (was --cras_
+		correction, which still works)
+
+	--cras_subtract
+		shift center from scanner coordinate center (reverses --cras_
+		add)
+
+EXAMPLE 1
+	Convert a surface file to ascii:
+	  mris_convert lh.white lh.white.asc
+	 
+
+EXAMPLE 2
+	Write vertex neighbors to ascii:
+	  mris_convert -v lh.white lh.white.neighbors.asc
+	 
+
+EXAMPLE 3
+	Convert a surface file to ascii (vertices are surface normals):
+	  mris_convert -n lh.white lh.white.normals.asc
+	 
+
+EXAMPLE 4
+	Apply talairach xfm to white surface, save as binary:
+	  mris_convert -t bert lh.white lh.white.tal
+	 
+
+EXAMPLE 5
+	Convert a scalar overlay file in \"curv\" format to ascii:
+	   mris_convert -c lh.thickness lh.white lh.thickness.asc
+	 
+
+EXAMPLE 6
+	Convert a .annot file to Gifti label file:
+	   mris_convert --annot lh.aparc.annot lh.white lh.aparc.gii
+	 
+
+EXAMPLE 7
+	Convert a Gifti label file to .annot:
+	   mris_convert --annot lh.aparc.gii lh.white.gii lh.aparc.annot
+	 
+
+EXAMPLE 8
+	Convert a Freesurfer .label file to Gifti label format:
+	   mris_convert --label lh.V1.label V1 lh.white lh.V1.label.gii
+	 
+
+EXAMPLE 9
+	Create a scalar overlay file where each parcellation region contains a
+	single value:
+	    mris_convert --annot lh.aparc.annot --parcstats lh.parcstats.txt
+	                 lh.white lh.parcstats
+	 
+
+EXAMPLE 10
+	Create a scalar overlay of surface orientation angles with regard to 
+	the scanner's B0 field and the image volume axes:
+	   mris_convert --angle surface angles.mgz
+	
+	
+	See also mri_surf2surf
+	 
+
+
+
+=== Output of 'mris_convert -help' ===
+
+				Help
+
+NAME
+	mris_convert
+
+DESCRIPTION
+	This program will convert MRI-surface data formats.
+	
+	       These file formats are supported:
+	       ASCII:       .asc
+	       ICO:         .ico, .tri
+	       GEO:         .geo
+	       STL:         .stl
+	       VTK:         .vtk
+	       GIFTI:       .gii
+	       MGH surface-encoded 'volume': .mgh, .mgz
+	       Freesurfer binary format assumed for all other extensions.
+	       
+
+REQUIRED ARGUMENTS
+	Required positional parameters (these need to be placed after any 
+	options):
+
+	in-file
+		input filename
+
+	[second-in-file]
+		input second filename to be combined with in-file, required 
+		for --combinesurfs
+
+	out-file
+		output filename
+
+OPTIONAL ARGUMENTS
+	-? | -u | -h
+		help page
+
+	-p
+		in-file is a patch file, not a full surface
+
+	-c scalar-file1, scalar-file2, ...
+		input scalar curv overlay files (must still specify surface)
+
+	-f scalar-file
+		input functional time-series or other multi-frame data (must 
+		specify surface)
+
+	-o origname
+		read orig positions
+
+	-s scale
+		scale vertex xyz by scale
+
+	-r
+		rescale vertex xyz so total area is same as group average
+
+	-t subjec
+		apply talairach xfm of subject to vertex xyz
+
+	-n
+		output ascii file where vertex data is the surface normal 
+		vector
+
+	-v
+		write out neighbors of a vertex in each row. The first column 
+		is the vertex number, the 2nd col is the number of neighbors, 
+		the remaining cols are the vertex numbers of the neighbors. 
+		Note: there can be a different number of neighbors for each 
+		vertex.
+
+	-a
+		print only surface xyz to ascii file (out-file)
+
+	--annot annot-file
+		input annotation or gifti label data
+
+	--parcstats parcstats-file
+		input text file containing label/val pairs, where label is an 
+		annot name and val is a value associated with that label. The 
+		output file will be a scalar file.
+
+	--da_num gifti-dataarray-num
+		input gifti dataarray num, specifies which data array to use. 
+		Only works if input is GIFTI.
+
+	--label label-file lable-name
+		input .label file and name for this label
+
+	--labelstats label-stats
+		output gifti file to which label stats will be written
+
+	--combinesurfs
+		combine surface files, two input surface files required
+
+	--mergegifti
+		generate combined gifti file with surface and multiple 
+		curvature data
+
+	--splitgifti
+		separate surface and data array from combined gifti file, 
+		output them into individual files
+
+	--giftioutdir
+		outout directory for generated gifiti files, used with 
+		--splitgifti only
+
+	--delete-cmds
+		delete command lines in surface
+
+	--center
+		put center of surface at (0,0,0)
+
+	--vol-geom MRIVol
+		use MRIVol to set the volume geometry
+
+	--remove-vol-geom
+		set the valid flag in vg to 0
+
+	--to-surf surfcoords
+		copy coordinates from surfcoords to output (good for patches)
+
+	--to-scanner
+		convert coordinates from native FS (tkr) coords to scanner 
+		coords
+
+	--to-tkr
+		convert coordinates from scanner coords to native FS (tkr) 
+		coords
+
+	--userealras
+		same as --to-scanner
+
+	--usesurfras
+		same as --to-tkr
+
+	--upsample N SortType
+		upsample N times by spliting edges/faces, SortType=1 starts 
+		with longest edges, SortType=3 starts with biggest triangles
+
+	--volume ?h.white ?h.pial ?h.volume
+		compute vertex-wise volume, no other args needed (uses th3)
+
+	--area surface area.mgz
+		compute vertex-wise area (no other args needed); rescales 
+		group if needed
+
+	--angle surface angles.mgz
+		compute cortical orientation angles (no other args needed)
+
+	--label2mask surface label mask.mgz
+		convert a surface-based label to a binary mask (no other args 
+		needed)
+
+	Note: --cras_add and --cras_subtract are depricated. They are included
+	for backwards compatability. Use --to-tkr and --to-scanner instead. 
+
+	--cras_add
+		shift center to scanner coordinate center (was --cras_
+		correction, which still works)
+
+	--cras_subtract
+		shift center from scanner coordinate center (reverses --cras_
+		add)
+
+EXAMPLE 1
+	Convert a surface file to ascii:
+	  mris_convert lh.white lh.white.asc
+	 
+
+EXAMPLE 2
+	Write vertex neighbors to ascii:
+	  mris_convert -v lh.white lh.white.neighbors.asc
+	 
+
+EXAMPLE 3
+	Convert a surface file to ascii (vertices are surface normals):
+	  mris_convert -n lh.white lh.white.normals.asc
+	 
+
+EXAMPLE 4
+	Apply talairach xfm to white surface, save as binary:
+	  mris_convert -t bert lh.white lh.white.tal
+	 
+
+EXAMPLE 5
+	Convert a scalar overlay file in \"curv\" format to ascii:
+	   mris_convert -c lh.thickness lh.white lh.thickness.asc
+	 
+
+EXAMPLE 6
+	Convert a .annot file to Gifti label file:
+	   mris_convert --annot lh.aparc.annot lh.white lh.aparc.gii
+	 
+
+EXAMPLE 7
+	Convert a Gifti label file to .annot:
+	   mris_convert --annot lh.aparc.gii lh.white.gii lh.aparc.annot
+	 
+
+EXAMPLE 8
+	Convert a Freesurfer .label file to Gifti label format:
+	   mris_convert --label lh.V1.label V1 lh.white lh.V1.label.gii
+	 
+
+EXAMPLE 9
+	Create a scalar overlay file where each parcellation region contains a
+	single value:
+	    mris_convert --annot lh.aparc.annot --parcstats lh.parcstats.txt
+	                 lh.white lh.parcstats
+	 
+
+EXAMPLE 10
+	Create a scalar overlay of surface orientation angles with regard to 
+	the scanner's B0 field and the image volume axes:
+	   mris_convert --angle surface angles.mgz
+	
+	
+	See also mri_surf2surf
+	 
+
+
+
+=== Output of 'mris_convert' (no arguments) ===
+
+				Help
+
+NAME
+	mris_convert
+
+DESCRIPTION
+	This program will convert MRI-surface data formats.
+	
+	       These file formats are supported:
+	       ASCII:       .asc
+	       ICO:         .ico, .tri
+	       GEO:         .geo
+	       STL:         .stl
+	       VTK:         .vtk
+	       GIFTI:       .gii
+	       MGH surface-encoded 'volume': .mgh, .mgz
+	       Freesurfer binary format assumed for all other extensions.
+	       
+
+REQUIRED ARGUMENTS
+	Required positional parameters (these need to be placed after any 
+	options):
+
+	in-file
+		input filename
+
+	[second-in-file]
+		input second filename to be combined with in-file, required 
+		for --combinesurfs
+
+	out-file
+		output filename
+
+OPTIONAL ARGUMENTS
+	-? | -u | -h
+		help page
+
+	-p
+		in-file is a patch file, not a full surface
+
+	-c scalar-file1, scalar-file2, ...
+		input scalar curv overlay files (must still specify surface)
+
+	-f scalar-file
+		input functional time-series or other multi-frame data (must 
+		specify surface)
+
+	-o origname
+		read orig positions
+
+	-s scale
+		scale vertex xyz by scale
+
+	-r
+		rescale vertex xyz so total area is same as group average
+
+	-t subjec
+		apply talairach xfm of subject to vertex xyz
+
+	-n
+		output ascii file where vertex data is the surface normal 
+		vector
+
+	-v
+		write out neighbors of a vertex in each row. The first column 
+		is the vertex number, the 2nd col is the number of neighbors, 
+		the remaining cols are the vertex numbers of the neighbors. 
+		Note: there can be a different number of neighbors for each 
+		vertex.
+
+	-a
+		print only surface xyz to ascii file (out-file)
+
+	--annot annot-file
+		input annotation or gifti label data
+
+	--parcstats parcstats-file
+		input text file containing label/val pairs, where label is an 
+		annot name and val is a value associated with that label. The 
+		output file will be a scalar file.
+
+	--da_num gifti-dataarray-num
+		input gifti dataarray num, specifies which data array to use. 
+		Only works if input is GIFTI.
+
+	--label label-file lable-name
+		input .label file and name for this label
+
+	--labelstats label-stats
+		output gifti file to which label stats will be written
+
+	--combinesurfs
+		combine surface files, two input surface files required
+
+	--mergegifti
+		generate combined gifti file with surface and multiple 
+		curvature data
+
+	--splitgifti
+		separate surface and data array from combined gifti file, 
+		output them into individual files
+
+	--giftioutdir
+		outout directory for generated gifiti files, used with 
+		--splitgifti only
+
+	--delete-cmds
+		delete command lines in surface
+
+	--center
+		put center of surface at (0,0,0)
+
+	--vol-geom MRIVol
+		use MRIVol to set the volume geometry
+
+	--remove-vol-geom
+		set the valid flag in vg to 0
+
+	--to-surf surfcoords
+		copy coordinates from surfcoords to output (good for patches)
+
+	--to-scanner
+		convert coordinates from native FS (tkr) coords to scanner 
+		coords
+
+	--to-tkr
+		convert coordinates from scanner coords to native FS (tkr) 
+		coords
+
+	--userealras
+		same as --to-scanner
+
+	--usesurfras
+		same as --to-tkr
+
+	--upsample N SortType
+		upsample N times by spliting edges/faces, SortType=1 starts 
+		with longest edges, SortType=3 starts with biggest triangles
+
+	--volume ?h.white ?h.pial ?h.volume
+		compute vertex-wise volume, no other args needed (uses th3)
+
+	--area surface area.mgz
+		compute vertex-wise area (no other args needed); rescales 
+		group if needed
+
+	--angle surface angles.mgz
+		compute cortical orientation angles (no other args needed)
+
+	--label2mask surface label mask.mgz
+		convert a surface-based label to a binary mask (no other args 
+		needed)
+
+	Note: --cras_add and --cras_subtract are depricated. They are included
+	for backwards compatability. Use --to-tkr and --to-scanner instead. 
+
+	--cras_add
+		shift center to scanner coordinate center (was --cras_
+		correction, which still works)
+
+	--cras_subtract
+		shift center from scanner coordinate center (reverses --cras_
+		add)
+
+EXAMPLE 1
+	Convert a surface file to ascii:
+	  mris_convert lh.white lh.white.asc
+	 
+
+EXAMPLE 2
+	Write vertex neighbors to ascii:
+	  mris_convert -v lh.white lh.white.neighbors.asc
+	 
+
+EXAMPLE 3
+	Convert a surface file to ascii (vertices are surface normals):
+	  mris_convert -n lh.white lh.white.normals.asc
+	 
+
+EXAMPLE 4
+	Apply talairach xfm to white surface, save as binary:
+	  mris_convert -t bert lh.white lh.white.tal
+	 
+
+EXAMPLE 5
+	Convert a scalar overlay file in \"curv\" format to ascii:
+	   mris_convert -c lh.thickness lh.white lh.thickness.asc
+	 
+
+EXAMPLE 6
+	Convert a .annot file to Gifti label file:
+	   mris_convert --annot lh.aparc.annot lh.white lh.aparc.gii
+	 
+
+EXAMPLE 7
+	Convert a Gifti label file to .annot:
+	   mris_convert --annot lh.aparc.gii lh.white.gii lh.aparc.annot
+	 
+
+EXAMPLE 8
+	Convert a Freesurfer .label file to Gifti label format:
+	   mris_convert --label lh.V1.label V1 lh.white lh.V1.label.gii
+	 
+
+EXAMPLE 9
+	Create a scalar overlay file where each parcellation region contains a
+	single value:
+	    mris_convert --annot lh.aparc.annot --parcstats lh.parcstats.txt
+	                 lh.white lh.parcstats
+	 
+
+EXAMPLE 10
+	Create a scalar overlay of surface orientation angles with regard to 
+	the scanner's B0 field and the image volume axes:
+	   mris_convert --angle surface angles.mgz
+	
+	
+	See also mri_surf2surf
+	 
+
+

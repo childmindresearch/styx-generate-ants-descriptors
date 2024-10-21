@@ -1,0 +1,67 @@
+
+=== Output of 'tbss_non_FA --help' ===
+
+cat: FA/best.msf: No such file or directory
+using pre-chosen registration target: 
+upsampling alternative images into standard space
+merging all upsampled --help images into single 4D image
+
+Usage: fslmerge <-x/y/z/t/a/tr> <output> <file1 file2 .......> [tr value in seconds]
+     -t : concatenate images in time
+     -x : concatenate images in the x direction
+     -y : concatenate images in the y direction
+     -z : concatenate images in the z direction
+     -a : auto-choose: single slices -> volume, volumes -> 4D (time series)
+     -tr : concatenate images in time and set the output image tr to the final option value
+     -n <N> : only use volume <N> from each input file (first volume is 0 not 1)
+Image Exception : #63 :: No image files match: all_--help
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: all_--help
+/usr/local/fsl/bin/tbss_non_FA: line 101: 20943 Aborted                 (core dumped) $FSLDIR/bin/fslmaths all_$ALTIM -mas mean_FA_mask all_$ALTIM
+projecting all_--help onto mean FA skeleton
+Image Exception : #63 :: No image files match: mean_FA
+Image Exception : #22 :: Failed to read volume mean_FA
+Error : No image files match: mean_FA
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume mean_FA
+Error : No image files match: mean_FA
+/usr/local/fsl/bin/tbss_non_FA: line 105: 20945 Aborted                 (core dumped) ${FSLDIR}/bin/tbss_skeleton -i mean_FA -p $thresh mean_FA_skeleton_mask_dst ${FSLDIR}/data/standard/LowerCingulum_1mm all_FA all_${ALTIM}_skeletonised -a all_$ALTIM
+now run stats - for example:
+randomise -i all_--help_skeletonised -o tbss_--help -m mean_FA_skeleton_mask -d design.mat -t design.con -n 500 --T2 -V
+(after generating design.mat and design.con)
+
+=== Output of 'tbss_non_FA -help' ===
+
+cat: FA/best.msf: No such file or directory
+using pre-chosen registration target: 
+upsampling alternative images into standard space
+merging all upsampled -help images into single 4D image
+
+Usage: fslmerge <-x/y/z/t/a/tr> <output> <file1 file2 .......> [tr value in seconds]
+     -t : concatenate images in time
+     -x : concatenate images in the x direction
+     -y : concatenate images in the y direction
+     -z : concatenate images in the z direction
+     -a : auto-choose: single slices -> volume, volumes -> 4D (time series)
+     -tr : concatenate images in time and set the output image tr to the final option value
+     -n <N> : only use volume <N> from each input file (first volume is 0 not 1)
+Image Exception : #63 :: No image files match: all_-help
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: all_-help
+/usr/local/fsl/bin/tbss_non_FA: line 101: 20998 Aborted                 (core dumped) $FSLDIR/bin/fslmaths all_$ALTIM -mas mean_FA_mask all_$ALTIM
+projecting all_-help onto mean FA skeleton
+Image Exception : #63 :: No image files match: mean_FA
+Image Exception : #22 :: Failed to read volume mean_FA
+Error : No image files match: mean_FA
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume mean_FA
+Error : No image files match: mean_FA
+/usr/local/fsl/bin/tbss_non_FA: line 105: 21000 Aborted                 (core dumped) ${FSLDIR}/bin/tbss_skeleton -i mean_FA -p $thresh mean_FA_skeleton_mask_dst ${FSLDIR}/data/standard/LowerCingulum_1mm all_FA all_${ALTIM}_skeletonised -a all_$ALTIM
+now run stats - for example:
+randomise -i all_-help_skeletonised -o tbss_-help -m mean_FA_skeleton_mask -d design.mat -t design.con -n 500 --T2 -V
+(after generating design.mat and design.con)
+
+=== Output of 'tbss_non_FA' (no arguments) ===
+
+Usage: tbss_non_FA <alternative-image-rootname>
+e.g.: tbss_non_FA L2

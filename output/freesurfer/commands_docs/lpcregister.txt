@@ -1,0 +1,158 @@
+
+=== Output of 'lpcregister --help' ===
+
+
+USAGE: lpcregister
+
+Required Arguments:
+   --s subject
+   --mov volid  : input/movable volume
+   --reg register.dat
+
+Optional Arguments
+   --9  :  9 dof (default is 6)
+   --12 : 12 dof (default is 6)
+   --frame frameno : reg to frameno (default 0=1st)
+   --mid-frame : reg to middle frame (not with --frame)
+   --fsvol volid : use FreeSurfer volid (default brainmask)
+   --o outvol : resample mov and save as outvol
+
+   --tmp tmpdir  : temporary dir (implies --nocleanup)
+   --nocleanup  : do not delete temporary files
+   --version : print version and exit
+   --help    : print help and exit
+
+
+Not tested yet!
+
+Registers a volume to its FreeSurfer anatomical using Local Pearson
+Correlation (LPC) (the AFNI lpc_align.py program).  creates a
+FreeSurfer register.dat file. Does not resample unless --o.
+
+--s subject
+
+Id of the subject as found in SUBJECTS_DIR. The reference volume is
+the mri/brain volume (this can be changed with --fsvol). This is
+converted to analyze using mri_convert.
+
+--mov volid
+
+Volume identifier of the movable volume. This must be specified in
+a way suitable for mri_convert. Uses first frame unless --frame
+is specified. For this to work correctly, the movable volume must
+have correct geometry information (eg, a valid SPM-style .mat file)
+otherwise the results may be unpredictable.
+
+--reg regfile
+
+Output registration file. This will map RAS in the reference to
+RAS in the movable. This file/matrix is in a format understood
+by freesurfer (see tkregister2 --help for docs). It will contain
+the subjectname.
+
+--frame frameno
+
+Use something other than the first frame. Eg, FSL uses the the middle
+frame (see --mid-frame). For SPM analyze, you should specify the file
+that corresonds to the frame you want because each file only has one
+frame.
+
+--mid-frame
+
+Use the middle frame of the mov volume as the template.
+
+SEE ALSO: tkregister2, mri_vol2surf, mri_convert, mri_rigid_register,
+fsl_rigid_register, spm_coreg.m.
+
+
+
+=== Output of 'lpcregister -help' ===
+
+
+USAGE: lpcregister
+
+Required Arguments:
+   --s subject
+   --mov volid  : input/movable volume
+   --reg register.dat
+
+Optional Arguments
+   --9  :  9 dof (default is 6)
+   --12 : 12 dof (default is 6)
+   --frame frameno : reg to frameno (default 0=1st)
+   --mid-frame : reg to middle frame (not with --frame)
+   --fsvol volid : use FreeSurfer volid (default brainmask)
+   --o outvol : resample mov and save as outvol
+
+   --tmp tmpdir  : temporary dir (implies --nocleanup)
+   --nocleanup  : do not delete temporary files
+   --version : print version and exit
+   --help    : print help and exit
+
+
+Not tested yet!
+
+Registers a volume to its FreeSurfer anatomical using Local Pearson
+Correlation (LPC) (the AFNI lpc_align.py program).  creates a
+FreeSurfer register.dat file. Does not resample unless --o.
+
+--s subject
+
+Id of the subject as found in SUBJECTS_DIR. The reference volume is
+the mri/brain volume (this can be changed with --fsvol). This is
+converted to analyze using mri_convert.
+
+--mov volid
+
+Volume identifier of the movable volume. This must be specified in
+a way suitable for mri_convert. Uses first frame unless --frame
+is specified. For this to work correctly, the movable volume must
+have correct geometry information (eg, a valid SPM-style .mat file)
+otherwise the results may be unpredictable.
+
+--reg regfile
+
+Output registration file. This will map RAS in the reference to
+RAS in the movable. This file/matrix is in a format understood
+by freesurfer (see tkregister2 --help for docs). It will contain
+the subjectname.
+
+--frame frameno
+
+Use something other than the first frame. Eg, FSL uses the the middle
+frame (see --mid-frame). For SPM analyze, you should specify the file
+that corresonds to the frame you want because each file only has one
+frame.
+
+--mid-frame
+
+Use the middle frame of the mov volume as the template.
+
+SEE ALSO: tkregister2, mri_vol2surf, mri_convert, mri_rigid_register,
+fsl_rigid_register, spm_coreg.m.
+
+
+
+=== Output of 'lpcregister' (no arguments) ===
+
+
+USAGE: lpcregister
+
+Required Arguments:
+   --s subject
+   --mov volid  : input/movable volume
+   --reg register.dat
+
+Optional Arguments
+   --9  :  9 dof (default is 6)
+   --12 : 12 dof (default is 6)
+   --frame frameno : reg to frameno (default 0=1st)
+   --mid-frame : reg to middle frame (not with --frame)
+   --fsvol volid : use FreeSurfer volid (default brainmask)
+   --o outvol : resample mov and save as outvol
+
+   --tmp tmpdir  : temporary dir (implies --nocleanup)
+   --nocleanup  : do not delete temporary files
+   --version : print version and exit
+   --help    : print help and exit
+

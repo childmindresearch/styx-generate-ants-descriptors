@@ -1,0 +1,46 @@
+
+=== Output of 'mri_exvivo_norm --help' ===
+
+usage: mri_exvivo_norm [-h] -i INVOL -o OUTVOL --hemi HEMI [--pred PRED]
+                       [--norm NORM] [--fv] [--norm_mean] [--write_rounds]
+                       [--uthresh UTHRESH] [--sigma SIGMA] [--nrounds NROUNDS]
+                       [--multichannel] [--model MODEL] [--wts WTS]
+                       [--gpu GPU]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INVOL, --invol INVOL
+                        input MRI volume
+  -o OUTVOL, --outvol OUTVOL
+                        output MRI volume
+  --hemi HEMI           hemi to process
+  --pred PRED           write prediction volume
+  --norm NORM           write normalized volume
+  --fv                  bring up freeview to show results
+  --norm_mean           normalize output mean to match input mean
+  --write_rounds        write normalization results after each round
+  --uthresh UTHRESH     specify threshold to erase above
+  --sigma SIGMA         sigma to smooth bias field
+  --nrounds NROUNDS     number of rounds of iterative normalization to apply
+  --multichannel        specify that data has multiple channels
+  --model MODEL         use alternative model file
+  --wts WTS             alternative weights filename
+  --gpu GPU             GPU number - if not supplied, CPU is used
+
+=== Output of 'mri_exvivo_norm -help' ===
+
+usage: mri_exvivo_norm [-h] -i INVOL -o OUTVOL --hemi HEMI [--pred PRED]
+                       [--norm NORM] [--fv] [--norm_mean] [--write_rounds]
+                       [--uthresh UTHRESH] [--sigma SIGMA] [--nrounds NROUNDS]
+                       [--multichannel] [--model MODEL] [--wts WTS]
+                       [--gpu GPU]
+mri_exvivo_norm: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'mri_exvivo_norm' (no arguments) ===
+
+usage: mri_exvivo_norm [-h] -i INVOL -o OUTVOL --hemi HEMI [--pred PRED]
+                       [--norm NORM] [--fv] [--norm_mean] [--write_rounds]
+                       [--uthresh UTHRESH] [--sigma SIGMA] [--nrounds NROUNDS]
+                       [--multichannel] [--model MODEL] [--wts WTS]
+                       [--gpu GPU]
+mri_exvivo_norm: error: the following arguments are required: -i/--invol, -o/--outvol, --hemi

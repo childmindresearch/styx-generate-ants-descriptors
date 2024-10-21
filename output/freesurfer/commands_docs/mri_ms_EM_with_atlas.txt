@@ -1,0 +1,12 @@
+
+=== Output of 'mri_ms_EM_with_atlas --help' ===
+
+error: mri_ms_EM_with_atlas has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_ms_EM_with_atlas -help' ===
+
+error: mri_ms_EM_with_atlas has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_ms_EM_with_atlas' (no arguments) ===
+
+error: mri_ms_EM_with_atlas has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

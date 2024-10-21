@@ -1,0 +1,9 @@
+
+=== Output of 'mkima_index.tcl --help' ===
+
+
+=== Output of 'mkima_index.tcl -help' ===
+
+
+=== Output of 'mkima_index.tcl' (no arguments) ===
+

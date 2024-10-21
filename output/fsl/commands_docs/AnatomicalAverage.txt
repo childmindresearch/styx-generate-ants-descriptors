@@ -1,0 +1,28 @@
+
+=== Output of 'AnatomicalAverage --help' ===
+
+Unrecognised option --help
+
+=== Output of 'AnatomicalAverage -help' ===
+
+Unrecognised option -help
+
+=== Output of 'AnatomicalAverage' (no arguments) ===
+
+
+Usage: AnatomicalAverage [options] <image1> ... <imageN>
+
+Compulsory arguments
+  -o <name>        : output basename
+Optional arguments
+  -s <image>       : standard image (default is MNI152_T1_2mm)
+  -m <image>       : standard brain mask (default is MNI152_T1_2mm_brain_mask_dil)
+  -n               : do not crop images
+  -w <dir>         : local, temporary working directory (to be cleaned up - i.e. deleted)
+  -b <brainsize>   : specify brainsize in mm for internal ROI (via robustfov)
+  --noclean        : do not run the cleanup
+  -v               : verbose output
+  -h               : display this help message
+
+e.g.:  AnatomicalAverage -n -o output_name  im1 im2
+       Note that N>=2 (i.e. there must be at least two images in the list)

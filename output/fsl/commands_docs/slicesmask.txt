@@ -1,0 +1,18 @@
+
+=== Output of 'slicesmask --help' ===
+
+
+Usage: slicesmask <image> <mask> <output>
+
+
+=== Output of 'slicesmask -help' ===
+
+
+Usage: slicesmask <image> <mask> <output>
+
+
+=== Output of 'slicesmask' (no arguments) ===
+
+
+Usage: slicesmask <image> <mask> <output>
+

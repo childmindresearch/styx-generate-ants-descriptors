@@ -1,0 +1,25 @@
+
+=== Output of 'mris_morph_stats --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_morph_stats [options] <subject name> <hemisphere> <morphed surface> <output name>
+
+This program generates statistics which characterize
+a surface-based deformation field
+
+valid options are:
+
+
+=== Output of 'mris_morph_stats -help' ===
+
+unknown option -help
+usage: /usr/local/freesurfer/bin/mris_morph_stats [options] <subject name> <hemisphere> <morphed surface> <output name>
+
+This program generates statistics which characterize
+a surface-based deformation field
+
+valid options are:
+
+
+=== Output of 'mris_morph_stats' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_morph_stats [options] <subject name> <hemisphere> <morphed surface> <output name>

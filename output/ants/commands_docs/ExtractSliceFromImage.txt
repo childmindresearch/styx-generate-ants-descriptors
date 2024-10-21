@@ -1,0 +1,12 @@
+
+=== Output of 'ExtractSliceFromImage --help' ===
+
+Usage: ExtractSliceFromImage imageDimension inputImage outputSlice direction(e.g. 0, 1, 2) slice_number [KeepSliceInOriginalSpace (0 or 1)]
+
+=== Output of 'ExtractSliceFromImage -help' ===
+
+Usage: ExtractSliceFromImage imageDimension inputImage outputSlice direction(e.g. 0, 1, 2) slice_number [KeepSliceInOriginalSpace (0 or 1)]
+
+=== Output of 'ExtractSliceFromImage' (no arguments) ===
+
+Usage: ExtractSliceFromImage imageDimension inputImage outputSlice direction(e.g. 0, 1, 2) slice_number [KeepSliceInOriginalSpace (0 or 1)]

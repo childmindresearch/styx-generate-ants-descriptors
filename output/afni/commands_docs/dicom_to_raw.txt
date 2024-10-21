@@ -1,0 +1,16 @@
+
+=== Output of 'dicom_to_raw --help' ===
+
+++ Can't read from file --help
+
+=== Output of 'dicom_to_raw -help' ===
+
+Usage: dicom_to_raw fname ...
+Reads images from DICOM file 'fname' and writes them to raw
+file(s) 'fname.raw.0001' etc.
+
+=== Output of 'dicom_to_raw' (no arguments) ===
+
+Usage: dicom_to_raw fname ...
+Reads images from DICOM file 'fname' and writes them to raw
+file(s) 'fname.raw.0001' etc.

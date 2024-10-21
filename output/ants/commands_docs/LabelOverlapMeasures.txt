@@ -1,0 +1,12 @@
+
+=== Output of 'LabelOverlapMeasures --help' ===
+
+Usage: LabelOverlapMeasures imageDimension sourceImage targetImage [outputCSVFile]
+
+=== Output of 'LabelOverlapMeasures -help' ===
+
+Usage: LabelOverlapMeasures imageDimension sourceImage targetImage [outputCSVFile]
+
+=== Output of 'LabelOverlapMeasures' (no arguments) ===
+
+Usage: LabelOverlapMeasures imageDimension sourceImage targetImage [outputCSVFile]

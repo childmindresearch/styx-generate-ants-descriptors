@@ -1,0 +1,69 @@
+
+=== Output of 'mris_extract_main_component --help' ===
+
+				Help
+
+NAME
+	mris_extract_main_component
+
+SYNOPSIS
+	mris_extract_main_component input_surface output_surface
+
+DESCRIPTION
+	************************************************************
+
+POSITIONAL ARGUMENTS
+	input_surface
+
+	output_surface
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_extract_main_component -help' ===
+
+				Help
+
+NAME
+	mris_extract_main_component
+
+SYNOPSIS
+	mris_extract_main_component input_surface output_surface
+
+DESCRIPTION
+	************************************************************
+
+POSITIONAL ARGUMENTS
+	input_surface
+
+	output_surface
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_extract_main_component' (no arguments) ===
+
+				Help
+
+NAME
+	mris_extract_main_component
+
+SYNOPSIS
+	mris_extract_main_component input_surface output_surface
+
+DESCRIPTION
+	************************************************************
+
+POSITIONAL ARGUMENTS
+	input_surface
+
+	output_surface
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

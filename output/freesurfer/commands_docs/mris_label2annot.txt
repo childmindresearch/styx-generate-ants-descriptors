@@ -1,0 +1,156 @@
+
+=== Output of 'mris_label2annot --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mris_label2annot 
+
+   --s subject : FreeSurfer subject 
+   --h hemi : hemisphere (lh or rh)
+   --ctab ctabfile : colortable (like FreeSurferColorLUT.txt)
+   --offset IndexOffset : add to label number to get CTAB index
+   --l label1 <--l label 2 ...> : label file(s)
+   --a annotname : output annotation file (hemi.annotname.annot)
+   --annot-path annotpath : full name/path of annotation file
+   --ldir labeldir : when not using --l
+   --ldir-default : use subject/labels as labeldir
+   --no-unknown : do not map unhit labels to index 0
+   --thresh thresh : threshold label by stats field
+   --maxstatwinner : keep label with highest 'stat' value
+   --surf surfname : default is orig
+   --sd SUBJECTS_DIR
+
+   --debug     turn on debugging
+   --noverbose turn off overlap and stat override messages
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+
+Converts a set of surface labels to an annotation file.
+
+--s subject
+
+Name of FreeSurfer subject.
+
+--h hemi
+
+Hemisphere (lh or rh).
+
+--ctab colortablefile
+
+File that defines the structure names, their indices, and their
+color. This must have the same format as that found in
+$FREESUFER_HOME/FreeSurferColorLUT.txt. This can be used to generate
+the names of the label files (see --l below).
+
+--l labelfile1 <--l labelfile2 ...>
+
+List of label files. If no label files are specified, then the label
+file name is constructed from the list in the ctab as
+hemi.parcname.label.  The labels should be defined on the surface (eg,
+with tksurfer). The first label will be mapped to index 1 in the color
+table file. The next label will be mapped to index 2, etc. Verticies
+that are not mapped to a label are assigned index 0. If --no-unknown
+is specified, then the first label is mapped to index 0, etc, and
+unhit vertices are not mapped.
+
+--dilate_into_unknown label
+
+dilates <label> into bordering vertices labeled unknown 
+
+--ldir labeldir
+
+When getting label file names from the ctab, find the actual label files
+in ldir. If a label file based on the name in the ctab does not exist,
+it is skipped.
+
+--a annotname
+
+Name of the annotation to create. The actual file will be called
+hemi.annotname.annot, and it will be created in subject/label.
+If this file exists, then mris_label2annot exits immediately
+with an error message. It is then up to the user to manually
+delete this file (this is so annotations are not accidentally
+deleted, which could be a huge inconvenience).
+
+--nhits nhitsfile
+
+Overlay file with the number of labels for each vertex. Ideally, each
+vertex would have only one label, but there is not constraint that
+forces this. If there is more than one label for a vertex, the vertex
+will be assigned to the last label as specified on the cmd line. This
+can then be loaded as an overlay in tksurfer (set fthresh to 1.5). This
+is mainly good for debugging.
+
+--no-unknown
+
+Start label numbering at index 0 instead of index 1. Do not map unhit
+vertices (ie, vertices without a label) to 0.
+
+--thresh threshold
+
+Require that the stat field of the vertex in the label be greather 
+than threshold.
+
+EXAMPLE:
+
+mris_label2annot --s bert --h lh --ctab aparc.annot.ctab \
+  --a myaparc --l lh.unknown.label --l lh.bankssts.label \
+  --l lh.caudalanteriorcingulate.label --nhits nhits.mgh
+
+This will create lh.myaparc.annot in bert/labels using the three
+labels specified. Any vertices that have multiple labels will then
+be stored in nhits.mgh (as a volume-encoded surface file).
+
+To view, run:
+
+tksurfer bert lh inflated -overlay nhits.mgh -fthresh 1.5
+
+Then File->Label->ImportAnnotation and select lh.myaparc.annot.
+
+EXAMPLE: 
+
+To create an annotation with a few labels from the aparc, run
+
+cd $SUBJECTS_DIR/yoursubject/label
+mri_annotation2label --hemi lh --subject yoursubject --outdir deleteme
+rm deleteme/lh.superiortemporal.label   # remove superior temporal, etc
+mris_label2annot --hemi lh --subject yoursubject --ctab aparc.annot.ctab 
+   --ldir deletme --no-unknown --a myaparc
+tksurferfv yoursubject lh inflated -annot myaparc
+rm -r deletme
+
+
+=== Output of 'mris_label2annot -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mris_label2annot' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mris_label2annot 
+
+   --s subject : FreeSurfer subject 
+   --h hemi : hemisphere (lh or rh)
+   --ctab ctabfile : colortable (like FreeSurferColorLUT.txt)
+   --offset IndexOffset : add to label number to get CTAB index
+   --l label1 <--l label 2 ...> : label file(s)
+   --a annotname : output annotation file (hemi.annotname.annot)
+   --annot-path annotpath : full name/path of annotation file
+   --ldir labeldir : when not using --l
+   --ldir-default : use subject/labels as labeldir
+   --no-unknown : do not map unhit labels to index 0
+   --thresh thresh : threshold label by stats field
+   --maxstatwinner : keep label with highest 'stat' value
+   --surf surfname : default is orig
+   --sd SUBJECTS_DIR
+
+   --debug     turn on debugging
+   --noverbose turn off overlap and stat override messages
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

@@ -1,0 +1,19 @@
+
+=== Output of 'ico_supersample --help' ===
+
+Currently 12 points and 20 triangels.
+Refine? (y/n) Radius of sphere: Projection point (default origin): Enter three floating point values separated by spaces!
+
+
+=== Output of 'ico_supersample -help' ===
+
+Currently 12 points and 20 triangels.
+Refine? (y/n) Radius of sphere: Projection point (default origin): Enter three floating point values separated by spaces!
+
+
+=== Output of 'ico_supersample' (no arguments) ===
+
+Currently 12 points and 20 triangels.
+Refine? (y/n) Radius of sphere: Projection point (default origin): Enter three floating point values separated by spaces!
+
+

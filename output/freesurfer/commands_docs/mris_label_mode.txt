@@ -1,0 +1,32 @@
+
+=== Output of 'mris_label_mode --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_label_mode [options] <input curv. file> <hemi> <surface> <subject> ...  <output curv file >
+the output curvature file will be painted onto the last subject name specified
+on the command line.
+if the -s flag is specified then the last parameter specifies
+the directory in which to write the statistical maps.
+if the -o flag is specified then it overrides the last subject
+as the output surface.
+
+This program will add a template into an average surface.
+
+valid options are:
+
+-s <cond #>     generate summary statistics and write
+                them into sigavg<cond #>-<hemi>.w and
+                sigvar<cond #>-<hemi>.w.
+
+=== Output of 'mris_label_mode -help' ===
+
+unknown option -help
+
+=== Output of 'mris_label_mode' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_label_mode [options] <input curv. file> <hemi> <surface> <subject> ...  <output curv file >
+the output curvature file will be painted onto the last subject name specified
+on the command line.
+if the -s flag is specified then the last parameter specifies
+the directory in which to write the statistical maps.
+if the -o flag is specified then it overrides the last subject
+as the output surface.

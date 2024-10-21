@@ -1,0 +1,80 @@
+
+=== Output of 'dtigen --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+dtigen - generate diffusion data using tensor model
+
+Usage: 
+dtigen -t <input4Dtensor> -o <output4Ddata> -b <bvals> -r <bvecs> -m <brainmask> --s0=<s0file>
+
+Compulsory arguments (You MUST set one or more of):
+	-t,--tensor	input tensor
+	--s0	input S0
+	-o,--output	output data
+	-r,--bvecs	bvecs ASCII text file
+	-b,--bvals	bvals ASCII text file
+	-m,--mask	brain mask
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	--kurt	mean kurtosis map
+
+
+
+=== Output of 'dtigen -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+dtigen - generate diffusion data using tensor model
+
+Usage: 
+dtigen -t <input4Dtensor> -o <output4Ddata> -b <bvals> -r <bvecs> -m <brainmask> --s0=<s0file>
+
+Compulsory arguments (You MUST set one or more of):
+	-t,--tensor	input tensor
+	--s0	input S0
+	-o,--output	output data
+	-r,--bvecs	bvecs ASCII text file
+	-b,--bvals	bvals ASCII text file
+	-m,--mask	brain mask
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	--kurt	mean kurtosis map
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'dtigen' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-t,--tensor	input tensor
+	--s0	input S0
+	-o,--output	output data
+	-r,--bvecs	bvecs ASCII text file
+	-b,--bvals	bvals ASCII text file
+	-m,--mask	brain mask
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+dtigen - generate diffusion data using tensor model
+
+Usage: 
+dtigen -t <input4Dtensor> -o <output4Ddata> -b <bvals> -r <bvecs> -m <brainmask> --s0=<s0file>
+
+Compulsory arguments (You MUST set one or more of):
+	-t,--tensor	input tensor
+	--s0	input S0
+	-o,--output	output data
+	-r,--bvecs	bvecs ASCII text file
+	-b,--bvals	bvals ASCII text file
+	-m,--mask	brain mask
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	--kurt	mean kurtosis map
+
+

@@ -1,0 +1,141 @@
+
+=== Output of 'mideface --help' ===
+
+
+mideface : minimally invasive defacing tool
+
+ --i volume to deface
+ --o defaced input
+ --facemask facemask
+ --odir outputdir (turns on PostHeadSurf)
+ --xmask xmask (exclusion mask)
+ --xmask-samseg ndilations : segment input using samseg (14GB, +~20-40min)
+ --samseg-json json: configure samseg
+ --samseg-fast : configure samseg to run quickly; sets ndil=1 (default)
+ --no-samseg-fast : do NOT configure samseg to run quickly
+ --init-reg reg.lta : initialize samseg with reg (good in case samseg reg fails)
+ --xmask-synthseg ndilations : segment input using synthseg (35GB, +~20min)
+ --no-mask-seg-to-head : include stray skull voxels outside of the head mask
+ --fill-const constIn constOut
+ --fill-zero
+ --fhi fhi : fhi value to use in MRIchangeType(); default is to use that in mri_seghead
+ --no-ears : do not include ears in the defacing
+ --back-of-head : include back of head in the defacing
+ --forehead : include forehead in the defacing (risks removing brain)
+ --pics : take pics (--no-pics)
+ --code codename : embed codename in pics
+ --imconvert /path/to/convert : path to imagemagik convert binary (for pics)
+ --no-post : do not make a head surface after defacing
+ --threads nthreads
+ --force : force reprocessing (not applicable if --odir has not been used)
+ --nii : use nifti format as output (only when output files are not specified)
+ --nii.gz : use compressed nifti format as output (only when output files are not specified)
+ --mgz : use compressed mgh format as output (default)
+ --atlas atlasdir
+ --expert xopts
+ --display DisplayNo : set Xvfb display no for taking pics
+
+To apply midface output to a second volume
+ --apply vol facemask reg output : apply to another volume (use regheader if no reg needed)
+
+To check whther a volume has been defaced
+ --check vol <outfile>
+  This will print a 1 to stdout if this is an output of mideface or a 0 otherwise
+  outfile is an optional argument. If present, then the 0/1 will be printed in ascii to this file
+
+$Id$
+
+See https://surfer.nmr.mgh.harvard.edu/fswiki/MiDeFace for more info
+
+=== Output of 'mideface -help' ===
+
+
+mideface : minimally invasive defacing tool
+
+ --i volume to deface
+ --o defaced input
+ --facemask facemask
+ --odir outputdir (turns on PostHeadSurf)
+ --xmask xmask (exclusion mask)
+ --xmask-samseg ndilations : segment input using samseg (14GB, +~20-40min)
+ --samseg-json json: configure samseg
+ --samseg-fast : configure samseg to run quickly; sets ndil=1 (default)
+ --no-samseg-fast : do NOT configure samseg to run quickly
+ --init-reg reg.lta : initialize samseg with reg (good in case samseg reg fails)
+ --xmask-synthseg ndilations : segment input using synthseg (35GB, +~20min)
+ --no-mask-seg-to-head : include stray skull voxels outside of the head mask
+ --fill-const constIn constOut
+ --fill-zero
+ --fhi fhi : fhi value to use in MRIchangeType(); default is to use that in mri_seghead
+ --no-ears : do not include ears in the defacing
+ --back-of-head : include back of head in the defacing
+ --forehead : include forehead in the defacing (risks removing brain)
+ --pics : take pics (--no-pics)
+ --code codename : embed codename in pics
+ --imconvert /path/to/convert : path to imagemagik convert binary (for pics)
+ --no-post : do not make a head surface after defacing
+ --threads nthreads
+ --force : force reprocessing (not applicable if --odir has not been used)
+ --nii : use nifti format as output (only when output files are not specified)
+ --nii.gz : use compressed nifti format as output (only when output files are not specified)
+ --mgz : use compressed mgh format as output (default)
+ --atlas atlasdir
+ --expert xopts
+ --display DisplayNo : set Xvfb display no for taking pics
+
+To apply midface output to a second volume
+ --apply vol facemask reg output : apply to another volume (use regheader if no reg needed)
+
+To check whther a volume has been defaced
+ --check vol <outfile>
+  This will print a 1 to stdout if this is an output of mideface or a 0 otherwise
+  outfile is an optional argument. If present, then the 0/1 will be printed in ascii to this file
+
+$Id$
+
+See https://surfer.nmr.mgh.harvard.edu/fswiki/MiDeFace for more info
+
+=== Output of 'mideface' (no arguments) ===
+
+
+mideface : minimally invasive defacing tool
+
+ --i volume to deface
+ --o defaced input
+ --facemask facemask
+ --odir outputdir (turns on PostHeadSurf)
+ --xmask xmask (exclusion mask)
+ --xmask-samseg ndilations : segment input using samseg (14GB, +~20-40min)
+ --samseg-json json: configure samseg
+ --samseg-fast : configure samseg to run quickly; sets ndil=1 (default)
+ --no-samseg-fast : do NOT configure samseg to run quickly
+ --init-reg reg.lta : initialize samseg with reg (good in case samseg reg fails)
+ --xmask-synthseg ndilations : segment input using synthseg (35GB, +~20min)
+ --no-mask-seg-to-head : include stray skull voxels outside of the head mask
+ --fill-const constIn constOut
+ --fill-zero
+ --fhi fhi : fhi value to use in MRIchangeType(); default is to use that in mri_seghead
+ --no-ears : do not include ears in the defacing
+ --back-of-head : include back of head in the defacing
+ --forehead : include forehead in the defacing (risks removing brain)
+ --pics : take pics (--no-pics)
+ --code codename : embed codename in pics
+ --imconvert /path/to/convert : path to imagemagik convert binary (for pics)
+ --no-post : do not make a head surface after defacing
+ --threads nthreads
+ --force : force reprocessing (not applicable if --odir has not been used)
+ --nii : use nifti format as output (only when output files are not specified)
+ --nii.gz : use compressed nifti format as output (only when output files are not specified)
+ --mgz : use compressed mgh format as output (default)
+ --atlas atlasdir
+ --expert xopts
+ --display DisplayNo : set Xvfb display no for taking pics
+
+To apply midface output to a second volume
+ --apply vol facemask reg output : apply to another volume (use regheader if no reg needed)
+
+To check whther a volume has been defaced
+ --check vol <outfile>
+  This will print a 1 to stdout if this is an output of mideface or a 0 otherwise
+  outfile is an optional argument. If present, then the 0/1 will be printed in ascii to this file
+

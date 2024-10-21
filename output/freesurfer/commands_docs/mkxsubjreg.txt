@@ -1,0 +1,43 @@
+
+=== Output of 'mkxsubjreg --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mkxsubjreg 
+
+Required Arguments
+   --srcreg   srcreg.dat
+   --targreg  targreg.dat
+
+Optional Arguments
+   --targsubj subjid : default is talairach
+   --xfm xfmrname    : xfm file name relative to transforms
+   --sd subjects_dir : default is env SUBJECTS_DIR
+   --fvol funcvol    : path to example functional volume
+   --help
+   --version
+
+Creates new registration matrix that maps from the functional 
+volume of the source subject to the orig of the target subject
+through the talairach transform.
+
+
+=== Output of 'mkxsubjreg -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mkxsubjreg' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mkxsubjreg 
+
+Required Arguments
+   --srcreg   srcreg.dat
+   --targreg  targreg.dat
+
+Optional Arguments
+   --targsubj subjid : default is talairach
+   --xfm xfmrname    : xfm file name relative to transforms
+   --sd subjects_dir : default is env SUBJECTS_DIR
+   --fvol funcvol    : path to example functional volume
+   --help
+   --version
+

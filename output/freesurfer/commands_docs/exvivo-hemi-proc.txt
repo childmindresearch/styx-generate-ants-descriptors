@@ -1,0 +1,99 @@
+
+=== Output of 'exvivo-hemi-proc --help' ===
+
+
+exvivo-hemi-proc
+  --o outdir
+  --i flashdir
+  --s subject : full path to subject
+  --lh, --rh
+  --suptent : no tentorium (cblum and bstem) in the sample
+  --no-rotate : rotation not needed
+  --t1thresh T1thresh (415)
+  --threads  nthreads
+  --check-only 
+  --prep-only : only run up to manual rotation
+  --mask-only : only run up to creation of masks
+  --samseg-only : only run up to samseg
+  --stop-mmppsp-after {tess,fix,preaparc,sphere,spherereg,white,pial}:
+  --force
+$Id$
+
+This is a program initially designed to processes whole hemisphere
+data for Jeans entorhinal subfield labeling project.
+
+Run it something like
+exvivo-hemi-proc --i /path/to/flash --o I22 --rh --s I22.recon --threads 5
+
+Where --i /path/to/flash is the path to the FLASH data. It is expected that
+the files will be named mefFA_echoE_avg.mgz where FA is the flip angle 
+and E is the echo number. All flips must have all echoes. Eg, see
+/autofs/space/vault_020/users/Amaebi/I22_RH/mri/flash
+
+The output folder will be called I22. --rh indicates that this is a
+right hemi subject. --s I22.recon means that the recon-all subject
+will be called I22.recon. The subject will be saved in 
+outdir/rotate/parameter_maps/samseg.PD/subjectname
+
+
+
+
+
+=== Output of 'exvivo-hemi-proc -help' ===
+
+
+exvivo-hemi-proc
+  --o outdir
+  --i flashdir
+  --s subject : full path to subject
+  --lh, --rh
+  --suptent : no tentorium (cblum and bstem) in the sample
+  --no-rotate : rotation not needed
+  --t1thresh T1thresh (415)
+  --threads  nthreads
+  --check-only 
+  --prep-only : only run up to manual rotation
+  --mask-only : only run up to creation of masks
+  --samseg-only : only run up to samseg
+  --stop-mmppsp-after {tess,fix,preaparc,sphere,spherereg,white,pial}:
+  --force
+$Id$
+
+This is a program initially designed to processes whole hemisphere
+data for Jeans entorhinal subfield labeling project.
+
+Run it something like
+exvivo-hemi-proc --i /path/to/flash --o I22 --rh --s I22.recon --threads 5
+
+Where --i /path/to/flash is the path to the FLASH data. It is expected that
+the files will be named mefFA_echoE_avg.mgz where FA is the flip angle 
+and E is the echo number. All flips must have all echoes. Eg, see
+/autofs/space/vault_020/users/Amaebi/I22_RH/mri/flash
+
+The output folder will be called I22. --rh indicates that this is a
+right hemi subject. --s I22.recon means that the recon-all subject
+will be called I22.recon. The subject will be saved in 
+outdir/rotate/parameter_maps/samseg.PD/subjectname
+
+
+
+
+
+=== Output of 'exvivo-hemi-proc' (no arguments) ===
+
+
+exvivo-hemi-proc
+  --o outdir
+  --i flashdir
+  --s subject : full path to subject
+  --lh, --rh
+  --suptent : no tentorium (cblum and bstem) in the sample
+  --no-rotate : rotation not needed
+  --t1thresh T1thresh (415)
+  --threads  nthreads
+  --check-only 
+  --prep-only : only run up to manual rotation
+  --mask-only : only run up to creation of masks
+  --samseg-only : only run up to samseg
+  --stop-mmppsp-after {tess,fix,preaparc,sphere,spherereg,white,pial}:
+  --force

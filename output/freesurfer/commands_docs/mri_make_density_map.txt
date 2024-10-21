@@ -1,0 +1,12 @@
+
+=== Output of 'mri_make_density_map --help' ===
+
+error: mri_make_density_map has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_make_density_map -help' ===
+
+error: mri_make_density_map has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_make_density_map' (no arguments) ===
+
+error: mri_make_density_map has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

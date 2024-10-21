@@ -1,0 +1,20 @@
+
+=== Output of 'fname2stem --help' ===
+
+basename: No match.
+if: Expression Syntax.
+
+=== Output of 'fname2stem -help' ===
+
+dirname: invalid option -- 'h'
+Try 'dirname --help' for more information.
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+/.mgh
+
+=== Output of 'fname2stem' (no arguments) ===
+
+fname2stem filename
+  Converts the name of a file to a stem
+  Eg, f.mgh f.nii f.nii.gz would return f
+  The file does not need to exist. See also stem2fname

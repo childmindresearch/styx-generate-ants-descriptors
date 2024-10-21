@@ -1,0 +1,12 @@
+
+=== Output of 'renormalize_subject --help' ===
+
+/usr/local/freesurfer/subjects/--help/scripts: No such file or directory.
+
+=== Output of 'renormalize_subject -help' ===
+
+/usr/local/freesurfer/subjects/-help/scripts: No such file or directory.
+
+=== Output of 'renormalize_subject' (no arguments) ===
+
+/usr/local/freesurfer/subjects//scripts: No such file or directory.

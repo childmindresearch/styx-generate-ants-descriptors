@@ -1,0 +1,252 @@
+
+=== Output of 'mris_compute_parc_overlap --help' ===
+
+Compares two parcellated (annotated or labeled) surfaces
+and computes an overall Dice coefficient
+and mean minimum distances (mm).
+
+Usage:
+  mris_compute_parc_overlap --s subject --hemi hemi \ 
+    --annot1 annotfile --annot2 annotfile
+
+Required:
+  --s subject              subject to check
+  --hemi hemi              hemisphere: rh or lh
+  and:
+    --annot1 annotfile     first .annot file
+    --annot2 annotfile     second .annot file
+  or:
+    --label1 labelfile     first .label file
+    --label2 labelfile     second .label file
+
+Optional:
+  --sd subj_dir            set SUBJECTS_DIR
+  --log filename           output the overall DICE and min dist to filename
+  --label-list file        file containing labels to 
+                           check, one per line  --nocheck-label1-xyz     when loading label1 file, don't
+                           check x,y,z coords to surface
+                           default: check x,y,x
+  --nocheck-label2-xyz     ditto for label2
+  --nocheck-label-xyz      do not check label1 and label2
+  --use-label1-xyz         replace surface x,y,z coords
+                           with those in label1 file
+  --use-label2-xyz         ditto for label2
+  --use-label-xyz          use label1 and label2 coords
+  --debug-overlap          generate ?h.overlap.annot
+  --version                version info
+  --help                   this usage info
+
+Example 1:
+  mris_compute_parc_overlap --s bert --hemi lh \
+    --annot1 aparc --annot2 aparc.ernie
+
+In this example, the annotation file named lh.aparc.annot, which is
+created by the utility mris_ca_label (executed during the -autorecon3
+stage of recon-all), is compared against the annotation file named 
+lh.aparc.ernie.annot.  This second annotation file is created by the
+utility mri_surf2surf, which resamples one surface onto another. This
+resampling is necessary so that a vertex-by-vertex comparison is
+meaningful.  An example command-line is: 
+  mri_surf2surf --srcsubject ernie --trgsubject bert --hemi lh \ 
+    --sval-annot $SUBJECTS_DIR/ernie/label/lh.aparc.annot \ 
+    --tval       $SUBJECTS_DIR/bert/label/lh.ernie.aparc.annot
+
+Note that the resampling output file, lh.ernie.annot, is deposited
+in the label directory of the subject (bert) supplied as the input
+to the mris_compute_parc_overlap utility.  Supply --help to
+mri_surf2surf for its usage information.
+
+There are two measures output by mris_compute_parc_overlap: an overall
+Dice coefficient, and a table of mean minimum distances between 
+corresponding labels. A Dice value of 1 indicates perfect overlap.
+A mean minimum distance of 0 (mm) indicates perfect overlap.
+
+If --debug-overlap is specified, a file called ?h.overlap.annot is 
+created in the subjects label directory, and is a copy of the annot2
+input, except wherever the labels are identical with annot1, that label
+is replaced with the label 'unknown', thus leaving any mismatches
+labeled as they were in the annot2 file.  If the Dice coefficient is 
+less than 1, then this ile is a way to visualize the mismatches, 
+which are typically around the label borders.
+
+Example 2:
+  mris_compute_parc_overlap --s bert --hemi lh \
+    --label1 precentral --label2 precentral
+
+In this example, two label files are specified.  Just those two
+labels are compared.
+
+When comparing the labels at two vertices, the following labels are
+excluded from measurements if both vertices have the same label:
+  unknown
+  corpuscallosum
+  Unknown
+  Corpus_callosum
+
+=== Output of 'mris_compute_parc_overlap -help' ===
+
+Compares two parcellated (annotated or labeled) surfaces
+and computes an overall Dice coefficient
+and mean minimum distances (mm).
+
+Usage:
+  mris_compute_parc_overlap --s subject --hemi hemi \ 
+    --annot1 annotfile --annot2 annotfile
+
+Required:
+  --s subject              subject to check
+  --hemi hemi              hemisphere: rh or lh
+  and:
+    --annot1 annotfile     first .annot file
+    --annot2 annotfile     second .annot file
+  or:
+    --label1 labelfile     first .label file
+    --label2 labelfile     second .label file
+
+Optional:
+  --sd subj_dir            set SUBJECTS_DIR
+  --log filename           output the overall DICE and min dist to filename
+  --label-list file        file containing labels to 
+                           check, one per line  --nocheck-label1-xyz     when loading label1 file, don't
+                           check x,y,z coords to surface
+                           default: check x,y,x
+  --nocheck-label2-xyz     ditto for label2
+  --nocheck-label-xyz      do not check label1 and label2
+  --use-label1-xyz         replace surface x,y,z coords
+                           with those in label1 file
+  --use-label2-xyz         ditto for label2
+  --use-label-xyz          use label1 and label2 coords
+  --debug-overlap          generate ?h.overlap.annot
+  --version                version info
+  --help                   this usage info
+
+Example 1:
+  mris_compute_parc_overlap --s bert --hemi lh \
+    --annot1 aparc --annot2 aparc.ernie
+
+In this example, the annotation file named lh.aparc.annot, which is
+created by the utility mris_ca_label (executed during the -autorecon3
+stage of recon-all), is compared against the annotation file named 
+lh.aparc.ernie.annot.  This second annotation file is created by the
+utility mri_surf2surf, which resamples one surface onto another. This
+resampling is necessary so that a vertex-by-vertex comparison is
+meaningful.  An example command-line is: 
+  mri_surf2surf --srcsubject ernie --trgsubject bert --hemi lh \ 
+    --sval-annot $SUBJECTS_DIR/ernie/label/lh.aparc.annot \ 
+    --tval       $SUBJECTS_DIR/bert/label/lh.ernie.aparc.annot
+
+Note that the resampling output file, lh.ernie.annot, is deposited
+in the label directory of the subject (bert) supplied as the input
+to the mris_compute_parc_overlap utility.  Supply --help to
+mri_surf2surf for its usage information.
+
+There are two measures output by mris_compute_parc_overlap: an overall
+Dice coefficient, and a table of mean minimum distances between 
+corresponding labels. A Dice value of 1 indicates perfect overlap.
+A mean minimum distance of 0 (mm) indicates perfect overlap.
+
+If --debug-overlap is specified, a file called ?h.overlap.annot is 
+created in the subjects label directory, and is a copy of the annot2
+input, except wherever the labels are identical with annot1, that label
+is replaced with the label 'unknown', thus leaving any mismatches
+labeled as they were in the annot2 file.  If the Dice coefficient is 
+less than 1, then this ile is a way to visualize the mismatches, 
+which are typically around the label borders.
+
+Example 2:
+  mris_compute_parc_overlap --s bert --hemi lh \
+    --label1 precentral --label2 precentral
+
+In this example, two label files are specified.  Just those two
+labels are compared.
+
+When comparing the labels at two vertices, the following labels are
+excluded from measurements if both vertices have the same label:
+  unknown
+  corpuscallosum
+  Unknown
+  Corpus_callosum
+
+=== Output of 'mris_compute_parc_overlap' (no arguments) ===
+
+Compares two parcellated (annotated or labeled) surfaces
+and computes an overall Dice coefficient
+and mean minimum distances (mm).
+
+Usage:
+  mris_compute_parc_overlap --s subject --hemi hemi \ 
+    --annot1 annotfile --annot2 annotfile
+
+Required:
+  --s subject              subject to check
+  --hemi hemi              hemisphere: rh or lh
+  and:
+    --annot1 annotfile     first .annot file
+    --annot2 annotfile     second .annot file
+  or:
+    --label1 labelfile     first .label file
+    --label2 labelfile     second .label file
+
+Optional:
+  --sd subj_dir            set SUBJECTS_DIR
+  --log filename           output the overall DICE and min dist to filename
+  --label-list file        file containing labels to 
+                           check, one per line  --nocheck-label1-xyz     when loading label1 file, don't
+                           check x,y,z coords to surface
+                           default: check x,y,x
+  --nocheck-label2-xyz     ditto for label2
+  --nocheck-label-xyz      do not check label1 and label2
+  --use-label1-xyz         replace surface x,y,z coords
+                           with those in label1 file
+  --use-label2-xyz         ditto for label2
+  --use-label-xyz          use label1 and label2 coords
+  --debug-overlap          generate ?h.overlap.annot
+  --version                version info
+  --help                   this usage info
+
+Example 1:
+  mris_compute_parc_overlap --s bert --hemi lh \
+    --annot1 aparc --annot2 aparc.ernie
+
+In this example, the annotation file named lh.aparc.annot, which is
+created by the utility mris_ca_label (executed during the -autorecon3
+stage of recon-all), is compared against the annotation file named 
+lh.aparc.ernie.annot.  This second annotation file is created by the
+utility mri_surf2surf, which resamples one surface onto another. This
+resampling is necessary so that a vertex-by-vertex comparison is
+meaningful.  An example command-line is: 
+  mri_surf2surf --srcsubject ernie --trgsubject bert --hemi lh \ 
+    --sval-annot $SUBJECTS_DIR/ernie/label/lh.aparc.annot \ 
+    --tval       $SUBJECTS_DIR/bert/label/lh.ernie.aparc.annot
+
+Note that the resampling output file, lh.ernie.annot, is deposited
+in the label directory of the subject (bert) supplied as the input
+to the mris_compute_parc_overlap utility.  Supply --help to
+mri_surf2surf for its usage information.
+
+There are two measures output by mris_compute_parc_overlap: an overall
+Dice coefficient, and a table of mean minimum distances between 
+corresponding labels. A Dice value of 1 indicates perfect overlap.
+A mean minimum distance of 0 (mm) indicates perfect overlap.
+
+If --debug-overlap is specified, a file called ?h.overlap.annot is 
+created in the subjects label directory, and is a copy of the annot2
+input, except wherever the labels are identical with annot1, that label
+is replaced with the label 'unknown', thus leaving any mismatches
+labeled as they were in the annot2 file.  If the Dice coefficient is 
+less than 1, then this ile is a way to visualize the mismatches, 
+which are typically around the label borders.
+
+Example 2:
+  mris_compute_parc_overlap --s bert --hemi lh \
+    --label1 precentral --label2 precentral
+
+In this example, two label files are specified.  Just those two
+labels are compared.
+
+When comparing the labels at two vertices, the following labels are
+excluded from measurements if both vertices have the same label:
+  unknown
+  corpuscallosum
+  Unknown
+  Corpus_callosum

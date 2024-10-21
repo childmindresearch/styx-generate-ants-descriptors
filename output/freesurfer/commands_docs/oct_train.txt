@@ -1,0 +1,12 @@
+
+=== Output of 'oct_train --help' ===
+
+error: oct_train has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'oct_train -help' ===
+
+error: oct_train has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'oct_train' (no arguments) ===
+
+error: oct_train has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

@@ -1,0 +1,102 @@
+
+=== Output of 'flirt.fsl --help' ===
+
+Lacking argument to option --help
+
+=== Output of 'flirt.fsl -help' ===
+
+FLIRT version 5.5
+
+Usage: /usr/local/freesurfer/bin/flirt.fsl [options] -in <inputvol> -ref <refvol> -out <outputvol>
+       /usr/local/freesurfer/bin/flirt.fsl [options] -in <inputvol> -ref <refvol> -omat <outputmatrix>
+       /usr/local/freesurfer/bin/flirt.fsl [options] -in <inputvol> -ref <refvol> -applyxfm -init <matrix> -out <outputvol>
+
+  Available options are:
+        -in  <inputvol>                    (no default)
+        -ref <refvol>                      (no default)
+        -init <matrix-filname>             (input 4x4 affine matrix)
+        -omat <matrix-filename>            (output in 4x4 ascii format)
+        -out, -o <outputvol>               (default is none)
+        -datatype {char,short,int,float,double}                    (force output data type)
+        -cost {mutualinfo,corratio,normcorr,normmi,leastsq,labeldiff}        (default is corratio)
+        -searchcost {mutualinfo,corratio,normcorr,normmi,leastsq,labeldiff}  (default is corratio)
+        -usesqform                         (initialise using appropriate sform or qform)
+        -displayinit                       (display initial matrix)
+        -anglerep {quaternion,euler}       (default is euler)
+        -interp {trilinear,nearestneighbour,sinc}  (final interpolation: def - trilinear)
+        -sincwidth <full-width in voxels>  (default is 7)
+        -sincwindow {rectangular,hanning,blackman}
+        -bins <number of histogram bins>   (default is 256)
+        -dof  <number of transform dofs>   (default is 12)
+        -noresample                        (do not change input sampling)
+        -forcescaling                      (force rescaling even for low-res images)
+        -minsampling <vox_dim>             (set minimum voxel dimension for sampling (in mm))
+        -applyxfm                          (applies transform (no optimisation) - requires -init)
+        -applyisoxfm <scale>               (as applyxfm but forces isotropic resampling)
+        -paddingsize <number of voxels>    (for applyxfm: interpolates outside image by size)
+        -searchrx <min_angle> <max_angle>  (angles in degrees: default is -90 90)
+        -searchry <min_angle> <max_angle>  (angles in degrees: default is -90 90)
+        -searchrz <min_angle> <max_angle>  (angles in degrees: default is -90 90)
+        -nosearch                          (sets all angular search ranges to 0 0)
+        -coarsesearch <delta_angle>        (angle in degrees: default is 60)
+        -finesearch <delta_angle>          (angle in degrees: default is 18)
+        -schedule <schedule-file>          (replaces default schedule)
+        -refweight <volume>                (use weights for reference volume)
+        -inweight <volume>                 (use weights for input volume)
+        -noclamp                           (do not use intensity clamping)
+        -noresampblur                      (do not use blurring on downsampling)
+        -2D                                (use 2D rigid body mode - ignores dof)
+        -verbose <num>                     (0 is least and default)
+        -v                                 (same as -verbose 1)
+        -i                                 (pauses at each stage: default is off)
+        -version                           (prints version number)
+        -help
+
+=== Output of 'flirt.fsl' (no arguments) ===
+
+FLIRT version 5.5
+
+Usage: /usr/local/freesurfer/bin/flirt.fsl [options] -in <inputvol> -ref <refvol> -out <outputvol>
+       /usr/local/freesurfer/bin/flirt.fsl [options] -in <inputvol> -ref <refvol> -omat <outputmatrix>
+       /usr/local/freesurfer/bin/flirt.fsl [options] -in <inputvol> -ref <refvol> -applyxfm -init <matrix> -out <outputvol>
+
+  Available options are:
+        -in  <inputvol>                    (no default)
+        -ref <refvol>                      (no default)
+        -init <matrix-filname>             (input 4x4 affine matrix)
+        -omat <matrix-filename>            (output in 4x4 ascii format)
+        -out, -o <outputvol>               (default is none)
+        -datatype {char,short,int,float,double}                    (force output data type)
+        -cost {mutualinfo,corratio,normcorr,normmi,leastsq,labeldiff}        (default is corratio)
+        -searchcost {mutualinfo,corratio,normcorr,normmi,leastsq,labeldiff}  (default is corratio)
+        -usesqform                         (initialise using appropriate sform or qform)
+        -displayinit                       (display initial matrix)
+        -anglerep {quaternion,euler}       (default is euler)
+        -interp {trilinear,nearestneighbour,sinc}  (final interpolation: def - trilinear)
+        -sincwidth <full-width in voxels>  (default is 7)
+        -sincwindow {rectangular,hanning,blackman}
+        -bins <number of histogram bins>   (default is 256)
+        -dof  <number of transform dofs>   (default is 12)
+        -noresample                        (do not change input sampling)
+        -forcescaling                      (force rescaling even for low-res images)
+        -minsampling <vox_dim>             (set minimum voxel dimension for sampling (in mm))
+        -applyxfm                          (applies transform (no optimisation) - requires -init)
+        -applyisoxfm <scale>               (as applyxfm but forces isotropic resampling)
+        -paddingsize <number of voxels>    (for applyxfm: interpolates outside image by size)
+        -searchrx <min_angle> <max_angle>  (angles in degrees: default is -90 90)
+        -searchry <min_angle> <max_angle>  (angles in degrees: default is -90 90)
+        -searchrz <min_angle> <max_angle>  (angles in degrees: default is -90 90)
+        -nosearch                          (sets all angular search ranges to 0 0)
+        -coarsesearch <delta_angle>        (angle in degrees: default is 60)
+        -finesearch <delta_angle>          (angle in degrees: default is 18)
+        -schedule <schedule-file>          (replaces default schedule)
+        -refweight <volume>                (use weights for reference volume)
+        -inweight <volume>                 (use weights for input volume)
+        -noclamp                           (do not use intensity clamping)
+        -noresampblur                      (do not use blurring on downsampling)
+        -2D                                (use 2D rigid body mode - ignores dof)
+        -verbose <num>                     (0 is least and default)
+        -v                                 (same as -verbose 1)
+        -i                                 (pauses at each stage: default is off)
+        -version                           (prints version number)
+        -help

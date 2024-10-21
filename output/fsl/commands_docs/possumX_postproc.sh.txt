@@ -1,0 +1,123 @@
+
+=== Output of 'possumX_postproc.sh --help' ===
+
+Summing all signal from different proccesses into one total signal
+/usr/local/fsl/bin/possumX_postproc.sh: line 90: --help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 91: --help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 92: --help/possum.log: Not a directory
+Converting the signal into the image
+/usr/local/fsl/bin/possumX_postproc.sh: line 90: --help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 91: --help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 92: --help/possum.log: Not a directory
+Removing intermediate files
+Adding noise
+Image Exception : #63 :: No image files match: --help/image_abs
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: --help/image_abs
+/usr/local/fsl/bin/possumX_postproc.sh: line 119: 16449 Aborted                 (core dumped) fslmaths ${subjdir}/image_abs -Tmean ${subjdir}/image_mean
+Image Exception : #63 :: No image files match: --help/image_mean
+Image Exception : #22 :: Failed to read volume --help/image_mean
+Error : No image files match: --help/image_mean
+Failed to read volume --help/image_mean
+Error : No image files match: --help/image_mean
+Image Exception : #63 :: No image files match: --help/image_mean
+Image Exception : #22 :: Failed to read volume --help/image_mean
+Error : No image files match: --help/image_mean
+Failed to read volume --help/image_mean
+Error : No image files match: --help/image_mean
+/usr/local/fsl/bin/possumX_postproc.sh: line 122: bc: command not found
+Image Exception : #63 :: No image files match: --help/image_mean
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: --help/image_mean
+/usr/local/fsl/bin/possumX_postproc.sh: line 123: 16455 Aborted                 (core dumped) fslmaths ${subjdir}/image_mean -thr $tresh ${subjdir}/image_mean
+Image Exception : #63 :: No image files match: --help/image_mean
+Image Exception : #22 :: Failed to read volume --help/image_mean
+Error : No image files match: --help/image_mean
+Failed to read volume --help/image_mean
+Error : No image files match: --help/image_mean
+Image Exception : #63 :: No image files match: --help/image_abs
+No image files match: --help/image_abs
+/usr/local/fsl/bin/possumX_postproc.sh: line 90: --help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 91: --help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 92: --help/possum.log: Not a directory
+/bin/rm: unrecognized option '--help/image_mean.img'
+Try '/bin/rm --help' for more information.
+
+=== Output of 'possumX_postproc.sh -help' ===
+
+Summing all signal from different proccesses into one total signal
+/usr/local/fsl/bin/possumX_postproc.sh: line 90: -help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 91: -help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 92: -help/possum.log: Not a directory
+Converting the signal into the image
+/usr/local/fsl/bin/possumX_postproc.sh: line 90: -help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 91: -help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 92: -help/possum.log: Not a directory
+Removing intermediate files
+Adding noise
+Image Exception : #63 :: No image files match: -help/image_abs
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: -help/image_abs
+/usr/local/fsl/bin/possumX_postproc.sh: line 119: 16552 Aborted                 (core dumped) fslmaths ${subjdir}/image_abs -Tmean ${subjdir}/image_mean
+Image Exception : #63 :: No image files match: -help/image_mean
+Image Exception : #22 :: Failed to read volume -help/image_mean
+Error : No image files match: -help/image_mean
+Failed to read volume -help/image_mean
+Error : No image files match: -help/image_mean
+Image Exception : #63 :: No image files match: -help/image_mean
+Image Exception : #22 :: Failed to read volume -help/image_mean
+Error : No image files match: -help/image_mean
+Failed to read volume -help/image_mean
+Error : No image files match: -help/image_mean
+/usr/local/fsl/bin/possumX_postproc.sh: line 122: bc: command not found
+Image Exception : #63 :: No image files match: -help/image_mean
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: -help/image_mean
+/usr/local/fsl/bin/possumX_postproc.sh: line 123: 16558 Aborted                 (core dumped) fslmaths ${subjdir}/image_mean -thr $tresh ${subjdir}/image_mean
+Image Exception : #63 :: No image files match: -help/image_mean
+Image Exception : #22 :: Failed to read volume -help/image_mean
+Error : No image files match: -help/image_mean
+Failed to read volume -help/image_mean
+Error : No image files match: -help/image_mean
+Image Exception : #63 :: No image files match: -help/image_abs
+No image files match: -help/image_abs
+/usr/local/fsl/bin/possumX_postproc.sh: line 90: -help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 91: -help/possum.log: Not a directory
+/usr/local/fsl/bin/possumX_postproc.sh: line 92: -help/possum.log: Not a directory
+/bin/rm: invalid option -- 'h'
+Try '/bin/rm --help' for more information.
+
+=== Output of 'possumX_postproc.sh' (no arguments) ===
+
+Summing all signal from different proccesses into one total signal
+Converting the signal into the image
+/usr/local/fsl/bin/possumX_postproc.sh: line 89: 16629 Floating point exception(core dumped) $1 >> $2/possum.log 2>&1
+Removing intermediate files
+Adding noise
+Image Exception : #63 :: No image files match: /image_abs
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /image_abs
+/usr/local/fsl/bin/possumX_postproc.sh: line 119: 16655 Aborted                 (core dumped) fslmaths ${subjdir}/image_abs -Tmean ${subjdir}/image_mean
+Image Exception : #63 :: No image files match: /image_mean
+Image Exception : #22 :: Failed to read volume /image_mean
+Error : No image files match: /image_mean
+Failed to read volume /image_mean
+Error : No image files match: /image_mean
+Image Exception : #63 :: No image files match: /image_mean
+Image Exception : #22 :: Failed to read volume /image_mean
+Error : No image files match: /image_mean
+Failed to read volume /image_mean
+Error : No image files match: /image_mean
+/usr/local/fsl/bin/possumX_postproc.sh: line 122: bc: command not found
+Image Exception : #63 :: No image files match: /image_mean
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /image_mean
+/usr/local/fsl/bin/possumX_postproc.sh: line 123: 16661 Aborted                 (core dumped) fslmaths ${subjdir}/image_mean -thr $tresh ${subjdir}/image_mean
+Image Exception : #63 :: No image files match: /image_mean
+Image Exception : #22 :: Failed to read volume /image_mean
+Error : No image files match: /image_mean
+Failed to read volume /image_mean
+Error : No image files match: /image_mean
+Image Exception : #63 :: No image files match: /image_abs
+No image files match: /image_abs
+/usr/local/fsl/bin/possumX_postproc.sh: line 89: 16669 Floating point exception(core dumped) $1 >> $2/possum.log 2>&1

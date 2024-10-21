@@ -1,0 +1,210 @@
+
+=== Output of 'fat_mat_tableize.py --help' ===
+
+** ERROR: unknown opt: '--help'
+
+=== Output of 'fat_mat_tableize.py -help' ===
+
+
+  PURPOSE ~1~
+
+  This program is to make tables for AFNI group analysis programs from
+  outputs from 3dNetCorr (*.netcc) and 3dTrackID (*.grid).
+
+  This program can also include additional subject information from
+  CSV files (which can be saved/made from spreadsheet formats like
+  XLS, XLSX, etc.).
+
+  Ver  : 0.1
+  Date : June 9, 2020
+  Auth : PA Taylor
+
+------------------------------------------------------------------------------
+
+INPUTS ~1~
+
+  + A set of *.netcc or *.grid file output by 3dNetCorr or 3dTrackID,
+    respectively.
+
+  + (opt) a CSV file of subject data; note that 
+
+------------------------------------------------------------------------------
+
+OUTPUTS ~1~
+
+  + a table file, usable in (many) AFNI group analysis programs
+
+  + a log file reporting on the inputs, matching and other aspects of
+    creating the table file
+
+------------------------------------------------------------------------------
+
+RUNNING ~1~
+
+ -in_mat  IM1 IM2 IM3 ...
+                :(req) name(s) of *.netcc or *.grid files with matrices
+                 to be used to make table (probably more than one); the
+                 list can be provided using wildcard chars, e.g.: 
+                    group_dir/sub_*.grid 
+                    sub_00?.netcc
+                 (see also '-in_list ..' as an alternative method for 
+                  inputting this information)
+
+ -in_csv CSV    :(opt) name of a CSV file to include in table (just one).
+                 The first column of the CSV must have subj ID labels
+                 that can be matched with the filename/paths of the 
+                 input matrix files.  If the subjects IDs cannot be 
+                 unambiguously matched with the matrix files based on their
+                 path/names, then you must use the '-in_list ..' option
+                 to provide the matching explicitly
+
+ -in_listfile LIST :(opt) another way of inputting the matrix (*.grid or
+                 *.netcc) files-- by explicit path, matched per file
+                 with a CSV subject ID.
+                 The LIST text file contains two columns if also using 
+                 a CSV:
+                    col 1: path to subject matrix files
+                    col 2: CSV IDs
+                 Otherwise, if no CSV is being used, the file can contain
+                 just one column of paths to the matrix files.
+                 Note that lines in the LIST can contain #-ed comments.
+
+ -prefix PP     :(req) output basename for the table and log files.  
+                 Note that this can include path information, but both 
+                 a suffix and a file extensions will be added for the
+                 main outputs: 
+                    _prep.log  (attached to the log file)
+                    _tbl.txt   (attached to the table file)
+
+ -pars PARS     :(opt) list of matrices to be included in the table, 
+                 identified by their parameter name.  If no '-pars ..'  
+                 list is provided, then all matrices in the input file 
+                 will be included in the table (which might make for a 
+                 veeery long table)
+
+
+ ****
+
+
+
+ -ver           :display current version
+                 (0.1)
+
+ -date          :display release/editing date of current version
+                 (June 9, 2020)
+
+ -help          :display help (in terminal)
+ -h             :display help (in terminal)
+
+ -hview         :display help (in separate text editor)
+
+------------------------------------------------------------------------------
+
+EXAMPLES ~1~
+
+ ****
+
+
+
+=== Output of 'fat_mat_tableize.py' (no arguments) ===
+
+
+  PURPOSE ~1~
+
+  This program is to make tables for AFNI group analysis programs from
+  outputs from 3dNetCorr (*.netcc) and 3dTrackID (*.grid).
+
+  This program can also include additional subject information from
+  CSV files (which can be saved/made from spreadsheet formats like
+  XLS, XLSX, etc.).
+
+  Ver  : 0.1
+  Date : June 9, 2020
+  Auth : PA Taylor
+
+------------------------------------------------------------------------------
+
+INPUTS ~1~
+
+  + A set of *.netcc or *.grid file output by 3dNetCorr or 3dTrackID,
+    respectively.
+
+  + (opt) a CSV file of subject data; note that 
+
+------------------------------------------------------------------------------
+
+OUTPUTS ~1~
+
+  + a table file, usable in (many) AFNI group analysis programs
+
+  + a log file reporting on the inputs, matching and other aspects of
+    creating the table file
+
+------------------------------------------------------------------------------
+
+RUNNING ~1~
+
+ -in_mat  IM1 IM2 IM3 ...
+                :(req) name(s) of *.netcc or *.grid files with matrices
+                 to be used to make table (probably more than one); the
+                 list can be provided using wildcard chars, e.g.: 
+                    group_dir/sub_*.grid 
+                    sub_00?.netcc
+                 (see also '-in_list ..' as an alternative method for 
+                  inputting this information)
+
+ -in_csv CSV    :(opt) name of a CSV file to include in table (just one).
+                 The first column of the CSV must have subj ID labels
+                 that can be matched with the filename/paths of the 
+                 input matrix files.  If the subjects IDs cannot be 
+                 unambiguously matched with the matrix files based on their
+                 path/names, then you must use the '-in_list ..' option
+                 to provide the matching explicitly
+
+ -in_listfile LIST :(opt) another way of inputting the matrix (*.grid or
+                 *.netcc) files-- by explicit path, matched per file
+                 with a CSV subject ID.
+                 The LIST text file contains two columns if also using 
+                 a CSV:
+                    col 1: path to subject matrix files
+                    col 2: CSV IDs
+                 Otherwise, if no CSV is being used, the file can contain
+                 just one column of paths to the matrix files.
+                 Note that lines in the LIST can contain #-ed comments.
+
+ -prefix PP     :(req) output basename for the table and log files.  
+                 Note that this can include path information, but both 
+                 a suffix and a file extensions will be added for the
+                 main outputs: 
+                    _prep.log  (attached to the log file)
+                    _tbl.txt   (attached to the table file)
+
+ -pars PARS     :(opt) list of matrices to be included in the table, 
+                 identified by their parameter name.  If no '-pars ..'  
+                 list is provided, then all matrices in the input file 
+                 will be included in the table (which might make for a 
+                 veeery long table)
+
+
+ ****
+
+
+
+ -ver           :display current version
+                 (0.1)
+
+ -date          :display release/editing date of current version
+                 (June 9, 2020)
+
+ -help          :display help (in terminal)
+ -h             :display help (in terminal)
+
+ -hview         :display help (in separate text editor)
+
+------------------------------------------------------------------------------
+
+EXAMPLES ~1~
+
+ ****
+
+

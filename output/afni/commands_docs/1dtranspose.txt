@@ -1,0 +1,36 @@
+
+=== Output of '1dtranspose --help' ===
+
+[7m** ERROR:[0m mri_read_ascii: couldn't open file --help
+[7m** FATAL ERROR:[0m Can't read input file '--help'
+** Program compile date = Sep 12 2024
+
+=== Output of '1dtranspose -help' ===
+
+Usage: 1dtranspose infile outfile
+where infile is an AFNI *.1D file (ASCII list of numbers arranged
+in columns); outfile will be a similar file, but transposed.
+You can use a column subvector selector list on infile, as in
+  1dtranspose 'fred.1D[0,3,7]' ethel.1D
+
+* This program may produce files with lines longer than a
+   text editor can handle.
+* If 'outfile' is '-' (or missing entirely), output goes to stdout.
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '1dtranspose' (no arguments) ===
+
+Usage: 1dtranspose infile outfile
+where infile is an AFNI *.1D file (ASCII list of numbers arranged
+in columns); outfile will be a similar file, but transposed.
+You can use a column subvector selector list on infile, as in
+  1dtranspose 'fred.1D[0,3,7]' ethel.1D
+
+* This program may produce files with lines longer than a
+   text editor can handle.
+* If 'outfile' is '-' (or missing entirely), output goes to stdout.
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

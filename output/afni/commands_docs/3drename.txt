@@ -1,0 +1,60 @@
+
+=== Output of '3drename --help' ===
+
+++ 3drename: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+Usage 1: 3drename old_prefix new_prefix
+  Will rename all datasets using the old_prefix to use the new_prefix;
+    3drename fred ethel
+  will change fred+orig.HEAD    to ethel+orig.HEAD
+              fred+orig.BRIK    to ethel+orig.BRIK
+              fred+tlrc.HEAD    to ethel+tlrc.HEAD
+              fred+tlrc.BRIK.gz to ethel+tlrc.BRIK.gz
+
+Usage 2: 3drename old_prefix+view new_prefix
+  Will rename only the dataset with the given view (orig, acpc, tlrc).
+
+You cannot have paths in the old or the new prefix
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3drename -help' ===
+
+++ 3drename: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+Usage 1: 3drename old_prefix new_prefix
+  Will rename all datasets using the old_prefix to use the new_prefix;
+    3drename fred ethel
+  will change fred+orig.HEAD    to ethel+orig.HEAD
+              fred+orig.BRIK    to ethel+orig.BRIK
+              fred+tlrc.HEAD    to ethel+tlrc.HEAD
+              fred+tlrc.BRIK.gz to ethel+tlrc.BRIK.gz
+
+Usage 2: 3drename old_prefix+view new_prefix
+  Will rename only the dataset with the given view (orig, acpc, tlrc).
+
+You cannot have paths in the old or the new prefix
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3drename' (no arguments) ===
+
+++ 3drename: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+Usage 1: 3drename old_prefix new_prefix
+  Will rename all datasets using the old_prefix to use the new_prefix;
+    3drename fred ethel
+  will change fred+orig.HEAD    to ethel+orig.HEAD
+              fred+orig.BRIK    to ethel+orig.BRIK
+              fred+tlrc.HEAD    to ethel+tlrc.HEAD
+              fred+tlrc.BRIK.gz to ethel+tlrc.BRIK.gz
+
+Usage 2: 3drename old_prefix+view new_prefix
+  Will rename only the dataset with the given view (orig, acpc, tlrc).
+
+You cannot have paths in the old or the new prefix
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

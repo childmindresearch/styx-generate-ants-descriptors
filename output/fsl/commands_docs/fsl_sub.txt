@@ -1,0 +1,57 @@
+
+=== Output of 'fsl_sub --help' ===
+
+getopt: unrecognized option '--help'
+Either supply a command to run or a parallel task file
+
+=== Output of 'fsl_sub -help' ===
+
+getopt: invalid option -- 'h'
+getopt: invalid option -- 'e'
+Either supply a command to run or a parallel task file
+
+=== Output of 'fsl_sub' (no arguments) ===
+
+
+fsl_sub V1.1 - wrapper for job control system such as SGE
+
+Usage: fsl_sub [options] <command>
+
+fsl_sub gzip *.img *.hdr
+fsl_sub -q short.q gzip *.img *.hdr
+fsl_sub -a darwin regscript rawdata outputdir ...
+
+  -T <minutes>          Estimated job length in minutes, used to auto-set queue name
+  -q <queuename>        Possible values for <queuename> are "verylong.q", "long.q"
+                        and "short.q". See below for details
+                        Default is "long.q".
+  -a <arch-name>        Architecture [e.g., darwin or lx24-amd64]
+  -p <job-priority>     Lower priority [0:-1024] default = 0
+  -M <email-address>    Who to email, default = root@37982b8d57df
+  -j <jid>              Place a hold on this task until job jid has completed
+  -t <filename>         Specify a task file of commands to execute in parallel
+  -N <jobname>          Specify jobname as it will appear on queue
+  -R <RAM>              Max total RAM to use for job (integer in MB)
+  -l <logdirname>       Where to output logfiles
+  -m <mailoptions>      Change the SGE mail options, see qsub for details
+  -z <output>           If <output> image or file already exists, do nothing and exit
+  -F                    Use flags embedded in scripts to set SGE queuing options
+  -s <pename>,<threads> Submit a multi-threaded task - requires a PE (<pename>) to be
+                        configured for the requested queues.
+                        <threads> specifies the number of threads to run
+  -v                    Verbose mode.
+
+Queues:
+
+There are several batch queues configured on the cluster, each with defined CPU
+time limits. All queues, except bigmem.q, have a 8GB memory limit.
+
+veryshort.q:This queue is for jobs which last under 30mins.
+short.q:    This queue is for jobs which last up to 4h.
+long.q:     This queue is for jobs which last less than 24h. Jobs run with a
+            nice value of 10.
+verylong.q: This queue is for jobs which will take longer than 24h CPU time.
+            There is one slot per node, and jobs on this queue have a nice value
+            of 15.
+bigmem.q:   This queue is like the verylong.q but has no memory limits.
+

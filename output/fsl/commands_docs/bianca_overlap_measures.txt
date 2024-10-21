@@ -1,0 +1,285 @@
+
+=== Output of 'bianca_overlap_measures --help' ===
+
+/usr/local/fsl/bin/bianca_overlap_measures: line 85: pushd: too many arguments
+/usr/local/fsl/bin/bianca_overlap_measures: line 87: popd: directory stack empty
+dirname: missing operand
+Try 'dirname --help' for more information.
+/usr/local/fsl/bin/bianca_overlap_measures: line 94: pushd: no other directory
+/usr/local/fsl/bin/bianca_overlap_measures: line 96: popd: directory stack empty
+mktemp: invalid option -- 'a'
+Try 'mktemp --help' for more information.
+Image Exception : #63 :: No image files match: Usage:
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: Usage:
+/usr/local/fsl/bin/bianca_overlap_measures: line 109:  5861 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $lesmask -thr $thresh -bin ${TMPVISDIR}/lesmask
+Image Exception : #63 :: No image files match: /lesmask
+Image Exception : #22 :: Failed to read volume /lesmask
+Error : No image files match: /lesmask
+Failed to read volume /lesmask
+Error : No image files match: /lesmask
+Image Exception : #63 :: No image files match: //
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: //
+/usr/local/fsl/bin/bianca_overlap_measures: line 111:  5865 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $manualmask -bin ${TMPVISDIR}/manualmask
+Image Exception : #63 :: No image files match: /manualmask
+Image Exception : #22 :: Failed to read volume /manualmask
+Error : No image files match: /manualmask
+Failed to read volume /manualmask
+Error : No image files match: /manualmask
+Image Exception : #63 :: No image files match: /lesmask
+Image Exception : #22 :: Failed to read volume /lesmask
+Error : No image files match: /lesmask
+Failed to read volume /lesmask
+Error : No image files match: /lesmask
+Image Exception : #63 :: No image files match: /lesmask
+Image Exception : #22 :: Failed to read volume /lesmask
+Error : No image files match: /lesmask
+Failed to read volume /lesmask
+Error : No image files match: /lesmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 117: bc: command not found
+Image Exception : #63 :: No image files match: /manualmask
+Image Exception : #22 :: Failed to read volume /manualmask
+Error : No image files match: /manualmask
+Failed to read volume /manualmask
+Error : No image files match: /manualmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 119: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 122: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 123: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 124: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 125: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 127: bc: command not found
+Image Exception : #63 :: No image files match: /lesmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /lesmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 131:  5899 Aborted                 (core dumped) $FSLDIR/bin/cluster -t 0.5 -i ${TMPVISDIR}/lesmask --connectivity=26 --oindex=${TMPVISDIR}/lesmask_idx --no_table
+Image Exception : #63 :: No image files match: /lesmask_idx
+Image Exception : #22 :: Failed to read volume /lesmask_idx
+Error : No image files match: /lesmask_idx
+Failed to read volume /lesmask_idx
+Error : No image files match: /lesmask_idx
+Image Exception : #63 :: No image files match: /manualmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /manualmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 134:  5901 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/manualmask -thr 0.5 -mul ${TMPVISDIR}/lesmask_idx ${TMPVISDIR}/lesmask_idx_TP
+/usr/local/fsl/bin/bianca_overlap_measures: line 136: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 137: bc: command not found
+Image Exception : #63 :: No image files match: /lesmask_idx_TP
+Image Exception : #22 :: Failed to read volume /lesmask_idx_TP
+Error : No image files match: /lesmask_idx_TP
+Failed to read volume /lesmask_idx_TP
+Error : No image files match: /lesmask_idx_TP
+Image Exception : #63 :: No image files match: /lesmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /lesmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 141:  5911 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/lesmask -mul 0 ${TMPVISDIR}/TPauto
+Image Exception : #63 :: No image files match: /manualmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /manualmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 163:  5912 Aborted                 (core dumped) $FSLDIR/bin/cluster -t 0.5 -i ${TMPVISDIR}/manualmask --connectivity=26 --oindex=${TMPVISDIR}/manualmask_idx --no_table
+Image Exception : #63 :: No image files match: /manualmask_idx
+Image Exception : #22 :: Failed to read volume /manualmask_idx
+Error : No image files match: /manualmask_idx
+Failed to read volume /manualmask_idx
+Error : No image files match: /manualmask_idx
+Image Exception : #63 :: No image files match: /lesmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /lesmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 166:  5914 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/lesmask -mul ${TMPVISDIR}/manualmask_idx ${TMPVISDIR}/manualmask_idx_TP
+/usr/local/fsl/bin/bianca_overlap_measures: line 168: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 169: bc: command not found
+Image Exception : #63 :: No image files match: /manualmask_idx_TP
+Image Exception : #22 :: Failed to read volume /manualmask_idx_TP
+Error : No image files match: /manualmask_idx_TP
+Failed to read volume /manualmask_idx_TP
+Error : No image files match: /manualmask_idx_TP
+Image Exception : #63 :: No image files match: /manualmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /manualmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 173:  5924 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/manualmask -mul 0 ${TMPVISDIR}/TPmanual
+/usr/local/fsl/bin/bianca_overlap_measures: line 201: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 203: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 205: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 206: bc: command not found
+Image Exception : #63 :: No image files match: /TPauto
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /TPauto
+/usr/local/fsl/bin/bianca_overlap_measures: line 209:  5937 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/TPauto -sub ${TMPVISDIR}/TPmanual ${TMPVISDIR}/FPvox_TP_overlap
+Image Exception : #63 :: No image files match: /TPmanual
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /TPmanual
+/usr/local/fsl/bin/bianca_overlap_measures: line 210:  5938 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/TPmanual -sub ${TMPVISDIR}/TPauto ${TMPVISDIR}/FNvox_TP_overlap
+Image Exception : #63 :: No image files match: /FPvox_TP_overlap
+Image Exception : #22 :: Failed to read volume /FPvox_TP_overlap
+Error : No image files match: /FPvox_TP_overlap
+Failed to read volume /FPvox_TP_overlap
+Error : No image files match: /FPvox_TP_overlap
+Image Exception : #63 :: No image files match: /FNvox_TP_overlap
+Image Exception : #22 :: Failed to read volume /FNvox_TP_overlap
+Error : No image files match: /FNvox_TP_overlap
+Failed to read volume /FNvox_TP_overlap
+Error : No image files match: /FNvox_TP_overlap
+/usr/local/fsl/bin/bianca_overlap_measures: line 214: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 216: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 218: [: -eq: unary operator expected
+/usr/local/fsl/bin/bianca_overlap_measures: line 221: Overlap_and_Volumes_Usage: basename NAME [SUFFIX]
+  or:  basename OPTION... NAME...
+Print NAME with any leading directory components removed.
+If specified, also remove a trailing SUFFIX.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --multiple       support multiple arguments and treat each as a NAME
+  -s, --suffix=SUFFIX  remove a trailing SUFFIX; implies -a
+  -z, --zero           end each output line with NUL, not newline
+      --help     display this help and exit
+      --version  output version information and exit
+
+Examples:
+  basename /usr/bin/sort          -> "sort"
+  basename include/stdio.h .h     -> "stdio"
+  basename -s .h include/stdio.h  -> "stdio"
+  basename -a any/str1 any/str2   -> "str1" followed by "str2"
+
+GNU coreutils online help: <http://www.gnu.org/software/coreutils/>
+Report basename translation bugs to <http://translationproject.org/team/>
+Full documentation at: <http://www.gnu.org/software/coreutils/basename>
+or available locally via: info '(coreutils) basename invocation'_.txt: File name too long
+rm: missing operand
+Try 'rm --help' for more information.
+
+=== Output of 'bianca_overlap_measures -help' ===
+
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+dirname: invalid option -- 'h'
+Try 'dirname --help' for more information.
+/usr/local/fsl/bin/bianca_overlap_measures: line 85: pushd: no other directory
+/usr/local/fsl/bin/bianca_overlap_measures: line 87: popd: directory stack empty
+dirname: missing operand
+Try 'dirname --help' for more information.
+/usr/local/fsl/bin/bianca_overlap_measures: line 94: pushd: no other directory
+/usr/local/fsl/bin/bianca_overlap_measures: line 96: popd: directory stack empty
+Image Exception : #63 :: No image files match: -thr
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: -thr
+/usr/local/fsl/bin/bianca_overlap_measures: line 109:  5975 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $lesmask -thr $thresh -bin ${TMPVISDIR}/lesmask
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Image Exception : #22 :: Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Image Exception : #63 :: No image files match: //
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: //
+/usr/local/fsl/bin/bianca_overlap_measures: line 111:  5979 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $manualmask -bin ${TMPVISDIR}/manualmask
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+Image Exception : #22 :: Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/manualmask
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/manualmask
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Image Exception : #22 :: Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Image Exception : #22 :: Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/lesmask
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 117: bc: command not found
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+Image Exception : #22 :: Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/manualmask
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/manualmask
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 119: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 122: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 123: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 124: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 125: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 127: bc: command not found
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 131:  6013 Aborted                 (core dumped) $FSLDIR/bin/cluster -t 0.5 -i ${TMPVISDIR}/lesmask --connectivity=26 --oindex=${TMPVISDIR}/lesmask_idx --no_table
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask_idx
+Image Exception : #22 :: Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/lesmask_idx
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask_idx
+Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/lesmask_idx
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask_idx
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 134:  6015 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/manualmask -thr 0.5 -mul ${TMPVISDIR}/lesmask_idx ${TMPVISDIR}/lesmask_idx_TP
+/usr/local/fsl/bin/bianca_overlap_measures: line 136: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 137: bc: command not found
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask_idx_TP
+Image Exception : #22 :: Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/lesmask_idx_TP
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask_idx_TP
+Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/lesmask_idx_TP
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask_idx_TP
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 141:  6025 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/lesmask -mul 0 ${TMPVISDIR}/TPauto
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 163:  6026 Aborted                 (core dumped) $FSLDIR/bin/cluster -t 0.5 -i ${TMPVISDIR}/manualmask --connectivity=26 --oindex=${TMPVISDIR}/manualmask_idx --no_table
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask_idx
+Image Exception : #22 :: Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/manualmask_idx
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask_idx
+Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/manualmask_idx
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask_idx
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: ./biancaoverlap_MonOct21__mWSuOv/lesmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 166:  6028 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/lesmask -mul ${TMPVISDIR}/manualmask_idx ${TMPVISDIR}/manualmask_idx_TP
+/usr/local/fsl/bin/bianca_overlap_measures: line 168: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 169: bc: command not found
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask_idx_TP
+Image Exception : #22 :: Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/manualmask_idx_TP
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask_idx_TP
+Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/manualmask_idx_TP
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask_idx_TP
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: ./biancaoverlap_MonOct21__mWSuOv/manualmask
+/usr/local/fsl/bin/bianca_overlap_measures: line 173:  6038 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/manualmask -mul 0 ${TMPVISDIR}/TPmanual
+/usr/local/fsl/bin/bianca_overlap_measures: line 201: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 203: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 205: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 206: bc: command not found
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/TPauto
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: ./biancaoverlap_MonOct21__mWSuOv/TPauto
+/usr/local/fsl/bin/bianca_overlap_measures: line 209:  6051 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/TPauto -sub ${TMPVISDIR}/TPmanual ${TMPVISDIR}/FPvox_TP_overlap
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/TPmanual
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: ./biancaoverlap_MonOct21__mWSuOv/TPmanual
+/usr/local/fsl/bin/bianca_overlap_measures: line 210:  6052 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${TMPVISDIR}/TPmanual -sub ${TMPVISDIR}/TPauto ${TMPVISDIR}/FNvox_TP_overlap
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/FPvox_TP_overlap
+Image Exception : #22 :: Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/FPvox_TP_overlap
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/FPvox_TP_overlap
+Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/FPvox_TP_overlap
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/FPvox_TP_overlap
+Image Exception : #63 :: No image files match: ./biancaoverlap_MonOct21__mWSuOv/FNvox_TP_overlap
+Image Exception : #22 :: Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/FNvox_TP_overlap
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/FNvox_TP_overlap
+Failed to read volume ./biancaoverlap_MonOct21__mWSuOv/FNvox_TP_overlap
+Error : No image files match: ./biancaoverlap_MonOct21__mWSuOv/FNvox_TP_overlap
+/usr/local/fsl/bin/bianca_overlap_measures: line 214: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 216: bc: command not found
+/usr/local/fsl/bin/bianca_overlap_measures: line 218: [: -eq: unary operator expected
+
+=== Output of 'bianca_overlap_measures' (no arguments) ===
+
+Usage: bianca_overlap_measures <lesionmask> <threshold> <manualmask> <saveoutput>
+ 
+the script calculates measures of overlap between the lesion mask generated by BIANCA and the manual mask and lesion volumes of both
+threshold = probability threshold that will be applied to BIANCA output before calculation of the overlap measures
+saveoutput = if set to 0 it will output the measures' names and values on the screen with the following format:
+DICEsimilarityindex(SI) FalseDiscoveryRate(FDR) FalseNegativeRatio(FNR) FDRcluster-level FNRcluster-level DetectionErrorRate(DER) OutlineErrorRate(OER) MeanTotalArea(MTA) LESIONmaskVolume MANUALmaskVolume
+             if set to 1 it will save only the values (in the same order) in a .txt file
+             the output file will be saved in the same folder of the lesion mask (BIANCA output) with the name Overlap_and_Volumes_<lesionmask>_<threshold>.txt

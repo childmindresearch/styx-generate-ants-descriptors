@@ -1,0 +1,12 @@
+
+=== Output of 'mri_motion_correct --help' ===
+
+mri_motion_correct: unknown option --help
+
+=== Output of 'mri_motion_correct -help' ===
+
+mri_motion_correct: unknown option -help
+
+=== Output of 'mri_motion_correct' (no arguments) ===
+
+usage: mri_motion_correct <outfile> <infile> [...]

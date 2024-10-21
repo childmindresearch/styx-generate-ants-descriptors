@@ -1,0 +1,24 @@
+
+=== Output of 'fsladd --help' ===
+
+usage: fsladd <output> [-m] [-s] <listOfVolumes>
+
+optional arguments:
+  -m  calculate mean instead of sum
+  -s  scale each input image mean to 1000 before processing
+
+=== Output of 'fsladd -help' ===
+
+usage: fsladd <output> [-m] [-s] <listOfVolumes>
+
+optional arguments:
+  -m  calculate mean instead of sum
+  -s  scale each input image mean to 1000 before processing
+
+=== Output of 'fsladd' (no arguments) ===
+
+usage: fsladd <output> [-m] [-s] <listOfVolumes>
+
+optional arguments:
+  -m  calculate mean instead of sum
+  -s  scale each input image mean to 1000 before processing

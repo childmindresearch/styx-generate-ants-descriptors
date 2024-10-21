@@ -1,0 +1,15 @@
+
+=== Output of 'qdec --help' ===
+
+Please note that qdec is no longer supported and has been removed from the freesurfer distribution.
+Use the "command line" stream instead (ie, mris_preproc, mris_surf2surf, mri_glmfit, and mri_glmfit-sim).
+
+=== Output of 'qdec -help' ===
+
+Please note that qdec is no longer supported and has been removed from the freesurfer distribution.
+Use the "command line" stream instead (ie, mris_preproc, mris_surf2surf, mri_glmfit, and mri_glmfit-sim).
+
+=== Output of 'qdec' (no arguments) ===
+
+Please note that qdec is no longer supported and has been removed from the freesurfer distribution.
+Use the "command line" stream instead (ie, mris_preproc, mris_surf2surf, mri_glmfit, and mri_glmfit-sim).

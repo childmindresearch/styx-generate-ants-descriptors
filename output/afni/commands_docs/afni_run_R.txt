@@ -1,0 +1,12 @@
+
+=== Output of 'afni_run_R --help' ===
+
+** afni_run_R: requires at least 2 args
+
+=== Output of 'afni_run_R -help' ===
+
+** afni_run_R: requires at least 2 args
+
+=== Output of 'afni_run_R' (no arguments) ===
+
+** afni_run_R: requires at least 2 args

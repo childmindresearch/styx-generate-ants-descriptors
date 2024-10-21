@@ -1,0 +1,73 @@
+
+=== Output of 'mris_resample --help' ===
+
+				Help
+
+NAME
+	mris_resample
+
+REQUIRED FLAGGED ARGUMENTS
+	--atlas_reg FILE
+		Atlas spherical registration file.
+
+	--subject_reg FILE
+		Subject spherical registration file.
+
+	--subject_surf FILE
+		Subject actual surface.
+
+	--out FILE
+		Output resampled surface.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--annot_in FILE
+		Input annotation (for the subject). If present, output 
+		annotation must be present as well.
+
+	--annot_out FILE
+		Output annotation (for the resampled atlas). If present, input
+		annotation must be present as well.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_resample -help' ===
+
+error: unexpected argument '-help'
+
+=== Output of 'mris_resample' (no arguments) ===
+
+				Help
+
+NAME
+	mris_resample
+
+REQUIRED FLAGGED ARGUMENTS
+	--atlas_reg FILE
+		Atlas spherical registration file.
+
+	--subject_reg FILE
+		Subject spherical registration file.
+
+	--subject_surf FILE
+		Subject actual surface.
+
+	--out FILE
+		Output resampled surface.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--annot_in FILE
+		Input annotation (for the subject). If present, output 
+		annotation must be present as well.
+
+	--annot_out FILE
+		Output annotation (for the resampled atlas). If present, input
+		annotation must be present as well.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+error: missing required input '--atlas_reg'

@@ -1,0 +1,12 @@
+
+=== Output of 'mris_add_template --help' ===
+
+error: mris_add_template has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mris_add_template -help' ===
+
+error: mris_add_template has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mris_add_template' (no arguments) ===
+
+error: mris_add_template has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

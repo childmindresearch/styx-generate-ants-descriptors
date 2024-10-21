@@ -1,0 +1,523 @@
+
+=== Output of 'mri_watershed --help' ===
+
+
+				Help
+
+NAME
+	mri_watershed
+
+SYNOPSIS
+	mri_watershed [<options>] invol outvol
+
+DESCRIPTION
+	This program strips skull and other outer non-brain tissue and 
+	produces the brain volume from T1 volume or the scanned volume.
+	
+	The "watershed" segmentation algorithm was used to dertermine the 
+	intensity values for white matter, grey matter, and CSF. 
+	A force field was then used to fit a spherical surface to the brain. 
+	The shape of the surface fit was then evaluated against a previously 
+	derived template. 
+	
+	If you used -atlas option, then { The template was used to correct the
+	surface. }
+	
+	The finely grained sphere was fit to the brain.
+	
+	The default parameters are: -w 0.82 -b 0.32 -h 10 -seedpt -ta -wta 
+	
+	You can use one of the first five flags to change these default 
+	parms.
+	
+	(Segonne 2004)
+
+POSITIONAL ARGUMENTS
+	invol
+		input volume
+
+	outvol
+		output volume
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-w weight
+		preweight the input image using atlas information (no_w -> 1)
+
+	-no_wta
+		dont use the preweighting fot the template deformation
+
+	-b proba_merging
+		use the basins merging using atlas information (no_b -> 1)
+
+	-h int_hpf
+		presize the preflooding height (in percent)
+
+	-no_seedpt
+		dont use (seedpoints using atlas information)
+
+	-no-ta
+		dont use (template deformation using atlas information)
+
+	-copy
+		Just copy input to output, ignore other options
+
+	-atlas
+		use the atlas information to correct the segmentation. When 
+		the segmented brain is not correct, this option might help 
+		you.
+
+	-surf [surfname]
+		save the BEM surfaces.In order to get the surfaces consistent 
+		with tkmedit, you have to use the option -useSRAS.
+
+	-useSRAS
+		use the surface RAS coordinates (not the scanner RAS) for 
+		surfaces.
+
+	-noT1
+		don't do T1 analysis. (Useful when running out of memory)
+
+	-less
+		shrink the surface
+
+	-more
+		expand the surface
+
+	-wat
+		use only the watershed algorithm
+
+	-T1
+		specify T1 input volume (T1 grey value = 110)
+
+	-wat+temp
+		watershed algo and first template smoothing
+
+	-first_temp
+		use only the first template smoothing + local matching
+
+	-surf_debug
+		visualize the surfaces onto the output volume
+
+	-brainsurf [surfname]
+		save the brain surface
+
+	-shk_br_surf [int_h surfname]
+		to save the brain surface shrank inward of int_h mm
+
+	-s [int_i int_j int_k]
+		add a seed point
+
+	-c [int_i int_j int_k]
+		specify the center of the brain (in voxel unit)
+
+	-r int_r
+		specify the radius of the brain (in voxel unit)
+
+	-t int_threshold
+		change the threshold in the watershed analyze process
+
+	-h int_hpf
+		precize the preflooding height (in percent)
+
+	-n
+		not use the watershed analyze process
+
+	-LABEL
+		labelize the output volume into scalp, skull, csf, gray and 
+		white
+
+	-man [int_csf int_trn int_gray]
+		to change the different parameters csf_max, transition_
+		intensity and GM_intensity
+
+	-xthresh xthresh
+		Remove voxels whose intensity exceeds xthresh
+
+	-mask
+		mask a volume with the brain mask
+
+	--help
+		show usage message
+
+	--version
+		show the current version
+
+OUTPUTS
+	brainvol
+		skull stripped brain volume
+
+	BEMsurfaces
+		when you specify the option -brainsurf surfname
+
+EXAMPLE 1
+	mri-watershed -atlas T1 brain
+	
+	where T1 is the T1 volume and brain is the output brain volume. When 
+	the cerebellum is cut-off from the brain or getting the left/right 
+	asymmetric brain, you should first try this -atlas option.
+
+EXAMPLE 2
+	mri-watershed T1 brain
+	
+	The same as the first example, but no correction is applied to the 
+	intermediate result.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_normalize
+
+
+
+=== Output of 'mri_watershed -help' ===
+
+
+Mode:          unknown option -help
+				Help
+
+NAME
+	mri_watershed
+
+SYNOPSIS
+	mri_watershed [<options>] invol outvol
+
+DESCRIPTION
+	This program strips skull and other outer non-brain tissue and 
+	produces the brain volume from T1 volume or the scanned volume.
+	
+	The "watershed" segmentation algorithm was used to dertermine the 
+	intensity values for white matter, grey matter, and CSF. 
+	A force field was then used to fit a spherical surface to the brain. 
+	The shape of the surface fit was then evaluated against a previously 
+	derived template. 
+	
+	If you used -atlas option, then { The template was used to correct the
+	surface. }
+	
+	The finely grained sphere was fit to the brain.
+	
+	The default parameters are: -w 0.82 -b 0.32 -h 10 -seedpt -ta -wta 
+	
+	You can use one of the first five flags to change these default 
+	parms.
+	
+	(Segonne 2004)
+
+POSITIONAL ARGUMENTS
+	invol
+		input volume
+
+	outvol
+		output volume
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-w weight
+		preweight the input image using atlas information (no_w -> 1)
+
+	-no_wta
+		dont use the preweighting fot the template deformation
+
+	-b proba_merging
+		use the basins merging using atlas information (no_b -> 1)
+
+	-h int_hpf
+		presize the preflooding height (in percent)
+
+	-no_seedpt
+		dont use (seedpoints using atlas information)
+
+	-no-ta
+		dont use (template deformation using atlas information)
+
+	-copy
+		Just copy input to output, ignore other options
+
+	-atlas
+		use the atlas information to correct the segmentation. When 
+		the segmented brain is not correct, this option might help 
+		you.
+
+	-surf [surfname]
+		save the BEM surfaces.In order to get the surfaces consistent 
+		with tkmedit, you have to use the option -useSRAS.
+
+	-useSRAS
+		use the surface RAS coordinates (not the scanner RAS) for 
+		surfaces.
+
+	-noT1
+		don't do T1 analysis. (Useful when running out of memory)
+
+	-less
+		shrink the surface
+
+	-more
+		expand the surface
+
+	-wat
+		use only the watershed algorithm
+
+	-T1
+		specify T1 input volume (T1 grey value = 110)
+
+	-wat+temp
+		watershed algo and first template smoothing
+
+	-first_temp
+		use only the first template smoothing + local matching
+
+	-surf_debug
+		visualize the surfaces onto the output volume
+
+	-brainsurf [surfname]
+		save the brain surface
+
+	-shk_br_surf [int_h surfname]
+		to save the brain surface shrank inward of int_h mm
+
+	-s [int_i int_j int_k]
+		add a seed point
+
+	-c [int_i int_j int_k]
+		specify the center of the brain (in voxel unit)
+
+	-r int_r
+		specify the radius of the brain (in voxel unit)
+
+	-t int_threshold
+		change the threshold in the watershed analyze process
+
+	-h int_hpf
+		precize the preflooding height (in percent)
+
+	-n
+		not use the watershed analyze process
+
+	-LABEL
+		labelize the output volume into scalp, skull, csf, gray and 
+		white
+
+	-man [int_csf int_trn int_gray]
+		to change the different parameters csf_max, transition_
+		intensity and GM_intensity
+
+	-xthresh xthresh
+		Remove voxels whose intensity exceeds xthresh
+
+	-mask
+		mask a volume with the brain mask
+
+	--help
+		show usage message
+
+	--version
+		show the current version
+
+OUTPUTS
+	brainvol
+		skull stripped brain volume
+
+	BEMsurfaces
+		when you specify the option -brainsurf surfname
+
+EXAMPLE 1
+	mri-watershed -atlas T1 brain
+	
+	where T1 is the T1 volume and brain is the output brain volume. When 
+	the cerebellum is cut-off from the brain or getting the left/right 
+	asymmetric brain, you should first try this -atlas option.
+
+EXAMPLE 2
+	mri-watershed T1 brain
+	
+	The same as the first example, but no correction is applied to the 
+	intermediate result.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_normalize
+
+
+
+=== Output of 'mri_watershed' (no arguments) ===
+
+
+				Help
+
+NAME
+	mri_watershed
+
+SYNOPSIS
+	mri_watershed [<options>] invol outvol
+
+DESCRIPTION
+	This program strips skull and other outer non-brain tissue and 
+	produces the brain volume from T1 volume or the scanned volume.
+	
+	The "watershed" segmentation algorithm was used to dertermine the 
+	intensity values for white matter, grey matter, and CSF. 
+	A force field was then used to fit a spherical surface to the brain. 
+	The shape of the surface fit was then evaluated against a previously 
+	derived template. 
+	
+	If you used -atlas option, then { The template was used to correct the
+	surface. }
+	
+	The finely grained sphere was fit to the brain.
+	
+	The default parameters are: -w 0.82 -b 0.32 -h 10 -seedpt -ta -wta 
+	
+	You can use one of the first five flags to change these default 
+	parms.
+	
+	(Segonne 2004)
+
+POSITIONAL ARGUMENTS
+	invol
+		input volume
+
+	outvol
+		output volume
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-w weight
+		preweight the input image using atlas information (no_w -> 1)
+
+	-no_wta
+		dont use the preweighting fot the template deformation
+
+	-b proba_merging
+		use the basins merging using atlas information (no_b -> 1)
+
+	-h int_hpf
+		presize the preflooding height (in percent)
+
+	-no_seedpt
+		dont use (seedpoints using atlas information)
+
+	-no-ta
+		dont use (template deformation using atlas information)
+
+	-copy
+		Just copy input to output, ignore other options
+
+	-atlas
+		use the atlas information to correct the segmentation. When 
+		the segmented brain is not correct, this option might help 
+		you.
+
+	-surf [surfname]
+		save the BEM surfaces.In order to get the surfaces consistent 
+		with tkmedit, you have to use the option -useSRAS.
+
+	-useSRAS
+		use the surface RAS coordinates (not the scanner RAS) for 
+		surfaces.
+
+	-noT1
+		don't do T1 analysis. (Useful when running out of memory)
+
+	-less
+		shrink the surface
+
+	-more
+		expand the surface
+
+	-wat
+		use only the watershed algorithm
+
+	-T1
+		specify T1 input volume (T1 grey value = 110)
+
+	-wat+temp
+		watershed algo and first template smoothing
+
+	-first_temp
+		use only the first template smoothing + local matching
+
+	-surf_debug
+		visualize the surfaces onto the output volume
+
+	-brainsurf [surfname]
+		save the brain surface
+
+	-shk_br_surf [int_h surfname]
+		to save the brain surface shrank inward of int_h mm
+
+	-s [int_i int_j int_k]
+		add a seed point
+
+	-c [int_i int_j int_k]
+		specify the center of the brain (in voxel unit)
+
+	-r int_r
+		specify the radius of the brain (in voxel unit)
+
+	-t int_threshold
+		change the threshold in the watershed analyze process
+
+	-h int_hpf
+		precize the preflooding height (in percent)
+
+	-n
+		not use the watershed analyze process
+
+	-LABEL
+		labelize the output volume into scalp, skull, csf, gray and 
+		white
+
+	-man [int_csf int_trn int_gray]
+		to change the different parameters csf_max, transition_
+		intensity and GM_intensity
+
+	-xthresh xthresh
+		Remove voxels whose intensity exceeds xthresh
+
+	-mask
+		mask a volume with the brain mask
+
+	--help
+		show usage message
+
+	--version
+		show the current version
+
+OUTPUTS
+	brainvol
+		skull stripped brain volume
+
+	BEMsurfaces
+		when you specify the option -brainsurf surfname
+
+EXAMPLE 1
+	mri-watershed -atlas T1 brain
+	
+	where T1 is the T1 volume and brain is the output brain volume. When 
+	the cerebellum is cut-off from the brain or getting the left/right 
+	asymmetric brain, you should first try this -atlas option.
+
+EXAMPLE 2
+	mri-watershed T1 brain
+	
+	The same as the first example, but no correction is applied to the 
+	intermediate result.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_normalize
+
+

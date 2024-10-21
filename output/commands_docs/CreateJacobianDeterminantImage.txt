@@ -1,2 +1,0 @@
-Usage: CreateJacobianDeterminantImage imageDimension deformationField outputImage [doLogJacobian=0] [useGeometric=0] [deformationGradient=0]
-deformationGradient cannot be written to nifti: try mhd or nrrd.

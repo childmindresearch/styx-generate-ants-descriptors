@@ -1,0 +1,32 @@
+
+=== Output of 'vertexvol --help' ===
+
+
+vertexvol -- computes vertex-wise volume (and mid.area)
+  --s subject
+  --lh or --rh
+  --o outfile : default is ?h.volume
+  --th3, --no-th3 : use or don't TH3, default is to use
+
+vertexvol 7.4.1
+
+=== Output of 'vertexvol -help' ===
+
+
+vertexvol -- computes vertex-wise volume (and mid.area)
+  --s subject
+  --lh or --rh
+  --o outfile : default is ?h.volume
+  --th3, --no-th3 : use or don't TH3, default is to use
+
+vertexvol 7.4.1
+
+=== Output of 'vertexvol' (no arguments) ===
+
+
+vertexvol -- computes vertex-wise volume (and mid.area)
+  --s subject
+  --lh or --rh
+  --o outfile : default is ?h.volume
+  --th3, --no-th3 : use or don't TH3, default is to use
+

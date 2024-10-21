@@ -1,0 +1,22 @@
+
+=== Output of 'fsrealpath --help' ===
+
+usage: fsrealpath [-h] path
+
+Resolve symbolic links in a path.
+
+positional arguments:
+  path        the path to resolve
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+=== Output of 'fsrealpath -help' ===
+
+usage: fsrealpath [-h] path
+fsrealpath: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'fsrealpath' (no arguments) ===
+
+usage: fsrealpath [-h] path
+fsrealpath: error: the following arguments are required: path

@@ -1,0 +1,20 @@
+
+=== Output of '@Install_AfniRetinoDemo --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Install_AfniRetinoDemo -help' ===
+
+Installs and runs demo script for retinotopy pipeline demo.
+After the archive is downloaded and unpacked, the default
+process is initiated. Follow the suggested commands at the
+end to check the results.
+See the file ./AfniRetinoDemo/README.txt and output @RetinoProc -help 
+for details.
+
+=== Output of '@Install_AfniRetinoDemo' (no arguments) ===
+
+/usr/bin/curl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  2  675M    2 14.3M    0     0  17.9M      0  0:00:37 --:--:--  0:00:37 17.9M  4  675M    4 29.5M    0     0  16.3M      0  0:00:41  0:00:01  0:00:40 16.3M  5  675M    5 38.7M    0     0  13.8M      0  0:00:48  0:00:02  0:00:46 13.8M  8  675M    8 54.2M    0     0  14.2M      0  0:00:47  0:00:03  0:00:44 14.2M 10  675M   10 70.2M    0     0  14.6M      0  0:00:46  0:00:04  0:00:42 14.6M 11  675M   11 81.0M    0     0  13.9M      0  0:00:48  0:00:05  0:00:43 13.3M 14  675M   14 97.6M    0     0  14.3M      0  0:00:47  0:00:06  0:00:41 13.6M 18  675M   18  121M    0     0  15.5M      0  0:00:43  0:00:07  0:00:36 16.5M 21  675M   21  147M    0     0  16.7M      0  0:00:40  0:00:08  0:00:32 18.6M 25  675M   25  173M    0     0  17.7M      0  0:00:38  0:00:09  0:00:29 20.6MCommand timed out after 10 seconds

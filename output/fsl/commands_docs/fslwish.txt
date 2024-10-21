@@ -1,0 +1,20 @@
+
+=== Output of 'fslwish --help' ===
+
+Application initialization failed: no display name and no $DISPLAY environment variable
+
+=== Output of 'fslwish -help' ===
+
+Application initialization failed: Command-specific options:
+ -colormap: Colormap for main window
+ -display:  Display to use
+ -geometry: Initial geometry for window
+ -name:     Name to use for application
+ -sync:     Use synchronous mode for display server
+ -visual:   Visual for main window
+ -use:      Id of window in which to embed application
+ --:        Pass all remaining arguments through to script
+
+=== Output of 'fslwish' (no arguments) ===
+
+Application initialization failed: no display name and no $DISPLAY environment variable

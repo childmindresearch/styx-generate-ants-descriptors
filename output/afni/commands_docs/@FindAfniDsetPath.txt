@@ -1,0 +1,51 @@
+
+=== Output of '@FindAfniDsetPath --help' ===
+
+
+=== Output of '@FindAfniDsetPath -help' ===
+
+
+Usage: @FindAfniDsetPath <dsetname>
+
+Search AFNI_GLOBAL_SESSION, AFNI_SUPP_ATLAS_DIR, AFNI_ATLAS_PATH, 
+AFNI_PLUGINPATH and afni bin directory  (in that order) for named 
+dataset. If found, echo the first valid path discovered and return 
+zero status. If not found, return non-zero status. If atlas name is
+given, then atlas dataset file name is found (and possibly printed with
+append_file option below
+
+   -append_file show the file appended too (even with atlas name)
+   -full_path print full path instead of '.'   
+   -help to get this message
+
++ [Oct 15, 2018] Updated to do a better job searching for NIFTIs and
+    to possibly use the environment variables set in ~/.afnirc.
+
+Jason W. Bacon
+Medical College of Wisconsin
+Sep 27, 2006
+
+
+=== Output of '@FindAfniDsetPath' (no arguments) ===
+
+
+Usage: @FindAfniDsetPath <dsetname>
+
+Search AFNI_GLOBAL_SESSION, AFNI_SUPP_ATLAS_DIR, AFNI_ATLAS_PATH, 
+AFNI_PLUGINPATH and afni bin directory  (in that order) for named 
+dataset. If found, echo the first valid path discovered and return 
+zero status. If not found, return non-zero status. If atlas name is
+given, then atlas dataset file name is found (and possibly printed with
+append_file option below
+
+   -append_file show the file appended too (even with atlas name)
+   -full_path print full path instead of '.'   
+   -help to get this message
+
++ [Oct 15, 2018] Updated to do a better job searching for NIFTIs and
+    to possibly use the environment variables set in ~/.afnirc.
+
+Jason W. Bacon
+Medical College of Wisconsin
+Sep 27, 2006
+

@@ -1,0 +1,157 @@
+
+=== Output of 'post-recon-all --help' ===
+
+
+post-recon-all subject
+ --no-subfields, --subfields (default is to do them)
+ --no-subregions, --subregions (default is to do them)
+ --cvs, --no-cvs : run CVS. Default is NOT to run CVS
+ --no-qcache, --qcache : run qcache (default is to run)
+   qcache will fail for longitudinal 
+ --no-sclimbic : do not run sclimbic
+ --no-hthsu : do not run hypothalamic subunits
+ --no-synthstrip : do not run synthstrip
+ --no-synthseg : do not run synthseg
+ --no-qastats : do not run qastats
+ --no-samseg : do not run samseg
+ --no-xhemi : do not run xhemi
+ --threads nthreads (or setenv FS_OMP_NUM_THREADS)
+ --force : force rerunning even if output is newer tha input
+ --exit-on-error : exit immediately if an error occurs
+
+$Id$
+
+This script runs programs that are (usually) not part of recon-all or
+are typically run after recon-all has completely finished (including
+editing). Originally, this script was meant for testing these other
+modules, but it can be used for production too.  It runs several
+programs, including subfield segs (hippo/amyg, thalamus, brainstem),
+GTM seg, samseg, xhemi, qcache, synthseg, synthstrip, sclimbic,
+hypothalamic subfield segmentation. CVS is not run by default because
+it requires so many resources for so long; but it can be run by adding
+--cvs.
+
+subfields vs subregions. subregions runs the python script
+segment_subregions whereas subfields runs the (old) matlab-based
+routines. Both run thalamus, hippo/amyg, and brainstem.
+
+The number of threads is set with --threads or by setting the
+FS_OMP_NUM_THREADS env var OMP_NUM_THREADS is set to the value of
+FS_OMP_NUM_THREADS.
+
+By default, it will not rerun a command if the output is newer than
+the input; this can be turned off with --force. The exception is
+qcache which will be run regardless (unless --no-qcache), although
+qcache itself will not rerun some items if the output is newer than
+the input.
+
+If a module exits with error, the script does not exit right away. It
+continues and runs all spcified modules. But once all modules are
+finished, it will exit with non-zero status if one or more of the
+modules had an error. A file called
+subjects/scripts/post-recon-all.$module.hardfailure.txt will be
+created for each hard failure.
+
+If --exit-on-error is specified, then it will exit immediately if a 
+module has an error.
+
+By default, all commands are run from a CentOS7 container at
+/cluster/batch/IMAGES/centos7run. This is unique to the Martinos
+Center and will fail on outside computers. To turn this off and
+use the native os, add --no-cos7.
+
+This script can be run by itself or it can be run inside recon-all by
+adding "-termscript post-recon-all" to the recon-all command
+line. Note that no post-recon-all arguments can be specified when
+running inside recon-all (eg, no way to turn off cos7)
+
+
+
+=== Output of 'post-recon-all -help' ===
+
+
+post-recon-all subject
+ --no-subfields, --subfields (default is to do them)
+ --no-subregions, --subregions (default is to do them)
+ --cvs, --no-cvs : run CVS. Default is NOT to run CVS
+ --no-qcache, --qcache : run qcache (default is to run)
+   qcache will fail for longitudinal 
+ --no-sclimbic : do not run sclimbic
+ --no-hthsu : do not run hypothalamic subunits
+ --no-synthstrip : do not run synthstrip
+ --no-synthseg : do not run synthseg
+ --no-qastats : do not run qastats
+ --no-samseg : do not run samseg
+ --no-xhemi : do not run xhemi
+ --threads nthreads (or setenv FS_OMP_NUM_THREADS)
+ --force : force rerunning even if output is newer tha input
+ --exit-on-error : exit immediately if an error occurs
+
+$Id$
+
+This script runs programs that are (usually) not part of recon-all or
+are typically run after recon-all has completely finished (including
+editing). Originally, this script was meant for testing these other
+modules, but it can be used for production too.  It runs several
+programs, including subfield segs (hippo/amyg, thalamus, brainstem),
+GTM seg, samseg, xhemi, qcache, synthseg, synthstrip, sclimbic,
+hypothalamic subfield segmentation. CVS is not run by default because
+it requires so many resources for so long; but it can be run by adding
+--cvs.
+
+subfields vs subregions. subregions runs the python script
+segment_subregions whereas subfields runs the (old) matlab-based
+routines. Both run thalamus, hippo/amyg, and brainstem.
+
+The number of threads is set with --threads or by setting the
+FS_OMP_NUM_THREADS env var OMP_NUM_THREADS is set to the value of
+FS_OMP_NUM_THREADS.
+
+By default, it will not rerun a command if the output is newer than
+the input; this can be turned off with --force. The exception is
+qcache which will be run regardless (unless --no-qcache), although
+qcache itself will not rerun some items if the output is newer than
+the input.
+
+If a module exits with error, the script does not exit right away. It
+continues and runs all spcified modules. But once all modules are
+finished, it will exit with non-zero status if one or more of the
+modules had an error. A file called
+subjects/scripts/post-recon-all.$module.hardfailure.txt will be
+created for each hard failure.
+
+If --exit-on-error is specified, then it will exit immediately if a 
+module has an error.
+
+By default, all commands are run from a CentOS7 container at
+/cluster/batch/IMAGES/centos7run. This is unique to the Martinos
+Center and will fail on outside computers. To turn this off and
+use the native os, add --no-cos7.
+
+This script can be run by itself or it can be run inside recon-all by
+adding "-termscript post-recon-all" to the recon-all command
+line. Note that no post-recon-all arguments can be specified when
+running inside recon-all (eg, no way to turn off cos7)
+
+
+
+=== Output of 'post-recon-all' (no arguments) ===
+
+
+post-recon-all subject
+ --no-subfields, --subfields (default is to do them)
+ --no-subregions, --subregions (default is to do them)
+ --cvs, --no-cvs : run CVS. Default is NOT to run CVS
+ --no-qcache, --qcache : run qcache (default is to run)
+   qcache will fail for longitudinal 
+ --no-sclimbic : do not run sclimbic
+ --no-hthsu : do not run hypothalamic subunits
+ --no-synthstrip : do not run synthstrip
+ --no-synthseg : do not run synthseg
+ --no-qastats : do not run qastats
+ --no-samseg : do not run samseg
+ --no-xhemi : do not run xhemi
+ --threads nthreads (or setenv FS_OMP_NUM_THREADS)
+ --force : force rerunning even if output is newer tha input
+ --exit-on-error : exit immediately if an error occurs
+

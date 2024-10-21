@@ -1,0 +1,17 @@
+
+=== Output of 'mri_linear_align_binary --help' ===
+
+unknown option --HELP
+usage: /usr/local/freesurfer/bin/mri_linear_align_binary <source> <target> <output xform>
+	 where options are:
+	-h <target label>  -  assume source is hires hippocampal labeling
+
+=== Output of 'mri_linear_align_binary -help' ===
+
+timeout: the monitored command dumped core
+
+=== Output of 'mri_linear_align_binary' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_linear_align_binary <source> <target> <output xform>
+	 where options are:
+	-h <target label>  -  assume source is hires hippocampal labeling

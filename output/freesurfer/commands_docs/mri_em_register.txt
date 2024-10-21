@@ -1,0 +1,579 @@
+
+=== Output of 'mri_em_register --help' ===
+
+				Help
+
+NAME
+	mri_em_register
+
+SYNOPSIS
+	mri_em_register [options] <in brain volume> <template gca> <output 
+	transform name>
+
+DESCRIPTION
+	This program creates a tranform in lta format
+
+POSITIONAL ARGUMENTS
+	<in brain volume>
+		input volume
+
+	<template gca>
+		template gca
+
+	<output transform name>
+		output transform
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-dist distance
+
+	-nomap
+
+	-flash
+		use FLASH forward model to predict intensity values
+
+	-mask <volname>
+		use volname as a mask
+
+	-skull
+		align to atlas containing skull (uns=5)
+
+	-uns nbrspacing
+		align to atlas containing skull setting unknown_nbr_spacing = 
+		nbrspacing
+
+	-diag diagfile
+		open diagfile for writing
+
+	-debug_voxel x y z
+		debug voxel (x, y, z)
+
+	-debug_label label
+		debug label (label)
+
+	-tr TR
+		use TR msec
+
+	-te TE
+		use TE msec
+
+	-alpha alpha
+		use alpha degrees
+
+	-example T1 seg
+		use T1 and seg as example T1 and segmentations respectively
+
+	-samples fname
+		write control points to fname
+
+	-fsamples fname
+		write transformed control points to fname
+
+	-nsamples fname
+		write transformed normalization control points to fname
+
+	-contrast
+		use contrast to find labels
+
+	-flash_parms parameterfile
+		use FLASH forward model and tissue parms in parameterfile to 
+		predict intensity values
+
+	-transonly
+		only compute translation parameters
+
+	-write_mean fname
+		write gca means to fname
+
+	-prior min_prior
+		use prior threshold min_prior
+
+	-spacing <int>
+		use max GCA spacing
+
+	-scales <int>
+		find optimal linear transform over int scales
+
+	-novar
+		do not use variance estimates
+
+	-dt dt
+
+	-tol tol
+
+	-center
+		use GCA centroid as origin of transform
+
+	-noscale
+		disable scaling
+
+	-noiscale
+		disable intensity scaling
+
+	-num num_xforms
+		find a total of num_xforms linear transforms
+
+	-area area
+
+	-nlarea nlarea
+
+	-levels levels
+
+	-intensity intensity
+
+	-reduce nreductions
+		reduce input images nreductions times before aligning
+
+	-nsamples nsamples
+		using n samples of GCA
+
+	-norm fname
+		normalize intensity and write to fname
+
+	-trans max_trans
+		setting max translation search range to be max_trans
+
+	-steps max_angles
+		taking max_angles angular steps
+
+	-l xform long_reg
+		Longitudinal: read previously computed atlas xform and apply 
+		registration long_reg
+
+	-f cpfile
+		read manually defined control points from cpfile
+
+	-d tx ty tz
+
+	-r rx ry rz
+
+	-t xform
+		using previously computed transform xform
+
+	-b blur_sigma
+		blurring input image with sigma=blur_sigma
+
+	-v diagno
+
+	-s max_angles
+
+	-max_angle max_angle
+		max_angle for rotational search in radians (def=15 deg)
+
+	-n niters
+		niterations = niters
+
+	-w write_iters
+		write iterations = write_iters
+
+	-p ctl_point_pct
+		use top pct percent wm points as control points
+
+	-m momentum
+		set momentum
+
+	-threads nompthreads
+
+OUTPUTS
+	tranform
+		transform in lta format
+
+EXAMPLE 1
+	mri_em_register -mask subject1/mri/brain subject1/mri/nu single_
+	one.gca subject1/mri/transforms/talairach_one.lta
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_em_register -help' ===
+
+				Help
+
+NAME
+	mri_em_register
+
+SYNOPSIS
+	mri_em_register [options] <in brain volume> <template gca> <output 
+	transform name>
+
+DESCRIPTION
+	This program creates a tranform in lta format
+
+POSITIONAL ARGUMENTS
+	<in brain volume>
+		input volume
+
+	<template gca>
+		template gca
+
+	<output transform name>
+		output transform
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-dist distance
+
+	-nomap
+
+	-flash
+		use FLASH forward model to predict intensity values
+
+	-mask <volname>
+		use volname as a mask
+
+	-skull
+		align to atlas containing skull (uns=5)
+
+	-uns nbrspacing
+		align to atlas containing skull setting unknown_nbr_spacing = 
+		nbrspacing
+
+	-diag diagfile
+		open diagfile for writing
+
+	-debug_voxel x y z
+		debug voxel (x, y, z)
+
+	-debug_label label
+		debug label (label)
+
+	-tr TR
+		use TR msec
+
+	-te TE
+		use TE msec
+
+	-alpha alpha
+		use alpha degrees
+
+	-example T1 seg
+		use T1 and seg as example T1 and segmentations respectively
+
+	-samples fname
+		write control points to fname
+
+	-fsamples fname
+		write transformed control points to fname
+
+	-nsamples fname
+		write transformed normalization control points to fname
+
+	-contrast
+		use contrast to find labels
+
+	-flash_parms parameterfile
+		use FLASH forward model and tissue parms in parameterfile to 
+		predict intensity values
+
+	-transonly
+		only compute translation parameters
+
+	-write_mean fname
+		write gca means to fname
+
+	-prior min_prior
+		use prior threshold min_prior
+
+	-spacing <int>
+		use max GCA spacing
+
+	-scales <int>
+		find optimal linear transform over int scales
+
+	-novar
+		do not use variance estimates
+
+	-dt dt
+
+	-tol tol
+
+	-center
+		use GCA centroid as origin of transform
+
+	-noscale
+		disable scaling
+
+	-noiscale
+		disable intensity scaling
+
+	-num num_xforms
+		find a total of num_xforms linear transforms
+
+	-area area
+
+	-nlarea nlarea
+
+	-levels levels
+
+	-intensity intensity
+
+	-reduce nreductions
+		reduce input images nreductions times before aligning
+
+	-nsamples nsamples
+		using n samples of GCA
+
+	-norm fname
+		normalize intensity and write to fname
+
+	-trans max_trans
+		setting max translation search range to be max_trans
+
+	-steps max_angles
+		taking max_angles angular steps
+
+	-l xform long_reg
+		Longitudinal: read previously computed atlas xform and apply 
+		registration long_reg
+
+	-f cpfile
+		read manually defined control points from cpfile
+
+	-d tx ty tz
+
+	-r rx ry rz
+
+	-t xform
+		using previously computed transform xform
+
+	-b blur_sigma
+		blurring input image with sigma=blur_sigma
+
+	-v diagno
+
+	-s max_angles
+
+	-max_angle max_angle
+		max_angle for rotational search in radians (def=15 deg)
+
+	-n niters
+		niterations = niters
+
+	-w write_iters
+		write iterations = write_iters
+
+	-p ctl_point_pct
+		use top pct percent wm points as control points
+
+	-m momentum
+		set momentum
+
+	-threads nompthreads
+
+OUTPUTS
+	tranform
+		transform in lta format
+
+EXAMPLE 1
+	mri_em_register -mask subject1/mri/brain subject1/mri/nu single_
+	one.gca subject1/mri/transforms/talairach_one.lta
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_em_register' (no arguments) ===
+
+				Help
+
+NAME
+	mri_em_register
+
+SYNOPSIS
+	mri_em_register [options] <in brain volume> <template gca> <output 
+	transform name>
+
+DESCRIPTION
+	This program creates a tranform in lta format
+
+POSITIONAL ARGUMENTS
+	<in brain volume>
+		input volume
+
+	<template gca>
+		template gca
+
+	<output transform name>
+		output transform
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-dist distance
+
+	-nomap
+
+	-flash
+		use FLASH forward model to predict intensity values
+
+	-mask <volname>
+		use volname as a mask
+
+	-skull
+		align to atlas containing skull (uns=5)
+
+	-uns nbrspacing
+		align to atlas containing skull setting unknown_nbr_spacing = 
+		nbrspacing
+
+	-diag diagfile
+		open diagfile for writing
+
+	-debug_voxel x y z
+		debug voxel (x, y, z)
+
+	-debug_label label
+		debug label (label)
+
+	-tr TR
+		use TR msec
+
+	-te TE
+		use TE msec
+
+	-alpha alpha
+		use alpha degrees
+
+	-example T1 seg
+		use T1 and seg as example T1 and segmentations respectively
+
+	-samples fname
+		write control points to fname
+
+	-fsamples fname
+		write transformed control points to fname
+
+	-nsamples fname
+		write transformed normalization control points to fname
+
+	-contrast
+		use contrast to find labels
+
+	-flash_parms parameterfile
+		use FLASH forward model and tissue parms in parameterfile to 
+		predict intensity values
+
+	-transonly
+		only compute translation parameters
+
+	-write_mean fname
+		write gca means to fname
+
+	-prior min_prior
+		use prior threshold min_prior
+
+	-spacing <int>
+		use max GCA spacing
+
+	-scales <int>
+		find optimal linear transform over int scales
+
+	-novar
+		do not use variance estimates
+
+	-dt dt
+
+	-tol tol
+
+	-center
+		use GCA centroid as origin of transform
+
+	-noscale
+		disable scaling
+
+	-noiscale
+		disable intensity scaling
+
+	-num num_xforms
+		find a total of num_xforms linear transforms
+
+	-area area
+
+	-nlarea nlarea
+
+	-levels levels
+
+	-intensity intensity
+
+	-reduce nreductions
+		reduce input images nreductions times before aligning
+
+	-nsamples nsamples
+		using n samples of GCA
+
+	-norm fname
+		normalize intensity and write to fname
+
+	-trans max_trans
+		setting max translation search range to be max_trans
+
+	-steps max_angles
+		taking max_angles angular steps
+
+	-l xform long_reg
+		Longitudinal: read previously computed atlas xform and apply 
+		registration long_reg
+
+	-f cpfile
+		read manually defined control points from cpfile
+
+	-d tx ty tz
+
+	-r rx ry rz
+
+	-t xform
+		using previously computed transform xform
+
+	-b blur_sigma
+		blurring input image with sigma=blur_sigma
+
+	-v diagno
+
+	-s max_angles
+
+	-max_angle max_angle
+		max_angle for rotational search in radians (def=15 deg)
+
+	-n niters
+		niterations = niters
+
+	-w write_iters
+		write iterations = write_iters
+
+	-p ctl_point_pct
+		use top pct percent wm points as control points
+
+	-m momentum
+		set momentum
+
+	-threads nompthreads
+
+OUTPUTS
+	tranform
+		transform in lta format
+
+EXAMPLE 1
+	mri_em_register -mask subject1/mri/brain subject1/mri/nu single_
+	one.gca subject1/mri/transforms/talairach_one.lta
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

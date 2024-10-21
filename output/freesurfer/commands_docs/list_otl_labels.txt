@@ -1,0 +1,12 @@
+
+=== Output of 'list_otl_labels --help' ===
+
+Input filename is required! Use -i or --input_volume and the name of the file.
+
+=== Output of 'list_otl_labels -help' ===
+
+Input filename is required! Use -i or --input_volume and the name of the file.
+
+=== Output of 'list_otl_labels' (no arguments) ===
+
+Input filename is required! Use -i or --input_volume and the name of the file.

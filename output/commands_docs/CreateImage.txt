@@ -1,3 +1,0 @@
-Usage 1: CreateImage imageDimension referenceImage outputImage constant [random?]
-Usage 2: CreateImage imageDimension outputImage origin spacing size constant [random?]
-Usage 3: CreateImage imageDimension outputImage origin spacing size pixelValues

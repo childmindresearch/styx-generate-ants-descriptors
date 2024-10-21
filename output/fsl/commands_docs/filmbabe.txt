@@ -1,0 +1,85 @@
+
+=== Output of 'filmbabe --help' ===
+
+Log directory is: logdir
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+filmbabe
+
+Usage: 
+filmbabe -df <filename>
+ filmbabe --verbose
+
+
+Compulsory arguments (You MUST set one or more of):
+	--df,--datafile	data file
+	-m,--mask	mask file
+	-d,--dm,--designfile	design matrix file
+	--frf	file indicating which regressors belong to which original ev design matrix file (a -1 label indicates a non-flobs regerssor)
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	--db,--debug,--debuglevel	set debug level
+	--to,--timingon	turn timing on
+	-h,--help	display this message
+	--fpo,--flobsprioroff	Turn FLOBS prior off
+	--fd	flobs directory, when using flobs constraints need this or to explicitly specify --pcf and--pmf
+	--pcf,--priorcovarfile	priorcovar matrix file
+	--pmf,--priormeanfile	priormean matrix file
+	-l,--ld,--logdir	log directory
+	--ni	Num pf VB iterations (default is 5)
+	--tmp,--tarmrfprec	MRF precision to impose on temporal AR maps, default is -1 for a proper full Bayes approach
+	--tarard	Impose ARD/MRF on temporal AR
+	--nts,--ntracesamps	No of samples to take to estimate trace (default is 0, which uses only diagonal elements of the precision matrix to estimate trace)
+	--ntar	Order of temporal AR (default is 3)
+
+
+
+Not all of the compulsory arguments have been provided
+
+=== Output of 'filmbabe -help' ===
+
+
+-e: Option doesn't exist!
+
+=== Output of 'filmbabe' (no arguments) ===
+
+Log directory is: logdir+
+
+
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+filmbabe
+
+Usage: 
+filmbabe -df <filename>
+ filmbabe --verbose
+
+
+Compulsory arguments (You MUST set one or more of):
+	--df,--datafile	data file
+	-m,--mask	mask file
+	-d,--dm,--designfile	design matrix file
+	--frf	file indicating which regressors belong to which original ev design matrix file (a -1 label indicates a non-flobs regerssor)
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	--db,--debug,--debuglevel	set debug level
+	--to,--timingon	turn timing on
+	-h,--help	display this message
+	--fpo,--flobsprioroff	Turn FLOBS prior off
+	--fd	flobs directory, when using flobs constraints need this or to explicitly specify --pcf and--pmf
+	--pcf,--priorcovarfile	priorcovar matrix file
+	--pmf,--priormeanfile	priormean matrix file
+	-l,--ld,--logdir	log directory
+	--ni	Num pf VB iterations (default is 5)
+	--tmp,--tarmrfprec	MRF precision to impose on temporal AR maps, default is -1 for a proper full Bayes approach
+	--tarard	Impose ARD/MRF on temporal AR
+	--nts,--ntracesamps	No of samples to take to estimate trace (default is 0, which uses only diagonal elements of the precision matrix to estimate trace)
+	--ntar	Order of temporal AR (default is 3)
+
+
+
+Not all of the compulsory arguments have been provided

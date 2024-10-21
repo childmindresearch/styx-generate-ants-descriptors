@@ -1,0 +1,406 @@
+
+=== Output of 'mri_surf2surf --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_surf2surf 
+
+   --srcsubject source subject
+   --sval path of file with input values 
+   --sval-xyz  surfname : use xyz of surfname as input 
+   --projfrac surfname 0.5 : use projected xyz of surfname as input 
+   --projabs  surfname 0.5 : use projected xyz of surfname as input 
+   --sval-tal-xyz  surfname : use tal xyz of surfname as input 
+   --sval-area surfname : use vertex area of surfname as input 
+   --sval-annot annotfile : map annotation 
+   --sval-nxyz surfname : use surface normals of surfname as input 
+   --patch srcpatchfile targsurf ndilations
+   --sfmt   source format
+   --reg register.dat <volgeom> : apply register.dat to sval-xyz
+   --reg-inv register.dat <volgeom> : apply inv(register.dat) to sval-xyz
+   --srcicoorder when srcsubject=ico and src is .w
+   --trgsubject target subject
+   --trgicoorder when trgsubject=ico
+   --tval path of file in which to store output values (or use --o)
+   --tval-xyz volume: save tval as a surface file with source xyz (volume for geometry)
+   --tfmt target format
+   --trgdist distfile : save distance from source to target vtx
+   --s subject : use subject as src and target
+   --hemi       hemisphere : (lh or rh) for both source and targ
+   --srchemi    hemisphere : (lh or rh) for source
+   --trghemi    hemisphere : (lh or rh) for target
+   --dual-hemi  : assume source ?h.?h.surfreg file name
+   --jac  : turn on jacobian correction, needed when applying to area or volume 
+   --surfreg    source and targ surface registration (sphere.reg)  
+   --srcsurfreg source surface registration (sphere.reg)  
+   --trgsurfreg target surface registration (sphere.reg)  
+   --mapmethod  nnfr or nnf
+   --frame      save only nth frame (with --trg_type paint)
+   --fwhm-src fwhmsrc: smooth the source to fwhmsrc
+   --fwhm-trg fwhmtrg: smooth the target to fwhmtrg
+   --nsmooth-in N  : smooth the input
+   --nsmooth-out N : smooth the output
+   --cortex : use ?h.cortex.label as a smoothing mask
+   --no-cortex : do NOT use ?h.cortex.label as a smoothing mask (default)
+   --label-src label : source smoothing mask
+   --label-trg label : target smoothing mask
+     --mul Mul : Multiply the input by the given value
+     --div Div : Divide the input by the given value
+   --reshape  reshape output to multiple 'slices'
+   --reshape-factor Nfactor : reshape to Nfactor 'slices'
+   --reshape3d : reshape fsaverage (ico7) into 42 x 47 x 83
+   --split : output each frame separately
+   --synth : replace input with WGN
+   --ones  : replace input with 1s
+   --normvar : rescale so that stddev=1 (good with --synth)
+   --seed seed : seed for synth (default is auto)
+   --prune - remove any voxel that is zero in any time point (for smoothing)
+   --no-prune - do not prune (default)
+   --proj-surf surf projmagfile scale outsurf : project vertices by mag*scale at each vertex
+   --proj-norm sourcesurf distmm outsurf : project vertices by distmm at each vertex
+
+   --reg-diff reg2 : subtract reg2 from --reg (primarily for testing)
+   --rms rms.dat   : save rms of reg1-reg2 (primarily for testing)
+   --rms-mask mask : only compute rms in mask (primarily for testing)
+
+7.4.1
+
+
+This program will resample one surface onto another. The source and
+target subjects can be any subject in $SUBJECTS_DIR and/or the
+icosahedron (ico). The source and target file formats can be anything
+supported by mri_convert. The source format can also be a curvature
+file or a paint (.w) file. The user also has the option of smoothing
+on the surface.
+
+OPTIONS
+
+  --srcsubject subjectname
+
+    Name of source subject as found in $SUBJECTS_DIR or ico for icosahedron.
+    The input data must have been sampled onto this subject's surface (eg,
+    using mri_vol2surf)
+
+  --sval sourcefile
+
+    Name of file where the data on the source surface is located.
+
+  --sval-xyz     surfname
+  --sval-tal-xyz surfname
+  --sval-area    surfname
+  --sval-nxyz    surfname
+
+    Use measures from the input surface as the source (instead of specifying
+    a source file explicitly with --sval). --sval-xyz extracts the x, y, and
+    z of each vertex. --sval-tal-xyz is the same as --sval-xyz, but applies
+    the talairach transform from srcsubject/mri/transforms/talairach.xfm.
+    --sval-area extracts the vertex area. --sval-nxyz extracts the surface
+    normals at each vertex. See also --tval-xyz.
+
+  --projfrac surfname frac
+  --projabs  surfname dist
+
+    Use xyz from surfname as the input, project it along the normal, and
+    save new xyz surface. Eg, to create a new surface halfway between
+    the white and the pial:
+      mri_surf2surf --s subject --projfrac white +0.5 --tval lh.mid --hemi lh
+    saves $SUBJECTS_DIR/subject/lh.mid.
+
+  --sval-annot annotfile
+
+    Map annotation file to the output. The target data will be saved as an
+    annotation.
+
+  --sfmt typestring
+
+    Format type string. Can be either curv (for FreeSurfer curvature file),
+    paint or w (for FreeSurfer paint files), or anything accepted by
+    mri_convert. If no type string  is given, then the type is determined
+    from the sourcefile (if possible). If curv is used, then the curvature
+    file will be looked for in $SUBJECTS_DIR/srcsubject/surf/hemi.sourcefile.
+
+  --srcicoorder order
+
+    Icosahedron order of the source. Normally, this can be detected based
+    on the number of verticies, but this will fail with a .w file as input.
+    This is only needed when the source is a .w file.
+
+  --trgsubject subjectname
+
+    Name of target subject as found in $SUBJECTS_DIR or ico for icosahedron.
+
+  --trgicoorder order
+
+    Icosahedron order number. This specifies the size of the
+    icosahedron according to the following table:
+              Order  Number of Vertices
+                0              12
+                1              42
+                2             162
+                3             642
+                4            2562
+                5           10242
+                6           40962
+                7          163842
+    In general, it is best to use the largest size available.
+
+  --tval targetfile
+
+    Name of file where the data on the target surface will be stored.
+    BUG ALERT: for trg_type w or paint, use the full path.
+
+  --tval-xyz volume
+
+    Use this flag to indicate that the output (specified by --tval)
+    will be a binary surface file This requires that --sval-xyz or
+    --sval-tal-xyz was also specified. volume is a volume file in
+    the target space; the volume geometry from this file is imbedded
+    into the surface file. This is a good way to map the surface of
+    one subject to an average (talairach) subject. Note: it will save
+    targetfile as trgsubject/surf/targetfile unless targetfile has a
+    path.
+
+  --tfmt typestring
+
+    Format type string. Can be paint or w (for FreeSurfer paint files) or curv
+    or anything accepted by mri_convert. If no type string  is given, then the type
+    is determined from the sourcefile (if possible). If using paint, w, or curv,
+    see also --frame.
+
+  --hemi hemifield (lh or rh)
+
+  --surfreg registration_surface
+
+    If the source and target subjects are not the same, this surface is used
+    to register the two surfaces. sphere.reg is used as the default. Don't change
+    this unless you know what you are doing.
+
+  --mapmethod methodname
+
+    Method used to map from the vertices in one subject to those of another.
+    Legal values are: nnfr (neighest-neighbor, forward and reverse) and nnf
+    (neighest-neighbor, forward only). Default is nnfr. The mapping is done
+    in the following way. For each vertex on the target surface, the closest
+    vertex in the source surface is found, based on the distance in the
+    registration space (this is the forward map). If nnf is chosen, then the
+    the value at the target vertex is set to that of the closest source vertex.
+    This, however, can leave some source vertices unrepresented in target (ie,
+    'holes'). If nnfr is chosen, then each hole is assigned to the closest
+    target vertex. If a target vertex has multiple source vertices, then the
+    source values are averaged together. It does not seem to make much difference.
+
+  --fwhm-src fwhmsrc
+  --fwhm-trg fwhmtrg (can also use --fwhm)
+
+    Smooth the source or target with a gaussian with the given fwhm (mm). This is
+    actually an approximation done using iterative nearest neighbor smoothing.
+    The number of iterations is computed based on the white surface. This
+    method is similar to heat kernel smoothing. This will give the same
+    results as --nsmooth-{in,out}, but automatically computes the the
+    number of iterations based on the desired fwhm.
+
+  --nsmooth-in  niterations
+  --nsmooth-out niterations  [note: same as --smooth]
+
+    Number of smoothing iterations. Each iteration consists of averaging each
+    vertex with its neighbors. When only smoothing is desired, just set the
+    the source and target subjects to the same subject. --smooth-in smooths
+    the input surface values prior to any resampling. --smooth-out smooths
+    after any resampling. See also --fwhm-src and --fwhm-trg.
+
+  --label-src sourcelabel
+  --label-trg targetlabel
+  --cortex
+  --no-cortex
+
+    Only smooth within the given label. If --cortex is specified, then
+    ?h.cortex.label will be used (this is created by automatically be
+    recon-all). Even if you do not have a label of interest, it is
+    recommended that you only smooth within cortex in order to prevent
+    values from the medial wall from being smoothed into the
+    surrounding cortical areas. At some point, this will be the
+    default at which point you will have to use --no-cortex to turn it
+    off.  This documentation will reflect the change. For --label-src
+    and --label-trg, if you do not give it a full path, it will look
+    in the subjects label dir. There is no need to specify both source
+    and target unless you are smoothing on both (which you probably
+    should not be doing).
+
+  --frame framenumber
+
+    When using paint/w output format, this specifies which frame to output. This
+    format can store only one frame. The frame number is zero-based (default is 0).
+
+  --mul Mul
+  --div Div
+    Multiply or divide the input by the given value
+
+  --reshape
+
+    Force mri_surf2surf to save the output as multiple 'slices'; has
+    no effect for paint/w output format. For ico, the output will
+    appear to be a 'volume' with Nv/R colums, 1 row, R slices and Nf
+    frames, where Nv is the number of vertices on the surface. For
+    icosahedrons, R=6. For others, R will be the prime factor of Nv
+    closest to 6 (can be changed with --reshape-factor). Reshaping is
+    for logistical purposes (eg, in the analyze/nifti format the size
+    of a dimension cannot exceed 2^15). Use this flag to prevent this
+    behavior. This has no effect when the output type is paint. At one
+    point, it was the default to reshape.
+
+  --reshape-factor Nfactor
+
+    Attempt to reshape to Nfactor 'slices' (will choose closest prime
+    factor) Default is 6.
+
+  --reshape3d
+
+    Reshape fsaverage (ico7) into 42 x 47 x 83
+
+  --sd SUBJECTS_DIR
+
+    Set SUBJECTS_DIR on the command line.
+
+EXAMPLES:
+
+1. Resample a subject's thickness of the left cortical hemisphere on to a
+   7th order icosahedron and save in analyze4d format:
+
+   mri_surf2surf --hemi lh --srcsubject bert
+      --srcsurfval thickness --src_type curv
+      --trgsubject ico --trgicoorder 7
+      --trgsurfval bert-thickness-lh.img --trg_type analyze4d
+
+2. Resample data on the icosahedron to the right hemisphere of subject bert.
+   Note that both the source and target data are stored in mgh format
+   as 'volume-encoded suface' data.
+
+   mri_surf2surf --hemi rh --srcsubject ico --srcsurfval icodata-rh.mgh
+      --trgsubject bert --trgsurfval ./bert-ico-rh.mgh
+
+3. Convert the surface coordinates of the lh.white of a subject to a
+   (talairach) average (ie, a subject created by make_average_subject):
+
+   mri_surf2surf --s yoursubject --hemi lh --sval-tal-xyz white
+     --trgsubject youraveragesubject --tval lh.white.yoursubject 
+     --tval-xyz $SUBJECTS_DIR/fsaverage/mri/orig.mgz
+
+   This will create youraveragesubject/surf/lh.white.yoursubject
+
+4. Convert the surface coordinates of the lh.white of a subject to 
+   the subject's functional space
+
+   mri_surf2surf --reg register.dat template.nii.gz --hemi lh 
+      --sval-xyz white --tval-xyz template.nii.gz --tval ./lh.white.func 
+      --s yoursubject
+
+   This will create lh.white.func in the current directory. template.nii.gz
+   is a volume in the functional space. register.dat is the registration
+   file between anatomical (target) and functional (movable) spaces. 
+   View result with:  freeview -v template.nii.gz -f lh.white.func
+
+   When using an LTA instead of a register.dat, do not include a target volume
+
+   mri_surf2surf --reg register.lta --hemi lh 
+      --sval-xyz white --tval-xyz template.nii.gz --tval ./lh.white.func 
+      --s yoursubject
+
+5. Extract surface normals of the white surface and save in a
+   volume-encoded file:
+
+   mri_surf2surf --s yoursubject --hemi lh --sval-nxyz white
+      --tval lh.white.norm.mgh
+
+   This will create youraveragesubject/surf/lh.white.yoursubject
+
+
+6. Convert the annotation for one subject to the surface of another
+
+  mri_surf2surf --srcsubject subj1 --trgsubject subj2 --hemi lh \
+    --sval-annot $SUBJECTS_DIR/subj1/label/lh.aparc.annot \
+    --tval       $SUBJECTS_DIR/subj2/label/lh.subj1.aparc.annot
+
+   This will create $SUBJECTS_DIR/subj2/label/lh.subj1.aparc.annot.
+   The --sval-annot flag will also change the map method to nnf so that
+   the annot indices are not averaged. Note: this is not a substitute
+   for running the cortical parcellation! The parcellations that it
+   maps to the new subject may not be appropriate for that subject.
+
+BUG REPORTS: send bugs to analysis-bugs@nmr.mgh.harvard.edu. Make sure
+    to include the version and full command-line and enough information to
+    be able to recreate the problem. Not that anyone does.
+
+BUGS:
+
+  When the output format is paint, the output file must be specified with
+  a partial path (eg, ./data-lh.w) or else the output will be written into
+  the subject's anatomical directory.
+
+
+=== Output of 'mri_surf2surf -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_surf2surf' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_surf2surf 
+
+   --srcsubject source subject
+   --sval path of file with input values 
+   --sval-xyz  surfname : use xyz of surfname as input 
+   --projfrac surfname 0.5 : use projected xyz of surfname as input 
+   --projabs  surfname 0.5 : use projected xyz of surfname as input 
+   --sval-tal-xyz  surfname : use tal xyz of surfname as input 
+   --sval-area surfname : use vertex area of surfname as input 
+   --sval-annot annotfile : map annotation 
+   --sval-nxyz surfname : use surface normals of surfname as input 
+   --patch srcpatchfile targsurf ndilations
+   --sfmt   source format
+   --reg register.dat <volgeom> : apply register.dat to sval-xyz
+   --reg-inv register.dat <volgeom> : apply inv(register.dat) to sval-xyz
+   --srcicoorder when srcsubject=ico and src is .w
+   --trgsubject target subject
+   --trgicoorder when trgsubject=ico
+   --tval path of file in which to store output values (or use --o)
+   --tval-xyz volume: save tval as a surface file with source xyz (volume for geometry)
+   --tfmt target format
+   --trgdist distfile : save distance from source to target vtx
+   --s subject : use subject as src and target
+   --hemi       hemisphere : (lh or rh) for both source and targ
+   --srchemi    hemisphere : (lh or rh) for source
+   --trghemi    hemisphere : (lh or rh) for target
+   --dual-hemi  : assume source ?h.?h.surfreg file name
+   --jac  : turn on jacobian correction, needed when applying to area or volume 
+   --surfreg    source and targ surface registration (sphere.reg)  
+   --srcsurfreg source surface registration (sphere.reg)  
+   --trgsurfreg target surface registration (sphere.reg)  
+   --mapmethod  nnfr or nnf
+   --frame      save only nth frame (with --trg_type paint)
+   --fwhm-src fwhmsrc: smooth the source to fwhmsrc
+   --fwhm-trg fwhmtrg: smooth the target to fwhmtrg
+   --nsmooth-in N  : smooth the input
+   --nsmooth-out N : smooth the output
+   --cortex : use ?h.cortex.label as a smoothing mask
+   --no-cortex : do NOT use ?h.cortex.label as a smoothing mask (default)
+   --label-src label : source smoothing mask
+   --label-trg label : target smoothing mask
+     --mul Mul : Multiply the input by the given value
+     --div Div : Divide the input by the given value
+   --reshape  reshape output to multiple 'slices'
+   --reshape-factor Nfactor : reshape to Nfactor 'slices'
+   --reshape3d : reshape fsaverage (ico7) into 42 x 47 x 83
+   --split : output each frame separately
+   --synth : replace input with WGN
+   --ones  : replace input with 1s
+   --normvar : rescale so that stddev=1 (good with --synth)
+   --seed seed : seed for synth (default is auto)
+   --prune - remove any voxel that is zero in any time point (for smoothing)
+   --no-prune - do not prune (default)
+   --proj-surf surf projmagfile scale outsurf : project vertices by mag*scale at each vertex
+   --proj-norm sourcesurf distmm outsurf : project vertices by distmm at each vertex
+
+   --reg-diff reg2 : subtract reg2 from --reg (primarily for testing)
+   --rms rms.dat   : save rms of reg1-reg2 (primarily for testing)
+   --rms-mask mask : only compute rms in mask (primarily for testing)
+
+7.4.1
+

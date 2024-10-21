@@ -1,0 +1,16 @@
+
+=== Output of '4swap --help' ===
+
+-- opened --help.
+
+=== Output of '4swap -help' ===
+
+Usage: 4swap [-q] file ...
+-- Swaps byte quadruples on the files listed.
+   The -q option means to work quietly.
+
+=== Output of '4swap' (no arguments) ===
+
+Usage: 4swap [-q] file ...
+-- Swaps byte quadruples on the files listed.
+   The -q option means to work quietly.

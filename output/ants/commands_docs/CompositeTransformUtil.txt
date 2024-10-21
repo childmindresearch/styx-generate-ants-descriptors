@@ -1,0 +1,19 @@
+
+=== Output of 'CompositeTransformUtil --help' ===
+
+Usage: CompositeTransformUtil --disassemble <CompositeTransform FileName> <transform name prefix>
+or
+CompositeTransformUtil  --assemble <CompositeTransform> <transform 1> <transform 2 > ... <transform N>
+
+=== Output of 'CompositeTransformUtil -help' ===
+
+Missing CompositeTransformName
+Usage: CompositeTransformUtil --disassemble <CompositeTransform FileName> <transform name prefix>
+or
+CompositeTransformUtil  --assemble <CompositeTransform> <transform 1> <transform 2 > ... <transform N>
+
+=== Output of 'CompositeTransformUtil' (no arguments) ===
+
+Usage: CompositeTransformUtil --disassemble <CompositeTransform FileName> <transform name prefix>
+or
+CompositeTransformUtil  --assemble <CompositeTransform> <transform 1> <transform 2 > ... <transform N>

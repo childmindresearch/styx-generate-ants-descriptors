@@ -1,0 +1,12 @@
+
+=== Output of 'imtest --help' ===
+
+1
+
+=== Output of 'imtest -help' ===
+
+1
+
+=== Output of 'imtest' (no arguments) ===
+
+0

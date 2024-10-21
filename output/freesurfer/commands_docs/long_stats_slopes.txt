@@ -1,0 +1,543 @@
+
+=== Output of 'long_stats_slopes --help' ===
+
+Usage: 
+
+SUMMARY
+=======
+
+Computes slopes of stats in a longitudinal study.
+The slope is computed within subject from the longitudinally processed
+results (taken from the <tpNid>.long.<template> directories) and the
+output is written into the subjects <template>/stats directory for further
+processing (e.g. group analysis).
+
+See below for parameters...
+
+DETAILS
+=======
+
+QDEC.TABLE
+Pass a qdec table file, where the first 2 columns need to be 'fsid  fsid-base'.
+fsid is the id of the individual time points an 'fsid-base' the template/base
+id (grouping the timepoints that belong to the same subject). By default the
+third column is taken as the time variable, but this can be overwritten with
+--time <name>. 
+
+QDEC.TABLE-EXAMPLE:
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+
+OUTPUT
+======
+
+The within subject output will be written into the template stats directory:
+<template>/stats/<name>
+
+For the output choose one or more of the following options:
+*  'out-rate' for rate, this will compute the slope of a linear fit.
+   Depending on the time variable and the stats file, will yield the volume
+   gain in mm^3/time_unit or thickening in mm/time_unit for each region
+   (if the time variable is measured in years, such as age: mm/year).
+   Negative values mean volume loss or thinning!
+*  'out-pc1' is the percent change, this is the rate normalized by the
+   measure at the first time point times 100, e.g. percent thickening per year.
+*  'out-pc1fit' is the percent change with respect to the value at
+   tp1, evalutated from the linear fit. This is the rate normalized by the
+   estimated measure at the first time point times 100, e.g. percent
+   thickening per year. Using the linear fit instead of the measure at time
+   point 1 directly reduces noise as tp1 data is more noisy than the fit,
+   therefore we recommend pc1fit over pc1.
+*  'out-spc' for symmetrized percent change. Here we normalize by the temporal
+   average instead of taking it from the first time point. The average is
+   computed from the linear fit at the middle of the time interval. So
+   it is the rate normalized by the temporal average times 100. This is a
+   symmetric 'percent thickening per year' and more robust, as the value 
+   at time point 1 is more noisy than the average. Note, however, that the
+   temporal average will change when adding new time points!
+*  'out-avg' for output of the temporal average (linear fit at mid time).
+*  'out-stack' for a table with the time series (each row a time point).
+
+
+It is also possible to store final stacked tables of the results
+where each row corresponds to the computed measure for each subject.
+For this specify --stack-* <name> with full path and filename of the
+specific table.
+
+
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+
+
+
+Options:
+  -h, --help            show this help message and exit
+
+  Required Arguments:
+    --qdec=QDEC         (REQUIRED) qdec table file specifying the subjects and
+                        time points
+    --stats=STATS       (REQUIRED) the stats file, e.g. aseg.stats or
+                        lh.aparc.stats
+    --meas=MEAS         (REQUIRED) the stats measure (e.g. volume, thickness,
+                        mean, std)
+    --sd=SD             (REQUIRED) full path to FreeSurfer subjects dir
+
+  Computations:
+    Select one or more of the following options:
+
+    --do-avg            compute and output the temporal average
+    --do-rate           compute and output the rate
+    --do-pc1fit         compute and output the pct. change (w.r.t. tp1 from
+                        linear fit)
+    --do-pc1            compute and output the pct. change (w.r.t. tp1)
+    --do-spc            compute and output the sym. pct. change (w.r.t. temp.
+                        average)
+    --do-stack          Compute and output tables showing the time series (row
+                        per time point)
+    --resid=RESID       residual tp (pass 1 for tp1, etc., pass 0 for average)
+                        to export (default no export)
+
+  Parameters:
+    --time=TIME         variable name for time column variable (e.g. age) in
+                        qdec table
+    --generic-time      time points are ordered in qdec file, assume
+                        time=1,2,3...
+    --cross             use cross sectional results (for testing only)
+
+  Within-Subject Output:
+    Pass these to overwrite the default names:
+
+    --out-avg=OUT_AVG   filename to store temporal average in
+                        <template>/stats/<OUT_AVG> (default:
+                        long.<stats>.<meas>-avg.dat)
+    --out-rate=OUT_RATE
+                        filename to store rate in <template>/stats/<OUT_RATE>
+                        (default: long.<stats>.<meas>-rate.dat)
+    --out-pc1fit=OUT_PC1FIT
+                        filename to store pct. change (to tp1fit) in
+                        <template>/stats/<OUT_PC1FIT> (default:
+                        long.<stats>.<meas>-pc1fit.dat)
+    --out-pc1=OUT_PC1   filename to store pct. change (to tp1) in
+                        <template>/stats/<OUT_PC1> (default:
+                        long.<stats>.<meas>-pc1.dat)
+    --out-spc=OUT_SPC   filename to store sym. pct. change in
+                        <template>/stats/<OUT_SPC> (default:
+                        long.<stats>.<meas>-spc.dat)
+    --out-resid=OUT_RESID
+                        filename to store residual in
+                        <template>/stats/<OUT_RESID> (default:
+                        long.<stats>.<meas>-resid<resid>.dat), requires
+                        --resid <int>
+    --out-stack=OUT_STACK
+                        filename to store stacked measure file
+                        <template>/stats/<OUT_STACK> (default:
+                        long.<stats>.<meas>-stack.dat)
+
+  Stacked Tables:
+    To output tables with results from all subjects
+
+    --stack-avg=STACK_AVG
+                        full filename to stack temporal average tables
+                        (default no stacking)
+    --stack-rate=STACK_RATE
+                        full filename to stack rate tables (default no
+                        stacking)
+    --stack-pc1fit=STACK_PC1FIT
+                        full filename to stack pct. change to tp1fit tables
+                        (default no stacking)
+    --stack-pc1=STACK_PC1
+                        full filename to stack pct. change to tp1 tables
+                        (default no stacking)
+    --stack-spc=STACK_SPC
+                        full filename to stack sym. pct. tables (default no
+                        stacking)
+    --stack-resid=STACK_RESID
+                        full filename to stack residual tables (default no
+                        stacking)
+
+=== Output of 'long_stats_slopes -help' ===
+
+Usage: 
+
+SUMMARY
+=======
+
+Computes slopes of stats in a longitudinal study.
+The slope is computed within subject from the longitudinally processed
+results (taken from the <tpNid>.long.<template> directories) and the
+output is written into the subjects <template>/stats directory for further
+processing (e.g. group analysis).
+
+See below for parameters...
+
+DETAILS
+=======
+
+QDEC.TABLE
+Pass a qdec table file, where the first 2 columns need to be 'fsid  fsid-base'.
+fsid is the id of the individual time points an 'fsid-base' the template/base
+id (grouping the timepoints that belong to the same subject). By default the
+third column is taken as the time variable, but this can be overwritten with
+--time <name>. 
+
+QDEC.TABLE-EXAMPLE:
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+
+OUTPUT
+======
+
+The within subject output will be written into the template stats directory:
+<template>/stats/<name>
+
+For the output choose one or more of the following options:
+*  'out-rate' for rate, this will compute the slope of a linear fit.
+   Depending on the time variable and the stats file, will yield the volume
+   gain in mm^3/time_unit or thickening in mm/time_unit for each region
+   (if the time variable is measured in years, such as age: mm/year).
+   Negative values mean volume loss or thinning!
+*  'out-pc1' is the percent change, this is the rate normalized by the
+   measure at the first time point times 100, e.g. percent thickening per year.
+*  'out-pc1fit' is the percent change with respect to the value at
+   tp1, evalutated from the linear fit. This is the rate normalized by the
+   estimated measure at the first time point times 100, e.g. percent
+   thickening per year. Using the linear fit instead of the measure at time
+   point 1 directly reduces noise as tp1 data is more noisy than the fit,
+   therefore we recommend pc1fit over pc1.
+*  'out-spc' for symmetrized percent change. Here we normalize by the temporal
+   average instead of taking it from the first time point. The average is
+   computed from the linear fit at the middle of the time interval. So
+   it is the rate normalized by the temporal average times 100. This is a
+   symmetric 'percent thickening per year' and more robust, as the value 
+   at time point 1 is more noisy than the average. Note, however, that the
+   temporal average will change when adding new time points!
+*  'out-avg' for output of the temporal average (linear fit at mid time).
+*  'out-stack' for a table with the time series (each row a time point).
+
+
+It is also possible to store final stacked tables of the results
+where each row corresponds to the computed measure for each subject.
+For this specify --stack-* <name> with full path and filename of the
+specific table.
+
+
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+
+
+
+Options:
+  -h, --help            show this help message and exit
+
+  Required Arguments:
+    --qdec=QDEC         (REQUIRED) qdec table file specifying the subjects and
+                        time points
+    --stats=STATS       (REQUIRED) the stats file, e.g. aseg.stats or
+                        lh.aparc.stats
+    --meas=MEAS         (REQUIRED) the stats measure (e.g. volume, thickness,
+                        mean, std)
+    --sd=SD             (REQUIRED) full path to FreeSurfer subjects dir
+
+  Computations:
+    Select one or more of the following options:
+
+    --do-avg            compute and output the temporal average
+    --do-rate           compute and output the rate
+    --do-pc1fit         compute and output the pct. change (w.r.t. tp1 from
+                        linear fit)
+    --do-pc1            compute and output the pct. change (w.r.t. tp1)
+    --do-spc            compute and output the sym. pct. change (w.r.t. temp.
+                        average)
+    --do-stack          Compute and output tables showing the time series (row
+                        per time point)
+    --resid=RESID       residual tp (pass 1 for tp1, etc., pass 0 for average)
+                        to export (default no export)
+
+  Parameters:
+    --time=TIME         variable name for time column variable (e.g. age) in
+                        qdec table
+    --generic-time      time points are ordered in qdec file, assume
+                        time=1,2,3...
+    --cross             use cross sectional results (for testing only)
+
+  Within-Subject Output:
+    Pass these to overwrite the default names:
+
+    --out-avg=OUT_AVG   filename to store temporal average in
+                        <template>/stats/<OUT_AVG> (default:
+                        long.<stats>.<meas>-avg.dat)
+    --out-rate=OUT_RATE
+                        filename to store rate in <template>/stats/<OUT_RATE>
+                        (default: long.<stats>.<meas>-rate.dat)
+    --out-pc1fit=OUT_PC1FIT
+                        filename to store pct. change (to tp1fit) in
+                        <template>/stats/<OUT_PC1FIT> (default:
+                        long.<stats>.<meas>-pc1fit.dat)
+    --out-pc1=OUT_PC1   filename to store pct. change (to tp1) in
+                        <template>/stats/<OUT_PC1> (default:
+                        long.<stats>.<meas>-pc1.dat)
+    --out-spc=OUT_SPC   filename to store sym. pct. change in
+                        <template>/stats/<OUT_SPC> (default:
+                        long.<stats>.<meas>-spc.dat)
+    --out-resid=OUT_RESID
+                        filename to store residual in
+                        <template>/stats/<OUT_RESID> (default:
+                        long.<stats>.<meas>-resid<resid>.dat), requires
+                        --resid <int>
+    --out-stack=OUT_STACK
+                        filename to store stacked measure file
+                        <template>/stats/<OUT_STACK> (default:
+                        long.<stats>.<meas>-stack.dat)
+
+  Stacked Tables:
+    To output tables with results from all subjects
+
+    --stack-avg=STACK_AVG
+                        full filename to stack temporal average tables
+                        (default no stacking)
+    --stack-rate=STACK_RATE
+                        full filename to stack rate tables (default no
+                        stacking)
+    --stack-pc1fit=STACK_PC1FIT
+                        full filename to stack pct. change to tp1fit tables
+                        (default no stacking)
+    --stack-pc1=STACK_PC1
+                        full filename to stack pct. change to tp1 tables
+                        (default no stacking)
+    --stack-spc=STACK_SPC
+                        full filename to stack sym. pct. tables (default no
+                        stacking)
+    --stack-resid=STACK_RESID
+                        full filename to stack residual tables (default no
+                        stacking)
+
+=== Output of 'long_stats_slopes' (no arguments) ===
+
+Usage: 
+
+SUMMARY
+=======
+
+Computes slopes of stats in a longitudinal study.
+The slope is computed within subject from the longitudinally processed
+results (taken from the <tpNid>.long.<template> directories) and the
+output is written into the subjects <template>/stats directory for further
+processing (e.g. group analysis).
+
+See below for parameters...
+
+DETAILS
+=======
+
+QDEC.TABLE
+Pass a qdec table file, where the first 2 columns need to be 'fsid  fsid-base'.
+fsid is the id of the individual time points an 'fsid-base' the template/base
+id (grouping the timepoints that belong to the same subject). By default the
+third column is taken as the time variable, but this can be overwritten with
+--time <name>. 
+
+QDEC.TABLE-EXAMPLE:
+fsid    fsid-base  age   weight   IQ
+Elmo_1   Elmo       3      10    1000        
+#Elmo_2  Elmo       3.5    15    1100
+Elmo_3   Elmo       4      20    1300 
+Snuffy_1 Snuffy    20      40    1100
+Snuffy_2 Snuffy    21      45    1200
+Bert_1   Bert       8      25    2000
+Bert_2   Bert       9      30    2500
+Bert_3   Bert       9.9    34    2400
+
+
+OUTPUT
+======
+
+The within subject output will be written into the template stats directory:
+<template>/stats/<name>
+
+For the output choose one or more of the following options:
+*  'out-rate' for rate, this will compute the slope of a linear fit.
+   Depending on the time variable and the stats file, will yield the volume
+   gain in mm^3/time_unit or thickening in mm/time_unit for each region
+   (if the time variable is measured in years, such as age: mm/year).
+   Negative values mean volume loss or thinning!
+*  'out-pc1' is the percent change, this is the rate normalized by the
+   measure at the first time point times 100, e.g. percent thickening per year.
+*  'out-pc1fit' is the percent change with respect to the value at
+   tp1, evalutated from the linear fit. This is the rate normalized by the
+   estimated measure at the first time point times 100, e.g. percent
+   thickening per year. Using the linear fit instead of the measure at time
+   point 1 directly reduces noise as tp1 data is more noisy than the fit,
+   therefore we recommend pc1fit over pc1.
+*  'out-spc' for symmetrized percent change. Here we normalize by the temporal
+   average instead of taking it from the first time point. The average is
+   computed from the linear fit at the middle of the time interval. So
+   it is the rate normalized by the temporal average times 100. This is a
+   symmetric 'percent thickening per year' and more robust, as the value 
+   at time point 1 is more noisy than the average. Note, however, that the
+   temporal average will change when adding new time points!
+*  'out-avg' for output of the temporal average (linear fit at mid time).
+*  'out-stack' for a table with the time series (each row a time point).
+
+
+It is also possible to store final stacked tables of the results
+where each row corresponds to the computed measure for each subject.
+For this specify --stack-* <name> with full path and filename of the
+specific table.
+
+
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+
+
+
+Options:
+  -h, --help            show this help message and exit
+
+  Required Arguments:
+    --qdec=QDEC         (REQUIRED) qdec table file specifying the subjects and
+                        time points
+    --stats=STATS       (REQUIRED) the stats file, e.g. aseg.stats or
+                        lh.aparc.stats
+    --meas=MEAS         (REQUIRED) the stats measure (e.g. volume, thickness,
+                        mean, std)
+    --sd=SD             (REQUIRED) full path to FreeSurfer subjects dir
+
+  Computations:
+    Select one or more of the following options:
+
+    --do-avg            compute and output the temporal average
+    --do-rate           compute and output the rate
+    --do-pc1fit         compute and output the pct. change (w.r.t. tp1 from
+                        linear fit)
+    --do-pc1            compute and output the pct. change (w.r.t. tp1)
+    --do-spc            compute and output the sym. pct. change (w.r.t. temp.
+                        average)
+    --do-stack          Compute and output tables showing the time series (row
+                        per time point)
+    --resid=RESID       residual tp (pass 1 for tp1, etc., pass 0 for average)
+                        to export (default no export)
+
+  Parameters:
+    --time=TIME         variable name for time column variable (e.g. age) in
+                        qdec table
+    --generic-time      time points are ordered in qdec file, assume
+                        time=1,2,3...
+    --cross             use cross sectional results (for testing only)
+
+  Within-Subject Output:
+    Pass these to overwrite the default names:
+
+    --out-avg=OUT_AVG   filename to store temporal average in
+                        <template>/stats/<OUT_AVG> (default:
+                        long.<stats>.<meas>-avg.dat)
+    --out-rate=OUT_RATE
+                        filename to store rate in <template>/stats/<OUT_RATE>
+                        (default: long.<stats>.<meas>-rate.dat)
+    --out-pc1fit=OUT_PC1FIT
+                        filename to store pct. change (to tp1fit) in
+                        <template>/stats/<OUT_PC1FIT> (default:
+                        long.<stats>.<meas>-pc1fit.dat)
+    --out-pc1=OUT_PC1   filename to store pct. change (to tp1) in
+                        <template>/stats/<OUT_PC1> (default:
+                        long.<stats>.<meas>-pc1.dat)
+    --out-spc=OUT_SPC   filename to store sym. pct. change in
+                        <template>/stats/<OUT_SPC> (default:
+                        long.<stats>.<meas>-spc.dat)
+    --out-resid=OUT_RESID
+                        filename to store residual in
+                        <template>/stats/<OUT_RESID> (default:
+                        long.<stats>.<meas>-resid<resid>.dat), requires
+                        --resid <int>
+    --out-stack=OUT_STACK
+                        filename to store stacked measure file
+                        <template>/stats/<OUT_STACK> (default:
+                        long.<stats>.<meas>-stack.dat)
+
+  Stacked Tables:
+    To output tables with results from all subjects
+
+    --stack-avg=STACK_AVG
+                        full filename to stack temporal average tables
+                        (default no stacking)
+    --stack-rate=STACK_RATE
+                        full filename to stack rate tables (default no
+                        stacking)
+    --stack-pc1fit=STACK_PC1FIT
+                        full filename to stack pct. change to tp1fit tables
+                        (default no stacking)
+    --stack-pc1=STACK_PC1
+                        full filename to stack pct. change to tp1 tables
+                        (default no stacking)
+    --stack-spc=STACK_SPC
+                        full filename to stack sym. pct. tables (default no
+                        stacking)
+    --stack-resid=STACK_RESID
+                        full filename to stack residual tables (default no
+                        stacking)
+
+ERROR: Specify --qdec (and other required arguments)
+

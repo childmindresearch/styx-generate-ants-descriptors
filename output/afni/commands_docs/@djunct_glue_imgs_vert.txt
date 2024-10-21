@@ -1,0 +1,60 @@
+
+=== Output of '@djunct_glue_imgs_vert --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of '@djunct_glue_imgs_vert -help' ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+More helpful helpfile description coming (some day...)
+
+This is just a helper script for other things: glue two images
+together vertically.
+
+written by PA Taylor, modelled heavily on RW Cox's '@snapshot_volreg'
+script
+
+# --------------------------------------------------------------------
+
+COMMAND OPTIONS ~1~
+
+-hview
+-help
+-ver
+-imbot
+-imtop
+-prefix
+
+
+=== Output of '@djunct_glue_imgs_vert' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+More helpful helpfile description coming (some day...)
+
+This is just a helper script for other things: glue two images
+together vertically.
+
+written by PA Taylor, modelled heavily on RW Cox's '@snapshot_volreg'
+script
+
+# --------------------------------------------------------------------
+
+COMMAND OPTIONS ~1~
+
+-hview
+-help
+-ver
+-imbot
+-imtop
+-prefix
+

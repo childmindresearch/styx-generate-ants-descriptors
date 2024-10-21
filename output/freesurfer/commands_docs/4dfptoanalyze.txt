@@ -1,0 +1,30 @@
+
+=== Output of '4dfptoanalyze --help' ===
+
+freesurfer 4dfptoanalyze.c
+Usage:	4dfptoanalyze <(4dfp) filename>
+	option
+	-c<flt>	scale output values by specified factor
+	-8	output 8 bit unsigned char
+	-SPM99	include origin and scale in hdr (http:/wideman-one.com/gw/brain/analyze/format.doc)
+	-@<b|l>	output big or little endian (default CPU endian)
+
+=== Output of '4dfptoanalyze -help' ===
+
+freesurfer 4dfptoanalyze.c
+Usage:	4dfptoanalyze <(4dfp) filename>
+	option
+	-c<flt>	scale output values by specified factor
+	-8	output 8 bit unsigned char
+	-SPM99	include origin and scale in hdr (http:/wideman-one.com/gw/brain/analyze/format.doc)
+	-@<b|l>	output big or little endian (default CPU endian)
+
+=== Output of '4dfptoanalyze' (no arguments) ===
+
+freesurfer 4dfptoanalyze.c
+Usage:	4dfptoanalyze <(4dfp) filename>
+	option
+	-c<flt>	scale output values by specified factor
+	-8	output 8 bit unsigned char
+	-SPM99	include origin and scale in hdr (http:/wideman-one.com/gw/brain/analyze/format.doc)
+	-@<b|l>	output big or little endian (default CPU endian)

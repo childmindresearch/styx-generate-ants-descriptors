@@ -1,0 +1,49 @@
+
+=== Output of 'mris_warp --help' ===
+
+USAGE: mris_warp 
+
+   --deformvol <filename>   volume containing deformation
+   --deformsurf <filename>  (NOT YET IMPLEMENTED)
+   --m3z <filename>         M3Z file containing deformation
+   --reg <filename>         register.dat file between surface and volume
+   --regheader              (NOT YET IMPLEMENTED)
+   --abs                    absolute coordinate displacement convention (default)
+   --rel                    (NOT YET IMPLEMENTED)
+   --surf <filename>        surface file to warp
+   --out <filename>         name for output surface (if does not contain '/'
+                            outputs to same directory as input surface)
+
+   --help        print out information on how to use this program
+   --version     print out version and exit
+
+7.4.1
+
+This program will warp a surface using a specified deformation field.
+
+=== Output of 'mris_warp -help' ===
+
+regio_read_register(): No such file or directory
+Could not open register.dat
+reading registration file register.dat
+
+=== Output of 'mris_warp' (no arguments) ===
+
+USAGE: mris_warp 
+
+   --deformvol <filename>   volume containing deformation
+   --deformsurf <filename>  (NOT YET IMPLEMENTED)
+   --m3z <filename>         M3Z file containing deformation
+   --reg <filename>         register.dat file between surface and volume
+   --regheader              (NOT YET IMPLEMENTED)
+   --abs                    absolute coordinate displacement convention (default)
+   --rel                    (NOT YET IMPLEMENTED)
+   --surf <filename>        surface file to warp
+   --out <filename>         name for output surface (if does not contain '/'
+                            outputs to same directory as input surface)
+
+   --help        print out information on how to use this program
+   --version     print out version and exit
+
+7.4.1
+

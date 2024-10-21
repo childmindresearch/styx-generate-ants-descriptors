@@ -1,0 +1,39 @@
+
+=== Output of 'run_first --help' ===
+
+
+Usage:   run_first -i <input_image> -t <input_to_mni.mat> -n <N-modes> -o <output_basename> -m <model_name> [options]
+
+-v                   : verbose
+-intref <model_name> : reference structure for the local intensity normalization
+-loadBvars <bvars>   : initializes FIRST with a previous estimate of the structure
+-multipleImages : run first on multiple images, need to provide a list of images, transformation matrices, and output names
+
+e.g.:  run_first -i im1 -t im1_to_mni.mat -n 60 -o output_name -m /usr/local/fsl/data/first/models_317_bin/L_Hipp_bin.bmv
+
+
+=== Output of 'run_first -help' ===
+
+
+Usage:   run_first -i <input_image> -t <input_to_mni.mat> -n <N-modes> -o <output_basename> -m <model_name> [options]
+
+-v                   : verbose
+-intref <model_name> : reference structure for the local intensity normalization
+-loadBvars <bvars>   : initializes FIRST with a previous estimate of the structure
+-multipleImages : run first on multiple images, need to provide a list of images, transformation matrices, and output names
+
+e.g.:  run_first -i im1 -t im1_to_mni.mat -n 60 -o output_name -m /usr/local/fsl/data/first/models_317_bin/L_Hipp_bin.bmv
+
+
+=== Output of 'run_first' (no arguments) ===
+
+
+Usage:   run_first -i <input_image> -t <input_to_mni.mat> -n <N-modes> -o <output_basename> -m <model_name> [options]
+
+-v                   : verbose
+-intref <model_name> : reference structure for the local intensity normalization
+-loadBvars <bvars>   : initializes FIRST with a previous estimate of the structure
+-multipleImages : run first on multiple images, need to provide a list of images, transformation matrices, and output names
+
+e.g.:  run_first -i im1 -t im1_to_mni.mat -n 60 -o output_name -m /usr/local/fsl/data/first/models_317_bin/L_Hipp_bin.bmv
+

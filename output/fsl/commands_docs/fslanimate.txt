@@ -1,0 +1,12 @@
+
+=== Output of 'fslanimate --help' ===
+
+Usage: fslanimate <input> <output> [tmpdir]
+
+=== Output of 'fslanimate -help' ===
+
+Usage: fslanimate <input> <output> [tmpdir]
+
+=== Output of 'fslanimate' (no arguments) ===
+
+Usage: fslanimate <input> <output> [tmpdir]

@@ -1,0 +1,30 @@
+
+=== Output of 'mri_cnr --help' ===
+
+/usr/local/freesurfer/bin/mri_cnr -- compute the gray/white/csf contrast-to-noise ratio for volumes.
+usage: /usr/local/freesurfer/bin/mri_cnr [options] <surf directory> <vol 1> <vol 2> ...
+usage example (assumes fs pipeline has finished for subject subj1): /usr/local/freesurfer/bin/mri_cnr subj1/surf subj1/mri/orig.mgz
+Available options:
+	-s <slope_fname> <dist in> <dist out> <step in> <step out>: compute slope based on given values, write it to slope and offset files labeled <slope_fname> (e.g., `lh.<slope_fname>.slope.mgz')
+	-t : print only the total CNR to stdout (stderr still contains more information)
+	-l <logfile>: log cnr to file <logfile>. Will contain 8 values in the following order: gray_white_cnr, gray_csf_cnr, white_mean, gray_mean, csf_mean, sqrt(white_var), sqrt(gray_var), sqrt(csf_var)
+	label <lh> <rh>: read hemisphere labels from <lh> and <rh>
+	-u, -?, -help : print usage information and quit
+	-version : print software version information and quit
+
+=== Output of 'mri_cnr -help' ===
+
+unknown option -help
+
+=== Output of 'mri_cnr' (no arguments) ===
+
+/usr/local/freesurfer/bin/mri_cnr -- compute the gray/white/csf contrast-to-noise ratio for volumes.
+usage: /usr/local/freesurfer/bin/mri_cnr [options] <surf directory> <vol 1> <vol 2> ...
+usage example (assumes fs pipeline has finished for subject subj1): /usr/local/freesurfer/bin/mri_cnr subj1/surf subj1/mri/orig.mgz
+Available options:
+	-s <slope_fname> <dist in> <dist out> <step in> <step out>: compute slope based on given values, write it to slope and offset files labeled <slope_fname> (e.g., `lh.<slope_fname>.slope.mgz')
+	-t : print only the total CNR to stdout (stderr still contains more information)
+	-l <logfile>: log cnr to file <logfile>. Will contain 8 values in the following order: gray_white_cnr, gray_csf_cnr, white_mean, gray_mean, csf_mean, sqrt(white_var), sqrt(gray_var), sqrt(csf_var)
+	label <lh> <rh>: read hemisphere labels from <lh> and <rh>
+	-u, -?, -help : print usage information and quit
+	-version : print software version information and quit

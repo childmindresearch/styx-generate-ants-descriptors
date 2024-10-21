@@ -1,0 +1,782 @@
+
+=== Output of '3dClusterize --help' ===
+
+[7m** ERROR:[0m Bad option '--help'
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dClusterize -help' enlighten:
+        '-inset  III    :Load in a dataset III of one or more bricks for'
+        '-pref_map PPP  :The prefix/filename of the output map of cluster ROIs.'
+        '-quiet         :Suppress all non-essential output'
+
+=== Output of '3dClusterize -help' ===
+
+ PURPOSE ~1~
+ 
+ This program is for performing clusterizing: one can perform voxelwise
+ thresholding on a dataset (such as a statistic), and then make a map
+ of remaining clusters of voxels larger than a certain volume.  The
+ main output of this program is a single volume dataset showing a map
+ of the cluster ROIs.
+ 
+ As of Apr 24, 2020, this program now behaves less (unnecessarily)
+ guardedly when thresholding non-stat volumes.  About time, right?
+ 
+ This program is specifically meant to reproduce behavior of the muuuch
+ older 3dclust, but this new program:
+   + uses simpler syntax (hopefully);
+   + includes additional clustering behavior such as the '-bisided ...'
+     variety (essentially, two-sided testing where all voxels in a
+     given cluster come from either the left- or right- tail, but not
+     mixed);
+   + a mask (such as the whole brain) can be entered in;
+   + voxelwise thresholds can be input as statistic values or p-values.
+ 
+ This program was also written to have simpler/more direct syntax of
+ usage than 3dclust.  Some minor options have been carried over for
+ similar behavior, but many of the major option names have been
+ altered.  Please read the helps for those below carefully.
+ 
+ This program was cobbled together by PA Taylor (NIMH, NIH), but it
+ predominantly uses code written by many legends: RW Cox, BD Ward, MS
+ Beauchamp, ZS Saad, and more.
+ 
+ 
+ USAGE ~1~
+ 
+   Input: ~2~
+ 
+     + A dataset of one or more bricks
+     + Specify an index of the volume to threshold
+     + Declare a voxelwise threshold, and optionally a cluster-volume
+       threshold
+     + Optionally specify the index an additional 'data' brick
+     + Optionally specify a mask
+ 
+   Output: ~2~
+ 
+     + A report about the clusters (center of mass, extent, volume,
+       etc.) that can be dumped into a text file.
+
+     + Optional: A dataset volume containing a map of cluster ROIs 
+       (sorted by size) after thresholding (and clusterizing, if
+       specified).
+       That is, a data set where the voxels in the largest cluster all
+       have a value 1, those in the next largest are all 2, etc.
+     + Optional: a cluster-masked version of an input data set. That is,
+       the values of a selected data set (e.g., effect estimate) that fall
+       within a cluster are output unchanged, and those outside a cluster
+       are zeroed.
+     + Optional: a mask.
+ 
+   Explanation of 3dClusterize text report: ~2~
+ 
+     The following columns of cluster summary information are output
+     for quick reference (and please see the asterisked notes below
+     for some important details on the quantities displayed):
+ 
+     Nvoxel       : Number of voxels in the cluster
+ 
+     CM RL        : Center of mass (CM) for the cluster in the Right-Left
+                    direction (i.e., the coordinates for the CM)
+ 
+     CM AP        : Center of mass for the cluster in the
+                    Anterior-Posterior direction
+ 
+     CM IS        : Center of mass for the cluster in the
+                    Inferior-Superior direction
+ 
+     minRL, maxRL : Bounding box for the cluster, min and max
+                    coordinates in the Right-Left direction
+ 
+     minAP, maxAP : Min and max coordinates in the Anterior-Posterior
+                    direction of the volume cluster
+ 
+     minIS, maxIS : Min and max coordinates in the Inferior-Superior
+                    direction of the volume cluster
+ 
+     Mean         : Mean value for the volume cluster
+ 
+     SEM          : Standard Error of the Mean for the volume cluster
+ 
+     Max Int      : Maximum Intensity value for the volume cluster
+ 
+     MI RL        : Coordinate of the Maximum Intensity value in the
+                    Right-Left direction of the volume cluster
+ 
+     MI AP        : Coordinate of the Maximum Intensity value in the
+                    Anterior-Posterior direction of the volume cluster
+ 
+     MI IS        : Coordinate of the Maximum Intensity value in the
+                    Inferior-Superior direction of the volume cluster
+ 
+     * The CM, Mean, SEM, Max Int and MI values are all calculated using
+       using the '-idat ..' subvolume/dataset. In general, those peaks
+       and weighted centers of mass will be different than those of the
+       '-ithr ..' dset (if those are different subvolumes).
+ 
+     * CM values use the absolute value of the voxel values as weights.
+ 
+     * The program does not work on complex- or rgb-valued datasets!
+ 
+     * SEM values are not realistic for interpolated data sets!  A
+       ROUGH correction is to multiply the SEM of the interpolated data
+       set by the square root of the number of interpolated voxels per
+       original voxel.
+ 
+     * Some summary or 'global' values are placed at the bottoms of
+       report columns, by default.  These include the 'global' volume,
+       CM of the combined cluster ROIs, and the mean+SEM of that
+       Pangaea.
+ 
+ 
+ COMMAND OPTIONS ~1~
+ 
+ -inset  III    :Load in a dataset III of one or more bricks for
+                 thresholding and clusterizing; one can choose to use
+                 either just a single sub-brick within it for all
+                 operations (e.g., a 'statistics' brick), or to specify
+                 an additional sub-brick within it for the actual
+                 clusterizing+reporting (after the mask from the
+                 thresholding dataset has been applied to it).
+ 
+ -mask MMM      :Load in a dataset MMM to use as a mask, within which
+                 to look for clusters.
+ 
+ -mask_from_hdr :If 3dClustSim put an internal attribute into the
+                 input dataset that describes a mask, 3dClusterize will
+                 use this mask to eliminate voxels before clustering,
+                 if you give this option (this is how the AFNI
+                 Clusterize GUI works by default).  If there is no
+                 internal mask in the dataset header, then this
+                 doesn't do anything.
+ 
+ -out_mask OM   :specify that you wanted the utilized mask dumped out
+                 as a single volume dataset OM.  This is probably only
+                 really useful if you are using '-mask_from_hdr'.  If
+                 not mask option is specified, there will be no output.
+ 
+ -ithr   j      :(required) Uses sub-brick [j] as the threshold source;
+                 'j' can be either an integer *or* a brick_label string.
+ 
+ -idat   k      :Uses sub-brick [k] as the data source (optional);
+                 'k' can be either an integer *or* a brick_label string.
+                 If this option is used, thresholding is still done by
+                 the 'threshold' dataset, but that threshold map is
+                 applied to this 'data' set, which is in turn used for
+                 clusterizing and the 'data' set values are used to
+                 make the report.  If a 'data' dataset is NOT input
+                 with '-idat ..', then thresholding, clustering and
+                 reporting are all done using the 'threshold' dataset.
+ 
+ -1sided SSS TT :Perform one-sided testing. Two arguments are required:
+                   SSS -> either 'RIGHT_TAIL' (or 'RIGHT') or 'LEFT_TAIL'
+                          (or 'LEFT') to specify which side of the 
+                          distribution to test.
+                   TT  -> the threshold value itself.
+                 See 'NOTES' below to use a p-value as threshold.
+ 
+ -2sided  LL RR :Perform two-sided testing. Two arguments are required:
+                   LL  -> the upper bound of the left tail.
+                   RR  -> lower bound of the right tail.
+                 *NOTE* that in this case, potentially a cluster could
+                 be made of both left- and right-tail survivors (e.g.,
+                 both positive and negative values). For this reason,
+                 probably '-bisided ...' is a preferable choice.
+                 See 'NOTES' below to use a p-value as threshold.
+ 
+ -bisided LL RR :Same as '-2sided ...', except that the tails are tested
+                 independently, so a cluster cannot be made of both.
+                 See 'NOTES' below to use a p-value as threshold.
+ 
+ -within_range AA BB
+                :Perform a kind of clustering where a different kind of
+                 thresholding is first performed, compared to the above
+                 cases;  here, one keeps values within the range [AA, BB],
+                 INSTEAD of keeping values on the tails. Is this useful?
+                 Who knows, but it exists.
+                 See 'NOTES' below to use a p-value as threshold.
+ 
+ -NN {1|2|3}    :Necessary option to specify how many neighbors a voxel
+                 has; one MUST put one of 1, 2 or 3 after it:
+                   1 -> 6 facewise neighbors
+                   2 -> 18 face+edgewise neighbors
+                   3 -> 26 face+edge+cornerwise neighbors
+                 If using 3dClustSim (or any other method), make sure
+                 that this NN value matches what was used there. (In
+                 many AFNI programs, NN=1 is a default choice, but BE
+                 SURE YOURSELF!)
+ 
+ -clust_nvox M  :specify the minimum cluster size in terms of number
+                 of voxels M (such as output by 3dClustSim).
+ 
+ -clust_vol   V :specify the minimum cluster size in terms of volume V,
+                 in microliters (requires knowing the voxel
+                 size). Probably '-clust_nvox ...' is more useful.
+ 
+ -pref_map PPP  :The prefix/filename of the output map of cluster ROIs.
+                 The 'map' shows each cluster as a set of voxels with the
+                 same integer.  The clusters are ordered by size, so the
+                 largest cluster is made up of 1s, the next largest of 2s,
+                 etc.
+                 (def:  no map of clusters output).
+ 
+ -pref_dat DDD  :Including this option instructs the program to output
+                 a cluster-masked version of the 'data' volume
+                 specified by the '-idat ..' index.  That is, only data
+                 values within the cluster ROIs are included in the
+                 output volume.  Requires specifying '-idat ..'.
+                 (def:  no cluster-masked dataset output).
+ 
+ -1Dformat      :Write output in 1D format (now default). You can
+                 redirect the output to a .1D file and use the file
+                 as input to whereami_afni for obtaining Atlas-based
+                 information on cluster locations.
+                 See whereami_afni -help for more info.
+ 
+ -no_1Dformat   :Do not write output in 1D format.
+ 
+ -summarize     :Write out only the total nonzero voxel count and
+                 volume for each dataset
+ 
+ -nosum         :Suppress printout of the totals
+ 
+ -quiet         :Suppress all non-essential output
+ 
+ -outvol_if_no_clust: flag to still output an (empty) vol if no 
+                 clusters are found.  Even in this case, no report is
+                 is produced if no clusters are found.  This option is
+                 likely used for some scripting scenarios; also, the
+                 user would still need to specify '-pref_* ...' options
+                 as above in order to output any volumes with this opt.
+                 (def: no volumes output if no clusters found).
+
+ -orient OOO    :in the output report table, make the coordinate
+                 order be 'OOO' (def: RAI, the DICOM standard); 
+                 alternatively, one could set the environment variable
+                 AFNI_ORIENT (see the file README.environment).
+                 NB: this only affects the coordinate orientation in the
+                 *text table*;  the dset orientation of the output
+                 cluster maps and other volumetric data will match that
+                 of the input dataset.
+ 
+ -abs_table_data :(new, from Apr 29, 2021) Use the absolute value of voxel
+                 intensities (not the raw values) for calculation of the
+                 mean and Standard Error of the Mean (SEM) in the report
+                 table. Prior to the cited date, this was default behavior
+                 (with '-noabs' switching out of it) but no longer.
+
+ ### -noabs     :(as of Apr 29, 2021, this option is no longer needed)
+                 Previously this option switched from using default absolute
+                 values of voxel intensities for calculation of the mean
+                 and Standard Error of the Mean (SEM). But this has now
+                 changed, and the default is to just use the signed values
+                 themselves; this option will not cause an error, but is not
+                 needed.  See '-abs_table_data' for reporting abs values.
+ 
+ -binary        :This turns the output map of cluster ROIs into a binary
+                 (0 or 1) mask, rather than a cluster-index mask.
+                 If no clusters are found, the mask is not written!
+                 (def: each cluster has separate values)
+ 
+ 
+ NOTES ~1~
+ 
+   Saving the text report ~2~
+ 
+     To save the text file report, use the redirect '>' after the
+     3dClusterize command and dump the text into a separate file of
+     your own naming.
+ 
+   Using p-values as thresholds for statistic volumes ~2~
+ 
+     By default, numbers entered as voxelwise thresholds are assumed to
+     be appropriate statistic values that you have calculated for your
+     desired significance (e.g., using p2dsetstat).  HOWEVER, if you
+     just want to enter p-values and have the program do the conversion
+     work for you, then do as follows: prepend 'p=' to your threshold
+     number.
+ 
+     - For one-sided tests, the *_TAIL specification is still used, so
+       in either case the p-value just represents the area in the
+       statistical distribution's tail (i.e., you don't have to worry
+       about doing '1-p').  Examples:
+         -1sided RIGHT_TAIL p=0.005
+         -1sided LEFT_TAIL  p=0.001
+ 
+     - For the two-sided/bi-sided tests, the a single p-value is
+       entered to represent the total area under both tails in the
+       statistical distribution, which are assumed to be symmetric.
+       Examples:
+         -bisided p=0.001
+         -2sided  p=0.005
+ 
+       If you want asymmetric tails, you will have to enter both
+       threshold values as statistic values (NB: you could use
+       p2dsetstat to convert each desired p-value to a statistic, and
+       then put in those stat values to this program).
+ 
+     You will probably NEED to have negative signs for the cases of
+     '-1sided LEFT_TAIL ..', and for the first entries of '-bisided ..'
+     or '-2sided ..'.
+ 
+     You cannot mix p-values and statistic values (for two-sided
+     things, enter either the single p-value or both stats).
+ 
+     You cannot use this internal p-to-stat conversion if the volume
+     you are thresholding is not recognized as a stat.
+ 
+   Performing appropriate testing ~2~
+ 
+     Don't use a pair of one-sided tests when you *should* be using a
+     two-sided test!
+ 
+ 
+ EXAMPLES ~1~
+ 
+   1. Take an output of FMRI testing (e.g., from afni_proc.py), whose
+   [1] brick contains the effect estimate from a statistical model and
+   whose [2] brick contains the associated statistic; use the results
+   of 3dClustSim run with NN=1 (here, a cluster threshold volume of 157
+   voxels) and perform one-sided testing with a threshold at an
+   appropriate value (here, 3.313).
+ 
+     3dClusterize                  \
+        -inset stats.FT+tlrc.      \
+        -ithr 2                    \
+        -idat 1                    \
+        -mask mask_group+tlrc.     \
+        -NN 1                      \
+        -1sided RIGHT_TAIL 3.313   \
+        -clust_nvox 157            \
+        -pref_map ClusterMap
+ 
+   2. The same as Ex. 1, but using bisided testing (two sided testing
+   where the results of each tail can't be joined into the same
+   cluster). Note, the tail thresholds do NOT have to be symmetric (but
+   often they are).  Also, here we output the cluster-masked 'data'
+   volume.
+ 
+     3dClusterize                  \
+        -inset stats.FT+tlrc.      \
+        -ithr 2                    \
+        -idat 1                    \
+        -mask mask_group+tlrc.     \
+        -NN 1                      \
+        -bisided -3.313 3.313      \
+        -clust_nvox 157            \
+        -pref_map ClusterMap       \
+        -pref_dat ClusterEffEst
+ 
+   3. The same as Ex. 2, but specifying a p-value to set the voxelwise
+   thresholds (in this case, tails DO have to be symmetric).
+ 
+     3dClusterize                  \
+        -inset stats.FT+tlrc.      \
+        -ithr 2                    \
+        -idat 1                    \
+        -mask mask_group+tlrc.     \
+        -NN 1                      \
+        -bisided p=0.001           \
+        -clust_nvox 157            \
+        -pref_map ClusterMap       \
+        -pref_dat ClusterEffEst
+ 
+   4. Threshold a non-stat dset.
+ 
+     3dClusterize                  \
+        -inset anat+orig           \
+        -ithr 0                    \
+        -idat 0                    \
+        -NN 1                      \
+        -within_range 500 1000     \
+        -clust_nvox 100            \
+        -pref_map ClusterMap       \
+        -pref_dat ClusterEffEst
+ 
+ # ------------------------------------------------------------------------
+
+=== Output of '3dClusterize' (no arguments) ===
+
+ PURPOSE ~1~
+ 
+ This program is for performing clusterizing: one can perform voxelwise
+ thresholding on a dataset (such as a statistic), and then make a map
+ of remaining clusters of voxels larger than a certain volume.  The
+ main output of this program is a single volume dataset showing a map
+ of the cluster ROIs.
+ 
+ As of Apr 24, 2020, this program now behaves less (unnecessarily)
+ guardedly when thresholding non-stat volumes.  About time, right?
+ 
+ This program is specifically meant to reproduce behavior of the muuuch
+ older 3dclust, but this new program:
+   + uses simpler syntax (hopefully);
+   + includes additional clustering behavior such as the '-bisided ...'
+     variety (essentially, two-sided testing where all voxels in a
+     given cluster come from either the left- or right- tail, but not
+     mixed);
+   + a mask (such as the whole brain) can be entered in;
+   + voxelwise thresholds can be input as statistic values or p-values.
+ 
+ This program was also written to have simpler/more direct syntax of
+ usage than 3dclust.  Some minor options have been carried over for
+ similar behavior, but many of the major option names have been
+ altered.  Please read the helps for those below carefully.
+ 
+ This program was cobbled together by PA Taylor (NIMH, NIH), but it
+ predominantly uses code written by many legends: RW Cox, BD Ward, MS
+ Beauchamp, ZS Saad, and more.
+ 
+ 
+ USAGE ~1~
+ 
+   Input: ~2~
+ 
+     + A dataset of one or more bricks
+     + Specify an index of the volume to threshold
+     + Declare a voxelwise threshold, and optionally a cluster-volume
+       threshold
+     + Optionally specify the index an additional 'data' brick
+     + Optionally specify a mask
+ 
+   Output: ~2~
+ 
+     + A report about the clusters (center of mass, extent, volume,
+       etc.) that can be dumped into a text file.
+
+     + Optional: A dataset volume containing a map of cluster ROIs 
+       (sorted by size) after thresholding (and clusterizing, if
+       specified).
+       That is, a data set where the voxels in the largest cluster all
+       have a value 1, those in the next largest are all 2, etc.
+     + Optional: a cluster-masked version of an input data set. That is,
+       the values of a selected data set (e.g., effect estimate) that fall
+       within a cluster are output unchanged, and those outside a cluster
+       are zeroed.
+     + Optional: a mask.
+ 
+   Explanation of 3dClusterize text report: ~2~
+ 
+     The following columns of cluster summary information are output
+     for quick reference (and please see the asterisked notes below
+     for some important details on the quantities displayed):
+ 
+     Nvoxel       : Number of voxels in the cluster
+ 
+     CM RL        : Center of mass (CM) for the cluster in the Right-Left
+                    direction (i.e., the coordinates for the CM)
+ 
+     CM AP        : Center of mass for the cluster in the
+                    Anterior-Posterior direction
+ 
+     CM IS        : Center of mass for the cluster in the
+                    Inferior-Superior direction
+ 
+     minRL, maxRL : Bounding box for the cluster, min and max
+                    coordinates in the Right-Left direction
+ 
+     minAP, maxAP : Min and max coordinates in the Anterior-Posterior
+                    direction of the volume cluster
+ 
+     minIS, maxIS : Min and max coordinates in the Inferior-Superior
+                    direction of the volume cluster
+ 
+     Mean         : Mean value for the volume cluster
+ 
+     SEM          : Standard Error of the Mean for the volume cluster
+ 
+     Max Int      : Maximum Intensity value for the volume cluster
+ 
+     MI RL        : Coordinate of the Maximum Intensity value in the
+                    Right-Left direction of the volume cluster
+ 
+     MI AP        : Coordinate of the Maximum Intensity value in the
+                    Anterior-Posterior direction of the volume cluster
+ 
+     MI IS        : Coordinate of the Maximum Intensity value in the
+                    Inferior-Superior direction of the volume cluster
+ 
+     * The CM, Mean, SEM, Max Int and MI values are all calculated using
+       using the '-idat ..' subvolume/dataset. In general, those peaks
+       and weighted centers of mass will be different than those of the
+       '-ithr ..' dset (if those are different subvolumes).
+ 
+     * CM values use the absolute value of the voxel values as weights.
+ 
+     * The program does not work on complex- or rgb-valued datasets!
+ 
+     * SEM values are not realistic for interpolated data sets!  A
+       ROUGH correction is to multiply the SEM of the interpolated data
+       set by the square root of the number of interpolated voxels per
+       original voxel.
+ 
+     * Some summary or 'global' values are placed at the bottoms of
+       report columns, by default.  These include the 'global' volume,
+       CM of the combined cluster ROIs, and the mean+SEM of that
+       Pangaea.
+ 
+ 
+ COMMAND OPTIONS ~1~
+ 
+ -inset  III    :Load in a dataset III of one or more bricks for
+                 thresholding and clusterizing; one can choose to use
+                 either just a single sub-brick within it for all
+                 operations (e.g., a 'statistics' brick), or to specify
+                 an additional sub-brick within it for the actual
+                 clusterizing+reporting (after the mask from the
+                 thresholding dataset has been applied to it).
+ 
+ -mask MMM      :Load in a dataset MMM to use as a mask, within which
+                 to look for clusters.
+ 
+ -mask_from_hdr :If 3dClustSim put an internal attribute into the
+                 input dataset that describes a mask, 3dClusterize will
+                 use this mask to eliminate voxels before clustering,
+                 if you give this option (this is how the AFNI
+                 Clusterize GUI works by default).  If there is no
+                 internal mask in the dataset header, then this
+                 doesn't do anything.
+ 
+ -out_mask OM   :specify that you wanted the utilized mask dumped out
+                 as a single volume dataset OM.  This is probably only
+                 really useful if you are using '-mask_from_hdr'.  If
+                 not mask option is specified, there will be no output.
+ 
+ -ithr   j      :(required) Uses sub-brick [j] as the threshold source;
+                 'j' can be either an integer *or* a brick_label string.
+ 
+ -idat   k      :Uses sub-brick [k] as the data source (optional);
+                 'k' can be either an integer *or* a brick_label string.
+                 If this option is used, thresholding is still done by
+                 the 'threshold' dataset, but that threshold map is
+                 applied to this 'data' set, which is in turn used for
+                 clusterizing and the 'data' set values are used to
+                 make the report.  If a 'data' dataset is NOT input
+                 with '-idat ..', then thresholding, clustering and
+                 reporting are all done using the 'threshold' dataset.
+ 
+ -1sided SSS TT :Perform one-sided testing. Two arguments are required:
+                   SSS -> either 'RIGHT_TAIL' (or 'RIGHT') or 'LEFT_TAIL'
+                          (or 'LEFT') to specify which side of the 
+                          distribution to test.
+                   TT  -> the threshold value itself.
+                 See 'NOTES' below to use a p-value as threshold.
+ 
+ -2sided  LL RR :Perform two-sided testing. Two arguments are required:
+                   LL  -> the upper bound of the left tail.
+                   RR  -> lower bound of the right tail.
+                 *NOTE* that in this case, potentially a cluster could
+                 be made of both left- and right-tail survivors (e.g.,
+                 both positive and negative values). For this reason,
+                 probably '-bisided ...' is a preferable choice.
+                 See 'NOTES' below to use a p-value as threshold.
+ 
+ -bisided LL RR :Same as '-2sided ...', except that the tails are tested
+                 independently, so a cluster cannot be made of both.
+                 See 'NOTES' below to use a p-value as threshold.
+ 
+ -within_range AA BB
+                :Perform a kind of clustering where a different kind of
+                 thresholding is first performed, compared to the above
+                 cases;  here, one keeps values within the range [AA, BB],
+                 INSTEAD of keeping values on the tails. Is this useful?
+                 Who knows, but it exists.
+                 See 'NOTES' below to use a p-value as threshold.
+ 
+ -NN {1|2|3}    :Necessary option to specify how many neighbors a voxel
+                 has; one MUST put one of 1, 2 or 3 after it:
+                   1 -> 6 facewise neighbors
+                   2 -> 18 face+edgewise neighbors
+                   3 -> 26 face+edge+cornerwise neighbors
+                 If using 3dClustSim (or any other method), make sure
+                 that this NN value matches what was used there. (In
+                 many AFNI programs, NN=1 is a default choice, but BE
+                 SURE YOURSELF!)
+ 
+ -clust_nvox M  :specify the minimum cluster size in terms of number
+                 of voxels M (such as output by 3dClustSim).
+ 
+ -clust_vol   V :specify the minimum cluster size in terms of volume V,
+                 in microliters (requires knowing the voxel
+                 size). Probably '-clust_nvox ...' is more useful.
+ 
+ -pref_map PPP  :The prefix/filename of the output map of cluster ROIs.
+                 The 'map' shows each cluster as a set of voxels with the
+                 same integer.  The clusters are ordered by size, so the
+                 largest cluster is made up of 1s, the next largest of 2s,
+                 etc.
+                 (def:  no map of clusters output).
+ 
+ -pref_dat DDD  :Including this option instructs the program to output
+                 a cluster-masked version of the 'data' volume
+                 specified by the '-idat ..' index.  That is, only data
+                 values within the cluster ROIs are included in the
+                 output volume.  Requires specifying '-idat ..'.
+                 (def:  no cluster-masked dataset output).
+ 
+ -1Dformat      :Write output in 1D format (now default). You can
+                 redirect the output to a .1D file and use the file
+                 as input to whereami_afni for obtaining Atlas-based
+                 information on cluster locations.
+                 See whereami_afni -help for more info.
+ 
+ -no_1Dformat   :Do not write output in 1D format.
+ 
+ -summarize     :Write out only the total nonzero voxel count and
+                 volume for each dataset
+ 
+ -nosum         :Suppress printout of the totals
+ 
+ -quiet         :Suppress all non-essential output
+ 
+ -outvol_if_no_clust: flag to still output an (empty) vol if no 
+                 clusters are found.  Even in this case, no report is
+                 is produced if no clusters are found.  This option is
+                 likely used for some scripting scenarios; also, the
+                 user would still need to specify '-pref_* ...' options
+                 as above in order to output any volumes with this opt.
+                 (def: no volumes output if no clusters found).
+
+ -orient OOO    :in the output report table, make the coordinate
+                 order be 'OOO' (def: RAI, the DICOM standard); 
+                 alternatively, one could set the environment variable
+                 AFNI_ORIENT (see the file README.environment).
+                 NB: this only affects the coordinate orientation in the
+                 *text table*;  the dset orientation of the output
+                 cluster maps and other volumetric data will match that
+                 of the input dataset.
+ 
+ -abs_table_data :(new, from Apr 29, 2021) Use the absolute value of voxel
+                 intensities (not the raw values) for calculation of the
+                 mean and Standard Error of the Mean (SEM) in the report
+                 table. Prior to the cited date, this was default behavior
+                 (with '-noabs' switching out of it) but no longer.
+
+ ### -noabs     :(as of Apr 29, 2021, this option is no longer needed)
+                 Previously this option switched from using default absolute
+                 values of voxel intensities for calculation of the mean
+                 and Standard Error of the Mean (SEM). But this has now
+                 changed, and the default is to just use the signed values
+                 themselves; this option will not cause an error, but is not
+                 needed.  See '-abs_table_data' for reporting abs values.
+ 
+ -binary        :This turns the output map of cluster ROIs into a binary
+                 (0 or 1) mask, rather than a cluster-index mask.
+                 If no clusters are found, the mask is not written!
+                 (def: each cluster has separate values)
+ 
+ 
+ NOTES ~1~
+ 
+   Saving the text report ~2~
+ 
+     To save the text file report, use the redirect '>' after the
+     3dClusterize command and dump the text into a separate file of
+     your own naming.
+ 
+   Using p-values as thresholds for statistic volumes ~2~
+ 
+     By default, numbers entered as voxelwise thresholds are assumed to
+     be appropriate statistic values that you have calculated for your
+     desired significance (e.g., using p2dsetstat).  HOWEVER, if you
+     just want to enter p-values and have the program do the conversion
+     work for you, then do as follows: prepend 'p=' to your threshold
+     number.
+ 
+     - For one-sided tests, the *_TAIL specification is still used, so
+       in either case the p-value just represents the area in the
+       statistical distribution's tail (i.e., you don't have to worry
+       about doing '1-p').  Examples:
+         -1sided RIGHT_TAIL p=0.005
+         -1sided LEFT_TAIL  p=0.001
+ 
+     - For the two-sided/bi-sided tests, the a single p-value is
+       entered to represent the total area under both tails in the
+       statistical distribution, which are assumed to be symmetric.
+       Examples:
+         -bisided p=0.001
+         -2sided  p=0.005
+ 
+       If you want asymmetric tails, you will have to enter both
+       threshold values as statistic values (NB: you could use
+       p2dsetstat to convert each desired p-value to a statistic, and
+       then put in those stat values to this program).
+ 
+     You will probably NEED to have negative signs for the cases of
+     '-1sided LEFT_TAIL ..', and for the first entries of '-bisided ..'
+     or '-2sided ..'.
+ 
+     You cannot mix p-values and statistic values (for two-sided
+     things, enter either the single p-value or both stats).
+ 
+     You cannot use this internal p-to-stat conversion if the volume
+     you are thresholding is not recognized as a stat.
+ 
+   Performing appropriate testing ~2~
+ 
+     Don't use a pair of one-sided tests when you *should* be using a
+     two-sided test!
+ 
+ 
+ EXAMPLES ~1~
+ 
+   1. Take an output of FMRI testing (e.g., from afni_proc.py), whose
+   [1] brick contains the effect estimate from a statistical model and
+   whose [2] brick contains the associated statistic; use the results
+   of 3dClustSim run with NN=1 (here, a cluster threshold volume of 157
+   voxels) and perform one-sided testing with a threshold at an
+   appropriate value (here, 3.313).
+ 
+     3dClusterize                  \
+        -inset stats.FT+tlrc.      \
+        -ithr 2                    \
+        -idat 1                    \
+        -mask mask_group+tlrc.     \
+        -NN 1                      \
+        -1sided RIGHT_TAIL 3.313   \
+        -clust_nvox 157            \
+        -pref_map ClusterMap
+ 
+   2. The same as Ex. 1, but using bisided testing (two sided testing
+   where the results of each tail can't be joined into the same
+   cluster). Note, the tail thresholds do NOT have to be symmetric (but
+   often they are).  Also, here we output the cluster-masked 'data'
+   volume.
+ 
+     3dClusterize                  \
+        -inset stats.FT+tlrc.      \
+        -ithr 2                    \
+        -idat 1                    \
+        -mask mask_group+tlrc.     \
+        -NN 1                      \
+        -bisided -3.313 3.313      \
+        -clust_nvox 157            \
+        -pref_map ClusterMap       \
+        -pref_dat ClusterEffEst
+ 
+   3. The same as Ex. 2, but specifying a p-value to set the voxelwise
+   thresholds (in this case, tails DO have to be symmetric).
+ 
+     3dClusterize                  \
+        -inset stats.FT+tlrc.      \
+        -ithr 2                    \
+        -idat 1                    \
+        -mask mask_group+tlrc.     \
+        -NN 1                      \
+        -bisided p=0.001           \
+        -clust_nvox 157            \
+        -pref_map ClusterMap       \
+        -pref_dat ClusterEffEst
+ 
+   4. Threshold a non-stat dset.
+ 
+     3dClusterize                  \
+        -inset anat+orig           \
+        -ithr 0                    \
+        -idat 0                    \
+        -NN 1                      \
+        -within_range 500 1000     \
+        -clust_nvox 100            \
+        -pref_map ClusterMap       \
+        -pref_dat ClusterEffEst
+ 
+ # ------------------------------------------------------------------------

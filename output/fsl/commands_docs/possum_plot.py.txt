@@ -1,0 +1,12 @@
+
+=== Output of 'possum_plot.py --help' ===
+
+Usage: /usr/local/fsl/bin/possum_plot.py <input file> <output basename>
+
+=== Output of 'possum_plot.py -help' ===
+
+Usage: /usr/local/fsl/bin/possum_plot.py <input file> <output basename>
+
+=== Output of 'possum_plot.py' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/possum_plot.py <input file> <output basename>

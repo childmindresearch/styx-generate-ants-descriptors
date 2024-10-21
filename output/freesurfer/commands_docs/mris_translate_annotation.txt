@@ -1,0 +1,13 @@
+
+=== Output of 'mris_translate_annotation --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_translate_annotation [options] <subject> <hemi> <in annot> <translation file> <out annot>
+
+This program applies a translation table to an annotation file
+=== Output of 'mris_translate_annotation -help' ===
+
+unknown option -help
+
+=== Output of 'mris_translate_annotation' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_translate_annotation [options] <subject> <hemi> <in annot> <translation file> <out annot>

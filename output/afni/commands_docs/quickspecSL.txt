@@ -1,0 +1,182 @@
+
+=== Output of 'quickspecSL --help' ===
+
+** unknown option --help
+
+=== Output of 'quickspecSL -help' ===
+
+
+Overview ~1~ 
+
+This program makes a *.spec file after a set of intermediate surfaces 
+have been generated with SurfLayers. 
+
+It can also make a *.spec file that relates inflated surfaces to
+anatomically-correct surfaces. An example of this is shown below in
+the "Usage Example" section.
+
+Options ~1~
+
+  -surf_A   SA   :inner (anatomically-correct) boundary surface dataset
+                  (e.g. smoothwm.gii)
+
+  -surf_B   SB   :outer (anatomically-correct) boundary surface dataset
+                  (e.g. pial.gii)
+
+  -surf_intermed_pref  SIP 
+                 :prefix for (anatomically-correct) intermediate surfaces,
+                  typically output by SurfLayers 
+                  (def: isurf)
+
+  -infl_surf_A  ISA 
+                 :inner (inflated) boundary surface dataset
+                  (e.g. infl.smoothwm.gii)
+
+  -infl_surf_B  ISB  
+                 :outer (inflated) boundary surface dataset
+                  (e.g. infl.pial.gii)
+
+  -infl_surf_intermed_pref  ISIP
+                 :prefix for (inflated) intermediate surfaces,
+                  typically output by SurfLayers 
+                  (def: infl.isurf)
+
+  -both_lr       :specify an output spec for both hemispheres, 
+                  if surfaces for both exist
+
+  -out_spec      :name for output *.spec file 
+                  (def: newspec.spec) 
+
+Examples ~1~
+
+  1) 
+
+    quickspecSL                                  \
+        -surf_A    lh.white.gii                  \
+        -surf_B    lh.pial.gii                   \
+        -surf_intermed_pref  lh.isurf
+
+
+  2) 
+
+    quickspecSL                                  \
+        -both_lr                                 \
+        -surf_A lh.white.gii                     \
+        -surf_B lh.pial.gii
+
+
+  3) First, make inflated boundary surfaces before running SurfLayers
+     on the both those and the original surfaces:
+
+    SurfSmooth -i rh.smoothwm.gii -met NN_geom -Niter 240    \
+        -o_gii -surf_out rh.inf.smoothwm_240 -match_size 9
+
+    SurfSmooth -i rh.pial.gii -met NN_geom -Niter 240        \
+        -o_gii -surf_out rh.inf.pial_240 -match_size 9
+
+    quickspecSL                                              \
+        -surf_A             rh.white.gii                     \
+        -surf_B             rh.pial.gii                      \
+        -surf_intermed_pref rh.isurf                         \
+        -infl_surf_A        rh.inf.smoothwm_240.gii          \
+        -infl_surf_B        rh.inf.pial_240.gii              \
+        -infl_surf_intermed_pref  infl.rh.isurf
+
+Notes ~1~
+
+If you have any questions, please contact:
+
+   S. Torrisi (torrisi@berkeley.edu) 
+   D. Glen    (glend@mail.nih.gov) 
+
+for more info.
+
+
+=== Output of 'quickspecSL' (no arguments) ===
+
+
+Overview ~1~ 
+
+This program makes a *.spec file after a set of intermediate surfaces 
+have been generated with SurfLayers. 
+
+It can also make a *.spec file that relates inflated surfaces to
+anatomically-correct surfaces. An example of this is shown below in
+the "Usage Example" section.
+
+Options ~1~
+
+  -surf_A   SA   :inner (anatomically-correct) boundary surface dataset
+                  (e.g. smoothwm.gii)
+
+  -surf_B   SB   :outer (anatomically-correct) boundary surface dataset
+                  (e.g. pial.gii)
+
+  -surf_intermed_pref  SIP 
+                 :prefix for (anatomically-correct) intermediate surfaces,
+                  typically output by SurfLayers 
+                  (def: isurf)
+
+  -infl_surf_A  ISA 
+                 :inner (inflated) boundary surface dataset
+                  (e.g. infl.smoothwm.gii)
+
+  -infl_surf_B  ISB  
+                 :outer (inflated) boundary surface dataset
+                  (e.g. infl.pial.gii)
+
+  -infl_surf_intermed_pref  ISIP
+                 :prefix for (inflated) intermediate surfaces,
+                  typically output by SurfLayers 
+                  (def: infl.isurf)
+
+  -both_lr       :specify an output spec for both hemispheres, 
+                  if surfaces for both exist
+
+  -out_spec      :name for output *.spec file 
+                  (def: newspec.spec) 
+
+Examples ~1~
+
+  1) 
+
+    quickspecSL                                  \
+        -surf_A    lh.white.gii                  \
+        -surf_B    lh.pial.gii                   \
+        -surf_intermed_pref  lh.isurf
+
+
+  2) 
+
+    quickspecSL                                  \
+        -both_lr                                 \
+        -surf_A lh.white.gii                     \
+        -surf_B lh.pial.gii
+
+
+  3) First, make inflated boundary surfaces before running SurfLayers
+     on the both those and the original surfaces:
+
+    SurfSmooth -i rh.smoothwm.gii -met NN_geom -Niter 240    \
+        -o_gii -surf_out rh.inf.smoothwm_240 -match_size 9
+
+    SurfSmooth -i rh.pial.gii -met NN_geom -Niter 240        \
+        -o_gii -surf_out rh.inf.pial_240 -match_size 9
+
+    quickspecSL                                              \
+        -surf_A             rh.white.gii                     \
+        -surf_B             rh.pial.gii                      \
+        -surf_intermed_pref rh.isurf                         \
+        -infl_surf_A        rh.inf.smoothwm_240.gii          \
+        -infl_surf_B        rh.inf.pial_240.gii              \
+        -infl_surf_intermed_pref  infl.rh.isurf
+
+Notes ~1~
+
+If you have any questions, please contact:
+
+   S. Torrisi (torrisi@berkeley.edu) 
+   D. Glen    (glend@mail.nih.gov) 
+
+for more info.
+

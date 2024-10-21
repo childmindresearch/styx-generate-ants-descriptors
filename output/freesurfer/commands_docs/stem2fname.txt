@@ -1,0 +1,15 @@
+
+=== Output of 'stem2fname --help' ===
+
+ERROR: could not determine file for --help
+
+=== Output of 'stem2fname -help' ===
+
+ERROR: could not determine file for -help
+
+=== Output of 'stem2fname' (no arguments) ===
+
+stem2fname stem
+  Looks for stem.fmt where fmt is mgh mgz nii nii.gz bhdr img w,
+  then returns stem.fmt. See also stem2fmt, fname2stem
+  The file needs to exist on disk.

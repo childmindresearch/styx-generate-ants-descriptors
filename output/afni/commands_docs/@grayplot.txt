@@ -1,0 +1,220 @@
+
+=== Output of '@grayplot --help' ===
+
+Usage: pushd [-plvn] [-|<dir>|+<n>].
+
+=== Output of '@grayplot -help' ===
+
+Usage: @grayplot [OPTIONS] dirname
+
+Script to read files from an afni_proc.py results directory
+and produce a grayplot from the errts dataset(s), combined with
+a motion magnitude indicator graph.
+
+* NOTE: This script requires various programs from the NETPBM package
+        to run. If those programs are not found, this script will fail.
+
+Will produce a plot for each dataset whose name fits the wildcard
+  *errts.*+tlrc.HEAD
+including errts.SUBJECT+tlrc and errts.SUBJECT_REML+tlrc,
+if both datasets were computed. Dataset errts.SUBJECT_REMLwh+tlrc
+will also be plotted, if option
+  '-regress_opts_reml -Rwherr errts.SUBJECT_REMLwh'
+was given to afni_proc.py -- this is the 'pre-whitened' residuals
+dataset, which is the noise exemplar from which the 3dREMLfit
+statistics are computed.
+* NOTE: dataset all_runs.*+tlrc.HEAD will also be
+        grayplotted if it is found in the results directory.
+* NOTE: this script will now work with +orig datasets if the
+        +tlrc datasets are not available [11 Aug 2018].
+
+The output images are grayscale, stored in .png format, and
+have names like 'Grayplot.errts.WHATEVER.ORDERMETH.png'.
+* See the OPTIONS section below for the ordering methods
+  of the voxels in the output.
+
+Note that time points which were censored out will have errts=0
+(and thus look flat), and the motion magnitude graph will be
+set to 0 at these points as well -- to avoid having large motions
+dominate the graph and make it hard to see other movements.
+Censored time points are also overlaid with a gray band in the
+graph above the dataset grayplot. (Gray so that the resulting
+png file is pure grayscale -- without color.)
+
+Segments the anatomy (or uses an existing segmentation, if
+it was run by afni_proc.py), and grayplots the GM, WM, and CSF
+voxels separately from top to bottom, with dashed lines dividing
+the partitions.
+
+COMMAND LINE ARGUMENTS:
+* The last argument is the afni_proc.py results directory.
+  To use the current working directory, use '.' as the last argument.
+* The only OPTIONS at this time control the ordering of the voxel
+  (time series)graphs inside each mask partition in the grayplot,
+  downward in the image:
+    -pvorder =
+      Within each partition, voxels are ordered by a simple similarity
+      measure, so the top of each partition will echo have voxel time
+      series that are more similar than the bottom of the partition.
+      This ordering helps make it clear if there are many time series
+      with similar temporal patterns, which will show up as vertical
+      bands in the grayplot.
+      * Note that '-pvorder' is based on the data, so the voxel
+        order in the grayplot will differ between datasets in the
+        same directory, unlike the geometrically-based orderings
+        '-peelorder' and '-ijkorder'.
+      * I personally like '-pvorder' for the clarity provided by
+        having similar voxel time series clustered together.
+    -peelorder =
+      Within each partition, voxels are ordered by how many 'peel'
+      operations are needed to reach a given voxel; that is, how
+      far a voxel is from the partition's boundary. Voxels at the
+      edge of the partition are first, etc.
+    -ijkorder =
+      Within each partition, voxels are just ordered by the 3D index
+      in which they appear in the dataset. Possibly not exciting.
+      This order will primarily be from Inferior to Superior in the
+      brain (top to bottom in the grayplot image), using AFNI's
+      convention for storing +tlrc datasets.
+    -ALLorder =
+      Create grayplots for all ordering methods. Can be useful for
+      comparisons, but of course will take a little longer to run.
+   **** Only one of these options can be given; if you give more
+        options, then the script will become confused and not work.
+   **** The default (no option given) order is '-ijkorder'.
+
+NOTA BENE:
+* Also see '3dGrayplot -help', since the actual grayplot is created
+   by that program.
+* Since the vertical (spatial) dimension of the output grayplot image
+   is only 1200 pixels, each horizontal (time) row in the plot will be
+   the combination of multiple voxels, in whatever order they appear.
+* Since the horizontal dimension of the output grayplot image is
+   1800 pixels, unless the time series has more than 1800 points, each
+   time point will be stretched (interpolated) to fill more than one pixel.
+* I personally find '-pvorder' to be the most useful, but the
+   other orderings can also be interesting to compare.
+* I like to use the AFNI 'aiv' program to view the images, rather than
+   a standard image viewer program, since aiv's default settings show
+   more contrast, which helps me see more structure in the grayplots.
+* Note that 'structure' in the grayplots of the errts datasets is
+   in some sense BAD, since individual-subject statistics are computed
+   from the errts dataset assuming it is just noise.
+* I prefer using 3dREMLfit and so the most relevant grayplot is from
+   errts.SUBJECT_REMLwh+tlrc (the pre-whitened errts.SUBJECT_REML+tlrc).
+   The voxelwise pre-whitening tends to removes a little of the visible
+   structure in the grayplot.
+* Author: RWCox -- May 2018
+* Notice: Subject to horrific and drastic change at any instant.
+* Changes since original version:
+  a) Revised 3dGrayplot and @grayplot to plot data with a fixed range,
+     so the images from different datasets can be compared.
+  b) Revised to use +orig datasets if +tlrc datasets aren't found.
+
+=== Output of '@grayplot' (no arguments) ===
+
+Usage: @grayplot [OPTIONS] dirname
+
+Script to read files from an afni_proc.py results directory
+and produce a grayplot from the errts dataset(s), combined with
+a motion magnitude indicator graph.
+
+* NOTE: This script requires various programs from the NETPBM package
+        to run. If those programs are not found, this script will fail.
+
+Will produce a plot for each dataset whose name fits the wildcard
+  *errts.*+tlrc.HEAD
+including errts.SUBJECT+tlrc and errts.SUBJECT_REML+tlrc,
+if both datasets were computed. Dataset errts.SUBJECT_REMLwh+tlrc
+will also be plotted, if option
+  '-regress_opts_reml -Rwherr errts.SUBJECT_REMLwh'
+was given to afni_proc.py -- this is the 'pre-whitened' residuals
+dataset, which is the noise exemplar from which the 3dREMLfit
+statistics are computed.
+* NOTE: dataset all_runs.*+tlrc.HEAD will also be
+        grayplotted if it is found in the results directory.
+* NOTE: this script will now work with +orig datasets if the
+        +tlrc datasets are not available [11 Aug 2018].
+
+The output images are grayscale, stored in .png format, and
+have names like 'Grayplot.errts.WHATEVER.ORDERMETH.png'.
+* See the OPTIONS section below for the ordering methods
+  of the voxels in the output.
+
+Note that time points which were censored out will have errts=0
+(and thus look flat), and the motion magnitude graph will be
+set to 0 at these points as well -- to avoid having large motions
+dominate the graph and make it hard to see other movements.
+Censored time points are also overlaid with a gray band in the
+graph above the dataset grayplot. (Gray so that the resulting
+png file is pure grayscale -- without color.)
+
+Segments the anatomy (or uses an existing segmentation, if
+it was run by afni_proc.py), and grayplots the GM, WM, and CSF
+voxels separately from top to bottom, with dashed lines dividing
+the partitions.
+
+COMMAND LINE ARGUMENTS:
+* The last argument is the afni_proc.py results directory.
+  To use the current working directory, use '.' as the last argument.
+* The only OPTIONS at this time control the ordering of the voxel
+  (time series)graphs inside each mask partition in the grayplot,
+  downward in the image:
+    -pvorder =
+      Within each partition, voxels are ordered by a simple similarity
+      measure, so the top of each partition will echo have voxel time
+      series that are more similar than the bottom of the partition.
+      This ordering helps make it clear if there are many time series
+      with similar temporal patterns, which will show up as vertical
+      bands in the grayplot.
+      * Note that '-pvorder' is based on the data, so the voxel
+        order in the grayplot will differ between datasets in the
+        same directory, unlike the geometrically-based orderings
+        '-peelorder' and '-ijkorder'.
+      * I personally like '-pvorder' for the clarity provided by
+        having similar voxel time series clustered together.
+    -peelorder =
+      Within each partition, voxels are ordered by how many 'peel'
+      operations are needed to reach a given voxel; that is, how
+      far a voxel is from the partition's boundary. Voxels at the
+      edge of the partition are first, etc.
+    -ijkorder =
+      Within each partition, voxels are just ordered by the 3D index
+      in which they appear in the dataset. Possibly not exciting.
+      This order will primarily be from Inferior to Superior in the
+      brain (top to bottom in the grayplot image), using AFNI's
+      convention for storing +tlrc datasets.
+    -ALLorder =
+      Create grayplots for all ordering methods. Can be useful for
+      comparisons, but of course will take a little longer to run.
+   **** Only one of these options can be given; if you give more
+        options, then the script will become confused and not work.
+   **** The default (no option given) order is '-ijkorder'.
+
+NOTA BENE:
+* Also see '3dGrayplot -help', since the actual grayplot is created
+   by that program.
+* Since the vertical (spatial) dimension of the output grayplot image
+   is only 1200 pixels, each horizontal (time) row in the plot will be
+   the combination of multiple voxels, in whatever order they appear.
+* Since the horizontal dimension of the output grayplot image is
+   1800 pixels, unless the time series has more than 1800 points, each
+   time point will be stretched (interpolated) to fill more than one pixel.
+* I personally find '-pvorder' to be the most useful, but the
+   other orderings can also be interesting to compare.
+* I like to use the AFNI 'aiv' program to view the images, rather than
+   a standard image viewer program, since aiv's default settings show
+   more contrast, which helps me see more structure in the grayplots.
+* Note that 'structure' in the grayplots of the errts datasets is
+   in some sense BAD, since individual-subject statistics are computed
+   from the errts dataset assuming it is just noise.
+* I prefer using 3dREMLfit and so the most relevant grayplot is from
+   errts.SUBJECT_REMLwh+tlrc (the pre-whitened errts.SUBJECT_REML+tlrc).
+   The voxelwise pre-whitening tends to removes a little of the visible
+   structure in the grayplot.
+* Author: RWCox -- May 2018
+* Notice: Subject to horrific and drastic change at any instant.
+* Changes since original version:
+  a) Revised 3dGrayplot and @grayplot to plot data with a fixed range,
+     so the images from different datasets can be compared.
+  b) Revised to use +orig datasets if +tlrc datasets aren't found.

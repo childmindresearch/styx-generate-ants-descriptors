@@ -1,0 +1,26 @@
+
+=== Output of 'mccutup --help' ===
+
+/usr/local/fsl/bin/mccutup: line 74: cd: --: invalid option
+cd: usage: cd [-L|[-P [-e]] [-@]] [dir]
+cat: prefiltered_func_data_mcf.par: No such file or directory
+cat: prefiltered_func_data_mcf.par: No such file or directory
+cat: prefiltered_func_data_mcf.par: No such file or directory
+cat: prefiltered_func_data_mcf.par: No such file or directory
+cat: prefiltered_func_data_mcf.par: No such file or directory
+cat: prefiltered_func_data_mcf.par: No such file or directory
+
+=== Output of 'mccutup -help' ===
+
+/usr/local/fsl/bin/mccutup: line 74: cd: -h: invalid option
+cd: usage: cd [-L|[-P [-e]] [-@]] [dir]
+cat: prefiltered_func_data_mcf.par: No such file or directory
+cat: prefiltered_func_data_mcf.par: No such file or directory
+cat: prefiltered_func_data_mcf.par: No such file or directory
+cat: prefiltered_func_data_mcf.par: No such file or directory
+cat: prefiltered_func_data_mcf.par: No such file or directory
+cat: prefiltered_func_data_mcf.par: No such file or directory
+
+=== Output of 'mccutup' (no arguments) ===
+
+Usage: mccutup <feat_directory>

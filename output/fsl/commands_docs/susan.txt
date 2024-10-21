@@ -1,0 +1,33 @@
+
+=== Output of 'susan --help' ===
+
+
+Usage: susan <input> <bt> <dt> <dim> <use_median> <n_usans> [<usan1> <bt1> [<usan2> <bt2>]] <output>
+<bt> is brightness threshold and should be greater than noise level and less than contrast of edges to be preserved.
+<dt> is spatial size (sigma, i.e., half-width) of smoothing, in mm.
+<dim> is dimensionality (2 or 3), depending on whether smoothing is to be within-plane (2) or fully 3D (3).
+<use_median> determines whether to use a local median filter in the cases where single-point noise is detected (0 or 1).
+<n_usans> determines whether the smoothing area (USAN) is to be found from secondary images (0, 1 or 2).
+A negative value for any brightness threshold will auto-set the threshold at 10% of the robust range
+
+=== Output of 'susan -help' ===
+
+
+Usage: susan <input> <bt> <dt> <dim> <use_median> <n_usans> [<usan1> <bt1> [<usan2> <bt2>]] <output>
+<bt> is brightness threshold and should be greater than noise level and less than contrast of edges to be preserved.
+<dt> is spatial size (sigma, i.e., half-width) of smoothing, in mm.
+<dim> is dimensionality (2 or 3), depending on whether smoothing is to be within-plane (2) or fully 3D (3).
+<use_median> determines whether to use a local median filter in the cases where single-point noise is detected (0 or 1).
+<n_usans> determines whether the smoothing area (USAN) is to be found from secondary images (0, 1 or 2).
+A negative value for any brightness threshold will auto-set the threshold at 10% of the robust range
+
+=== Output of 'susan' (no arguments) ===
+
+
+Usage: susan <input> <bt> <dt> <dim> <use_median> <n_usans> [<usan1> <bt1> [<usan2> <bt2>]] <output>
+<bt> is brightness threshold and should be greater than noise level and less than contrast of edges to be preserved.
+<dt> is spatial size (sigma, i.e., half-width) of smoothing, in mm.
+<dim> is dimensionality (2 or 3), depending on whether smoothing is to be within-plane (2) or fully 3D (3).
+<use_median> determines whether to use a local median filter in the cases where single-point noise is detected (0 or 1).
+<n_usans> determines whether the smoothing area (USAN) is to be found from secondary images (0, 1 or 2).
+A negative value for any brightness threshold will auto-set the threshold at 10% of the robust range

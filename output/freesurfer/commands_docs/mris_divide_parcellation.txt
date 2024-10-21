@@ -1,0 +1,155 @@
+
+=== Output of 'mris_divide_parcellation --help' ===
+
+
+mris_divide_parcellation [options] subject hemi sourceannot [splitfile|areathresh] outannot
+
+
+options
+  -help
+  -scale <scale>   specify offset scaling for rgb values (default=20)
+  -l <label name>  only process the label <label name> (not implemented yet)
+
+This program divides one or more parcellations into divisions
+perpendicular to the long axis of the label.  The number of divisions
+can be specified in one of two ways, depending upon the nature of the
+fourth argument.
+
+First, a splitfile can be specified as the fourth argument. The
+splitfile is a text file with two columns. The first column is the
+name of the label in the source annotation, and the second column is
+the number of units that label should be divided into. The names of
+the labels depends upon the source parcellation.  For aparc.annot and
+aparc.a2005.annot, the names can be found in
+$FREESURFER_HOME/FreeSurferColorLUT.txt.  For aparc.annot, the labels
+are between the ranges of 1000-1034.  For aparc.a2005s.annot, the
+labels are between the ranges of 1100-1181.  The name for the label is
+the name of the segmentation without the 'ctx-lh'. Note that the name
+included in the splitfile does not indicate the hemisphere. For
+example, 1023 is 'ctx-lh-posteriorcingulate'.  You should put
+'posteriorcingulate' in the splitfile. Eg, to divide it into three
+segments, the following line should appear in the splitfile:
+
+posteriorcingulate 3
+
+Only labels that should be split need be specified in the splitfile.
+
+The second method is to specify an area threshold (in mm^2) as the
+fourth argument, in which case each label is divided until each
+subdivision is smaller than the area threshold.
+
+The output label name will be the original name with _divN appended,
+where N is the division number. N will go from 2 to the number of
+divisions. The first division has the same name as the original label.
+
+
+EXAMPLE:
+
+cd $SUBJECTS_DIR/mysubj001/label
+
+Create a split file to divide the superior frontal gyrus into 4
+segements and the precentral gyrus into 3 segments:
+
+echo superiorfrontal 4 >  splittable.txt
+echo precentral      3 >> splittable.txt
+
+Run program:
+
+mris_divide_parcellation mysubj001 rh aparc.annot splittable.txt rh.aparc.split-sfg+pc
+
+This reads in rh.aparc.annot, splits the SFG and PC, and and saves the
+result to rh.aparc.split-sfg+pc
+
+View
+
+tksurfer mysubj001 rh inflated -annot aparc.split-sfg+pc
+
+The SFG divisions will have the following names: superiorfrontal,
+superiorfrontal_div2, superiorfrontal_div3, superiorfrontal_div4. The
+PC divisions will be precentral, precentral_div2, precentral_div3.
+
+
+
+
+=== Output of 'mris_divide_parcellation -help' ===
+
+
+mris_divide_parcellation [options] subject hemi sourceannot [splitfile|areathresh] outannot
+
+
+options
+  -help
+  -scale <scale>   specify offset scaling for rgb values (default=20)
+  -l <label name>  only process the label <label name> (not implemented yet)
+
+This program divides one or more parcellations into divisions
+perpendicular to the long axis of the label.  The number of divisions
+can be specified in one of two ways, depending upon the nature of the
+fourth argument.
+
+First, a splitfile can be specified as the fourth argument. The
+splitfile is a text file with two columns. The first column is the
+name of the label in the source annotation, and the second column is
+the number of units that label should be divided into. The names of
+the labels depends upon the source parcellation.  For aparc.annot and
+aparc.a2005.annot, the names can be found in
+$FREESURFER_HOME/FreeSurferColorLUT.txt.  For aparc.annot, the labels
+are between the ranges of 1000-1034.  For aparc.a2005s.annot, the
+labels are between the ranges of 1100-1181.  The name for the label is
+the name of the segmentation without the 'ctx-lh'. Note that the name
+included in the splitfile does not indicate the hemisphere. For
+example, 1023 is 'ctx-lh-posteriorcingulate'.  You should put
+'posteriorcingulate' in the splitfile. Eg, to divide it into three
+segments, the following line should appear in the splitfile:
+
+posteriorcingulate 3
+
+Only labels that should be split need be specified in the splitfile.
+
+The second method is to specify an area threshold (in mm^2) as the
+fourth argument, in which case each label is divided until each
+subdivision is smaller than the area threshold.
+
+The output label name will be the original name with _divN appended,
+where N is the division number. N will go from 2 to the number of
+divisions. The first division has the same name as the original label.
+
+
+EXAMPLE:
+
+cd $SUBJECTS_DIR/mysubj001/label
+
+Create a split file to divide the superior frontal gyrus into 4
+segements and the precentral gyrus into 3 segments:
+
+echo superiorfrontal 4 >  splittable.txt
+echo precentral      3 >> splittable.txt
+
+Run program:
+
+mris_divide_parcellation mysubj001 rh aparc.annot splittable.txt rh.aparc.split-sfg+pc
+
+This reads in rh.aparc.annot, splits the SFG and PC, and and saves the
+result to rh.aparc.split-sfg+pc
+
+View
+
+tksurfer mysubj001 rh inflated -annot aparc.split-sfg+pc
+
+The SFG divisions will have the following names: superiorfrontal,
+superiorfrontal_div2, superiorfrontal_div3, superiorfrontal_div4. The
+PC divisions will be precentral, precentral_div2, precentral_div3.
+
+
+
+
+=== Output of 'mris_divide_parcellation' (no arguments) ===
+
+
+mris_divide_parcellation [options] subject hemi sourceannot [splitfile|areathresh] outannot
+
+
+options
+  -help
+  -scale <scale>   specify offset scaling for rgb values (default=20)
+  -l <label name>  only process the label <label name> (not implemented yet)

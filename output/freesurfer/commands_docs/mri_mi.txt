@@ -1,0 +1,26 @@
+
+=== Output of 'mri_mi --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_mi  <options> fname1 fname2 
+
+Options:
+
+  --bins bin1 bin2 (default = 64x64)
+  --silent: only write out final MI result (default = 0) 
+
+
+Computes mutual information (mi) between two input volumes.
+
+=== Output of 'mri_mi -help' ===
+
+unknown option -help
+
+=== Output of 'mri_mi' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_mi  <options> fname1 fname2 
+
+Options:
+
+  --bins bin1 bin2 (default = 64x64)
+  --silent: only write out final MI result (default = 0) 
+

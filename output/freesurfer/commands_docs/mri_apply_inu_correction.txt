@@ -1,0 +1,12 @@
+
+=== Output of 'mri_apply_inu_correction --help' ===
+
+error: mri_apply_inu_correction has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_apply_inu_correction -help' ===
+
+error: mri_apply_inu_correction has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_apply_inu_correction' (no arguments) ===
+
+error: mri_apply_inu_correction has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

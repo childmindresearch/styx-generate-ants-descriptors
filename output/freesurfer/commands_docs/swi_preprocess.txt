@@ -1,0 +1,49 @@
+
+=== Output of 'swi_preprocess --help' ===
+
+
+ --------- 
+ PrintHelp for /usr/local/freesurfer/bin/swi_preprocess
+ General syntax : /usr/local/freesurfer/bin/swi_preprocess <options> <io> 
+ 
+ Options : 
+--scanner	 pars = 1	Name of the scanner ( one of ge, siemens or philips )
+--ge_file	 pars = 1	Name of the input GE file (only compatible with --scanner ge option)
+--philips_file	 pars = 1	Name of the input Philips file (only compatible with --scanner philips option)
+--siemens_mag	 pars = 1	Name of the input Siemens magnitude file (only compatible with --scanner siemens option)
+--siemens_phase	 pars = 1	Name of the input Siemens phase file (only compatible with --scanner siemens option)
+--out_magnitude	 pars = 1	Name of the output magnitude file (after preprocessing). Make sure it has .nii suffix
+--out_phase	 pars = 1	Name of the output phase file (after preprocessing). Make sure it has .nii suffix
+
+ IO items 
+
+ --------------- 
+Reading the input file(s)
+ERROR: You didn't specify the scanner make ( one of ge, siemens and philips )
+
+=== Output of 'swi_preprocess -help' ===
+
+Reading the input file(s)
+ERROR: You didn't specify the scanner make ( one of ge, siemens and philips )
+
+=== Output of 'swi_preprocess' (no arguments) ===
+
+
+ Pre-process the Susceptibility-weighted images. Write out nifti files so that they can be fed into PRELUDE ( Phase Unwarpping Library of FSL).
+
+ --------- 
+ PrintHelp for /usr/local/freesurfer/bin/swi_preprocess
+ General syntax : /usr/local/freesurfer/bin/swi_preprocess <options> <io> 
+ 
+ Options : 
+--scanner	 pars = 1	Name of the scanner ( one of ge, siemens or philips )
+--ge_file	 pars = 1	Name of the input GE file (only compatible with --scanner ge option)
+--philips_file	 pars = 1	Name of the input Philips file (only compatible with --scanner philips option)
+--siemens_mag	 pars = 1	Name of the input Siemens magnitude file (only compatible with --scanner siemens option)
+--siemens_phase	 pars = 1	Name of the input Siemens phase file (only compatible with --scanner siemens option)
+--out_magnitude	 pars = 1	Name of the output magnitude file (after preprocessing). Make sure it has .nii suffix
+--out_phase	 pars = 1	Name of the output phase file (after preprocessing). Make sure it has .nii suffix
+
+ IO items 
+
+ --------------- 

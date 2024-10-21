@@ -1,0 +1,13 @@
+
+=== Output of 'SUMA_pixmap2eps --help' ===
+
+glxdino: could not open display
+
+=== Output of 'SUMA_pixmap2eps -help' ===
+
+A simple openGL test program for testing rendering to eps.
+Copyright (c) Mark J. Kilgard, 1996.
+
+=== Output of 'SUMA_pixmap2eps' (no arguments) ===
+
+glxdino: could not open display

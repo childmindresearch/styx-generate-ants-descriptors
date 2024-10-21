@@ -1,0 +1,12 @@
+
+=== Output of 'waitForXGridJobs.pl --help' ===
+
+syntax: waitForXGridJobs.pl [-verbose] [-delay N] [-xgridflags string] job_IDs
+
+=== Output of 'waitForXGridJobs.pl -help' ===
+
+syntax: waitForXGridJobs.pl [-verbose] [-delay N] [-xgridflags string] job_IDs
+
+=== Output of 'waitForXGridJobs.pl' (no arguments) ===
+
+No jobs specified.  Try waitForXGridJobs.pl -help

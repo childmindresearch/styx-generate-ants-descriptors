@@ -1,0 +1,117 @@
+
+=== Output of 'rtview --help' ===
+
+
+rtview
+
+  --s subject : subject to use as display
+  --hemi hemi, --lh, --rh
+  --eccen or --polar
+  --real real : real (cosine) values
+  --imag imag : imaginary (sine) values
+  --fsig fsig : significances
+
+  --reg regfile  : for when real/imag/fsig are volumes 
+
+  --flat : display on occip.patch.flat
+  --patch patchname display on patchname
+  --tcl tclcmd : use your own tcl command file
+
+  --no-cleanup : don't delete tmp dir
+
+rtview 7.4.1
+
+View FSFAST version 5 retinotopy data using the color wheel. This is a
+front-end for tksurfer. It sets up the environment for using the
+color wheel.
+
+The source data (real/imaginary/fsig) can be either in the volume or
+the surface.  If in the volume, then you need to supply a registration
+file with --reg (and no need to supply a subject name with --s).
+
+For displaying data already on the surface:
+
+cd sess/bold/rtopy.lh
+ rtview --s subject --lh --eccen \
+   --real eccen/real.nii --imag eccen/imag.nii --fsig eccen/fsig.nii
+ rtview --s subject --lh --polar \
+   --real polar/real.nii --imag polar/imag.nii --fsig polar/fsig.nii
+
+For displaying in the native volume:
+
+cd sess/bold/rtopy.native
+ rtview --reg ../register.dof6.dat --lh --eccen \
+   --real eccen/real.nii --imag eccen/imag.nii --fsig eccen/fsig.nii
+ rtview --reg ../register.dof6.dat --lh --polar \
+   --real polar/real.nii --imag polar/imag.nii --fsig polar/fsig.nii
+
+
+
+=== Output of 'rtview -help' ===
+
+
+rtview
+
+  --s subject : subject to use as display
+  --hemi hemi, --lh, --rh
+  --eccen or --polar
+  --real real : real (cosine) values
+  --imag imag : imaginary (sine) values
+  --fsig fsig : significances
+
+  --reg regfile  : for when real/imag/fsig are volumes 
+
+  --flat : display on occip.patch.flat
+  --patch patchname display on patchname
+  --tcl tclcmd : use your own tcl command file
+
+  --no-cleanup : don't delete tmp dir
+
+rtview 7.4.1
+
+View FSFAST version 5 retinotopy data using the color wheel. This is a
+front-end for tksurfer. It sets up the environment for using the
+color wheel.
+
+The source data (real/imaginary/fsig) can be either in the volume or
+the surface.  If in the volume, then you need to supply a registration
+file with --reg (and no need to supply a subject name with --s).
+
+For displaying data already on the surface:
+
+cd sess/bold/rtopy.lh
+ rtview --s subject --lh --eccen \
+   --real eccen/real.nii --imag eccen/imag.nii --fsig eccen/fsig.nii
+ rtview --s subject --lh --polar \
+   --real polar/real.nii --imag polar/imag.nii --fsig polar/fsig.nii
+
+For displaying in the native volume:
+
+cd sess/bold/rtopy.native
+ rtview --reg ../register.dof6.dat --lh --eccen \
+   --real eccen/real.nii --imag eccen/imag.nii --fsig eccen/fsig.nii
+ rtview --reg ../register.dof6.dat --lh --polar \
+   --real polar/real.nii --imag polar/imag.nii --fsig polar/fsig.nii
+
+
+
+=== Output of 'rtview' (no arguments) ===
+
+
+rtview
+
+  --s subject : subject to use as display
+  --hemi hemi, --lh, --rh
+  --eccen or --polar
+  --real real : real (cosine) values
+  --imag imag : imaginary (sine) values
+  --fsig fsig : significances
+
+  --reg regfile  : for when real/imag/fsig are volumes 
+
+  --flat : display on occip.patch.flat
+  --patch patchname display on patchname
+  --tcl tclcmd : use your own tcl command file
+
+  --no-cleanup : don't delete tmp dir
+

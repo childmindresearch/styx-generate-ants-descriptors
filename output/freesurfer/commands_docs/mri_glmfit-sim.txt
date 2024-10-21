@@ -1,0 +1,302 @@
+
+=== Output of 'mri_glmfit-sim --help' ===
+
+
+mri_glmfit-sim --help
+
+ --glmdir glmdir
+ --cwp cwthresh : cluster-wise p-value threshold (.05)
+
+Use pre-computed z-based monte-carlo simulations (see mri_mcsim)
+ --mczsim vwthreshold sign
+If you have run your own simulations (mri_mcsim), then specify 
+   --mczsim-dir dir : default is FREESURFER_HOME/average/mult-comp-cor
+   --mczsim-label label : default is cortex
+
+Use permutation simulation
+ --perm nsim CFT sign : permutation simulation with nsim iterations
+   --perm-resid : add this with non-orthogonal designs to run permutation
+      on the residual rather than on the raw data (must have run mri_glmfit
+      with --eres-save)
+ --perm-signflip : use sign flipping instead of shuffling (automatic for --osgm)
+
+Use Gaussian Random Fields (GRF), volumes only
+ --grf vwthreshold sign : -log10(p) and sign (pos, neg, abs)
+
+Correct for multiple spaces
+ --2spaces : additional Bonferroni correction across 2 spaces (eg, lh, rh)
+ --3spaces : additional Bonferroni correction across 3 spaces (eg, lh, rh, mni305)
+
+ --overwrite : delete previous CSDs
+ --bg njobs : divide sim into njobs and put in background
+ --sleep tSleepSec : number of seconds to sleep between background polls 
+
+ --a2009s : use aparc.a2009s instead of aparc for reporting region of vertex max
+ --annot annot : use annot instead of aparc for reporting region of vertex max
+
+ --log logfile : default is csdbase.mri_glmfit-sim.log
+
+ --base csdbase : override csdbase name
+ --no-sim csdbase : do not simulate, only run cluster
+ --seed seed : set simluation seed
+ --fwhm-override fwhm : override fwhm in glmdir:
+ --fwhm-add fwhmAdd : add fwhmAdd to the estimated fwhm before addressing table:
+ --uniform min max : use uniform PDF instead of gaussian:
+ --no-out-annot : do not output a cluster annotation
+ --no-cluster-mean : do not compute means of each subject in each cluster (was --no-y)
+ --y yFile : use yFile instead of determining yFile from glmdir
+ --centroid : report the coordinates/annotation of the centroid instead of max
+ --spatial-sum : compute the sum over voxels in the cluster rather than
+   the average when creating the y.ocn file. This is good for when the input is area or volume
+ --help
+
+mri_glmfit-sim 7.4.1
+
+This program is a script to run corrections for multiple comparisons
+(CMC) on the volume or the surface. It is a front-end for the
+mri_glmfit, mri_surfcluster, and mri_volcluster programs.
+
+To use this program:
+
+1. Run mri_glmfit on your data, giving it the glm directory
+   (--glmdir), and all the other arguments.
+
+2. Choose a voxel-wise (cluster-forming) threshold vwthresh. The
+   vwthresh takes the value -log10(p) where p is the p-value.  So if
+   vwthresh = 2, then p<.01. You should understand the difference
+   between the cluster-forming threshold and the cluster-wise
+   threshold (--cwp). For mczsim, vwthresh must be 1.3, 2.0, 2.3, 3.0,
+   3.3, or 4.0 (unless you have simulated more values). There are no
+   good methods to choose this value. Typically 2 or 3 is used.
+   It is not recommended to use 1.3 unless performing a permutation
+   operation. 
+
+3. Choose the sign of the effect, either positive (pos), negative
+   (neg) or absolute/unsigned (abs). If you have an a priori
+   hypothesis (eg, group1 > group2), then choose positive. If you do
+   not expect a particular sign, then use abs. Choosing a sign will
+   yield stronger results (ie, smaller p-values), but you will lose
+   voxels with the opposite sign. NOTE: the "abs" for GRF is only
+   approximate. For volumes, it may give very conservative results.
+
+4. Choose the method. This will be either: (1) --mczsim z-based monte
+   carlo simulation (See surfer.nmr.mgh.harvard.edu/fswiki/BuildYourOwnMonteCarlo).
+   (2) --perm for permutation simulation, or (3) --grf for Gaussian Random Field
+   method (analytical). For permution, you must choose the number of simulation
+   iterations (typically 5000-1000); permutation may take a few hours to 
+   complete. GRF is for volumes only.
+
+Now run the command, eg,
+
+mri_glmfit-sim --glmdir glmdir --mczsim 2 abs
+
+or
+
+mri_glmfit-sim --glmdir glmdir --sim perm 1000 3 abs
+
+The output will be in each contrast folder and will be something like
+the following (where csdbase will be "cache" with --mczsim or "perm"
+with --perm or "grf" with --grf)
+
+csdbase.sig.voxel.mgh 
+csdbase.sig.cluster.mgh 
+csdbase.sig.cluster.summary
+csdbase.y.ocn.dat
+csdbase.sig.ocn.mgh
+csdbase.sig.ocn.annot (for surfaces only)
+csdbase.sig.masked.mgh 
+
+csdbase.sig.voxel.mgh - the sig volume corrected for multiple
+comparisons on a voxel-wise basis. The threshhold and sign are
+irrelevant. The value at each voxel is the corrected -log10(p-value)
+for that voxel.
+
+csdbase.sig.cluster.mgh - the sig volume corrected for multiple
+comparisons on a cluster-wise basis. The value at each voxel
+is the -log10(p), where p is the pvalue of the cluster at 
+that voxel. If that voxel does not belong to a cluster, its
+value will be 0. 
+
+csdbase.sig.cluster.summary - this is the cluster summary table 
+(a simple text file).
+
+csdbase.y.ocn.dat - this is a summary of the input (y) over each
+cluster. It has a column for each cluster. Each row is a subject. The
+value is the average of the input (y) in each cluster. This is a
+simple text file.
+
+csdbase.sig.ocn.mgh - output cluster number volume. The value of the
+voxel is the integer cluster number that that voxel belongs to. This
+can be used like a segmentation (eg, to load into tkmedit or
+use for running mri_segstats).
+
+csdbase.sig.ocn.annot (for surfaces only) - this is an annotation
+with the annotation name being the cluster number. This can be
+used like any other annotation (eg, to load into tksurfer or 
+as input for mri_segstats or mris_anatomical_stats).
+
+csdbase.sig.masked.mgh - the original sig volume masked to show
+only clusters.
+
+OTHER OPTIONS
+
+--overwrite
+
+Overwrite existing CSD files when performing simulation. Default 
+is to not overwrite so that you do not clobber CSD files that you
+spent a weekend creating.
+
+--bg njobs
+
+CAREFUL!!!! WARNING!!! Divide the number of simulation interations
+into njobs background jobs. If the simulation jobs die uncleanly for
+some reason, this will never quit because it looks for a file created
+by the simulation job before continuing. If this file is not created,
+then it will keep polling for this file forever. ALSO: if you are not
+running on a computer with multiple nodes, then this will not make it
+run any faster (in fact, it will run slower). You can stop
+backgrounded jobs creating a file called glmdir/csd/poll/StopSim. If
+you are in the Martinos center, do not attempt to use --bg on the
+launchpad computational cluster.
+
+--cwp cwpvalthresh
+--cwpvalthresh cwpvalthresh
+
+Only report clusters that have p < cwpvalthresh. Default is .05. If
+you want to change this after running a permutation simulation, you do
+not need to re-run the entire simulation. Just run mri_glmfit with the
+--no-sim option.
+
+--2spaces
+--3spaces
+
+This adds an addition correction for multiple comparisons for when the
+current correction is part of a larger analysis. For example, if you
+are doing a structural study looking at both the left and the right
+hemispheres, mri_glmfit-sim must be run separately for each
+hemisphere. By default, it will give you p-values corrected only for
+one hemisphere. To correct for both hemispheres use --2spaces. For an
+fMRI study in which you are using both hemispheres and subcortical
+structures, then use --3spaces. The correction applied is Bonferroni
+(N=2 for --2spaces and N=3 for --3spaces).
+
+--no-sim csdbase
+
+Run this if you have already run the permutation stimulation but just
+want to run the correction for multiple comparisons again to change
+the clusterwise threshold. "csdbase" should be "perm"
+
+--seed seed
+
+Set the seed for simulation random number generator. This is mostly
+used for debugging.
+
+--fwhm-override fwhm 
+
+Override fwhm in glmdir with given value. This is mostly
+used for debugging.
+
+--no-cluster-mean
+
+Do not compute means of each subject in each cluster. This computation
+requires the y input file which might not be available in all cases.
+When using this option, put it first on the command-line.
+
+--y yFile
+
+Specify the GLM input (ie, argument to --y in mri_glmfit) rather
+than determining it from the glmdir. This can be handy if the
+y file was deleted at some point.
+
+--perm nsim CFT sign
+
+Perform a permutation simulation to correct for multiple comparisons using 
+nsim iterations, a cluster forming threshold of CFT (in -log10(p) units),
+using the given contrast sign (pos, neg, abs). 
+
+--perm-signflip
+
+Perform sign flipping instead of shuffling. This is required (and
+automatic) when --osgm is used. But it can be helpful when looking
+at any main effect. Eg, if you have two groups, then it is usually 
+the case that you will look at the difference between the groups.
+If you want to look at the mean of the groups, then you would
+want to enable sign flipping.
+
+--perm-resid
+--no-perm-resid
+
+perm-resid is used for non-orthogonal designs (eg, when there is a
+covariate present). It runs the permutation using the residual of the
+analysis as the input rather than the raw data (the residual will have
+the covariate regressed out). You must have originally run mri_glmfit
+with the --eres-save option. This method is an APPROXIMATION known as
+the ter Braak method (ter Braak, 1992) that allows for permutation to
+be run on non-orthogonal designs. See also Winkler, 2014. This is
+turned ON by default. Use --no-perm-resid to turn off.
+
+ter Braak, C.J.F., 1992. Permutation versus bootstrap significance
+tests in multiple regression and ANOVA. In: Jöckel, K.-H., Rothe, G.,
+Sendler, W. (Eds.), Bootstrapping and Related
+Techniques. No. 1989. Springer-Verlag, Berlin, pp. 79–86.
+
+Winkler, et al, 2014. Permutation inference for the general linear
+model. Neuroimage 92 (2014) 381–397.
+
+
+=== Output of 'mri_glmfit-sim -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'mri_glmfit-sim' (no arguments) ===
+
+
+mri_glmfit-sim --help
+
+ --glmdir glmdir
+ --cwp cwthresh : cluster-wise p-value threshold (.05)
+
+Use pre-computed z-based monte-carlo simulations (see mri_mcsim)
+ --mczsim vwthreshold sign
+If you have run your own simulations (mri_mcsim), then specify 
+   --mczsim-dir dir : default is FREESURFER_HOME/average/mult-comp-cor
+   --mczsim-label label : default is cortex
+
+Use permutation simulation
+ --perm nsim CFT sign : permutation simulation with nsim iterations
+   --perm-resid : add this with non-orthogonal designs to run permutation
+      on the residual rather than on the raw data (must have run mri_glmfit
+      with --eres-save)
+ --perm-signflip : use sign flipping instead of shuffling (automatic for --osgm)
+
+Use Gaussian Random Fields (GRF), volumes only
+ --grf vwthreshold sign : -log10(p) and sign (pos, neg, abs)
+
+Correct for multiple spaces
+ --2spaces : additional Bonferroni correction across 2 spaces (eg, lh, rh)
+ --3spaces : additional Bonferroni correction across 3 spaces (eg, lh, rh, mni305)
+
+ --overwrite : delete previous CSDs
+ --bg njobs : divide sim into njobs and put in background
+ --sleep tSleepSec : number of seconds to sleep between background polls 
+
+ --a2009s : use aparc.a2009s instead of aparc for reporting region of vertex max
+ --annot annot : use annot instead of aparc for reporting region of vertex max
+
+ --log logfile : default is csdbase.mri_glmfit-sim.log
+
+ --base csdbase : override csdbase name
+ --no-sim csdbase : do not simulate, only run cluster
+ --seed seed : set simluation seed
+ --fwhm-override fwhm : override fwhm in glmdir:
+ --fwhm-add fwhmAdd : add fwhmAdd to the estimated fwhm before addressing table:
+ --uniform min max : use uniform PDF instead of gaussian:
+ --no-out-annot : do not output a cluster annotation
+ --no-cluster-mean : do not compute means of each subject in each cluster (was --no-y)
+ --y yFile : use yFile instead of determining yFile from glmdir
+ --centroid : report the coordinates/annotation of the centroid instead of max
+ --spatial-sum : compute the sum over voxels in the cluster rather than
+   the average when creating the y.ocn file. This is good for when the input is area or volume
+ --help
+

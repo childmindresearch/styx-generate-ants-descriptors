@@ -1,0 +1,33 @@
+
+=== Output of 'label_subject --help' ===
+
+if ( -e nu == 0 ) then
+set NU=nu.mgz
+if ( -e /usr/local/freesurfer/subjects/--help/mri/orig.mgz != 0 ) then
+set ORIG = orig
+endif
+mri_convert /usr/local/freesurfer/subjects/--help/mri/orig /tmp/nu97740.mnc
+mri_convert /usr/local/freesurfer/subjects/--help/mri/orig /tmp/nu97740.mnc 
+ERROR: file /usr/local/freesurfer/subjects/--help/mri/orig does not exist
+
+=== Output of 'label_subject -help' ===
+
+if ( -e nu == 0 ) then
+set NU=nu.mgz
+if ( -e /usr/local/freesurfer/subjects/-help/mri/orig.mgz != 0 ) then
+set ORIG = orig
+endif
+mri_convert /usr/local/freesurfer/subjects/-help/mri/orig /tmp/nu97860.mnc
+mri_convert /usr/local/freesurfer/subjects/-help/mri/orig /tmp/nu97860.mnc 
+ERROR: file /usr/local/freesurfer/subjects/-help/mri/orig does not exist
+
+=== Output of 'label_subject' (no arguments) ===
+
+if ( -e nu == 0 ) then
+set NU=nu.mgz
+if ( -e /usr/local/freesurfer/subjects//mri/orig.mgz != 0 ) then
+set ORIG = orig
+endif
+mri_convert /usr/local/freesurfer/subjects//mri/orig /tmp/nu97980.mnc
+mri_convert /usr/local/freesurfer/subjects//mri/orig /tmp/nu97980.mnc 
+ERROR: file /usr/local/freesurfer/subjects//mri/orig does not exist

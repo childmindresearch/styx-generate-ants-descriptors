@@ -1,0 +1,12 @@
+
+=== Output of 'old_betall --help' ===
+
+Usage: betall <t1_fileroot> <t2_fileroot>
+
+=== Output of 'old_betall -help' ===
+
+Usage: betall <t1_fileroot> <t2_fileroot>
+
+=== Output of 'old_betall' (no arguments) ===
+
+Usage: betall <t1_fileroot> <t2_fileroot>

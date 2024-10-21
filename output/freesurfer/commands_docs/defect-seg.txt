@@ -1,0 +1,168 @@
+
+=== Output of 'defect-seg --help' ===
+
+
+defect-seg
+   --s subject
+   --lh-only
+   --rh-only
+
+   --version : print version and exit
+   --help    : print help and exit
+
+
+This program creates some files that allows the user to visualize
+and evaluate the surface defects that were automatically detected
+and fixed by the topology correction program.
+
+Creates:
+  scripts/?h.defects.summary
+  mri/surface.defects.mgz
+  surf/?h.defect_labels.fix.mgz
+  surf/?h.defect_labels.fix.bin.mgz
+  label/?h.defects.nofix.annot
+  label/?h.defects.fix.annot
+  stats/?h.defects.stats
+
+# ----------------------------------------------------------
+# List of defects, their numberic ID, and number of vertices,
+# something like below
+less scripts/lh.defects.summary
+
+# List of defects corrected by automatic topology fixer
+# subject 001_2
+# hemi    lh
+# /space/sleep/2/users/cephalon/subjects/
+# DefectNo Vertex      NVertices
+     1     133379          36
+     2     130681          32
+     3     125634          65
+
+# ----------------------------------------------------------
+# See summary of defects:
+less stats/lh.defects.stats
+# This gives the area and average thickness over all defects
+# asegstats2table can be run on this file to get a table
+# of defects for multiple subjects
+# asegstats2table --stats=lh.defect.stats -t group.lh.defect.dat ...
+# Note: the output will say that it is "volume" but it is
+# really "Area_2mm", ie, area in square mm
+
+# ----------------------------------------------------------
+# Visualize defects as a segmentation with left hemi surfaces
+tkmedit subject orig.mgz -lh-defects
+# The lh.orig.nofix is yellow 
+# The lh.white is green (aux surface)
+# Defects show up as purple segmentations 
+#   (defect number in segmentation name)
+# wm.mgz automatically loaded as aux volume
+
+# Visualize defects as a segmentation with right hemi surfaces
+tkmedit subject orig.mgz -rh-defects
+
+# ----------------------------------------------------------
+# Visualize defects as an annotation
+tksurfer 001_1 lh smoothwm.nofix -annot defects.nofix.annot
+tksurfer 001_1 lh white.preaparc -annot defects.fix.annot
+# Defects show up as purple annotation
+#   (defect number in segmentation name)
+
+# ----------------------------------------------------------
+# Analyze defects across subjects
+mris_preproc --out lh.defects.mgh --target fsaverage --hemi lh \
+  --meas defect_labels.fix.bin.mgz --fsgd your.fsgd
+mri_glmfit --y lh.defects.mgh --surf fsaverage lh --no-prune \
+  --glmdir glm.lh.sm05 --fwhm 5 --fsgd your.fsgd
+tksurfer fsaverage lh inflated -annot aparc.annot \
+  -ov glm.lh.sm05/osgm/sig.mgh -t lh.defects.mgh
+
+
+=== Output of 'defect-seg -help' ===
+
+
+defect-seg
+   --s subject
+   --lh-only
+   --rh-only
+
+   --version : print version and exit
+   --help    : print help and exit
+
+
+This program creates some files that allows the user to visualize
+and evaluate the surface defects that were automatically detected
+and fixed by the topology correction program.
+
+Creates:
+  scripts/?h.defects.summary
+  mri/surface.defects.mgz
+  surf/?h.defect_labels.fix.mgz
+  surf/?h.defect_labels.fix.bin.mgz
+  label/?h.defects.nofix.annot
+  label/?h.defects.fix.annot
+  stats/?h.defects.stats
+
+# ----------------------------------------------------------
+# List of defects, their numberic ID, and number of vertices,
+# something like below
+less scripts/lh.defects.summary
+
+# List of defects corrected by automatic topology fixer
+# subject 001_2
+# hemi    lh
+# /space/sleep/2/users/cephalon/subjects/
+# DefectNo Vertex      NVertices
+     1     133379          36
+     2     130681          32
+     3     125634          65
+
+# ----------------------------------------------------------
+# See summary of defects:
+less stats/lh.defects.stats
+# This gives the area and average thickness over all defects
+# asegstats2table can be run on this file to get a table
+# of defects for multiple subjects
+# asegstats2table --stats=lh.defect.stats -t group.lh.defect.dat ...
+# Note: the output will say that it is "volume" but it is
+# really "Area_2mm", ie, area in square mm
+
+# ----------------------------------------------------------
+# Visualize defects as a segmentation with left hemi surfaces
+tkmedit subject orig.mgz -lh-defects
+# The lh.orig.nofix is yellow 
+# The lh.white is green (aux surface)
+# Defects show up as purple segmentations 
+#   (defect number in segmentation name)
+# wm.mgz automatically loaded as aux volume
+
+# Visualize defects as a segmentation with right hemi surfaces
+tkmedit subject orig.mgz -rh-defects
+
+# ----------------------------------------------------------
+# Visualize defects as an annotation
+tksurfer 001_1 lh smoothwm.nofix -annot defects.nofix.annot
+tksurfer 001_1 lh white.preaparc -annot defects.fix.annot
+# Defects show up as purple annotation
+#   (defect number in segmentation name)
+
+# ----------------------------------------------------------
+# Analyze defects across subjects
+mris_preproc --out lh.defects.mgh --target fsaverage --hemi lh \
+  --meas defect_labels.fix.bin.mgz --fsgd your.fsgd
+mri_glmfit --y lh.defects.mgh --surf fsaverage lh --no-prune \
+  --glmdir glm.lh.sm05 --fwhm 5 --fsgd your.fsgd
+tksurfer fsaverage lh inflated -annot aparc.annot \
+  -ov glm.lh.sm05/osgm/sig.mgh -t lh.defects.mgh
+
+
+=== Output of 'defect-seg' (no arguments) ===
+
+
+defect-seg
+   --s subject
+   --lh-only
+   --rh-only
+
+   --version : print version and exit
+   --help    : print help and exit
+

@@ -1,0 +1,258 @@
+
+=== Output of 'mrisp_write --help' ===
+
+				Help
+
+NAME
+	mrisp_write
+
+SYNOPSIS
+	mrisp_write [options] <input_surface> <input overlay> <output name>
+
+DESCRIPTION
+	This program is useful for taking a surface
+		overlay on a sphere and writing in into spherical
+		coordinates. Typically ?h.sphere.reg would be the input (or
+		possibly ?h.sphere)
+
+POSITIONAL ARGUMENTS
+	<input surfacee>
+		Full path to input surface.
+
+	<overlay_fname>
+		Full path to the overlay to map
+
+	<out_fname>
+		Output file name. Can be full path to a .tif or
+		     .mgz file
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-SDIR <subjects_dir>
+		Set SUBJECTS_DIR. Default: use environment variable/
+
+	-coords <which_vertices>
+		Treat overlay as a surface and write it into a 3 frame 
+		parameterization
+
+	-A <navgs>
+		Average curvature patterns navgs times
+
+	-CORR <label_file_name>
+		Use the overlay to compute the correlation matrix within the 
+		specified label
+
+	-SCALE <scale factor>
+		By default the spherical map is 256x512. If specified, scale 
+		factor is applied to the size and hence will increase or 
+		decrease the resolution of the spherical map (e.g. -scale 0.5 
+		will make it 128x256) 
+
+	-N
+		Normalize curvature by variance.
+
+	-?,-U
+		Print usage
+
+	--all-info, -all-info
+		Prints BIRN-standard program information
+
+	--help
+		Prints help message
+
+	-V <vertex_num (int)>
+		Invoke diagnostics for vertex number vertex_num
+
+	--version, -version
+		Prints version information
+
+	-W
+		Write some diagnostics (DIAG_WRITE)
+
+OUTPUTS
+	<output name>
+		the output specified as an argument. This is a file
+		   containing a surface-worth of per-vertex values, saved in
+		   spherical coordinates. 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_make_template
+
+
+
+=== Output of 'mrisp_write -help' ===
+
+				Help
+
+NAME
+	mrisp_write
+
+SYNOPSIS
+	mrisp_write [options] <input_surface> <input overlay> <output name>
+
+DESCRIPTION
+	This program is useful for taking a surface
+		overlay on a sphere and writing in into spherical
+		coordinates. Typically ?h.sphere.reg would be the input (or
+		possibly ?h.sphere)
+
+POSITIONAL ARGUMENTS
+	<input surfacee>
+		Full path to input surface.
+
+	<overlay_fname>
+		Full path to the overlay to map
+
+	<out_fname>
+		Output file name. Can be full path to a .tif or
+		     .mgz file
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-SDIR <subjects_dir>
+		Set SUBJECTS_DIR. Default: use environment variable/
+
+	-coords <which_vertices>
+		Treat overlay as a surface and write it into a 3 frame 
+		parameterization
+
+	-A <navgs>
+		Average curvature patterns navgs times
+
+	-CORR <label_file_name>
+		Use the overlay to compute the correlation matrix within the 
+		specified label
+
+	-SCALE <scale factor>
+		By default the spherical map is 256x512. If specified, scale 
+		factor is applied to the size and hence will increase or 
+		decrease the resolution of the spherical map (e.g. -scale 0.5 
+		will make it 128x256) 
+
+	-N
+		Normalize curvature by variance.
+
+	-?,-U
+		Print usage
+
+	--all-info, -all-info
+		Prints BIRN-standard program information
+
+	--help
+		Prints help message
+
+	-V <vertex_num (int)>
+		Invoke diagnostics for vertex number vertex_num
+
+	--version, -version
+		Prints version information
+
+	-W
+		Write some diagnostics (DIAG_WRITE)
+
+OUTPUTS
+	<output name>
+		the output specified as an argument. This is a file
+		   containing a surface-worth of per-vertex values, saved in
+		   spherical coordinates. 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_make_template
+
+
+
+=== Output of 'mrisp_write' (no arguments) ===
+
+				Help
+
+NAME
+	mrisp_write
+
+SYNOPSIS
+	mrisp_write [options] <input_surface> <input overlay> <output name>
+
+DESCRIPTION
+	This program is useful for taking a surface
+		overlay on a sphere and writing in into spherical
+		coordinates. Typically ?h.sphere.reg would be the input (or
+		possibly ?h.sphere)
+
+POSITIONAL ARGUMENTS
+	<input surfacee>
+		Full path to input surface.
+
+	<overlay_fname>
+		Full path to the overlay to map
+
+	<out_fname>
+		Output file name. Can be full path to a .tif or
+		     .mgz file
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-SDIR <subjects_dir>
+		Set SUBJECTS_DIR. Default: use environment variable/
+
+	-coords <which_vertices>
+		Treat overlay as a surface and write it into a 3 frame 
+		parameterization
+
+	-A <navgs>
+		Average curvature patterns navgs times
+
+	-CORR <label_file_name>
+		Use the overlay to compute the correlation matrix within the 
+		specified label
+
+	-SCALE <scale factor>
+		By default the spherical map is 256x512. If specified, scale 
+		factor is applied to the size and hence will increase or 
+		decrease the resolution of the spherical map (e.g. -scale 0.5 
+		will make it 128x256) 
+
+	-N
+		Normalize curvature by variance.
+
+	-?,-U
+		Print usage
+
+	--all-info, -all-info
+		Prints BIRN-standard program information
+
+	--help
+		Prints help message
+
+	-V <vertex_num (int)>
+		Invoke diagnostics for vertex number vertex_num
+
+	--version, -version
+		Prints version information
+
+	-W
+		Write some diagnostics (DIAG_WRITE)
+
+OUTPUTS
+	<output name>
+		the output specified as an argument. This is a file
+		   containing a surface-worth of per-vertex values, saved in
+		   spherical coordinates. 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_make_template
+
+

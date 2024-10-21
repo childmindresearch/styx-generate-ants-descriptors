@@ -1,0 +1,138 @@
+
+=== Output of 'autoaq --help' ===
+
+/usr/local/fsl/bin/autoaq: illegal option -- -
+/usr/local/fsl/bin/autoaq: illegal option -- h
+/usr/local/fsl/bin/autoaq: illegal option -- e
+/usr/local/fsl/bin/autoaq: illegal option -- l
+/usr/local/fsl/bin/autoaq: line 69: ${OUT}: ambiguous redirect
+/usr/local/fsl/bin/autoaq: line 76: ${NEWOUT}: ambiguous redirect
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+cluster 
+Copyright(c) 2000-2013, University of Oxford (Mark Jenkinson, Matthew Webster)
+
+Usage: 
+cluster --in=<filename> --thresh=<value> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in,-z,--zstat	filename of input volume
+	-t,--thresh,--zthresh	threshold for input volume
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--oindex	filename for output of cluster index (in size order)
+	--othresh	filename for output of thresholded image
+	--olmax	filename for output of local maxima text file
+	--olmaxim	filename for output of local maxima volume
+	--osize	filename for output of size image
+	--omax	filename for output of max image
+	--omean	filename for output of mean image
+	--opvals	filename for image output of log pvals
+	-p,--pthresh	p-threshold
+	--peakdist	minimum distance between local maxima/minima, in mm (default 0)
+	-c,--cope	filename of input cope volume
+	--volume	number of voxels in the mask
+	-d,--dlh	smoothness estimate = sqrt(det(Lambda))
+	-r,--resels	Size of one resel in voxel units
+	--fractional	interprets the threshold as a fraction of the robust range
+	--connectivity	the connectivity of voxels (default 26)
+	--mm	use mm, not voxel, coordinates
+	--min	find minima instead of maxima
+	--no_table	suppresses printing of the table info
+	--minclustersize	prints out minimum significant cluster size
+	--minextent	do not report clusters with less than extent voxels
+	-x,--xfm	filename for Linear: input->standard-space transform. Non-linear: input->highres transform
+	--stdvol	filename for standard-space volume
+	--scalarname	give name of scalars (e.g. Z) - to be used in printing output tables
+	-n,--num	no of local maxima to report
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--warpvol	filename for warpfield
+	--voxthresh	voxel-wise thresholding (corrected)
+	--voxuncthresh	voxel-wise uncorrected thresholding
+	--empiricalNull	Use a (1-p) input image to calculate p-values and cluster-map
+
+
+
+--in: Missing non-optional argument!
+No clusters found after thresholding, exiting.
+
+=== Output of 'autoaq -help' ===
+
+/usr/local/fsl/bin/autoaq: illegal option -- h
+/usr/local/fsl/bin/autoaq: illegal option -- e
+/usr/local/fsl/bin/autoaq: illegal option -- l
+/usr/local/fsl/bin/autoaq: line 69: ${OUT}: ambiguous redirect
+/usr/local/fsl/bin/autoaq: line 76: ${NEWOUT}: ambiguous redirect
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+cluster 
+Copyright(c) 2000-2013, University of Oxford (Mark Jenkinson, Matthew Webster)
+
+Usage: 
+cluster --in=<filename> --thresh=<value> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in,-z,--zstat	filename of input volume
+	-t,--thresh,--zthresh	threshold for input volume
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--oindex	filename for output of cluster index (in size order)
+	--othresh	filename for output of thresholded image
+	--olmax	filename for output of local maxima text file
+	--olmaxim	filename for output of local maxima volume
+	--osize	filename for output of size image
+	--omax	filename for output of max image
+	--omean	filename for output of mean image
+	--opvals	filename for image output of log pvals
+	-p,--pthresh	p-threshold
+	--peakdist	minimum distance between local maxima/minima, in mm (default 0)
+	-c,--cope	filename of input cope volume
+	--volume	number of voxels in the mask
+	-d,--dlh	smoothness estimate = sqrt(det(Lambda))
+	-r,--resels	Size of one resel in voxel units
+	--fractional	interprets the threshold as a fraction of the robust range
+	--connectivity	the connectivity of voxels (default 26)
+	--mm	use mm, not voxel, coordinates
+	--min	find minima instead of maxima
+	--no_table	suppresses printing of the table info
+	--minclustersize	prints out minimum significant cluster size
+	--minextent	do not report clusters with less than extent voxels
+	-x,--xfm	filename for Linear: input->standard-space transform. Non-linear: input->highres transform
+	--stdvol	filename for standard-space volume
+	--scalarname	give name of scalars (e.g. Z) - to be used in printing output tables
+	-n,--num	no of local maxima to report
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--warpvol	filename for warpfield
+	--voxthresh	voxel-wise thresholding (corrected)
+	--voxuncthresh	voxel-wise uncorrected thresholding
+	--empiricalNull	Use a (1-p) input image to calculate p-values and cluster-map
+
+
+
+--in: Missing non-optional argument!
+No clusters found after thresholding, exiting.
+
+=== Output of 'autoaq' (no arguments) ===
+
+Generate a report from the results of FSL's randomise showing the
+structures to which they belong, using the names from a given atlas.
+In other words automatically make an atlas query.
+
+Usage:
+autoaq -i <input image> -a "<atlas name>" -t <threshold> -o <output.txt>
+
+All arguments above are compulsory.
+
+There are two optional arguments:
+-u : This can be used to append to the output file instead of creating
+     a new one at every run. This is useful to use autoaq inside
+     for-loops to create a single large report.
+-p : By default, the coordinates used to name structures are those of the
+     center of mass. The option -p uses instead the coordinates of the
+     peak, i.e., the highest value in the cluster.
+
+atlas names are the long form used by fslview, e.g. "MNI Structural Atlas"
+
+the input image needs to be in standard space

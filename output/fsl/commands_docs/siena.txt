@@ -1,0 +1,54 @@
+
+=== Output of 'siena --help' ===
+
+
+Usage: siena <input1> <input2> [options]
+
+  -o <output-dir>       : set output directory (default output is <input1>_to_<input2>_siena)
+  -d                    : debug (don't delete intermediate files)
+  -B "betopts"          : options to pass to BET brain extraction (inside double-quotes), e.g. -B "-f 0.3"
+  -2                    : two-class segmentation (don't segment grey and white matter separately)
+  -t2                   : T2-weighted input image (default T1-weighted)
+  -m                    : use standard-space masking as well as BET
+  -t <t>                : ignore from t (mm) upwards in MNI152/Talairach space
+  -b <b>                : ignore from b (mm) downwards in MNI152/Talairach space (b should probably be negative)
+  -S "sienadiffopts"    : options to pass to siena_diff timepoint differencing (inside double-quotes), e.g. -S "-s -i 20"
+  -V                    : run ventricle analysis (VIENA)
+  -v <mask image>       : optional user-supplied ventricle mask (default is /usr/local/fsl/data/standard/MNI152_T1_2mm_VentricleMask)
+
+
+=== Output of 'siena -help' ===
+
+
+Usage: siena <input1> <input2> [options]
+
+  -o <output-dir>       : set output directory (default output is <input1>_to_<input2>_siena)
+  -d                    : debug (don't delete intermediate files)
+  -B "betopts"          : options to pass to BET brain extraction (inside double-quotes), e.g. -B "-f 0.3"
+  -2                    : two-class segmentation (don't segment grey and white matter separately)
+  -t2                   : T2-weighted input image (default T1-weighted)
+  -m                    : use standard-space masking as well as BET
+  -t <t>                : ignore from t (mm) upwards in MNI152/Talairach space
+  -b <b>                : ignore from b (mm) downwards in MNI152/Talairach space (b should probably be negative)
+  -S "sienadiffopts"    : options to pass to siena_diff timepoint differencing (inside double-quotes), e.g. -S "-s -i 20"
+  -V                    : run ventricle analysis (VIENA)
+  -v <mask image>       : optional user-supplied ventricle mask (default is /usr/local/fsl/data/standard/MNI152_T1_2mm_VentricleMask)
+
+
+=== Output of 'siena' (no arguments) ===
+
+
+Usage: siena <input1> <input2> [options]
+
+  -o <output-dir>       : set output directory (default output is <input1>_to_<input2>_siena)
+  -d                    : debug (don't delete intermediate files)
+  -B "betopts"          : options to pass to BET brain extraction (inside double-quotes), e.g. -B "-f 0.3"
+  -2                    : two-class segmentation (don't segment grey and white matter separately)
+  -t2                   : T2-weighted input image (default T1-weighted)
+  -m                    : use standard-space masking as well as BET
+  -t <t>                : ignore from t (mm) upwards in MNI152/Talairach space
+  -b <b>                : ignore from b (mm) downwards in MNI152/Talairach space (b should probably be negative)
+  -S "sienadiffopts"    : options to pass to siena_diff timepoint differencing (inside double-quotes), e.g. -S "-s -i 20"
+  -V                    : run ventricle analysis (VIENA)
+  -v <mask image>       : optional user-supplied ventricle mask (default is /usr/local/fsl/data/standard/MNI152_T1_2mm_VentricleMask)
+

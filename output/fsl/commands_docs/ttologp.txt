@@ -1,0 +1,27 @@
+
+=== Output of 'ttologp --help' ===
+
+Lacking argument to option --help
+Vars filename not found
+
+Usage: /usr/local/fsl/bin/ttologp [options] <varsfile> <cbsfile> <dof> 
+  Available options are:
+        -logpout <outputvol>            (default is logps)
+        -help
+
+
+=== Output of 'ttologp -help' ===
+
+Usage: /usr/local/fsl/bin/ttologp [options] <varsfile> <cbsfile> <dof> 
+  Available options are:
+        -logpout <outputvol>            (default is logps)
+        -help
+
+
+=== Output of 'ttologp' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/ttologp [options] <varsfile> <cbsfile> <dof> 
+  Available options are:
+        -logpout <outputvol>            (default is logps)
+        -help
+

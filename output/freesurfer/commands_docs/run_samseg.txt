@@ -1,0 +1,124 @@
+
+=== Output of 'run_samseg --help' ===
+
+usage: run_samseg [-h] -o DIR -i FILE [FILE ...] [-m MODE [MODE ...]]
+                  [--threads THREADS] [--reg-only] [-r FILE] [--init-reg FILE]
+                  [-a DIR] [--gmm FILE] [--ignore-unknown] [--options FILE]
+                  [--pallidum-separate] [--mesh-stiffness MESH_STIFFNESS]
+                  [--smooth-wm-cortex-priors SMOOTH_WM_CORTEX_PRIORS]
+                  [--bias-field-smoothing-kernel BIAS_FIELD_SMOOTHING_KERNEL]
+                  [--lesion] [--threshold THRESHOLD] [--samples SAMPLES]
+                  [--burnin BURNIN]
+                  [--lesion-pseudo-samples LESION_PSEUDO_SAMPLES LESION_PSEUDO_SAMPLES]
+                  [--lesion-rho LESION_RHO]
+                  [--lesion-mask-structure LESION_MASK_STRUCTURE]
+                  [--lesion-mask-pattern LESION_MASK_PATTERN [LESION_MASK_PATTERN ...]]
+                  [--random-seed RANDOM_SEED]
+                  [--dissection-photo DISSECTION_PHOTO] [--history]
+                  [--save-posteriors [SAVE_POSTERIORS [SAVE_POSTERIORS ...]]]
+                  [--save-probabilities] [--showfigs] [--save-mesh]
+                  [--save-warp] [--movie]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o DIR, --output DIR  Output directory.
+  -i FILE [FILE ...], --input FILE [FILE ...]
+                        Input image(s).
+  -m MODE [MODE ...], --mode MODE [MODE ...]
+                        Output basenames for the input image mode.
+  --threads THREADS     Number of threads to use. Defaults to current
+                        OMP_NUM_THREADS or 1.
+  --reg-only            Only perform initial affine registration.
+  -r FILE, --reg FILE   Skip initial affine registration and read transform
+                        from file.
+  --init-reg FILE       Initial affine registration.
+  -a DIR, --atlas DIR   Point to an alternative atlas directory.
+  --gmm FILE            Point to an alternative GMM file.
+  --ignore-unknown      Ignore final priors corresponding to unknown class.
+  --options FILE        Override advanced options via a json file.
+  --pallidum-separate   Move pallidum outside of global white matter class.
+                        Use this flag when T2/flair is used.
+  --mesh-stiffness MESH_STIFFNESS
+                        Override mesh stiffness.
+  --smooth-wm-cortex-priors SMOOTH_WM_CORTEX_PRIORS
+                        Sigma value to smooth the WM and cortex atlas priors.
+  --bias-field-smoothing-kernel BIAS_FIELD_SMOOTHING_KERNEL
+                        Distance in mm of sinc function center to first zero
+                        crossing.
+  --lesion              Enable lesion segmentation (requires tensorflow).
+  --threshold THRESHOLD
+                        Lesion threshold for final segmentation. Lesion
+                        segmentation must be enabled.
+  --samples SAMPLES     Number of samples for lesion segmentation. Lesion
+                        segmentation must be enabled.
+  --burnin BURNIN       Number of burn-in samples for lesion segmentation.
+                        Lesion segmentation must be enabled.
+  --lesion-pseudo-samples LESION_PSEUDO_SAMPLES LESION_PSEUDO_SAMPLES
+                        Lesion pseudo samples mean and variance.
+  --lesion-rho LESION_RHO
+                        Lesion ratio.
+  --lesion-mask-structure LESION_MASK_STRUCTURE
+                        Intensity mask brain structure. Lesion segmentation
+                        must be enabled.
+  --lesion-mask-pattern LESION_MASK_PATTERN [LESION_MASK_PATTERN ...]
+                        Lesion mask list (set value for each input volume): -1
+                        below lesion mask structure mean, +1 above, 0 no mask.
+                        Lesion segmentation must be enabled.
+  --random-seed RANDOM_SEED
+                        Random seed.
+  --dissection-photo DISSECTION_PHOTO
+                        Use this flag for 3D reconstructed photos, and specify
+                        hemispheres that are present in the volumes: left,
+                        right, or both
+  --history             Save history.
+  --save-posteriors [SAVE_POSTERIORS [SAVE_POSTERIORS ...]]
+                        Save posterior volumes to the "posteriors"
+                        subdirectory.
+  --save-probabilities  Save final modal class probabilities to
+                        "probabilities" subdirectory.
+  --showfigs            Show figures during run.
+  --save-mesh           Save the final mesh in template space.
+  --save-warp           Save the image->template warp field.
+  --movie               Show history as arrow key controlled time sequence.
+
+=== Output of 'run_samseg -help' ===
+
+usage: run_samseg [-h] -o DIR -i FILE [FILE ...] [-m MODE [MODE ...]]
+                  [--threads THREADS] [--reg-only] [-r FILE] [--init-reg FILE]
+                  [-a DIR] [--gmm FILE] [--ignore-unknown] [--options FILE]
+                  [--pallidum-separate] [--mesh-stiffness MESH_STIFFNESS]
+                  [--smooth-wm-cortex-priors SMOOTH_WM_CORTEX_PRIORS]
+                  [--bias-field-smoothing-kernel BIAS_FIELD_SMOOTHING_KERNEL]
+                  [--lesion] [--threshold THRESHOLD] [--samples SAMPLES]
+                  [--burnin BURNIN]
+                  [--lesion-pseudo-samples LESION_PSEUDO_SAMPLES LESION_PSEUDO_SAMPLES]
+                  [--lesion-rho LESION_RHO]
+                  [--lesion-mask-structure LESION_MASK_STRUCTURE]
+                  [--lesion-mask-pattern LESION_MASK_PATTERN [LESION_MASK_PATTERN ...]]
+                  [--random-seed RANDOM_SEED]
+                  [--dissection-photo DISSECTION_PHOTO] [--history]
+                  [--save-posteriors [SAVE_POSTERIORS [SAVE_POSTERIORS ...]]]
+                  [--save-probabilities] [--showfigs] [--save-mesh]
+                  [--save-warp] [--movie]
+run_samseg: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'run_samseg' (no arguments) ===
+
+usage: run_samseg [-h] -o DIR -i FILE [FILE ...] [-m MODE [MODE ...]]
+                  [--threads THREADS] [--reg-only] [-r FILE] [--init-reg FILE]
+                  [-a DIR] [--gmm FILE] [--ignore-unknown] [--options FILE]
+                  [--pallidum-separate] [--mesh-stiffness MESH_STIFFNESS]
+                  [--smooth-wm-cortex-priors SMOOTH_WM_CORTEX_PRIORS]
+                  [--bias-field-smoothing-kernel BIAS_FIELD_SMOOTHING_KERNEL]
+                  [--lesion] [--threshold THRESHOLD] [--samples SAMPLES]
+                  [--burnin BURNIN]
+                  [--lesion-pseudo-samples LESION_PSEUDO_SAMPLES LESION_PSEUDO_SAMPLES]
+                  [--lesion-rho LESION_RHO]
+                  [--lesion-mask-structure LESION_MASK_STRUCTURE]
+                  [--lesion-mask-pattern LESION_MASK_PATTERN [LESION_MASK_PATTERN ...]]
+                  [--random-seed RANDOM_SEED]
+                  [--dissection-photo DISSECTION_PHOTO] [--history]
+                  [--save-posteriors [SAVE_POSTERIORS [SAVE_POSTERIORS ...]]]
+                  [--save-probabilities] [--showfigs] [--save-mesh]
+                  [--save-warp] [--movie]
+run_samseg: error: the following arguments are required: -o/--output, -i/--input

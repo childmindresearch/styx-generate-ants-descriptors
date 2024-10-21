@@ -1,0 +1,21 @@
+
+=== Output of 'anatomiCutsUtils --help' ===
+
+Traceback (most recent call last):
+  File "/usr/local/freesurfer/python/scripts/anatomiCutsUtils", line 20, in <module>
+    import graph_tools as gt
+ModuleNotFoundError: No module named 'graph_tools'
+
+=== Output of 'anatomiCutsUtils -help' ===
+
+Traceback (most recent call last):
+  File "/usr/local/freesurfer/python/scripts/anatomiCutsUtils", line 20, in <module>
+    import graph_tools as gt
+ModuleNotFoundError: No module named 'graph_tools'
+
+=== Output of 'anatomiCutsUtils' (no arguments) ===
+
+Traceback (most recent call last):
+  File "/usr/local/freesurfer/python/scripts/anatomiCutsUtils", line 20, in <module>
+    import graph_tools as gt
+ModuleNotFoundError: No module named 'graph_tools'

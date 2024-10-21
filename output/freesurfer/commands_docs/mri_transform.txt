@@ -1,0 +1,20 @@
+
+=== Output of 'mri_transform --help' ===
+
+usage: /usr/local/freesurfer/bin/mri_transform [options] <input volume> <lta file> <output file>
+
+This program will apply a linear transform to mri volume and write out the result.  The output volume is by default 256^3 1mm^3 isotropic, or you can specify an -out_like volume.  I think there's a bug in -i behavior if you're specifying multiple transforms.
+-out_like <reference volume> - set out_volume parameters
+-I                           - invert transform coordinates
+
+=== Output of 'mri_transform -help' ===
+
+unknown option -help
+
+=== Output of 'mri_transform' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_transform [options] <input volume> <lta file> <output file>
+
+This program will apply a linear transform to mri volume and write out the result.  The output volume is by default 256^3 1mm^3 isotropic, or you can specify an -out_like volume.  I think there's a bug in -i behavior if you're specifying multiple transforms.
+-out_like <reference volume> - set out_volume parameters
+-I                           - invert transform coordinates

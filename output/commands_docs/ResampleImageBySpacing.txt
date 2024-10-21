@@ -1,4 +1,0 @@
-Usage: 
-ResampleImageBySpacing  ImageDimension inputImageFile  outputImageFile outxspc outyspc {outzspacing}  {dosmooth?}  {addvox} {nn-interp?}
- addvox pads each dimension by addvox 
-  

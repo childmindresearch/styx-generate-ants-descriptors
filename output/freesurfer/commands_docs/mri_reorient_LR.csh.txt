@@ -1,0 +1,37 @@
+
+=== Output of 'mri_reorient_LR.csh --help' ===
+
+USAGE: mri_reorient_LR
+
+Required Arguments:
+   --i vol : input file to be reoriented
+   --o vol : reoriented input file
+Optional Arguments
+
+   --disp       : display registration result using FreeView (def = 1)
+   --clean      : delete all aux and reg files (def = 0)
+   --outreg     : write out the registration file that is applied to the reoriented input file (fslmat or lta)
+   --version    : print version and exit
+   --help       : print help and exit
+
+
+=== Output of 'mri_reorient_LR.csh -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'mri_reorient_LR.csh' (no arguments) ===
+
+USAGE: mri_reorient_LR
+
+Required Arguments:
+   --i vol : input file to be reoriented
+   --o vol : reoriented input file
+Optional Arguments
+
+   --disp       : display registration result using FreeView (def = 1)
+   --clean      : delete all aux and reg files (def = 0)
+   --outreg     : write out the registration file that is applied to the reoriented input file (fslmat or lta)
+   --version    : print version and exit
+   --help       : print help and exit
+

@@ -1,0 +1,149 @@
+
+=== Output of 'long_submit_postproc --help' ===
+
+Usage: 
+
+SUMMARY
+
+Submits jobs to the cluster (either seychelles or launchpad at NMR) for 
+longitudinal post-processing. 
+The script will run based on a qdec table (long format) and will wait
+with submission of base or long until necessary files are available.
+It can call any other longitudinal processing script that takes a
+--qdec flag and will submit a call to that program with the passed
+parameters for each individual fsid-base in the qdec table separately.
+
+
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+
+
+
+Options:
+  -h, --help     show this help message and exit
+  --qdec=QDEC    (REQUIRED) qdec table file specifying the subjects and time
+                 points
+  --prog=PROG    (REQUIRED) longitudinal script to call
+  --flags=FLAGS  parameters (without --qdec) to pass to prog (using quotes
+                 "...")
+  --dir=DIR      directory to store sub-tables and command files
+  --simulate     do not submit anything, just print commands
+  --pause=PAUSE  pause in sec between submissions (default: 13)
+  --max=MAX      max num of jobs of this user (default: 100)
+  --queue=QUEUE  special queue to submit
+
+=== Output of 'long_submit_postproc -help' ===
+
+Usage: 
+
+SUMMARY
+
+Submits jobs to the cluster (either seychelles or launchpad at NMR) for 
+longitudinal post-processing. 
+The script will run based on a qdec table (long format) and will wait
+with submission of base or long until necessary files are available.
+It can call any other longitudinal processing script that takes a
+--qdec flag and will submit a call to that program with the passed
+parameters for each individual fsid-base in the qdec table separately.
+
+
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+
+
+
+Options:
+  -h, --help     show this help message and exit
+  --qdec=QDEC    (REQUIRED) qdec table file specifying the subjects and time
+                 points
+  --prog=PROG    (REQUIRED) longitudinal script to call
+  --flags=FLAGS  parameters (without --qdec) to pass to prog (using quotes
+                 "...")
+  --dir=DIR      directory to store sub-tables and command files
+  --simulate     do not submit anything, just print commands
+  --pause=PAUSE  pause in sec between submissions (default: 13)
+  --max=MAX      max num of jobs of this user (default: 100)
+  --queue=QUEUE  special queue to submit
+
+=== Output of 'long_submit_postproc' (no arguments) ===
+
+Usage: 
+
+SUMMARY
+
+Submits jobs to the cluster (either seychelles or launchpad at NMR) for 
+longitudinal post-processing. 
+The script will run based on a qdec table (long format) and will wait
+with submission of base or long until necessary files are available.
+It can call any other longitudinal processing script that takes a
+--qdec flag and will submit a call to that program with the passed
+parameters for each individual fsid-base in the qdec table separately.
+
+
+REFERENCES
+==========
+
+Highly Accurate Inverse Consistent Registration: A Robust Approach,
+  M. Reuter, H.D. Rosas, B. Fischl. NeuroImage 53(4), 1181-1196, 2010.
+  http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+  http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+Avoiding Asymmetry-Induced Bias in Longitudinal Image Processing,
+  M. Reuter, B. Fischl. NeuroImage 57(1), 19-21, 2011.
+  http://dx.doi.org/10.1016/j.neuroimage.2011.02.076
+  http://reuter.mit.edu/papers/reuter-bias11.pdf 
+
+Within-Subject Template Estimation for Unbiased Longitudinal Image Analysis.
+  M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl.
+  NeuroImage 61(4), 1402-1418, 2012.
+  http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+  http://reuter.mit.edu/papers/reuter-long12.pdf
+
+
+
+Options:
+  -h, --help     show this help message and exit
+  --qdec=QDEC    (REQUIRED) qdec table file specifying the subjects and time
+                 points
+  --prog=PROG    (REQUIRED) longitudinal script to call
+  --flags=FLAGS  parameters (without --qdec) to pass to prog (using quotes
+                 "...")
+  --dir=DIR      directory to store sub-tables and command files
+  --simulate     do not submit anything, just print commands
+  --pause=PAUSE  pause in sec between submissions (default: 13)
+  --max=MAX      max num of jobs of this user (default: 100)
+  --queue=QUEUE  special queue to submit
+
+ERROR: Specify --qdec and --prog

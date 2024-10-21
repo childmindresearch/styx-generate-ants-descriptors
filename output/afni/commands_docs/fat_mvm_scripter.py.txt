@@ -1,0 +1,455 @@
+
+=== Output of 'fat_mvm_scripter.py --help' ===
+
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     ++ Jan, 2015 (ver 1.2).  Written by PA Taylor.
+     ++ Read in a data table file (likely formatted using the program
+        fat_mvm_prep.py) and build an executable command for 3dMVM 
+        (written by G Chen) with a user-specified variable model. This
+        should allow for useful repeated measures multivariate modeling
+        of networks of data (such as from 3dNetCorr or 3dTrackID), as
+        well as follow-up analysis of subconnections within the network.
+     
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     + INPUTS: 
+        1) Group data table text file (formatted as the *_MVMtbl.txt file
+           output by fat_mvm_prep.py); contains subject network info (ROI
+           parameter values) and individual variables.
+        2) Log file (formatted as the *_MVMprep.log file output by 
+           fat_mvm_prep.py) containing, among other things, a list of
+           network ROIs and a list of parameters whose values are stored
+           in the group data table.
+        3) A list of variables, whose values are also stored in the group
+           data table, which are to be statistically modeled.  The list
+           may be provided either directly on the commandline or in a 
+           separate text file. 
+           Variable entries may now include interactions (using '*') 
+           among either 
+           a) two categorical variables, or
+           b) one categorical and one quantitative variable.
+           Running with the '*' symbol includes both the main effects and
+           the interactions effects of the variables in the test.  That is,
+           A*B = A + B + A:B.
+           Post hoc tests will now be run for both the main effects and the
+           interactions, as well.
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     + OUTPUTS
+       1a) A text file (named PREFIX_scri.tcsh) containing a script for
+           running 3dMVM, using the prescribed variables along with each 
+           individual parameter.  If N parameters are contained in the 
+           group data table and M variables selected for the model, then
+           N network-wise ANOVAs for set of M+1 (includes the intercept)
+           effects will be run.
+           Additionally, if there are P ROIs comprising the network,
+           then the generated script file is automatically set to perform
+           PxM "post hoc" tests for the interactions of each ROI and
+           each variable (if the variable is categorical, then there are
+           actually more tests-- using one for each subcategory).
+           This basic script can be run simply from the commandline:
+           $  tcsh PREFIX_scri.tcsh
+           after which ...
+       1b) ... a text file of the test results is saved in a file
+           called  "PREFIX_MVM.txt".
+           Results in the default *MVM.txt file are grouped by variable,
+           first producing a block of ANOVA output with three columns
+           per variable:
+           Chi-square value, degrees of freedom, and p-value.
+           This is followed by a block of post hoc testing output with
+           four columns:
+           test value, t-statistic, degrees of freedom and p-value.
+           See 3dMVM for more information.
+    
+           NB: The '1a' script is a *very basic starter/suggestion*
+           for performing statistical tests.  Feel free to modify it
+           as you wish for your particular study.  See '3dMVM -help'
+           for more information.
+
+       The ANOVA tests are performed on a network-wide level, and the
+       posthoc tests followup with the same variables on a per-ROI
+       level.  The idea is: if there is a significant
+       parameter-variable association on the network level (seen in
+       the ANOVA results), it may be interesting to see if some
+       particular ROIs are driving the effect (seen in the posthoc
+       results).
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     + USAGE:
+       $  fat_mvm_scripter.py  --prefix=PREFIX                     \
+            --table=TABLE_FILE  --log=LOG_FILE                     \
+            { --vars='VAR1 VAR2 VAR3 ...' | --file_vars=VAR_FILE } \
+            { --Pars='PAR1 PAR2 PAR3 ...' | --File_Pars=PAR_FILE } \
+            { --rois='ROI1 ROI2 ROI3 ...' | --file_rois=ROI_FILE } \
+            { --no_posthoc }  { --NA_warn_off }
+     
+      -p, --prefix=PREFIX      :output prefix for script file, which will
+                                then be called PREFIX_scri.tcsh, for
+                                ultimately creating a PREFIX_MVM.txt file
+                                of statistical results from 3dMVM.
+      -t, --table=TABLE_FILE   :text file containing columns of subject
+                                data, one subject per row, formatted as
+                                a *_MVMtbl.txt output by fat_mvm_prep.py (see
+                                that program's help for more description.
+      -l, --log=LOG_FILE       :file formatted according to fat_mvm_prep.py
+                                containing commented headings and also
+                                lists of cross-group ROIs and parameters.
+                                for which there were network matrices
+                                (potentially among other useful bits of
+                                information).  See output of fat_mvm_prep.py
+                                for more info;  NB: commented headings
+                                generally contain selection keywords, so
+                                pay attention to those if generating your
+                                own.
+
+      -v, --vars='X Y Z ...'   :one method for supplying a list of
+                                variables for the 3dMVM model. Names must
+                                be separated with whitespace.  Categorical
+                                variables will be detected automatically
+            *or*                by the presence of nonnumeric characters
+                                in their columns; quantitative variables
+                                will be automatically put into a list for
+                                post hoc tests.
+      -f, --file_vars=VAR_FILE :the second method for supplying a list of
+                                variables for 3dMVM.  VAR_FILE is a text
+                                file with a single column of variable
+                                names.
+                                Using the VAR_FILE, you can specify subsets
+                                of categorical variables for GLT testing.
+                                The categories to be tested are entered on the
+                                same line as the variable, separated only by
+                                spaces.  If specifying a subset for an inter-
+                                action, then put a space-separated comma 
+                                between the lists of variables, if necessary 
+                                (and if specifying categories only for the 
+                                second of two categorical variables, then put 
+                                a space-separated comma before the list).
+                  ---->     ... using either variable entry format, an 
+                                interaction can be specified using '*', where 
+                                A*B = A + B + A:B.
+
+      -P, --Pars='T S R ...'   :one method for supplying a list of parameters
+                                (that is, the names of matrices) to run in 
+                                distinct 3dMVM models. Names must be
+            *or*                separated with whitespace. Might be useful
+                                to get a smaller jungle of output results in 
+                                cases where there are many matrices in a file,
+                                but only a few that are really cared about.
+      -F, --File_Pars=PAR_FILE :the second method for supplying a list of
+                                parameters for 3dMVM runs.  PAR_FILE is a text
+                                file with a single column of variable
+                                names.
+
+      -r, --rois='A B C ...'   :optional command to be able to select
+                                a subset of available network ROIs,
+                                if that's useful for some reason (NB:
+                                fat_mvm_prep.py should have already found
+            *or*                a set of ROIs with data across all the
+                                the subjects in the group, listed in the
+                                *MVMprep.log file; default would be using
+                                the entire list of ROIs in this log file as 
+                                the network of ROIs).
+      -R, --file_rois=ROI_FILE :the second method for supplying a (sub)list of
+                                ROIs for 3dMVM runs.  ROI_FILE is a text
+                                file with a single column of variable
+                                names (see '--rois' for the default network 
+                                selection).
+      -s, --subnet_pref=SUBPR  :if a subnetwork list of ROIs is used (see
+                                preceding two options), then one can give a 
+                                name SUBPR for the new table file that is 
+                                created. Otherwise, a default name from the
+                                required '--prefix=PREFIX' (or '-p PREFIX') 
+                                option is used:
+                                PREFIX_SUBNET_MVMtbl.txt.
+
+      -n, --no_posthoc         :switch to turn off the automatic
+                                generation of per-ROI post hoc tests
+                                (default is to do them all).
+      -N, --NA_warn_off        :switch to turn off the automatic
+                                warnings as the data table is created. 3dMVM
+                                will excise subjects with NA values, so there
+                                shouldn't be NA values in columns you want to
+                                model.  However, you might have NAs elsewhere
+                                in the data table that might be annoying to 
+                                have flagged, so perhaps turning off warnings
+                                would then be useful. (Default is to warn.)
+      -c, --cat_pair_off       :switch to turn off the following test:
+                                by default, if a categorical variable 
+                                undergoes posthoc testing, a GLT will be 
+                                created for every pairwise combination of
+                                its categories, testing whether the given
+                                parameter is higher in one group than another
+                                (each category is assigned a +1 or -1, which is 
+                                recorded in parentheses in the output label
+                                names).
+                                
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     Example:
+       $ fat_mvm_scripter.py --file_vars=VARLIST.txt          \
+                             --log_file=study_MVMprep.log     \
+                             --table=study_MVMtbl.txt         \
+                             --prefix=study 
+     or, equivalently:
+       $ fat_mvm_scripter.py -f VARLIST.txt -l study_MVMprep.log -t study_MVMtbl.txt -p study
+ 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+   This program is part of AFNI-FATCAT:
+    Taylor PA, Saad ZS (2013). FATCAT: (An Efficient) Functional And
+    Tractographic Connectivity Analysis Toolbox. Brain Connectivity.
+
+   For citing the statistical approach, please use the following:
+    Chen, G., Adleman, N.E., Saad, Z.S., Leibenluft, E., Cox, R.W. (2014).
+    Applications of Multivariate Modeling to Neuroimaging Group Analysis:
+    A Comprehensive Alternative to Univariate General Linear Model. 
+    NeuroImage 99:571-588.
+    https://afni.nimh.nih.gov/pub/dist/HBM2014/Chen_in_press.pdf
+
+   The first application of this network-based statistical approach is
+    given in the following:
+    Taylor PA, Jacobson SW, van der Kouwe AJW, Molteno C, Chen G,
+    Wintermark P, Alhamud A, Jacobson JL, Meintjes EM (2014). A
+    DTI-based tractography study of effects on brain structure
+    associated with prenatal alcohol exposure in newborns. (HBM, in press)
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+=== Output of 'fat_mvm_scripter.py -help' ===
+
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     ++ Jan, 2015 (ver 1.2).  Written by PA Taylor.
+     ++ Read in a data table file (likely formatted using the program
+        fat_mvm_prep.py) and build an executable command for 3dMVM 
+        (written by G Chen) with a user-specified variable model. This
+        should allow for useful repeated measures multivariate modeling
+        of networks of data (such as from 3dNetCorr or 3dTrackID), as
+        well as follow-up analysis of subconnections within the network.
+     
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     + INPUTS: 
+        1) Group data table text file (formatted as the *_MVMtbl.txt file
+           output by fat_mvm_prep.py); contains subject network info (ROI
+           parameter values) and individual variables.
+        2) Log file (formatted as the *_MVMprep.log file output by 
+           fat_mvm_prep.py) containing, among other things, a list of
+           network ROIs and a list of parameters whose values are stored
+           in the group data table.
+        3) A list of variables, whose values are also stored in the group
+           data table, which are to be statistically modeled.  The list
+           may be provided either directly on the commandline or in a 
+           separate text file. 
+           Variable entries may now include interactions (using '*') 
+           among either 
+           a) two categorical variables, or
+           b) one categorical and one quantitative variable.
+           Running with the '*' symbol includes both the main effects and
+           the interactions effects of the variables in the test.  That is,
+           A*B = A + B + A:B.
+           Post hoc tests will now be run for both the main effects and the
+           interactions, as well.
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     + OUTPUTS
+       1a) A text file (named PREFIX_scri.tcsh) containing a script for
+           running 3dMVM, using the prescribed variables along with each 
+           individual parameter.  If N parameters are contained in the 
+           group data table and M variables selected for the model, then
+           N network-wise ANOVAs for set of M+1 (includes the intercept)
+           effects will be run.
+           Additionally, if there are P ROIs comprising the network,
+           then the generated script file is automatically set to perform
+           PxM "post hoc" tests for the interactions of each ROI and
+           each variable (if the variable is categorical, then there are
+           actually more tests-- using one for each subcategory).
+           This basic script can be run simply from the commandline:
+           $  tcsh PREFIX_scri.tcsh
+           after which ...
+       1b) ... a text file of the test results is saved in a file
+           called  "PREFIX_MVM.txt".
+           Results in the default *MVM.txt file are grouped by variable,
+           first producing a block of ANOVA output with three columns
+           per variable:
+           Chi-square value, degrees of freedom, and p-value.
+           This is followed by a block of post hoc testing output with
+           four columns:
+           test value, t-statistic, degrees of freedom and p-value.
+           See 3dMVM for more information.
+    
+           NB: The '1a' script is a *very basic starter/suggestion*
+           for performing statistical tests.  Feel free to modify it
+           as you wish for your particular study.  See '3dMVM -help'
+           for more information.
+
+       The ANOVA tests are performed on a network-wide level, and the
+       posthoc tests followup with the same variables on a per-ROI
+       level.  The idea is: if there is a significant
+       parameter-variable association on the network level (seen in
+       the ANOVA results), it may be interesting to see if some
+       particular ROIs are driving the effect (seen in the posthoc
+       results).
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     + USAGE:
+       $  fat_mvm_scripter.py  --prefix=PREFIX                     \
+            --table=TABLE_FILE  --log=LOG_FILE                     \
+            { --vars='VAR1 VAR2 VAR3 ...' | --file_vars=VAR_FILE } \
+            { --Pars='PAR1 PAR2 PAR3 ...' | --File_Pars=PAR_FILE } \
+            { --rois='ROI1 ROI2 ROI3 ...' | --file_rois=ROI_FILE } \
+            { --no_posthoc }  { --NA_warn_off }
+     
+      -p, --prefix=PREFIX      :output prefix for script file, which will
+                                then be called PREFIX_scri.tcsh, for
+                                ultimately creating a PREFIX_MVM.txt file
+                                of statistical results from 3dMVM.
+      -t, --table=TABLE_FILE   :text file containing columns of subject
+                                data, one subject per row, formatted as
+                                a *_MVMtbl.txt output by fat_mvm_prep.py (see
+                                that program's help for more description.
+      -l, --log=LOG_FILE       :file formatted according to fat_mvm_prep.py
+                                containing commented headings and also
+                                lists of cross-group ROIs and parameters.
+                                for which there were network matrices
+                                (potentially among other useful bits of
+                                information).  See output of fat_mvm_prep.py
+                                for more info;  NB: commented headings
+                                generally contain selection keywords, so
+                                pay attention to those if generating your
+                                own.
+
+      -v, --vars='X Y Z ...'   :one method for supplying a list of
+                                variables for the 3dMVM model. Names must
+                                be separated with whitespace.  Categorical
+                                variables will be detected automatically
+            *or*                by the presence of nonnumeric characters
+                                in their columns; quantitative variables
+                                will be automatically put into a list for
+                                post hoc tests.
+      -f, --file_vars=VAR_FILE :the second method for supplying a list of
+                                variables for 3dMVM.  VAR_FILE is a text
+                                file with a single column of variable
+                                names.
+                                Using the VAR_FILE, you can specify subsets
+                                of categorical variables for GLT testing.
+                                The categories to be tested are entered on the
+                                same line as the variable, separated only by
+                                spaces.  If specifying a subset for an inter-
+                                action, then put a space-separated comma 
+                                between the lists of variables, if necessary 
+                                (and if specifying categories only for the 
+                                second of two categorical variables, then put 
+                                a space-separated comma before the list).
+                  ---->     ... using either variable entry format, an 
+                                interaction can be specified using '*', where 
+                                A*B = A + B + A:B.
+
+      -P, --Pars='T S R ...'   :one method for supplying a list of parameters
+                                (that is, the names of matrices) to run in 
+                                distinct 3dMVM models. Names must be
+            *or*                separated with whitespace. Might be useful
+                                to get a smaller jungle of output results in 
+                                cases where there are many matrices in a file,
+                                but only a few that are really cared about.
+      -F, --File_Pars=PAR_FILE :the second method for supplying a list of
+                                parameters for 3dMVM runs.  PAR_FILE is a text
+                                file with a single column of variable
+                                names.
+
+      -r, --rois='A B C ...'   :optional command to be able to select
+                                a subset of available network ROIs,
+                                if that's useful for some reason (NB:
+                                fat_mvm_prep.py should have already found
+            *or*                a set of ROIs with data across all the
+                                the subjects in the group, listed in the
+                                *MVMprep.log file; default would be using
+                                the entire list of ROIs in this log file as 
+                                the network of ROIs).
+      -R, --file_rois=ROI_FILE :the second method for supplying a (sub)list of
+                                ROIs for 3dMVM runs.  ROI_FILE is a text
+                                file with a single column of variable
+                                names (see '--rois' for the default network 
+                                selection).
+      -s, --subnet_pref=SUBPR  :if a subnetwork list of ROIs is used (see
+                                preceding two options), then one can give a 
+                                name SUBPR for the new table file that is 
+                                created. Otherwise, a default name from the
+                                required '--prefix=PREFIX' (or '-p PREFIX') 
+                                option is used:
+                                PREFIX_SUBNET_MVMtbl.txt.
+
+      -n, --no_posthoc         :switch to turn off the automatic
+                                generation of per-ROI post hoc tests
+                                (default is to do them all).
+      -N, --NA_warn_off        :switch to turn off the automatic
+                                warnings as the data table is created. 3dMVM
+                                will excise subjects with NA values, so there
+                                shouldn't be NA values in columns you want to
+                                model.  However, you might have NAs elsewhere
+                                in the data table that might be annoying to 
+                                have flagged, so perhaps turning off warnings
+                                would then be useful. (Default is to warn.)
+      -c, --cat_pair_off       :switch to turn off the following test:
+                                by default, if a categorical variable 
+                                undergoes posthoc testing, a GLT will be 
+                                created for every pairwise combination of
+                                its categories, testing whether the given
+                                parameter is higher in one group than another
+                                (each category is assigned a +1 or -1, which is 
+                                recorded in parentheses in the output label
+                                names).
+                                
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     Example:
+       $ fat_mvm_scripter.py --file_vars=VARLIST.txt          \
+                             --log_file=study_MVMprep.log     \
+                             --table=study_MVMtbl.txt         \
+                             --prefix=study 
+     or, equivalently:
+       $ fat_mvm_scripter.py -f VARLIST.txt -l study_MVMprep.log -t study_MVMtbl.txt -p study
+ 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+   This program is part of AFNI-FATCAT:
+    Taylor PA, Saad ZS (2013). FATCAT: (An Efficient) Functional And
+    Tractographic Connectivity Analysis Toolbox. Brain Connectivity.
+
+   For citing the statistical approach, please use the following:
+    Chen, G., Adleman, N.E., Saad, Z.S., Leibenluft, E., Cox, R.W. (2014).
+    Applications of Multivariate Modeling to Neuroimaging Group Analysis:
+    A Comprehensive Alternative to Univariate General Linear Model. 
+    NeuroImage 99:571-588.
+    https://afni.nimh.nih.gov/pub/dist/HBM2014/Chen_in_press.pdf
+
+   The first application of this network-based statistical approach is
+    given in the following:
+    Taylor PA, Jacobson SW, van der Kouwe AJW, Molteno C, Chen G,
+    Wintermark P, Alhamud A, Jacobson JL, Meintjes EM (2014). A
+    DTI-based tractography study of effects on brain structure
+    associated with prenatal alcohol exposure in newborns. (HBM, in press)
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+=== Output of 'fat_mvm_scripter.py' (no arguments) ===
+
+
+
+** ERROR: missing an output prefix.
+	 Need to use either '-p' or '--prefix'.

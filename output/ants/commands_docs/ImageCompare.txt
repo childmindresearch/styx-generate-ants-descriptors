@@ -1,0 +1,21 @@
+
+=== Output of 'ImageCompare --help' ===
+
+Usage:
+testImage, baselineImage1, [baselineImage2, baselineImage3, ...]
+Note that if you supply more than one baselineImage, this test will pass if any
+of them match the testImage
+
+=== Output of 'ImageCompare -help' ===
+
+Usage:
+testImage, baselineImage1, [baselineImage2, baselineImage3, ...]
+Note that if you supply more than one baselineImage, this test will pass if any
+of them match the testImage
+
+=== Output of 'ImageCompare' (no arguments) ===
+
+Usage:
+testImage, baselineImage1, [baselineImage2, baselineImage3, ...]
+Note that if you supply more than one baselineImage, this test will pass if any
+of them match the testImage

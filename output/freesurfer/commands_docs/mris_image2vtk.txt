@@ -1,0 +1,15 @@
+
+=== Output of 'mris_image2vtk --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/mris_image2vtk <InputFileName> <OutputFileName> <Lower Threshold> <Upper Threshold> <vtk smoothing iterations> <image smoothing size> <reduction percentage>
+
+=== Output of 'mris_image2vtk -help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/mris_image2vtk <InputFileName> <OutputFileName> <Lower Threshold> <Upper Threshold> <vtk smoothing iterations> <image smoothing size> <reduction percentage>
+
+=== Output of 'mris_image2vtk' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/mris_image2vtk <InputFileName> <OutputFileName> <Lower Threshold> <Upper Threshold> <vtk smoothing iterations> <image smoothing size> <reduction percentage>

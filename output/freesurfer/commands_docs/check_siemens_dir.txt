@@ -1,0 +1,12 @@
+
+=== Output of 'check_siemens_dir --help' ===
+
+error: check_siemens_dir has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'check_siemens_dir -help' ===
+
+error: check_siemens_dir has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'check_siemens_dir' (no arguments) ===
+
+error: check_siemens_dir has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

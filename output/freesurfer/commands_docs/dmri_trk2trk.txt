@@ -1,0 +1,164 @@
+
+=== Output of 'dmri_trk2trk --help' ===
+
+
+USAGE: /usr/local/freesurfer/bin/dmri_trk2trk
+
+Basic inputs
+   --in <file> [...]:
+     Input .trk file(s)
+   --inasc <file> [...]:
+     Input ASCII plain text file(s), as an alternative to .trk
+     Each line in the text file must have the voxel coordinates of a single point of a streamline, with empty lines between streamlines)
+   --indir <dir>:
+     Input directory (optional)
+     If specified, names of input .trk files are relative to this
+   --out <file> [...]:
+     Output .trk file(s), as many as inputs (or 1 to merge inputs)
+   --outasc <file> [...]:
+     Output ASCII plain text file(s), as many as inputs (or 1 to merge inputs)
+   --outvol <file> [...]:
+     Output volume(s), as many as inputs (or 1 to merge inputs)
+   --outdir <dir>:
+     Output directory (optional)
+     If specified, names of output .trk files and volumes are relative to this)
+   --inref <file>:
+     Input reference volume (needed for --reg/--regnl)
+   --outref <file>:
+     Output reference volume (needed for --reg/--regnl/--outvol)
+   --reg <file>:
+     Affine registration file (.lta or .mat), applied first
+   --regnl <file>:
+     Nonlinear registration file (.m3z), applied second
+   --inv:
+     Apply inverse of registration (default: no)
+   --fill:
+     Fill gaps b/w mapped points by linear interpolation
+     (Default: don't fill)
+   --over <file> [...]:
+     Scalar overlay 1D volume(s), applied to all input .trk files
+   --imask <file> [...]:
+     Inclusion mask(s), applied to all input .trk files
+   --emask <file> [...]:
+     Exclusion mask(s), applied to all input .trk files
+   --itmask <file> [...]:
+     Terminal inclusion mask(s), applied to all input .trk files
+   --etmask <file> [...]:
+     Terminal exclusion mask(s), applied to all input .trk files
+   --lmin <num>:
+     Only save streamlines with length greater than this number
+   --lmax <num>:
+     Only save streamlines with length smaller than this number
+   --mean:
+     Only save the mean of the streamlines (Default: save all)
+   --nearmean:
+     Only save the streamline nearest to the mean (Default: save all)
+   --nth <num>:
+     Only save the n-th (0-based) streamline (Default: save all)
+   --every <num>:
+     Only save every n-th streamline (Default: save all)
+   --smooth:
+     Smooth streamlines (default: no)
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+
+Order of operations (all optional):
+   1. Keep the n-th streamline or every n-th streamline
+   2. Apply streamline length threshold(s)
+   3. Apply affine transform
+   4. Apply non-linear transform
+   5. Apply inclusion mask(s)
+   6. Apply exclusion mask(s)
+   7. Find mean streamline
+   8. Smooth streamline(s)
+
+
+...
+
+
+=== Output of 'dmri_trk2trk -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'dmri_trk2trk' (no arguments) ===
+
+
+USAGE: /usr/local/freesurfer/bin/dmri_trk2trk
+
+Basic inputs
+   --in <file> [...]:
+     Input .trk file(s)
+   --inasc <file> [...]:
+     Input ASCII plain text file(s), as an alternative to .trk
+     Each line in the text file must have the voxel coordinates of a single point of a streamline, with empty lines between streamlines)
+   --indir <dir>:
+     Input directory (optional)
+     If specified, names of input .trk files are relative to this
+   --out <file> [...]:
+     Output .trk file(s), as many as inputs (or 1 to merge inputs)
+   --outasc <file> [...]:
+     Output ASCII plain text file(s), as many as inputs (or 1 to merge inputs)
+   --outvol <file> [...]:
+     Output volume(s), as many as inputs (or 1 to merge inputs)
+   --outdir <dir>:
+     Output directory (optional)
+     If specified, names of output .trk files and volumes are relative to this)
+   --inref <file>:
+     Input reference volume (needed for --reg/--regnl)
+   --outref <file>:
+     Output reference volume (needed for --reg/--regnl/--outvol)
+   --reg <file>:
+     Affine registration file (.lta or .mat), applied first
+   --regnl <file>:
+     Nonlinear registration file (.m3z), applied second
+   --inv:
+     Apply inverse of registration (default: no)
+   --fill:
+     Fill gaps b/w mapped points by linear interpolation
+     (Default: don't fill)
+   --over <file> [...]:
+     Scalar overlay 1D volume(s), applied to all input .trk files
+   --imask <file> [...]:
+     Inclusion mask(s), applied to all input .trk files
+   --emask <file> [...]:
+     Exclusion mask(s), applied to all input .trk files
+   --itmask <file> [...]:
+     Terminal inclusion mask(s), applied to all input .trk files
+   --etmask <file> [...]:
+     Terminal exclusion mask(s), applied to all input .trk files
+   --lmin <num>:
+     Only save streamlines with length greater than this number
+   --lmax <num>:
+     Only save streamlines with length smaller than this number
+   --mean:
+     Only save the mean of the streamlines (Default: save all)
+   --nearmean:
+     Only save the streamline nearest to the mean (Default: save all)
+   --nth <num>:
+     Only save the n-th (0-based) streamline (Default: save all)
+   --every <num>:
+     Only save every n-th streamline (Default: save all)
+   --smooth:
+     Smooth streamlines (default: no)
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+
+Order of operations (all optional):
+   1. Keep the n-th streamline or every n-th streamline
+   2. Apply streamline length threshold(s)
+   3. Apply affine transform
+   4. Apply non-linear transform
+   5. Apply inclusion mask(s)
+   6. Apply exclusion mask(s)
+   7. Find mean streamline
+   8. Smooth streamline(s)
+

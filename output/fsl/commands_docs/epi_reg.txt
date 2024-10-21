@@ -1,0 +1,72 @@
+
+=== Output of 'epi_reg --help' ===
+
+
+Usage: epi_reg [options] --epi=<EPI image> --t1=<wholehead T1 image> --t1brain=<brain extracted T1 image> --out=<output name>
+ 
+Optional arguments
+  --fmap=<image>         : fieldmap image (in rad/s)
+  --fmapmag=<image>      : fieldmap magnitude image - wholehead extracted
+  --fmapmagbrain=<image> : fieldmap magnitude image - brain extracted
+  --gdc=<image>          : Gradient-distortion corection warpfield
+  --wmseg=<image>        : white matter segmentation of T1 image
+  --echospacing=<val>    : Effective EPI echo spacing (sometimes called dwell time) - in seconds
+  --pedir=<dir>          : phase encoding direction, dir = x/y/z/-x/-y/-z
+  --weight=<image>       : weighting image (in T1 space)
+  --nofmapreg            : do not perform registration of fmap to T1 (use if fmap already registered) 
+  --noclean              : do not clean up intermediate files
+  -v                     : verbose output
+  -h                     : display this help message
+ 
+e.g.:  epi_reg --epi=example_func --t1=struct --t1brain=struct_brain --out=epi2struct --fmap=fmap_rads --fmapmag=fmap_mag --fmapmagbrain=fmap_mag_brain --echospacing=0.0005 --pedir=-y
+ 
+Note that if parallel acceleration is used in the EPI acquisition then the *effective* echo spacing is the actual echo spacing between acquired lines in k-space divided by the acceleration factor.
+ 
+
+=== Output of 'epi_reg -help' ===
+
+
+Usage: epi_reg [options] --epi=<EPI image> --t1=<wholehead T1 image> --t1brain=<brain extracted T1 image> --out=<output name>
+ 
+Optional arguments
+  --fmap=<image>         : fieldmap image (in rad/s)
+  --fmapmag=<image>      : fieldmap magnitude image - wholehead extracted
+  --fmapmagbrain=<image> : fieldmap magnitude image - brain extracted
+  --gdc=<image>          : Gradient-distortion corection warpfield
+  --wmseg=<image>        : white matter segmentation of T1 image
+  --echospacing=<val>    : Effective EPI echo spacing (sometimes called dwell time) - in seconds
+  --pedir=<dir>          : phase encoding direction, dir = x/y/z/-x/-y/-z
+  --weight=<image>       : weighting image (in T1 space)
+  --nofmapreg            : do not perform registration of fmap to T1 (use if fmap already registered) 
+  --noclean              : do not clean up intermediate files
+  -v                     : verbose output
+  -h                     : display this help message
+ 
+e.g.:  epi_reg --epi=example_func --t1=struct --t1brain=struct_brain --out=epi2struct --fmap=fmap_rads --fmapmag=fmap_mag --fmapmagbrain=fmap_mag_brain --echospacing=0.0005 --pedir=-y
+ 
+Note that if parallel acceleration is used in the EPI acquisition then the *effective* echo spacing is the actual echo spacing between acquired lines in k-space divided by the acceleration factor.
+ 
+
+=== Output of 'epi_reg' (no arguments) ===
+
+
+Usage: epi_reg [options] --epi=<EPI image> --t1=<wholehead T1 image> --t1brain=<brain extracted T1 image> --out=<output name>
+ 
+Optional arguments
+  --fmap=<image>         : fieldmap image (in rad/s)
+  --fmapmag=<image>      : fieldmap magnitude image - wholehead extracted
+  --fmapmagbrain=<image> : fieldmap magnitude image - brain extracted
+  --gdc=<image>          : Gradient-distortion corection warpfield
+  --wmseg=<image>        : white matter segmentation of T1 image
+  --echospacing=<val>    : Effective EPI echo spacing (sometimes called dwell time) - in seconds
+  --pedir=<dir>          : phase encoding direction, dir = x/y/z/-x/-y/-z
+  --weight=<image>       : weighting image (in T1 space)
+  --nofmapreg            : do not perform registration of fmap to T1 (use if fmap already registered) 
+  --noclean              : do not clean up intermediate files
+  -v                     : verbose output
+  -h                     : display this help message
+ 
+e.g.:  epi_reg --epi=example_func --t1=struct --t1brain=struct_brain --out=epi2struct --fmap=fmap_rads --fmapmag=fmap_mag --fmapmagbrain=fmap_mag_brain --echospacing=0.0005 --pedir=-y
+ 
+Note that if parallel acceleration is used in the EPI acquisition then the *effective* echo spacing is the actual echo spacing between acquired lines in k-space divided by the acceleration factor.
+ 

@@ -1,0 +1,89 @@
+
+=== Output of 'mris_annot_diff --help' ===
+
+				Help
+
+NAME
+	mris_annot_diff
+
+DESCRIPTION
+	Compare two surface annotation files. The program works with .annot 
+	only.
+
+REQUIRED ARGUMENTS
+	Required parameters:
+
+	annot1
+		input .annot file 1
+
+	annot2
+		input .annot file 2
+
+OPTIONAL ARGUMENTS
+	--diff-ctab
+		diff colortable included in .annot
+
+	--verbose
+		print details of annotation/colortable differences
+
+
+
+=== Output of 'mris_annot_diff -help' ===
+
+				Help
+
+NAME
+	mris_annot_diff
+
+DESCRIPTION
+	Compare two surface annotation files. The program works with .annot 
+	only.
+
+REQUIRED ARGUMENTS
+	Required parameters:
+
+	annot1
+		input .annot file 1
+
+	annot2
+		input .annot file 2
+
+OPTIONAL ARGUMENTS
+	--diff-ctab
+		diff colortable included in .annot
+
+	--verbose
+		print details of annotation/colortable differences
+
+
+error: missing required input 'annot2'
+
+=== Output of 'mris_annot_diff' (no arguments) ===
+
+				Help
+
+NAME
+	mris_annot_diff
+
+DESCRIPTION
+	Compare two surface annotation files. The program works with .annot 
+	only.
+
+REQUIRED ARGUMENTS
+	Required parameters:
+
+	annot1
+		input .annot file 1
+
+	annot2
+		input .annot file 2
+
+OPTIONAL ARGUMENTS
+	--diff-ctab
+		diff colortable included in .annot
+
+	--verbose
+		print details of annotation/colortable differences
+
+
+error: missing required input 'annot1'

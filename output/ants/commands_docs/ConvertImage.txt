@@ -1,0 +1,51 @@
+
+=== Output of 'ConvertImage --help' ===
+
+Usage: ConvertImage imageDimension inputImage outputImage <pixelType>
+pixelType:  0 -> float (default)
+            1 -> unsigned char
+            2 -> unsigned short
+            3 -> unsigned int
+            4 -> unsigned long
+            5 -> char
+            6 -> short
+            7 -> int
+            8 -> long
+            9 -> component images to a float vector image
+           10 -> vector image to component images
+           11 -> time-varying velocity field image to component images (ImageDimension is the dimensionality of the displacement vector)
+           12 -> float vector image
+
+=== Output of 'ConvertImage -help' ===
+
+Usage: ConvertImage imageDimension inputImage outputImage <pixelType>
+pixelType:  0 -> float (default)
+            1 -> unsigned char
+            2 -> unsigned short
+            3 -> unsigned int
+            4 -> unsigned long
+            5 -> char
+            6 -> short
+            7 -> int
+            8 -> long
+            9 -> component images to a float vector image
+           10 -> vector image to component images
+           11 -> time-varying velocity field image to component images (ImageDimension is the dimensionality of the displacement vector)
+           12 -> float vector image
+
+=== Output of 'ConvertImage' (no arguments) ===
+
+Usage: ConvertImage imageDimension inputImage outputImage <pixelType>
+pixelType:  0 -> float (default)
+            1 -> unsigned char
+            2 -> unsigned short
+            3 -> unsigned int
+            4 -> unsigned long
+            5 -> char
+            6 -> short
+            7 -> int
+            8 -> long
+            9 -> component images to a float vector image
+           10 -> vector image to component images
+           11 -> time-varying velocity field image to component images (ImageDimension is the dimensionality of the displacement vector)
+           12 -> float vector image

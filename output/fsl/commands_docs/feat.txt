@@ -1,0 +1,12 @@
+
+=== Output of 'feat --help' ===
+
+Command timed out after 10 seconds
+
+=== Output of 'feat -help' ===
+
+Command timed out after 10 seconds
+
+=== Output of 'feat' (no arguments) ===
+
+Command timed out after 10 seconds

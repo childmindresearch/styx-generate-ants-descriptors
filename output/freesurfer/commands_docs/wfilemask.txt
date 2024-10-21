@@ -1,0 +1,66 @@
+
+=== Output of 'wfilemask --help' ===
+
+ 
+USAGE: wfilemask
+
+   -w wfile : input w file
+   -l label file : label to use as a mask 
+   -o wfileout : output w file
+ 
+   -help
+   -umask umask   : set unix file permission mask
+   -version       : print version and exit
+ 
+ 
+wfilemask 7.4.1 
+ 
+
+wfilemask
+
+This program allows the user to zero-out regions of a surface value
+file (also known as a .w file) using a label. The user specifies an
+input w (with -w) file and a label (with -l). The vertices
+corresponding to the label are set to zero, and the result is saved in
+a new w file (specified with -o). NOTE: this script requires matlab.
+
+
+=== Output of 'wfilemask -help' ===
+
+ 
+USAGE: wfilemask
+
+   -w wfile : input w file
+   -l label file : label to use as a mask 
+   -o wfileout : output w file
+ 
+   -help
+   -umask umask   : set unix file permission mask
+   -version       : print version and exit
+ 
+ 
+wfilemask 7.4.1 
+ 
+
+wfilemask
+
+This program allows the user to zero-out regions of a surface value
+file (also known as a .w file) using a label. The user specifies an
+input w (with -w) file and a label (with -l). The vertices
+corresponding to the label are set to zero, and the result is saved in
+a new w file (specified with -o). NOTE: this script requires matlab.
+
+
+=== Output of 'wfilemask' (no arguments) ===
+
+ 
+USAGE: wfilemask
+
+   -w wfile : input w file
+   -l label file : label to use as a mask 
+   -o wfileout : output w file
+ 
+   -help
+   -umask umask   : set unix file permission mask
+   -version       : print version and exit
+ 

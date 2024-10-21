@@ -1,0 +1,58 @@
+
+=== Output of 'mri-func2sph --help' ===
+
+ERROR: Flag --help unrecognized.
+--help
+
+USAGE: 
+
+ mri-func2sph 
+   -i        instem             required
+   -o        outstem            required
+   -hemi     lh, rh hemisphere  required
+   -fvitdir  func vit dir       required
+   -niters   hole-filling iters 100
+   -icosize  icosahedron size   10242
+   -intype   type of input      auto-detect
+   -umask    newumask
+
+ mri-func2sph 7.4.1 
+
+
+=== Output of 'mri-func2sph -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+USAGE: 
+
+ mri-func2sph 
+   -i        instem             required
+   -o        outstem            required
+   -hemi     lh, rh hemisphere  required
+   -fvitdir  func vit dir       required
+   -niters   hole-filling iters 100
+   -icosize  icosahedron size   10242
+   -intype   type of input      auto-detect
+   -umask    newumask
+
+ mri-func2sph 7.4.1 
+
+
+=== Output of 'mri-func2sph' (no arguments) ===
+
+
+USAGE: 
+
+ mri-func2sph 
+   -i        instem             required
+   -o        outstem            required
+   -hemi     lh, rh hemisphere  required
+   -fvitdir  func vit dir       required
+   -niters   hole-filling iters 100
+   -icosize  icosahedron size   10242
+   -intype   type of input      auto-detect
+   -umask    newumask
+
+ mri-func2sph 7.4.1 
+

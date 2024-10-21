@@ -1,0 +1,35 @@
+
+=== Output of 'mris_estimate_wm --help' ===
+
+usage: mris_estimate_wm [-h] -s [SUBJS [SUBJS ...]] --hemi HEMI [-d SDIR]
+                        [-m MODEL] [-x SUFFIX] [-g] [--rsi] [--single-iter]
+                        [--vol VOL]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s [SUBJS [SUBJS ...]], --subjs [SUBJS [SUBJS ...]]
+                        List of subjects to process.
+  --hemi HEMI           Hemisphere to reconstruct (lh or rh).
+  -d SDIR, --sdir SDIR  Override SUBJECTS_DIR.
+  -m MODEL, --model MODEL
+                        Override default model.
+  -x SUFFIX, --suffix SUFFIX
+                        Suffix of output surface (default is 'topofit').
+  -g, --gpu             Use the GPU.
+  --rsi                 Remove self-intersecting faces during the deformation.
+  --single-iter         Prevent deformation steps from running more than once.
+  --vol VOL             Subject volume to use as input.
+
+=== Output of 'mris_estimate_wm -help' ===
+
+usage: mris_estimate_wm [-h] -s [SUBJS [SUBJS ...]] --hemi HEMI [-d SDIR]
+                        [-m MODEL] [-x SUFFIX] [-g] [--rsi] [--single-iter]
+                        [--vol VOL]
+mris_estimate_wm: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'mris_estimate_wm' (no arguments) ===
+
+usage: mris_estimate_wm [-h] -s [SUBJS [SUBJS ...]] --hemi HEMI [-d SDIR]
+                        [-m MODEL] [-x SUFFIX] [-g] [--rsi] [--single-iter]
+                        [--vol VOL]
+mris_estimate_wm: error: the following arguments are required: -s/--subjs, --hemi

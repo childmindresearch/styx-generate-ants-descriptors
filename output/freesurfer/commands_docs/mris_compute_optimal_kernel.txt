@@ -1,0 +1,12 @@
+
+=== Output of 'mris_compute_optimal_kernel --help' ===
+
+error: mris_compute_optimal_kernel has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mris_compute_optimal_kernel -help' ===
+
+error: mris_compute_optimal_kernel has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mris_compute_optimal_kernel' (no arguments) ===
+
+error: mris_compute_optimal_kernel has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

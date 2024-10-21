@@ -1,0 +1,18 @@
+
+=== Output of 'mri_dist_surf_label --help' ===
+
+Computing distance from input surface and label points / waypoints.
+Number of arguments 1
+usage: /usr/local/freesurfer/bin/mri_dist_surf_label <surface> <label file> <output>
+
+=== Output of 'mri_dist_surf_label -help' ===
+
+Computing distance from input surface and label points / waypoints.
+Number of arguments 1
+usage: /usr/local/freesurfer/bin/mri_dist_surf_label <surface> <label file> <output>
+
+=== Output of 'mri_dist_surf_label' (no arguments) ===
+
+Computing distance from input surface and label points / waypoints.
+Number of arguments 1
+usage: /usr/local/freesurfer/bin/mri_dist_surf_label <surface> <label file> <output>

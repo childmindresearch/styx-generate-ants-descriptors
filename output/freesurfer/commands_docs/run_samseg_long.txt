@@ -1,0 +1,100 @@
+
+=== Output of 'run_samseg_long --help' ===
+
+usage: run_samseg_long [-h] -t TIMEPOINT [TIMEPOINT ...] -o OUTPUT [--lesion]
+                       [--threshold THRESHOLD] [--samples SAMPLES]
+                       [--burnin BURNIN]
+                       [--lesion-mask-structure LESION_MASK_STRUCTURE]
+                       [--lesion-mask-pattern LESION_MASK_PATTERN [LESION_MASK_PATTERN ...]]
+                       [-m MODE [MODE ...]] [-a DIR]
+                       [--deformation-hyperprior DEFORMATION_HYPERPRIOR]
+                       [--gmm-hyperprior GMM_HYPERPRIOR] [--save-warp]
+                       [--save-mesh]
+                       [--save-posteriors [SAVE_POSTERIORS [SAVE_POSTERIORS ...]]]
+                       [--pallidum-separate] [--threads THREADS]
+                       [--tp-to-base-transform TP_TO_BASE_TRANSFORM [TP_TO_BASE_TRANSFORM ...]]
+                       [--force-different-resolutions] [--history]
+                       [--showfigs] [--movie]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t TIMEPOINT [TIMEPOINT ...], --timepoint TIMEPOINT [TIMEPOINT ...]
+                        Configure a timepoint with multiple inputs.
+  -o OUTPUT, --output OUTPUT
+                        Output directory.
+  --lesion              Enable lesion segmentation (requires tensorflow).
+  --threshold THRESHOLD
+                        Lesion threshold for final segmentation. Lesion
+                        segmentation must be enabled.
+  --samples SAMPLES     Number of samples for lesion segmentation. Lesion
+                        segmentation must be enabled.
+  --burnin BURNIN       Number of burn-in samples for lesion segmentation.
+                        Lesion segmentation must be enabled.
+  --lesion-mask-structure LESION_MASK_STRUCTURE
+                        Intensity mask brain structure. Lesion segmentation
+                        must be enabled.
+  --lesion-mask-pattern LESION_MASK_PATTERN [LESION_MASK_PATTERN ...]
+                        Lesion mask list (set value for each input volume): -1
+                        below lesion mask structure mean, +1 above, 0 no mask.
+                        Lesion segmentation must be enabled.
+  -m MODE [MODE ...], --mode MODE [MODE ...]
+                        Output basenames for the input image mode.
+  -a DIR, --atlas DIR   Point to an alternative atlas directory.
+  --deformation-hyperprior DEFORMATION_HYPERPRIOR
+                        Strength of the latent deformation hyperprior.
+  --gmm-hyperprior GMM_HYPERPRIOR
+                        Strength of the latent GMM hyperprior.
+  --save-warp           Save the image->template warp fields.
+  --save-mesh           Save the final mesh of each timepoint in template
+                        space.
+  --save-posteriors [SAVE_POSTERIORS [SAVE_POSTERIORS ...]]
+                        Save posterior volumes to the "posteriors"
+                        subdirectory.
+  --pallidum-separate   Move pallidum outside of global white matter class.
+                        Use this flag when T2/flair is used.
+  --threads THREADS     Number of threads to use. Defaults to current
+                        OMP_NUM_THREADS or 1.
+  --tp-to-base-transform TP_TO_BASE_TRANSFORM [TP_TO_BASE_TRANSFORM ...]
+                        Transformation file for each time point to base.
+  --force-different-resolutions
+                        Force run even if time points have different
+                        resolutions.
+  --history             Save history.
+  --showfigs            Show figures during run.
+  --movie               Show history as arrow key controlled time sequence.
+
+=== Output of 'run_samseg_long -help' ===
+
+usage: run_samseg_long [-h] -t TIMEPOINT [TIMEPOINT ...] -o OUTPUT [--lesion]
+                       [--threshold THRESHOLD] [--samples SAMPLES]
+                       [--burnin BURNIN]
+                       [--lesion-mask-structure LESION_MASK_STRUCTURE]
+                       [--lesion-mask-pattern LESION_MASK_PATTERN [LESION_MASK_PATTERN ...]]
+                       [-m MODE [MODE ...]] [-a DIR]
+                       [--deformation-hyperprior DEFORMATION_HYPERPRIOR]
+                       [--gmm-hyperprior GMM_HYPERPRIOR] [--save-warp]
+                       [--save-mesh]
+                       [--save-posteriors [SAVE_POSTERIORS [SAVE_POSTERIORS ...]]]
+                       [--pallidum-separate] [--threads THREADS]
+                       [--tp-to-base-transform TP_TO_BASE_TRANSFORM [TP_TO_BASE_TRANSFORM ...]]
+                       [--force-different-resolutions] [--history]
+                       [--showfigs] [--movie]
+run_samseg_long: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'run_samseg_long' (no arguments) ===
+
+usage: run_samseg_long [-h] -t TIMEPOINT [TIMEPOINT ...] -o OUTPUT [--lesion]
+                       [--threshold THRESHOLD] [--samples SAMPLES]
+                       [--burnin BURNIN]
+                       [--lesion-mask-structure LESION_MASK_STRUCTURE]
+                       [--lesion-mask-pattern LESION_MASK_PATTERN [LESION_MASK_PATTERN ...]]
+                       [-m MODE [MODE ...]] [-a DIR]
+                       [--deformation-hyperprior DEFORMATION_HYPERPRIOR]
+                       [--gmm-hyperprior GMM_HYPERPRIOR] [--save-warp]
+                       [--save-mesh]
+                       [--save-posteriors [SAVE_POSTERIORS [SAVE_POSTERIORS ...]]]
+                       [--pallidum-separate] [--threads THREADS]
+                       [--tp-to-base-transform TP_TO_BASE_TRANSFORM [TP_TO_BASE_TRANSFORM ...]]
+                       [--force-different-resolutions] [--history]
+                       [--showfigs] [--movie]
+run_samseg_long: error: the following arguments are required: -t/--timepoint, -o/--output

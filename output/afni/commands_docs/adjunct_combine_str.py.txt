@@ -1,0 +1,84 @@
+
+=== Output of 'adjunct_combine_str.py --help' ===
+
+++ Command line:
+    /opt/afni/src/../install/adjunct_combine_str.py --help
+
+
+--------------------------------------------------------------------
+Helpfile for:    ***  adjunct_combine_str.py  ***
+Version num:     1.21
+Version dat:     Dec 5, 2018
+Written by:      PA Taylor (NIMH, NIH)
+
+Just a simple helper function for the fat_proc* scripts.  
+
+Takes >= 3 arguments: 
+   1) an output file name;
+   2) an int that is the upper index for the selector (-1 means
+      just use the max number in the input strings)
+   3) 1 or more string selector strings of *goods* to keep
+
+Converts those string selectors to a list of ints, then
+intersectionizes all the lists, and then spits out a new string
+selector (with ',' and '..'  notation) to the output file.
+
+--------------------------------------------------------------------
+
+
+
+=== Output of 'adjunct_combine_str.py -help' ===
+
+++ Command line:
+    /opt/afni/src/../install/adjunct_combine_str.py -help
+
+
+--------------------------------------------------------------------
+Helpfile for:    ***  adjunct_combine_str.py  ***
+Version num:     1.21
+Version dat:     Dec 5, 2018
+Written by:      PA Taylor (NIMH, NIH)
+
+Just a simple helper function for the fat_proc* scripts.  
+
+Takes >= 3 arguments: 
+   1) an output file name;
+   2) an int that is the upper index for the selector (-1 means
+      just use the max number in the input strings)
+   3) 1 or more string selector strings of *goods* to keep
+
+Converts those string selectors to a list of ints, then
+intersectionizes all the lists, and then spits out a new string
+selector (with ',' and '..'  notation) to the output file.
+
+--------------------------------------------------------------------
+
+
+
+=== Output of 'adjunct_combine_str.py' (no arguments) ===
+
+++ Command line:
+    /opt/afni/src/../install/adjunct_combine_str.py
+
+
+--------------------------------------------------------------------
+Helpfile for:    ***  adjunct_combine_str.py  ***
+Version num:     1.21
+Version dat:     Dec 5, 2018
+Written by:      PA Taylor (NIMH, NIH)
+
+Just a simple helper function for the fat_proc* scripts.  
+
+Takes >= 3 arguments: 
+   1) an output file name;
+   2) an int that is the upper index for the selector (-1 means
+      just use the max number in the input strings)
+   3) 1 or more string selector strings of *goods* to keep
+
+Converts those string selectors to a list of ints, then
+intersectionizes all the lists, and then spits out a new string
+selector (with ',' and '..'  notation) to the output file.
+
+--------------------------------------------------------------------
+
+

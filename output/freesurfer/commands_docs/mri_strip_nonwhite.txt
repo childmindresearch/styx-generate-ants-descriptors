@@ -1,0 +1,12 @@
+
+=== Output of 'mri_strip_nonwhite --help' ===
+
+unknown option --help
+
+=== Output of 'mri_strip_nonwhite -help' ===
+
+unknown option -help
+
+=== Output of 'mri_strip_nonwhite' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_strip_nonwhite <input volume> <transform> <template volume> <output volume>

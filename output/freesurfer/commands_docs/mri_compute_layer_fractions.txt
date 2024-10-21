@@ -1,0 +1,28 @@
+
+=== Output of 'mri_compute_layer_fractions --help' ===
+
+unknown option --help
+
+=== Output of 'mri_compute_layer_fractions -help' ===
+
+usage: /usr/local/freesurfer/bin/mri_compute_layer_fractions [options] <reg file> <input volume> <output stem>
+  -SDIR SUBJECTS_DIR 
+	
+this program computes volumetric partial volume fractions from laminar surfaces
+use -synth <output name> to combine them with the aseg for a single segmentation vol
+some sample commmand lines:
+compute a single synth volume for both hemis:
+mri_compute_layer_fractions -a $aseg   -sdir  $SUBJECTS_DIR -synth $target -$hemi -FS_names -s $s -nlayers 2 -r .125 -n graymid.rand  identity.nofile $asegfile $sd/mri/$hemi.layer_fractions.mgzcompute partial volume fractions for a single hemi:
+mri_compute_layer_fractions -sdir $SUBJECTS_DIR -$hemi -FS_names -s $s -nlayers 2 -w -r .125 -n graymid.rand  identity.nofile $aseg $target
+
+=== Output of 'mri_compute_layer_fractions' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_compute_layer_fractions [options] <reg file> <input volume> <output stem>
+  -SDIR SUBJECTS_DIR 
+	
+this program computes volumetric partial volume fractions from laminar surfaces
+use -synth <output name> to combine them with the aseg for a single segmentation vol
+some sample commmand lines:
+compute a single synth volume for both hemis:
+mri_compute_layer_fractions -a $aseg   -sdir  $SUBJECTS_DIR -synth $target -$hemi -FS_names -s $s -nlayers 2 -r .125 -n graymid.rand  identity.nofile $asegfile $sd/mri/$hemi.layer_fractions.mgzcompute partial volume fractions for a single hemi:
+mri_compute_layer_fractions -sdir $SUBJECTS_DIR -$hemi -FS_names -s $s -nlayers 2 -w -r .125 -n graymid.rand  identity.nofile $aseg $target

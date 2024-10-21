@@ -1,0 +1,67 @@
+
+=== Output of 'surface_fdr --help' ===
+
+Cannot open file.
+Cannot open file.
+Cannot open file.
+Cannot open file.
+Cannot open file.
+Cannot open file.
+Image Exception : #63 :: No image files match: --help_pvals
+Image Exception : #22 :: Failed to read volume --help_pvals
+Error : No image files match: --help_pvals
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume --help_pvals
+Error : No image files match: --help_pvals
+FDR threshold is 
+Image Exception : #63 :: No image files match: --help_pvals
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: --help_pvals
+/usr/local/fsl/bin/surface_fdr: line 108: 20186 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${infile}_pvals -uthr $thr -bin ${infile}_fdrmask
+Image Exception : #63 :: No image files match: --help_pvals
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: --help_pvals
+/usr/local/fsl/bin/surface_fdr: line 109: 20187 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${infile}_pvals -mas ${infile}_fdrmask ${infile}_pthresh
+Image Exception : #63 :: No image files match: --help_Fvals
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: --help_Fvals
+/usr/local/fsl/bin/surface_fdr: line 110: 20188 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${infile}_Fvals -mas ${infile}_fdrmask ${infile}_Fthresh
+Cannot open file.
+Cannot open file.
+
+=== Output of 'surface_fdr -help' ===
+
+Cannot open file.
+Cannot open file.
+Cannot open file.
+Cannot open file.
+Cannot open file.
+Cannot open file.
+Image Exception : #63 :: No image files match: -help_pvals
+Image Exception : #22 :: Failed to read volume -help_pvals
+Error : No image files match: -help_pvals
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume -help_pvals
+Error : No image files match: -help_pvals
+FDR threshold is 
+Image Exception : #63 :: No image files match: -help_pvals
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: -help_pvals
+/usr/local/fsl/bin/surface_fdr: line 108: 20209 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${infile}_pvals -uthr $thr -bin ${infile}_fdrmask
+Image Exception : #63 :: No image files match: -help_pvals
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: -help_pvals
+/usr/local/fsl/bin/surface_fdr: line 109: 20210 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${infile}_pvals -mas ${infile}_fdrmask ${infile}_pthresh
+Image Exception : #63 :: No image files match: -help_Fvals
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: -help_Fvals
+/usr/local/fsl/bin/surface_fdr: line 110: 20211 Aborted                 (core dumped) $FSLDIR/bin/fslmaths ${infile}_Fvals -mas ${infile}_fdrmask ${infile}_Fthresh
+Cannot open file.
+Cannot open file.
+
+=== Output of 'surface_fdr' (no arguments) ===
+
+Usage: surface_fdr <input_vtk>
+         where input_vtk is the vertex analysis vtk output
+         Outputs are *_pvals.vtk  *_Fthresh.vtk and some nifti images
+          (using the input vtk filename as the basename for output files)

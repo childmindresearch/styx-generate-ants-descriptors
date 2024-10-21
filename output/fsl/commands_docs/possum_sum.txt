@@ -1,0 +1,70 @@
+
+=== Output of 'possum_sum --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+possum_sum
+Copyright(c) 2006, University of Oxford (Ivana Drobnjak)
+
+Usage: 
+possum_sum -i <inname> -o <outname> -n <nproc> 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input signal for one processor (possum output matrix)
+	-o,--out	output signal: sum of all the processors (possum matrix form)
+
+Optional arguments (You may optionally specify one or more of):
+	-n,--nproc	Number of processors
+	-h,--help	display this message
+	-v,--verbose	switch on diagnostic messages
+
+
+
+=== Output of 'possum_sum -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+possum_sum
+Copyright(c) 2006, University of Oxford (Ivana Drobnjak)
+
+Usage: 
+possum_sum -i <inname> -o <outname> -n <nproc> 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input signal for one processor (possum output matrix)
+	-o,--out	output signal: sum of all the processors (possum matrix form)
+
+Optional arguments (You may optionally specify one or more of):
+	-n,--nproc	Number of processors
+	-h,--help	display this message
+	-v,--verbose	switch on diagnostic messages
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'possum_sum' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	input signal for one processor (possum output matrix)
+	-o,--out	output signal: sum of all the processors (possum matrix form)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+possum_sum
+Copyright(c) 2006, University of Oxford (Ivana Drobnjak)
+
+Usage: 
+possum_sum -i <inname> -o <outname> -n <nproc> 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input signal for one processor (possum output matrix)
+	-o,--out	output signal: sum of all the processors (possum matrix form)
+
+Optional arguments (You may optionally specify one or more of):
+	-n,--nproc	Number of processors
+	-h,--help	display this message
+	-v,--verbose	switch on diagnostic messages
+
+

@@ -1,0 +1,38 @@
+
+=== Output of 'listsubj --help' ===
+
+List subject IDs in SUBJECT_DIR.
+Usage: listsubj [OPTIONS] SUBJECT_DIR
+
+Options:
+    -c, --cross         Only cross-sectional stream
+    -b, --base          Only base stream
+    -l, --long          Only longitudinal stream
+    -d, --done          Only subject IDs with scripts/recon-all.done
+    -e, --error         Only subject IDs with scripts/recon-all.error
+    -r, --running       Only subject IDs with scripts/IsRunning.?h
+    -f, --full-path     Prepend full absolute path
+    -n, --count         Print number of subjects found
+    -h, --help          Show this help text
+
+
+=== Output of 'listsubj -help' ===
+
+ERROR: unknown flag "-help"
+
+=== Output of 'listsubj' (no arguments) ===
+
+List subject IDs in SUBJECT_DIR.
+Usage: listsubj [OPTIONS] SUBJECT_DIR
+
+Options:
+    -c, --cross         Only cross-sectional stream
+    -b, --base          Only base stream
+    -l, --long          Only longitudinal stream
+    -d, --done          Only subject IDs with scripts/recon-all.done
+    -e, --error         Only subject IDs with scripts/recon-all.error
+    -r, --running       Only subject IDs with scripts/IsRunning.?h
+    -f, --full-path     Prepend full absolute path
+    -n, --count         Print number of subjects found
+    -h, --help          Show this help text
+

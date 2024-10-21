@@ -1,0 +1,54 @@
+
+=== Output of 'bayes_view --help' ===
+
+
+Error: --help does not exist.
+
+
+=== Output of 'bayes_view -help' ===
+
+
+   ----------------------------------------------------------------------------
+   bayes_view
+      Launch a shiny app to visualize RBA output files.
+      The files must have the .RData extension.
+      Takes one argument, a path to a folder with said files.
+      That path MUST be the last argument!
+      May need "@afni_R_package_install -custom ..." for R libraries.
+
+   -----------------------------------------------------------------------------
+   options:
+      -help        : Show this help.
+      -ShinyFolder : Use a custom shiny folder (for testing purposes).
+
+   -----------------------------------------------------------------------------
+   examples:
+      bayes_view ~/disco_RBA_folder
+
+   -----------------------------------------------------------------------------
+   Justin Rajendra 04/2022
+
+
+=== Output of 'bayes_view' (no arguments) ===
+
+
+   ----------------------------------------------------------------------------
+   bayes_view
+      Launch a shiny app to visualize RBA output files.
+      The files must have the .RData extension.
+      Takes one argument, a path to a folder with said files.
+      That path MUST be the last argument!
+      May need "@afni_R_package_install -custom ..." for R libraries.
+
+   -----------------------------------------------------------------------------
+   options:
+      -help        : Show this help.
+      -ShinyFolder : Use a custom shiny folder (for testing purposes).
+
+   -----------------------------------------------------------------------------
+   examples:
+      bayes_view ~/disco_RBA_folder
+
+   -----------------------------------------------------------------------------
+   Justin Rajendra 04/2022
+

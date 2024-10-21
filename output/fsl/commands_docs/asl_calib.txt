@@ -1,0 +1,214 @@
+
+=== Output of 'asl_calib --help' ===
+
+ASL_CALIB
+Calibration for ASL data
+
+Usage (optional parameters in {}):
+ -c         : specify calibration image (stacked form)
+ -s         : specify structural image (already BETed)
+ -t         : specify asl-->structural transformation matrix
+ {--mode}   : Calibration mode: longtr or satrecov (see below) {default: longtr}
+ {--tissref}: Tissue reference type: csf, wm, gm or none {default: csf}
+ {--te}     : TE used in sequence (ms) - {default: 0 ms (i.e. negligible)}
+ {-i}       : specify a CBF image for calibration (should be in ASL native space)
+
+ Output options (set at least one of):
+ > save all results to a given directory:
+ {-o}       : specify output directory name.
+ > save specific results to indivdually anmed files:
+ {--of}     : specify output filename for calibrated image - {default: <input_file>_calib}
+              requires -i option to have been set
+ {--Mo}     : save the calculated M0 value to a specified file
+ {--om}     : save CSF mask to a specified file
+
+ Extended options (all optional):
+ -m         : Specify reference mask in calibration image space
+              - strucutral image & transformation matrix are not required
+ --bmask    : Brain mask (in ASL data space) for sensitivity or tissue T1 estimation
+ --t2star   : Correct with T2* rather than T2
+               (this alters the default values specified below to the T2* values)
+ --t1r      : T1 of reference tissue (defaults: csf 4.3, gm 1.3, wm 1.0 s) 
+ --t2r      : T2(*) of reference tissue (defaults T2/T2*: csf 750/400, gm 100/60,  wm 50/50  ms)
+ --t2b      : T2(*) of blood (default T2/T2*: 150/50 ms)
+ --pc       : Partition co-efficient (defaults csf 1.15, gm 0.98,  wm 0.82)
+ --alpha    : Specify inversion efficiency - only applied to final CBF image calculation
+
+ CSF masking options (only for --tissref csf)
+  By default asl_calib extracts CSF from the structural image by segmentation and
+  this is then masked using the ventricles in MNI152 space.
+ --csfmaskingoff : turns off the ventricle masking, reference is based on segmentation only.
+  Registration between structural image and MNI152 is done automatically unless:
+  --str2std  : Structural to MNI152 linear registration (.mat)
+  --warp     : Structural to MNI152 non-linear registration (warp)
+
+MODES:
+> longtr  Calibration image is a control image with a long TR.
+  {--tr}     : TR used in calibration sequence - {default: 3.2s}
+  {--cgain}  : Relative gain between calibration and ASL data - {default: 1}
+
+> satrecov  Calibration image is a sequnce of control images at various TIs
+            M0 is to be determined from a saturation recovery
+            T1 of tissue (and FA correction) images are also calcualted
+ --tis       : comma separated list of inversion times, e.g. --tis 0.2,0.4,0.6
+ {--fa}      : Flip angle (in degrees) for Look-Locker readouts
+   >> Look-Locker flip angle correction - to perform this provide:
+ {--lfa}     : Lower flip angle (in degrees) for dual FA calibration
+ {--nphases} : Number of phases (repetitions) of higher FA
+ {--fixa}    : Fix the saturation efficiency to 100% (useful if you have a low number of samples)
+
+Coil sensitivity correction:
+ Calculate and apply a voxel-wise correction for coil sensitivity
+ > using bias field from structural image (default)
+ {--osen}    : save sensitivity image to specified file.
+ > using existing sensitivity image:
+  --isen     : input coil sensitivity image
+ > using reference images (collected using same parameters):
+  --cref     : Reference image from coil with minimal variation e.g. body.
+  {--cact}   : Image from coil used for actual ASL acquisition
+               {default: calibration image - only in longtr mode}
+
+Error! Unrecognised option on command line: --help
+
+
+=== Output of 'asl_calib -help' ===
+
+ASL_CALIB
+Calibration for ASL data
+
+Usage (optional parameters in {}):
+ -c         : specify calibration image (stacked form)
+ -s         : specify structural image (already BETed)
+ -t         : specify asl-->structural transformation matrix
+ {--mode}   : Calibration mode: longtr or satrecov (see below) {default: longtr}
+ {--tissref}: Tissue reference type: csf, wm, gm or none {default: csf}
+ {--te}     : TE used in sequence (ms) - {default: 0 ms (i.e. negligible)}
+ {-i}       : specify a CBF image for calibration (should be in ASL native space)
+
+ Output options (set at least one of):
+ > save all results to a given directory:
+ {-o}       : specify output directory name.
+ > save specific results to indivdually anmed files:
+ {--of}     : specify output filename for calibrated image - {default: <input_file>_calib}
+              requires -i option to have been set
+ {--Mo}     : save the calculated M0 value to a specified file
+ {--om}     : save CSF mask to a specified file
+
+ Extended options (all optional):
+ -m         : Specify reference mask in calibration image space
+              - strucutral image & transformation matrix are not required
+ --bmask    : Brain mask (in ASL data space) for sensitivity or tissue T1 estimation
+ --t2star   : Correct with T2* rather than T2
+               (this alters the default values specified below to the T2* values)
+ --t1r      : T1 of reference tissue (defaults: csf 4.3, gm 1.3, wm 1.0 s) 
+ --t2r      : T2(*) of reference tissue (defaults T2/T2*: csf 750/400, gm 100/60,  wm 50/50  ms)
+ --t2b      : T2(*) of blood (default T2/T2*: 150/50 ms)
+ --pc       : Partition co-efficient (defaults csf 1.15, gm 0.98,  wm 0.82)
+ --alpha    : Specify inversion efficiency - only applied to final CBF image calculation
+
+ CSF masking options (only for --tissref csf)
+  By default asl_calib extracts CSF from the structural image by segmentation and
+  this is then masked using the ventricles in MNI152 space.
+ --csfmaskingoff : turns off the ventricle masking, reference is based on segmentation only.
+  Registration between structural image and MNI152 is done automatically unless:
+  --str2std  : Structural to MNI152 linear registration (.mat)
+  --warp     : Structural to MNI152 non-linear registration (warp)
+
+MODES:
+> longtr  Calibration image is a control image with a long TR.
+  {--tr}     : TR used in calibration sequence - {default: 3.2s}
+  {--cgain}  : Relative gain between calibration and ASL data - {default: 1}
+
+> satrecov  Calibration image is a sequnce of control images at various TIs
+            M0 is to be determined from a saturation recovery
+            T1 of tissue (and FA correction) images are also calcualted
+ --tis       : comma separated list of inversion times, e.g. --tis 0.2,0.4,0.6
+ {--fa}      : Flip angle (in degrees) for Look-Locker readouts
+   >> Look-Locker flip angle correction - to perform this provide:
+ {--lfa}     : Lower flip angle (in degrees) for dual FA calibration
+ {--nphases} : Number of phases (repetitions) of higher FA
+ {--fixa}    : Fix the saturation efficiency to 100% (useful if you have a low number of samples)
+
+Coil sensitivity correction:
+ Calculate and apply a voxel-wise correction for coil sensitivity
+ > using bias field from structural image (default)
+ {--osen}    : save sensitivity image to specified file.
+ > using existing sensitivity image:
+  --isen     : input coil sensitivity image
+ > using reference images (collected using same parameters):
+  --cref     : Reference image from coil with minimal variation e.g. body.
+  {--cact}   : Image from coil used for actual ASL acquisition
+               {default: calibration image - only in longtr mode}
+
+Error! Unrecognised option on command line: -help
+
+
+=== Output of 'asl_calib' (no arguments) ===
+
+ASL_CALIB
+Calibration for ASL data
+
+Usage (optional parameters in {}):
+ -c         : specify calibration image (stacked form)
+ -s         : specify structural image (already BETed)
+ -t         : specify asl-->structural transformation matrix
+ {--mode}   : Calibration mode: longtr or satrecov (see below) {default: longtr}
+ {--tissref}: Tissue reference type: csf, wm, gm or none {default: csf}
+ {--te}     : TE used in sequence (ms) - {default: 0 ms (i.e. negligible)}
+ {-i}       : specify a CBF image for calibration (should be in ASL native space)
+
+ Output options (set at least one of):
+ > save all results to a given directory:
+ {-o}       : specify output directory name.
+ > save specific results to indivdually anmed files:
+ {--of}     : specify output filename for calibrated image - {default: <input_file>_calib}
+              requires -i option to have been set
+ {--Mo}     : save the calculated M0 value to a specified file
+ {--om}     : save CSF mask to a specified file
+
+ Extended options (all optional):
+ -m         : Specify reference mask in calibration image space
+              - strucutral image & transformation matrix are not required
+ --bmask    : Brain mask (in ASL data space) for sensitivity or tissue T1 estimation
+ --t2star   : Correct with T2* rather than T2
+               (this alters the default values specified below to the T2* values)
+ --t1r      : T1 of reference tissue (defaults: csf 4.3, gm 1.3, wm 1.0 s) 
+ --t2r      : T2(*) of reference tissue (defaults T2/T2*: csf 750/400, gm 100/60,  wm 50/50  ms)
+ --t2b      : T2(*) of blood (default T2/T2*: 150/50 ms)
+ --pc       : Partition co-efficient (defaults csf 1.15, gm 0.98,  wm 0.82)
+ --alpha    : Specify inversion efficiency - only applied to final CBF image calculation
+
+ CSF masking options (only for --tissref csf)
+  By default asl_calib extracts CSF from the structural image by segmentation and
+  this is then masked using the ventricles in MNI152 space.
+ --csfmaskingoff : turns off the ventricle masking, reference is based on segmentation only.
+  Registration between structural image and MNI152 is done automatically unless:
+  --str2std  : Structural to MNI152 linear registration (.mat)
+  --warp     : Structural to MNI152 non-linear registration (warp)
+
+MODES:
+> longtr  Calibration image is a control image with a long TR.
+  {--tr}     : TR used in calibration sequence - {default: 3.2s}
+  {--cgain}  : Relative gain between calibration and ASL data - {default: 1}
+
+> satrecov  Calibration image is a sequnce of control images at various TIs
+            M0 is to be determined from a saturation recovery
+            T1 of tissue (and FA correction) images are also calcualted
+ --tis       : comma separated list of inversion times, e.g. --tis 0.2,0.4,0.6
+ {--fa}      : Flip angle (in degrees) for Look-Locker readouts
+   >> Look-Locker flip angle correction - to perform this provide:
+ {--lfa}     : Lower flip angle (in degrees) for dual FA calibration
+ {--nphases} : Number of phases (repetitions) of higher FA
+ {--fixa}    : Fix the saturation efficiency to 100% (useful if you have a low number of samples)
+
+Coil sensitivity correction:
+ Calculate and apply a voxel-wise correction for coil sensitivity
+ > using bias field from structural image (default)
+ {--osen}    : save sensitivity image to specified file.
+ > using existing sensitivity image:
+  --isen     : input coil sensitivity image
+ > using reference images (collected using same parameters):
+  --cref     : Reference image from coil with minimal variation e.g. body.
+  {--cact}   : Image from coil used for actual ASL acquisition
+               {default: calibration image - only in longtr mode}
+

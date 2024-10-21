@@ -1,0 +1,1899 @@
+
+=== Output of 'fsl.5.0.2.xyztrans.sch --help' ===
+
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 9: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 10: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 11: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 12: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 15: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 16: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 17: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 18: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 19: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 20: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 21: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 22: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 23: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 24: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 25: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 26: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 27: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 28: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 29: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 30: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 31: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 32: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 33: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 34: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 35: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 36: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 37: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 38: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 39: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 40: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 41: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 42: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 43: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 44: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 45: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 46: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 47: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 48: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 49: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 50: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 51: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 52: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 53: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 54: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 55: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 56: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 58: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 61: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 62: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 63: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 64: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 70: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 72: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 75: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 78: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 79: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 81: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 84: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 85: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 86: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 87: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 92: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 94: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 96: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 97: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 100: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 101: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 102: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 103: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 106: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 107: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 109: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 115: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 116: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 117: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 118: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 121: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 122: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 123: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 124: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 125: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 126: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 127: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 128: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 129: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 130: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 131: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 132: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 133: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 134: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 135: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 136: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 137: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 138: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 139: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 140: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 141: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 142: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 143: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 144: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 145: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 146: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 147: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 148: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 149: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 150: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 151: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 152: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 153: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 154: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 155: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 156: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 157: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 158: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 159: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 160: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 161: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 162: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 164: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 167: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 168: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 169: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 170: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 176: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 178: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 181: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 184: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 185: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 187: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 190: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 191: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 192: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 193: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 198: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 200: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 202: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 203: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 206: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 207: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 208: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 209: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 212: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 213: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 215: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 222: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 223: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 224: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 225: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 228: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 229: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 230: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 231: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 232: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 233: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 234: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 235: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 236: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 237: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 238: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 239: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 240: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 241: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 242: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 243: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 244: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 245: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 246: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 247: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 248: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 249: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 250: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 251: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 252: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 253: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 254: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 255: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 256: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 257: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 258: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 259: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 260: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 261: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 262: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 263: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 264: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 265: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 266: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 267: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 268: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 269: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 271: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 274: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 275: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 276: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 277: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 283: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 285: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 288: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 291: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 292: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 294: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 297: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 298: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 299: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 300: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 305: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 307: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 309: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 310: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 313: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 314: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 315: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 316: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 319: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 320: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 322: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 326: copy: command not found
+sort: cannot read: U: No such file or directory
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 331: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 334: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 335: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 336: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 338: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 341: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 342: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 343: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 349: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 351: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 354: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 357: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 358: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 359: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 362: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 363: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 364: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 371: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 373: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 375: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 377: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 380: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 381: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 382: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 383: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 386: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 387: optimise: command not found
+sort: cannot read: U: No such file or directory
+
+=== Output of 'fsl.5.0.2.xyztrans.sch -help' ===
+
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 9: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 10: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 11: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 12: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 15: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 16: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 17: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 18: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 19: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 20: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 21: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 22: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 23: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 24: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 25: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 26: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 27: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 28: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 29: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 30: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 31: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 32: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 33: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 34: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 35: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 36: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 37: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 38: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 39: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 40: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 41: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 42: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 43: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 44: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 45: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 46: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 47: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 48: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 49: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 50: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 51: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 52: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 53: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 54: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 55: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 56: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 58: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 61: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 62: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 63: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 64: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 70: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 72: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 75: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 78: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 79: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 81: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 84: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 85: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 86: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 87: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 92: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 94: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 96: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 97: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 100: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 101: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 102: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 103: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 106: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 107: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 109: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 115: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 116: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 117: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 118: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 121: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 122: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 123: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 124: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 125: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 126: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 127: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 128: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 129: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 130: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 131: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 132: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 133: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 134: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 135: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 136: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 137: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 138: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 139: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 140: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 141: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 142: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 143: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 144: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 145: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 146: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 147: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 148: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 149: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 150: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 151: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 152: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 153: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 154: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 155: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 156: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 157: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 158: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 159: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 160: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 161: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 162: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 164: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 167: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 168: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 169: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 170: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 176: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 178: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 181: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 184: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 185: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 187: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 190: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 191: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 192: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 193: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 198: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 200: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 202: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 203: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 206: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 207: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 208: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 209: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 212: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 213: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 215: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 222: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 223: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 224: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 225: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 228: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 229: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 230: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 231: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 232: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 233: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 234: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 235: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 236: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 237: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 238: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 239: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 240: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 241: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 242: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 243: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 244: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 245: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 246: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 247: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 248: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 249: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 250: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 251: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 252: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 253: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 254: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 255: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 256: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 257: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 258: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 259: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 260: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 261: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 262: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 263: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 264: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 265: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 266: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 267: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 268: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 269: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 271: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 274: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 275: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 276: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 277: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 283: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 285: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 288: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 291: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 292: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 294: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 297: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 298: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 299: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 300: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 305: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 307: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 309: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 310: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 313: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 314: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 315: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 316: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 319: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 320: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 322: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 326: copy: command not found
+sort: cannot read: U: No such file or directory
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 331: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 334: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 335: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 336: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 338: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 341: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 342: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 343: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 349: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 351: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 354: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 357: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 358: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 359: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 362: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 363: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 364: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 371: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 373: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 375: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 377: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 380: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 381: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 382: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 383: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 386: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 387: optimise: command not found
+sort: cannot read: U: No such file or directory
+
+=== Output of 'fsl.5.0.2.xyztrans.sch' (no arguments) ===
+
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 9: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 10: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 11: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 12: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 15: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 16: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 17: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 18: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 19: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 20: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 21: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 22: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 23: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 24: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 25: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 26: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 27: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 28: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 29: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 30: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 31: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 32: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 33: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 34: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 35: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 36: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 37: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 38: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 39: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 40: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 41: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 42: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 43: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 44: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 45: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 46: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 47: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 48: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 49: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 50: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 51: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 52: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 53: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 54: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 55: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 56: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 58: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 61: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 62: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 63: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 64: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 70: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 72: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 75: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 78: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 79: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 81: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 84: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 85: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 86: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 87: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 92: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 94: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 96: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 97: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 100: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 101: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 102: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 103: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 106: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 107: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 109: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 115: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 116: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 117: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 118: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 121: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 122: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 123: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 124: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 125: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 126: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 127: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 128: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 129: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 130: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 131: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 132: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 133: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 134: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 135: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 136: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 137: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 138: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 139: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 140: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 141: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 142: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 143: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 144: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 145: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 146: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 147: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 148: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 149: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 150: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 151: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 152: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 153: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 154: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 155: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 156: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 157: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 158: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 159: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 160: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 161: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 162: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 164: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 167: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 168: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 169: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 170: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 176: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 178: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 181: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 184: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 185: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 187: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 190: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 191: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 192: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 193: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 198: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 200: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 202: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 203: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 206: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 207: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 208: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 209: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 212: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 213: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 215: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 222: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 223: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 224: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 225: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 228: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 229: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 230: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 231: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 232: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 233: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 234: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 235: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 236: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 237: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 238: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 239: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 240: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 241: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 242: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 243: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 244: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 245: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 246: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 247: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 248: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 249: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 250: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 251: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 252: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 253: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 254: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 255: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 256: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 257: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 258: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 259: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 260: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 261: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 262: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 263: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 264: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 265: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 266: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 267: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 268: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 269: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 271: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 274: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 275: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 276: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 277: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 283: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 285: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 288: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 291: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 292: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 294: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 297: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 298: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 299: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 300: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 305: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 307: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 309: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 310: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 313: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 314: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 315: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 316: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 319: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 320: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 322: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 326: copy: command not found
+sort: cannot read: U: No such file or directory
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 331: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 334: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 335: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 336: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 338: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 341: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 342: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 343: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 349: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 351: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 354: optimise: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 357: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 358: optimise: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 359: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 362: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 363: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 364: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 371: measurecost: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 373: copy: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 375: optimise: command not found
+sort: cannot read: U: No such file or directory
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 377: copy: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 380: setscale: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 381: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 382: setoption: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 383: setoption: command not found
+Usage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 386: setrow: command not found
+/usr/local/freesurfer/bin/fsl.5.0.2.xyztrans.sch: line 387: optimise: command not found
+sort: cannot read: U: No such file or directory

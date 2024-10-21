@@ -1,0 +1,110 @@
+
+=== Output of '@djunct_montage_coordinator --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of '@djunct_montage_coordinator -help' ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+Just a tiny adjunct program for @chauffeur_afni.
+
+Small program to calculate how to evenly space a certain number of
+slices within each view plane of a dset.  Returns three numbers: the
+'delta slices' in the three view planes (in the order of the input
+dset's orientation).
+
+++ constructed by PA Taylor (NIMH, NIH, USA).
+
+# =========================================================================
+
+RUNNING ~1~
+
+Inputs ~2~
+
+  + a volume dset (to have a grid/dimensions)
+  + the montage's x- and y-dimensions
+  + the choice of either IJK or XYZ coordinates to be output
+
+Outputs ~2~
+
+  + three numbers: either 'i j k' or 'x y z' values.  These numbers
+    represent where to tell AFNI to set its crosshairs for a montage.
+    These can be redirected to a file, if so desired for scripting 
+    (likely!).
+
+# =========================================================================
+
+COMMAND OPTIONS ~1~
+
+-help, -h          :see helpfile (here!)
+-ver               :see version number
+
+-inset   UUU       :(req) name of input dset.
+
+-montx   MX        :(req) montage dimension: number of panels along x-axis 
+                    (i.e., number of cols)
+
+-monty   MY        :(req) montage dimension: number of panels along y-axis 
+                    (i.e., number of rows)
+
+-out_ijk           :make program output 'I J K' values.
+-out_xyz           :make program output 'X Y Z' values.
+
+
+=== Output of '@djunct_montage_coordinator' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+Just a tiny adjunct program for @chauffeur_afni.
+
+Small program to calculate how to evenly space a certain number of
+slices within each view plane of a dset.  Returns three numbers: the
+'delta slices' in the three view planes (in the order of the input
+dset's orientation).
+
+++ constructed by PA Taylor (NIMH, NIH, USA).
+
+# =========================================================================
+
+RUNNING ~1~
+
+Inputs ~2~
+
+  + a volume dset (to have a grid/dimensions)
+  + the montage's x- and y-dimensions
+  + the choice of either IJK or XYZ coordinates to be output
+
+Outputs ~2~
+
+  + three numbers: either 'i j k' or 'x y z' values.  These numbers
+    represent where to tell AFNI to set its crosshairs for a montage.
+    These can be redirected to a file, if so desired for scripting 
+    (likely!).
+
+# =========================================================================
+
+COMMAND OPTIONS ~1~
+
+-help, -h          :see helpfile (here!)
+-ver               :see version number
+
+-inset   UUU       :(req) name of input dset.
+
+-montx   MX        :(req) montage dimension: number of panels along x-axis 
+                    (i.e., number of cols)
+
+-monty   MY        :(req) montage dimension: number of panels along y-axis 
+                    (i.e., number of rows)
+
+-out_ijk           :make program output 'I J K' values.
+-out_xyz           :make program output 'X Y Z' values.
+

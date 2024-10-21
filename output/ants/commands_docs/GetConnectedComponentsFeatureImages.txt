@@ -1,0 +1,12 @@
+
+=== Output of 'GetConnectedComponentsFeatureImages --help' ===
+
+Usage: GetConnectedComponentsFeatureImages imageDimension inputSegmentationImage outputImagePrefix
+
+=== Output of 'GetConnectedComponentsFeatureImages -help' ===
+
+Usage: GetConnectedComponentsFeatureImages imageDimension inputSegmentationImage outputImagePrefix
+
+=== Output of 'GetConnectedComponentsFeatureImages' (no arguments) ===
+
+Usage: GetConnectedComponentsFeatureImages imageDimension inputSegmentationImage outputImagePrefix

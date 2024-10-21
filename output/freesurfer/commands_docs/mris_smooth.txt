@@ -1,0 +1,168 @@
+
+=== Output of 'mris_smooth --help' ===
+
+				Help
+
+NAME
+	mris_smooth
+
+SYNOPSIS
+	mris_smooth [options] <input surface> <output surface>
+
+DESCRIPTION
+	This program smooths the tessellation of a cortical surface and write 
+	out the first and second order properties after smoothing to the files
+	$hemi.curv (mean curvature) and $hemi.area (area).
+
+POSITIONAL ARGUMENTS
+	input surface
+
+	output surface
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-a <avgs>
+		specify # of curvature averaging iterations (def=10).
+
+	-n <niter>
+		specify # of smoothing iterations (def=10).
+
+	-nw
+		disable writing of curvature and area estimates
+
+	-c curvname
+		write curv to ?h.curvname (default 'curv')
+
+	-b areaname
+		write area to ?h.areaname (default 'area')
+
+	-g <norm> <steps>
+		use Gaussian curvature smoothing with norm <norm> and <steps> 
+		smoothing steps(-g 20 8 works well for hippo)
+
+	-area
+		normalize area after smoothing
+
+	-m momentum
+
+	-w nwrite
+		write snapshot every nwrite iterations
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_smooth -help' ===
+
+				Help
+
+NAME
+	mris_smooth
+
+SYNOPSIS
+	mris_smooth [options] <input surface> <output surface>
+
+DESCRIPTION
+	This program smooths the tessellation of a cortical surface and write 
+	out the first and second order properties after smoothing to the files
+	$hemi.curv (mean curvature) and $hemi.area (area).
+
+POSITIONAL ARGUMENTS
+	input surface
+
+	output surface
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-a <avgs>
+		specify # of curvature averaging iterations (def=10).
+
+	-n <niter>
+		specify # of smoothing iterations (def=10).
+
+	-nw
+		disable writing of curvature and area estimates
+
+	-c curvname
+		write curv to ?h.curvname (default 'curv')
+
+	-b areaname
+		write area to ?h.areaname (default 'area')
+
+	-g <norm> <steps>
+		use Gaussian curvature smoothing with norm <norm> and <steps> 
+		smoothing steps(-g 20 8 works well for hippo)
+
+	-area
+		normalize area after smoothing
+
+	-m momentum
+
+	-w nwrite
+		write snapshot every nwrite iterations
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_smooth' (no arguments) ===
+
+				Help
+
+NAME
+	mris_smooth
+
+SYNOPSIS
+	mris_smooth [options] <input surface> <output surface>
+
+DESCRIPTION
+	This program smooths the tessellation of a cortical surface and write 
+	out the first and second order properties after smoothing to the files
+	$hemi.curv (mean curvature) and $hemi.area (area).
+
+POSITIONAL ARGUMENTS
+	input surface
+
+	output surface
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-a <avgs>
+		specify # of curvature averaging iterations (def=10).
+
+	-n <niter>
+		specify # of smoothing iterations (def=10).
+
+	-nw
+		disable writing of curvature and area estimates
+
+	-c curvname
+		write curv to ?h.curvname (default 'curv')
+
+	-b areaname
+		write area to ?h.areaname (default 'area')
+
+	-g <norm> <steps>
+		use Gaussian curvature smoothing with norm <norm> and <steps> 
+		smoothing steps(-g 20 8 works well for hippo)
+
+	-area
+		normalize area after smoothing
+
+	-m momentum
+
+	-w nwrite
+		write snapshot every nwrite iterations
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

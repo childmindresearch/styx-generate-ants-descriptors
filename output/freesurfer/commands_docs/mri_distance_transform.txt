@@ -1,0 +1,15 @@
+
+=== Output of 'mri_distance_transform --help' ===
+
+mri_distance_transform <input volume> <label> <max_distance> <mode[=1]> <output volume>
+mode : 1 = outside , mode : 2 = inside , mode : 3 = both, mode : 4 = both unsigned 
+
+=== Output of 'mri_distance_transform -help' ===
+
+mri_distance_transform <input volume> <label> <max_distance> <mode[=1]> <output volume>
+mode : 1 = outside , mode : 2 = inside , mode : 3 = both, mode : 4 = both unsigned 
+
+=== Output of 'mri_distance_transform' (no arguments) ===
+
+mri_distance_transform <input volume> <label> <max_distance> <mode[=1]> <output volume>
+mode : 1 = outside , mode : 2 = inside , mode : 3 = both, mode : 4 = both unsigned 

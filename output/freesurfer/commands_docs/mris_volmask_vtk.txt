@@ -1,0 +1,223 @@
+
+=== Output of 'mris_volmask_vtk --help' ===
+
+				Help
+
+NAME
+	mris_volmask
+
+SYNOPSIS
+	mris_volmask <options> <io>
+
+DESCRIPTION
+	Computes a volume mask, at the same resolution as the
+	<subject>/mri/brain.mgz.  The volume mask contains 4 values: LH_WM 
+	(default 10), LH_GM (default 100), RH_WM (default 20), RH_GM (default 
+	200).
+	The algorithm uses the 4 surfaces situated in <subject>/surf/
+	[lh|rh].[white|pial].surf and labels voxels based on the 
+	signed-distance function from the surface.
+
+POSITIONAL ARGUMENTS
+	<io>
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--cap_distance
+		pars = 1. maximum distance up to which the signed distance 
+		function computation is accurate
+
+	--label_background
+		pars = 1. Override default value for background label value 
+		(0)
+
+	--label_left_white
+		pars = 1. Override default value for left white matter label -
+		20
+
+	--label_left_ribbon
+		pars = 1. Override default value for left ribbon label - 10
+
+	--label_right_white
+		pars = 1. Override default value for right white matter label 
+		- 120
+
+	--label_right_ribbon
+		pars = 1. Override default value for right ribbon label - 110
+
+	--surf_white
+		pars = 1. Surface root name (i.e. <subject>/surf/$hemi.<NAME> 
+		- default value is white
+
+	--surf_pial
+		pars = 1. Surface root name (i.e. <subject>/surf/$hemi.<NAME> 
+		- default value is pial
+
+	--aseg_name
+		pars = 1. Default value is aseg. Allows specifying a different
+		name for the aseg input file.
+
+	--out_root
+		pars = 1. Default value is ribbon - output will then be mri/
+		ribbon.mgz and mri/lh.ribbon.mgz and mri/rh.ribbon.mgz (last 2
+		if -save_ribbon is used)
+
+	--sd
+		pars = 1. Option to specify SUBJECTS_DIR, default is read from
+		enviro
+
+	--help
+		display help message
+
+	--save_distance
+		option to save the signed distance function as ?h.dwhite.mgz 
+		?h.dpial.mgz in the mri directory
+
+	--lh-only
+		only process left hemi
+
+	--rh-only
+		only process right hemi
+
+	--parallel
+		Run hemispheres in parallel (ie, on two CPUs) and combine the 
+		result
+
+	--edit_aseg
+		option to edit the aseg using the ribbons and save to 
+		aseg.ribbon.mgz in the mri directory
+
+	--save_ribbon
+		option to save just the ribbon for the hemispheres - in the 
+		format ?h.ribbon.mgz
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_volmask_vtk -help' ===
+
+SUBJECTS_DIR is /usr/local/freesurfer/subjects
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+loading input data...
+
+=== Output of 'mris_volmask_vtk' (no arguments) ===
+
+
+ Computes a volume mask, at the same resolution as the
+ <subject>/mri/brain.mgz.  The volume mask contains 4 values:
+   LH_WM (default 10)
+   LH_GM (default 100)
+   RH_WM (default 20)
+   RH_GM (default 200)
+ The algorithm uses the 4 surfaces situated in
+ <subject>/surf/[lh|rh].[white|pial].surf and labels voxels
+ based on the signed-distance function from the surface.
+				Help
+
+NAME
+	mris_volmask
+
+SYNOPSIS
+	mris_volmask <options> <io>
+
+DESCRIPTION
+	Computes a volume mask, at the same resolution as the
+	<subject>/mri/brain.mgz.  The volume mask contains 4 values: LH_WM 
+	(default 10), LH_GM (default 100), RH_WM (default 20), RH_GM (default 
+	200).
+	The algorithm uses the 4 surfaces situated in <subject>/surf/
+	[lh|rh].[white|pial].surf and labels voxels based on the 
+	signed-distance function from the surface.
+
+POSITIONAL ARGUMENTS
+	<io>
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--cap_distance
+		pars = 1. maximum distance up to which the signed distance 
+		function computation is accurate
+
+	--label_background
+		pars = 1. Override default value for background label value 
+		(0)
+
+	--label_left_white
+		pars = 1. Override default value for left white matter label -
+		20
+
+	--label_left_ribbon
+		pars = 1. Override default value for left ribbon label - 10
+
+	--label_right_white
+		pars = 1. Override default value for right white matter label 
+		- 120
+
+	--label_right_ribbon
+		pars = 1. Override default value for right ribbon label - 110
+
+	--surf_white
+		pars = 1. Surface root name (i.e. <subject>/surf/$hemi.<NAME> 
+		- default value is white
+
+	--surf_pial
+		pars = 1. Surface root name (i.e. <subject>/surf/$hemi.<NAME> 
+		- default value is pial
+
+	--aseg_name
+		pars = 1. Default value is aseg. Allows specifying a different
+		name for the aseg input file.
+
+	--out_root
+		pars = 1. Default value is ribbon - output will then be mri/
+		ribbon.mgz and mri/lh.ribbon.mgz and mri/rh.ribbon.mgz (last 2
+		if -save_ribbon is used)
+
+	--sd
+		pars = 1. Option to specify SUBJECTS_DIR, default is read from
+		enviro
+
+	--help
+		display help message
+
+	--save_distance
+		option to save the signed distance function as ?h.dwhite.mgz 
+		?h.dpial.mgz in the mri directory
+
+	--lh-only
+		only process left hemi
+
+	--rh-only
+		only process right hemi
+
+	--parallel
+		Run hemispheres in parallel (ie, on two CPUs) and combine the 
+		result
+
+	--edit_aseg
+		option to edit the aseg using the ribbons and save to 
+		aseg.ribbon.mgz in the mri directory
+
+	--save_ribbon
+		option to save just the ribbon for the hemispheres - in the 
+		format ?h.ribbon.mgz
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

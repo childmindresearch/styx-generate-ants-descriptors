@@ -1,0 +1,12 @@
+
+=== Output of 'brec --help' ===
+
+--help.rec not found
+
+=== Output of 'brec -help' ===
+
+-help.rec not found
+
+=== Output of 'brec' (no arguments) ===
+
+Usage:	brec <my_file[.rec]> [-depth_limit]

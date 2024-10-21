@@ -1,0 +1,12 @@
+
+=== Output of '@escape- --help' ===
+
+\--help
+
+=== Output of '@escape- -help' ===
+
+\-help
+
+=== Output of '@escape-' (no arguments) ===
+
+

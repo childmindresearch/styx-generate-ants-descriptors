@@ -1,0 +1,37 @@
+
+=== Output of 'stat_normalize --help' ===
+
+usage: /usr/local/freesurfer/bin/stat_normalize [options] <input sv prefix> <output sv prefix>
+options are:
+	-r <resolution>            - set output resolution (def=8mm)
+	-f <field of view>         - set output field of view (def=256)
+	-S <hemisphere> <surface>  - average in spherical coordinates
+	-x xfmfile - use subjid/mri/transforms/xfmfile instead of
+	-i - fix xfm for non-zero center of orig volume
+	-c float2int - <tkregister>, round
+
+This program will convert average a sequence of
+volume-based statistics in Talairach space:
+
+/usr/local/freesurfer/bin/stat_normalize --help 
+
+=== Output of 'stat_normalize -help' ===
+
+unknown option -help
+/usr/local/freesurfer/bin/stat_normalize -help 
+
+=== Output of 'stat_normalize' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/stat_normalize [options] <input sv prefix> <output sv prefix>
+options are:
+	-r <resolution>            - set output resolution (def=8mm)
+	-f <field of view>         - set output field of view (def=256)
+	-S <hemisphere> <surface>  - average in spherical coordinates
+	-x xfmfile - use subjid/mri/transforms/xfmfile instead of
+	-i - fix xfm for non-zero center of orig volume
+	-c float2int - <tkregister>, round
+
+This program will convert average a sequence of
+volume-based statistics in Talairach space:
+
+/usr/local/freesurfer/bin/stat_normalize 

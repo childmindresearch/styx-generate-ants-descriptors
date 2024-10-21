@@ -1,0 +1,45 @@
+
+=== Output of 'msmresample --help' ===
+
+msmresample  <inputmesh> <output> <-option>   
+-option 
+ -project - project final result back down onto surface (requires argument) 
+ -labels - load labels file for input (inc. .func. and .shape, requires argument)
+ -datamat - multivariate data matrix (requires argument)
+ -barycentric use barycentric interpolation
+ -adap_bary use adaptive barycentric interpolation
+ -linear - linear interpolation kernel with kernel size X (requires argument)
+ -gaussian - gaussian interpolation kernel with std deviation X (requires argument) 
+ -normalize  - normlalize intensity range to target (requires argument)
+ -excl exclude the area of the cut form contributing to the resampling
+ -arealdist estimate areal distortion
+
+=== Output of 'msmresample -help' ===
+
+msmresample  <inputmesh> <output> <-option>   
+-option 
+ -project - project final result back down onto surface (requires argument) 
+ -labels - load labels file for input (inc. .func. and .shape, requires argument)
+ -datamat - multivariate data matrix (requires argument)
+ -barycentric use barycentric interpolation
+ -adap_bary use adaptive barycentric interpolation
+ -linear - linear interpolation kernel with kernel size X (requires argument)
+ -gaussian - gaussian interpolation kernel with std deviation X (requires argument) 
+ -normalize  - normlalize intensity range to target (requires argument)
+ -excl exclude the area of the cut form contributing to the resampling
+ -arealdist estimate areal distortion
+
+=== Output of 'msmresample' (no arguments) ===
+
+msmresample  <inputmesh> <output> <-option>   
+-option 
+ -project - project final result back down onto surface (requires argument) 
+ -labels - load labels file for input (inc. .func. and .shape, requires argument)
+ -datamat - multivariate data matrix (requires argument)
+ -barycentric use barycentric interpolation
+ -adap_bary use adaptive barycentric interpolation
+ -linear - linear interpolation kernel with kernel size X (requires argument)
+ -gaussian - gaussian interpolation kernel with std deviation X (requires argument) 
+ -normalize  - normlalize intensity range to target (requires argument)
+ -excl exclude the area of the cut form contributing to the resampling
+ -arealdist estimate areal distortion

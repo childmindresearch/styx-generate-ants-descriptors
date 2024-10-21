@@ -1,0 +1,77 @@
+
+=== Output of 'roi_stats_warnings.py --help' ===
+
+** error: unknown trailing arguments : ['--help']
+** failed to process options...
+
+=== Output of 'roi_stats_warnings.py -help' ===
+
+
+=============================================================================
+roi_stats_warnings.py - evaluate the output of compute_ROI_stats.tcsh
+                      - colorize the stats reports for HTML display
+
+------------------------------------------
+examples: ~1~
+
+   0. standard usage, just provide an input
+
+        roi_stats_warnings.py -input tsnr_stats_regress/stats_CAEZ_ML.txt
+
+------------------------------------------
+terminal options: ~1~
+
+      -help                     : show this help
+      -hist                     : show module history
+      -show_valid_opts          : list valid options
+      -ver                      : show current version
+
+main parameters:
+
+      -input  INPUT             : input ROI stats text file
+      -prefix PREFIX            : prefix for output HTML version
+      -disp_max_warn            : display max warning level string
+
+other options:
+      -verb LEVEL               : set the verbosity level
+
+-----------------------------------------------------------------------------
+R Reynolds    March 2024
+=============================================================================
+
+
+=== Output of 'roi_stats_warnings.py' (no arguments) ===
+
+
+=============================================================================
+roi_stats_warnings.py - evaluate the output of compute_ROI_stats.tcsh
+                      - colorize the stats reports for HTML display
+
+------------------------------------------
+examples: ~1~
+
+   0. standard usage, just provide an input
+
+        roi_stats_warnings.py -input tsnr_stats_regress/stats_CAEZ_ML.txt
+
+------------------------------------------
+terminal options: ~1~
+
+      -help                     : show this help
+      -hist                     : show module history
+      -show_valid_opts          : list valid options
+      -ver                      : show current version
+
+main parameters:
+
+      -input  INPUT             : input ROI stats text file
+      -prefix PREFIX            : prefix for output HTML version
+      -disp_max_warn            : display max warning level string
+
+other options:
+      -verb LEVEL               : set the verbosity level
+
+-----------------------------------------------------------------------------
+R Reynolds    March 2024
+=============================================================================
+

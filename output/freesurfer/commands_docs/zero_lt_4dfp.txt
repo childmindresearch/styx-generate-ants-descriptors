@@ -1,0 +1,30 @@
+
+=== Output of 'zero_lt_4dfp --help' ===
+
+freesurfer zero_lt_4dfp.c
+Usage:	zero_lt_4dfp <flt> <file_4dfp> [outroot]
+	option
+	-@<b|l>	output big or little endian (default input endian)
+e.g.,	zero_lt_4dfp 90 pt349_study9to9
+e.g.,	zero_lt_4dfp 90 pt349_study9to9 pt349_study9to9z
+N.B.:	default output 4dfp root is <file_4dfp>"z"
+
+=== Output of 'zero_lt_4dfp -help' ===
+
+freesurfer zero_lt_4dfp.c
+Usage:	zero_lt_4dfp <flt> <file_4dfp> [outroot]
+	option
+	-@<b|l>	output big or little endian (default input endian)
+e.g.,	zero_lt_4dfp 90 pt349_study9to9
+e.g.,	zero_lt_4dfp 90 pt349_study9to9 pt349_study9to9z
+N.B.:	default output 4dfp root is <file_4dfp>"z"
+
+=== Output of 'zero_lt_4dfp' (no arguments) ===
+
+freesurfer zero_lt_4dfp.c
+Usage:	zero_lt_4dfp <flt> <file_4dfp> [outroot]
+	option
+	-@<b|l>	output big or little endian (default input endian)
+e.g.,	zero_lt_4dfp 90 pt349_study9to9
+e.g.,	zero_lt_4dfp 90 pt349_study9to9 pt349_study9to9z
+N.B.:	default output 4dfp root is <file_4dfp>"z"

@@ -1,0 +1,35 @@
+
+=== Output of 'orientLAS --help' ===
+
+ERROR: not enough arguments
+
+=== Output of 'orientLAS -help' ===
+
+ERROR: not enough arguments
+
+=== Output of 'orientLAS' (no arguments) ===
+
+Usage:
+  /usr/local/freesurfer/bin/orientLAS inputimage outputimage [--check]
+
+Convert image to LAS orientation
+
+The input image must be in NIfTI format. The output image
+will be in NIfTI format with LAS orientation.
+
+The optional argument --check will bring up a tkregister
+window with the input and output image so you can check
+that they match completely.
+
+Extra features for diffusion data
+---------------------------------
+
+If you run this script on a diffusion-weighted image series:
+  /usr/local/freesurfer/bin/orientLAS your_DWIs.nii.gz your_DWIs_in_LAS.nii.gz
+and a text file named your_DWIs.bvecs is also present,
+this script will detect it and convert the gradient vectors
+to match the new LAS image orientation.
+
+For such data, the optional argument --check will also run
+dtifit and bring up an fslview window with the tensors.
+

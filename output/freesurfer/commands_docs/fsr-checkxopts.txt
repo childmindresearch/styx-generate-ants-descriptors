@@ -1,0 +1,11 @@
+
+=== Output of 'fsr-checkxopts --help' ===
+
+ERROR: cannot find --help
+
+=== Output of 'fsr-checkxopts -help' ===
+
+ERROR: cannot find -help
+
+=== Output of 'fsr-checkxopts' (no arguments) ===
+

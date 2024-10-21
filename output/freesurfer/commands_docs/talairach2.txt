@@ -1,0 +1,24 @@
+
+=== Output of 'talairach2 --help' ===
+
+INFO: registering --help
+Mon Oct 21 20:21:58 UTC 2024
+--------------------------------------------
+mri_convert nu nu.mnc
+mri_convert nu nu.mnc 
+ERROR: file nu does not exist
+ERROR: mri_convert failed
+
+=== Output of 'talairach2 -help' ===
+
+INFO: registering -help
+Mon Oct 21 20:21:58 UTC 2024
+--------------------------------------------
+mri_convert nu nu.mnc
+mri_convert nu nu.mnc 
+ERROR: file nu does not exist
+ERROR: mri_convert failed
+
+=== Output of 'talairach2' (no arguments) ===
+
+USAGE: talairach2 subjectid <mgzflag>

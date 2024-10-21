@@ -1,0 +1,249 @@
+
+=== Output of 'aparc_stats_aseg --help' ===
+
+NAME
+	aparc_stats_aseg
+
+SYNOPSIS
+	aparc_stats_aseg [options]
+
+DESCRIPTION
+	This program runs mris_ca_label, mris_anatomical_stats and mri_aparc2aseg.
+
+POSITIONAL ARGUMENTS
+	None
+
+REQUIRED FLAGGED ARGUMENTS
+	-s <subject name>
+		Subject name
+
+	-gcs <gcs name>
+		GCS file name
+
+OPTIONAL FLAGGED ARGUMENTS
+	-sd <subject dir>
+		specify a subjects directory (default=/usr/local/freesurfer/subjects)
+
+	-gcsd <gcs dir>
+		GCS file directory (default=/usr/local/freesurfer/average)
+
+	-name <parcellation name>
+		Specify the parcellation name (default=gcs name)
+
+	-o <output dir>
+		Specify the output dir
+
+	-log <log file>
+		Specify the log file
+
+	-lh
+		lh only
+
+	-rh
+		rh only
+
+	-a2009s
+		Use Christophe Destrieux cortical parcellation atlas
+
+	-noaseg:
+		Do not use aseg
+
+	-nocortparc:
+		Do not do cortical parcellation
+
+	-noparcstats:
+		Do not do surface anatomical statistics
+
+	-noaparc2aseg
+		Do not do aparc2aseg
+
+	-seed <number>
+		Random seed (default=1234)
+
+	-th3
+		Use -th3 flag, turn on new volume calculation for mris_anatomical_stats (default=on) (Only available for freesurfer version higher than 6.0.0)
+
+	-no-th3
+		Use -no-th3 flag for mris_anatomical_stats 
+
+	-long <tpNid> <templateid>
+		Longitudinal Processsing (default=off)
+
+	-expert <file>
+		read-in expert options file
+
+	-xopts-use
+		use pre-existing expert options file
+
+	-xopts-clean
+		delete pre-existing expert options file
+
+	-xopts-overwrite
+		overwrite pre-existing expert options file
+
+
+=== Output of 'aparc_stats_aseg -help' ===
+
+NAME
+	aparc_stats_aseg
+
+SYNOPSIS
+	aparc_stats_aseg [options]
+
+DESCRIPTION
+	This program runs mris_ca_label, mris_anatomical_stats and mri_aparc2aseg.
+
+POSITIONAL ARGUMENTS
+	None
+
+REQUIRED FLAGGED ARGUMENTS
+	-s <subject name>
+		Subject name
+
+	-gcs <gcs name>
+		GCS file name
+
+OPTIONAL FLAGGED ARGUMENTS
+	-sd <subject dir>
+		specify a subjects directory (default=/usr/local/freesurfer/subjects)
+
+	-gcsd <gcs dir>
+		GCS file directory (default=/usr/local/freesurfer/average)
+
+	-name <parcellation name>
+		Specify the parcellation name (default=gcs name)
+
+	-o <output dir>
+		Specify the output dir
+
+	-log <log file>
+		Specify the log file
+
+	-lh
+		lh only
+
+	-rh
+		rh only
+
+	-a2009s
+		Use Christophe Destrieux cortical parcellation atlas
+
+	-noaseg:
+		Do not use aseg
+
+	-nocortparc:
+		Do not do cortical parcellation
+
+	-noparcstats:
+		Do not do surface anatomical statistics
+
+	-noaparc2aseg
+		Do not do aparc2aseg
+
+	-seed <number>
+		Random seed (default=1234)
+
+	-th3
+		Use -th3 flag, turn on new volume calculation for mris_anatomical_stats (default=on) (Only available for freesurfer version higher than 6.0.0)
+
+	-no-th3
+		Use -no-th3 flag for mris_anatomical_stats 
+
+	-long <tpNid> <templateid>
+		Longitudinal Processsing (default=off)
+
+	-expert <file>
+		read-in expert options file
+
+	-xopts-use
+		use pre-existing expert options file
+
+	-xopts-clean
+		delete pre-existing expert options file
+
+	-xopts-overwrite
+		overwrite pre-existing expert options file
+
+
+=== Output of 'aparc_stats_aseg' (no arguments) ===
+
+NAME
+	aparc_stats_aseg
+
+SYNOPSIS
+	aparc_stats_aseg [options]
+
+DESCRIPTION
+	This program runs mris_ca_label, mris_anatomical_stats and mri_aparc2aseg.
+
+POSITIONAL ARGUMENTS
+	None
+
+REQUIRED FLAGGED ARGUMENTS
+	-s <subject name>
+		Subject name
+
+	-gcs <gcs name>
+		GCS file name
+
+OPTIONAL FLAGGED ARGUMENTS
+	-sd <subject dir>
+		specify a subjects directory (default=/usr/local/freesurfer/subjects)
+
+	-gcsd <gcs dir>
+		GCS file directory (default=/usr/local/freesurfer/average)
+
+	-name <parcellation name>
+		Specify the parcellation name (default=gcs name)
+
+	-o <output dir>
+		Specify the output dir
+
+	-log <log file>
+		Specify the log file
+
+	-lh
+		lh only
+
+	-rh
+		rh only
+
+	-a2009s
+		Use Christophe Destrieux cortical parcellation atlas
+
+	-noaseg:
+		Do not use aseg
+
+	-nocortparc:
+		Do not do cortical parcellation
+
+	-noparcstats:
+		Do not do surface anatomical statistics
+
+	-noaparc2aseg
+		Do not do aparc2aseg
+
+	-seed <number>
+		Random seed (default=1234)
+
+	-th3
+		Use -th3 flag, turn on new volume calculation for mris_anatomical_stats (default=on) (Only available for freesurfer version higher than 6.0.0)
+
+	-no-th3
+		Use -no-th3 flag for mris_anatomical_stats 
+
+	-long <tpNid> <templateid>
+		Longitudinal Processsing (default=off)
+
+	-expert <file>
+		read-in expert options file
+
+	-xopts-use
+		use pre-existing expert options file
+
+	-xopts-clean
+		delete pre-existing expert options file
+
+	-xopts-overwrite
+		overwrite pre-existing expert options file
+

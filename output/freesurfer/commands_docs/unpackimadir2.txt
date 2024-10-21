@@ -1,0 +1,12 @@
+
+=== Output of 'unpackimadir2 --help' ===
+
+bash: /usr/local/freesurfer/bin/unpackimadir2: /usr/bin/tclsh: bad interpreter: No such file or directory
+
+=== Output of 'unpackimadir2 -help' ===
+
+bash: /usr/local/freesurfer/bin/unpackimadir2: /usr/bin/tclsh: bad interpreter: No such file or directory
+
+=== Output of 'unpackimadir2' (no arguments) ===
+
+bash: /usr/local/freesurfer/bin/unpackimadir2: /usr/bin/tclsh: bad interpreter: No such file or directory

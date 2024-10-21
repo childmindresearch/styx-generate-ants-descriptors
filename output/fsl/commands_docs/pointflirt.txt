@@ -1,0 +1,82 @@
+
+=== Output of 'pointflirt --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+pointflirt 
+Copyright(c) 2001, University of Oxford (Mark Jenkinson)
+
+Usage: 
+pointflirt -i <invol coords>  -r <refvol coords> -o <output matrix>
+pointflirt -i <invol coords>  -r <refvol coords> -o <output matrix> --vox --invol=<input vol> --refvol=<ref vol>
+
+Compulsory arguments (You MUST set one or more of):
+	-i	filename of input volume coordinates
+	-r	filename of reference volume coordinates
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	filename of affine matrix output
+	--vox	use voxel coordinates, not mm, for input
+	--invol	filename of input volume (needed for --vox option)
+	--refvol	filename of reference volume (needed for --vox option)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'pointflirt -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+pointflirt 
+Copyright(c) 2001, University of Oxford (Mark Jenkinson)
+
+Usage: 
+pointflirt -i <invol coords>  -r <refvol coords> -o <output matrix>
+pointflirt -i <invol coords>  -r <refvol coords> -o <output matrix> --vox --invol=<input vol> --refvol=<ref vol>
+
+Compulsory arguments (You MUST set one or more of):
+	-i	filename of input volume coordinates
+	-r	filename of reference volume coordinates
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	filename of affine matrix output
+	--vox	use voxel coordinates, not mm, for input
+	--invol	filename of input volume (needed for --vox option)
+	--refvol	filename of reference volume (needed for --vox option)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'pointflirt' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i	filename of input volume coordinates
+	-r	filename of reference volume coordinates
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+pointflirt 
+Copyright(c) 2001, University of Oxford (Mark Jenkinson)
+
+Usage: 
+pointflirt -i <invol coords>  -r <refvol coords> -o <output matrix>
+pointflirt -i <invol coords>  -r <refvol coords> -o <output matrix> --vox --invol=<input vol> --refvol=<ref vol>
+
+Compulsory arguments (You MUST set one or more of):
+	-i	filename of input volume coordinates
+	-r	filename of reference volume coordinates
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--out	filename of affine matrix output
+	--vox	use voxel coordinates, not mm, for input
+	--invol	filename of input volume (needed for --vox option)
+	--refvol	filename of reference volume (needed for --vox option)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

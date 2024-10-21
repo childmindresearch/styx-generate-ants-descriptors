@@ -1,0 +1,82 @@
+
+=== Output of 'make_average_volume --help' ===
+
+
+USAGE: make_average_volume
+
+Required Arguments
+   --subjects <subj1> <subj2> ... <subjN>
+             : or declare subjects in SUBJECTS env var
+   --fsgd fsgdfile : get subject list from fsgd
+
+Optional Arguments
+   --out <average subject name>    : default name is 'average'
+   --topdir topdir : put data here and link to SUBJECTS_DIR
+   --xform xformname : use mri/transforms/xformname (def is talairach.xfm)
+   --sdir <SUBJECTS_DIR to use instead of the one in the env>
+   --sd      : same as --sdir
+   --force   : overwrite existing average subject data
+   --keep-all-orig : concatenate all orig vols into mri/orig.all.mgz
+   --no-aseg : do not create 'average' aseg
+   --ctab colortable : embed into segmentations
+   --ctab-default : embed /usr/local/freesurfer/FreeSurferColorLUT.txt into segmentations
+
+   --help    : short descriptive help
+   --version : script version info
+   --echo    : enable command echo, for debug
+   --debug   : same as --echo
+   --nocleanup : do not delete temporary files
+
+See also: recon-all, make_final_surfaces, morph_subject
+
+Version: make_average_volume 7.4.1
+
+Creates average volumes from a set of subjects.
+
+EXAMPLE
+
+make_average_volume --out avgsubject --subjects subj1 subj2 subj3 subj4
+
+will create $SUBJECTS_DIR/avgsubject with orig.mgz, brain.mgz, and T1.mgz
+which will be averages of subjects 1-4.
+
+SEE ALSO
+
+make_average_subject make_average_surface
+
+
+=== Output of 'make_average_volume -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'make_average_volume' (no arguments) ===
+
+
+USAGE: make_average_volume
+
+Required Arguments
+   --subjects <subj1> <subj2> ... <subjN>
+             : or declare subjects in SUBJECTS env var
+   --fsgd fsgdfile : get subject list from fsgd
+
+Optional Arguments
+   --out <average subject name>    : default name is 'average'
+   --topdir topdir : put data here and link to SUBJECTS_DIR
+   --xform xformname : use mri/transforms/xformname (def is talairach.xfm)
+   --sdir <SUBJECTS_DIR to use instead of the one in the env>
+   --sd      : same as --sdir
+   --force   : overwrite existing average subject data
+   --keep-all-orig : concatenate all orig vols into mri/orig.all.mgz
+   --no-aseg : do not create 'average' aseg
+   --ctab colortable : embed into segmentations
+   --ctab-default : embed /usr/local/freesurfer/FreeSurferColorLUT.txt into segmentations
+
+   --help    : short descriptive help
+   --version : script version info
+   --echo    : enable command echo, for debug
+   --debug   : same as --echo
+   --nocleanup : do not delete temporary files
+
+See also: recon-all, make_final_surfaces, morph_subject
+

@@ -1,0 +1,357 @@
+
+=== Output of 'mris_ca_label --help' ===
+
+				Help
+
+NAME
+	mris_ca_label
+
+SYNOPSIS
+	mris_ca_label [options -seed Seed] <subject> <hemi> <canonsurf> 
+	<classifier> <outputfile>
+
+DESCRIPTION
+	For a single subject, produces an annotation file, in which each 
+	cortical surface vertex is assigned a neuroanatomical label.This 
+	automatic procedure employs data from a previously-prepared atlas 
+	file. An atlas file is created from a training set, capturing region 
+	data manually drawn by neuroanatomists combined with statistics on 
+	variability correlated to geometric information derived from the 
+	cortical model (sulcus and curvature). Besides the atlases provided 
+	with FreeSurfer, new ones can be prepared using mris_ca_train).
+
+POSITIONAL ARGUMENTS
+	<subject>
+		subject id
+
+	<hemi>
+		hemisphere: rh or lh
+
+	<canonsurf>
+		canonical surface file. Ie: the name of the spherical surface 
+		file which describes the registration of a subject's vertices 
+		to the reference "average" surface. Example: sphere.reg
+
+	<classifier>
+		specify classifier array input file
+
+	<outputfile>
+		annotated surface output file. Ie: an annotation file listing 
+		the region label for each vertex.
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-seed <Seed>
+		specify the seed for the random number generator
+
+	-sdir <subject dir>
+		specify a subjects directory (default=$SUBJECTS_DIR)
+
+	-orig <filename>
+		specify filename of original surface (default=smoothwm)
+
+	-long
+		refines the initial labeling read-in from -r (default: 
+		disabled)
+
+	-r <filename>
+		file containing precomputed parcellation
+
+	-novar
+		sets all covariance matrices to the identify (default: 
+		disabled)
+
+	-nbrs <number>
+		neighborhood size (default=2)
+
+	-f <number>
+		applies mode filter <number> times before writing output 
+		(default=10)
+
+	-t <filename>
+		specify parcellation table input file (default: none)
+
+	-p <filename>
+		output a file containing label probability (post,likelihood, 
+		prior)for each vertex.
+
+	-v <number>
+		diagnostic level (default=0)
+
+	-w <number> <filename>
+		writes-out snapshots of gibbs process every <number> 
+		iterations to <filename> (default=disabled)
+
+	--help
+		print help info
+
+	--version
+		print version info
+
+OUTPUTS
+	outputfile
+		labeled cortical surface model
+
+EXAMPLE 1
+	mris_ca_label -orig white  -novar  -t $SUBJECTS_DIR/scripts/colortable
+	_final.txt  my_subject  lh  sphere.reg  $SUBJECTS_DIR/average/
+	lh.rahul.gcs  $SUBJECTS_DIR/my_subject/label/lh.raparc.annot 
+	
+	In this example, mris_ca_label take sphere.reg as the canonical 
+	surface input file, lh.rahul.gcs as the classifier array input file, 
+	and writes the annotated surface info to lh.raparc.annot. The file 
+	colortable_final.txt is embedded into the output file, so that 
+	tksurfer (and other utilities) can read it in.
+	
+	
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_sample_parc, mris_ca_train
+
+
+
+=== Output of 'mris_ca_label -help' ===
+
+				Help
+
+NAME
+	mris_ca_label
+
+SYNOPSIS
+	mris_ca_label [options -seed Seed] <subject> <hemi> <canonsurf> 
+	<classifier> <outputfile>
+
+DESCRIPTION
+	For a single subject, produces an annotation file, in which each 
+	cortical surface vertex is assigned a neuroanatomical label.This 
+	automatic procedure employs data from a previously-prepared atlas 
+	file. An atlas file is created from a training set, capturing region 
+	data manually drawn by neuroanatomists combined with statistics on 
+	variability correlated to geometric information derived from the 
+	cortical model (sulcus and curvature). Besides the atlases provided 
+	with FreeSurfer, new ones can be prepared using mris_ca_train).
+
+POSITIONAL ARGUMENTS
+	<subject>
+		subject id
+
+	<hemi>
+		hemisphere: rh or lh
+
+	<canonsurf>
+		canonical surface file. Ie: the name of the spherical surface 
+		file which describes the registration of a subject's vertices 
+		to the reference "average" surface. Example: sphere.reg
+
+	<classifier>
+		specify classifier array input file
+
+	<outputfile>
+		annotated surface output file. Ie: an annotation file listing 
+		the region label for each vertex.
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-seed <Seed>
+		specify the seed for the random number generator
+
+	-sdir <subject dir>
+		specify a subjects directory (default=$SUBJECTS_DIR)
+
+	-orig <filename>
+		specify filename of original surface (default=smoothwm)
+
+	-long
+		refines the initial labeling read-in from -r (default: 
+		disabled)
+
+	-r <filename>
+		file containing precomputed parcellation
+
+	-novar
+		sets all covariance matrices to the identify (default: 
+		disabled)
+
+	-nbrs <number>
+		neighborhood size (default=2)
+
+	-f <number>
+		applies mode filter <number> times before writing output 
+		(default=10)
+
+	-t <filename>
+		specify parcellation table input file (default: none)
+
+	-p <filename>
+		output a file containing label probability (post,likelihood, 
+		prior)for each vertex.
+
+	-v <number>
+		diagnostic level (default=0)
+
+	-w <number> <filename>
+		writes-out snapshots of gibbs process every <number> 
+		iterations to <filename> (default=disabled)
+
+	--help
+		print help info
+
+	--version
+		print version info
+
+OUTPUTS
+	outputfile
+		labeled cortical surface model
+
+EXAMPLE 1
+	mris_ca_label -orig white  -novar  -t $SUBJECTS_DIR/scripts/colortable
+	_final.txt  my_subject  lh  sphere.reg  $SUBJECTS_DIR/average/
+	lh.rahul.gcs  $SUBJECTS_DIR/my_subject/label/lh.raparc.annot 
+	
+	In this example, mris_ca_label take sphere.reg as the canonical 
+	surface input file, lh.rahul.gcs as the classifier array input file, 
+	and writes the annotated surface info to lh.raparc.annot. The file 
+	colortable_final.txt is embedded into the output file, so that 
+	tksurfer (and other utilities) can read it in.
+	
+	
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_sample_parc, mris_ca_train
+
+
+
+=== Output of 'mris_ca_label' (no arguments) ===
+
+				Help
+
+NAME
+	mris_ca_label
+
+SYNOPSIS
+	mris_ca_label [options -seed Seed] <subject> <hemi> <canonsurf> 
+	<classifier> <outputfile>
+
+DESCRIPTION
+	For a single subject, produces an annotation file, in which each 
+	cortical surface vertex is assigned a neuroanatomical label.This 
+	automatic procedure employs data from a previously-prepared atlas 
+	file. An atlas file is created from a training set, capturing region 
+	data manually drawn by neuroanatomists combined with statistics on 
+	variability correlated to geometric information derived from the 
+	cortical model (sulcus and curvature). Besides the atlases provided 
+	with FreeSurfer, new ones can be prepared using mris_ca_train).
+
+POSITIONAL ARGUMENTS
+	<subject>
+		subject id
+
+	<hemi>
+		hemisphere: rh or lh
+
+	<canonsurf>
+		canonical surface file. Ie: the name of the spherical surface 
+		file which describes the registration of a subject's vertices 
+		to the reference "average" surface. Example: sphere.reg
+
+	<classifier>
+		specify classifier array input file
+
+	<outputfile>
+		annotated surface output file. Ie: an annotation file listing 
+		the region label for each vertex.
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-seed <Seed>
+		specify the seed for the random number generator
+
+	-sdir <subject dir>
+		specify a subjects directory (default=$SUBJECTS_DIR)
+
+	-orig <filename>
+		specify filename of original surface (default=smoothwm)
+
+	-long
+		refines the initial labeling read-in from -r (default: 
+		disabled)
+
+	-r <filename>
+		file containing precomputed parcellation
+
+	-novar
+		sets all covariance matrices to the identify (default: 
+		disabled)
+
+	-nbrs <number>
+		neighborhood size (default=2)
+
+	-f <number>
+		applies mode filter <number> times before writing output 
+		(default=10)
+
+	-t <filename>
+		specify parcellation table input file (default: none)
+
+	-p <filename>
+		output a file containing label probability (post,likelihood, 
+		prior)for each vertex.
+
+	-v <number>
+		diagnostic level (default=0)
+
+	-w <number> <filename>
+		writes-out snapshots of gibbs process every <number> 
+		iterations to <filename> (default=disabled)
+
+	--help
+		print help info
+
+	--version
+		print version info
+
+OUTPUTS
+	outputfile
+		labeled cortical surface model
+
+EXAMPLE 1
+	mris_ca_label -orig white  -novar  -t $SUBJECTS_DIR/scripts/colortable
+	_final.txt  my_subject  lh  sphere.reg  $SUBJECTS_DIR/average/
+	lh.rahul.gcs  $SUBJECTS_DIR/my_subject/label/lh.raparc.annot 
+	
+	In this example, mris_ca_label take sphere.reg as the canonical 
+	surface input file, lh.rahul.gcs as the classifier array input file, 
+	and writes the annotated surface info to lh.raparc.annot. The file 
+	colortable_final.txt is embedded into the output file, so that 
+	tksurfer (and other utilities) can read it in.
+	
+	
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_sample_parc, mris_ca_train
+
+

@@ -1,0 +1,12 @@
+
+=== Output of 'SetSpacing --help' ===
+
+Usage:   SetSpacing  Dimension infile.hdr outfile.nii  SpacingX SpacingY {SpacingZ} 
+
+=== Output of 'SetSpacing -help' ===
+
+Usage:   SetSpacing  Dimension infile.hdr outfile.nii  SpacingX SpacingY {SpacingZ} 
+
+=== Output of 'SetSpacing' (no arguments) ===
+
+Usage:   SetSpacing  Dimension infile.hdr outfile.nii  SpacingX SpacingY {SpacingZ} 

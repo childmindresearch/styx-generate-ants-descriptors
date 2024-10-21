@@ -1,0 +1,79 @@
+
+=== Output of 'mri_defacer --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_defacer 
+
+   --i  inputvol 
+   --hm headmask 
+   --ts tempsurf 
+   --l templabel1 <--l templabel2> 
+   --w watermark d 
+   --o  defacedvol 
+   --m  facemask 
+   --fill-const ConstIn ConstOut
+   --xmask xmask : exclude anything in this mask from defacing
+
+   --reg tempreg.lta : apply to surface
+   --min minsurfpath : output 'minimum surface'
+   --max maxsurfpath : output 'maximum surface'
+   --distbounds distboundspath : text file with info about distance bounds for each label
+   --distoverlay dist.overlay.mgz : overlay of distance for each vertex
+   --distdat distdatpath : text file with distances for each vertex
+   --stats statspath : has info about nxmask and means and modes
+   --ots outputtempsurf : after any watermark and/or ripple
+
+   --apply vol facemask reg output : apply to another volume (use regheader if no reg needed)
+   --ripple-center R A S
+   --apply-ripple insurf axis amp period label outsurf
+
+   --gdiag diagno : set diagnostic level
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+   --check-code vol <outfile> : determine whether mideface code is in volume
+
+7.4.1
+
+
+=== Output of 'mri_defacer -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_defacer' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_defacer 
+
+   --i  inputvol 
+   --hm headmask 
+   --ts tempsurf 
+   --l templabel1 <--l templabel2> 
+   --w watermark d 
+   --o  defacedvol 
+   --m  facemask 
+   --fill-const ConstIn ConstOut
+   --xmask xmask : exclude anything in this mask from defacing
+
+   --reg tempreg.lta : apply to surface
+   --min minsurfpath : output 'minimum surface'
+   --max maxsurfpath : output 'maximum surface'
+   --distbounds distboundspath : text file with info about distance bounds for each label
+   --distoverlay dist.overlay.mgz : overlay of distance for each vertex
+   --distdat distdatpath : text file with distances for each vertex
+   --stats statspath : has info about nxmask and means and modes
+   --ots outputtempsurf : after any watermark and/or ripple
+
+   --apply vol facemask reg output : apply to another volume (use regheader if no reg needed)
+   --ripple-center R A S
+   --apply-ripple insurf axis amp period label outsurf
+
+   --gdiag diagno : set diagnostic level
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+   --check-code vol <outfile> : determine whether mideface code is in volume
+
+7.4.1
+

@@ -1,0 +1,433 @@
+
+=== Output of 'trac-all --help' ===
+
+domainname: Command not found.
+
+USAGE: trac-all
+
+Using a configuration file to set analysis options:
+  -c <file> : dmrirc file (see dmrirc.example)
+
+Using only mandatory inputs with all default options:
+  -s <subjectname> : subject name (if not defined in dmrirc)
+  -i <file> : input DWI DICOM (if not defined in dmrirc)
+
+Choosing which part of the analysis to do:
+  -prep     : do pre-processing (step 1, all substeps)
+  -bedp     : do bedpost (step 2)
+  -path     : do pathway reconstruction (step 3)
+  -stat     : assemble pathway measures from multiple subjects (step 4)
+
+Performing a part of the preprocessing or skipping a part:
+  -corr     : do image corrections (step 1.1)
+  -nocorr   : don't do step 1.1
+  -qa       : do image quality assessment (step 1.2)
+  -noqa     : don't do step 1.2
+  -intra    : do intra-subject registration (step 1.3)
+  -nointra  : don't do step 1.3
+  -tensor   : do tensor fit (step 1.4)
+  -notensor : don't do step 1.4
+  -inter    : do inter-subject registration (step 1.5)
+  -nointer  : don't do step 1.5
+  -prior    : do pathway priors (step 1.6)
+  -noprior  : don't do step 1.6
+
+Analysis steps:
+  1. Pre-processing
+     1.1 Image corrections (eddy-current and/or B0)
+     1.2 Image quality assessment (head motion measures)
+     1.3 Intra-subject registration (individual DWI to individual T1)
+     1.4 Tensor fit
+     1.5 Inter-subject registration (individual DWI/T1 to template)
+     1.6 Pathway priors from atlas and T1
+  2. Stick-and-ball model fitting with bedpost
+  3. Pathway reconstruction
+  4. Assemble pathway measures from all subjects
+
+Other options:
+  -infant         : use infant brain processing options
+  -jobs <file>    : write a text file with command lines that can be
+                    run in parallel but do not run them - the user can
+                    then submit each line as a job on a compute cluster
+  -log <file>     : unique log file instead of scripts/trac-all.log
+  -noappendlog    : overwrite old log files instead of appending
+  -cmd <file>     : unique cmd file instead of scripts/trac-all.cmd
+  -no-isrunning   : do not check whether subjects are currently being processed
+  -sd subjectsdir : specify subjects dir (default env SUBJECTS_DIR)
+  -umask umask    : set unix file permission mask (default 002)
+  -grp groupid    : check that current group is alpha groupid 
+  -allowcoredump  : set coredump limit to unlimited
+  -debug          : generate much more output
+  -dontrun        : do everything but execute each command
+  -onlyversions   : print version of each binary and exit
+  -version        : print version of this script and exit
+  -help           : print full contents of help
+
+trac-all 7.4.1
+
+
+Recostruct white-matter pathways using an atlas of the underlying anatomy.
+
+BASIC USAGE
+There are two ways to use this script.
+
+> Using only mandatory inputs with all default options:
+  trac-all -{prep,bedp,path,stat} -subject subjectname -i dicomfile
+
+> Using a file called dmrirc to define custom options:
+  trac-all -{prep,bedp,path,stat} -c dmrirc
+
+If a dmrirc file is not specified, then the subject name and input DWI
+DICOM must be specified on the command line. If a dmrirc file is specified,
+then the options set in that file override any corresponding command line
+options.
+
+STEP-WISE DIRECTIVES
+Any of the two basic forms of usage described above must include an
+argument (-prep for pre-processing, -bedp for bedpost, -path for path
+reconstruction, or -stat for group tables) that specifies which part of
+the analysis to perform. The four parts must be performed in that order.
+
+It is also possible to perform a certain step of the pre-processing
+(with -stepname) or to skip a certain step from the pre-processing (with
+-nostepname). The default pre-processing performs all steps.
+
+If there are conflicting step-wise arguments, the ones that come later
+in the command line override the ones that come earlier.
+
+Various aspects of each processing step can be configured in the dmrirc
+file. See example configuration files ($FREESURFER_HOME/bin/dmrirc.*) for
+more details:
+  dmrirc.example : Single session, single DWI scan per session
+  dmrirc.multiscan.example : Single session, multiple DWI scans per session
+  dmrirc.long.example : Multiple sessions, single DWI scan per session
+  dmrirc.long.multiscan.example : Multiple sessions, multiple DWI scans per session
+
+> Step 1: Pre-processing
+          -prep to do this step
+
+  Pre-processing includes steps 1.1 through 1.6 below.
+
+> Step 1.1: Image corrections
+            -corr to do this step, -nocorr to skip this step
+
+  Eddy current and susceptibility distortion correction.
+
+> Step 1.2: Image quality assessment
+            -qa to do this step, -noqa to skip this step
+
+  Estimation of between-volume and within-volume head motion.
+
+> Step 1.3: Intra-subject registration
+            -intra to do this step, -nointra to skip this step
+
+  Individual DWI-to-T1 registration.
+
+> Step 1.4: Tensor fit
+            -tensor to do this step, -notensor to skip this step
+
+  Tensor model fitting on DWIs.
+
+> Step 1.5: Inter-subject registration
+            -inter to do this step, -nointer to skip this step
+
+  Individual-to-template registration, affine or nonlinear, T1- or DWI-based.
+
+> Step 1.6: Pathway priors
+            -prior to do this step, -noprior to skip this step
+
+  Combine training data and subject's own data to generate pathway priors.
+
+> Step 2: Bedpost (cluster highly recommended for this step)
+          -bedp to do this step
+
+  Ball-and-stick model fitting on DWIs with bedpostx.
+
+> Step 3: Pathway reconstruction
+          -path to do this step
+
+  Do the actual tractography.
+
+> Step 4: Assemble pathway measures from multiple subjects
+          -stat to do this step
+
+  Combine whole-path or along-the-path measures (anisotropy and 
+  diffusivity) from multiple subjects to feed into group analyses.
+
+OTHER OPTIONS
+-infant         : use infant brain processing options
+-jobs <file>    : write a text file with command lines that can be
+                  run in parallel but do not run them - the user can
+                  then submit each line as a job on a compute cluster
+-log <file>     : default is scripts/trac-all.log
+-noappendlog    : overwrite old log files instead of appending
+-cmd <file>     : default is scripts/trac-all.cmd
+-no-isrunning   : do not check whether subjects are currently being processed
+-sd subjectsdir : specify subjects dir (default env SUBJECTS_DIR)
+-umask umask    : set unix file permission mask (default 002)
+-grp groupid    : check that current group is alpha groupid 
+-allowcoredump  : set coredump limit to unlimited
+-debug          : print out more info and generate more files
+-dontrun        : do everything but execute each command
+-onlyversions   : print version of each binary and exit
+-version        : print version of this script and exit
+-help           : print full contents of help
+
+FOR MARTINOS CENTER CLUSTER USERS
+Do not submit trac-all as a job with pbsubmit or qsub. Run it directly on the
+command line. If run on a local machine, trac-all will run all analyses locally.
+If run on the cluster, trac-all will submit the analysis of each subject listed
+in your dmrirc file as a job.
+
+SEE ALSO: dmrirc.example, dmrirc.multiscan.example, dmrirc.long.example,
+          dmrirc.long.multiscan.example
+
+
+=== Output of 'trac-all -help' ===
+
+domainname: Command not found.
+
+USAGE: trac-all
+
+Using a configuration file to set analysis options:
+  -c <file> : dmrirc file (see dmrirc.example)
+
+Using only mandatory inputs with all default options:
+  -s <subjectname> : subject name (if not defined in dmrirc)
+  -i <file> : input DWI DICOM (if not defined in dmrirc)
+
+Choosing which part of the analysis to do:
+  -prep     : do pre-processing (step 1, all substeps)
+  -bedp     : do bedpost (step 2)
+  -path     : do pathway reconstruction (step 3)
+  -stat     : assemble pathway measures from multiple subjects (step 4)
+
+Performing a part of the preprocessing or skipping a part:
+  -corr     : do image corrections (step 1.1)
+  -nocorr   : don't do step 1.1
+  -qa       : do image quality assessment (step 1.2)
+  -noqa     : don't do step 1.2
+  -intra    : do intra-subject registration (step 1.3)
+  -nointra  : don't do step 1.3
+  -tensor   : do tensor fit (step 1.4)
+  -notensor : don't do step 1.4
+  -inter    : do inter-subject registration (step 1.5)
+  -nointer  : don't do step 1.5
+  -prior    : do pathway priors (step 1.6)
+  -noprior  : don't do step 1.6
+
+Analysis steps:
+  1. Pre-processing
+     1.1 Image corrections (eddy-current and/or B0)
+     1.2 Image quality assessment (head motion measures)
+     1.3 Intra-subject registration (individual DWI to individual T1)
+     1.4 Tensor fit
+     1.5 Inter-subject registration (individual DWI/T1 to template)
+     1.6 Pathway priors from atlas and T1
+  2. Stick-and-ball model fitting with bedpost
+  3. Pathway reconstruction
+  4. Assemble pathway measures from all subjects
+
+Other options:
+  -infant         : use infant brain processing options
+  -jobs <file>    : write a text file with command lines that can be
+                    run in parallel but do not run them - the user can
+                    then submit each line as a job on a compute cluster
+  -log <file>     : unique log file instead of scripts/trac-all.log
+  -noappendlog    : overwrite old log files instead of appending
+  -cmd <file>     : unique cmd file instead of scripts/trac-all.cmd
+  -no-isrunning   : do not check whether subjects are currently being processed
+  -sd subjectsdir : specify subjects dir (default env SUBJECTS_DIR)
+  -umask umask    : set unix file permission mask (default 002)
+  -grp groupid    : check that current group is alpha groupid 
+  -allowcoredump  : set coredump limit to unlimited
+  -debug          : generate much more output
+  -dontrun        : do everything but execute each command
+  -onlyversions   : print version of each binary and exit
+  -version        : print version of this script and exit
+  -help           : print full contents of help
+
+trac-all 7.4.1
+
+
+Recostruct white-matter pathways using an atlas of the underlying anatomy.
+
+BASIC USAGE
+There are two ways to use this script.
+
+> Using only mandatory inputs with all default options:
+  trac-all -{prep,bedp,path,stat} -subject subjectname -i dicomfile
+
+> Using a file called dmrirc to define custom options:
+  trac-all -{prep,bedp,path,stat} -c dmrirc
+
+If a dmrirc file is not specified, then the subject name and input DWI
+DICOM must be specified on the command line. If a dmrirc file is specified,
+then the options set in that file override any corresponding command line
+options.
+
+STEP-WISE DIRECTIVES
+Any of the two basic forms of usage described above must include an
+argument (-prep for pre-processing, -bedp for bedpost, -path for path
+reconstruction, or -stat for group tables) that specifies which part of
+the analysis to perform. The four parts must be performed in that order.
+
+It is also possible to perform a certain step of the pre-processing
+(with -stepname) or to skip a certain step from the pre-processing (with
+-nostepname). The default pre-processing performs all steps.
+
+If there are conflicting step-wise arguments, the ones that come later
+in the command line override the ones that come earlier.
+
+Various aspects of each processing step can be configured in the dmrirc
+file. See example configuration files ($FREESURFER_HOME/bin/dmrirc.*) for
+more details:
+  dmrirc.example : Single session, single DWI scan per session
+  dmrirc.multiscan.example : Single session, multiple DWI scans per session
+  dmrirc.long.example : Multiple sessions, single DWI scan per session
+  dmrirc.long.multiscan.example : Multiple sessions, multiple DWI scans per session
+
+> Step 1: Pre-processing
+          -prep to do this step
+
+  Pre-processing includes steps 1.1 through 1.6 below.
+
+> Step 1.1: Image corrections
+            -corr to do this step, -nocorr to skip this step
+
+  Eddy current and susceptibility distortion correction.
+
+> Step 1.2: Image quality assessment
+            -qa to do this step, -noqa to skip this step
+
+  Estimation of between-volume and within-volume head motion.
+
+> Step 1.3: Intra-subject registration
+            -intra to do this step, -nointra to skip this step
+
+  Individual DWI-to-T1 registration.
+
+> Step 1.4: Tensor fit
+            -tensor to do this step, -notensor to skip this step
+
+  Tensor model fitting on DWIs.
+
+> Step 1.5: Inter-subject registration
+            -inter to do this step, -nointer to skip this step
+
+  Individual-to-template registration, affine or nonlinear, T1- or DWI-based.
+
+> Step 1.6: Pathway priors
+            -prior to do this step, -noprior to skip this step
+
+  Combine training data and subject's own data to generate pathway priors.
+
+> Step 2: Bedpost (cluster highly recommended for this step)
+          -bedp to do this step
+
+  Ball-and-stick model fitting on DWIs with bedpostx.
+
+> Step 3: Pathway reconstruction
+          -path to do this step
+
+  Do the actual tractography.
+
+> Step 4: Assemble pathway measures from multiple subjects
+          -stat to do this step
+
+  Combine whole-path or along-the-path measures (anisotropy and 
+  diffusivity) from multiple subjects to feed into group analyses.
+
+OTHER OPTIONS
+-infant         : use infant brain processing options
+-jobs <file>    : write a text file with command lines that can be
+                  run in parallel but do not run them - the user can
+                  then submit each line as a job on a compute cluster
+-log <file>     : default is scripts/trac-all.log
+-noappendlog    : overwrite old log files instead of appending
+-cmd <file>     : default is scripts/trac-all.cmd
+-no-isrunning   : do not check whether subjects are currently being processed
+-sd subjectsdir : specify subjects dir (default env SUBJECTS_DIR)
+-umask umask    : set unix file permission mask (default 002)
+-grp groupid    : check that current group is alpha groupid 
+-allowcoredump  : set coredump limit to unlimited
+-debug          : print out more info and generate more files
+-dontrun        : do everything but execute each command
+-onlyversions   : print version of each binary and exit
+-version        : print version of this script and exit
+-help           : print full contents of help
+
+FOR MARTINOS CENTER CLUSTER USERS
+Do not submit trac-all as a job with pbsubmit or qsub. Run it directly on the
+command line. If run on a local machine, trac-all will run all analyses locally.
+If run on the cluster, trac-all will submit the analysis of each subject listed
+in your dmrirc file as a job.
+
+SEE ALSO: dmrirc.example, dmrirc.multiscan.example, dmrirc.long.example,
+          dmrirc.long.multiscan.example
+
+
+=== Output of 'trac-all' (no arguments) ===
+
+domainname: Command not found.
+
+USAGE: trac-all
+
+Using a configuration file to set analysis options:
+  -c <file> : dmrirc file (see dmrirc.example)
+
+Using only mandatory inputs with all default options:
+  -s <subjectname> : subject name (if not defined in dmrirc)
+  -i <file> : input DWI DICOM (if not defined in dmrirc)
+
+Choosing which part of the analysis to do:
+  -prep     : do pre-processing (step 1, all substeps)
+  -bedp     : do bedpost (step 2)
+  -path     : do pathway reconstruction (step 3)
+  -stat     : assemble pathway measures from multiple subjects (step 4)
+
+Performing a part of the preprocessing or skipping a part:
+  -corr     : do image corrections (step 1.1)
+  -nocorr   : don't do step 1.1
+  -qa       : do image quality assessment (step 1.2)
+  -noqa     : don't do step 1.2
+  -intra    : do intra-subject registration (step 1.3)
+  -nointra  : don't do step 1.3
+  -tensor   : do tensor fit (step 1.4)
+  -notensor : don't do step 1.4
+  -inter    : do inter-subject registration (step 1.5)
+  -nointer  : don't do step 1.5
+  -prior    : do pathway priors (step 1.6)
+  -noprior  : don't do step 1.6
+
+Analysis steps:
+  1. Pre-processing
+     1.1 Image corrections (eddy-current and/or B0)
+     1.2 Image quality assessment (head motion measures)
+     1.3 Intra-subject registration (individual DWI to individual T1)
+     1.4 Tensor fit
+     1.5 Inter-subject registration (individual DWI/T1 to template)
+     1.6 Pathway priors from atlas and T1
+  2. Stick-and-ball model fitting with bedpost
+  3. Pathway reconstruction
+  4. Assemble pathway measures from all subjects
+
+Other options:
+  -infant         : use infant brain processing options
+  -jobs <file>    : write a text file with command lines that can be
+                    run in parallel but do not run them - the user can
+                    then submit each line as a job on a compute cluster
+  -log <file>     : unique log file instead of scripts/trac-all.log
+  -noappendlog    : overwrite old log files instead of appending
+  -cmd <file>     : unique cmd file instead of scripts/trac-all.cmd
+  -no-isrunning   : do not check whether subjects are currently being processed
+  -sd subjectsdir : specify subjects dir (default env SUBJECTS_DIR)
+  -umask umask    : set unix file permission mask (default 002)
+  -grp groupid    : check that current group is alpha groupid 
+  -allowcoredump  : set coredump limit to unlimited
+  -debug          : generate much more output
+  -dontrun        : do everything but execute each command
+  -onlyversions   : print version of each binary and exit
+  -version        : print version of this script and exit
+  -help           : print full contents of help
+

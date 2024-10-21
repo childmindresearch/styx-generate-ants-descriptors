@@ -1,0 +1,127 @@
+
+=== Output of 'mri_stopmask --help' ===
+
+				Help
+
+NAME
+	mri_stopmask
+
+DESCRIPTION
+	This program creates a mask used to stop the search for the maximum 
+	gradent in mris_place_surface. This can prevent the surface from 
+	wandering into areas it should not.
+	       
+
+REQUIRED ARGUMENTS
+	--o output
+		Output stop mask (volume format)
+
+	--filled filled.auto.mgz filled.mgz
+		Includes voxels edited fill voxels that are set in the 
+		filled.mgz
+
+	--aseg aseg.presurf.mgz
+		Used with --lv and/or --wmsa. Note: must be aseg.presurf.mgz, 
+		not aseg.mgz
+
+	--lv
+		Add lateral ventricles and choroid plexus to the mask (needs 
+		--aseg)
+
+	--wmsa nErodeMM
+		Add WM hypointensities to the mask (needs --aseg). Erode by 
+		given distance away from any adjacent cortex
+
+	--wm wm.mgz
+		Includes voxels that =255
+
+	--bfs brain.finalsurfs.mgz
+		Includes voxels that =255
+
+	--no-filled
+		Turns off --filled
+
+	--no-lv
+		Turns off --lv
+
+	--no-wmsa
+		Turns off --wmsa
+
+	--no-wm
+		Turns off --wm
+
+	--no-bfs
+		Turns off --bfs
+
+OPTIONAL ARGUMENTS
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_stopmask -help' ===
+
+ERROR: Option -help unknown
+ Did you really mean --help ?
+
+=== Output of 'mri_stopmask' (no arguments) ===
+
+				Help
+
+NAME
+	mri_stopmask
+
+DESCRIPTION
+	This program creates a mask used to stop the search for the maximum 
+	gradent in mris_place_surface. This can prevent the surface from 
+	wandering into areas it should not.
+	       
+
+REQUIRED ARGUMENTS
+	--o output
+		Output stop mask (volume format)
+
+	--filled filled.auto.mgz filled.mgz
+		Includes voxels edited fill voxels that are set in the 
+		filled.mgz
+
+	--aseg aseg.presurf.mgz
+		Used with --lv and/or --wmsa. Note: must be aseg.presurf.mgz, 
+		not aseg.mgz
+
+	--lv
+		Add lateral ventricles and choroid plexus to the mask (needs 
+		--aseg)
+
+	--wmsa nErodeMM
+		Add WM hypointensities to the mask (needs --aseg). Erode by 
+		given distance away from any adjacent cortex
+
+	--wm wm.mgz
+		Includes voxels that =255
+
+	--bfs brain.finalsurfs.mgz
+		Includes voxels that =255
+
+	--no-filled
+		Turns off --filled
+
+	--no-lv
+		Turns off --lv
+
+	--no-wmsa
+		Turns off --wmsa
+
+	--no-wm
+		Turns off --wm
+
+	--no-bfs
+		Turns off --bfs
+
+OPTIONAL ARGUMENTS
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

@@ -1,0 +1,36 @@
+
+=== Output of 'flirt_average --help' ===
+
+
+Usage: flirt_average <Ninputs> <input1> <input2> ...... <output> [options] [flirt-options]
+
+Options:
+ -FAref <ref_image> : reference image to use instead of first input
+
+e.g.  flirt_average 3 rawT1_1 rawT1_2 rawT1_3 averageT1
+e.g.  flirt_average 2 rawT1_1 rawT1_2 averageT1 -FAref /usr/local/fsl/data/standard/MNI152_T1_2mm -FAdim 1 -cost normcorr
+
+
+=== Output of 'flirt_average -help' ===
+
+
+Usage: flirt_average <Ninputs> <input1> <input2> ...... <output> [options] [flirt-options]
+
+Options:
+ -FAref <ref_image> : reference image to use instead of first input
+
+e.g.  flirt_average 3 rawT1_1 rawT1_2 rawT1_3 averageT1
+e.g.  flirt_average 2 rawT1_1 rawT1_2 averageT1 -FAref /usr/local/fsl/data/standard/MNI152_T1_2mm -FAdim 1 -cost normcorr
+
+
+=== Output of 'flirt_average' (no arguments) ===
+
+
+Usage: flirt_average <Ninputs> <input1> <input2> ...... <output> [options] [flirt-options]
+
+Options:
+ -FAref <ref_image> : reference image to use instead of first input
+
+e.g.  flirt_average 3 rawT1_1 rawT1_2 rawT1_3 averageT1
+e.g.  flirt_average 2 rawT1_1 rawT1_2 averageT1 -FAref /usr/local/fsl/data/standard/MNI152_T1_2mm -FAdim 1 -cost normcorr
+

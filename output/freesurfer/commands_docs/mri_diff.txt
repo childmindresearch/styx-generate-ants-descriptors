@@ -1,0 +1,196 @@
+
+=== Output of 'mri_diff --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_diff <options> vol1file vol2file <options> 
+
+
+   --notallow-res  : do not check for resolution diffs
+   --notallow-acq  : do not check for acq param diffs
+   --notallow-geo  : do not check for geometry diffs
+   --notallow-prec : do not check for precision diffs
+   --notallow-pix  : do not check for pixel diffs
+   --notallow-ori  : do not check for orientation diffs
+   --notallow-type  : do not check for file type diffs
+   --no-exit-on-diff : do not exit on diff (runs thru everything)
+
+   --qa         : check res, acq, precision, and orientation only
+   --pix-only   : only check pixel data
+   --absdiff    : take abs of diff (default)
+   --no-absdiff : do not take abs of diff
+   --diffabs    : take abs before computing diff
+   --diffpct    : 100*(v1-v2)/((v1+v2)/2)
+   --rss        : save sqrt sum squares with --diff
+   --ssd        : print sum squared differences over all voxel
+   --rms        : print root mean squared diff. over all non-zero voxel
+   --count      : print number of differing voxels
+
+   --thresh thresh : pix diffs must be greater than this 
+   --count-thresh nvox : there must be at least this many voxels that are diff
+   --log DiffFile : store diff info in this file. 
+   --diff DiffVol : save difference image. 
+   --diff_label_suspicious DiffVol : differing voxels replaced
+                                     with label SUSPICIOUS
+                                     (for comparing aseg.mgz's)
+
+   --segdiff labelIDX DiffASEG : diff on voxels with labelIDX
+                                 output image: 0 not in both,
+                                 1 only in 1st, 2 only in 2nd
+                                 3 in both (for aseg.mgz)
+                                 if labelIDX==-1 diff on all labels:
+                                  show labels from vol1 at voxels
+                                  that differ in vol2
+
+   --merge-edits newauto oldauto manedits mergedvol
+   --avg-diff avgdiff.txt : save average difference 
+
+   --debug     turn on debugging
+   --verbose   print out info on all differences found
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+
+Determines whether two volumes differ. See below for what 
+'differ' means. 
+
+The basic usage is something like:
+
+mri_diff vol1 vol2
+
+It then prints to the terminal whether they differ or not.
+
+NOTE: stuff might get printed to the terminal regardless of whether
+the volumes are different or not, so you cannot just use the 
+presence or absence of terminal output to determine whether they
+are different as you can with unix diff.
+
+There are three ways to determine whether they are different:
+1. Look for 'volumes differ' in the terminal output
+2. Program exits with status > 100
+3. Create a log file
+
+To create a log file, add --log yourlogfile any where in the
+command line, eg:
+
+mri_diff vol1 vol2 --log yourlogfile
+
+If yourlogfile exists, it will be immediately deleted when the 
+program starts. If a difference is detected, yourlogfile will
+be created, and information about the difference will be
+printed to it. If there is no difference, yourlogfile will
+not exist when the program finishes.
+
+Volumes can differ in six ways:
+  1. Dimension,               return status = 101
+  2. Resolutions,             return status = 102
+  3. Acquisition Parameters,  return status = 103
+  4. Geometry,                return status = 104
+  5. Precision,               return status = 105
+  6. Pixel Data,              return status = 106
+
+Dimension is number of rows, cols, slices, and frames.
+Resolution is voxel size.
+Acqusition parameters are: flip angle, TR, TE, and TI.
+Geometry checks the vox2ras matrices for equality.
+Precision is int, float, short, etc.
+
+By default, all of these are checked, but some can be turned off
+with certain command-line flags:
+
+--notallow-res  : turns off resolution checking
+--notallow-acq  : turns off acquistion parameter checking
+--notallow-geo  : turns off geometry checking
+--notallow-prec : turns off precision checking
+--notallow-pix  : turns off pixel checking
+
+In addition, the minimum difference in pixel value required
+to be considered different can be controlled with --thresh.
+Eg, if two volumes differ by .00001, and you do not consider
+this to be significant, then --thresh .00002 will prevent
+that difference from being considered different. The default
+threshold is 0.
+
+--diff diffvol
+
+Saves difference image to diffvol.
+
+QUALITY ASSURANCE
+
+mri_diff can be used to check that two volumes where acquired in the
+same way with the --qa flag. This turns on Res, Acq, and Prec, and
+turns off Geo and Pix. Instead of checking geometry, it checks for the
+basic orientation of the volumes (eg, RAS, LPI, etc). The idea here is
+that the pixel data and exact geometry may be different, but other
+things should be the same.
+
+EXIT STATUS
+
+0   Volumes are not different and there were no errors
+1   Errors encounted. Volumes may or may not be different
+101 Volumes differ in dimension
+102 Volumes differ in resolution
+103 Volumes differ in acquisition parameters
+104 Volumes differ in geometry
+105 Volumes differ in precision
+106 Volumes differ in pixel data
+107 Volumes differ in orientation
+
+
+=== Output of 'mri_diff -help' ===
+
+ERROR: need to spec volume 2
+
+=== Output of 'mri_diff' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_diff <options> vol1file vol2file <options> 
+
+
+   --notallow-res  : do not check for resolution diffs
+   --notallow-acq  : do not check for acq param diffs
+   --notallow-geo  : do not check for geometry diffs
+   --notallow-prec : do not check for precision diffs
+   --notallow-pix  : do not check for pixel diffs
+   --notallow-ori  : do not check for orientation diffs
+   --notallow-type  : do not check for file type diffs
+   --no-exit-on-diff : do not exit on diff (runs thru everything)
+
+   --qa         : check res, acq, precision, and orientation only
+   --pix-only   : only check pixel data
+   --absdiff    : take abs of diff (default)
+   --no-absdiff : do not take abs of diff
+   --diffabs    : take abs before computing diff
+   --diffpct    : 100*(v1-v2)/((v1+v2)/2)
+   --rss        : save sqrt sum squares with --diff
+   --ssd        : print sum squared differences over all voxel
+   --rms        : print root mean squared diff. over all non-zero voxel
+   --count      : print number of differing voxels
+
+   --thresh thresh : pix diffs must be greater than this 
+   --count-thresh nvox : there must be at least this many voxels that are diff
+   --log DiffFile : store diff info in this file. 
+   --diff DiffVol : save difference image. 
+   --diff_label_suspicious DiffVol : differing voxels replaced
+                                     with label SUSPICIOUS
+                                     (for comparing aseg.mgz's)
+
+   --segdiff labelIDX DiffASEG : diff on voxels with labelIDX
+                                 output image: 0 not in both,
+                                 1 only in 1st, 2 only in 2nd
+                                 3 in both (for aseg.mgz)
+                                 if labelIDX==-1 diff on all labels:
+                                  show labels from vol1 at voxels
+                                  that differ in vol2
+
+   --merge-edits newauto oldauto manedits mergedvol
+   --avg-diff avgdiff.txt : save average difference 
+
+   --debug     turn on debugging
+   --verbose   print out info on all differences found
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

@@ -1,0 +1,81 @@
+
+=== Output of 'mri_segment_thalamic_nuclei_dti_cnn --help' ===
+
+usage: mri_segment_thalamic_nuclei_dti_cnn [-h] [--t1 T1] [--aseg ASEG]
+                                           [--fa FA] [--v1 V1] [--o O]
+                                           [--vol VOL] [--post POST]
+                                           [--threads THREADS] [--cpu]
+                                           [--model MODEL]
+
+Implementation of thalamic segmentation that generates a 0.7mm
+isotropicthalamus segmentation from registered T1, FA and V1 volumes.
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --t1 T1            T1 image(s). Can be a path to an image or to a folder.
+                     These must be registered to the FAs, in physical
+                     coordinates (i.e., with the headers, do NOT resample when
+                     registering; see instructions on FreeSurfer wiki)
+  --aseg ASEG        ASEG segmentation(s). Must be a folder if --t1 designates
+                     a folder. These must be registered to the FAs, in
+                     physical coordinates (i.e., with the headers, do NOT
+                     resample when registering; see instructions on FreeSurfer
+                     wiki)
+  --fa FA            FA image(s). Must be a folder if --t1 designates a
+                     folder.
+  --v1 V1            V1 image(s). Must be a folder if --t1 designates a
+                     folder.
+  --o O              Segmentation output(s). Must be a folder if --t1
+                     designates a folder.
+  --vol VOL          (optional) Output CSV file with volumes for all
+                     structures and subjects.
+  --post POST        (optional) Posteriors output(s). Must be a folder if --t1
+                     designates a folder.
+  --threads THREADS  (optional) Number of cores to be used. Default is 1.
+  --cpu              (optional) Enforce running with CPU rather than GPU.
+  --model MODEL      (optional) Use a different model file.
+
+=== Output of 'mri_segment_thalamic_nuclei_dti_cnn -help' ===
+
+usage: mri_segment_thalamic_nuclei_dti_cnn [-h] [--t1 T1] [--aseg ASEG]
+                                           [--fa FA] [--v1 V1] [--o O]
+                                           [--vol VOL] [--post POST]
+                                           [--threads THREADS] [--cpu]
+                                           [--model MODEL]
+mri_segment_thalamic_nuclei_dti_cnn: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'mri_segment_thalamic_nuclei_dti_cnn' (no arguments) ===
+
+usage: mri_segment_thalamic_nuclei_dti_cnn [-h] [--t1 T1] [--aseg ASEG]
+                                           [--fa FA] [--v1 V1] [--o O]
+                                           [--vol VOL] [--post POST]
+                                           [--threads THREADS] [--cpu]
+                                           [--model MODEL]
+
+Implementation of thalamic segmentation that generates a 0.7mm
+isotropicthalamus segmentation from registered T1, FA and V1 volumes.
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --t1 T1            T1 image(s). Can be a path to an image or to a folder.
+                     These must be registered to the FAs, in physical
+                     coordinates (i.e., with the headers, do NOT resample when
+                     registering; see instructions on FreeSurfer wiki)
+  --aseg ASEG        ASEG segmentation(s). Must be a folder if --t1 designates
+                     a folder. These must be registered to the FAs, in
+                     physical coordinates (i.e., with the headers, do NOT
+                     resample when registering; see instructions on FreeSurfer
+                     wiki)
+  --fa FA            FA image(s). Must be a folder if --t1 designates a
+                     folder.
+  --v1 V1            V1 image(s). Must be a folder if --t1 designates a
+                     folder.
+  --o O              Segmentation output(s). Must be a folder if --t1
+                     designates a folder.
+  --vol VOL          (optional) Output CSV file with volumes for all
+                     structures and subjects.
+  --post POST        (optional) Posteriors output(s). Must be a folder if --t1
+                     designates a folder.
+  --threads THREADS  (optional) Number of cores to be used. Default is 1.
+  --cpu              (optional) Enforce running with CPU rather than GPU.
+  --model MODEL      (optional) Use a different model file.

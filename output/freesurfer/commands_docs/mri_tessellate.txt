@@ -1,0 +1,181 @@
+
+=== Output of 'mri_tessellate --help' ===
+
+				Help
+
+NAME
+	mri_tessellate
+
+SYNOPSIS
+	mri_tessellate [options] <invol> <labelvalue> <outsurf>
+
+DESCRIPTION
+	This program creates surface by tessellating given input volumeNote: 
+	the meaning of the labels can be found in $FREESURFER_HOME/
+	FreeSurferColorLUT.txt
+
+POSITIONAL ARGUMENTS
+	<invol>
+		input volume
+
+	<labelvalue>
+		integer, if input is filled volume, 127 is rh, 255 is lh
+
+	<outsurf>
+		binary surface of the tessellation 
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-a
+		tessellate the surface of all voxels with different labels
+
+	-maxv nvertices
+		set the max # of vertices to nverttices, and the max # of 
+		faces to (2*nvertices)
+
+	-n
+		save surface with real RAS coordinates where c_(r,a,s) != 0
+
+OUTPUTS
+	outsurf
+		surface file, typically ?h.orig
+
+EXAMPLE 1
+	mri_tessellate $SUBJECTS_DIR/subjid/mri/filled 127 rh.orig
+
+EXAMPLE 2
+	mri_tessellate $SUBJECTS_DIR/subjid/mri/aseg 17 lh.hippocampus
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_pretess
+
+
+
+=== Output of 'mri_tessellate -help' ===
+
+tessellating the surface of all hippocampal voxels with different labels
+				Help
+
+NAME
+	mri_tessellate
+
+SYNOPSIS
+	mri_tessellate [options] <invol> <labelvalue> <outsurf>
+
+DESCRIPTION
+	This program creates surface by tessellating given input volumeNote: 
+	the meaning of the labels can be found in $FREESURFER_HOME/
+	FreeSurferColorLUT.txt
+
+POSITIONAL ARGUMENTS
+	<invol>
+		input volume
+
+	<labelvalue>
+		integer, if input is filled volume, 127 is rh, 255 is lh
+
+	<outsurf>
+		binary surface of the tessellation 
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-a
+		tessellate the surface of all voxels with different labels
+
+	-maxv nvertices
+		set the max # of vertices to nverttices, and the max # of 
+		faces to (2*nvertices)
+
+	-n
+		save surface with real RAS coordinates where c_(r,a,s) != 0
+
+OUTPUTS
+	outsurf
+		surface file, typically ?h.orig
+
+EXAMPLE 1
+	mri_tessellate $SUBJECTS_DIR/subjid/mri/filled 127 rh.orig
+
+EXAMPLE 2
+	mri_tessellate $SUBJECTS_DIR/subjid/mri/aseg 17 lh.hippocampus
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_pretess
+
+
+
+=== Output of 'mri_tessellate' (no arguments) ===
+
+				Help
+
+NAME
+	mri_tessellate
+
+SYNOPSIS
+	mri_tessellate [options] <invol> <labelvalue> <outsurf>
+
+DESCRIPTION
+	This program creates surface by tessellating given input volumeNote: 
+	the meaning of the labels can be found in $FREESURFER_HOME/
+	FreeSurferColorLUT.txt
+
+POSITIONAL ARGUMENTS
+	<invol>
+		input volume
+
+	<labelvalue>
+		integer, if input is filled volume, 127 is rh, 255 is lh
+
+	<outsurf>
+		binary surface of the tessellation 
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-a
+		tessellate the surface of all voxels with different labels
+
+	-maxv nvertices
+		set the max # of vertices to nverttices, and the max # of 
+		faces to (2*nvertices)
+
+	-n
+		save surface with real RAS coordinates where c_(r,a,s) != 0
+
+OUTPUTS
+	outsurf
+		surface file, typically ?h.orig
+
+EXAMPLE 1
+	mri_tessellate $SUBJECTS_DIR/subjid/mri/filled 127 rh.orig
+
+EXAMPLE 2
+	mri_tessellate $SUBJECTS_DIR/subjid/mri/aseg 17 lh.hippocampus
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_pretess
+
+

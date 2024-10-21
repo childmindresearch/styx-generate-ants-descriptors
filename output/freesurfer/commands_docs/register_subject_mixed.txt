@@ -1,0 +1,12 @@
+
+=== Output of 'register_subject_mixed --help' ===
+
+CMA: Undefined variable.
+
+=== Output of 'register_subject_mixed -help' ===
+
+CMA: Undefined variable.
+
+=== Output of 'register_subject_mixed' (no arguments) ===
+
+CMA: Undefined variable.

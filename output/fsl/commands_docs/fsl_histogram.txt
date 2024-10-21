@@ -1,0 +1,96 @@
+
+=== Output of 'fsl_histogram --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_histogram 
+Copyright(c) 2007, University of Oxford (Christian F. Beckmann)
+
+Usage: 
+fsl_histogram [options] 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name
+	-o,--out	output filename for the PNG file
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	mask file name
+	-f,--gmmfit	file name of matrix with parameter estimates of Gaussian/Gamma mixture model (means, variances and proportions per row)
+	-t,--title	plot title
+	-l,--legend	file name of ASCII text file, one row per legend entry
+	-x,--xlabel	X-axis label
+	-y,--ylabel	Y-axis label
+	-h,--height	plot height in pixels (default 400)
+	-w,--width	plot width in pixels (default 600)
+	-b,--bins	number of histogram bins
+	-d,--detail	zoom factor for y-range (e.g. 2.0)
+	--gmm	        use Gaussian MM instead of Gaussian/Gamma MM
+
+
+
+--help: Option doesn't exist!
+
+=== Output of 'fsl_histogram -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_histogram 
+Copyright(c) 2007, University of Oxford (Christian F. Beckmann)
+
+Usage: 
+fsl_histogram [options] 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name
+	-o,--out	output filename for the PNG file
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	mask file name
+	-f,--gmmfit	file name of matrix with parameter estimates of Gaussian/Gamma mixture model (means, variances and proportions per row)
+	-t,--title	plot title
+	-l,--legend	file name of ASCII text file, one row per legend entry
+	-x,--xlabel	X-axis label
+	-y,--ylabel	Y-axis label
+	-h,--height	plot height in pixels (default 400)
+	-w,--width	plot width in pixels (default 600)
+	-b,--bins	number of histogram bins
+	-d,--detail	zoom factor for y-range (e.g. 2.0)
+	--gmm	        use Gaussian MM instead of Gaussian/Gamma MM
+
+
+
+-h: Missing non-optional argument!
+
+=== Output of 'fsl_histogram' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        input file name
+	-o,--out	output filename for the PNG file
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_histogram 
+Copyright(c) 2007, University of Oxford (Christian F. Beckmann)
+
+Usage: 
+fsl_histogram [options] 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name
+	-o,--out	output filename for the PNG file
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	mask file name
+	-f,--gmmfit	file name of matrix with parameter estimates of Gaussian/Gamma mixture model (means, variances and proportions per row)
+	-t,--title	plot title
+	-l,--legend	file name of ASCII text file, one row per legend entry
+	-x,--xlabel	X-axis label
+	-y,--ylabel	Y-axis label
+	-h,--height	plot height in pixels (default 400)
+	-w,--width	plot width in pixels (default 600)
+	-b,--bins	number of histogram bins
+	-d,--detail	zoom factor for y-range (e.g. 2.0)
+	--gmm	        use Gaussian MM instead of Gaussian/Gamma MM
+
+

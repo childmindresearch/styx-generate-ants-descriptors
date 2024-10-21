@@ -1,0 +1,46 @@
+
+=== Output of '@Install_FATMVM_DEMO --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Install_FATMVM_DEMO -help' ===
+
+Installs the demo archive for combining FATCAT output with 3dMVM
+statistical analysis.
+After the archive is downloaded and unpacked, see the text file
+FAT_MVM_README.txt for details.
+
+=== Output of '@Install_FATMVM_DEMO' (no arguments) ===
+
+/usr/bin/curl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 62275  100 62275    0     0   760k      0 --:--:-- --:--:-- --:--:--  760k
+FAT_MVM_DEMO/
+FAT_MVM_DEMO/SUBJ_TR_GRID/
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_11_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_16_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_17_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_07_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_18_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_14_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_03_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_20_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_06_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_12_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_02_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_10_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_09_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_04_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_05_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_08_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_01_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_19_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_13_NETS_000_MOD.grid
+FAT_MVM_DEMO/SUBJ_TR_GRID/SUB_15_NETS_000_MOD.grid
+FAT_MVM_DEMO/FAT_MVM_README.txt
+FAT_MVM_DEMO/all_subj_info.csv
+********************************************************
+Follow the description and commandline examples
+   in ./FAT_MVM_DEMO/FAT_MVM_README.txt
+********************************************************

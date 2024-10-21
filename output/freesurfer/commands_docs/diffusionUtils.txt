@@ -1,0 +1,21 @@
+
+=== Output of 'diffusionUtils --help' ===
+
+Traceback (most recent call last):
+  File "/usr/local/freesurfer/python/scripts/diffusionUtils", line 4, in <module>
+    from dipy.data import fetch_taiwan_ntu_dsi, read_taiwan_ntu_dsi, get_sphere
+ModuleNotFoundError: No module named 'dipy'
+
+=== Output of 'diffusionUtils -help' ===
+
+Traceback (most recent call last):
+  File "/usr/local/freesurfer/python/scripts/diffusionUtils", line 4, in <module>
+    from dipy.data import fetch_taiwan_ntu_dsi, read_taiwan_ntu_dsi, get_sphere
+ModuleNotFoundError: No module named 'dipy'
+
+=== Output of 'diffusionUtils' (no arguments) ===
+
+Traceback (most recent call last):
+  File "/usr/local/freesurfer/python/scripts/diffusionUtils", line 4, in <module>
+    from dipy.data import fetch_taiwan_ntu_dsi, read_taiwan_ntu_dsi, get_sphere
+ModuleNotFoundError: No module named 'dipy'

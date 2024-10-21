@@ -1,0 +1,12 @@
+
+=== Output of 'contrast_mgr --help' ===
+
+Contrast_mgr is now deprecated, do not use this version on Post-stats only FEAT runs.
+
+=== Output of 'contrast_mgr -help' ===
+
+Contrast_mgr is now deprecated, do not use this version on Post-stats only FEAT runs.
+
+=== Output of 'contrast_mgr' (no arguments) ===
+
+Contrast_mgr is now deprecated, do not use this version on Post-stats only FEAT runs.

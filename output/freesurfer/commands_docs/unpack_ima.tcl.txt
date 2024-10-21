@@ -1,0 +1,15 @@
+
+=== Output of 'unpack_ima.tcl --help' ===
+
+/usr/local/freesurfer/bin/unpack_ima.tcl: line 129: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/unpack_ima.tcl: line 129: `set targetDir $env(HOME)'
+
+=== Output of 'unpack_ima.tcl -help' ===
+
+/usr/local/freesurfer/bin/unpack_ima.tcl: line 129: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/unpack_ima.tcl: line 129: `set targetDir $env(HOME)'
+
+=== Output of 'unpack_ima.tcl' (no arguments) ===
+
+/usr/local/freesurfer/bin/unpack_ima.tcl: line 129: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/unpack_ima.tcl: line 129: `set targetDir $env(HOME)'

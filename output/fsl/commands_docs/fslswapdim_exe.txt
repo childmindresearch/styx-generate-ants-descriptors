@@ -1,0 +1,27 @@
+
+=== Output of 'fslswapdim_exe --help' ===
+
+Usage: /usr/local/fsl/bin/fslswapdim_exe <input> <a> <b> <c> [output] [--checkLR]
+
+  where a,b,c represent the new x,y,z axes in terms of the
+  old axes.  They can take values of -x,x,y,-y,z,-z
+  --checkLR  is an option that checks if the specified arguments lead to a Left-Right swap or not - it cannot be used with an output name
+  e.g.  /usr/local/fsl/bin/fslswapdim_exe invol y x -z outvol
+
+=== Output of 'fslswapdim_exe -help' ===
+
+Usage: /usr/local/fsl/bin/fslswapdim_exe <input> <a> <b> <c> [output] [--checkLR]
+
+  where a,b,c represent the new x,y,z axes in terms of the
+  old axes.  They can take values of -x,x,y,-y,z,-z
+  --checkLR  is an option that checks if the specified arguments lead to a Left-Right swap or not - it cannot be used with an output name
+  e.g.  /usr/local/fsl/bin/fslswapdim_exe invol y x -z outvol
+
+=== Output of 'fslswapdim_exe' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/fslswapdim_exe <input> <a> <b> <c> [output] [--checkLR]
+
+  where a,b,c represent the new x,y,z axes in terms of the
+  old axes.  They can take values of -x,x,y,-y,z,-z
+  --checkLR  is an option that checks if the specified arguments lead to a Left-Right swap or not - it cannot be used with an output name
+  e.g.  /usr/local/fsl/bin/fslswapdim_exe invol y x -z outvol

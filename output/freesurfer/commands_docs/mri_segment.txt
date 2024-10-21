@@ -1,0 +1,260 @@
+
+=== Output of 'mri_segment --help' ===
+
+				Help
+
+NAME
+	mri_segment
+
+SYNOPSIS
+	mri_segment [options] <invol> <outvol>
+
+DESCRIPTION
+	This program segments white matter from the input volume. The input 
+	volume should be normalized such that white matter voxels are 
+	~110-valued, and the volume is conformed to 256^3. This can be 
+	accomplished by `mri_normalize -conform invol outvol`. Note that 
+	flagged options must be provided before positional arguments.
+
+POSITIONAL ARGUMENTS
+	<invol>
+		input volume
+
+	<outvol>
+		output volume
+
+OPTIONAL FLAGGED ARGUMENTS
+	-no1d_remove <s>;
+		don't run code that removes 1D strands from segmentation
+
+	-slope <s>
+		set the curvature slope (both n and p)
+
+	-pslope <p>
+		set the curvature pslope (default=1.0)
+
+	-nslope <n>
+		set the curvature nslope (default=1.0)
+
+	-debug_voxel <x y z>
+		set voxel for debugging
+
+	-auto
+		automatically detect class statistics (default)
+
+	-noauto
+		don't automatically detect class statistics
+
+	-log
+		log to ./segment.dat
+
+	-keep
+		keep wm edits. maintains all values of 1 and 255. voxels of 
+		value 1 will be 'deleted' and voxels of value 255 will be 
+		'filled'
+
+	-ghi,-gray_hi <h>
+		set the gray matter high limit (default=100.000)
+
+	-wlo,-wm_low <l>
+		set the white matter low limit (default=80.000)
+
+	-wm_low_factor <f>
+		wm_low = f*gray_mean + (1-f)*white_mean;
+
+	-whi,-wm_hi <h>
+		set the white matter high limit (default=125.000)
+
+	-nseg <n>
+		thicken the n largest thin strands (default=20)
+
+	-thicken
+		toggle thickening step (default=ON)
+
+	-fillbg
+		toggle filling of the basal ganglia (default=OFF)
+
+	-fillv
+		toggle filling of the ventricles (default=OFF)
+
+	-b <s>
+		set blur sigma (default=0.25)
+
+	-n <i>
+		set # iterations of border classification (default=1)
+
+	-t <t>
+		set limit to thin strands in mm (default=4)
+
+	-v
+		verbose
+
+	-p <p>
+		set % threshold (default=0.80)
+
+	-x <filename>
+		extract options from filename
+
+	-w <w>
+		set wsize (default=11 voxels)
+
+	-wsizemm <wsizemm>
+		set wsize based on mm instead of voxels
+
+	-polvwsize <w>
+		set wsize for plane of least variance (default=5)
+
+	-polvlen <w>
+		set len for plane of least variance (default=3)
+
+	-dat datfile
+		set datfile (default is segment.dat)
+
+	-seg segmenation volume SegErodeMM WMBiasFactor
+		Uses segmentation (eg, aseg.presurf.mgz) to set thresholds
+
+	-diagno diagno
+		Set diagnostic number
+
+	-diag-write
+		Set diagnostic write
+
+	-diag-verbose
+		Set diagnostic verbose
+
+	-u
+		usage
+
+
+
+=== Output of 'mri_segment -help' ===
+
+				Help
+
+NAME
+	mri_segment
+
+SYNOPSIS
+	mri_segment [options] <invol> <outvol>
+
+DESCRIPTION
+	This program segments white matter from the input volume. The input 
+	volume should be normalized such that white matter voxels are 
+	~110-valued, and the volume is conformed to 256^3. This can be 
+	accomplished by `mri_normalize -conform invol outvol`. Note that 
+	flagged options must be provided before positional arguments.
+
+POSITIONAL ARGUMENTS
+	<invol>
+		input volume
+
+	<outvol>
+		output volume
+
+OPTIONAL FLAGGED ARGUMENTS
+	-no1d_remove <s>;
+		don't run code that removes 1D strands from segmentation
+
+	-slope <s>
+		set the curvature slope (both n and p)
+
+	-pslope <p>
+		set the curvature pslope (default=1.0)
+
+	-nslope <n>
+		set the curvature nslope (default=1.0)
+
+	-debug_voxel <x y z>
+		set voxel for debugging
+
+	-auto
+		automatically detect class statistics (default)
+
+	-noauto
+		don't automatically detect class statistics
+
+	-log
+		log to ./segment.dat
+
+	-keep
+		keep wm edits. maintains all values of 1 and 255. voxels of 
+		value 1 will be 'deleted' and voxels of value 255 will be 
+		'filled'
+
+	-ghi,-gray_hi <h>
+		set the gray matter high limit (default=100.000)
+
+	-wlo,-wm_low <l>
+		set the white matter low limit (default=80.000)
+
+	-wm_low_factor <f>
+		wm_low = f*gray_mean + (1-f)*white_mean;
+
+	-whi,-wm_hi <h>
+		set the white matter high limit (default=125.000)
+
+	-nseg <n>
+		thicken the n largest thin strands (default=20)
+
+	-thicken
+		toggle thickening step (default=ON)
+
+	-fillbg
+		toggle filling of the basal ganglia (default=OFF)
+
+	-fillv
+		toggle filling of the ventricles (default=OFF)
+
+	-b <s>
+		set blur sigma (default=0.25)
+
+	-n <i>
+		set # iterations of border classification (default=1)
+
+	-t <t>
+		set limit to thin strands in mm (default=4)
+
+	-v
+		verbose
+
+	-p <p>
+		set % threshold (default=0.80)
+
+	-x <filename>
+		extract options from filename
+
+	-w <w>
+		set wsize (default=11 voxels)
+
+	-wsizemm <wsizemm>
+		set wsize based on mm instead of voxels
+
+	-polvwsize <w>
+		set wsize for plane of least variance (default=5)
+
+	-polvlen <w>
+		set len for plane of least variance (default=3)
+
+	-dat datfile
+		set datfile (default is segment.dat)
+
+	-seg segmenation volume SegErodeMM WMBiasFactor
+		Uses segmentation (eg, aseg.presurf.mgz) to set thresholds
+
+	-diagno diagno
+		Set diagnostic number
+
+	-diag-write
+		Set diagnostic write
+
+	-diag-verbose
+		Set diagnostic verbose
+
+	-u
+		usage
+
+
+
+=== Output of 'mri_segment' (no arguments) ===
+
+error: Must provide input and output files. Use --help for more info.

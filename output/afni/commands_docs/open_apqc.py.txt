@@ -1,0 +1,228 @@
+
+=== Output of 'open_apqc.py --help' ===
+
+usage: open_apqc.py [-infiles INFILES [INFILES ...]] [-jump_to JUMP_TO]
+                    [-disp_jump_ids] [-new_tabs_only] [-new_windows_only]
+                    [-pause_time PAUSE_TIME] [-open_pages_off]
+                    [-portnum PORTNUM] [-port_nsearch PORT_NSEARCH]
+                    [-host HOST] [-nv_dir NV_DIR] [-verb VERB] [-ver] [-help]
+                    [-hview]
+open_apqc.py: error: unrecognized arguments: --help
+
+=== Output of 'open_apqc.py -help' ===
+
+usage: open_apqc.py [-infiles INFILES [INFILES ...]] [-jump_to JUMP_TO]
+                    [-disp_jump_ids] [-new_tabs_only] [-new_windows_only]
+                    [-pause_time PAUSE_TIME] [-open_pages_off]
+                    [-portnum PORTNUM] [-port_nsearch PORT_NSEARCH]
+                    [-host HOST] [-nv_dir NV_DIR] [-verb VERB] [-ver] [-help]
+                    [-hview]
+
+Overview ~1~
+
+This program is used to open one or more of afni_proc.py's quality
+control (APQC) HTML files.
+
+It is designed to allow saving QC ratings and notes as the files are
+browsed, as well as the execution of 'interactive QC' scripts, by
+using a local server.  **This functionality requires Python's Flask
+and Flask-CORS modules to both be installed.**  You can still run this
+script without those modules and view the QC images, but the fancy
+buttons will not work.  It is highly recommended to install those
+modules before using this program, to greatly improve your QC
+experience.
+
+============================================================================
+
+Options ~1~
+
+optional arguments:
+  -infiles INFILES [INFILES ...]
+                        path to one or more APQC index.html files
+  -jump_to JUMP_TO      when opening the APQC HTML, jump to the provided QC
+                        block or sub-block name (e.g., "ve2a", "qsumm", etc.)
+  -disp_jump_ids        display list of IDs within first index.html file that
+                        can be jumped to with the "-jump_to .." option (must
+                        be used with "-infiles ..")
+  -new_tabs_only        open each page in new tab (def: open first page in a
+                        new window, then any more in new tabs)
+  -new_windows_only     open each page in a new window (def: open first page
+                        in a new window, then any more in new tabs)
+  -pause_time PAUSE_TIME
+                        total time (s) to pause to let pages load (def: 2.0)
+  -open_pages_off       (not typically needed) turn off default behavior to
+                        open pages in a browswer (def: open in new
+                        window[+tabs])
+  -portnum PORTNUM      (not typically needed) specify port number to first
+                        try to open (def: 5000)
+  -port_nsearch PORT_NSEARCH
+                        (not typically needed) specify how many port numbers
+                        to search through (def: 500)
+  -host HOST            (not typically needed) specify hostname (def:
+                        127.0.0.1)
+  -nv_dir NV_DIR        (not typically needed) path to directory containing
+                        "niivue_afni.umd.js" (def: use the location of "afni"
+                        program)
+  -verb VERB            verbosity level (def: 1)
+  -ver                  display version
+  -help                 display help in terminal
+  -hview                display help in a text editor
+
+============================================================================
+
+Notes on usage ~1~
+
+While running/viewing the HTMLs:
+  When the server is running, the terminal must be left open so the
+  server can keep running (a lot like using a Jupyter-Notebook).  
+
+When finished:
+  When you are doing viewing the APQC HTMLs, you can close all of
+  them, and type 'Ctrl+c' in the terminal (to cancel/exit the server).
+
+Notes on dependencies ~1~
+
+To get the most information (and fun!) when using the program, the 
+following Python modules should be installed, to enable a local server
+to be up and running:       
+     flask (ver >= 2.1.2)
+     flask_cors (ver >= 3.0.10)
+These could/should be installed with a package manager, Conda, etc.
+
+============================================================================
+
+Examples ~1~
+
+  1) Open many APQC HTML pages for several subjects, with the server
+     on so QC ratings/comments will be saved:
+
+     open_apqc.py  -infiles  data_21_ap/sub*/*results/QC_*/index.html 
+
+  2) The same as #1, but have each page jump to the 'vstat' block of
+     the HTML:
+
+     open_apqc.py                                                 \
+         -infiles  data_21_ap/sub*/*results/QC_*/index.html       \
+         -jump_to  vstat
+
+  3) The same as #2, but open all pages in new tabs of the existing
+     browser window (instead of starting new window):
+
+     open_apqc.py                                                 \
+         -infiles  data_21_ap/sub*/*results/QC_*/index.html       \
+         -jump_to  vstat                                          \
+         -new_tabs_only
+
+============================================================================
+written by: T Hanayik (Oxford Uni, UK)
+            PA Taylor (SSCC, NIMH, NIH, USA)
+============================================================================
+
+=== Output of 'open_apqc.py' (no arguments) ===
+
+usage: open_apqc.py [-infiles INFILES [INFILES ...]] [-jump_to JUMP_TO]
+                    [-disp_jump_ids] [-new_tabs_only] [-new_windows_only]
+                    [-pause_time PAUSE_TIME] [-open_pages_off]
+                    [-portnum PORTNUM] [-port_nsearch PORT_NSEARCH]
+                    [-host HOST] [-nv_dir NV_DIR] [-verb VERB] [-ver] [-help]
+                    [-hview]
+
+Overview ~1~
+
+This program is used to open one or more of afni_proc.py's quality
+control (APQC) HTML files.
+
+It is designed to allow saving QC ratings and notes as the files are
+browsed, as well as the execution of 'interactive QC' scripts, by
+using a local server.  **This functionality requires Python's Flask
+and Flask-CORS modules to both be installed.**  You can still run this
+script without those modules and view the QC images, but the fancy
+buttons will not work.  It is highly recommended to install those
+modules before using this program, to greatly improve your QC
+experience.
+
+============================================================================
+
+Options ~1~
+
+optional arguments:
+  -infiles INFILES [INFILES ...]
+                        path to one or more APQC index.html files
+  -jump_to JUMP_TO      when opening the APQC HTML, jump to the provided QC
+                        block or sub-block name (e.g., "ve2a", "qsumm", etc.)
+  -disp_jump_ids        display list of IDs within first index.html file that
+                        can be jumped to with the "-jump_to .." option (must
+                        be used with "-infiles ..")
+  -new_tabs_only        open each page in new tab (def: open first page in a
+                        new window, then any more in new tabs)
+  -new_windows_only     open each page in a new window (def: open first page
+                        in a new window, then any more in new tabs)
+  -pause_time PAUSE_TIME
+                        total time (s) to pause to let pages load (def: 2.0)
+  -open_pages_off       (not typically needed) turn off default behavior to
+                        open pages in a browswer (def: open in new
+                        window[+tabs])
+  -portnum PORTNUM      (not typically needed) specify port number to first
+                        try to open (def: 5000)
+  -port_nsearch PORT_NSEARCH
+                        (not typically needed) specify how many port numbers
+                        to search through (def: 500)
+  -host HOST            (not typically needed) specify hostname (def:
+                        127.0.0.1)
+  -nv_dir NV_DIR        (not typically needed) path to directory containing
+                        "niivue_afni.umd.js" (def: use the location of "afni"
+                        program)
+  -verb VERB            verbosity level (def: 1)
+  -ver                  display version
+  -help                 display help in terminal
+  -hview                display help in a text editor
+
+============================================================================
+
+Notes on usage ~1~
+
+While running/viewing the HTMLs:
+  When the server is running, the terminal must be left open so the
+  server can keep running (a lot like using a Jupyter-Notebook).  
+
+When finished:
+  When you are doing viewing the APQC HTMLs, you can close all of
+  them, and type 'Ctrl+c' in the terminal (to cancel/exit the server).
+
+Notes on dependencies ~1~
+
+To get the most information (and fun!) when using the program, the 
+following Python modules should be installed, to enable a local server
+to be up and running:       
+     flask (ver >= 2.1.2)
+     flask_cors (ver >= 3.0.10)
+These could/should be installed with a package manager, Conda, etc.
+
+============================================================================
+
+Examples ~1~
+
+  1) Open many APQC HTML pages for several subjects, with the server
+     on so QC ratings/comments will be saved:
+
+     open_apqc.py  -infiles  data_21_ap/sub*/*results/QC_*/index.html 
+
+  2) The same as #1, but have each page jump to the 'vstat' block of
+     the HTML:
+
+     open_apqc.py                                                 \
+         -infiles  data_21_ap/sub*/*results/QC_*/index.html       \
+         -jump_to  vstat
+
+  3) The same as #2, but open all pages in new tabs of the existing
+     browser window (instead of starting new window):
+
+     open_apqc.py                                                 \
+         -infiles  data_21_ap/sub*/*results/QC_*/index.html       \
+         -jump_to  vstat                                          \
+         -new_tabs_only
+
+============================================================================
+written by: T Hanayik (Oxford Uni, UK)
+            PA Taylor (SSCC, NIMH, NIH, USA)
+============================================================================

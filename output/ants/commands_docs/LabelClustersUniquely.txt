@@ -1,0 +1,15 @@
+
+=== Output of 'LabelClustersUniquely --help' ===
+
+Usage:  
+LabelClustersUniquely ImageDimension clustersin.hdr labeledclustersout.hdr   sizethresh optionalBoolFullyConnected
+
+=== Output of 'LabelClustersUniquely -help' ===
+
+Usage:  
+LabelClustersUniquely ImageDimension clustersin.hdr labeledclustersout.hdr   sizethresh optionalBoolFullyConnected
+
+=== Output of 'LabelClustersUniquely' (no arguments) ===
+
+Usage:  
+LabelClustersUniquely ImageDimension clustersin.hdr labeledclustersout.hdr   sizethresh optionalBoolFullyConnected

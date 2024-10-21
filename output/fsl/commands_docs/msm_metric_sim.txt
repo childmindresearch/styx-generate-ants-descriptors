@@ -1,0 +1,21 @@
+
+=== Output of 'msm_metric_sim --help' ===
+
+msm_metric_sim  <surface1> <surface2> <outbase>  
+Input are func files assumes surfaces have been resampled to same mesh   
+ options: 
+-compare X compare correlation to this file 
+
+=== Output of 'msm_metric_sim -help' ===
+
+msm_metric_sim  <surface1> <surface2> <outbase>  
+Input are func files assumes surfaces have been resampled to same mesh   
+ options: 
+-compare X compare correlation to this file 
+
+=== Output of 'msm_metric_sim' (no arguments) ===
+
+msm_metric_sim  <surface1> <surface2> <outbase>  
+Input are func files assumes surfaces have been resampled to same mesh   
+ options: 
+-compare X compare correlation to this file 

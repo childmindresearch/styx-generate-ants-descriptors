@@ -1,0 +1,18 @@
+
+=== Output of 'unpack_ima1.tcl --help' ===
+
+/usr/local/freesurfer/bin/unpack_ima1.tcl: line 74: /progressbar.tcl: No such file or directory
+/usr/local/freesurfer/bin/unpack_ima1.tcl: line 81: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/unpack_ima1.tcl: line 81: `if { [catch { info exists env(ARCHIVE_DIR)} envArchiveDir ] } \'
+
+=== Output of 'unpack_ima1.tcl -help' ===
+
+/usr/local/freesurfer/bin/unpack_ima1.tcl: line 74: /progressbar.tcl: No such file or directory
+/usr/local/freesurfer/bin/unpack_ima1.tcl: line 81: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/unpack_ima1.tcl: line 81: `if { [catch { info exists env(ARCHIVE_DIR)} envArchiveDir ] } \'
+
+=== Output of 'unpack_ima1.tcl' (no arguments) ===
+
+/usr/local/freesurfer/bin/unpack_ima1.tcl: line 74: /progressbar.tcl: No such file or directory
+/usr/local/freesurfer/bin/unpack_ima1.tcl: line 81: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/unpack_ima1.tcl: line 81: `if { [catch { info exists env(ARCHIVE_DIR)} envArchiveDir ] } \'

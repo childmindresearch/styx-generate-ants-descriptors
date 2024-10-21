@@ -1,0 +1,130 @@
+
+=== Output of '@djunct_overlap_check --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of '@djunct_overlap_check -help' ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+More helpful helpfile description coming (some day...)
+
+This is just a helper script for other things.
+
+written by PA Taylor, modelled heavily on RW Cox's '@snapshot_volreg'
+script
+
+# --------------------------------------------------------------------
+
+COMMAND OPTIONS ~1~
+
+-hview
+-help
+-ver
+-echo
+-ulay              ULAY
+-olay              OLAY
+-prefix            PREFIX
+-box_focus_slices  DSET_BFS
+-montgap           MG
+-montcolor         MC
+-cbar              CBAR
+-opacity           OPA
+-zerocolor         ZC
+-set_dicom_xyz     XX YY ZZ
+-ulay_range        umin umax
+-ulay_range_nz     umin umax
+-montx             MX
+-monty             MY
+-montx_cat         MX2
+-monty_cat         MY2
+-label_mode        LM
+-pbar_posonly_off
+-edgy_ulay
+-set_dicom_xyz_off
+-no_cor
+-no_axi
+-no_sag
+-no_clean
+
+NOTES TO SELF ~1~
+
+This is mostly useful if the olay has no skull and the ulay has a
+skull, in terms of being able to see overlap well.
+
+If using -box_focus_slices, don't use the AMASK_FOCUS_OLAY keyword,
+but instead repeat the name of the olay explicitly.  This is because
+this program creates an edgified version of the olay, which gets
+passed into @chauffeur_afni, and then using the AMASK* functionality
+would try to 'automask' that dset, typically leaves no voxels and
+leads to an error.  Repeating the name of the input olay leads to
+correct behavior.  (Ask me how I discovered *this* tidbit of
+knowledge?)
+
+
+=== Output of '@djunct_overlap_check' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+More helpful helpfile description coming (some day...)
+
+This is just a helper script for other things.
+
+written by PA Taylor, modelled heavily on RW Cox's '@snapshot_volreg'
+script
+
+# --------------------------------------------------------------------
+
+COMMAND OPTIONS ~1~
+
+-hview
+-help
+-ver
+-echo
+-ulay              ULAY
+-olay              OLAY
+-prefix            PREFIX
+-box_focus_slices  DSET_BFS
+-montgap           MG
+-montcolor         MC
+-cbar              CBAR
+-opacity           OPA
+-zerocolor         ZC
+-set_dicom_xyz     XX YY ZZ
+-ulay_range        umin umax
+-ulay_range_nz     umin umax
+-montx             MX
+-monty             MY
+-montx_cat         MX2
+-monty_cat         MY2
+-label_mode        LM
+-pbar_posonly_off
+-edgy_ulay
+-set_dicom_xyz_off
+-no_cor
+-no_axi
+-no_sag
+-no_clean
+
+NOTES TO SELF ~1~
+
+This is mostly useful if the olay has no skull and the ulay has a
+skull, in terms of being able to see overlap well.
+
+If using -box_focus_slices, don't use the AMASK_FOCUS_OLAY keyword,
+but instead repeat the name of the olay explicitly.  This is because
+this program creates an edgified version of the olay, which gets
+passed into @chauffeur_afni, and then using the AMASK* functionality
+would try to 'automask' that dset, typically leaves no voxels and
+leads to an error.  Repeating the name of the input olay leads to
+correct behavior.  (Ask me how I discovered *this* tidbit of
+knowledge?)
+

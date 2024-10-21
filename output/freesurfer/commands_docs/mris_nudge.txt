@@ -1,0 +1,15 @@
+
+=== Output of 'mris_nudge --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_nudge [options] <input surface> <input volume> <vertex> <target val> <nbhd> <output surf>
+	
+
+=== Output of 'mris_nudge -help' ===
+
+usage: /usr/local/freesurfer/bin/mris_nudge [options] <input surface> <input volume> <vertex> <target val> <nbhd> <output surf>
+	
+
+=== Output of 'mris_nudge' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_nudge [options] <input surface> <input volume> <vertex> <target val> <nbhd> <output surf>
+	

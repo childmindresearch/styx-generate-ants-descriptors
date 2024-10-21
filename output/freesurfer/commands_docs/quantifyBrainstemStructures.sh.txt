@@ -1,0 +1,24 @@
+
+=== Output of 'quantifyBrainstemStructures.sh --help' ===
+
+Gathering results from subjects in: 
+   /usr/local/freesurfer/subjects 
+And writing them to: 
+   --help 
+ls: unrecognized option '--help/'
+Try 'ls --help' for more information.
+/usr/local/freesurfer/bin/quantifyBrainstemStructures.sh: line 50: subjectNames: bad array subscript
+
+=== Output of 'quantifyBrainstemStructures.sh -help' ===
+
+Gathering results from subjects in: 
+   /usr/local/freesurfer/subjects 
+And writing them to: 
+   -help 
+ls: unrecognized option '--help/'
+Try 'ls --help' for more information.
+/usr/local/freesurfer/bin/quantifyBrainstemStructures.sh: line 50: subjectNames: bad array subscript
+
+=== Output of 'quantifyBrainstemStructures.sh' (no arguments) ===
+
+Usage: /usr/local/freesurfer/bin/quantifyBrainstemStructures.sh  outputFile [subjectsDirectory]

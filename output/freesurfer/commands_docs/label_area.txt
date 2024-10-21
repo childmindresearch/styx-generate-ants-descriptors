@@ -1,0 +1,12 @@
+
+=== Output of 'label_area --help' ===
+
+error: label_area has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'label_area -help' ===
+
+error: label_area has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'label_area' (no arguments) ===
+
+error: label_area has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

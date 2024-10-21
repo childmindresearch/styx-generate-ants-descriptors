@@ -1,0 +1,78 @@
+
+=== Output of 'lesion_filling --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+lesion_filling 
+Copyright(c) 2012-2019, University of Oxford (Mark Jenkinson & Taylor Hanayik)
+
+Usage: 
+lesion_filling [options] -i <intensity image> -l <lesion mask image> -w <white matter mask image> -o <output/filled image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image filename (e.g. T1w image)
+	-o,--out	output filename (lesion filled image)
+	-l,--lesionmask	filename of lesion mask image
+	-w,--wmmask	filename of white matter mask image
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-c,--components	save all lesion components as volumes
+	-h,--help	display this message
+
+
+
+=== Output of 'lesion_filling -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+lesion_filling 
+Copyright(c) 2012-2019, University of Oxford (Mark Jenkinson & Taylor Hanayik)
+
+Usage: 
+lesion_filling [options] -i <intensity image> -l <lesion mask image> -w <white matter mask image> -o <output/filled image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image filename (e.g. T1w image)
+	-o,--out	output filename (lesion filled image)
+	-l,--lesionmask	filename of lesion mask image
+	-w,--wmmask	filename of white matter mask image
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-c,--components	save all lesion components as volumes
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'lesion_filling' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	input image filename (e.g. T1w image)
+	-o,--out	output filename (lesion filled image)
+	-l,--lesionmask	filename of lesion mask image
+	-w,--wmmask	filename of white matter mask image
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+lesion_filling 
+Copyright(c) 2012-2019, University of Oxford (Mark Jenkinson & Taylor Hanayik)
+
+Usage: 
+lesion_filling [options] -i <intensity image> -l <lesion mask image> -w <white matter mask image> -o <output/filled image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image filename (e.g. T1w image)
+	-o,--out	output filename (lesion filled image)
+	-l,--lesionmask	filename of lesion mask image
+	-w,--wmmask	filename of white matter mask image
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-c,--components	save all lesion components as volumes
+	-h,--help	display this message
+
+

@@ -1,0 +1,14 @@
+
+=== Output of 'rmz --help' ===
+
+*** No files to delete?
+
+=== Output of 'rmz -help' ===
+
+Usage: rmz [-q] [-#] [-k] filename ...
+ -- Zeros out files before removing them
+
+=== Output of 'rmz' (no arguments) ===
+
+Usage: rmz [-q] [-#] [-k] filename ...
+ -- Zeros out files before removing them

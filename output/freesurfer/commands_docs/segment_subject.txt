@@ -1,0 +1,202 @@
+
+=== Output of 'segment_subject --help' ===
+
+cp: cannot stat '/usr/local/freesurfer/subjects/scripts/brain.dat': No such file or directory
+/usr/local/freesurfer/subjects/--help/scripts ~ 
+
+USAGE: mri_nu_correct.mni
+
+ --i   invol  : input volume
+ --xfm outxfm : output xfm file
+
+Optional flags and arguments:
+
+ --log      : log file. default is outdir/talarach.log
+ --help     : print help and exit
+ --debug    : turn on debugging
+ --version  : print version and exit
+
+talairach 7.4.1
+
+Front-end for MINCs mritotal. Computes the talairach transform for
+that maps the input volume to the MNI305. Note: does not add
+the xfm to the header of the input file. See mri_add_xform_to_header.
+When called by recon-all, the xfm is added to the header after
+the transform is computed.
+
+mritotal is documented here:
+www.bic.mni.mcgill.ca/users/louis/MNI_AUTOREG_home/readme/node1.html
+
+minctracc is documented here:
+www.bic.mni.mcgill.ca/users/louis/tracc/tracc_doc/section3_1.html
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+reading mri_src from ../mri/orig...
+cp: cannot stat '../mri/T1/COR-.info': No such file or directory
+cp: cannot stat '../mri/T1/COR-.info': No such file or directory
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+
+
+*********************************************************
+The input file is ../mri/T1
+The output file is ../mri/brain
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+reading input volume... ../mri/wm~ 
+
+=== Output of 'segment_subject -help' ===
+
+cp: cannot stat '/usr/local/freesurfer/subjects/scripts/brain.dat': No such file or directory
+/usr/local/freesurfer/subjects/-help/scripts ~ 
+ERROR: flag -help not recognized
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+reading mri_src from ../mri/orig...
+cp: cannot stat '../mri/T1/COR-.info': No such file or directory
+cp: cannot stat '../mri/T1/COR-.info': No such file or directory
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+
+
+*********************************************************
+The input file is ../mri/T1
+The output file is ../mri/brain
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+reading input volume... ../mri/wm~ 
+
+=== Output of 'segment_subject' (no arguments) ===
+
+cp: cannot stat '/usr/local/freesurfer/subjects/scripts/brain.dat': No such file or directory
+/usr/local/freesurfer/subjects/scripts ~ 
+
+USAGE: mri_nu_correct.mni
+
+ --i   invol  : input volume
+ --xfm outxfm : output xfm file
+
+Optional flags and arguments:
+
+ --log      : log file. default is outdir/talarach.log
+ --help     : print help and exit
+ --debug    : turn on debugging
+ --version  : print version and exit
+
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+reading mri_src from ../mri/orig...
+cp: cannot stat '../mri/T1/COR-.info': No such file or directory
+cp: cannot stat '../mri/T1/COR-.info': No such file or directory
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+
+
+*********************************************************
+The input file is ../mri/T1
+The output file is ../mri/brain
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+reading input volume... ../mri/wm~ 

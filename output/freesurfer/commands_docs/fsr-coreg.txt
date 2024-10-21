@@ -1,0 +1,108 @@
+
+=== Output of 'fsr-coreg --help' ===
+
+
+fsr-coreg : co-registers input data in prep for FreeSurfer analysis
+  --i importdir : data dir created by fsr-import
+  --ref modename : mode to use as a reference (all modes register to this mode)
+  --threads nthreads
+  --force-update : force update of files regardless of time stamp
+  --o outdir : set the output dir (default is importdir)
+  --expert xoptsfile
+
+fsr-coreg 7.4.1
+
+fsr-coreg : co-registers input data in prep for FreeSurfer analysis
+
+The input folder is that as created by fsr-import, which creates a folder of modalities
+
+For example:
+
+fsr-import --t1w run1.T1.slice0.dicom  --t1w run2.T1.slice0.dicom --t2w T2.nii.gz \
+  --mode pd myPDimage.mgz --flair FLAIR-weighted.dcm --o importdir
+
+will import 5 volumes, two of which are T1-weighted, one is T2
+weighted, one is FLAIR weighted, the other is a custom mode called "pd".
+
+The output will be a directory structure stored in import, eg,
+import/pd/r001.mgz
+import/t1w/r001.mgz and r002.mgz
+import/t2w/r001.mgz
+
+When fsr-coreg is run, it registers all the with-in modality runs
+together (eg, r001.mgz and r002.mgz) using mri_robust_template to
+create a file called mode.native.mgz. If there is only one run, then
+mode.native.mgz is a symbolic link to r001.mgz. Next, each mode is
+registered (with mri_coreg) to the reference mode to create an LTA
+file (mode.reg-to-ref.lta). The native volume is then resampled with
+cubic interpolation into the space of the reference mode to create a
+file called mode.mgz (for the reference mode, this is just a link to
+mode.native.mgz). In this way, a volume is produced for each mode in
+alignment with the reference mode. These can be input to samseg (which
+is automatically done when running samseg with
+--mode/--t1w/--t2w/--flair).
+
+t1w, t2w, and flair are given special consideration because they
+can all be used as input to recon-all.
+
+
+
+=== Output of 'fsr-coreg -help' ===
+
+
+fsr-coreg : co-registers input data in prep for FreeSurfer analysis
+  --i importdir : data dir created by fsr-import
+  --ref modename : mode to use as a reference (all modes register to this mode)
+  --threads nthreads
+  --force-update : force update of files regardless of time stamp
+  --o outdir : set the output dir (default is importdir)
+  --expert xoptsfile
+
+fsr-coreg 7.4.1
+
+fsr-coreg : co-registers input data in prep for FreeSurfer analysis
+
+The input folder is that as created by fsr-import, which creates a folder of modalities
+
+For example:
+
+fsr-import --t1w run1.T1.slice0.dicom  --t1w run2.T1.slice0.dicom --t2w T2.nii.gz \
+  --mode pd myPDimage.mgz --flair FLAIR-weighted.dcm --o importdir
+
+will import 5 volumes, two of which are T1-weighted, one is T2
+weighted, one is FLAIR weighted, the other is a custom mode called "pd".
+
+The output will be a directory structure stored in import, eg,
+import/pd/r001.mgz
+import/t1w/r001.mgz and r002.mgz
+import/t2w/r001.mgz
+
+When fsr-coreg is run, it registers all the with-in modality runs
+together (eg, r001.mgz and r002.mgz) using mri_robust_template to
+create a file called mode.native.mgz. If there is only one run, then
+mode.native.mgz is a symbolic link to r001.mgz. Next, each mode is
+registered (with mri_coreg) to the reference mode to create an LTA
+file (mode.reg-to-ref.lta). The native volume is then resampled with
+cubic interpolation into the space of the reference mode to create a
+file called mode.mgz (for the reference mode, this is just a link to
+mode.native.mgz). In this way, a volume is produced for each mode in
+alignment with the reference mode. These can be input to samseg (which
+is automatically done when running samseg with
+--mode/--t1w/--t2w/--flair).
+
+t1w, t2w, and flair are given special consideration because they
+can all be used as input to recon-all.
+
+
+
+=== Output of 'fsr-coreg' (no arguments) ===
+
+
+fsr-coreg : co-registers input data in prep for FreeSurfer analysis
+  --i importdir : data dir created by fsr-import
+  --ref modename : mode to use as a reference (all modes register to this mode)
+  --threads nthreads
+  --force-update : force update of files regardless of time stamp
+  --o outdir : set the output dir (default is importdir)
+  --expert xoptsfile
+

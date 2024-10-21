@@ -1,0 +1,30 @@
+
+=== Output of 'tbss_3_postreg --help' ===
+
+
+Usage: tbss_3_postreg [options]
+
+Choose ONE of:
+ -S   : derive mean_FA and mean_FA_skeleton from mean of all subjects in study (recommended)
+ -T   : use FMRIB58_FA and its skeleton instead of study-derived mean and skeleton
+
+
+=== Output of 'tbss_3_postreg -help' ===
+
+
+Usage: tbss_3_postreg [options]
+
+Choose ONE of:
+ -S   : derive mean_FA and mean_FA_skeleton from mean of all subjects in study (recommended)
+ -T   : use FMRIB58_FA and its skeleton instead of study-derived mean and skeleton
+
+
+=== Output of 'tbss_3_postreg' (no arguments) ===
+
+
+Usage: tbss_3_postreg [options]
+
+Choose ONE of:
+ -S   : derive mean_FA and mean_FA_skeleton from mean of all subjects in study (recommended)
+ -T   : use FMRIB58_FA and its skeleton instead of study-derived mean and skeleton
+

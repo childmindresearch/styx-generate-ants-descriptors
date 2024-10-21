@@ -1,0 +1,86 @@
+
+=== Output of 'mri_synthseg --help' ===
+
+usage: mri_synthseg [-h] [--i I] [--o O] [--parc] [--robust] [--fast] [--ct]
+                    [--vol VOL] [--qc QC] [--post POST] [--resample RESAMPLE]
+                    [--crop CROP [CROP ...]] [--threads THREADS] [--cpu]
+                    [--v1] [--photo PHOTO]
+
+SynthSeg
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --i I                 Image(s) to segment. Can be a path to an image or to a
+                        folder.
+  --o O                 Segmentation output(s). Must be a folder if --i
+                        designates a folder.
+  --parc                (optional) Whether to perform cortex parcellation.
+  --robust              (optional) Whether to use robust predictions (slower).
+  --fast                (optional) Bypass some processing for faster
+                        prediction.
+  --ct                  (optional) Clip CT scans in Hounsfield scale to [0,
+                        80]
+  --vol VOL             (optional) Output CSV file with volumes for all
+                        structures and subjects.
+  --qc QC               (optional) Output CSV file with qc scores for all
+                        subjects.
+  --post POST           (optional) Posteriors output(s). Must be a folder if
+                        --i designates a folder.
+  --resample RESAMPLE   (optional) Resampled image(s). Must be a folder if --i
+                        is a folder.
+  --crop CROP [CROP ...]
+                        (optional) Only analyse an image patch of the given
+                        size.
+  --threads THREADS     (optional) Number of cores to be used. Default is 1.
+  --cpu                 (optional) Enforce running with CPU rather than GPU.
+  --v1                  (optional) Use SynthSeg 1.0 (updated 25/06/22).
+  --photo PHOTO         (optional) Photo-SynthSeg: segment 3D reconstructed
+                        stack of coronal dissection photos of the cerebrum;
+                        must be left, right, or both
+
+=== Output of 'mri_synthseg -help' ===
+
+usage: mri_synthseg [-h] [--i I] [--o O] [--parc] [--robust] [--fast] [--ct]
+                    [--vol VOL] [--qc QC] [--post POST] [--resample RESAMPLE]
+                    [--crop CROP [CROP ...]] [--threads THREADS] [--cpu]
+                    [--v1] [--photo PHOTO]
+mri_synthseg: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'mri_synthseg' (no arguments) ===
+
+usage: mri_synthseg [-h] [--i I] [--o O] [--parc] [--robust] [--fast] [--ct]
+                    [--vol VOL] [--qc QC] [--post POST] [--resample RESAMPLE]
+                    [--crop CROP [CROP ...]] [--threads THREADS] [--cpu]
+                    [--v1] [--photo PHOTO]
+
+SynthSeg
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --i I                 Image(s) to segment. Can be a path to an image or to a
+                        folder.
+  --o O                 Segmentation output(s). Must be a folder if --i
+                        designates a folder.
+  --parc                (optional) Whether to perform cortex parcellation.
+  --robust              (optional) Whether to use robust predictions (slower).
+  --fast                (optional) Bypass some processing for faster
+                        prediction.
+  --ct                  (optional) Clip CT scans in Hounsfield scale to [0,
+                        80]
+  --vol VOL             (optional) Output CSV file with volumes for all
+                        structures and subjects.
+  --qc QC               (optional) Output CSV file with qc scores for all
+                        subjects.
+  --post POST           (optional) Posteriors output(s). Must be a folder if
+                        --i designates a folder.
+  --resample RESAMPLE   (optional) Resampled image(s). Must be a folder if --i
+                        is a folder.
+  --crop CROP [CROP ...]
+                        (optional) Only analyse an image patch of the given
+                        size.
+  --threads THREADS     (optional) Number of cores to be used. Default is 1.
+  --cpu                 (optional) Enforce running with CPU rather than GPU.
+  --v1                  (optional) Use SynthSeg 1.0 (updated 25/06/22).
+  --photo PHOTO         (optional) Photo-SynthSeg: segment 3D reconstructed
+                        stack of coronal dissection photos of the cerebrum;
+                        must be left, right, or both

@@ -1,0 +1,14 @@
+
+=== Output of 'dmri_match --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_match -s1 parcellation1 -s2 parcellation2 -c numClusters -h1 clusteringPath1  -h2 clusterinPath2 -labels (-euclid for Eucildean) -bb -sym interHemiRatioClusterRemoval -o output
+
+=== Output of 'dmri_match -help' ===
+
+Error --> /usr/local/freesurfer/bin/dmri_match-help
+
+=== Output of 'dmri_match' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_match -s1 parcellation1 -s2 parcellation2 -c numClusters -h1 clusteringPath1  -h2 clusterinPath2 -labels (-euclid for Eucildean) -bb -sym interHemiRatioClusterRemoval -o output

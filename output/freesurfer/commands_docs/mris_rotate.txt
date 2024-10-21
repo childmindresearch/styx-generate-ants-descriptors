@@ -1,0 +1,17 @@
+
+=== Output of 'mris_rotate --help' ===
+
+/usr/local/freesurfer/bin/mris_rotate [options] input_surface alphaDeg betaDeg gammaDeg output_surface
+-r regfile : extract angles from regfile (ignores alpha, beta, gamma)
+-n : invalidate volume geometry in output
+This program will rotate a surface given the three angles
+
+=== Output of 'mris_rotate -help' ===
+
+unknown option -help
+
+=== Output of 'mris_rotate' (no arguments) ===
+
+/usr/local/freesurfer/bin/mris_rotate [options] input_surface alphaDeg betaDeg gammaDeg output_surface
+-r regfile : extract angles from regfile (ignores alpha, beta, gamma)
+-n : invalidate volume geometry in output

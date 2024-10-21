@@ -1,0 +1,72 @@
+
+=== Output of 'antsMotionCorrDiffusionDirection --help' ===
+
+
+COMMAND: 
+     antsMotionCorrDiffusionDirection
+          antsMotionCorrDiffusionDirection 
+
+OPTIONS: 
+     -s, --scheme dwi.scheme
+          Camino scheme file specificy acquisition parameters. 
+
+     -b, --bvec dwi.bvec
+          bvec image specifying diffusion directions. 
+
+     -p, --physical ref.nii.gz
+          3D image in dwi space 
+
+     -m, --moco MOCOparams.csv
+          motion correction parameters from antsMotionCorr. 
+
+     -o, --output corrected.scheme
+          Specify the output file for corrected directions. 
+
+     -h 
+          Print the help menu (short version). 
+          <VALUES>: 0
+
+     --help 
+          Print the help menu. 
+          <VALUES>: 1, 0
+
+=== Output of 'antsMotionCorrDiffusionDirection -help' ===
+
+ERROR:  Invalid flag provided he
+ERROR:  Invalid command line flags found! Aborting execution.
+
+Running antsMotionCorrDiffusionDirection  for 3-dimensional images.
+
+Output option not specified.
+
+=== Output of 'antsMotionCorrDiffusionDirection' (no arguments) ===
+
+
+COMMAND: 
+     antsMotionCorrDiffusionDirection
+          antsMotionCorrDiffusionDirection 
+
+OPTIONS: 
+     -s, --scheme dwi.scheme
+          Camino scheme file specificy acquisition parameters. 
+
+     -b, --bvec dwi.bvec
+          bvec image specifying diffusion directions. 
+
+     -p, --physical ref.nii.gz
+          3D image in dwi space 
+
+     -m, --moco MOCOparams.csv
+          motion correction parameters from antsMotionCorr. 
+
+     -o, --output corrected.scheme
+          Specify the output file for corrected directions. 
+
+     -h 
+          Print the help menu (short version). 
+          <VALUES>: 0
+
+     --help 
+          Print the help menu. 
+          <VALUES>: 0
+

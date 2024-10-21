@@ -1,0 +1,90 @@
+
+=== Output of 'standard_space_roi --help' ===
+
+
+Usage: standard_space_roi <input> <output> [options] [flirt options]
+
+This masks the input and/or reduces its FOV, on the basis of a
+standard space image or mask, that is transformed into the space
+of the input image.
+
+Masking options (applied before FOV-reduction):
+  -maskFOV           : mask output using transformed standard space FOV (default)
+  -maskMASK <mask>   : mask output using transformed standard space mask
+  -maskNONE          : do not mask output
+
+FOV-reduction options:
+  -roiFOV            : cut down input FOV using bounding box of the transformed standard space FOV (default)
+  -roiMASK <mask>    : cut down input FOV using nonbackground bounding box of the transformed standard space mask
+  -roiNONE           : do not cut down input FOV
+
+With either MASK option, <mask> must be in the same space as the standard space reference image.
+
+Other options:
+  -ssref <ref_image> : standard space reference image to use (default /usr/local/fsl/data/standard/MNI152_T1)
+  -altinput <image>  : alternative input image to apply the ROI to (instead of the one used to register to the reference)
+  -d                 : debug (don't delete intermediate files)
+  -b                 : betpremask, equivalent to: -maskMASK /usr/local/fsl/data/standard/MNI152_T1_2mm_brain_mask_dil -roiNONE
+
+All above options must come before any flirt options.
+
+
+=== Output of 'standard_space_roi -help' ===
+
+
+Usage: standard_space_roi <input> <output> [options] [flirt options]
+
+This masks the input and/or reduces its FOV, on the basis of a
+standard space image or mask, that is transformed into the space
+of the input image.
+
+Masking options (applied before FOV-reduction):
+  -maskFOV           : mask output using transformed standard space FOV (default)
+  -maskMASK <mask>   : mask output using transformed standard space mask
+  -maskNONE          : do not mask output
+
+FOV-reduction options:
+  -roiFOV            : cut down input FOV using bounding box of the transformed standard space FOV (default)
+  -roiMASK <mask>    : cut down input FOV using nonbackground bounding box of the transformed standard space mask
+  -roiNONE           : do not cut down input FOV
+
+With either MASK option, <mask> must be in the same space as the standard space reference image.
+
+Other options:
+  -ssref <ref_image> : standard space reference image to use (default /usr/local/fsl/data/standard/MNI152_T1)
+  -altinput <image>  : alternative input image to apply the ROI to (instead of the one used to register to the reference)
+  -d                 : debug (don't delete intermediate files)
+  -b                 : betpremask, equivalent to: -maskMASK /usr/local/fsl/data/standard/MNI152_T1_2mm_brain_mask_dil -roiNONE
+
+All above options must come before any flirt options.
+
+
+=== Output of 'standard_space_roi' (no arguments) ===
+
+
+Usage: standard_space_roi <input> <output> [options] [flirt options]
+
+This masks the input and/or reduces its FOV, on the basis of a
+standard space image or mask, that is transformed into the space
+of the input image.
+
+Masking options (applied before FOV-reduction):
+  -maskFOV           : mask output using transformed standard space FOV (default)
+  -maskMASK <mask>   : mask output using transformed standard space mask
+  -maskNONE          : do not mask output
+
+FOV-reduction options:
+  -roiFOV            : cut down input FOV using bounding box of the transformed standard space FOV (default)
+  -roiMASK <mask>    : cut down input FOV using nonbackground bounding box of the transformed standard space mask
+  -roiNONE           : do not cut down input FOV
+
+With either MASK option, <mask> must be in the same space as the standard space reference image.
+
+Other options:
+  -ssref <ref_image> : standard space reference image to use (default /usr/local/fsl/data/standard/MNI152_T1)
+  -altinput <image>  : alternative input image to apply the ROI to (instead of the one used to register to the reference)
+  -d                 : debug (don't delete intermediate files)
+  -b                 : betpremask, equivalent to: -maskMASK /usr/local/fsl/data/standard/MNI152_T1_2mm_brain_mask_dil -roiNONE
+
+All above options must come before any flirt options.
+

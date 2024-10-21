@@ -1,0 +1,337 @@
+
+=== Output of 'mri_surf2volseg --help' ===
+
+				Help
+
+NAME
+	mri_surf2volseg
+
+SYNOPSIS
+	mri_surf2volseg [options]
+
+DESCRIPTION
+	Performs three functions: (1) cleans up presurf aseg cortex and WM. 
+	(2) maps cortical labels from an annotation into a volume, and (3) 
+	labels cerebral WM with closest cortical label.  This is a replacement
+	for mri_aparc2aseg.
+
+POSITIONAL ARGUMENTS
+	None.
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--i inseg
+		Full path of input segmentation.
+
+	--o output 
+		Output segmentation file.
+
+	--src sourceseg 
+		Source subcortical volume segmentation file (instead of using 
+		subcortical segs in inseg).
+
+	--lh-white lhwhitesurf
+		White surface for left hemisphere
+
+	--lh-pial lhpialsurf
+		Pial surface for left hemisphere
+
+	--rh-white rhwhitesurf
+		White surface for left hemisphere
+
+	--rh-pial rhpialsurf
+		Pial surface for left hemisphere
+
+	--lh-cortex-mask lhcortexmask
+		Mask for lh cortex (usually lh.cortex.label)
+
+	--lh-cortex-mask lhcortexmask
+		Mask for rh cortex (usually rh.cortex.label)
+
+	--fix-presurf-with-ribbon ribbonfile
+		Fix the cortical and WM labels in the input segmentation
+
+	--label-cortex
+		Relabel cortex in the input segmentation with surface 
+		annotation
+
+	--label-wm
+		Relabel cerebral WM in the input segmentation with surface 
+		annotation
+
+	--label-wm-unknown lhval rhval
+		Relabel unknown WM as lhval and rhval  (default is 5001 and 
+		5002)
+
+	--lh-annot lhannotation lhbaseoffset
+		lh annotation for --label-cortex and --label-wm
+
+	--rh-annot rhannotation rhbaseoffset
+		rh annotation for --label-cortex and --label-wm
+
+	--wmparc-dmax dmax
+		max dist (mm) from cortex to be labeld as gyral WM (5mm)
+
+	--rip-unknown
+		do not label WM based on 'unknown' corical label
+
+	--hypo-as-wm
+		label hypointensities as WM (when fixing with ribbon)
+
+	--hashres hashres
+		Surface hash table resolution
+
+	--nhops nhops
+		Number of surface hops when searching for a nearby annot
+
+	--help
+		print out information on how to use this program
+
+	--version
+		print out version and exit
+
+	--crs-test col row slice
+		test labeling of only the voxel given by col row slice 
+		(debuggin)
+
+	--ctab colortable
+		Embed color table in the output
+
+	--threads nthreads
+		Run in parallel with nthreads
+
+EXAMPLE 1
+	
+	 To create an aseg.mgz with cortex and white matter fixed
+	 cd $SUBJECTS_DIR/subject/mri
+	 mri_surf2volseg --i aseg.presurf.hypos.mgz --fix-presurf-with-ribbon 
+	ribbon.mgz  --o aseg.mgz \
+	    --lh-cortex-mask ../label/lh.cortex.label \
+	    --rh-cortex-mask ../label/rh.cortex.label \
+	    --lh-white ../surf/lh.white --lh-pial ../surf/lh.pial \
+	    --rh-white ../surf/rh.white --rh-pial ../surf/rh.pial
+	 
+
+EXAMPLE 2
+	
+	 To create an aparc+aseg.mgz (use aseg.mgz from above)
+	 cd $SUBJECTS_DIR/subject/mri
+	 mri_surf2volseg --i aseg.mgz --label-cortex --o aparc+aseg.mgz \
+	    --lh-annot ../label/lh.aparc.annot 1000 --rh-annot ../label/
+	rh.aparc.annot 2000\
+	    --lh-cortex-mask ../label/lh.cortex.label --rh-cortex-mask ../
+	label/rh.cortex.label \
+	    --lh-white ../surf/lh.white --lh-pial ../surf/lh.pial \
+	    --rh-white ../surf/rh.white --rh-pial ../surf/rh.pial 
+	 
+
+EXAMPLE 3
+	
+	 To create an wmaparc.mgz (use aseg.mgz from above)
+	 cd $SUBJECTS_DIR/subject/mri
+	 mri_surf2volseg --i aparc+aseg.mgz --label-wm --o wmaparc.mgz \
+	    --lh-annot ../label/lh.aparc.annot 3000 --rh-annot ../label/
+	rh.aparc.annot 4000\
+	    --lh-cortex-mask ../label/lh.cortex.label --rh-cortex-mask ../
+	label/rh.cortex.label \
+	    --lh-white ../surf/lh.white --lh-pial ../surf/lh.pial \
+	    --rh-white ../surf/rh.white --rh-pial ../surf/rh.pial 
+	 
+
+EXAMPLE 4
+	
+	 To create an aparc.a2009s+aseg.mgz (use aseg.mgz from above)
+	 cd $SUBJECTS_DIR/subject/mri
+	 mri_surf2volseg --i aseg.mgz --label-cortex --o aparc.a2009s+aseg.mgz
+	\
+	    --lh-annot ../label/lh.aparc.a2009s.annot 11100 --rh-annot ../
+	label/rh.aparc.a2009s.annot 12100\
+	    --lh-cortex-mask ../label/lh.cortex.label --rh-cortex-mask ../
+	label/rh.cortex.label \
+	    --lh-white ../surf/lh.white --lh-pial ../surf/lh.pial \
+	    --rh-white ../surf/rh.white --rh-pial ../surf/rh.pial 
+	 
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	
+
+
+
+=== Output of 'mri_surf2volseg -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_surf2volseg' (no arguments) ===
+
+				Help
+
+NAME
+	mri_surf2volseg
+
+SYNOPSIS
+	mri_surf2volseg [options]
+
+DESCRIPTION
+	Performs three functions: (1) cleans up presurf aseg cortex and WM. 
+	(2) maps cortical labels from an annotation into a volume, and (3) 
+	labels cerebral WM with closest cortical label.  This is a replacement
+	for mri_aparc2aseg.
+
+POSITIONAL ARGUMENTS
+	None.
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--i inseg
+		Full path of input segmentation.
+
+	--o output 
+		Output segmentation file.
+
+	--src sourceseg 
+		Source subcortical volume segmentation file (instead of using 
+		subcortical segs in inseg).
+
+	--lh-white lhwhitesurf
+		White surface for left hemisphere
+
+	--lh-pial lhpialsurf
+		Pial surface for left hemisphere
+
+	--rh-white rhwhitesurf
+		White surface for left hemisphere
+
+	--rh-pial rhpialsurf
+		Pial surface for left hemisphere
+
+	--lh-cortex-mask lhcortexmask
+		Mask for lh cortex (usually lh.cortex.label)
+
+	--lh-cortex-mask lhcortexmask
+		Mask for rh cortex (usually rh.cortex.label)
+
+	--fix-presurf-with-ribbon ribbonfile
+		Fix the cortical and WM labels in the input segmentation
+
+	--label-cortex
+		Relabel cortex in the input segmentation with surface 
+		annotation
+
+	--label-wm
+		Relabel cerebral WM in the input segmentation with surface 
+		annotation
+
+	--label-wm-unknown lhval rhval
+		Relabel unknown WM as lhval and rhval  (default is 5001 and 
+		5002)
+
+	--lh-annot lhannotation lhbaseoffset
+		lh annotation for --label-cortex and --label-wm
+
+	--rh-annot rhannotation rhbaseoffset
+		rh annotation for --label-cortex and --label-wm
+
+	--wmparc-dmax dmax
+		max dist (mm) from cortex to be labeld as gyral WM (5mm)
+
+	--rip-unknown
+		do not label WM based on 'unknown' corical label
+
+	--hypo-as-wm
+		label hypointensities as WM (when fixing with ribbon)
+
+	--hashres hashres
+		Surface hash table resolution
+
+	--nhops nhops
+		Number of surface hops when searching for a nearby annot
+
+	--help
+		print out information on how to use this program
+
+	--version
+		print out version and exit
+
+	--crs-test col row slice
+		test labeling of only the voxel given by col row slice 
+		(debuggin)
+
+	--ctab colortable
+		Embed color table in the output
+
+	--threads nthreads
+		Run in parallel with nthreads
+
+EXAMPLE 1
+	
+	 To create an aseg.mgz with cortex and white matter fixed
+	 cd $SUBJECTS_DIR/subject/mri
+	 mri_surf2volseg --i aseg.presurf.hypos.mgz --fix-presurf-with-ribbon 
+	ribbon.mgz  --o aseg.mgz \
+	    --lh-cortex-mask ../label/lh.cortex.label \
+	    --rh-cortex-mask ../label/rh.cortex.label \
+	    --lh-white ../surf/lh.white --lh-pial ../surf/lh.pial \
+	    --rh-white ../surf/rh.white --rh-pial ../surf/rh.pial
+	 
+
+EXAMPLE 2
+	
+	 To create an aparc+aseg.mgz (use aseg.mgz from above)
+	 cd $SUBJECTS_DIR/subject/mri
+	 mri_surf2volseg --i aseg.mgz --label-cortex --o aparc+aseg.mgz \
+	    --lh-annot ../label/lh.aparc.annot 1000 --rh-annot ../label/
+	rh.aparc.annot 2000\
+	    --lh-cortex-mask ../label/lh.cortex.label --rh-cortex-mask ../
+	label/rh.cortex.label \
+	    --lh-white ../surf/lh.white --lh-pial ../surf/lh.pial \
+	    --rh-white ../surf/rh.white --rh-pial ../surf/rh.pial 
+	 
+
+EXAMPLE 3
+	
+	 To create an wmaparc.mgz (use aseg.mgz from above)
+	 cd $SUBJECTS_DIR/subject/mri
+	 mri_surf2volseg --i aparc+aseg.mgz --label-wm --o wmaparc.mgz \
+	    --lh-annot ../label/lh.aparc.annot 3000 --rh-annot ../label/
+	rh.aparc.annot 4000\
+	    --lh-cortex-mask ../label/lh.cortex.label --rh-cortex-mask ../
+	label/rh.cortex.label \
+	    --lh-white ../surf/lh.white --lh-pial ../surf/lh.pial \
+	    --rh-white ../surf/rh.white --rh-pial ../surf/rh.pial 
+	 
+
+EXAMPLE 4
+	
+	 To create an aparc.a2009s+aseg.mgz (use aseg.mgz from above)
+	 cd $SUBJECTS_DIR/subject/mri
+	 mri_surf2volseg --i aseg.mgz --label-cortex --o aparc.a2009s+aseg.mgz
+	\
+	    --lh-annot ../label/lh.aparc.a2009s.annot 11100 --rh-annot ../
+	label/rh.aparc.a2009s.annot 12100\
+	    --lh-cortex-mask ../label/lh.cortex.label --rh-cortex-mask ../
+	label/rh.cortex.label \
+	    --lh-white ../surf/lh.white --lh-pial ../surf/lh.pial \
+	    --rh-white ../surf/rh.white --rh-pial ../surf/rh.pial 
+	 
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	
+
+

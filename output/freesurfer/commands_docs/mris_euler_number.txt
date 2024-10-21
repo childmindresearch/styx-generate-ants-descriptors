@@ -1,0 +1,108 @@
+
+=== Output of 'mris_euler_number --help' ===
+
+				Help
+
+NAME
+	mris_euler_number
+
+SYNOPSIS
+	mris_euler_number [<options>] insurf
+
+DESCRIPTION
+	This program computes EulerNumber for a cortical surface
+
+POSITIONAL ARGUMENTS
+	insurf
+		input surface file
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-o outfile
+		write number of holes to outfile
+
+OUTPUTS
+	eulernumber
+		EulerNumber as text to stdout
+
+EXAMPLE 1
+	mris_euler_number surface
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_euler_number -help' ===
+
+				Help
+
+NAME
+	mris_euler_number
+
+SYNOPSIS
+	mris_euler_number [<options>] insurf
+
+DESCRIPTION
+	This program computes EulerNumber for a cortical surface
+
+POSITIONAL ARGUMENTS
+	insurf
+		input surface file
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-o outfile
+		write number of holes to outfile
+
+OUTPUTS
+	eulernumber
+		EulerNumber as text to stdout
+
+EXAMPLE 1
+	mris_euler_number surface
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_euler_number' (no arguments) ===
+
+				Help
+
+NAME
+	mris_euler_number
+
+SYNOPSIS
+	mris_euler_number [<options>] insurf
+
+DESCRIPTION
+	This program computes EulerNumber for a cortical surface
+
+POSITIONAL ARGUMENTS
+	insurf
+		input surface file
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-o outfile
+		write number of holes to outfile
+
+OUTPUTS
+	eulernumber
+		EulerNumber as text to stdout
+
+EXAMPLE 1
+	mris_euler_number surface
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

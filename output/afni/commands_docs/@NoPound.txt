@@ -1,0 +1,23 @@
+
+=== Output of '@NoPound --help' ===
+
+No pound in name: --help
+
+=== Output of '@NoPound -help' ===
+
+
+@NoPound [AFNI_FILES]
+Replaces all # characters in AFNI names with a -
+
+Example 1 :
+ @NoPound elvis#001+orig.HEAD '*rockand#orroll*.HEAD'
+
+Example 2 :
+ @NoPound 
+    equivalent of @NoPound *#*.HEAD
+
+
+=== Output of '@NoPound' (no arguments) ===
+
+ls: No match.
+Nothing to do, no *#*.HEAD files found

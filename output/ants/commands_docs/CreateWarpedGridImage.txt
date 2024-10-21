@@ -1,0 +1,12 @@
+
+=== Output of 'CreateWarpedGridImage --help' ===
+
+Usage: CreateWarpedGridImage ImageDimension deformationField outputImage [directions, e.g. 1x0x0] [gridSpacing, e.g. 10x10x10] [gridSigma, e.g. 1x1x1]
+
+=== Output of 'CreateWarpedGridImage -help' ===
+
+Usage: CreateWarpedGridImage ImageDimension deformationField outputImage [directions, e.g. 1x0x0] [gridSpacing, e.g. 10x10x10] [gridSigma, e.g. 1x1x1]
+
+=== Output of 'CreateWarpedGridImage' (no arguments) ===
+
+Usage: CreateWarpedGridImage ImageDimension deformationField outputImage [directions, e.g. 1x0x0] [gridSpacing, e.g. 10x10x10] [gridSigma, e.g. 1x1x1]

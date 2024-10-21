@@ -1,0 +1,67 @@
+
+=== Output of 'baycest --help' ===
+
+ --help --method=vb
+cest: fwdmodel_cest.cc Revision  Last commit Thu Jul 23 09:29:01 2020
+
+Model for Chemical Exchange Saturation transfer, with correction for partial volume effects using a tissue PV map
+
+Options: 
+
+--spec [MATRIX,REQUIRED,NO DEFAULT]
+        ASCII matrix containing data specification
+--pools [MATRIX,REQUIRED,NO DEFAULT]
+        ASCII matrix containing pool specification
+--expools [MATRIX,NOT REQUIRED,NO DEFAULT]
+        ASCII matrix containing extra pool specification
+--ptrain [MATRIX,NOT REQUIRED,NO DEFAULT]
+        ASCII matrix containing pulsed saturation specification
+--t12prior [BOOL,NOT REQUIRED,NO DEFAULT]
+        Include uncertainty in T1 and T2 values
+--inferdrift [BOOL,NOT REQUIRED,NO DEFAULT]
+        Infer drift in Z spectrum frequencies
+--b1off [BOOL,NOT REQUIRED,NO DEFAULT]
+        Compatibility option - infers B1 correction as an offset as in previous versions of model
+--lorentz [BOOL,NOT REQUIRED,NO DEFAULT]
+        Alternative to Matrix exponential solution to Bloch equations
+--steadystate [BOOL,NOT REQUIRED,NO DEFAULT]
+        Alternative to Matrix exponential solution to Bloch equations
+--tr [FLOAT,NOT REQUIRED,NO DEFAULT]
+        TR in seconds for use with steady-state solution
+--fa [FLOAT,NOT REQUIRED,NO DEFAULT]
+        Excitation flip angle in degrees for use with steady-state solution
+--satspoil [BOOL,NOT REQUIRED,NO DEFAULT]
+        Perform saturation interpulse spoiling for saturation pulse trains
+--pvimg [IMAGE,NOT REQUIRED,NO DEFAULT]
+        Tissue partial volume image. Should be 3D image containing tissue partial volumes, i.e. sum of GM and WM partial volumes
+--pv-threshold [FLOAT,NOT REQUIRED,DEFAULT=0.5]
+        Partial volume threshold for including tissue contribution
+--csf-tiss-m0ratio [FLOAT,NOT REQUIRED,DEFAULT=0.5269]
+        Used for fixing CSF M0 when using partial volume correction
+--lineshape [STR,NOT REQUIRED,DEFAULT=none]
+        Saturation lineshape for the MT pool (which must be the last pool specified). Options: gaussian, superlorentzian, lorentzian, none
+
+=== Output of 'baycest -help' ===
+
+ -help --method=vb
+NEWMAT exception caught in fabber:
+  Option '-help' doesn't begin with --
+NEWMAT exception caught in fabber:
+  Option '-help' doesn't begin with --
+
+=== Output of 'baycest' (no arguments) ===
+
+Bayesian analysis for chemical exchange saturation transfer z-spectra
+
+Usage:
+ --data=        : specify data file (nifti image)
+ --mask=        : specify mask file (nifiti image)
+ --output=      : specify output directory name
+ --pools=       : specify pools to be included in model (ascii matrix)
+ --spec=        : data specification (ascii matrix)
+ --ptrain=      : specify pulse shape (ascii matrix)
+
+Options:
+ --spatial      : Use spatial prior (appropriate for in vivo data)
+ --t12prior     : include uncertainty in T1 and T2 values
+

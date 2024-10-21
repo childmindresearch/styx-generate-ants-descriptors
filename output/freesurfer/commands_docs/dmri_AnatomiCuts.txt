@@ -1,0 +1,20 @@
+
+=== Output of 'dmri_AnatomiCuts --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_AnatomiCuts -s segmentationFile -f fiber.vtk -c #clusters -n #points  -e #fibers for eigen  -o outputFolder -d [s:straight d:diagonal a:all o:none] 
+
+=== Output of 'dmri_AnatomiCuts -help' ===
+
+number of points  10
+neighborsa
+#directions26
+terminate called after throwing an instance of 'itk::ImageFileReaderException'
+  what():  /usr/pubsw/packages/itk/4.13.2_centos8/include/ITK-4.13/itkImageFileReader.hxx:87:
+FileName must be specified
+timeout: the monitored command dumped core
+
+=== Output of 'dmri_AnatomiCuts' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_AnatomiCuts -s segmentationFile -f fiber.vtk -c #clusters -n #points  -e #fibers for eigen  -o outputFolder -d [s:straight d:diagonal a:all o:none] 

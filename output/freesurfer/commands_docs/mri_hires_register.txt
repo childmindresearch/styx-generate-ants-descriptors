@@ -1,0 +1,14 @@
+
+=== Output of 'mri_hires_register --help' ===
+
+unknown option --HELP
+usage: /usr/local/freesurfer/bin/mri_hires_register <hires labeling> <input intensity> <input aseg> <output xform>
+
+=== Output of 'mri_hires_register -help' ===
+
+unknown option -HELP
+usage: /usr/local/freesurfer/bin/mri_hires_register <hires labeling> <input intensity> <input aseg> <output xform>
+
+=== Output of 'mri_hires_register' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_hires_register <hires labeling> <input intensity> <input aseg> <output xform>

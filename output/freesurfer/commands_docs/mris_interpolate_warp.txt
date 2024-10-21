@@ -1,0 +1,12 @@
+
+=== Output of 'mris_interpolate_warp --help' ===
+
+unknown option --help
+
+=== Output of 'mris_interpolate_warp -help' ===
+
+unknown option -help
+
+=== Output of 'mris_interpolate_warp' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_interpolate_warp [options] <start surface> <end surface> <warp field>.m3z

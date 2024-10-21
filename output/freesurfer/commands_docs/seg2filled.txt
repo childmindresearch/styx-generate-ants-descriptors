@@ -1,0 +1,46 @@
+
+=== Output of 'seg2filled --help' ===
+
+
+seg2filled --seg seg.mgz --norm norm.mgz --o filled.mgz
+  --ndil ndil : used to speed cavity detection
+  --cavity : simulate a cavity to test the filling operation
+  --surf surfname : create ?h.surfname
+  --surfdir surfdir : dir to put surf (default is same as filled)
+
+seg2filled 7.4.1
+
+Creates a filled.mgz from an aseg-style segmentation. The original
+intent is to use a SAMSEG segmentation to created the filled so do not
+have to do it using the recon-all volume stream. It should not be
+necessary to run mri_pretess on the output.
+
+
+
+=== Output of 'seg2filled -help' ===
+
+
+seg2filled --seg seg.mgz --norm norm.mgz --o filled.mgz
+  --ndil ndil : used to speed cavity detection
+  --cavity : simulate a cavity to test the filling operation
+  --surf surfname : create ?h.surfname
+  --surfdir surfdir : dir to put surf (default is same as filled)
+
+seg2filled 7.4.1
+
+Creates a filled.mgz from an aseg-style segmentation. The original
+intent is to use a SAMSEG segmentation to created the filled so do not
+have to do it using the recon-all volume stream. It should not be
+necessary to run mri_pretess on the output.
+
+
+
+=== Output of 'seg2filled' (no arguments) ===
+
+
+seg2filled --seg seg.mgz --norm norm.mgz --o filled.mgz
+  --ndil ndil : used to speed cavity detection
+  --cavity : simulate a cavity to test the filling operation
+  --surf surfname : create ?h.surfname
+  --surfdir surfdir : dir to put surf (default is same as filled)
+

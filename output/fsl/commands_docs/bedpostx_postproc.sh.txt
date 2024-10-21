@@ -1,0 +1,30 @@
+
+=== Output of 'bedpostx_postproc.sh --help' ===
+
+Removing intermediate files
+Creating identity xfm
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 150: --help.bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 151: --help.bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 152: --help.bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 153: --help.bedpostX/xfms/eye.mat: No such file or directory
+Done
+
+=== Output of 'bedpostx_postproc.sh -help' ===
+
+Removing intermediate files
+Creating identity xfm
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 150: -help.bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 151: -help.bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 152: -help.bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 153: -help.bedpostX/xfms/eye.mat: No such file or directory
+Done
+
+=== Output of 'bedpostx_postproc.sh' (no arguments) ===
+
+Removing intermediate files
+Creating identity xfm
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 150: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 151: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 152: .bedpostX/xfms/eye.mat: No such file or directory
+/usr/local/fsl/bin/bedpostx_postproc.sh: line 153: .bedpostX/xfms/eye.mat: No such file or directory
+Done

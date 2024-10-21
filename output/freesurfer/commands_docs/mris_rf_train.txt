@@ -1,0 +1,14 @@
+
+=== Output of 'mris_rf_train --help' ===
+
+unknown option --help
+
+=== Output of 'mris_rf_train -help' ===
+
+unknown option -help
+
+=== Output of 'mris_rf_train' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_rf_train [options]  <subject 1> <subject 2> ... <output name>
+	--hemi <hemi>    - process <hemi> instead of lh
+	--surf <surf>    - change default surface name from 'white' to <surf>

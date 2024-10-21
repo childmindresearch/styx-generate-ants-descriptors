@@ -1,0 +1,338 @@
+
+=== Output of 'lesion_align --help' ===
+
+** unknown option --help
+
+=== Output of 'lesion_align -help' ===
+
+
+Overview ~1~
+
+Script to align a subject structural data with large lesion lesions 
+to a template and invert the warps to compute the segmentation in the
+subject's original, native space.
+
+This program uses basic AFNI commands to compute affine and nonlinear
+alignments. The program works by first aligning centers of the subject
+to that of the template. Affine and nonlinear alignment follow. The 
+inverse warp is computed to bring the template and atlas segmentation
+into the center-shifted grid. Skullstripping is provided by masking 
+with the template. Finally, the grids are adjusted back to the
+original center. Mirrored brains with "repaired" lesions are also
+computed.
+
+Usage Example ~1~
+
+      lesion_align -input Subj2+orig                \
+      -base MNI152_T1_2009c+tlrc                    \
+      -atlas MNI_Glasser_HCP_v1.0.nii.gz            \
+      -outdir lesion_align -goodside right
+   
+   Note only the input dset and template_dset are required. If no
+   segmentation is given, then only the alignment steps are performed.
+
+Options ~1~
+
+    -input dset         :required input dataset to align to template
+
+    -goodside left/right/both : specify good side of brain 
+
+    -base  base_dataset :required template. Can be in a standard AFNI 
+                         location or fully specified path. 
+                         Note, if the template has no skull, then a
+                         masked (skullstripped) version of the input
+                         is produced in the output
+
+    -atlas atlas_dataset :atlas can also be in a standard AFNI location 
+                         or fully specified
+
+    -outdir outputdir   :create new directory and do all processing there.
+                         Default is template_align
+
+    -template_prefix templatename 
+                        :select name for template and segmentation for
+                         output naming. Uses template space of template
+                         if available in template header
+
+    -seg_followers segdset1 segdset2 ...
+                        :warp related datasets back to native space
+                         
+    -cost costfunction  :cost function for affine transformation.
+                         Default is lpa. Choose nmi, lpa+ZZ, cru for
+                         noisy or difficult datasets. See 3dAllineate
+                         help for more information.
+
+    -lesion_mask ldset  :provide lesion mask as input dataset.
+                         Used to determine bad and good sides
+
+    -center_split       :split input dataset on left-right center for affine
+                         alignment keeping either the left or right side for
+                         the computation. Nonlinear alignment uses the full
+                         dataset
+
+    -maxlev nn          :maximum level for nonlinear warping. Determines
+                         neighborhood size that is searched. See 3dQwarp
+                         help for information on maxlev. Default is 11.
+                         Use smaller values for testing
+
+    -no_unifize         :turn off unifizing for mirror/heal output
+ 
+    -keep_temp          :keep temporary files including awpy directory and 
+                         other intermediate datasets
+
+    -ok_to_exist        :reuse and do not overwrite existing datasets.
+                         This option is used for faster restarts or with
+                         limited alignment options 
+
+Comments ~1~
+
+    lesion_align provides multiple outputs to assist in registering your
+    anatomicals and associated MRI data to the template:
+
+    Subject scans registered to the template
+   	+ mydset_shft.nii.gz - dataset center aligned to the template center
+   	+ mydset_shft_at.nii.gz - dataset affine aligned to the template
+                                   and on the template grid
+   	+ mydset_nl.nii.gz - dataset nonlinearly warped to the template
+
+    Registration datasets for alignment to template
+   	+ mydset_shft_at.aff12.1D  - affine transformation to the template
+   	+ mydset_shft_qw_WARP.nii.gz - warp deformations to the template from
+                                nonlinear alignment only
+
+    Registration datasets for Template alignment to Subject
+   	+ mydset_shft_inv.aff12.1D - inverse of mydset_shft_at.aff12.1D
+
+    Atlas aligned to Subject (Optional - only if atlas provided)
+   	+ seg_in_mydset.nii.gz - atlas segmentation aligned to native scan
+
+    Template aligned_to Subject
+    + template_in_mydset.nii.gz** - template (e.g. TT_N27,MNI152_2009c)
+                              aligned to native scan
+    Mirrored/Healed brains - see descriptions below of output datasets
+
+
+    Text description of output
+    + lesion_outs.txt - list of important datasets and transforms in
+                        output directory
+     
+    ***-NOTE: lesion_align is part of the AFNI software package  ***
+    Here all occurrences of mydset in the output file names would be replaced
+       with the name of your dataset.
+
+To help with other kinds of processing, the program also computes
+"healed" brains in native and subject spaces using these methods.
+1. template-filled subject - template values fill in values of subject
+2. template-half subject - template values fill in half of the subject
+3. mirrored transformed subject - subject is masked, left-right flipped,
+   and transformed to native space. Interpolated in both directions
+   will make this a little blurrier
+4. mirrored - filled subject. Blends original subject with the mirrored
+   subject
+
+QC images ~1~
+
+The following quality control (QC) images are automatically generated
+during processing, to help with speedy checking of processing.  In
+each case, there are three sets of montages (one for sag, cor and axi
+views) and a copy of the colorbar used (same prefix as file name,
+*.jpg).  Additionally, there is also a *.txt file of ranges of values
+related to the ulay and olay, which might be useful for QC or
+figure-generation.
+
+Inside the output directory is a subdirectory called QC/ that contains
+the following semi-cryptically named files:
+
+  qc_00_e_temp+wrpd_inp.* 
+    [ulay] edges of the template (in template space)
+    [olay] warped input dset
+
+  qc_01_e_wrpd_temp+orig_inp.*
+    [ulay] edges of the template (warped to orig space)
+    [olay] original input dset 
+
+  qc_02_orig_inp+mask.*
+    [ulay] original input dset (in orig space)
+    [olay] estimated mask, showing skullstripping
+
+  qc_03_ee_orig_inp+wrpd_atlas.*
+    [ulay] 'edge enhanced' original input dset (in orig space)
+    [olay] warped atlas dset
+
+
+References ~1~
+Please cite:
+Maallo, AMS, et al. Large-scale resculpting of cortical circuits in
+   children after surgical resection. Sci Rep 10, 21589 (2020).
+   https://doi.org/10.1038/s41598-020-78394-z
+
+For questions about this program, please ask on AFNI message board or
+   email glend at mail.nih.gov
+
+
+=== Output of 'lesion_align' (no arguments) ===
+
+
+Overview ~1~
+
+Script to align a subject structural data with large lesion lesions 
+to a template and invert the warps to compute the segmentation in the
+subject's original, native space.
+
+This program uses basic AFNI commands to compute affine and nonlinear
+alignments. The program works by first aligning centers of the subject
+to that of the template. Affine and nonlinear alignment follow. The 
+inverse warp is computed to bring the template and atlas segmentation
+into the center-shifted grid. Skullstripping is provided by masking 
+with the template. Finally, the grids are adjusted back to the
+original center. Mirrored brains with "repaired" lesions are also
+computed.
+
+Usage Example ~1~
+
+      lesion_align -input Subj2+orig                \
+      -base MNI152_T1_2009c+tlrc                    \
+      -atlas MNI_Glasser_HCP_v1.0.nii.gz            \
+      -outdir lesion_align -goodside right
+   
+   Note only the input dset and template_dset are required. If no
+   segmentation is given, then only the alignment steps are performed.
+
+Options ~1~
+
+    -input dset         :required input dataset to align to template
+
+    -goodside left/right/both : specify good side of brain 
+
+    -base  base_dataset :required template. Can be in a standard AFNI 
+                         location or fully specified path. 
+                         Note, if the template has no skull, then a
+                         masked (skullstripped) version of the input
+                         is produced in the output
+
+    -atlas atlas_dataset :atlas can also be in a standard AFNI location 
+                         or fully specified
+
+    -outdir outputdir   :create new directory and do all processing there.
+                         Default is template_align
+
+    -template_prefix templatename 
+                        :select name for template and segmentation for
+                         output naming. Uses template space of template
+                         if available in template header
+
+    -seg_followers segdset1 segdset2 ...
+                        :warp related datasets back to native space
+                         
+    -cost costfunction  :cost function for affine transformation.
+                         Default is lpa. Choose nmi, lpa+ZZ, cru for
+                         noisy or difficult datasets. See 3dAllineate
+                         help for more information.
+
+    -lesion_mask ldset  :provide lesion mask as input dataset.
+                         Used to determine bad and good sides
+
+    -center_split       :split input dataset on left-right center for affine
+                         alignment keeping either the left or right side for
+                         the computation. Nonlinear alignment uses the full
+                         dataset
+
+    -maxlev nn          :maximum level for nonlinear warping. Determines
+                         neighborhood size that is searched. See 3dQwarp
+                         help for information on maxlev. Default is 11.
+                         Use smaller values for testing
+
+    -no_unifize         :turn off unifizing for mirror/heal output
+ 
+    -keep_temp          :keep temporary files including awpy directory and 
+                         other intermediate datasets
+
+    -ok_to_exist        :reuse and do not overwrite existing datasets.
+                         This option is used for faster restarts or with
+                         limited alignment options 
+
+Comments ~1~
+
+    lesion_align provides multiple outputs to assist in registering your
+    anatomicals and associated MRI data to the template:
+
+    Subject scans registered to the template
+   	+ mydset_shft.nii.gz - dataset center aligned to the template center
+   	+ mydset_shft_at.nii.gz - dataset affine aligned to the template
+                                   and on the template grid
+   	+ mydset_nl.nii.gz - dataset nonlinearly warped to the template
+
+    Registration datasets for alignment to template
+   	+ mydset_shft_at.aff12.1D  - affine transformation to the template
+   	+ mydset_shft_qw_WARP.nii.gz - warp deformations to the template from
+                                nonlinear alignment only
+
+    Registration datasets for Template alignment to Subject
+   	+ mydset_shft_inv.aff12.1D - inverse of mydset_shft_at.aff12.1D
+
+    Atlas aligned to Subject (Optional - only if atlas provided)
+   	+ seg_in_mydset.nii.gz - atlas segmentation aligned to native scan
+
+    Template aligned_to Subject
+    + template_in_mydset.nii.gz** - template (e.g. TT_N27,MNI152_2009c)
+                              aligned to native scan
+    Mirrored/Healed brains - see descriptions below of output datasets
+
+
+    Text description of output
+    + lesion_outs.txt - list of important datasets and transforms in
+                        output directory
+     
+    ***-NOTE: lesion_align is part of the AFNI software package  ***
+    Here all occurrences of mydset in the output file names would be replaced
+       with the name of your dataset.
+
+To help with other kinds of processing, the program also computes
+"healed" brains in native and subject spaces using these methods.
+1. template-filled subject - template values fill in values of subject
+2. template-half subject - template values fill in half of the subject
+3. mirrored transformed subject - subject is masked, left-right flipped,
+   and transformed to native space. Interpolated in both directions
+   will make this a little blurrier
+4. mirrored - filled subject. Blends original subject with the mirrored
+   subject
+
+QC images ~1~
+
+The following quality control (QC) images are automatically generated
+during processing, to help with speedy checking of processing.  In
+each case, there are three sets of montages (one for sag, cor and axi
+views) and a copy of the colorbar used (same prefix as file name,
+*.jpg).  Additionally, there is also a *.txt file of ranges of values
+related to the ulay and olay, which might be useful for QC or
+figure-generation.
+
+Inside the output directory is a subdirectory called QC/ that contains
+the following semi-cryptically named files:
+
+  qc_00_e_temp+wrpd_inp.* 
+    [ulay] edges of the template (in template space)
+    [olay] warped input dset
+
+  qc_01_e_wrpd_temp+orig_inp.*
+    [ulay] edges of the template (warped to orig space)
+    [olay] original input dset 
+
+  qc_02_orig_inp+mask.*
+    [ulay] original input dset (in orig space)
+    [olay] estimated mask, showing skullstripping
+
+  qc_03_ee_orig_inp+wrpd_atlas.*
+    [ulay] 'edge enhanced' original input dset (in orig space)
+    [olay] warped atlas dset
+
+
+References ~1~
+Please cite:
+Maallo, AMS, et al. Large-scale resculpting of cortical circuits in
+   children after surgical resection. Sci Rep 10, 21589 (2020).
+   https://doi.org/10.1038/s41598-020-78394-z
+
+For questions about this program, please ask on AFNI message board or
+   email glend at mail.nih.gov
+

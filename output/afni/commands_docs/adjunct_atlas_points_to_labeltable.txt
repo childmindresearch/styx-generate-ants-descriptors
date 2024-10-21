@@ -1,0 +1,130 @@
+
+=== Output of 'adjunct_atlas_points_to_labeltable --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of 'adjunct_atlas_points_to_labeltable -help' ===
+
+-------------------------------------------------------------------------
+Overview ~1~
+
+This is a simple adjunct program for making a NIML labeltable from
+atlas_points info.  
+
+This can be used to: output the labeltable, to attach the labeltable
+to the input file, or both.
+
+auth    : PA Taylor (SSCC, NIMH, NIH, USA)
+ver     : 0.0
+revdate : Apr 04, 2024
+
+-------------------------------------------------------------------------
+Options ~1~
+
+-input DSET       :(req) input dset name, that should/must have 
+                   atlas_points information in the header
+
+-prefix PPP       :output name for labeltable, which can have path info
+                   included. Would recommend having it end with '.niml.lt'
+                   for convenience and recognizability
+
+-add_lt_to_input  :add the labeltable to the input dset header
+
+-overwrite        :needed to overwrite an existing labeltable file PPP, or
+                   to refit the labeltable of the input dset if 
+                   '-add_lt_to_input' is used
+
+-no_clean         :do not remove working directory (def: remove it)
+
+-echo             :very verbose output when running (for troubleshooting)
+
+-help, -h         :display this meager help info
+
+-ver              :display this program version
+
+-------------------------------------------------------------------------
+Examples ~1~
+
+  1) Output a labeltable, created from atlas_points info of DSET_INPUT
+     adjunct_atlas_points_to_labeltable        \
+         -input   DSET_INPUT                   \
+         -prefix  MY_TABLE.niml.lt
+
+  2) Output a labeltable, created from atlas_points info of DSET_INPUT,
+     and attach it to the input
+     adjunct_atlas_points_to_labeltable        \
+         -input   DSET_INPUT                   \
+         -prefix  MY_TABLE.niml.lt             \
+         -add_lt_to_input
+
+  3) No output labeltable, but attach the one created from created from 
+    the atlas_points info of DSET_INPUT, to that dataset
+     adjunct_atlas_points_to_labeltable        \
+         -input   DSET_INPUT                   \
+         -add_lt_to_input
+
+
+=== Output of 'adjunct_atlas_points_to_labeltable' (no arguments) ===
+
+-------------------------------------------------------------------------
+Overview ~1~
+
+This is a simple adjunct program for making a NIML labeltable from
+atlas_points info.  
+
+This can be used to: output the labeltable, to attach the labeltable
+to the input file, or both.
+
+auth    : PA Taylor (SSCC, NIMH, NIH, USA)
+ver     : 0.0
+revdate : Apr 04, 2024
+
+-------------------------------------------------------------------------
+Options ~1~
+
+-input DSET       :(req) input dset name, that should/must have 
+                   atlas_points information in the header
+
+-prefix PPP       :output name for labeltable, which can have path info
+                   included. Would recommend having it end with '.niml.lt'
+                   for convenience and recognizability
+
+-add_lt_to_input  :add the labeltable to the input dset header
+
+-overwrite        :needed to overwrite an existing labeltable file PPP, or
+                   to refit the labeltable of the input dset if 
+                   '-add_lt_to_input' is used
+
+-no_clean         :do not remove working directory (def: remove it)
+
+-echo             :very verbose output when running (for troubleshooting)
+
+-help, -h         :display this meager help info
+
+-ver              :display this program version
+
+-------------------------------------------------------------------------
+Examples ~1~
+
+  1) Output a labeltable, created from atlas_points info of DSET_INPUT
+     adjunct_atlas_points_to_labeltable        \
+         -input   DSET_INPUT                   \
+         -prefix  MY_TABLE.niml.lt
+
+  2) Output a labeltable, created from atlas_points info of DSET_INPUT,
+     and attach it to the input
+     adjunct_atlas_points_to_labeltable        \
+         -input   DSET_INPUT                   \
+         -prefix  MY_TABLE.niml.lt             \
+         -add_lt_to_input
+
+  3) No output labeltable, but attach the one created from created from 
+    the atlas_points info of DSET_INPUT, to that dataset
+     adjunct_atlas_points_to_labeltable        \
+         -input   DSET_INPUT                   \
+         -add_lt_to_input
+

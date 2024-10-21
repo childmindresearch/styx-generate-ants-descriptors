@@ -1,0 +1,12 @@
+
+=== Output of 'csvprint --help' ===
+
+bash: /usr/local/freesurfer/bin/csvprint: /usr/bin/python: bad interpreter: No such file or directory
+
+=== Output of 'csvprint -help' ===
+
+bash: /usr/local/freesurfer/bin/csvprint: /usr/bin/python: bad interpreter: No such file or directory
+
+=== Output of 'csvprint' (no arguments) ===
+
+bash: /usr/local/freesurfer/bin/csvprint: /usr/bin/python: bad interpreter: No such file or directory

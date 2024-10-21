@@ -1,0 +1,100 @@
+
+=== Output of 'wpng --help' ===
+
+
+wpng 1.03 of 19 March 2000:  Simple PGM/PPM/PAM to PNG Converter
+   Compiled with libpng 1.6.7; using libpng 1.6.7.
+   Compiled with zlib 1.2.8; using zlib 1.2.8.
+
+Usage:  wpng [-gamma exp] [-bgcolor bg] [-text] [-time] [-interlace] pnmfile
+or: ... | wpng [-gamma exp] [-bgcolor bg] [-text] [-time] [-interlace] | ...
+    exp 	transfer-function exponent (``gamma'') of the image in
+		  floating-point format (e.g., ``0.45455''); if image looks
+		  correct on given display system, image gamma is equal to
+		  inverse of display-system exponent, i.e., 1 / (LUT * CRT)
+		  (where LUT = lookup-table exponent and CRT = CRT exponent;
+
+		  first varies, second is usually 2.2, all are positive)
+    bg  	desired background color for alpha-channel images, in
+		  7-character hex RGB format (e.g., ``#ff7700'' for orange:
+		  same as HTML colors)
+    -text	prompt interactively for text info (tEXt chunks)
+    -time	include a tIME chunk (last modification time)
+    -interlace	write interlaced PNG image
+
+pnmfile or stdin must be a binary PGM (`P5'), PPM (`P6') or (extremely
+unofficial and unsupported!) PAM (`P8') file.  Currently it is required
+to have maxval == 255 (i.e., no scaling).  If pnmfile is specified, it
+is converted to the corresponding PNG file with the same base name but a
+``.png'' extension; files read from stdin are converted and sent to stdout.
+The conversion is progressive (low memory usage) unless interlacing is
+requested; in that case the whole image will be buffered in memory and
+written in one call.
+
+
+=== Output of 'wpng -help' ===
+
+
+wpng 1.03 of 19 March 2000:  Simple PGM/PPM/PAM to PNG Converter
+   Compiled with libpng 1.6.7; using libpng 1.6.7.
+   Compiled with zlib 1.2.8; using zlib 1.2.8.
+
+Usage:  wpng [-gamma exp] [-bgcolor bg] [-text] [-time] [-interlace] pnmfile
+or: ... | wpng [-gamma exp] [-bgcolor bg] [-text] [-time] [-interlace] | ...
+    exp 	transfer-function exponent (``gamma'') of the image in
+		  floating-point format (e.g., ``0.45455''); if image looks
+		  correct on given display system, image gamma is equal to
+		  inverse of display-system exponent, i.e., 1 / (LUT * CRT)
+		  (where LUT = lookup-table exponent and CRT = CRT exponent;
+
+		  first varies, second is usually 2.2, all are positive)
+    bg  	desired background color for alpha-channel images, in
+		  7-character hex RGB format (e.g., ``#ff7700'' for orange:
+		  same as HTML colors)
+    -text	prompt interactively for text info (tEXt chunks)
+    -time	include a tIME chunk (last modification time)
+    -interlace	write interlaced PNG image
+
+pnmfile or stdin must be a binary PGM (`P5'), PPM (`P6') or (extremely
+unofficial and unsupported!) PAM (`P8') file.  Currently it is required
+to have maxval == 255 (i.e., no scaling).  If pnmfile is specified, it
+is converted to the corresponding PNG file with the same base name but a
+``.png'' extension; files read from stdin are converted and sent to stdout.
+The conversion is progressive (low memory usage) unless interlacing is
+requested; in that case the whole image will be buffered in memory and
+written in one call.
+
+
+=== Output of 'wpng' (no arguments) ===
+
+wpng:  input file [(null)] is not a binary PGM, PPM or PAM file
+
+wpng 1.03 of 19 March 2000:  Simple PGM/PPM/PAM to PNG Converter
+   Compiled with libpng 1.6.7; using libpng 1.6.7.
+   Compiled with zlib 1.2.8; using zlib 1.2.8.
+
+Usage:  wpng [-gamma exp] [-bgcolor bg] [-text] [-time] [-interlace] pnmfile
+or: ... | wpng [-gamma exp] [-bgcolor bg] [-text] [-time] [-interlace] | ...
+    exp 	transfer-function exponent (``gamma'') of the image in
+		  floating-point format (e.g., ``0.45455''); if image looks
+		  correct on given display system, image gamma is equal to
+		  inverse of display-system exponent, i.e., 1 / (LUT * CRT)
+		  (where LUT = lookup-table exponent and CRT = CRT exponent;
+
+		  first varies, second is usually 2.2, all are positive)
+    bg  	desired background color for alpha-channel images, in
+		  7-character hex RGB format (e.g., ``#ff7700'' for orange:
+		  same as HTML colors)
+    -text	prompt interactively for text info (tEXt chunks)
+    -time	include a tIME chunk (last modification time)
+    -interlace	write interlaced PNG image
+
+pnmfile or stdin must be a binary PGM (`P5'), PPM (`P6') or (extremely
+unofficial and unsupported!) PAM (`P8') file.  Currently it is required
+to have maxval == 255 (i.e., no scaling).  If pnmfile is specified, it
+is converted to the corresponding PNG file with the same base name but a
+``.png'' extension; files read from stdin are converted and sent to stdout.
+The conversion is progressive (low memory usage) unless interlacing is
+requested; in that case the whole image will be buffered in memory and
+written in one call.
+

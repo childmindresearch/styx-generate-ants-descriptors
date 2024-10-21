@@ -1,0 +1,103 @@
+
+=== Output of 'tcalc --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+resample --Tejas Pendse 2012
+
+Usage: 
+resample -i <input image> [-options] -o <output>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--input	Input Image (4D phantom for theoretical calculations)
+	-o,--output	Output Image
+	-e,--te	        Echo Time (TE) in seconds 		[For example: T1-weighted images for 3T TE=0.01 s]
+	-r,--tr	        Repetition Time (TR) in seconds 	[For example: T1-weighted images for 3T TR=0.7 s]
+	-m,--mrpar	MRpar File
+
+Optional arguments (You may optionally specify one or more of):
+	-x,--nx	        Number of Voxels along X (default: phantom)
+	-y,--ny	        Number of Voxels along Y (default: phantom)
+	-z,--nz	        Number of Voxels along Z (default: phantom)
+	-a,--dx	        Size of voxels along X(default: phantom)
+	-b,--dy	        Size of voxels along Y(default: phantom)
+	-c,--dz	        Size of voxels along Z i.e., number of slices (default: phantom)
+	--zstart	Starting position of the volume in mm (default = 0mm)
+	--sigma		Add noise with given sigma (default: 0 i.e., no noise)
+	-s,--save	Save original non-resample output image
+	-v,--verbose	switch on diagnostic messages
+	-?,--help	Display help message
+
+
+
+=== Output of 'tcalc -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+resample --Tejas Pendse 2012
+
+Usage: 
+resample -i <input image> [-options] -o <output>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--input	Input Image (4D phantom for theoretical calculations)
+	-o,--output	Output Image
+	-e,--te	        Echo Time (TE) in seconds 		[For example: T1-weighted images for 3T TE=0.01 s]
+	-r,--tr	        Repetition Time (TR) in seconds 	[For example: T1-weighted images for 3T TR=0.7 s]
+	-m,--mrpar	MRpar File
+
+Optional arguments (You may optionally specify one or more of):
+	-x,--nx	        Number of Voxels along X (default: phantom)
+	-y,--ny	        Number of Voxels along Y (default: phantom)
+	-z,--nz	        Number of Voxels along Z (default: phantom)
+	-a,--dx	        Size of voxels along X(default: phantom)
+	-b,--dy	        Size of voxels along Y(default: phantom)
+	-c,--dz	        Size of voxels along Z i.e., number of slices (default: phantom)
+	--zstart	Starting position of the volume in mm (default = 0mm)
+	--sigma		Add noise with given sigma (default: 0 i.e., no noise)
+	-s,--save	Save original non-resample output image
+	-v,--verbose	switch on diagnostic messages
+	-?,--help	Display help message
+
+
+
+-h: Option doesn't exist!
+
+=== Output of 'tcalc' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--input	Input Image (4D phantom for theoretical calculations)
+	-o,--output	Output Image
+	-e,--te	        Echo Time (TE) in seconds 		[For example: T1-weighted images for 3T TE=0.01 s]
+	-r,--tr	        Repetition Time (TR) in seconds 	[For example: T1-weighted images for 3T TR=0.7 s]
+	-m,--mrpar	MRpar File
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+resample --Tejas Pendse 2012
+
+Usage: 
+resample -i <input image> [-options] -o <output>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--input	Input Image (4D phantom for theoretical calculations)
+	-o,--output	Output Image
+	-e,--te	        Echo Time (TE) in seconds 		[For example: T1-weighted images for 3T TE=0.01 s]
+	-r,--tr	        Repetition Time (TR) in seconds 	[For example: T1-weighted images for 3T TR=0.7 s]
+	-m,--mrpar	MRpar File
+
+Optional arguments (You may optionally specify one or more of):
+	-x,--nx	        Number of Voxels along X (default: phantom)
+	-y,--ny	        Number of Voxels along Y (default: phantom)
+	-z,--nz	        Number of Voxels along Z (default: phantom)
+	-a,--dx	        Size of voxels along X(default: phantom)
+	-b,--dy	        Size of voxels along Y(default: phantom)
+	-c,--dz	        Size of voxels along Z i.e., number of slices (default: phantom)
+	--zstart	Starting position of the volume in mm (default = 0mm)
+	--sigma		Add noise with given sigma (default: 0 i.e., no noise)
+	-s,--save	Save original non-resample output image
+	-v,--verbose	switch on diagnostic messages
+	-?,--help	Display help message
+
+

@@ -1,0 +1,42 @@
+
+=== Output of 'nicat --help' ===
+
+** NI_stream_open fails
+
+=== Output of 'nicat -help' ===
+
+Usage: nicat [-reopen rr] [-rR] streamspec
+Copies stdin to the NIML stream, which will be opened
+for writing.
+
+-reopen rr == reopen the stream after connection
+               to the stream specified by 'rr'
+-r         == Copy the stream to stdout instead; the
+               'streamspec' will be opened for reading.
+-R         == Read the stream but don't copy to stdout.
+
+Intended for testing other programs that use NIML for
+various services.  Example:
+  aiv -p 4444 &
+  im2niml zork.jpg | nicat tcp:localhost:4444
+Starts aiv listening on TCP/IP port 444, then sends image
+file zork.jpg to that port for display.
+
+=== Output of 'nicat' (no arguments) ===
+
+Usage: nicat [-reopen rr] [-rR] streamspec
+Copies stdin to the NIML stream, which will be opened
+for writing.
+
+-reopen rr == reopen the stream after connection
+               to the stream specified by 'rr'
+-r         == Copy the stream to stdout instead; the
+               'streamspec' will be opened for reading.
+-R         == Read the stream but don't copy to stdout.
+
+Intended for testing other programs that use NIML for
+various services.  Example:
+  aiv -p 4444 &
+  im2niml zork.jpg | nicat tcp:localhost:4444
+Starts aiv listening on TCP/IP port 444, then sends image
+file zork.jpg to that port for display.

@@ -1,0 +1,21 @@
+
+=== Output of '3dNwarpCalc --help' ===
+
+
+*******************************************************************
+Program 3dNwarpCalc has been retired, and is no longer available :(
+*******************************************************************
+
+=== Output of '3dNwarpCalc -help' ===
+
+
+*******************************************************************
+Program 3dNwarpCalc has been retired, and is no longer available :(
+*******************************************************************
+
+=== Output of '3dNwarpCalc' (no arguments) ===
+
+
+*******************************************************************
+Program 3dNwarpCalc has been retired, and is no longer available :(
+*******************************************************************

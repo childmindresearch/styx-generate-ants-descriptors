@@ -1,0 +1,309 @@
+
+=== Output of 'mris_fix_topology --help' ===
+
+				Help
+
+NAME
+	mris_fix_topology
+
+SYNOPSIS
+	mris_fix_topology [options] <subject name> <hemisphere>
+
+DESCRIPTION
+	This program computes a mapping from the unit sphere onto the surface 
+	of the cortex from a previously generated approximation of the 
+	cortical surface, thus guaranteeing a topologically correct surface.
+
+POSITIONAL ARGUMENTS
+	<subject name>
+		subject name
+
+	<hemisphere>
+		hemisphere
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-orig origname (input, default is orig.nofix)
+
+	-sphere spherename (default is qsphere.nofix)
+
+	-inflated inflatedname (default is inflated.nofix)
+
+	-out outputname (default is orig)
+
+	-defect defectbasename : defectbase_{label,chull,borders} (default is 
+	defect)
+
+	-wi
+		write fixed inflated
+
+	-verbose 
+
+	-verbose_low 
+
+	-warnings
+
+	-errors
+
+	-movies
+
+	-intersect
+		check if the final surface self-intersects
+
+	-mappings
+		generate several different mappings
+
+	-correct_defect N
+		correct defect N only
+
+	-niters N
+		stop genetic algorithm after N iterations
+
+	-genetic
+		use genetic search
+
+	-ga
+		optimize genetic search
+
+	-optimize
+		optimize genetic search
+
+	-random N
+		use random search with N iterations
+
+	-seed N
+		set random number generator to seed N
+
+	-diag
+		sets DIAG_SAVE_DIAGS
+
+	-mgz
+		assume volumes are in mgz format
+
+	-s N
+		smooth corrected surface by N iterations
+
+	-v D
+		set diagnostic level to D
+
+	-help
+		print help and exit
+
+	-version
+		print version and exit
+
+	-threads N
+		Set number of Open MP threads
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_fix_topology -help' ===
+
+				Help
+
+NAME
+	mris_fix_topology
+
+SYNOPSIS
+	mris_fix_topology [options] <subject name> <hemisphere>
+
+DESCRIPTION
+	This program computes a mapping from the unit sphere onto the surface 
+	of the cortex from a previously generated approximation of the 
+	cortical surface, thus guaranteeing a topologically correct surface.
+
+POSITIONAL ARGUMENTS
+	<subject name>
+		subject name
+
+	<hemisphere>
+		hemisphere
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-orig origname (input, default is orig.nofix)
+
+	-sphere spherename (default is qsphere.nofix)
+
+	-inflated inflatedname (default is inflated.nofix)
+
+	-out outputname (default is orig)
+
+	-defect defectbasename : defectbase_{label,chull,borders} (default is 
+	defect)
+
+	-wi
+		write fixed inflated
+
+	-verbose 
+
+	-verbose_low 
+
+	-warnings
+
+	-errors
+
+	-movies
+
+	-intersect
+		check if the final surface self-intersects
+
+	-mappings
+		generate several different mappings
+
+	-correct_defect N
+		correct defect N only
+
+	-niters N
+		stop genetic algorithm after N iterations
+
+	-genetic
+		use genetic search
+
+	-ga
+		optimize genetic search
+
+	-optimize
+		optimize genetic search
+
+	-random N
+		use random search with N iterations
+
+	-seed N
+		set random number generator to seed N
+
+	-diag
+		sets DIAG_SAVE_DIAGS
+
+	-mgz
+		assume volumes are in mgz format
+
+	-s N
+		smooth corrected surface by N iterations
+
+	-v D
+		set diagnostic level to D
+
+	-help
+		print help and exit
+
+	-version
+		print version and exit
+
+	-threads N
+		Set number of Open MP threads
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_fix_topology' (no arguments) ===
+
+				Help
+
+NAME
+	mris_fix_topology
+
+SYNOPSIS
+	mris_fix_topology [options] <subject name> <hemisphere>
+
+DESCRIPTION
+	This program computes a mapping from the unit sphere onto the surface 
+	of the cortex from a previously generated approximation of the 
+	cortical surface, thus guaranteeing a topologically correct surface.
+
+POSITIONAL ARGUMENTS
+	<subject name>
+		subject name
+
+	<hemisphere>
+		hemisphere
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-orig origname (input, default is orig.nofix)
+
+	-sphere spherename (default is qsphere.nofix)
+
+	-inflated inflatedname (default is inflated.nofix)
+
+	-out outputname (default is orig)
+
+	-defect defectbasename : defectbase_{label,chull,borders} (default is 
+	defect)
+
+	-wi
+		write fixed inflated
+
+	-verbose 
+
+	-verbose_low 
+
+	-warnings
+
+	-errors
+
+	-movies
+
+	-intersect
+		check if the final surface self-intersects
+
+	-mappings
+		generate several different mappings
+
+	-correct_defect N
+		correct defect N only
+
+	-niters N
+		stop genetic algorithm after N iterations
+
+	-genetic
+		use genetic search
+
+	-ga
+		optimize genetic search
+
+	-optimize
+		optimize genetic search
+
+	-random N
+		use random search with N iterations
+
+	-seed N
+		set random number generator to seed N
+
+	-diag
+		sets DIAG_SAVE_DIAGS
+
+	-mgz
+		assume volumes are in mgz format
+
+	-s N
+		smooth corrected surface by N iterations
+
+	-v D
+		set diagnostic level to D
+
+	-help
+		print help and exit
+
+	-version
+		print version and exit
+
+	-threads N
+		Set number of Open MP threads
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

@@ -1,0 +1,12 @@
+
+=== Output of 'unconfound --help' ===
+
+Usage:   unconfound <in4d> <out4d> <confound.mat>
+
+=== Output of 'unconfound -help' ===
+
+Usage:   unconfound <in4d> <out4d> <confound.mat>
+
+=== Output of 'unconfound' (no arguments) ===
+
+Usage:   unconfound <in4d> <out4d> <confound.mat>

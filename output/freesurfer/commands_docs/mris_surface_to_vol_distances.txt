@@ -1,0 +1,12 @@
+
+=== Output of 'mris_surface_to_vol_distances --help' ===
+
+unknown option --help
+
+=== Output of 'mris_surface_to_vol_distances -help' ===
+
+unknown option -help
+
+=== Output of 'mris_surface_to_vol_distances' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_surface_to_vol_distances [options] <average subject> <hemi> <subject 1> <subject 2> ... <output prefix>

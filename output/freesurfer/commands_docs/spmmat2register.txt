@@ -1,0 +1,24 @@
+
+=== Output of 'spmmat2register --help' ===
+
+
+ERROR: spmmat2register is obsolete. Use tkregister2.
+Run tkregister2 with --help for extensive documentation.
+In particular, look at the section called USING WITH FSL and SPM
+
+
+=== Output of 'spmmat2register -help' ===
+
+
+ERROR: spmmat2register is obsolete. Use tkregister2.
+Run tkregister2 with --help for extensive documentation.
+In particular, look at the section called USING WITH FSL and SPM
+
+
+=== Output of 'spmmat2register' (no arguments) ===
+
+
+ERROR: spmmat2register is obsolete. Use tkregister2.
+Run tkregister2 with --help for extensive documentation.
+In particular, look at the section called USING WITH FSL and SPM
+

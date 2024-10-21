@@ -1,0 +1,142 @@
+
+=== Output of '3dEdu_01_scale --help' ===
+
+[7m** ERROR:[0m Bad option '--help'
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dEdu_01_scale -help' enlighten:
+        '-input DSET      :(req) input dataset'
+        '-some_opt        :(opt) option flag to do something'
+        '-mult_facs  A B  :(opt) numerical factors for multiplying each voxel;'
+
+=== Output of '3dEdu_01_scale -help' ===
+
+
+Overview ~1~ 
+
+This is an example starting program for those who want to create a new
+AFNI program to see some examples of possible I/O and internal calcs.
+Please see the source code file in the main afni/src/3dEdu_01_scale.c
+for more information.
+
+This program is intended purely for educational and code-development
+purposes.
+
+written by: PA Taylor
+
+Description ~2~ 
+
+This program will take one dataset as input, and output a copy of its [0]th
+volume.  A mask can be provided, as well as two multiplicative factors to
+mask and scale the output, respectively.
+
+==========================================================================
+
+Command usage and option list ~1~ 
+
+  3dEdu_01_scale [something]
+
+where: 
+
+  -input DSET      :(req) input dataset
+
+  -mask  DSET_MASK :(opt) mask dataset on same grid/data structure
+                    as the input dset
+
+  -some_opt        :(opt) option flag to do something
+
+  -mult_facs  A B  :(opt) numerical factors for multiplying each voxel;
+                    that is, each voxel is multiplied by both A and B.
+
+==========================================================================
+
+Examples ~1~
+
+1) Output a copy of the [0]th volume of the input:
+
+   3dEdu_01_scale                                   \
+      -input  epi_r1+orig.HEAD                      \
+      -prefix OUT_edu_01                            
+
+2) Output a masked copy of the [0]th volume of the input:
+
+   3dEdu_01_scale                                   \
+      -input  epi_r1+orig.HEAD                      \
+      -mask   mask.auto.nii.gz                      \
+      -prefix OUT_edu_02                            
+
+3) Output a masked+scaled copy of the [0]th volume of the input:
+
+   3dEdu_01_scale                                   \
+      -mult_facs 3 5.5                              \
+      -input     epi_r1+orig.HEAD                   \
+      -mask      mask.auto.nii.gz                   \
+      -prefix    OUT_edu_03                         
+
+==========================================================================
+
+
+=== Output of '3dEdu_01_scale' (no arguments) ===
+
+
+Overview ~1~ 
+
+This is an example starting program for those who want to create a new
+AFNI program to see some examples of possible I/O and internal calcs.
+Please see the source code file in the main afni/src/3dEdu_01_scale.c
+for more information.
+
+This program is intended purely for educational and code-development
+purposes.
+
+written by: PA Taylor
+
+Description ~2~ 
+
+This program will take one dataset as input, and output a copy of its [0]th
+volume.  A mask can be provided, as well as two multiplicative factors to
+mask and scale the output, respectively.
+
+==========================================================================
+
+Command usage and option list ~1~ 
+
+  3dEdu_01_scale [something]
+
+where: 
+
+  -input DSET      :(req) input dataset
+
+  -mask  DSET_MASK :(opt) mask dataset on same grid/data structure
+                    as the input dset
+
+  -some_opt        :(opt) option flag to do something
+
+  -mult_facs  A B  :(opt) numerical factors for multiplying each voxel;
+                    that is, each voxel is multiplied by both A and B.
+
+==========================================================================
+
+Examples ~1~
+
+1) Output a copy of the [0]th volume of the input:
+
+   3dEdu_01_scale                                   \
+      -input  epi_r1+orig.HEAD                      \
+      -prefix OUT_edu_01                            
+
+2) Output a masked copy of the [0]th volume of the input:
+
+   3dEdu_01_scale                                   \
+      -input  epi_r1+orig.HEAD                      \
+      -mask   mask.auto.nii.gz                      \
+      -prefix OUT_edu_02                            
+
+3) Output a masked+scaled copy of the [0]th volume of the input:
+
+   3dEdu_01_scale                                   \
+      -mult_facs 3 5.5                              \
+      -input     epi_r1+orig.HEAD                   \
+      -mask      mask.auto.nii.gz                   \
+      -prefix    OUT_edu_03                         
+
+==========================================================================
+

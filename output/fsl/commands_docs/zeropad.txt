@@ -1,0 +1,21 @@
+
+=== Output of 'zeropad --help' ===
+
+
+Usage: zeropad <input> <length of output>
+e.g. zeropad 1 4    gives 0001
+
+
+=== Output of 'zeropad -help' ===
+
+
+Usage: zeropad <input> <length of output>
+e.g. zeropad 1 4    gives 0001
+
+
+=== Output of 'zeropad' (no arguments) ===
+
+
+Usage: zeropad <input> <length of output>
+e.g. zeropad 1 4    gives 0001
+

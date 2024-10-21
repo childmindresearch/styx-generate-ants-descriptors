@@ -1,0 +1,210 @@
+
+=== Output of 'ap_run_simple_rest.tcsh --help' ===
+
+** unknown option '--help'
+
+=== Output of 'ap_run_simple_rest.tcsh -help' ===
+
+
+------------------------------------------------------------------------------
+ap_run_simple_rest.tcsh  - run a quick afni_proc.py analysis for QC
+
+   usage: ap_run_simple_rest.tcsh [options] -anat ANAT -epi EPI1 EPI2 EPI3 ...
+
+This program is meant to run a moderately quick single subject analysis,
+treating the EPI as resting state data.
+
+Overview:
+
+   0. This program will change over time.  Do not rely on a fixed version.
+      See "ap_run_simple_rest.tcsh -ver" for the current version number.
+   1. Output files are placed in the current directory, so it is suggested
+      to run from a "clean" location, generally away from the raw inputs.
+   2. Template registration is merely affine, to be fast.
+   3. By default, the first 2 time points are removed as pre-steady state.
+      It is a good idea to set -nt_rm appropriately.
+
+   inputs   : anat (optional), EPI
+
+   controls : recommended opts: -subjid, -nt_rm
+
+   outputs  : run_ap_SUBJID   - afni_proc.py command script
+            : proc.SUBJID     -_proc script (if AP is run)
+            : SUBJID.results  - proc results dir (if run)
+            : out.*           - text output files from AP and proc scripts
+
+This program may be devoured by afni_proc.py itself, at some point.
+
+------------------------------------------------------------------------------
+example 0: just create an afni_proc.py script, run_ap_SUBJ, no data required
+
+      ap_run_simple_rest.tcsh -anat anat.nii -epi epi.nii
+
+
+example 1: quickly process EPI (no anat, so no align/tlrc blocks)
+
+      ap_run_simple_rest.tcsh -epi epi.nii -run_proc
+
+
+example 2: preferred - run an analysis from a clean directory
+
+      cd AFNI_data6/FT_analysis
+      mkdir test.ap
+      cd test.ap
+      ap_run_simple_rest.tcsh -subjid ft.qc \
+          -run_proc -nt_rm 2                \
+          -anat ../FT/FT_anat+orig          \
+          -epi ../FT/FT_epi_r*.HEAD
+
+------------------------------------------------------------------------------
+terminal options:
+
+   -help                   : show this help
+   -hist                   : show the program history
+   -ver                    : show the version number
+
+required parameters:
+
+   -epi EPI_r1 EPI_r2 ...  : specify a list of EPI datasets
+
+optional parameters:
+
+   -anat ANAT              : specify single anatomical dataset
+
+   -nt_rm NT               : num time points to remove from starts of runs
+                             def: 2
+
+   -run_ap                 : actually run the afni_proc.py command
+                             def: do not, just generate AP command script
+
+   -run_proc               : do the processing (run the proc script from AP)
+                             def: do not run AP or proc script
+
+   -subjid SUBJ_ID         : specify subject ID for file names
+                             def: SUBJ
+
+   -template TEMPLATE      : specify template for standard space
+                             def: MNI152_2009_template_SSW.nii.gz
+
+   -compressor COMP        : control automatic compression of *.BRIK files.
+                             'COMP' must be one of the allowed keywords for
+                             the AFNI_COMPRESSOR environment variable:
+                                GZIP  COMPRESS  BZIP2  PIGZ
+                             and you must have the associated program for
+                             compression installed (e.g., 'gzip')
+                             def: not set here
+
+   -verb VERB              : specify verbosity level (3 == -echo)
+                             def: 1
+
+   -echo                   : set 'echo' in the shell, as if run via 'tcsh -x'
+                             (same as '-verb 3')
+
+------------------------------------------------------------------------------
+R Reynolds Apr, 2021
+version 0.6
+------------------------------------------------------------------------------
+
+
+=== Output of 'ap_run_simple_rest.tcsh' (no arguments) ===
+
+
+------------------------------------------------------------------------------
+ap_run_simple_rest.tcsh  - run a quick afni_proc.py analysis for QC
+
+   usage: ap_run_simple_rest.tcsh [options] -anat ANAT -epi EPI1 EPI2 EPI3 ...
+
+This program is meant to run a moderately quick single subject analysis,
+treating the EPI as resting state data.
+
+Overview:
+
+   0. This program will change over time.  Do not rely on a fixed version.
+      See "ap_run_simple_rest.tcsh -ver" for the current version number.
+   1. Output files are placed in the current directory, so it is suggested
+      to run from a "clean" location, generally away from the raw inputs.
+   2. Template registration is merely affine, to be fast.
+   3. By default, the first 2 time points are removed as pre-steady state.
+      It is a good idea to set -nt_rm appropriately.
+
+   inputs   : anat (optional), EPI
+
+   controls : recommended opts: -subjid, -nt_rm
+
+   outputs  : run_ap_SUBJID   - afni_proc.py command script
+            : proc.SUBJID     -_proc script (if AP is run)
+            : SUBJID.results  - proc results dir (if run)
+            : out.*           - text output files from AP and proc scripts
+
+This program may be devoured by afni_proc.py itself, at some point.
+
+------------------------------------------------------------------------------
+example 0: just create an afni_proc.py script, run_ap_SUBJ, no data required
+
+      ap_run_simple_rest.tcsh -anat anat.nii -epi epi.nii
+
+
+example 1: quickly process EPI (no anat, so no align/tlrc blocks)
+
+      ap_run_simple_rest.tcsh -epi epi.nii -run_proc
+
+
+example 2: preferred - run an analysis from a clean directory
+
+      cd AFNI_data6/FT_analysis
+      mkdir test.ap
+      cd test.ap
+      ap_run_simple_rest.tcsh -subjid ft.qc \
+          -run_proc -nt_rm 2                \
+          -anat ../FT/FT_anat+orig          \
+          -epi ../FT/FT_epi_r*.HEAD
+
+------------------------------------------------------------------------------
+terminal options:
+
+   -help                   : show this help
+   -hist                   : show the program history
+   -ver                    : show the version number
+
+required parameters:
+
+   -epi EPI_r1 EPI_r2 ...  : specify a list of EPI datasets
+
+optional parameters:
+
+   -anat ANAT              : specify single anatomical dataset
+
+   -nt_rm NT               : num time points to remove from starts of runs
+                             def: 2
+
+   -run_ap                 : actually run the afni_proc.py command
+                             def: do not, just generate AP command script
+
+   -run_proc               : do the processing (run the proc script from AP)
+                             def: do not run AP or proc script
+
+   -subjid SUBJ_ID         : specify subject ID for file names
+                             def: SUBJ
+
+   -template TEMPLATE      : specify template for standard space
+                             def: MNI152_2009_template_SSW.nii.gz
+
+   -compressor COMP        : control automatic compression of *.BRIK files.
+                             'COMP' must be one of the allowed keywords for
+                             the AFNI_COMPRESSOR environment variable:
+                                GZIP  COMPRESS  BZIP2  PIGZ
+                             and you must have the associated program for
+                             compression installed (e.g., 'gzip')
+                             def: not set here
+
+   -verb VERB              : specify verbosity level (3 == -echo)
+                             def: 1
+
+   -echo                   : set 'echo' in the shell, as if run via 'tcsh -x'
+                             (same as '-verb 3')
+
+------------------------------------------------------------------------------
+R Reynolds Apr, 2021
+version 0.6
+------------------------------------------------------------------------------
+

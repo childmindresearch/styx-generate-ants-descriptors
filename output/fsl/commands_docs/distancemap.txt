@@ -1,0 +1,85 @@
+
+=== Output of 'distancemap --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+distancemap (Version 2.0)
+Copyright(c) 2003-2008, University of Oxford (Mark Jenkinson)
+
+Usage: 
+distancemap [options] -i <inputimage> -o <outputimage>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image filename (calc distance to non-zero voxels)
+	-o,--out	output image filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	mask image filename (only calc values at these voxels)
+	--secondim	second image filename (calc closest distance of this and primary input image, using non-zero voxels, negative distances mean this secondary image is the closer one)
+	-l,--localmax	local maxima output image filename
+	-s,--segment	segmented output image filename (unique value per segment is local maxima label)
+	--invert	invert input image
+	--interp	filename for values to interpolate (sparse sampling interpolation)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'distancemap -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+distancemap (Version 2.0)
+Copyright(c) 2003-2008, University of Oxford (Mark Jenkinson)
+
+Usage: 
+distancemap [options] -i <inputimage> -o <outputimage>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image filename (calc distance to non-zero voxels)
+	-o,--out	output image filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	mask image filename (only calc values at these voxels)
+	--secondim	second image filename (calc closest distance of this and primary input image, using non-zero voxels, negative distances mean this secondary image is the closer one)
+	-l,--localmax	local maxima output image filename
+	-s,--segment	segmented output image filename (unique value per segment is local maxima label)
+	--invert	invert input image
+	--interp	filename for values to interpolate (sparse sampling interpolation)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'distancemap' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	input image filename (calc distance to non-zero voxels)
+	-o,--out	output image filename
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+distancemap (Version 2.0)
+Copyright(c) 2003-2008, University of Oxford (Mark Jenkinson)
+
+Usage: 
+distancemap [options] -i <inputimage> -o <outputimage>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image filename (calc distance to non-zero voxels)
+	-o,--out	output image filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	mask image filename (only calc values at these voxels)
+	--secondim	second image filename (calc closest distance of this and primary input image, using non-zero voxels, negative distances mean this secondary image is the closer one)
+	-l,--localmax	local maxima output image filename
+	-s,--segment	segmented output image filename (unique value per segment is local maxima label)
+	--invert	invert input image
+	--interp	filename for values to interpolate (sparse sampling interpolation)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

@@ -1,0 +1,22 @@
+
+=== Output of '@parse_name --help' ===
+
+. --help  
+
+=== Output of '@parse_name -help' ===
+
+Usage 1: A script to parse an filename
+
+   @parse_name <name>
+
+Outputs the path, prefix and extension strings.
+
+
+=== Output of '@parse_name' (no arguments) ===
+
+Usage 1: A script to parse an filename
+
+   @parse_name <name>
+
+Outputs the path, prefix and extension strings.
+

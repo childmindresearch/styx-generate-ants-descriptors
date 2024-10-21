@@ -1,0 +1,15 @@
+
+=== Output of 'TextureRunLengthFeatures --help' ===
+
+Usage: TextureRunLengthFeatures imageDimension inputImage [numberOfBinsPerAxis=256] [maskImage] [maskLabel=1]
+Features: ShortRunEmphasis,LongRunEmphasis,GreyLevelNonuniformity,RunLengthNonuniformity,LowGreyLevelRunEmphasis,HighGreyLevelRunEmphasis,ShortRunLowGreyLevelEmphasis,ShortRunHighGreyLevelEmphasis,LongRunLowGreyLevelEmphasis,LongRunHighGreyLevelEmphasis
+
+=== Output of 'TextureRunLengthFeatures -help' ===
+
+Usage: TextureRunLengthFeatures imageDimension inputImage [numberOfBinsPerAxis=256] [maskImage] [maskLabel=1]
+Features: ShortRunEmphasis,LongRunEmphasis,GreyLevelNonuniformity,RunLengthNonuniformity,LowGreyLevelRunEmphasis,HighGreyLevelRunEmphasis,ShortRunLowGreyLevelEmphasis,ShortRunHighGreyLevelEmphasis,LongRunLowGreyLevelEmphasis,LongRunHighGreyLevelEmphasis
+
+=== Output of 'TextureRunLengthFeatures' (no arguments) ===
+
+Usage: TextureRunLengthFeatures imageDimension inputImage [numberOfBinsPerAxis=256] [maskImage] [maskLabel=1]
+Features: ShortRunEmphasis,LongRunEmphasis,GreyLevelNonuniformity,RunLengthNonuniformity,LowGreyLevelRunEmphasis,HighGreyLevelRunEmphasis,ShortRunLowGreyLevelEmphasis,ShortRunHighGreyLevelEmphasis,LongRunLowGreyLevelEmphasis,LongRunHighGreyLevelEmphasis

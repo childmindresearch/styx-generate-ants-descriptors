@@ -1,0 +1,27 @@
+
+=== Output of 'ftoz --help' ===
+
+Lacking argument to option --help
+Fs filename not found
+
+Usage: /usr/local/fsl/bin/ftoz [options] <fsfile> <dof1> <dof2> 
+  Available options are:
+        -zout <outputvol>            (default is zstats)
+        -help
+
+
+=== Output of 'ftoz -help' ===
+
+Usage: /usr/local/fsl/bin/ftoz [options] <fsfile> <dof1> <dof2> 
+  Available options are:
+        -zout <outputvol>            (default is zstats)
+        -help
+
+
+=== Output of 'ftoz' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/ftoz [options] <fsfile> <dof1> <dof2> 
+  Available options are:
+        -zout <outputvol>            (default is zstats)
+        -help
+

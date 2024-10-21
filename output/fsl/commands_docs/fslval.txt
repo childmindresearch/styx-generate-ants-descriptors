@@ -1,0 +1,12 @@
+
+=== Output of 'fslval --help' ===
+
+Usage: fslval <input> <keyword>
+
+=== Output of 'fslval -help' ===
+
+Usage: fslval <input> <keyword>
+
+=== Output of 'fslval' (no arguments) ===
+
+Usage: fslval <input> <keyword>

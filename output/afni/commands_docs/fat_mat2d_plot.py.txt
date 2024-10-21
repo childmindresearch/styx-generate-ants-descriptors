@@ -1,0 +1,342 @@
+
+=== Output of 'fat_mat2d_plot.py --help' ===
+
+** ERROR: unknown opt: '--help'
+
+=== Output of 'fat_mat2d_plot.py -help' ===
+
+
+  PURPOSE ~1~
+
+  This program plots simple matrices output from 3dNetCorr (*.netcc)
+  and 3dTrackID (*.grid). 
+
+  This program has a Python dependency: it requires Python 2.7 or 3.*,
+  as well as the 'matplotlib' module.
+
+  Ver  : 1.14
+  Date : July 31, 2020
+  Auth : PA Taylor
+
+------------------------------------------------------------------------------
+
+INPUTS ~1~
+
+  + A *.netcc or *.grid file output by 3dNetCorr or 3dTrackID,
+    respectively.
+
+  + A list of one or more matrices in the file to save.
+
+  Several aspects of the generated image file can be controlled
+  (various font sizes, DPI, figure size, etc.), but note that some
+  work has gone into trying to "guess" appropriate sizes for the font
+  x- and y-tick fonts to be appropriately sizes for column- and
+  row-sizes.  So, you might want to first choose your DPI and see how
+  things look, and then refine aspects from there.
+
+------------------------------------------------------------------------------
+
+OUTPUTS ~1~
+
+  + Individual image files of matrices; these can contain colorbars,
+    as well.
+
+------------------------------------------------------------------------------
+
+RUNNING ~1~
+
+ -input  II     :(req) name of *.netcc or *.grid file with matrices
+                 to be plotted
+
+ -pars   PARS   :list of matrices to be plotted, identified by their
+                 parameter name.  Can plot one or more.  If no '-pars ..'
+                 list is provided, then all matrices in the input file 
+                 will be plotted (might plop a lot of plots!)
+
+ -prefix PP     :output basename for image(s).  Note that this can
+                 include path information, but both the name of each 
+                 matrix (CC, FA, MD, ...) and the file extension (png, 
+                 jpg, ...) will be appended to it.  (def: make prefix
+                 from the directory+root name of input file)
+
+ -ftype  FT     :filetype, given as extension.  Available filetypes
+                 depend slightly on your OS and setup.  (def: chosen
+                 by matplotlib.rcParams, which appears to be png)
+
+ -dpi    DPI    :spatial resolution (dots per inch) of output images
+                 (def: 100)
+
+ -vmin   MIN    :minimum value of the colorbar (def: min value in matrix)
+
+ -vmax   MAX    :maximum value of the colorbar (def: max value in matrix)
+
+ -fs_xticks FXT :fontsize of ticks along the x-axis (def: 10)
+
+ -fs_yticks FYT :fontsize of ticks along the y-axis (def: 10)
+
+ -fs_title  FT  :fontsize of title (def: let program guess)
+
+ -fs_cbar   FCB :fontsize of colorbar (def: let program guess)
+
+ -cbar_n_intervals NI 
+                :number of intervals on colorbars for enumeration purposes.
+                 That is, this controls just how many numbers appear along
+                 the cbar (which would be NI+1). (def: 4)
+
+ -cbar      CB  :name of colorbar to use.  This link contains a name of
+                 all available cbars:
+                 https://matplotlib.org/stable/tutorials/colors/colormaps.html
+                 ... and for each, you can add an '_r' as suffix to
+                 reverse it. (def: RdBu_r)
+                 Some perceptually uniform colormaps:
+                   viridis, plasma, inferno, magma, cividis
+                 Some divergent colormaps:
+                   BrBG, RdBu, coolwarm, seismic, bwr
+                 
+ -cbar_width_perc  CWP 
+                :width of cbar as a percentage of the image 
+                 (def: 5)
+
+ -cbar_off      :colorbar is shown by default; use this opt to turn off 
+                 including the colorbar in the image (not recommended)
+
+ -figsize_x FSX :width of created image, in units of inches 
+                 (def: guess from size of matrix and x-/y-ticks fontsize)
+
+ -figsize_y FSY :height of created image, in units of inches 
+                 (def: guess from size width value, and whether a colorbar
+                 is included)
+
+ -hold_image    :in addition to saving an image file, open the image and
+                 keep displaying it until a key is pressed in the
+                 terminal (def: don't open image immediately)
+
+ -tight_layout  :use matplotlib's "plt.tight_layout()" functionality in 
+                 arranging the plot 
+
+ -xticks_off    :don't display labels along the x-axis (def: do display them)
+
+ -yticks_off    :don't display labels along the y-axis (def: do display them)
+
+ -ver           :display version number of program
+                 (1.14)
+
+ -date          :display release/editing date of current version
+                 (July 31, 2020)
+
+ -help          :display help (in terminal)
+ -h             :display help (in terminal)
+
+ -hview         :display help (in separate text editor)
+
+------------------------------------------------------------------------------
+
+EXAMPLES ~1~
+
+0) Plot everything in this netcc file:
+
+   fat_mat2d_plot.py                   \
+       -input REST_corr_rz_003.netcc
+
+1) Plot the CC (correlation coefficient) values between [-1, 1]
+
+   fat_mat2d_plot.py                   \
+       -input REST_corr_rz_003.netcc   \
+       -vmin -1                        \
+       -vmax  1                        \
+       -pars CC
+
+2) Plot the FA (fractional anisotropy) values between [0, 1] using
+   the 'cool' colorbar and with a specified prefix:
+
+   fat_mat2d_plot.py                   \
+       -input o.OME_000.grid           \
+       -vmin  0                        \
+       -vmax  1                        \
+       -pars   FA                      \
+       -prefix IMAGE                   \
+       -cbar   cool
+
+3) Plot the MD, L1 and RD values between [0, 3] (-> on a DTI note,
+   these values are *probably* in units of x10^-3 mm^2/s, given this
+   range) with the reversed Greens colorbar:
+
+   fat_mat2d_plot.py                   \
+       -input o.OME_000.grid           \
+       -vmin  0                        \
+       -vmax  3                        \
+       -pars   MD L1 RD                \
+       -prefix IMAGE2                  \
+       -cbar   Greens_r
+
+
+
+
+=== Output of 'fat_mat2d_plot.py' (no arguments) ===
+
+
+  PURPOSE ~1~
+
+  This program plots simple matrices output from 3dNetCorr (*.netcc)
+  and 3dTrackID (*.grid). 
+
+  This program has a Python dependency: it requires Python 2.7 or 3.*,
+  as well as the 'matplotlib' module.
+
+  Ver  : 1.14
+  Date : July 31, 2020
+  Auth : PA Taylor
+
+------------------------------------------------------------------------------
+
+INPUTS ~1~
+
+  + A *.netcc or *.grid file output by 3dNetCorr or 3dTrackID,
+    respectively.
+
+  + A list of one or more matrices in the file to save.
+
+  Several aspects of the generated image file can be controlled
+  (various font sizes, DPI, figure size, etc.), but note that some
+  work has gone into trying to "guess" appropriate sizes for the font
+  x- and y-tick fonts to be appropriately sizes for column- and
+  row-sizes.  So, you might want to first choose your DPI and see how
+  things look, and then refine aspects from there.
+
+------------------------------------------------------------------------------
+
+OUTPUTS ~1~
+
+  + Individual image files of matrices; these can contain colorbars,
+    as well.
+
+------------------------------------------------------------------------------
+
+RUNNING ~1~
+
+ -input  II     :(req) name of *.netcc or *.grid file with matrices
+                 to be plotted
+
+ -pars   PARS   :list of matrices to be plotted, identified by their
+                 parameter name.  Can plot one or more.  If no '-pars ..'
+                 list is provided, then all matrices in the input file 
+                 will be plotted (might plop a lot of plots!)
+
+ -prefix PP     :output basename for image(s).  Note that this can
+                 include path information, but both the name of each 
+                 matrix (CC, FA, MD, ...) and the file extension (png, 
+                 jpg, ...) will be appended to it.  (def: make prefix
+                 from the directory+root name of input file)
+
+ -ftype  FT     :filetype, given as extension.  Available filetypes
+                 depend slightly on your OS and setup.  (def: chosen
+                 by matplotlib.rcParams, which appears to be png)
+
+ -dpi    DPI    :spatial resolution (dots per inch) of output images
+                 (def: 100)
+
+ -vmin   MIN    :minimum value of the colorbar (def: min value in matrix)
+
+ -vmax   MAX    :maximum value of the colorbar (def: max value in matrix)
+
+ -fs_xticks FXT :fontsize of ticks along the x-axis (def: 10)
+
+ -fs_yticks FYT :fontsize of ticks along the y-axis (def: 10)
+
+ -fs_title  FT  :fontsize of title (def: let program guess)
+
+ -fs_cbar   FCB :fontsize of colorbar (def: let program guess)
+
+ -cbar_n_intervals NI 
+                :number of intervals on colorbars for enumeration purposes.
+                 That is, this controls just how many numbers appear along
+                 the cbar (which would be NI+1). (def: 4)
+
+ -cbar      CB  :name of colorbar to use.  This link contains a name of
+                 all available cbars:
+                 https://matplotlib.org/stable/tutorials/colors/colormaps.html
+                 ... and for each, you can add an '_r' as suffix to
+                 reverse it. (def: RdBu_r)
+                 Some perceptually uniform colormaps:
+                   viridis, plasma, inferno, magma, cividis
+                 Some divergent colormaps:
+                   BrBG, RdBu, coolwarm, seismic, bwr
+                 
+ -cbar_width_perc  CWP 
+                :width of cbar as a percentage of the image 
+                 (def: 5)
+
+ -cbar_off      :colorbar is shown by default; use this opt to turn off 
+                 including the colorbar in the image (not recommended)
+
+ -figsize_x FSX :width of created image, in units of inches 
+                 (def: guess from size of matrix and x-/y-ticks fontsize)
+
+ -figsize_y FSY :height of created image, in units of inches 
+                 (def: guess from size width value, and whether a colorbar
+                 is included)
+
+ -hold_image    :in addition to saving an image file, open the image and
+                 keep displaying it until a key is pressed in the
+                 terminal (def: don't open image immediately)
+
+ -tight_layout  :use matplotlib's "plt.tight_layout()" functionality in 
+                 arranging the plot 
+
+ -xticks_off    :don't display labels along the x-axis (def: do display them)
+
+ -yticks_off    :don't display labels along the y-axis (def: do display them)
+
+ -ver           :display version number of program
+                 (1.14)
+
+ -date          :display release/editing date of current version
+                 (July 31, 2020)
+
+ -help          :display help (in terminal)
+ -h             :display help (in terminal)
+
+ -hview         :display help (in separate text editor)
+
+------------------------------------------------------------------------------
+
+EXAMPLES ~1~
+
+0) Plot everything in this netcc file:
+
+   fat_mat2d_plot.py                   \
+       -input REST_corr_rz_003.netcc
+
+1) Plot the CC (correlation coefficient) values between [-1, 1]
+
+   fat_mat2d_plot.py                   \
+       -input REST_corr_rz_003.netcc   \
+       -vmin -1                        \
+       -vmax  1                        \
+       -pars CC
+
+2) Plot the FA (fractional anisotropy) values between [0, 1] using
+   the 'cool' colorbar and with a specified prefix:
+
+   fat_mat2d_plot.py                   \
+       -input o.OME_000.grid           \
+       -vmin  0                        \
+       -vmax  1                        \
+       -pars   FA                      \
+       -prefix IMAGE                   \
+       -cbar   cool
+
+3) Plot the MD, L1 and RD values between [0, 3] (-> on a DTI note,
+   these values are *probably* in units of x10^-3 mm^2/s, given this
+   range) with the reversed Greens colorbar:
+
+   fat_mat2d_plot.py                   \
+       -input o.OME_000.grid           \
+       -vmin  0                        \
+       -vmax  3                        \
+       -pars   MD L1 RD                \
+       -prefix IMAGE2                  \
+       -cbar   Greens_r
+
+
+

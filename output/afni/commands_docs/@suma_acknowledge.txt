@@ -1,0 +1,117 @@
+
+=== Output of '@suma_acknowledge --help' ===
+
+
+Overview ~1~
+
+Demo script to create a graph dataset to show names of individuals
+and group, potentially useful for acknowledgements in a talk. 
+The first group is placed at the center of the graph in
+real xyz coordinates, and all other groups are connected to it.
+The group nodes are placed at regular intervals on an input surface.
+
+Each group, including the first group, can have many members.
+Each member is connected to their group with a smaller surface,
+typically with a small icosahedron.
+
+Usage Example ~1~
+
+    tcsh @suma_acknowledge -input bootcamp_list.txt \
+        -surf    std.60.lh.pial.gii \
+        -prefix  AFNI_BOOTCAMP
+
+Options ~1~
+
+    -input dset         :required input text file with format
+                         for each line of the input
+                           first last groupname
+    -surf mysurf        :required surface to place nodes
+    -prefix demo_name   :output prefix for graph dataset
+    
+Optional Options ~1~
+    -center ZERO        :put center coord at x,y,z=0,0,0
+                         otherwise, uses average xyz in surface
+    -subsurf surf2      :surface for surrounding members of group
+                         (use ld2,ld4,ld5,ld6,.... default is ld5) 
+    -scalefactor   s.ss :scale xyz for group nodes (default is 1.0)
+    -reducefactor  s.ss :scale xyz offsets for member nodes (xyz/r)
+                         default is 10
+     
+
+=== Output of '@suma_acknowledge -help' ===
+
+
+Overview ~1~
+
+Demo script to create a graph dataset to show names of individuals
+and group, potentially useful for acknowledgements in a talk. 
+The first group is placed at the center of the graph in
+real xyz coordinates, and all other groups are connected to it.
+The group nodes are placed at regular intervals on an input surface.
+
+Each group, including the first group, can have many members.
+Each member is connected to their group with a smaller surface,
+typically with a small icosahedron.
+
+Usage Example ~1~
+
+    tcsh @suma_acknowledge -input bootcamp_list.txt \
+        -surf    std.60.lh.pial.gii \
+        -prefix  AFNI_BOOTCAMP
+
+Options ~1~
+
+    -input dset         :required input text file with format
+                         for each line of the input
+                           first last groupname
+    -surf mysurf        :required surface to place nodes
+    -prefix demo_name   :output prefix for graph dataset
+    
+Optional Options ~1~
+    -center ZERO        :put center coord at x,y,z=0,0,0
+                         otherwise, uses average xyz in surface
+    -subsurf surf2      :surface for surrounding members of group
+                         (use ld2,ld4,ld5,ld6,.... default is ld5) 
+    -scalefactor   s.ss :scale xyz for group nodes (default is 1.0)
+    -reducefactor  s.ss :scale xyz offsets for member nodes (xyz/r)
+                         default is 10
+     
+
+=== Output of '@suma_acknowledge' (no arguments) ===
+
+
+Overview ~1~
+
+Demo script to create a graph dataset to show names of individuals
+and group, potentially useful for acknowledgements in a talk. 
+The first group is placed at the center of the graph in
+real xyz coordinates, and all other groups are connected to it.
+The group nodes are placed at regular intervals on an input surface.
+
+Each group, including the first group, can have many members.
+Each member is connected to their group with a smaller surface,
+typically with a small icosahedron.
+
+Usage Example ~1~
+
+    tcsh @suma_acknowledge -input bootcamp_list.txt \
+        -surf    std.60.lh.pial.gii \
+        -prefix  AFNI_BOOTCAMP
+
+Options ~1~
+
+    -input dset         :required input text file with format
+                         for each line of the input
+                           first last groupname
+    -surf mysurf        :required surface to place nodes
+    -prefix demo_name   :output prefix for graph dataset
+    
+Optional Options ~1~
+    -center ZERO        :put center coord at x,y,z=0,0,0
+                         otherwise, uses average xyz in surface
+    -subsurf surf2      :surface for surrounding members of group
+                         (use ld2,ld4,ld5,ld6,.... default is ld5) 
+    -scalefactor   s.ss :scale xyz for group nodes (default is 1.0)
+    -reducefactor  s.ss :scale xyz offsets for member nodes (xyz/r)
+                         default is 10
+     

@@ -1,0 +1,31 @@
+
+=== Output of 'mris_topo_fixer --help' ===
+
+
+=== Output of 'mris_topo_fixer -help' ===
+
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+reading input surface /usr/local/freesurfer/subjects/(null)/surf/OS=Linux.orig...
+
+=== Output of 'mris_topo_fixer' (no arguments) ===
+
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+reading input surface /usr/local/freesurfer/subjects/(null)/surf/OS=Linux.orig...

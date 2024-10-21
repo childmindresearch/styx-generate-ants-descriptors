@@ -1,0 +1,136 @@
+
+=== Output of 'apqc_make_tcsh.py --help' ===
+
+** ERROR: unknown opt: '--help'
+
+=== Output of 'apqc_make_tcsh.py -help' ===
+
+
+
+This program creates the single subject (ss) HTML review script
+'@ss_review_html', which itself generates images and text that form
+the afni_proc.py quality control (APQC) HTML.
+
+It is typically run by the afni_proc.py (AP) proc* script itself.
+
+Options:
+
+-uvar_json  UJ    :(req) UJ is a text file of uvars ("user variables")
+                   created by gen_ss_review.py that catalogues important
+                   files in the results directory, for the APQC.
+
+-subj_dir   SD    :(req) location of AP results directory (often '.', as
+                   this program is often run from within the AP results 
+                   directory).
+
+-review_style RS  :(opt) the 'style' of the APQC HTML output HTML.  Allowed
+                   keywords are:
+                       {basic, none, pythonic}
+                   + Using 'pythonic' is the recommended way to go: the
+                   1D images are the clearest and most informative.
+                   It means you need the Python module Matplotlib
+                   (v>=2.2) installed, which should be a light dependency.
+                   + Using 'basic' means that no Matplotlib will be
+                   used, just 1dplot, and the images will be more,
+                   well, basic-looking.
+                   + Using 'none' means no APQC HTML is generated (boooooo).
+
+-mot_grayplot_off :(opt) turn off the grayplot generation.  This
+                   option was created for a specific case of a user who had
+                   a huuuge dataset and the grayplot took annoyingly long
+                   to estimate.  Not recommended to use, generally. 
+
+-vstat_list A B C ...
+                  :(opt, only applicable if stim timing is used in
+                   processing) provide a list of label items to specify
+                   which volumes's images should appear in the vstat
+                   QC block.  Each item should correspond to subbrick
+                   label basename (so not including '_GLT', "#N",
+                   'Tstat', 'Fstat', 'Coef', etc.) in the stats_dset.
+                   'Full_Fstat' is always added/included, even if not
+                   provided in this list. If not used, the program
+                   uses default logic to pick up to 5 items to show.
+
+-ow_mode  OM      :(opt) set overwrite mode; choices are
+                   backup       -> move old QC dir to QC_<time>; make new QC dir
+                   overwrite    -> purge old QC dir and make new QC/
+                   shy          -> (def) make new QC dir only if one does not exist
+                   See also '-bup_dir ..' for additional backup dir 
+                   naming.
+
+-bup_dir  BD      :(opt) if using the '-ow_mode backup' option, then 
+                   you can use this opt to provide the desired name of
+                   the backup QC directory (def: use QC_<time>).
+
+-do_log           :(opt) flag to turn on making a text log of all the 
+                   shell commands that are run when apqc_make_tcsh.py
+                   is executed; mainly for debugging purposes, if 
+                   necessary.
+
+
+
+=== Output of 'apqc_make_tcsh.py' (no arguments) ===
+
+
+
+This program creates the single subject (ss) HTML review script
+'@ss_review_html', which itself generates images and text that form
+the afni_proc.py quality control (APQC) HTML.
+
+It is typically run by the afni_proc.py (AP) proc* script itself.
+
+Options:
+
+-uvar_json  UJ    :(req) UJ is a text file of uvars ("user variables")
+                   created by gen_ss_review.py that catalogues important
+                   files in the results directory, for the APQC.
+
+-subj_dir   SD    :(req) location of AP results directory (often '.', as
+                   this program is often run from within the AP results 
+                   directory).
+
+-review_style RS  :(opt) the 'style' of the APQC HTML output HTML.  Allowed
+                   keywords are:
+                       {basic, none, pythonic}
+                   + Using 'pythonic' is the recommended way to go: the
+                   1D images are the clearest and most informative.
+                   It means you need the Python module Matplotlib
+                   (v>=2.2) installed, which should be a light dependency.
+                   + Using 'basic' means that no Matplotlib will be
+                   used, just 1dplot, and the images will be more,
+                   well, basic-looking.
+                   + Using 'none' means no APQC HTML is generated (boooooo).
+
+-mot_grayplot_off :(opt) turn off the grayplot generation.  This
+                   option was created for a specific case of a user who had
+                   a huuuge dataset and the grayplot took annoyingly long
+                   to estimate.  Not recommended to use, generally. 
+
+-vstat_list A B C ...
+                  :(opt, only applicable if stim timing is used in
+                   processing) provide a list of label items to specify
+                   which volumes's images should appear in the vstat
+                   QC block.  Each item should correspond to subbrick
+                   label basename (so not including '_GLT', "#N",
+                   'Tstat', 'Fstat', 'Coef', etc.) in the stats_dset.
+                   'Full_Fstat' is always added/included, even if not
+                   provided in this list. If not used, the program
+                   uses default logic to pick up to 5 items to show.
+
+-ow_mode  OM      :(opt) set overwrite mode; choices are
+                   backup       -> move old QC dir to QC_<time>; make new QC dir
+                   overwrite    -> purge old QC dir and make new QC/
+                   shy          -> (def) make new QC dir only if one does not exist
+                   See also '-bup_dir ..' for additional backup dir 
+                   naming.
+
+-bup_dir  BD      :(opt) if using the '-ow_mode backup' option, then 
+                   you can use this opt to provide the desired name of
+                   the backup QC directory (def: use QC_<time>).
+
+-do_log           :(opt) flag to turn on making a text log of all the 
+                   shell commands that are run when apqc_make_tcsh.py
+                   is executed; mainly for debugging purposes, if 
+                   necessary.
+
+

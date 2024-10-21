@@ -1,0 +1,22 @@
+
+=== Output of 'adjunct_is_label.py --help' ===
+
+1
+
+=== Output of 'adjunct_is_label.py -help' ===
+
+ 
+Subsidiary of @chauffeur_afni, not really a program deserving a
+help message.
+
+Just a little, *tiny* wafer...
+
+
+=== Output of 'adjunct_is_label.py' (no arguments) ===
+
+ 
+Subsidiary of @chauffeur_afni, not really a program deserving a
+help message.
+
+Just a little, *tiny* wafer...
+

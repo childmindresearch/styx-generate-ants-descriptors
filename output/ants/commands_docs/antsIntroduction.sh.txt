@@ -1,0 +1,138 @@
+
+=== Output of 'antsIntroduction.sh --help' ===
+
+
+Usage:
+
+antsIntroduction.sh -d ImageDimension -r fixed.ext -i moving.ext
+
+Compulsory arguments:
+
+-d:  ImageDimension: 2 or 3 (for 2 or 3 Dimensional registration)
+
+-i:  Input image
+
+-r:  Reference image
+
+Optional arguments
+
+-f:  Force script to proceed even if headers may be incompatible (0 = no, 1 = yes (default))
+
+-l:  Labels-In-Fixed-Image-Space-To-Deform-To-Moving-Image (default is off)
+
+-m:  Max-iterations
+
+-n:  N4BiasFieldCorrection of moving image ( 0 = off (default); 1 = on )
+
+-o:  OUTPREFIX; A prefix that is prepended to all output files.
+
+-q:  Perform a Quality Check (QC) of the result ( 0 = off (default); 1 = on ).
+
+-s:  Type of similarity metric used for registration.
+
+-t:  Type of transformation model used for registration.
+
+ You can change the values for each of these methods in this script.
+
+ Use antsIntroduction.sh -h for extended help.
+--------------------------------------------------------------------------------------
+ ANTS was created by:
+ Brian B. Avants, Nick Tustison and Gang Song
+ Penn Image Computing And Science Laboratory
+ University of Pennsylvania
+--------------------------------------------------------------------------------------
+ script written by N.M. van Strien, www.mri-tutorial.com | NTNU MR-Center
+--------------------------------------------------------------------------------------
+
+
+=== Output of 'antsIntroduction.sh -help' ===
+
+
+Usage:
+
+antsIntroduction.sh -d ImageDimension -r fixed.ext -i moving.ext
+
+Compulsory arguments:
+
+-d:  ImageDimension: 2 or 3 (for 2 or 3 Dimensional registration)
+
+-i:  Input image
+
+-r:  Reference image
+
+Optional arguments
+
+-f:  Force script to proceed even if headers may be incompatible (0 = no, 1 = yes (default))
+
+-l:  Labels-In-Fixed-Image-Space-To-Deform-To-Moving-Image (default is off)
+
+-m:  Max-iterations
+
+-n:  N4BiasFieldCorrection of moving image ( 0 = off (default); 1 = on )
+
+-o:  OUTPREFIX; A prefix that is prepended to all output files.
+
+-q:  Perform a Quality Check (QC) of the result ( 0 = off (default); 1 = on ).
+
+-s:  Type of similarity metric used for registration.
+
+-t:  Type of transformation model used for registration.
+
+ You can change the values for each of these methods in this script.
+
+ Use antsIntroduction.sh -h for extended help.
+--------------------------------------------------------------------------------------
+ ANTS was created by:
+ Brian B. Avants, Nick Tustison and Gang Song
+ Penn Image Computing And Science Laboratory
+ University of Pennsylvania
+--------------------------------------------------------------------------------------
+ script written by N.M. van Strien, www.mri-tutorial.com | NTNU MR-Center
+--------------------------------------------------------------------------------------
+
+
+=== Output of 'antsIntroduction.sh' (no arguments) ===
+
+
+Usage:
+
+antsIntroduction.sh -d ImageDimension -r fixed.ext -i moving.ext
+
+Compulsory arguments:
+
+-d:  ImageDimension: 2 or 3 (for 2 or 3 Dimensional registration)
+
+-i:  Input image
+
+-r:  Reference image
+
+Optional arguments
+
+-f:  Force script to proceed even if headers may be incompatible (0 = no, 1 = yes (default))
+
+-l:  Labels-In-Fixed-Image-Space-To-Deform-To-Moving-Image (default is off)
+
+-m:  Max-iterations
+
+-n:  N4BiasFieldCorrection of moving image ( 0 = off (default); 1 = on )
+
+-o:  OUTPREFIX; A prefix that is prepended to all output files.
+
+-q:  Perform a Quality Check (QC) of the result ( 0 = off (default); 1 = on ).
+
+-s:  Type of similarity metric used for registration.
+
+-t:  Type of transformation model used for registration.
+
+ You can change the values for each of these methods in this script.
+
+ Use antsIntroduction.sh -h for extended help.
+--------------------------------------------------------------------------------------
+ ANTS was created by:
+ Brian B. Avants, Nick Tustison and Gang Song
+ Penn Image Computing And Science Laboratory
+ University of Pennsylvania
+--------------------------------------------------------------------------------------
+ script written by N.M. van Strien, www.mri-tutorial.com | NTNU MR-Center
+--------------------------------------------------------------------------------------
+

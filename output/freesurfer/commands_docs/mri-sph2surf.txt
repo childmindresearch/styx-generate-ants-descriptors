@@ -1,0 +1,67 @@
+
+=== Output of 'mri-sph2surf --help' ===
+
+ERROR: Flag --help unrecognized.
+--help
+
+USAGE: 
+mri-sph2surf 
+   -i        instem             required
+   -o        outstem            required
+   -hemi     lh, rh hemisphere  required
+   -s        subject            required
+   -offset   offset             0
+   -svitdir  dir                /usr/local/freesurfer/subjects/subject/svit
+   -umask    newumask
+   -verbose 
+   -version 
+
+ mri-sph2surf 7.4.1 
+
+
+=== Output of 'mri-sph2surf -help' ===
+
+
+ mri-sph2surf 7.4.1 
+
+USAGE: 
+mri-sph2surf 
+   -i        instem             required
+   -o        outstem            required
+   -hemi     lh, rh hemisphere  required
+   -s        subject            required
+   -offset   offset             0
+   -svitdir  dir                /usr/local/freesurfer/subjects/subject/svit
+   -umask    newumask
+   -verbose 
+   -version 
+   -help 
+
+
+instem is the stem of a bfloat file.  The input file name
+  must take the form instem-lh_000.bfloat (or rh).  This is
+  the form produced by mri-func2sph.
+
+The output file will have the name outstem-lh.w (or rh).
+
+offset is the zero-based plane/frame number (same as in paint).
+
+
+
+=== Output of 'mri-sph2surf' (no arguments) ===
+
+
+USAGE: 
+mri-sph2surf 
+   -i        instem             required
+   -o        outstem            required
+   -hemi     lh, rh hemisphere  required
+   -s        subject            required
+   -offset   offset             0
+   -svitdir  dir                /usr/local/freesurfer/subjects/subject/svit
+   -umask    newumask
+   -verbose 
+   -version 
+
+ mri-sph2surf 7.4.1 
+

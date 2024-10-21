@@ -1,0 +1,477 @@
+
+=== Output of 'mris_preproc --help' ===
+
+
+USAGE: mris_prepoc
+
+  --out outfile
+  --target TargetSubject (requires ?h.TargetSubject.sphere.reg)
+  --hemi hemi 
+
+  --meas surfmeas
+  --label annotname : look in label/hemi.annotname.(annot,mgz) and use mapmethod nnf
+  --measdir subdir : look in subdir instead of surf
+
+  --s subj1 <--s subj2 ... --s subjN>
+  --fsgd fsgdfile
+  --f subjectlistfile
+  --qdec qdectable
+  --qdec-long longitudinal qdectable
+
+  --is surfmeasfile <--is surfmeasfile> 
+  --srcfmt fmt : source format
+  --surfdir dirname    : alternative directory (instead of surf)
+  --tal-xyz surfname : output xyz in mni305 for each subject
+
+  --iv volmeasfile reg <--iv volmeasfile reg>
+  --projfrac frac : projection fraction for vol2surf
+  --projfrac-max min max delta : find max along projection for vol2surf
+  --projfrac-avg min max delta : compute average along projection for vol2surf
+  --no-mask-non-cortex : do not mask out non-cortex in vol2surf
+
+  --sf sessfile        : fsfast session file
+  --df sessdirfile     : fsfast session directory file
+  --analysis analysis  : fsfast analysis
+  --contrast constrast : fsfast contrast
+  --cvar               : use fsfast contrast variance (cesvar)
+  --offset             : use fsfast mean offset (h-offset)
+  --map mapname        : use fsfast contrast/map
+
+  --etiv : divide each subject's value by the Estimated Total Intra Cranial Volume as found in aseg.stats
+  --fwhm fwhm : smooth by fwhm mm on the target surface
+  --fwhm-src fwhmsrc : smooth by fwhm mm on the source surface
+
+  --niters niters : smooth by niters on the target surface
+  --niters-src niterssrc : smooth by niters on the source surface
+
+  --no-cortex-only : include meidal wall
+  --cortex-only : exclude medial wall (default)
+
+  --mgz : use mgz format internally (mainly good for caching)
+
+  --no-jac : turn off jacobian correction (automatically turned on for
+      area, area.mid, area.pial, and volume)
+
+  --paired-diff
+  --paired-diff-norm
+  --paired-diff-norm1
+  --paired-diff-norm2
+
+  --cache-out cachefile
+  --cache-in  cachefile
+  --cache-out-only tmpdir
+  --cache-out-update tmpdir : implies --cache-out-only
+
+  --no-prune : do not prune, ie, if any subject has a 0 in a vertex, that vertex 
+     is set to 0 (pruned) for all subjects; this flag turns pruning off
+  --mean : compute the mean of all inputs
+  --std : compute the standard deviation of all inputs
+  --reshape : reshape spatial dimensions
+  --surfreg SurfReg : default is sphere.reg
+
+  --SUBJECTS_DIR SUBJECTS_DIR
+  --synth
+  --tmpdir dir : use tmpdir. Implies --nocleanup.
+  --nocleanup  : do not delete tmpdir
+  --cleanup  : delete tmpdir (default)
+  --log logfile : specify log file
+  --nolog    : do not create a log file
+  --help    : short descriptive help
+  --version : script version info
+  --debug   
+
+Version: mris_preproc 7.4.1
+
+SUMMARY
+
+Script to prepare surface-based data for high-level analysis by
+resampling surface or volume source data to a common sujbect (usually
+an average subject) and then concatenating them into one file which
+can then be used by a number of programs (eg, mri_glmfit).
+
+COMMAND-LINE ARGUMENTS
+
+--out outfile
+
+Save output here.
+
+--target TargetSubject
+
+Subject to use as the common-space. All the input data will be
+resampled to the surface of this subject.  TargetSubject is created
+with make_average_subject.  Each input subject must have a
+surf/?h.TargetSubject.sphere.reg file. This can be created with
+surfreg --s inputsubject --t TargetSubject.
+
+--hemi hemi
+
+Use hemi for source and target surfaces. hemi can be lh or rh.
+
+--meas surfmeasure
+
+Use subject/surf/hemi.surfmeasure as input. For use with --s, --fsgd,
+or --f.  Implies --srcfmt curv.
+
+--tal-xyz surfname
+
+Extract vertex mni305 xyz from subject/surf/hemi.surfname to use as
+input. For use with --s, --fsgd, or --f.  surfname does not include
+hemi. Eg, white, pial. Creates 3 frames for each input subject.
+
+--s subjN
+
+Specify an input subject on the command-line. All subjects must be
+specified in this way on the command-line (ie, each with its own
+--s). For use with --meas.
+
+--fsgd fsgdfile
+
+Specify the list of input subjects from the fsgd file. The fsgd file can then
+be used with mri_glmfit (unless --paired-diff is specified). The subject list
+is obtained from the "Input" lines. See surfer.nmr.mgh.harvard.edu/docs/fsgdf.txt
+for more info. For use with --meas.
+
+--f subjlistfile
+
+List all subjects separated by white space in subjlistfile. This is just an
+alternative to using an fsgd file. For use with --meas.
+
+--qdec qdectable
+
+Specify list of subjects via qdec table file. It is assumed that the first column
+is the "fsid" (subject id). Rows starting with "#" are skipped.
+
+--qdec-long qdectable
+
+Specify list of subjects via longitudinal qdec table file. It is assumed that the
+first column is the "fsid" (subject_tp id) and the second is "fsid-base" that
+specifies the base name (fixed per subject). Internally longitudinal subject ids 
+are created as <fsid>.long.<fsid-base>. Rows starting with "#" are skipped. 
+
+--is surfmeasfile
+
+Specify full path to input surface measure file. This is an alternative to
+using --meas. This still requires that a subject list be supplied.
+
+--surfdir dirname
+
+Specify a directory other than the default <subjid>/surf. Path must be at the same
+level as surf.  Ex. --surfdir dtrans 
+
+--srcfmt fmt
+
+Specify source format when using --is. This is mainly needed when the
+input format is not one recognized by mri_convert (eg, "curv" format
+that thickness files are in). --meas implies --srcfmt curv. Can also
+use "paint" or "w".
+
+--iv volmeasfile
+
+Specify full path to a volume file and its registration matrix file.
+The registration matrix file is of the type accepted/created by
+tkregister2. The volume is sampled to the surface, and the result is
+used as the input surface measure. This is an alternative to
+using --meas. This still requires that a subject list be supplied.
+The non-cortical area (eg in the medial wall) is set to 0 unless
+--no-mask-non-cortex is specified.
+
+--projfrac projfrac
+
+When sampling a volume onto the surface, sample a fraction of the thickness
+along the surface normal. projfrac is 0-1. Default is 0.
+
+--projfrac-max min max delta 
+
+When sampling a volume onto the surface, return the maximum along the
+surface normal sampled at fractions of the thickness between min and
+max at increments of delta.  Eg, 0 1 .1 means to sample every 10% of
+the thickness between the white and pial surfaces. Just passes
+the arguments to mri_vol2surf with the --projfrac-max flag.
+
+--fwhm fwhm
+
+Smooth the data on the target surface by fwhm mm. As a workflow strategy, it
+might make more sense to run it without any smoothing, and then use
+mri_surf2surf to smooth the output. That way you can smooth to whatever
+levels you want without having to re-run mris_preproc.
+
+--fwhm-src fwhm
+
+Smooth the data on the source surface by fwhm mm. It is better to do it
+on the target surface.
+
+--niters niters
+--niters-src niterssrc
+
+Smooth target or source by niters or nitersrc nearest neighbor iterations.
+This is an alternative to specifying the smoothing level with FWHM.
+
+--smooth-cortex-only
+
+Only applies with -qcache. Only smooth data if it is part of the ?h.cortex.label.
+This prevents values in the medial wall (which are meaningless) from being smoothed
+into cortical areas. At some point in the future, this will be the default and
+you will have to turn it off with -no-smooth-cortex-only. This documentation will
+reflect this change.
+
+--no-smooth-cortex-only
+
+Allow medial wall values to smooth into cortex (default).
+
+--paired-diff
+
+After concatenating all the inputs together, create a new output file by
+computing paired differences, ie, Input1-Input2, Input3-Input4, etc.
+There must be an even number of inputs. The inputs are "pruned" before
+taking the difference, meaning that values for all inputs are set to 0
+if any individual is 0.
+
+--paired-diff-norm
+
+Same as --paired-diff, but normalizes by average of time points, ie,
+(Input1-Input2)/((Input1+Input2)/2).
+
+--paired-diff-norm1
+
+Same as --paired-diff, but normalizes by time point 1, ie,
+(Input1-Input2)/Input1.
+
+--paired-diff-norm2
+
+Same as --paired-diff, but normalizes by time point 2, ie,
+(Input1-Input2)/Input2.
+
+--cache-out cachefile
+--cache-in  cachefile
+--cache-out-only tmpdir
+--cache-out-update tmpdir
+
+Unless you are planning to do some type of semi-real-time processing,
+you can ignore caching. With --cache-out cachefile, mris_preproc will
+save the data for each subject, after resampling to the target and
+smoothing, in the subjects surf directory as hemi.cachefile.mgh. In a
+subsequent call to mris_preproc, you can specify --cache-in cachefile,
+and the precomputed data will be used. If you are going to smooth your
+data at some point, do it when caching out. If you want to cache
+without actually creating an output, then --cache-out-only. You must
+supply a tmpdir, which will be deleted at the end of the script. None
+of the paired diff options will affect caching. --cache-out-update is
+the same as --cache-out-only except the output file will not be
+recreated if it already exists (does not check dates).
+
+  mris_preproc --target fsaverage --hemi lh --s subj1 --s subj2 \
+    --meas thickness --fwhm 5 --cache-out thickness.avg7.sm5 \
+    --cache-out-only tmp.mris_preproc
+  mris_preproc --target fsaverage --hemi lh --s subj1 --s subj2 \
+    --cache-in thickness.avg7.sm5 --out s12.thickness.avg7.sm5.mgh \
+
+--mean
+
+After concatenating all the inputs together (and possibly computing
+paired diffs), compute the mean of all inputs. This may be helpful
+as part of a lower-level analysis. Eg, if there are multiple measures
+for each subjects, these can be averaged together for each subject
+separately, then combined in a second call to mris_preproc.
+
+--std
+
+Similar to --mean, except standard deviation is computed.
+
+--synth
+
+Synthesize the input data with white gaussian noise. For volume source,
+the volume is synthesized prior to resampling to the surface. The
+synthesis is done prior to any smoothing. This is mainly good for testing
+and running simulations.
+
+--surfreg SurfReg
+
+Use hemi.SurfReg as the surface registration to the common space. Default
+is sphere.reg.
+
+--reshape
+
+Reshape spatial dimensions. Normally, the output volume-encoded
+surface file will have spatial dimension of nvertices-by-1-by-1 (ie,
+number of columns equals number of vertices, nrows=nslices=1). This
+will not work for ANALYZE and NIFTI formats because they cannot
+represent a dimension with more than 32k elements.  This flag
+instructs mris_preproc to change the number of cols, rows, and slices
+so that no one dimension is greater than 32k.  When ANALYZE and NIFTI
+formats are automatically detected, reshaping is turned on.
+
+--tmpdir tmpdir
+
+Use tmpdir. By default, creates a tmpdir in the output directory.
+Implies --nocleanup
+
+--nocleanup
+
+Do not delete temporary directory and files.
+
+--cleanup
+
+DO delete temporary directory and files.  Done by default.
+
+
+FreeSurfer Functional Analysis Stream (FS-FAST) OPTIONS:
+
+When running mris_preproc in conjunction with FS-FAST, you only need
+to run the first level anlaysis (selxavg-sess) and the first level
+contrast (stxgrinder-sess). It is not necessary to sample onto the
+surface (this will be done by this script).  As with the other FS-FAST
+commands, you specify the sessions with --sf and --df (note the two
+dashes). Specify the analysis with --analysis (or just --a) and the
+contrast with --contrast (or just --c). By default, the volume
+resampled onto the surface will be analysis/contrast/ces (ie, the
+contrast effect size).  This can be changed in several ways. First,
+with --cvar, in which case it will use cesvar instead. Second,
+with --offset, then a contrast is not used; rather it samples
+analysis/h-offset onto the surface. Third, with --map mapname, in
+which case it uses analysis/contrast/mapname.
+
+
+EXAMPLES
+
+1. Resample abcXX-anat/surf/lh.thickness onto fsaverage:
+
+mris_preproc --s abc01-anat --s abc02-anat --s abc03-anat --s abc04-anat \
+  --target fsaverage --hemi lh --meas thickness --out abc-lh-thickness.mgh
+
+2. Same as #1 but using an fsgd file (which would have the abcXXs as Inputs):
+
+mris_preproc --fsgd abc.fsgd --target fsaverage --hemi lh --meas thickness \
+  --out abc-lh-thickness.mgh
+
+3. Same as #1 but smooths by 5mm fwhm:
+
+mris_preproc --s abc01-anat --s abc02-anat --s abc03-anat --s abc04-anat \
+  --target fsaverage --hemi lh --meas thickness \
+  --fwhm 5 --out abc-lh-thickness.sm5.mgh
+
+4. Same as #1 but using full paths. Note there is no --meas, but
+   --fsgd still needed to provide list of subjects, which must be in
+   the same order as the --isp. Also note that --srcfmt curv is used:
+
+mris_preproc --target fsaverage --hemi lh --out abc-lh-thickness.mgh \
+  --fsgd abc.fsgd --srcfmt curv \
+  --isp abc01-anat/surf/lh.thickness \
+  --isp abc02-anat/surf/lh.thickness \
+  --isp abc03-anat/surf/lh.thickness \
+  --isp abc04-anat/surf/lh.thickness
+
+5. Same as #2 but computes paired differneces, ie, there will be two
+   frames in the output instead of four. The first frame will be
+   abc01-abc02, and the second frame will be abc03-abc04:
+
+mris_preproc --fsgd abc.fsgd --target fsaverage --hemi lh --meas thickness \
+  --out abc-lh-thickness-pdiff.mgh --paired-diff
+
+6. Sample volume data (no --meas):
+
+mris_preproc --fsgd abc.fsgd  --target fsaverage --hemi lh \
+  --out abc-lh-vol.mgh \
+  --ivp abc01-func/bold/main/nvr/ces.bhdr abc01-func/bold/register.dat \
+  --ivp abc02-func/bold/main/nvr/ces.bhdr abc02-func/bold/register.dat \
+  --ivp abc03-func/bold/main/nvr/ces.bhdr abc03-func/bold/register.dat \
+  --ivp abc04-func/bold/main/nvr/ces.bhdr abc04-func/bold/register.dat
+
+7. Prepare functional analysis from FS-FAST for surface-based group analysis
+
+mris_preproc --sf sessid --analysis edp --contrast probe --hemi lh \
+  --out edp-probe-lh.mgh --fsgd abc.fsgd
+
+This will find the ces volume from inside the session/analysis/contrast
+directory, resample it to the common space, and concatenate all the
+subjects together into edp-probe-lh.mgh. The fsgd file is optional. This
+can then be analyzed with something like:
+
+mri_glmfit --y edp-probe-lh.mgh --surf fsaverage lh --osgm --glmdir glm-edp-probe-lh
+
+
+
+=== Output of 'mris_preproc -help' ===
+
+ERROR: flag -help not recognized
+
+=== Output of 'mris_preproc' (no arguments) ===
+
+
+USAGE: mris_prepoc
+
+  --out outfile
+  --target TargetSubject (requires ?h.TargetSubject.sphere.reg)
+  --hemi hemi 
+
+  --meas surfmeas
+  --label annotname : look in label/hemi.annotname.(annot,mgz) and use mapmethod nnf
+  --measdir subdir : look in subdir instead of surf
+
+  --s subj1 <--s subj2 ... --s subjN>
+  --fsgd fsgdfile
+  --f subjectlistfile
+  --qdec qdectable
+  --qdec-long longitudinal qdectable
+
+  --is surfmeasfile <--is surfmeasfile> 
+  --srcfmt fmt : source format
+  --surfdir dirname    : alternative directory (instead of surf)
+  --tal-xyz surfname : output xyz in mni305 for each subject
+
+  --iv volmeasfile reg <--iv volmeasfile reg>
+  --projfrac frac : projection fraction for vol2surf
+  --projfrac-max min max delta : find max along projection for vol2surf
+  --projfrac-avg min max delta : compute average along projection for vol2surf
+  --no-mask-non-cortex : do not mask out non-cortex in vol2surf
+
+  --sf sessfile        : fsfast session file
+  --df sessdirfile     : fsfast session directory file
+  --analysis analysis  : fsfast analysis
+  --contrast constrast : fsfast contrast
+  --cvar               : use fsfast contrast variance (cesvar)
+  --offset             : use fsfast mean offset (h-offset)
+  --map mapname        : use fsfast contrast/map
+
+  --etiv : divide each subject's value by the Estimated Total Intra Cranial Volume as found in aseg.stats
+  --fwhm fwhm : smooth by fwhm mm on the target surface
+  --fwhm-src fwhmsrc : smooth by fwhm mm on the source surface
+
+  --niters niters : smooth by niters on the target surface
+  --niters-src niterssrc : smooth by niters on the source surface
+
+  --no-cortex-only : include meidal wall
+  --cortex-only : exclude medial wall (default)
+
+  --mgz : use mgz format internally (mainly good for caching)
+
+  --no-jac : turn off jacobian correction (automatically turned on for
+      area, area.mid, area.pial, and volume)
+
+  --paired-diff
+  --paired-diff-norm
+  --paired-diff-norm1
+  --paired-diff-norm2
+
+  --cache-out cachefile
+  --cache-in  cachefile
+  --cache-out-only tmpdir
+  --cache-out-update tmpdir : implies --cache-out-only
+
+  --no-prune : do not prune, ie, if any subject has a 0 in a vertex, that vertex 
+     is set to 0 (pruned) for all subjects; this flag turns pruning off
+  --mean : compute the mean of all inputs
+  --std : compute the standard deviation of all inputs
+  --reshape : reshape spatial dimensions
+  --surfreg SurfReg : default is sphere.reg
+
+  --SUBJECTS_DIR SUBJECTS_DIR
+  --synth
+  --tmpdir dir : use tmpdir. Implies --nocleanup.
+  --nocleanup  : do not delete tmpdir
+  --cleanup  : delete tmpdir (default)
+  --log logfile : specify log file
+  --nolog    : do not create a log file
+  --help    : short descriptive help
+  --version : script version info
+  --debug   
+

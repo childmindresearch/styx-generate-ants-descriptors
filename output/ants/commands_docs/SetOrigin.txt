@@ -1,0 +1,12 @@
+
+=== Output of 'SetOrigin --help' ===
+
+Usage:   SetOrigin  Dimension infile.hdr outfile.nii  OriginX OriginY {OriginZ} 
+
+=== Output of 'SetOrigin -help' ===
+
+Usage:   SetOrigin  Dimension infile.hdr outfile.nii  OriginX OriginY {OriginZ} 
+
+=== Output of 'SetOrigin' (no arguments) ===
+
+Usage:   SetOrigin  Dimension infile.hdr outfile.nii  OriginX OriginY {OriginZ} 

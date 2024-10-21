@@ -1,0 +1,12 @@
+
+=== Output of 'minc2seqinfo --help' ===
+
+ERROR: --help does not exist
+
+=== Output of 'minc2seqinfo -help' ===
+
+ERROR: -help does not exist
+
+=== Output of 'minc2seqinfo' (no arguments) ===
+
+Usage: minc2seqinfo mincfile <seqinfofile>

@@ -1,0 +1,67 @@
+
+=== Output of 'calc_grad_perc_dev --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+calc_grad_perc_dev (Version 1.0)
+Copyright(c) 2003, University of Oxford (Mark Jenkinson)
+
+Usage: 
+calc_grad_perc_dev [options] --fullwarp=<warp image> --out=<basename>
+
+Compulsory arguments (You MUST set one or more of):
+	--fullwarp	full warp image from gradient_unwarp.py
+	-o,--out	output basename
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'calc_grad_perc_dev -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+calc_grad_perc_dev (Version 1.0)
+Copyright(c) 2003, University of Oxford (Mark Jenkinson)
+
+Usage: 
+calc_grad_perc_dev [options] --fullwarp=<warp image> --out=<basename>
+
+Compulsory arguments (You MUST set one or more of):
+	--fullwarp	full warp image from gradient_unwarp.py
+	-o,--out	output basename
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'calc_grad_perc_dev' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	--fullwarp	full warp image from gradient_unwarp.py
+	-o,--out	output basename
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+calc_grad_perc_dev (Version 1.0)
+Copyright(c) 2003, University of Oxford (Mark Jenkinson)
+
+Usage: 
+calc_grad_perc_dev [options] --fullwarp=<warp image> --out=<basename>
+
+Compulsory arguments (You MUST set one or more of):
+	--fullwarp	full warp image from gradient_unwarp.py
+	-o,--out	output basename
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

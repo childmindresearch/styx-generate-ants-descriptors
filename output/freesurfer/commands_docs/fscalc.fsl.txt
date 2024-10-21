@@ -1,0 +1,81 @@
+
+=== Output of 'fscalc.fsl --help' ===
+
+
+fscalc.fsl - a freesurfer wrapper around fslmaths
+
+This is a utility that extends fslmaths so that any format that can
+be read/written by freesurfer can be used. It operates in the same
+way as fslmaths, just use the same command line flags and arguments
+with the exception that the input file formats can be anything that
+freesurfer reads, and the output file format can be anything that
+freesurfer writes. Forces output data type to be float.
+
+This can work on some surfaces if the number of vertices is not
+prime. More specficially, the largest prime factor of the number
+of vertices cannot be greater than 2^15.
+
+To use it in this way, add --surf subject hemi. This will
+run mri_surf2surf to reshape the data into a dimension that can
+fit into nifti.
+
+By default, surfaces are reshaped to try to fit inside of nifti,
+and the ouput is also reshaped. To convert back to 1d spatial dims,
+add --reshape1d.
+
+See fslmaths for more info.
+
+
+=== Output of 'fscalc.fsl -help' ===
+
+
+fscalc.fsl - a freesurfer wrapper around fslmaths
+
+This is a utility that extends fslmaths so that any format that can
+be read/written by freesurfer can be used. It operates in the same
+way as fslmaths, just use the same command line flags and arguments
+with the exception that the input file formats can be anything that
+freesurfer reads, and the output file format can be anything that
+freesurfer writes. Forces output data type to be float.
+
+This can work on some surfaces if the number of vertices is not
+prime. More specficially, the largest prime factor of the number
+of vertices cannot be greater than 2^15.
+
+To use it in this way, add --surf subject hemi. This will
+run mri_surf2surf to reshape the data into a dimension that can
+fit into nifti.
+
+By default, surfaces are reshaped to try to fit inside of nifti,
+and the ouput is also reshaped. To convert back to 1d spatial dims,
+add --reshape1d.
+
+See fslmaths for more info.
+
+
+=== Output of 'fscalc.fsl' (no arguments) ===
+
+
+fscalc.fsl - a freesurfer wrapper around fslmaths
+
+This is a utility that extends fslmaths so that any format that can
+be read/written by freesurfer can be used. It operates in the same
+way as fslmaths, just use the same command line flags and arguments
+with the exception that the input file formats can be anything that
+freesurfer reads, and the output file format can be anything that
+freesurfer writes. Forces output data type to be float.
+
+This can work on some surfaces if the number of vertices is not
+prime. More specficially, the largest prime factor of the number
+of vertices cannot be greater than 2^15.
+
+To use it in this way, add --surf subject hemi. This will
+run mri_surf2surf to reshape the data into a dimension that can
+fit into nifti.
+
+By default, surfaces are reshaped to try to fit inside of nifti,
+and the ouput is also reshaped. To convert back to 1d spatial dims,
+add --reshape1d.
+
+See fslmaths for more info.
+

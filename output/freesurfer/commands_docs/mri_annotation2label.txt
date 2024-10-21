@@ -1,0 +1,189 @@
+
+=== Output of 'mri_annotation2label --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_annotation2label 
+
+   --subject    source subject
+   --hemi       hemisphere (lh or rh) (with surface)
+   --lobes <LobesFile>
+   	Create an annotation based on cortical lobes.
+   	Note that the precentral and postcentral labels are not
+   	included as part of the 'frontal' and 'parietal' lobes.
+   	The lobar annotation is saved to <LobesFile>.
+   --lobesStrict <LobesFile>
+   	Use a slightly stricter lobe definition that adds the
+   	precentral to the 'frontal' and includes the postcentral
+   	with the 'parietal' lobe.
+   	The lobar annotation is saved to <LobesFile>.
+   --lobesStrictPHCG <LobesFile>
+   	Use stricter lobe definition, and adds an additional lobe called
+   	parahippocampalgyrus, which includes parahippocampal, entorhinal,
+   	temporalpole and fusiform.
+   	The lobar annotation is saved to <LobesFile>.
+
+Output options:
+   --label <int> : extract only single label 
+   --labelbase  output will be base-XXX.label 
+   --outdir dir :  output will be dir/hemi.name.label 
+   --seg segfile : output will be a segmentation 'volume'
+   --segbase base : add base to the annotation number to get seg value
+   --ctab colortable : colortable like FreeSurferColorLUT.txt
+   --border borderfile : output will be a binary overlay of the parc borders 
+   --border-annot borderannot : default goes in subject/label
+
+   --annotation as found in SUBJDIR/labels <aparc>
+   --sd <SUBJECTS_DIR>  specify SUBJECTS_DIR on cmdline
+   --surface    name of surface <white>. Only affect xyz in label.
+   --stat statfile : surface overlay file (curv or volume format).
+
+   --table : obsolete. Now gets from annotation file
+
+   --help       display help
+   --version    display version
+
+This program will convert an annotation into multiple label files
+or into a segmentaion 'volume'. It can also create a border overlay.
+
+User specifies the subject, hemisphere, label base, and (optionally)
+the annotation base and surface. By default, the annotation base is
+aparc. The program will retrieves the annotations from
+SUBJECTS_DIR/subject/label/hemi_annotbase.annot. A separate label file
+is created for each annotation index. The output file names can take
+one of two forms: (1) If --outdir dir is used, then the output will
+be dir/hemi.name.lable, where name is the corresponding name in 
+the embedded color table. (2) If --labelbase is used, name of the file conforms to
+labelbase-XXX.label, where XXX is the zero-padded 3 digit annotation
+index. If labelbase includes a directory path, that directory must
+already exist. If there are no points in the annotation file for a
+particular index, no label file is created. The xyz coordinates in the
+label file are obtained from the values at that vertex of the
+specified surface. The default surface is 'white'. Other options
+include 'pial' and 'orig'.
+
+The human-readable names that correspond to the annotation indices for 
+aparc are embedded in the annotation file itself. It is no longer
+necessary (or possible) to specify the table explicitly with the
+--table option.
+ 
+--seg segfile 
+--segbase segbase 
+ 
+Convert annotation into a volume-encoded surface segmentation file. This 
+is a volume format where the value at each 'voxel' is an integer index.
+The value of the index depends on several factors. By default, it should 
+match the index for the label as found in $FREESURFER_HOME/FreeSurferColorLUT.txt;
+this requires that the annotation be either aparc or aparc.a2005s. If 
+aparc and hemi=lh, then segbase=1000, etc. This makes the index match
+that found in aparc+aseg.mgz. If the annotation is neither 
+aparc nor aparc.a2005s, then segbase=0. This behavior can be overridden 
+by manually specifying a segbase with --segbase.
+
+ 
+--border borderfile 
+
+Creates an overlay file in which the boundaries of the parcellations are 
+set to 1 and everything else is 0. This can then be loaded as an overlay
+in tksurfer.
+ 
+ --stat StatFile
+ 
+ Put the value from the StatFile into the Stat field in the label. StatFile
+ must be a curv or surface overlay (eg, mgh) format (eg, lh.thickness).
+ 
+ 
+Convert annotation into a volume-encoded surface segmentation file. This 
+Bugs:
+
+  If the name of the label base does not include a forward slash (ie, '/') 
+  then the program will attempt to put the label files in 
+  $SUBJECTS_DIR/subject/label.  So, if you want the labels to go into the 
+  current directory, make sure to put a './' in front of the label base.
+
+Example:
+
+  mri_annotation2label --subject LW --hemi rh 
+        --labelbase ./labels/aparc-rh 
+
+  This will get annotations from $SUBJECTS_DIR/LW/label/rh_aparc.annot
+  and then create about 94 label files: aparc-rh-001.label, 
+  aparc-rh-002.label, ... Note that the directory 'labels' must already
+  exist. 
+
+Example:
+
+  mri_annotation2label --subject LW --hemi rh 
+        --outdir ./labels 
+
+  This will do the same thing as above except that the output files
+  will have names of the form lh.S_occipital_anterior.label
+
+Testing:
+
+  1. Start tksurfer:  
+       tksurfer -LW lh inflated
+       read_annotations lh_aparc
+     When a point is clicked on, it prints out a lot of info, including
+     something like:
+       annot = S_temporalis_sup (93, 3988701) (221, 220, 60)
+     This indicates that annotion number 93 was hit. Save this point.
+   
+  2. Start another tksurfer and load the label:
+       tksurfer -LW lh inflated
+       [edit label field and hit the 'Read' button]
+     Verify that label pattern looks like the annotation as seen in
+     the tksurfer window from step 1.
+
+  3. Load label into tkmedit
+       tkmedit LW T1
+       [Load the label]
+      [Goto the point saved from step 1] 
+
+
+
+=== Output of 'mri_annotation2label -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_annotation2label' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_annotation2label 
+
+   --subject    source subject
+   --hemi       hemisphere (lh or rh) (with surface)
+   --lobes <LobesFile>
+   	Create an annotation based on cortical lobes.
+   	Note that the precentral and postcentral labels are not
+   	included as part of the 'frontal' and 'parietal' lobes.
+   	The lobar annotation is saved to <LobesFile>.
+   --lobesStrict <LobesFile>
+   	Use a slightly stricter lobe definition that adds the
+   	precentral to the 'frontal' and includes the postcentral
+   	with the 'parietal' lobe.
+   	The lobar annotation is saved to <LobesFile>.
+   --lobesStrictPHCG <LobesFile>
+   	Use stricter lobe definition, and adds an additional lobe called
+   	parahippocampalgyrus, which includes parahippocampal, entorhinal,
+   	temporalpole and fusiform.
+   	The lobar annotation is saved to <LobesFile>.
+
+Output options:
+   --label <int> : extract only single label 
+   --labelbase  output will be base-XXX.label 
+   --outdir dir :  output will be dir/hemi.name.label 
+   --seg segfile : output will be a segmentation 'volume'
+   --segbase base : add base to the annotation number to get seg value
+   --ctab colortable : colortable like FreeSurferColorLUT.txt
+   --border borderfile : output will be a binary overlay of the parc borders 
+   --border-annot borderannot : default goes in subject/label
+
+   --annotation as found in SUBJDIR/labels <aparc>
+   --sd <SUBJECTS_DIR>  specify SUBJECTS_DIR on cmdline
+   --surface    name of surface <white>. Only affect xyz in label.
+   --stat statfile : surface overlay file (curv or volume format).
+
+   --table : obsolete. Now gets from annotation file
+
+   --help       display help
+   --version    display version
+

@@ -1,0 +1,58 @@
+
+=== Output of 'fslcc --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fslcc: Cross-correlate two time-series, timepoint by timepoint
+
+Usage: 
+fslcc [options] <first_input> <second_input> 
+
+Optional arguments (You may optionally specify one or more of):
+	-m	mask file name 
+	--noabs		Don't return absolute values (keep sign)
+	--nodemean	Don't demean the input files
+	-t		Threshhold ( default 0.1 )
+	-p		Number of decimal places to display in output ( default 2 )
+
+
+
+--help: Option doesn't exist!
+
+=== Output of 'fslcc -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fslcc: Cross-correlate two time-series, timepoint by timepoint
+
+Usage: 
+fslcc [options] <first_input> <second_input> 
+
+Optional arguments (You may optionally specify one or more of):
+	-m	mask file name 
+	--noabs		Don't return absolute values (keep sign)
+	--nodemean	Don't demean the input files
+	-t		Threshhold ( default 0.1 )
+	-p		Number of decimal places to display in output ( default 2 )
+
+
+
+-h: Option doesn't exist!
+
+=== Output of 'fslcc' (no arguments) ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fslcc: Cross-correlate two time-series, timepoint by timepoint
+
+Usage: 
+fslcc [options] <first_input> <second_input> 
+
+Optional arguments (You may optionally specify one or more of):
+	-m	mask file name 
+	--noabs		Don't return absolute values (keep sign)
+	--nodemean	Don't demean the input files
+	-t		Threshhold ( default 0.1 )
+	-p		Number of decimal places to display in output ( default 2 )
+
+

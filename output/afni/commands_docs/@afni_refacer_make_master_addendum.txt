@@ -1,0 +1,22 @@
+
+=== Output of '@afni_refacer_make_master_addendum --help' ===
+
+** ERROR: missing dset: afni_refacer_MNIbmask10.nii.gz
+
+=== Output of '@afni_refacer_make_master_addendum -help' ===
+
+
+This is an adjunct program.  It actually takes no command line
+arguments to run.
+
+written by PA Taylor, the nearly anonymous
+---------------------------------------------------------------------
+Options
+
+-help
+-ver
+
+
+=== Output of '@afni_refacer_make_master_addendum' (no arguments) ===
+
+** ERROR: missing dset: afni_refacer_MNIbmask10.nii.gz

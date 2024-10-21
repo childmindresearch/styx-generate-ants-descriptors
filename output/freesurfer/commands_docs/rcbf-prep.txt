@@ -1,0 +1,86 @@
+
+=== Output of 'rcbf-prep --help' ===
+
+
+rcbf-prep
+
+ --o outdir
+ --rcbf rcbfvol
+ --s subject (or use --reg)
+
+ --roitab ROITable (like FreeSurferColorLUT.txt)
+ --reg register.dat (instead of subject)
+ --t template (instead of using rcbf itself)
+
+rcbf-prep 7.4.1
+
+Performs intergration of rCBF as produced by Siemens scanners (usually
+the ep2d_pasl sequence) with FreeSurfer analysis in preparation for
+group analysis. It creates an output directory (--o), registers the
+rCBF (--rcbf) to the FreeSurfer anatomical for the subject
+(--subject), resamples to both hemispheres (?h.rcbf.mgh) and to MNI305
+(rcbf.mni305.nii) and creates a stats file (roi.dat). These can
+be merged with rcbf-merge in preparation for group analysis.
+The results will be in mL/100g/min.
+
+See surfer.nmr.mgh.harvard.edu/fswiki/RcbfProc for more info.
+
+Other options:
+
+--roitab roi-table
+
+This is the table which specfies which the ROIs will be summarized. By
+default, $FREESURFER_HOME/FreeSurferColorLUT.txt is used. This has a
+lot of ROIs. If you do not want all of them then make a copy and
+delete the ones that you do not want and pass as --roitab.
+
+
+=== Output of 'rcbf-prep -help' ===
+
+
+rcbf-prep
+
+ --o outdir
+ --rcbf rcbfvol
+ --s subject (or use --reg)
+
+ --roitab ROITable (like FreeSurferColorLUT.txt)
+ --reg register.dat (instead of subject)
+ --t template (instead of using rcbf itself)
+
+rcbf-prep 7.4.1
+
+Performs intergration of rCBF as produced by Siemens scanners (usually
+the ep2d_pasl sequence) with FreeSurfer analysis in preparation for
+group analysis. It creates an output directory (--o), registers the
+rCBF (--rcbf) to the FreeSurfer anatomical for the subject
+(--subject), resamples to both hemispheres (?h.rcbf.mgh) and to MNI305
+(rcbf.mni305.nii) and creates a stats file (roi.dat). These can
+be merged with rcbf-merge in preparation for group analysis.
+The results will be in mL/100g/min.
+
+See surfer.nmr.mgh.harvard.edu/fswiki/RcbfProc for more info.
+
+Other options:
+
+--roitab roi-table
+
+This is the table which specfies which the ROIs will be summarized. By
+default, $FREESURFER_HOME/FreeSurferColorLUT.txt is used. This has a
+lot of ROIs. If you do not want all of them then make a copy and
+delete the ones that you do not want and pass as --roitab.
+
+
+=== Output of 'rcbf-prep' (no arguments) ===
+
+
+rcbf-prep
+
+ --o outdir
+ --rcbf rcbfvol
+ --s subject (or use --reg)
+
+ --roitab ROITable (like FreeSurferColorLUT.txt)
+ --reg register.dat (instead of subject)
+ --t template (instead of using rcbf itself)
+

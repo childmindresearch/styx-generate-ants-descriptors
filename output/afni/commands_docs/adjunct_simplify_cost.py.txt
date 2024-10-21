@@ -1,0 +1,36 @@
+
+=== Output of 'adjunct_simplify_cost.py --help' ===
+
+--help
+
+=== Output of 'adjunct_simplify_cost.py -help' ===
+
+ 
+Subsidiary of @SSwarper, not really a program deserving a
+help message.
+
+Just takes one argument: a cost function name.
+
+This program will remove the '+' and anything following it from a cost
+function's name.  For example:
+    lpa+ZZ  ->  lpa
+    lpc+    ->  lpc
+    lpa+hel:1.0+crA:0.4+nmi:0.2+ov:0.4+ZZ -> lpa
+
+
+
+=== Output of 'adjunct_simplify_cost.py' (no arguments) ===
+
+ 
+Subsidiary of @SSwarper, not really a program deserving a
+help message.
+
+Just takes one argument: a cost function name.
+
+This program will remove the '+' and anything following it from a cost
+function's name.  For example:
+    lpa+ZZ  ->  lpa
+    lpc+    ->  lpc
+    lpa+hel:1.0+crA:0.4+nmi:0.2+ov:0.4+ZZ -> lpa
+
+

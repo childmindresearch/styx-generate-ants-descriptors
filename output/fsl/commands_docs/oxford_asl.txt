@@ -1,0 +1,61 @@
+
+=== Output of 'oxford_asl --help' ===
+
+Error! Unrecognised option on command line: --help
+
+
+=== Output of 'oxford_asl -help' ===
+
+Error! Unrecognised option on command line: -help
+
+
+=== Output of 'oxford_asl' (no arguments) ===
+
+OXFORD_ASL
+Calculate perfusion maps from ASL data
+
+Usage: oxford_asl -i <asl_data> -o <output_dir_name> [options]
+
+
+ Main options:
+ -m         : mask (in native space of ASL data) - {default: automatically generated}
+ --spatial  : Use adaptive spatial smoothing on perfusion {default: on}
+ --wp       : analysis that conforms to the 'white paper' (Alsop et al. 2014)
+ --mc       : apply motion correction using mcflirt
+ --more     : see extended options and usage notes
+
+ Acquisition/Data specific
+ --iaf       : input ASl format: diff,tc,ct {default: diff}
+ --ibf       : input block format (for multi-TI): rpt,tis {default: rpt}
+ --tis       : comma separated list of inversion times, e.g. --tis 0.2,0.4,0.6
+ --tiimg     : 4D image containing voxelwise TI values
+ --casl      : ASL acquisition is  pseudo cASL (pcASL) rather than pASL
+ --artsupp   : Arterial suppression (vascular crushing) was used
+ --bolus     : Bolus duration - {default: 1}
+ --bat       : Bolus arrival time - {default: 0.7 (pASL); 1.3 (cASL)}
+ --t1        : Tissue T1 value - {default: 1.3}
+ --t1b       : Blood T1 value - {default: 1.65}
+ --slicedt   : Timing difference between slices - {default: 0}
+ --sliceband : Number of slices per band in a multi-band setup - {default: n/a}.
+
+Structural image (optional) (see also Registration)
+ --fslanat=<dir> : An fsl_anat directory from structural image
+ Alternatively:
+ -s              : structural image (whole head)
+ --sbrain        : structural image (already BETed)
+ {--fastsrc=<image_stub>} : images from a FAST segmenation - if not set FAST will be run on structural
+ Options in all cases:
+ --senscorr      : use bias field (from segmentation) for sensitivity correction
+
+ Calibration
+ --M0        : (single) precomputed M0 value (e.g. from having run a separate calibration)
+ --alpha     : Inversion efficiency - {default: 0.98 (pASL); 0.85 (cASL)}
+  To supply calibration data:
+  -c          : M0 calibration image (proton density or mean control image)
+  --tr        : TR of calibration data - {default: 3.2 s}
+  --cmethod   : Calibration method: 
+                single - default if structural image is supplied
+                 M0 value will be calculated within automatically created CSF mask
+                voxel  - default if no structral image is supplied
+                 voxelwise M0 values derrived from calibration image
+

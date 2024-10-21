@@ -1,0 +1,17 @@
+
+=== Output of 'mris_errors --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_errors [options] <input image file>
+
+This program will unfold an MRI on the surface of an ellipsoid.
+
+valid options are:
+
+
+=== Output of 'mris_errors -help' ===
+
+unknown option -help
+
+=== Output of 'mris_errors' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_errors [options] <input image file>

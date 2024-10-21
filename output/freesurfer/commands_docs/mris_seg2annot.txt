@@ -1,0 +1,97 @@
+
+=== Output of 'mris_seg2annot --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mris_seg2annot 
+
+   --seg  surfseg    : volume-encoded surface segmentation 
+   --ctab colortable : color table (like FreeSurferColorLUT.txt)
+   --ctab-auto <outcolortable> : create a random color table, optionally save ctab
+     Do not specify --ctab or --ctab-auto to use embedded colortable
+   --s subject   : subject name
+   --h hemi      : surface hemifield
+   --o annot     : output annotation file
+
+   --surf surfname : default is white
+   --debug     turn on debugging
+   --debug-vertex vtxno :  turn on debugging for vertex
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+   --seg2annot seg surf ctab output : set ctab=embedded to use ctab inside seg
+     This gives the same result but does not rely on recon-all directory structure
+
+7.4.1
+
+
+Converts a surfaced-based segmentation into a custom annotation file.
+
+--seg surfseg
+
+Surface segmentation file. This could be as simple as a binarized
+functional map. The values are whole numbers indicating the index into
+the color table. This file is similar to the volume-based aseg.  The
+hard part to getting a custom annotation is in creating this file and
+corresponding color table.
+
+--ctab colortable
+
+Color table used to map segmentation index to name and color. This is
+something that can be created by the user to create custom
+annotations. This color table is then imbedded in the annotation
+file. Be default, it will look for this file in $FREESURFER_HOME.  If
+this is not where your color table is, then add a './' in front of the
+name. The format should be the same as in
+$FREESURFER_HOME/FreeSurferColorsLUT.txt.
+
+--s subject
+--h hemi
+
+Subject and hemisphere. Used to load in the surface upon which the 
+annotation is created.
+
+--o annot
+
+Output annotation file. By default, it will be stored in the subject's 
+label directory. If you do not want it there, then supply some path
+in front of it (eg, './'). This is a file like lh.aparc.annot. 
+
+EXAMPLE:
+
+  mris_seg2annot --seg lh.FL_002.sig.th8.mgh \
+    --s FL_002 --h lh --ctab ./MyColorLUT.txt \
+    --o ./lh.myaparc.annot
+
+lh.myaparc.annot can then be loaded into tksurfer as with any other 
+parcellation/annotation.
+
+
+=== Output of 'mris_seg2annot -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mris_seg2annot' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mris_seg2annot 
+
+   --seg  surfseg    : volume-encoded surface segmentation 
+   --ctab colortable : color table (like FreeSurferColorLUT.txt)
+   --ctab-auto <outcolortable> : create a random color table, optionally save ctab
+     Do not specify --ctab or --ctab-auto to use embedded colortable
+   --s subject   : subject name
+   --h hemi      : surface hemifield
+   --o annot     : output annotation file
+
+   --surf surfname : default is white
+   --debug     turn on debugging
+   --debug-vertex vtxno :  turn on debugging for vertex
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+   --seg2annot seg surf ctab output : set ctab=embedded to use ctab inside seg
+     This gives the same result but does not rely on recon-all directory structure
+
+7.4.1
+

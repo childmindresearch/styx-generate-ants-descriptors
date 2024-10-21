@@ -1,0 +1,144 @@
+
+=== Output of 'fslvbm_3_proc --help' ===
+
+Now running the preprocessing steps and the pre-analyses
+--help_struc
+-help_struc
+Doing registrations: ID=12185
+Image Exception : #63 :: No image files match: GM_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_merg
+./fslvbm3b: line 8: 12473 Aborted                 (core dumped) $FSLDIR/bin/fslmaths GM_merg -Tmean -thr 0.01 -bin GM_mask -odt char
+/bin/cp: cannot stat '../design.*': No such file or directory
+Image Exception : #63 :: No image files match: GM_mod_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_mod_merg
+./fslvbm3b: line 13: 12475 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $i -s $j ${i}_s${j}
+Image Exception : #63 :: No image files match: GM_mod_merg_s2
+Image Exception : #22 :: Failed to read volume GM_mod_merg_s2
+Error : No image files match: GM_mod_merg_s2
+ERROR: Program failedFailed to read volume GM_mod_merg_s2
+Error : No image files match: GM_mod_merg_s2
+
+Exiting
+Image Exception : #63 :: No image files match: GM_mod_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_mod_merg
+./fslvbm3b: line 13: 12477 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $i -s $j ${i}_s${j}
+Image Exception : #63 :: No image files match: GM_mod_merg_s3
+Image Exception : #22 :: Failed to read volume GM_mod_merg_s3
+Error : No image files match: GM_mod_merg_s3
+ERROR: Program failedFailed to read volume GM_mod_merg_s3
+Error : No image files match: GM_mod_merg_s3
+
+Exiting
+Image Exception : #63 :: No image files match: GM_mod_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_mod_merg
+./fslvbm3b: line 13: 12479 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $i -s $j ${i}_s${j}
+Image Exception : #63 :: No image files match: GM_mod_merg_s4
+Image Exception : #22 :: Failed to read volume GM_mod_merg_s4
+Error : No image files match: GM_mod_merg_s4
+ERROR: Program failedFailed to read volume GM_mod_merg_s4
+Error : No image files match: GM_mod_merg_s4
+
+Exiting
+Doing subject concatenation and initial randomise: ID=
+Once this has finished, run randomise with 5000 permutations on the 'best' smoothed 4D GM_mod_merg. We recommend using the -T (TFCE) option. For example:
+randomise -i GM_mod_merg_s3 -o GM_mod_merg_s3 -m GM_mask -d design.mat -t design.con -n 5000 -T -V
+
+=== Output of 'fslvbm_3_proc -help' ===
+
+Now running the preprocessing steps and the pre-analyses
+--help_struc
+-help_struc
+Doing registrations: ID=12517
+Image Exception : #63 :: No image files match: GM_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_merg
+./fslvbm3b: line 8: 12805 Aborted                 (core dumped) $FSLDIR/bin/fslmaths GM_merg -Tmean -thr 0.01 -bin GM_mask -odt char
+/bin/cp: cannot stat '../design.*': No such file or directory
+Image Exception : #63 :: No image files match: GM_mod_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_mod_merg
+./fslvbm3b: line 13: 12807 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $i -s $j ${i}_s${j}
+Image Exception : #63 :: No image files match: GM_mod_merg_s2
+Image Exception : #22 :: Failed to read volume GM_mod_merg_s2
+Error : No image files match: GM_mod_merg_s2
+ERROR: Program failedFailed to read volume GM_mod_merg_s2
+Error : No image files match: GM_mod_merg_s2
+
+Exiting
+Image Exception : #63 :: No image files match: GM_mod_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_mod_merg
+./fslvbm3b: line 13: 12809 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $i -s $j ${i}_s${j}
+Image Exception : #63 :: No image files match: GM_mod_merg_s3
+Image Exception : #22 :: Failed to read volume GM_mod_merg_s3
+Error : No image files match: GM_mod_merg_s3
+ERROR: Program failedFailed to read volume GM_mod_merg_s3
+Error : No image files match: GM_mod_merg_s3
+
+Exiting
+Image Exception : #63 :: No image files match: GM_mod_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_mod_merg
+./fslvbm3b: line 13: 12811 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $i -s $j ${i}_s${j}
+Image Exception : #63 :: No image files match: GM_mod_merg_s4
+Image Exception : #22 :: Failed to read volume GM_mod_merg_s4
+Error : No image files match: GM_mod_merg_s4
+ERROR: Program failedFailed to read volume GM_mod_merg_s4
+Error : No image files match: GM_mod_merg_s4
+
+Exiting
+Doing subject concatenation and initial randomise: ID=
+Once this has finished, run randomise with 5000 permutations on the 'best' smoothed 4D GM_mod_merg. We recommend using the -T (TFCE) option. For example:
+randomise -i GM_mod_merg_s3 -o GM_mod_merg_s3 -m GM_mask -d design.mat -t design.con -n 5000 -T -V
+
+=== Output of 'fslvbm_3_proc' (no arguments) ===
+
+Now running the preprocessing steps and the pre-analyses
+--help_struc
+-help_struc
+Doing registrations: ID=12849
+Image Exception : #63 :: No image files match: GM_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_merg
+./fslvbm3b: line 8: 13137 Aborted                 (core dumped) $FSLDIR/bin/fslmaths GM_merg -Tmean -thr 0.01 -bin GM_mask -odt char
+/bin/cp: cannot stat '../design.*': No such file or directory
+Image Exception : #63 :: No image files match: GM_mod_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_mod_merg
+./fslvbm3b: line 13: 13139 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $i -s $j ${i}_s${j}
+Image Exception : #63 :: No image files match: GM_mod_merg_s2
+Image Exception : #22 :: Failed to read volume GM_mod_merg_s2
+Error : No image files match: GM_mod_merg_s2
+ERROR: Program failedFailed to read volume GM_mod_merg_s2
+Error : No image files match: GM_mod_merg_s2
+
+Exiting
+Image Exception : #63 :: No image files match: GM_mod_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_mod_merg
+./fslvbm3b: line 13: 13141 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $i -s $j ${i}_s${j}
+Image Exception : #63 :: No image files match: GM_mod_merg_s3
+Image Exception : #22 :: Failed to read volume GM_mod_merg_s3
+Error : No image files match: GM_mod_merg_s3
+ERROR: Program failedFailed to read volume GM_mod_merg_s3
+Error : No image files match: GM_mod_merg_s3
+
+Exiting
+Image Exception : #63 :: No image files match: GM_mod_merg
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: GM_mod_merg
+./fslvbm3b: line 13: 13143 Aborted                 (core dumped) $FSLDIR/bin/fslmaths $i -s $j ${i}_s${j}
+Image Exception : #63 :: No image files match: GM_mod_merg_s4
+Image Exception : #22 :: Failed to read volume GM_mod_merg_s4
+Error : No image files match: GM_mod_merg_s4
+ERROR: Program failedFailed to read volume GM_mod_merg_s4
+Error : No image files match: GM_mod_merg_s4
+
+Exiting
+Doing subject concatenation and initial randomise: ID=
+Once this has finished, run randomise with 5000 permutations on the 'best' smoothed 4D GM_mod_merg. We recommend using the -T (TFCE) option. For example:
+randomise -i GM_mod_merg_s3 -o GM_mod_merg_s3 -m GM_mask -d design.mat -t design.con -n 5000 -T -V

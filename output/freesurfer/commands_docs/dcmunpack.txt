@@ -1,0 +1,438 @@
+
+=== Output of 'dcmunpack --help' ===
+
+
+dcmunpack : run with -help for more info
+
+Required Arguments:
+   -src dcmdir <-src dcmdir>
+
+Other Arguments
+   -targ targetdir
+   -run run subdir format stemname <<nskip> ndrop>
+   -auto-runseq format : save all scans in the targetdir as runo.seqname.format
+     -keep-scouts : unpack series with 'scout' or 'setter' in the name
+   -scanonly file : only scan the directory and put result in file
+   -one-per-dir : assume that there is only one dicom series in each subdir
+   -gedcm : same as -one-per-dir -ext dcm
+   -ext extension : input extension (eg, dcm)
+   -pre prefix : input prefix (ie, input file name init string)
+   -pat pattern : input pattern (ie, string that occurs in the middle of file name)
+   -no-infodump : do not create infodump.dat
+   -generic : do not use fs-fast hierarchy
+   -copy-only
+   -no-convert : do not convert to output format
+   -force-update : convert even if output is newer than the input dicom
+   -max : print out max in given dicom file
+   -base : report filename without path
+   -key keystring : put keystring before each run line (good for searching)
+   -index-out index.out.dat : save index of files to index.out.dat (for re-use)
+     this file will also be stored in targetdir/log/imagelist.dat
+   -index-in  index.dat : read index of files (can make things much faster on 2nd run) 
+   -itdicom : add -it dicom to mri_convert cmd line
+   -no-exit-on-error : continue to unpack data even if there is an error in coversion
+   -run-skip runno : skip a given run (good when using -auto-runseq)
+   -no-rescale-dicom : turn off DICOM rescaling based on tags (0028,1052) (0028,1053)
+   -rescale-dicom : turn it on (default)
+   -no-dwi : turn off trying to read DWI parameters
+   -iid dcx dcy dcz : set -iid to mri_convert
+   -ijd dcx dcy dcz : set -ijd to mri_convert
+   -ikd dcx dcy dcz : set -ikd to mri_convert
+   -extra-info : add session info to each line of the info file (pat, date, man, scan, field, serno)
+   -first-dicom : copy first dicom file into output folder. This was implemented to 
+      be able to have the pixel data from a dicom file with little or no tissue in it
+   -no-dcm2niix : Turn it off
+   -phase : add the string _phase to volumes that are phase images based on ImageType
+
+   -fips project site birnid visit
+   -fips-run run paradigm <<nskip> ndrop>
+   -xml-only : for fips, only create xml file, do not convert to output
+
+   -log logfile
+   -debug
+   -help
+
+dcmunpack 7.4.1
+
+Sorts and converts a directory of DICOM files (Siemens, GE, Philips)
+into an output hierarchy with nifti (nii), mgh, mgz, or analyze output
+formats (will not create a series of 3D SPM files). This will
+recursively search through all the subdirectories of the source
+directory. To a large extent, this replaces unpacksdcmdir (the
+Siemens-only unpacker) and will take most of its command-line
+arguments. This program can often take a long time to run and usually
+has to be run twice, once to get the list of runs and second to
+specify which runs to unpack. There are two ways to make it run
+faster.  First, use -auto-runseq (see below) which will unpack all
+runs. Alternatively, when you run it the first time to get a list of
+runs, add -index-out index.dat. Then when you run it a second time,
+use -index-in index.dat to make it run much faster.
+
+-src dcmdir <-src dcmdir>
+
+Dicom source directory. You can specify more than one. If you just specify
+a source directory, it will give a summary of what it finds (like -scanonly 
+did for unpacksdcmdir). You should still give it -one-per-dir or -martinos
+if applicable.
+
+-targ targetdir
+
+Output directory. Do not need to include when just getting information
+about what is in the directory.
+
+-run run subdir format stemname <<nskip> ndrop>
+
+Specify unpacking rules for a given run (series), subdir is the
+subdirectory under the target dir, format is the format extension
+(nii, mgh, mgz, img), stemname is the base file name, nskip is the
+number of time points to skip (optional, good for some fMRI), and
+ndrop is the number of time points to drop from the end. The output
+file will be targetdir/subdir/RRR/fname.format if using the FSFAST
+output hierarchy (the default) or targetdir/subdir/fname.format with
+-generic, where RRR is the 3-digit, zero-padded run number. Eg, "-run
+3 bold nii f" would become targetdir/bold/003/f.nii in fsfast or
+targetdir/bold/f.nii in generic. If the stemname has an extension,
+that extension is ignored.
+
+-auto-runseq format 
+
+Save all scans in the targetdir as runo.seqname.format. Eg,
+-auto-runseq nii.gz would save files with names like
+0002.mprage.nii.gz, 0003.ge_functionals.nii.gz, etc. This can be
+easier than using the -run because you do not have to specify all the
+runs on the command line and you only need to run this dcmunpack
+once. It will exclude any sequneces named Localizer, localizer,
+AAHScout, AHScout_sag, AAHScout_cor, AAHScout_tra, AAScout. 
+If you want to skip a run, then add -run-skip runno. If there are
+errors in the conversion, then, by default, dcmunpack will exit with
+error. If you want to convert all you can and deal with the errors  
+later, then add -no-exit-on-error.
+
+-one-per-dir
+
+Assume that the source directory (or subdirectory) contains only one
+series.  This is usually the case for GE, and this can speed things up
+tremendously.
+
+-martinos
+-mgh
+-bourget
+
+Assume that the DICOM file names have the form produced at the MGH
+Martinos Center when you "push something to bourget" from the scanner,
+namely that each series will have one file that ends in "1.dcm", eg
+397000-000007-000001.dcm.  This can speed things up considerably.
+Note: as of August, 2012, the naming convention that allows for fast
+unpacking does not exist. 
+
+If you have to run this twice, it will be faster if you run it with
+--index-out index.dat when you are getting a list of runs, then run it
+again with --index-in index.dat when you go to unpack it.
+
+-no-infodump
+
+Do not create the fname-infodump.dat file
+
+-generic
+
+Do not use FSFAST hierarchy.
+
+-no-convert
+
+Do not actually run mri_convert
+
+-copy-only
+
+Only copy dicom files to output directory (implies -no-convert)
+
+
+EXAMPLE 
+
+# CD into the dicom directory
+cd Avanto-25096-20100325-162822-229000
+
+# See what's there
+dcmunpack -src . -martinos
+---------------------------------------
+Searching for matching files
+Mon Jul 12 10:21:10 EDT 2010
+Mon Jul 12 10:21:10 EDT 2010
+Found 6 total files.
+Found 6 unique series: 1 2 3 4 5 6
+Subject Subj5
+Date 20100325
+Time 162822.229000
+Institution Martinos Center Bay 2
+1 Localizer 2.95 7 20 0.546875 ROW 285 ./229000-000001-000001.dcm
+2 AAScout 1.23 2.6 0 2.5\2.5 ROW 1085 ./229000-000002-000001.dcm
+3 ge_functionals 40 2000 90 3.125\3.125 COL 2300 ./229000-000003-000001.dcm
+4 ge_functionals 40 2000 90 3.125\3.125 COL 2300 ./229000-000004-000001.dcm
+5 ge_functionals 40 2000 90 3.125\3.125 COL 2300 ./229000-000005-000001.dcm
+6 ge_functionals 40 2000 90 3.125\3.125 COL
+---------------------------------------
+
+# Now unpack it 
+dcmunpack -src . -martinos -targ /space/ProjectDir/subj5 \
+  -run 3 bold nii f.nii \
+  -run 4 bold nii f.nii \
+  -run 5 bold nii f.nii \
+  -run 6 bold nii f.nii 
+
+
+RELATIONSHIP TO UNPACKSDCMDIR
+
+unpacksdcmdir is the Siemens-only unpacker. dcmunpack will take the
+same command-line arguments except: -cfg, -seqcfg, -nspmzeropad,
+-no-unpackerr (it unpacks everything), and -scanonly (you can still
+get a scanonly-like summary of the data). dcmunpack does not accept
+SPM as an output format. The seq.info file is not created (it is not
+needed for newer versions of FSFAST).  These features can be
+programmed, I just have not gotten around to it. Unlike unpacksdcmdir,
+dcmunpack searches subdirectories and can unpack GE data.
+
+
+=== Output of 'dcmunpack -help' ===
+
+
+dcmunpack : run with -help for more info
+
+Required Arguments:
+   -src dcmdir <-src dcmdir>
+
+Other Arguments
+   -targ targetdir
+   -run run subdir format stemname <<nskip> ndrop>
+   -auto-runseq format : save all scans in the targetdir as runo.seqname.format
+     -keep-scouts : unpack series with 'scout' or 'setter' in the name
+   -scanonly file : only scan the directory and put result in file
+   -one-per-dir : assume that there is only one dicom series in each subdir
+   -gedcm : same as -one-per-dir -ext dcm
+   -ext extension : input extension (eg, dcm)
+   -pre prefix : input prefix (ie, input file name init string)
+   -pat pattern : input pattern (ie, string that occurs in the middle of file name)
+   -no-infodump : do not create infodump.dat
+   -generic : do not use fs-fast hierarchy
+   -copy-only
+   -no-convert : do not convert to output format
+   -force-update : convert even if output is newer than the input dicom
+   -max : print out max in given dicom file
+   -base : report filename without path
+   -key keystring : put keystring before each run line (good for searching)
+   -index-out index.out.dat : save index of files to index.out.dat (for re-use)
+     this file will also be stored in targetdir/log/imagelist.dat
+   -index-in  index.dat : read index of files (can make things much faster on 2nd run) 
+   -itdicom : add -it dicom to mri_convert cmd line
+   -no-exit-on-error : continue to unpack data even if there is an error in coversion
+   -run-skip runno : skip a given run (good when using -auto-runseq)
+   -no-rescale-dicom : turn off DICOM rescaling based on tags (0028,1052) (0028,1053)
+   -rescale-dicom : turn it on (default)
+   -no-dwi : turn off trying to read DWI parameters
+   -iid dcx dcy dcz : set -iid to mri_convert
+   -ijd dcx dcy dcz : set -ijd to mri_convert
+   -ikd dcx dcy dcz : set -ikd to mri_convert
+   -extra-info : add session info to each line of the info file (pat, date, man, scan, field, serno)
+   -first-dicom : copy first dicom file into output folder. This was implemented to 
+      be able to have the pixel data from a dicom file with little or no tissue in it
+   -no-dcm2niix : Turn it off
+   -phase : add the string _phase to volumes that are phase images based on ImageType
+
+   -fips project site birnid visit
+   -fips-run run paradigm <<nskip> ndrop>
+   -xml-only : for fips, only create xml file, do not convert to output
+
+   -log logfile
+   -debug
+   -help
+
+dcmunpack 7.4.1
+
+Sorts and converts a directory of DICOM files (Siemens, GE, Philips)
+into an output hierarchy with nifti (nii), mgh, mgz, or analyze output
+formats (will not create a series of 3D SPM files). This will
+recursively search through all the subdirectories of the source
+directory. To a large extent, this replaces unpacksdcmdir (the
+Siemens-only unpacker) and will take most of its command-line
+arguments. This program can often take a long time to run and usually
+has to be run twice, once to get the list of runs and second to
+specify which runs to unpack. There are two ways to make it run
+faster.  First, use -auto-runseq (see below) which will unpack all
+runs. Alternatively, when you run it the first time to get a list of
+runs, add -index-out index.dat. Then when you run it a second time,
+use -index-in index.dat to make it run much faster.
+
+-src dcmdir <-src dcmdir>
+
+Dicom source directory. You can specify more than one. If you just specify
+a source directory, it will give a summary of what it finds (like -scanonly 
+did for unpacksdcmdir). You should still give it -one-per-dir or -martinos
+if applicable.
+
+-targ targetdir
+
+Output directory. Do not need to include when just getting information
+about what is in the directory.
+
+-run run subdir format stemname <<nskip> ndrop>
+
+Specify unpacking rules for a given run (series), subdir is the
+subdirectory under the target dir, format is the format extension
+(nii, mgh, mgz, img), stemname is the base file name, nskip is the
+number of time points to skip (optional, good for some fMRI), and
+ndrop is the number of time points to drop from the end. The output
+file will be targetdir/subdir/RRR/fname.format if using the FSFAST
+output hierarchy (the default) or targetdir/subdir/fname.format with
+-generic, where RRR is the 3-digit, zero-padded run number. Eg, "-run
+3 bold nii f" would become targetdir/bold/003/f.nii in fsfast or
+targetdir/bold/f.nii in generic. If the stemname has an extension,
+that extension is ignored.
+
+-auto-runseq format 
+
+Save all scans in the targetdir as runo.seqname.format. Eg,
+-auto-runseq nii.gz would save files with names like
+0002.mprage.nii.gz, 0003.ge_functionals.nii.gz, etc. This can be
+easier than using the -run because you do not have to specify all the
+runs on the command line and you only need to run this dcmunpack
+once. It will exclude any sequneces named Localizer, localizer,
+AAHScout, AHScout_sag, AAHScout_cor, AAHScout_tra, AAScout. 
+If you want to skip a run, then add -run-skip runno. If there are
+errors in the conversion, then, by default, dcmunpack will exit with
+error. If you want to convert all you can and deal with the errors  
+later, then add -no-exit-on-error.
+
+-one-per-dir
+
+Assume that the source directory (or subdirectory) contains only one
+series.  This is usually the case for GE, and this can speed things up
+tremendously.
+
+-martinos
+-mgh
+-bourget
+
+Assume that the DICOM file names have the form produced at the MGH
+Martinos Center when you "push something to bourget" from the scanner,
+namely that each series will have one file that ends in "1.dcm", eg
+397000-000007-000001.dcm.  This can speed things up considerably.
+Note: as of August, 2012, the naming convention that allows for fast
+unpacking does not exist. 
+
+If you have to run this twice, it will be faster if you run it with
+--index-out index.dat when you are getting a list of runs, then run it
+again with --index-in index.dat when you go to unpack it.
+
+-no-infodump
+
+Do not create the fname-infodump.dat file
+
+-generic
+
+Do not use FSFAST hierarchy.
+
+-no-convert
+
+Do not actually run mri_convert
+
+-copy-only
+
+Only copy dicom files to output directory (implies -no-convert)
+
+
+EXAMPLE 
+
+# CD into the dicom directory
+cd Avanto-25096-20100325-162822-229000
+
+# See what's there
+dcmunpack -src . -martinos
+---------------------------------------
+Searching for matching files
+Mon Jul 12 10:21:10 EDT 2010
+Mon Jul 12 10:21:10 EDT 2010
+Found 6 total files.
+Found 6 unique series: 1 2 3 4 5 6
+Subject Subj5
+Date 20100325
+Time 162822.229000
+Institution Martinos Center Bay 2
+1 Localizer 2.95 7 20 0.546875 ROW 285 ./229000-000001-000001.dcm
+2 AAScout 1.23 2.6 0 2.5\2.5 ROW 1085 ./229000-000002-000001.dcm
+3 ge_functionals 40 2000 90 3.125\3.125 COL 2300 ./229000-000003-000001.dcm
+4 ge_functionals 40 2000 90 3.125\3.125 COL 2300 ./229000-000004-000001.dcm
+5 ge_functionals 40 2000 90 3.125\3.125 COL 2300 ./229000-000005-000001.dcm
+6 ge_functionals 40 2000 90 3.125\3.125 COL
+---------------------------------------
+
+# Now unpack it 
+dcmunpack -src . -martinos -targ /space/ProjectDir/subj5 \
+  -run 3 bold nii f.nii \
+  -run 4 bold nii f.nii \
+  -run 5 bold nii f.nii \
+  -run 6 bold nii f.nii 
+
+
+RELATIONSHIP TO UNPACKSDCMDIR
+
+unpacksdcmdir is the Siemens-only unpacker. dcmunpack will take the
+same command-line arguments except: -cfg, -seqcfg, -nspmzeropad,
+-no-unpackerr (it unpacks everything), and -scanonly (you can still
+get a scanonly-like summary of the data). dcmunpack does not accept
+SPM as an output format. The seq.info file is not created (it is not
+needed for newer versions of FSFAST).  These features can be
+programmed, I just have not gotten around to it. Unlike unpacksdcmdir,
+dcmunpack searches subdirectories and can unpack GE data.
+
+
+=== Output of 'dcmunpack' (no arguments) ===
+
+
+dcmunpack : run with -help for more info
+
+Required Arguments:
+   -src dcmdir <-src dcmdir>
+
+Other Arguments
+   -targ targetdir
+   -run run subdir format stemname <<nskip> ndrop>
+   -auto-runseq format : save all scans in the targetdir as runo.seqname.format
+     -keep-scouts : unpack series with 'scout' or 'setter' in the name
+   -scanonly file : only scan the directory and put result in file
+   -one-per-dir : assume that there is only one dicom series in each subdir
+   -gedcm : same as -one-per-dir -ext dcm
+   -ext extension : input extension (eg, dcm)
+   -pre prefix : input prefix (ie, input file name init string)
+   -pat pattern : input pattern (ie, string that occurs in the middle of file name)
+   -no-infodump : do not create infodump.dat
+   -generic : do not use fs-fast hierarchy
+   -copy-only
+   -no-convert : do not convert to output format
+   -force-update : convert even if output is newer than the input dicom
+   -max : print out max in given dicom file
+   -base : report filename without path
+   -key keystring : put keystring before each run line (good for searching)
+   -index-out index.out.dat : save index of files to index.out.dat (for re-use)
+     this file will also be stored in targetdir/log/imagelist.dat
+   -index-in  index.dat : read index of files (can make things much faster on 2nd run) 
+   -itdicom : add -it dicom to mri_convert cmd line
+   -no-exit-on-error : continue to unpack data even if there is an error in coversion
+   -run-skip runno : skip a given run (good when using -auto-runseq)
+   -no-rescale-dicom : turn off DICOM rescaling based on tags (0028,1052) (0028,1053)
+   -rescale-dicom : turn it on (default)
+   -no-dwi : turn off trying to read DWI parameters
+   -iid dcx dcy dcz : set -iid to mri_convert
+   -ijd dcx dcy dcz : set -ijd to mri_convert
+   -ikd dcx dcy dcz : set -ikd to mri_convert
+   -extra-info : add session info to each line of the info file (pat, date, man, scan, field, serno)
+   -first-dicom : copy first dicom file into output folder. This was implemented to 
+      be able to have the pixel data from a dicom file with little or no tissue in it
+   -no-dcm2niix : Turn it off
+   -phase : add the string _phase to volumes that are phase images based on ImageType
+
+   -fips project site birnid visit
+   -fips-run run paradigm <<nskip> ndrop>
+   -xml-only : for fips, only create xml file, do not convert to output
+
+   -log logfile
+   -debug
+   -help
+

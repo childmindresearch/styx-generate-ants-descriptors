@@ -1,0 +1,16 @@
+
+=== Output of 'mri_label_vals --help' ===
+
+unknown option --help
+
+=== Output of 'mri_label_vals -help' ===
+
+unknown option -help
+
+=== Output of 'mri_label_vals' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_label_vals [options] <volume> <label file>
+where options are
+   -cras   label created in the coordinates where c_(r,a,s) != 0
+             if it did not work, try using this option.
+   -u      print this help.

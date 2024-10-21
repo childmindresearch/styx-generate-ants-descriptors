@@ -1,0 +1,38 @@
+
+=== Output of '@afni.run.me --help' ===
+
+if: Empty if.
+
+=== Output of '@afni.run.me -help' ===
+
+------------------------------------------------------------
+@afni.run.me   - do something
+
+examples:
+
+options:
+
+    -help                 : show this help
+    -go                   : DO THE WORK
+    -curl                 : default to curl instead of wget
+
+Note that the user must have write permissions in the current
+directory.
+
+
+=== Output of '@afni.run.me' (no arguments) ===
+
+------------------------------------------------------------
+@afni.run.me   - do something
+
+examples:
+
+options:
+
+    -help                 : show this help
+    -go                   : DO THE WORK
+    -curl                 : default to curl instead of wget
+
+Note that the user must have write permissions in the current
+directory.
+

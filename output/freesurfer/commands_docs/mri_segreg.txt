@@ -1,0 +1,60 @@
+
+=== Output of 'mri_segreg --help' ===
+
+
+  FORMATS
+
+  Data file format can be specified implicitly (through the path name)
+  or explicitly. All formats accepted by mri_convert can be used.
+
+  BUGS
+
+  sinc interpolation is broken except for maybe COR to COR.
+
+
+  BUG REPORTING
+
+  Report bugs to analysis-bugs@nmr.mgh.harvard.edu. Include the following
+  formatted as a list as follows: (1) command-line, (2) directory where
+  the program was run (for those in the MGH-NMR Center), (3) version,
+  (4) text output, (5) description of the problem.
+
+  SEE ALSO
+
+  mri_vol2vol mri_convert, tkregister2
+
+
+
+7.4.1
+
+
+=== Output of 'mri_segreg -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_segreg' (no arguments) ===
+
+
+  FORMATS
+
+  Data file format can be specified implicitly (through the path name)
+  or explicitly. All formats accepted by mri_convert can be used.
+
+  BUGS
+
+  sinc interpolation is broken except for maybe COR to COR.
+
+
+  BUG REPORTING
+
+  Report bugs to analysis-bugs@nmr.mgh.harvard.edu. Include the following
+  formatted as a list as follows: (1) command-line, (2) directory where
+  the program was run (for those in the MGH-NMR Center), (3) version,
+  (4) text output, (5) description of the problem.
+
+  SEE ALSO
+
+  mri_vol2vol mri_convert, tkregister2
+
+

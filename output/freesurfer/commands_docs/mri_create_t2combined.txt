@@ -1,0 +1,120 @@
+
+=== Output of 'mri_create_t2combined --help' ===
+
+Usage:
+-----
+mri_create_t2combined subjid t1wb t2upper t2middle t2lower t2combined [show]
+
+Inputs:
+------
+subjid   - subject id of the freesurfer anatomical
+t1wb     - T1 7T whole-brain
+t2upper  - T2* 7T partial-brain upper half
+t2middle - T2* 7T partial-brain middle half, or enter none
+t2lower  - T2* 7T partial-brain lower half
+
+Outputs:
+-------
+t2combined - T2* 7T combined partial-brain halves
+A logfile named /root/mri_create_t2combined.log is generated.
+
+Option:
+------
+show - if the last argument is 'show', then the commands
+       that will run are shown, but not executed.
+
+Example:
+-------
+mri_create_t2combined bert t1-7t.nii.gz t2upper.nii.gz none t2lower.nii.gz t2combined.nii.gz
+
+The purpose of this utility is to combine two (or three) T2* 7T partial-
+brain volumes into one volume, retaining the resolution, and
+registered to mprage anatomical, such that surfaces can be overlayed.
+To do this requires: 1. anatomical data processed by Freesurfer;
+2. 7T T1-weighted scan taken in the same session as the 7T T2*-weighted
+scans; and 3. set of 7T T2*-weighted upper, [middle] and lower brain scans.
+
+tkregister2 is run during this script.  When it appears, the 
+registration should be inspected, and the Save Reg button pressed to
+save the registration. Then exit tkregister2 to continue the script.
+
+
+=== Output of 'mri_create_t2combined -help' ===
+
+Usage:
+-----
+mri_create_t2combined subjid t1wb t2upper t2middle t2lower t2combined [show]
+
+Inputs:
+------
+subjid   - subject id of the freesurfer anatomical
+t1wb     - T1 7T whole-brain
+t2upper  - T2* 7T partial-brain upper half
+t2middle - T2* 7T partial-brain middle half, or enter none
+t2lower  - T2* 7T partial-brain lower half
+
+Outputs:
+-------
+t2combined - T2* 7T combined partial-brain halves
+A logfile named /root/mri_create_t2combined.log is generated.
+
+Option:
+------
+show - if the last argument is 'show', then the commands
+       that will run are shown, but not executed.
+
+Example:
+-------
+mri_create_t2combined bert t1-7t.nii.gz t2upper.nii.gz none t2lower.nii.gz t2combined.nii.gz
+
+The purpose of this utility is to combine two (or three) T2* 7T partial-
+brain volumes into one volume, retaining the resolution, and
+registered to mprage anatomical, such that surfaces can be overlayed.
+To do this requires: 1. anatomical data processed by Freesurfer;
+2. 7T T1-weighted scan taken in the same session as the 7T T2*-weighted
+scans; and 3. set of 7T T2*-weighted upper, [middle] and lower brain scans.
+
+tkregister2 is run during this script.  When it appears, the 
+registration should be inspected, and the Save Reg button pressed to
+save the registration. Then exit tkregister2 to continue the script.
+
+
+=== Output of 'mri_create_t2combined' (no arguments) ===
+
+Usage:
+-----
+mri_create_t2combined subjid t1wb t2upper t2middle t2lower t2combined [show]
+
+Inputs:
+------
+subjid   - subject id of the freesurfer anatomical
+t1wb     - T1 7T whole-brain
+t2upper  - T2* 7T partial-brain upper half
+t2middle - T2* 7T partial-brain middle half, or enter none
+t2lower  - T2* 7T partial-brain lower half
+
+Outputs:
+-------
+t2combined - T2* 7T combined partial-brain halves
+A logfile named /root/mri_create_t2combined.log is generated.
+
+Option:
+------
+show - if the last argument is 'show', then the commands
+       that will run are shown, but not executed.
+
+Example:
+-------
+mri_create_t2combined bert t1-7t.nii.gz t2upper.nii.gz none t2lower.nii.gz t2combined.nii.gz
+
+The purpose of this utility is to combine two (or three) T2* 7T partial-
+brain volumes into one volume, retaining the resolution, and
+registered to mprage anatomical, such that surfaces can be overlayed.
+To do this requires: 1. anatomical data processed by Freesurfer;
+2. 7T T1-weighted scan taken in the same session as the 7T T2*-weighted
+scans; and 3. set of 7T T2*-weighted upper, [middle] and lower brain scans.
+
+tkregister2 is run during this script.  When it appears, the 
+registration should be inspected, and the Save Reg button pressed to
+save the registration. Then exit tkregister2 to continue the script.
+

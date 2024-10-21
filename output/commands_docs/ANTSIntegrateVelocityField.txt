@@ -1,1 +1,0 @@
-Usage:   ANTSIntegrateVelocityField reference_image  VelocityIn.mhd DeformationOut.nii.gz  time0 time1 dT  

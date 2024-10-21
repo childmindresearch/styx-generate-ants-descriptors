@@ -1,0 +1,40 @@
+
+=== Output of 'mri_exvivo_strip --help' ===
+
+usage: mri_exvivo_strip [-h] -i INVOL -o OUTVOL --hemi HEMI [--pred PRED]
+                        [--norm NORM] [--fv] [--uthresh UTHRESH]
+                        [--border BORDER] [--multichannel] [--model MODEL]
+                        [--wts WTS] [--gpu GPU]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INVOL, --invol INVOL
+                        input MRI volume
+  -o OUTVOL, --outvol OUTVOL
+                        output MRI volume
+  --hemi HEMI           hemi to process
+  --pred PRED           write prediction volume
+  --norm NORM           write normalized volume
+  --fv                  bring up freeview to show results
+  --uthresh UTHRESH     specify threshold to erase above
+  --border BORDER       number of border voxels to set threshold at
+  --multichannel        specify that data has multiple channels
+  --model MODEL         use alternative model file
+  --wts WTS             wt filename
+  --gpu GPU             GPU number - if not supplied, CPU is used
+
+=== Output of 'mri_exvivo_strip -help' ===
+
+usage: mri_exvivo_strip [-h] -i INVOL -o OUTVOL --hemi HEMI [--pred PRED]
+                        [--norm NORM] [--fv] [--uthresh UTHRESH]
+                        [--border BORDER] [--multichannel] [--model MODEL]
+                        [--wts WTS] [--gpu GPU]
+mri_exvivo_strip: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'mri_exvivo_strip' (no arguments) ===
+
+usage: mri_exvivo_strip [-h] -i INVOL -o OUTVOL --hemi HEMI [--pred PRED]
+                        [--norm NORM] [--fv] [--uthresh UTHRESH]
+                        [--border BORDER] [--multichannel] [--model MODEL]
+                        [--wts WTS] [--gpu GPU]
+mri_exvivo_strip: error: the following arguments are required: -i/--invol, -o/--outvol, --hemi

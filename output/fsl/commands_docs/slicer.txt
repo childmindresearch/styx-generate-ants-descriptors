@@ -1,0 +1,31 @@
+
+=== Output of 'slicer --help' ===
+
+timeout: the monitored command dumped core
+
+=== Output of 'slicer -help' ===
+
+timeout: the monitored command dumped core
+
+=== Output of 'slicer' (no arguments) ===
+
+
+Usage: slicer <input> [input2] [main options] [output options - any number of these]
+
+Main options: [-L] [-l <lut>] [-s <scale>] [-i <intensitymin> <intensitymax>] [-e <thr>] [-t] [-n] [-u]
+These must be before output options.
+-L       : Label slices with slice number.
+-l <lut> : use a different colour map from that specified in the header.
+-i <min> <max> : specify intensity min and max for display range.
+-e <thr> : use the specified threshold for edges (if >0 use this proportion of max-min, if <0, use the absolute value) 
+-t       : produce semi-transparent (dithered) edges.
+-n       : use nearest-neighbour interpolation for output.
+-u       : do not put left-right labels in output.
+
+-c       : add a red dot marker to top right of imageOutput options:
+[-x/y/z <slice> <filename>]      : output sagittal, coronal or axial slice
+     (if <slice> >0 it is a fraction of image dimension, if <0, it is an absolute slice number)
+[-a <filename>]                  : output mid-sagittal, -coronal and -axial slices into one image
+[-A <width> <filename>]          : output _all_ axial slices into one image of _max_ width <width>
+[-S <sample> <width> <filename>] : as -A but only include every <sample>'th slice
+

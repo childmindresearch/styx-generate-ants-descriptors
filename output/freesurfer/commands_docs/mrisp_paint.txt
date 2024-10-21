@@ -1,0 +1,339 @@
+
+=== Output of 'mrisp_paint --help' ===
+
+				Help
+
+NAME
+	mrisp_paint
+
+SYNOPSIS
+	mrisp_paint [options] <template file> <input surface> <output name>
+
+DESCRIPTION
+	This program is useful for extracting one of the arrays ("a variable")
+	from a surface-registration template file. The output is a file 
+	containing a surface-worth of per-vertex values, saved in "curvature" 
+	format. Because the template data is sampled to a particular surface 
+	mesh, this conjures the idea of "painting to a surface".
+	
+	Extra Notes:
+	1. I (GW) am fairly certain that it only makes sense to use a sphere 
+	as the input surface to which to resample the template data. At that, 
+	it probably only produces a useful result to resample the data to the 
+	?h.sphere.reg file of a subject that's been registered to this 
+	template. (Of course, once that's done, the output curv-format file 
+	can be displayed on any of the same subject's surfaces.)
+	
+	2. The ?h.sphere (and ?h.sphere.reg) of subject fsaverage is an 
+	evenly-gridded icosahedron which would make a particularly regular 
+	surface to use with mris_paint, if the objective is simply to 
+	visualize a template variable. (I think). The files {fshome}/average/
+	surf/?h.sphere.reg look to be the same thing, and all of these may be 
+	the same thing as ic7.tri.
+
+POSITIONAL ARGUMENTS
+	<template_fname>
+		Full path to template_file. Template file is usually a tif 
+		file (not a picture image; tif format is just used to contain 
+		FreeSurfer array data). Template may contain more than one 
+		parameter, typically 3 as in the standard template. To select 
+		a particular parameter, append '#' followed by frame number. 
+		Eg: 'somepath/mytemplate.tif#1'. Numbering starts at 0, which 
+		is the default.
+
+	<surf_fname>
+		Full path to surface file which will provide the grid 
+		(vertices) onto which the template data is to be sampled or 
+		'painted'. (See note below on what kind of surface is 
+		suitable.)
+
+	<out_fname>
+		Output file name. Can be full path, or if directory omitted 
+		then will save to same directory as surf_fname
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-SDIR <subjects_dir>
+		Set SUBJECTS_DIR. Default: use environment variable/
+
+	-coords <which_vertices>
+		Treat overlay as a surface and write it into a 3 frame 
+		parameterization
+
+	-A <navgs>
+		Average curvature patterns navgs times
+
+	-N
+		Normalize curvature by variance.
+
+	-f <frame_number>
+		Paint frame number frame_number to output file. Default: 0
+
+	-S
+		Take square-root of output variable
+
+	-variance <subject_name hemi field_no>
+		Generate variance map. This selects from the template the 
+		second frame of the selected parameter, and invokes some other
+		computations.
+
+	-?,-U
+		Print usage
+
+	--all-info, -all-info
+		Prints BIRN-standard program information
+
+	--help
+		Prints help message
+
+	-V <vertex_num (int)>
+		Invoke diagnostics for vertex number vertex_num
+
+	--version, -version
+		Prints version information
+
+	-W
+		Write some diagnostics (DIAG_WRITE)
+
+OUTPUTS
+	<output name>
+		the output specified as an argument. This is a file containing
+		a surface-worth of per-vertex values, saved in "curvature" 
+		format. The per-vertex values are the selected variable from 
+		the template file, sampled to the given surface.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_make_template
+
+
+
+=== Output of 'mrisp_paint -help' ===
+
+				Help
+
+NAME
+	mrisp_paint
+
+SYNOPSIS
+	mrisp_paint [options] <template file> <input surface> <output name>
+
+DESCRIPTION
+	This program is useful for extracting one of the arrays ("a variable")
+	from a surface-registration template file. The output is a file 
+	containing a surface-worth of per-vertex values, saved in "curvature" 
+	format. Because the template data is sampled to a particular surface 
+	mesh, this conjures the idea of "painting to a surface".
+	
+	Extra Notes:
+	1. I (GW) am fairly certain that it only makes sense to use a sphere 
+	as the input surface to which to resample the template data. At that, 
+	it probably only produces a useful result to resample the data to the 
+	?h.sphere.reg file of a subject that's been registered to this 
+	template. (Of course, once that's done, the output curv-format file 
+	can be displayed on any of the same subject's surfaces.)
+	
+	2. The ?h.sphere (and ?h.sphere.reg) of subject fsaverage is an 
+	evenly-gridded icosahedron which would make a particularly regular 
+	surface to use with mris_paint, if the objective is simply to 
+	visualize a template variable. (I think). The files {fshome}/average/
+	surf/?h.sphere.reg look to be the same thing, and all of these may be 
+	the same thing as ic7.tri.
+
+POSITIONAL ARGUMENTS
+	<template_fname>
+		Full path to template_file. Template file is usually a tif 
+		file (not a picture image; tif format is just used to contain 
+		FreeSurfer array data). Template may contain more than one 
+		parameter, typically 3 as in the standard template. To select 
+		a particular parameter, append '#' followed by frame number. 
+		Eg: 'somepath/mytemplate.tif#1'. Numbering starts at 0, which 
+		is the default.
+
+	<surf_fname>
+		Full path to surface file which will provide the grid 
+		(vertices) onto which the template data is to be sampled or 
+		'painted'. (See note below on what kind of surface is 
+		suitable.)
+
+	<out_fname>
+		Output file name. Can be full path, or if directory omitted 
+		then will save to same directory as surf_fname
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-SDIR <subjects_dir>
+		Set SUBJECTS_DIR. Default: use environment variable/
+
+	-coords <which_vertices>
+		Treat overlay as a surface and write it into a 3 frame 
+		parameterization
+
+	-A <navgs>
+		Average curvature patterns navgs times
+
+	-N
+		Normalize curvature by variance.
+
+	-f <frame_number>
+		Paint frame number frame_number to output file. Default: 0
+
+	-S
+		Take square-root of output variable
+
+	-variance <subject_name hemi field_no>
+		Generate variance map. This selects from the template the 
+		second frame of the selected parameter, and invokes some other
+		computations.
+
+	-?,-U
+		Print usage
+
+	--all-info, -all-info
+		Prints BIRN-standard program information
+
+	--help
+		Prints help message
+
+	-V <vertex_num (int)>
+		Invoke diagnostics for vertex number vertex_num
+
+	--version, -version
+		Prints version information
+
+	-W
+		Write some diagnostics (DIAG_WRITE)
+
+OUTPUTS
+	<output name>
+		the output specified as an argument. This is a file containing
+		a surface-worth of per-vertex values, saved in "curvature" 
+		format. The per-vertex values are the selected variable from 
+		the template file, sampled to the given surface.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_make_template
+
+
+
+=== Output of 'mrisp_paint' (no arguments) ===
+
+				Help
+
+NAME
+	mrisp_paint
+
+SYNOPSIS
+	mrisp_paint [options] <template file> <input surface> <output name>
+
+DESCRIPTION
+	This program is useful for extracting one of the arrays ("a variable")
+	from a surface-registration template file. The output is a file 
+	containing a surface-worth of per-vertex values, saved in "curvature" 
+	format. Because the template data is sampled to a particular surface 
+	mesh, this conjures the idea of "painting to a surface".
+	
+	Extra Notes:
+	1. I (GW) am fairly certain that it only makes sense to use a sphere 
+	as the input surface to which to resample the template data. At that, 
+	it probably only produces a useful result to resample the data to the 
+	?h.sphere.reg file of a subject that's been registered to this 
+	template. (Of course, once that's done, the output curv-format file 
+	can be displayed on any of the same subject's surfaces.)
+	
+	2. The ?h.sphere (and ?h.sphere.reg) of subject fsaverage is an 
+	evenly-gridded icosahedron which would make a particularly regular 
+	surface to use with mris_paint, if the objective is simply to 
+	visualize a template variable. (I think). The files {fshome}/average/
+	surf/?h.sphere.reg look to be the same thing, and all of these may be 
+	the same thing as ic7.tri.
+
+POSITIONAL ARGUMENTS
+	<template_fname>
+		Full path to template_file. Template file is usually a tif 
+		file (not a picture image; tif format is just used to contain 
+		FreeSurfer array data). Template may contain more than one 
+		parameter, typically 3 as in the standard template. To select 
+		a particular parameter, append '#' followed by frame number. 
+		Eg: 'somepath/mytemplate.tif#1'. Numbering starts at 0, which 
+		is the default.
+
+	<surf_fname>
+		Full path to surface file which will provide the grid 
+		(vertices) onto which the template data is to be sampled or 
+		'painted'. (See note below on what kind of surface is 
+		suitable.)
+
+	<out_fname>
+		Output file name. Can be full path, or if directory omitted 
+		then will save to same directory as surf_fname
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-SDIR <subjects_dir>
+		Set SUBJECTS_DIR. Default: use environment variable/
+
+	-coords <which_vertices>
+		Treat overlay as a surface and write it into a 3 frame 
+		parameterization
+
+	-A <navgs>
+		Average curvature patterns navgs times
+
+	-N
+		Normalize curvature by variance.
+
+	-f <frame_number>
+		Paint frame number frame_number to output file. Default: 0
+
+	-S
+		Take square-root of output variable
+
+	-variance <subject_name hemi field_no>
+		Generate variance map. This selects from the template the 
+		second frame of the selected parameter, and invokes some other
+		computations.
+
+	-?,-U
+		Print usage
+
+	--all-info, -all-info
+		Prints BIRN-standard program information
+
+	--help
+		Prints help message
+
+	-V <vertex_num (int)>
+		Invoke diagnostics for vertex number vertex_num
+
+	--version, -version
+		Prints version information
+
+	-W
+		Write some diagnostics (DIAG_WRITE)
+
+OUTPUTS
+	<output name>
+		the output specified as an argument. This is a file containing
+		a surface-worth of per-vertex values, saved in "curvature" 
+		format. The per-vertex values are the selected variable from 
+		the template file, sampled to the given surface.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mris_make_template
+
+

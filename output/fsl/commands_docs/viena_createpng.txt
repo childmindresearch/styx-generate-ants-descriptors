@@ -1,0 +1,132 @@
+
+=== Output of 'viena_createpng --help' ===
+
+Image Exception : #63 :: No image files match: A_halfwayto_B
+Image Exception : #22 :: Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+/usr/local/fsl/bin/viena_createpng: line 32: 22122 Aborted                 (core dumped) ${FSLDIR}/bin/overlay 0 0 -c ${A}_halfwayto_${B} -a ${A}_halfwayto_${B}_ventricle_region_bin 0.9 3 ${A}_halfwayto_${B}_ventricle_region_bin_grot
+Image Exception : #63 :: No image files match: A_halfwayto_B_ventricle_region_bin_grot
+Image Exception : #22 :: Failed to read volume A_halfwayto_B_ventricle_region_bin_grot
+Error : No image files match: A_halfwayto_B_ventricle_region_bin_grot
+Error in slicer input, exiting...
+Image Exception : #63 :: No image files match: B_halfwayto_A
+Image Exception : #22 :: Failed to read volume B_halfwayto_A
+Error : No image files match: B_halfwayto_A
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume B_halfwayto_A
+Error : No image files match: B_halfwayto_A
+/usr/local/fsl/bin/viena_createpng: line 44: 22149 Aborted                 (core dumped) ${FSLDIR}/bin/overlay 0 0 -c ${B}_halfwayto_${A} -a ${B}_halfwayto_${A}_ventricle_region_bin 0.9 3 ${B}_halfwayto_${A}_ventricle_region_bin_grot
+Image Exception : #63 :: No image files match: B_halfwayto_A_ventricle_region_bin_grot
+Image Exception : #22 :: Failed to read volume B_halfwayto_A_ventricle_region_bin_grot
+Error : No image files match: B_halfwayto_A_ventricle_region_bin_grot
+Error in slicer input, exiting...
+Image Exception : #63 :: No image files match: A_to_B_flow_ventricles
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: A_to_B_flow_ventricles
+/usr/local/fsl/bin/viena_createpng: line 53: 22176 Aborted                 (core dumped) ${FSLDIR}/bin/fslmaths ${A}_to_${B}_flow_ventricles -mul -1 ${A}_to_${B}_flowneg_ventricles
+Image Exception : #63 :: No image files match: A_halfwayto_B
+Image Exception : #22 :: Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+/usr/local/fsl/bin/viena_createpng: line 59: 22177 Aborted                 (core dumped) ${FSLDIR}/bin/overlay 0 0 ${A}_halfwayto_${B} -a ${A}_to_${B}_flow_ventricles 0.01 1 ${A}_to_${B}_flowneg_ventricles 0.01 1 ${A}_halfwayto_${B}_render_ventricles
+Image Exception : #63 :: No image files match: A_halfwayto_B_render_ventricles
+Image Exception : #22 :: Failed to read volume A_halfwayto_B_render_ventricles
+Error : No image files match: A_halfwayto_B_render_ventricles
+Error in slicer input, exiting...
+
+ Cannot open ven_grA_halfwayto_Ba.png for reading
+/usr/local/fsl/bin/viena_createpng: line 82: 22179 Segmentation fault      (core dumped) ${FSLDIR}/bin/pngappend ven_gr${A}_halfwayto_${B}a.png + ven_gr${A}_halfwayto_${B}b.png + ven_gr${A}_halfwayto_${B}c.png + ven_gr${A}_halfwayto_${B}d.png + ven_gr${A}_halfwayto_${B}e.png + ven_gr${A}_halfwayto_${B}f.png + ven_gr${A}_halfwayto_${B}g.png + ven_gr${A}_halfwayto_${B}h.png + ven_gr${A}_halfwayto_${B}i.png ${A}_halfwayto_${B}_render_ventricles.png
+/bin/rm: cannot remove 'ven_grA_halfwayto_B?.???': No such file or directory
+
+=== Output of 'viena_createpng -help' ===
+
+Image Exception : #63 :: No image files match: A_halfwayto_B
+Image Exception : #22 :: Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+/usr/local/fsl/bin/viena_createpng: line 32: 22240 Aborted                 (core dumped) ${FSLDIR}/bin/overlay 0 0 -c ${A}_halfwayto_${B} -a ${A}_halfwayto_${B}_ventricle_region_bin 0.9 3 ${A}_halfwayto_${B}_ventricle_region_bin_grot
+Image Exception : #63 :: No image files match: A_halfwayto_B_ventricle_region_bin_grot
+Image Exception : #22 :: Failed to read volume A_halfwayto_B_ventricle_region_bin_grot
+Error : No image files match: A_halfwayto_B_ventricle_region_bin_grot
+Error in slicer input, exiting...
+Image Exception : #63 :: No image files match: B_halfwayto_A
+Image Exception : #22 :: Failed to read volume B_halfwayto_A
+Error : No image files match: B_halfwayto_A
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume B_halfwayto_A
+Error : No image files match: B_halfwayto_A
+/usr/local/fsl/bin/viena_createpng: line 44: 22267 Aborted                 (core dumped) ${FSLDIR}/bin/overlay 0 0 -c ${B}_halfwayto_${A} -a ${B}_halfwayto_${A}_ventricle_region_bin 0.9 3 ${B}_halfwayto_${A}_ventricle_region_bin_grot
+Image Exception : #63 :: No image files match: B_halfwayto_A_ventricle_region_bin_grot
+Image Exception : #22 :: Failed to read volume B_halfwayto_A_ventricle_region_bin_grot
+Error : No image files match: B_halfwayto_A_ventricle_region_bin_grot
+Error in slicer input, exiting...
+Image Exception : #63 :: No image files match: A_to_B_flow_ventricles
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: A_to_B_flow_ventricles
+/usr/local/fsl/bin/viena_createpng: line 53: 22294 Aborted                 (core dumped) ${FSLDIR}/bin/fslmaths ${A}_to_${B}_flow_ventricles -mul -1 ${A}_to_${B}_flowneg_ventricles
+Image Exception : #63 :: No image files match: A_halfwayto_B
+Image Exception : #22 :: Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+/usr/local/fsl/bin/viena_createpng: line 59: 22295 Aborted                 (core dumped) ${FSLDIR}/bin/overlay 0 0 ${A}_halfwayto_${B} -a ${A}_to_${B}_flow_ventricles 0.01 1 ${A}_to_${B}_flowneg_ventricles 0.01 1 ${A}_halfwayto_${B}_render_ventricles
+Image Exception : #63 :: No image files match: A_halfwayto_B_render_ventricles
+Image Exception : #22 :: Failed to read volume A_halfwayto_B_render_ventricles
+Error : No image files match: A_halfwayto_B_render_ventricles
+Error in slicer input, exiting...
+
+ Cannot open ven_grA_halfwayto_Ba.png for reading
+/usr/local/fsl/bin/viena_createpng: line 82: 22297 Segmentation fault      (core dumped) ${FSLDIR}/bin/pngappend ven_gr${A}_halfwayto_${B}a.png + ven_gr${A}_halfwayto_${B}b.png + ven_gr${A}_halfwayto_${B}c.png + ven_gr${A}_halfwayto_${B}d.png + ven_gr${A}_halfwayto_${B}e.png + ven_gr${A}_halfwayto_${B}f.png + ven_gr${A}_halfwayto_${B}g.png + ven_gr${A}_halfwayto_${B}h.png + ven_gr${A}_halfwayto_${B}i.png ${A}_halfwayto_${B}_render_ventricles.png
+/bin/rm: cannot remove 'ven_grA_halfwayto_B?.???': No such file or directory
+
+=== Output of 'viena_createpng' (no arguments) ===
+
+Image Exception : #63 :: No image files match: A_halfwayto_B
+Image Exception : #22 :: Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+/usr/local/fsl/bin/viena_createpng: line 32: 22358 Aborted                 (core dumped) ${FSLDIR}/bin/overlay 0 0 -c ${A}_halfwayto_${B} -a ${A}_halfwayto_${B}_ventricle_region_bin 0.9 3 ${A}_halfwayto_${B}_ventricle_region_bin_grot
+Image Exception : #63 :: No image files match: A_halfwayto_B_ventricle_region_bin_grot
+Image Exception : #22 :: Failed to read volume A_halfwayto_B_ventricle_region_bin_grot
+Error : No image files match: A_halfwayto_B_ventricle_region_bin_grot
+Error in slicer input, exiting...
+Image Exception : #63 :: No image files match: B_halfwayto_A
+Image Exception : #22 :: Failed to read volume B_halfwayto_A
+Error : No image files match: B_halfwayto_A
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume B_halfwayto_A
+Error : No image files match: B_halfwayto_A
+/usr/local/fsl/bin/viena_createpng: line 44: 22385 Aborted                 (core dumped) ${FSLDIR}/bin/overlay 0 0 -c ${B}_halfwayto_${A} -a ${B}_halfwayto_${A}_ventricle_region_bin 0.9 3 ${B}_halfwayto_${A}_ventricle_region_bin_grot
+Image Exception : #63 :: No image files match: B_halfwayto_A_ventricle_region_bin_grot
+Image Exception : #22 :: Failed to read volume B_halfwayto_A_ventricle_region_bin_grot
+Error : No image files match: B_halfwayto_A_ventricle_region_bin_grot
+Error in slicer input, exiting...
+Image Exception : #63 :: No image files match: A_to_B_flow_ventricles
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: A_to_B_flow_ventricles
+/usr/local/fsl/bin/viena_createpng: line 53: 22412 Aborted                 (core dumped) ${FSLDIR}/bin/fslmaths ${A}_to_${B}_flow_ventricles -mul -1 ${A}_to_${B}_flowneg_ventricles
+Image Exception : #63 :: No image files match: A_halfwayto_B
+Image Exception : #22 :: Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume A_halfwayto_B
+Error : No image files match: A_halfwayto_B
+/usr/local/fsl/bin/viena_createpng: line 59: 22413 Aborted                 (core dumped) ${FSLDIR}/bin/overlay 0 0 ${A}_halfwayto_${B} -a ${A}_to_${B}_flow_ventricles 0.01 1 ${A}_to_${B}_flowneg_ventricles 0.01 1 ${A}_halfwayto_${B}_render_ventricles
+Image Exception : #63 :: No image files match: A_halfwayto_B_render_ventricles
+Image Exception : #22 :: Failed to read volume A_halfwayto_B_render_ventricles
+Error : No image files match: A_halfwayto_B_render_ventricles
+Error in slicer input, exiting...
+
+ Cannot open ven_grA_halfwayto_Ba.png for reading
+/usr/local/fsl/bin/viena_createpng: line 82: 22415 Segmentation fault      (core dumped) ${FSLDIR}/bin/pngappend ven_gr${A}_halfwayto_${B}a.png + ven_gr${A}_halfwayto_${B}b.png + ven_gr${A}_halfwayto_${B}c.png + ven_gr${A}_halfwayto_${B}d.png + ven_gr${A}_halfwayto_${B}e.png + ven_gr${A}_halfwayto_${B}f.png + ven_gr${A}_halfwayto_${B}g.png + ven_gr${A}_halfwayto_${B}h.png + ven_gr${A}_halfwayto_${B}i.png ${A}_halfwayto_${B}_render_ventricles.png
+/bin/rm: cannot remove 'ven_grA_halfwayto_B?.???': No such file or directory

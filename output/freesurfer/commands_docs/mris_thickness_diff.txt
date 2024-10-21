@@ -1,0 +1,245 @@
+
+=== Output of 'mris_thickness_diff --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mris_thickness_diff [options] surface1 data1 surface2 data2 
+
+Options:
+   -src_type %s       input surface data format (curv, paint or w)
+   -trg_type %s       output format
+   -out %s            output file name
+   -out_resampled %s  output resampled thickness
+   -nsmooth %d        number of smoothing steps
+   -register          force a rigid registration of surf2 to surf1
+   -xform %s          apply LTA transform to align input surf1 to surf2
+   -invert            reversely apply -xform 
+   -src %s            source volume for -xform 
+   -dst %s            target volume for -xform 
+   -abs               compute the std of abs-thickness-diff 
+   -L %s              log_file name 
+   -S %s              subject name 
+   --help             more help 
+
+7.4.1
+
+mris_thickness_diff computes the difference of two surface data
+sets defined on the two surface mesh. Result = data2 - data1
+(in the sense of closest vertex).
+
+mris_thickness_diff uses closest Euclidean distance to 
+define correspondence across the two surfaces. It does 
+not assume that the correspondence is given by the vertex IDs.
+But if one has two surfaces that are the 'same' but not aligned 
+in space yet, the trick is to just use one of them as both the 
+src and trgt surface, and mris_thickness_diff will then associate 
+data by their corresponding vertex ID. 
+
+In contrast, mri_sur2surf builds the surface correspondence 
+through the spherical map. This 'nonlinear' way of building
+surface correspondence is less reliable than using linear 
+registration and building correspondence by surface distance 
+in the longitudinal case. Overall, the key is that mri_surf2surf 
+is better to align surfaces across different subjects while ICP 
+or linear volume registration is better for aligning surfaces 
+from the same subject across time.  This means that 
+mris_thickness_diff is more useful for longitudinal studies.
+
+The -register flag to mris_thickness_diff will run ICP internally 
+to align the two input surfaces if they have not been aligned yet. 
+But ICP (iterative-closest-point) has its limited capture range. 
+For example, if one surface is the other one rotated by more than 
+90 degree, ICP may not align them.
+
+OPTIONS
+
+  -src_type typestring
+    Format type string. Can be either curv (for FreeSurfer
+    curvature file), paint or w (for FreeSurfer paint files).
+
+  -trg_type typestring
+    Format type string. Can be paint or w (for FreeSurfer
+    paint files).
+
+  -out filename
+    Output the difference to the paint file. 
+    Note the # of entries is same as VN of surface1.
+
+  -nsmooth #
+    Perform # of iterations (smoothing) before computing
+    the difference.
+
+  -annot annotationfile annotation_name
+    Limit thickness comparison to region with
+    annotation = annotation_name.
+
+  -label labelfile
+    Limit thickness comparison to region inside label.
+
+  -s subject_name (to be recorded in logfile).
+
+  -register
+    Perform ICP rigid registration before computing
+    closet-vertex difference.
+
+  -xform xformfilename
+    Apply LTA transform to align surface1 to surface2
+
+  -invert
+    Reversely apply -xform 
+
+  -src filename
+    Source volume for -xform 
+
+  -dst filename
+    Target volume for -xform 
+
+
+EXAMPLE
+
+mris_thickness_diff \ 
+  -out $SUBJECTS_DIR/subj_tp1/surf/lh.thickness_diff \ 
+  -trg_type curv \ 
+  -register \ 
+  $SUBJECTS_DIR/subj_tp1/surf/lh.white \ 
+  $SUBJECTS_DIR/subj_tp1/surf/lh.thickness \ 
+  $SUBJECTS_DIR/subj_tp2/surf/lh.white \ 
+  $SUBJECTS_DIR/subj_tp2/surf/lh.thickness
+
+tksurfer subj_tp1 lh inflated \ 
+  -overlay $SUBJECTS_DIR/subj_tp1/surf/lh.thickness_diff
+Select menu View->Configure->Overlap to adjust threshold.
+
+
+=== Output of 'mris_thickness_diff -help' ===
+
+unknown option -help
+USAGE: /usr/local/freesurfer/bin/mris_thickness_diff [options] surface1 data1 surface2 data2 
+
+Options:
+   -src_type %s       input surface data format (curv, paint or w)
+   -trg_type %s       output format
+   -out %s            output file name
+   -out_resampled %s  output resampled thickness
+   -nsmooth %d        number of smoothing steps
+   -register          force a rigid registration of surf2 to surf1
+   -xform %s          apply LTA transform to align input surf1 to surf2
+   -invert            reversely apply -xform 
+   -src %s            source volume for -xform 
+   -dst %s            target volume for -xform 
+   -abs               compute the std of abs-thickness-diff 
+   -L %s              log_file name 
+   -S %s              subject name 
+   --help             more help 
+
+7.4.1
+
+mris_thickness_diff computes the difference of two surface data
+sets defined on the two surface mesh. Result = data2 - data1
+(in the sense of closest vertex).
+
+mris_thickness_diff uses closest Euclidean distance to 
+define correspondence across the two surfaces. It does 
+not assume that the correspondence is given by the vertex IDs.
+But if one has two surfaces that are the 'same' but not aligned 
+in space yet, the trick is to just use one of them as both the 
+src and trgt surface, and mris_thickness_diff will then associate 
+data by their corresponding vertex ID. 
+
+In contrast, mri_sur2surf builds the surface correspondence 
+through the spherical map. This 'nonlinear' way of building
+surface correspondence is less reliable than using linear 
+registration and building correspondence by surface distance 
+in the longitudinal case. Overall, the key is that mri_surf2surf 
+is better to align surfaces across different subjects while ICP 
+or linear volume registration is better for aligning surfaces 
+from the same subject across time.  This means that 
+mris_thickness_diff is more useful for longitudinal studies.
+
+The -register flag to mris_thickness_diff will run ICP internally 
+to align the two input surfaces if they have not been aligned yet. 
+But ICP (iterative-closest-point) has its limited capture range. 
+For example, if one surface is the other one rotated by more than 
+90 degree, ICP may not align them.
+
+OPTIONS
+
+  -src_type typestring
+    Format type string. Can be either curv (for FreeSurfer
+    curvature file), paint or w (for FreeSurfer paint files).
+
+  -trg_type typestring
+    Format type string. Can be paint or w (for FreeSurfer
+    paint files).
+
+  -out filename
+    Output the difference to the paint file. 
+    Note the # of entries is same as VN of surface1.
+
+  -nsmooth #
+    Perform # of iterations (smoothing) before computing
+    the difference.
+
+  -annot annotationfile annotation_name
+    Limit thickness comparison to region with
+    annotation = annotation_name.
+
+  -label labelfile
+    Limit thickness comparison to region inside label.
+
+  -s subject_name (to be recorded in logfile).
+
+  -register
+    Perform ICP rigid registration before computing
+    closet-vertex difference.
+
+  -xform xformfilename
+    Apply LTA transform to align surface1 to surface2
+
+  -invert
+    Reversely apply -xform 
+
+  -src filename
+    Source volume for -xform 
+
+  -dst filename
+    Target volume for -xform 
+
+
+EXAMPLE
+
+mris_thickness_diff \ 
+  -out $SUBJECTS_DIR/subj_tp1/surf/lh.thickness_diff \ 
+  -trg_type curv \ 
+  -register \ 
+  $SUBJECTS_DIR/subj_tp1/surf/lh.white \ 
+  $SUBJECTS_DIR/subj_tp1/surf/lh.thickness \ 
+  $SUBJECTS_DIR/subj_tp2/surf/lh.white \ 
+  $SUBJECTS_DIR/subj_tp2/surf/lh.thickness
+
+tksurfer subj_tp1 lh inflated \ 
+  -overlay $SUBJECTS_DIR/subj_tp1/surf/lh.thickness_diff
+Select menu View->Configure->Overlap to adjust threshold.
+
+
+=== Output of 'mris_thickness_diff' (no arguments) ===
+
+Incorrect number of arguments, argc = 1
+USAGE: /usr/local/freesurfer/bin/mris_thickness_diff [options] surface1 data1 surface2 data2 
+
+Options:
+   -src_type %s       input surface data format (curv, paint or w)
+   -trg_type %s       output format
+   -out %s            output file name
+   -out_resampled %s  output resampled thickness
+   -nsmooth %d        number of smoothing steps
+   -register          force a rigid registration of surf2 to surf1
+   -xform %s          apply LTA transform to align input surf1 to surf2
+   -invert            reversely apply -xform 
+   -src %s            source volume for -xform 
+   -dst %s            target volume for -xform 
+   -abs               compute the std of abs-thickness-diff 
+   -L %s              log_file name 
+   -S %s              subject name 
+   --help             more help 
+
+7.4.1
+

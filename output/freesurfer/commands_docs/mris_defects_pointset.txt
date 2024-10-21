@@ -1,0 +1,81 @@
+
+=== Output of 'mris_defects_pointset --help' ===
+
+				Help
+
+NAME
+	mris_defects_pointset
+
+SYNOPSIS
+	mris_defects_pointset [options] -s <surface> -d <defects> -o 
+	<pointset>
+
+DESCRIPTION
+	Produces a pointset file containing the locations of each topological 
+	defect in a surface
+
+REQUIRED FLAGGED ARGUMENTS
+	-s, --surf FILE
+		Input surface
+
+	-d, --defects FILE
+		Input defect label (must match the surface dimensions)
+
+	-o, --out FILE
+		Output pointset file (json)
+
+OPTIONAL FLAGGED ARGUMENTS
+	-l, --label FILE
+		Restrict pointset to this label (must be in input surface 
+		space)
+
+	-c, --control
+		Save output in old control point format (v6 compatible)
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_defects_pointset -help' ===
+
+error: unexpected argument '-help'
+
+=== Output of 'mris_defects_pointset' (no arguments) ===
+
+				Help
+
+NAME
+	mris_defects_pointset
+
+SYNOPSIS
+	mris_defects_pointset [options] -s <surface> -d <defects> -o 
+	<pointset>
+
+DESCRIPTION
+	Produces a pointset file containing the locations of each topological 
+	defect in a surface
+
+REQUIRED FLAGGED ARGUMENTS
+	-s, --surf FILE
+		Input surface
+
+	-d, --defects FILE
+		Input defect label (must match the surface dimensions)
+
+	-o, --out FILE
+		Output pointset file (json)
+
+OPTIONAL FLAGGED ARGUMENTS
+	-l, --label FILE
+		Restrict pointset to this label (must be in input surface 
+		space)
+
+	-c, --control
+		Save output in old control point format (v6 compatible)
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+error: missing required input '--surf'

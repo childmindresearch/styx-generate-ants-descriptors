@@ -1,0 +1,240 @@
+
+=== Output of 'mri_warp_convert --help' ===
+
+7.4.1
+
+				Help
+
+NAME
+	mri_warp_convert
+
+SYNOPSIS
+	mri_warp_convert [options]
+
+DESCRIPTION
+	This program converts non-linear deformation field warp file formats. 
+	Some formats may require you to pass an image if the geometry 
+	information is missing form the transform file.
+
+POSITIONAL ARGUMENTS
+	None.
+
+REQUIRED FLAGGED ARGUMENTS
+	Exactly one input is required:
+
+	--inm3z <in.m3z>
+		input M3Z warp
+
+	--infsl <in.nii.gz>
+		input FSL warp
+
+	--inlps, --initk <in.nii.gz>
+		input LPS-to-LPS displacement field (e.g. ITK, ANTs)
+
+	--inras <in.nii.gz>
+		input RAS-to-RAS displacement field (e.g. NiftyReg)
+
+	--invox <in.mgz>
+		input file with displacements in source-voxel space
+
+	Exactly one output is required:
+
+	--outm3z <out.m3z>
+		output warp (M3Z Freesurfer format)
+
+	--outfsl <out.nii.gz>
+		output warp (FSL format)
+
+	--outlps, --outitk <out.nii.gz>
+		output LPS-to-LPS displacement field (e.g. ITK, ANTs)
+
+	--outras <out.nii.gz>
+		output RAS-to-RAS displacement field (e.g. NiftyReg)
+
+	--outvox <out.mgz>
+		output file with displacements in source-voxel space
+
+OPTIONAL FLAGGED ARGUMENTS
+	While M3Z contains src geometry information, other file formats are 
+	missing this information and you need to explicitly pass it:
+
+	-g, --insrcgeom <geom.mgz>
+		specify source image geometry (moving volume)
+
+	-d, --downsample
+		Downsample output M3Z to spacing of 2.
+
+EXAMPLE 1
+	Convert FSL warp to M3Z (FreeSurfer):
+	   mri_warp_convert --infsl fsl.nii.gz --outm3z out.m3z
+
+EXAMPLE 2
+	Convert ITK warp (e.g. ANTs) to M3Z (FreeSurfer):
+	   mri_warp_convert --initk itk.nii.gz --outm3z out.m3z --insrcgeom 
+	src.nii.gz
+
+EXAMPLE 3
+	Convert M3Z (FreeSurfer) to ITK warp (e.g. ANTs):
+	   warp_convert --inm3z in.m3z --outitk out.nii.gz
+
+
+
+=== Output of 'mri_warp_convert -help' ===
+
+7.4.1
+
+				Help
+
+NAME
+	mri_warp_convert
+
+SYNOPSIS
+	mri_warp_convert [options]
+
+DESCRIPTION
+	This program converts non-linear deformation field warp file formats. 
+	Some formats may require you to pass an image if the geometry 
+	information is missing form the transform file.
+
+POSITIONAL ARGUMENTS
+	None.
+
+REQUIRED FLAGGED ARGUMENTS
+	Exactly one input is required:
+
+	--inm3z <in.m3z>
+		input M3Z warp
+
+	--infsl <in.nii.gz>
+		input FSL warp
+
+	--inlps, --initk <in.nii.gz>
+		input LPS-to-LPS displacement field (e.g. ITK, ANTs)
+
+	--inras <in.nii.gz>
+		input RAS-to-RAS displacement field (e.g. NiftyReg)
+
+	--invox <in.mgz>
+		input file with displacements in source-voxel space
+
+	Exactly one output is required:
+
+	--outm3z <out.m3z>
+		output warp (M3Z Freesurfer format)
+
+	--outfsl <out.nii.gz>
+		output warp (FSL format)
+
+	--outlps, --outitk <out.nii.gz>
+		output LPS-to-LPS displacement field (e.g. ITK, ANTs)
+
+	--outras <out.nii.gz>
+		output RAS-to-RAS displacement field (e.g. NiftyReg)
+
+	--outvox <out.mgz>
+		output file with displacements in source-voxel space
+
+OPTIONAL FLAGGED ARGUMENTS
+	While M3Z contains src geometry information, other file formats are 
+	missing this information and you need to explicitly pass it:
+
+	-g, --insrcgeom <geom.mgz>
+		specify source image geometry (moving volume)
+
+	-d, --downsample
+		Downsample output M3Z to spacing of 2.
+
+EXAMPLE 1
+	Convert FSL warp to M3Z (FreeSurfer):
+	   mri_warp_convert --infsl fsl.nii.gz --outm3z out.m3z
+
+EXAMPLE 2
+	Convert ITK warp (e.g. ANTs) to M3Z (FreeSurfer):
+	   mri_warp_convert --initk itk.nii.gz --outm3z out.m3z --insrcgeom 
+	src.nii.gz
+
+EXAMPLE 3
+	Convert M3Z (FreeSurfer) to ITK warp (e.g. ANTs):
+	   warp_convert --inm3z in.m3z --outitk out.nii.gz
+
+
+
+=== Output of 'mri_warp_convert' (no arguments) ===
+
+7.4.1
+
+				Help
+
+NAME
+	mri_warp_convert
+
+SYNOPSIS
+	mri_warp_convert [options]
+
+DESCRIPTION
+	This program converts non-linear deformation field warp file formats. 
+	Some formats may require you to pass an image if the geometry 
+	information is missing form the transform file.
+
+POSITIONAL ARGUMENTS
+	None.
+
+REQUIRED FLAGGED ARGUMENTS
+	Exactly one input is required:
+
+	--inm3z <in.m3z>
+		input M3Z warp
+
+	--infsl <in.nii.gz>
+		input FSL warp
+
+	--inlps, --initk <in.nii.gz>
+		input LPS-to-LPS displacement field (e.g. ITK, ANTs)
+
+	--inras <in.nii.gz>
+		input RAS-to-RAS displacement field (e.g. NiftyReg)
+
+	--invox <in.mgz>
+		input file with displacements in source-voxel space
+
+	Exactly one output is required:
+
+	--outm3z <out.m3z>
+		output warp (M3Z Freesurfer format)
+
+	--outfsl <out.nii.gz>
+		output warp (FSL format)
+
+	--outlps, --outitk <out.nii.gz>
+		output LPS-to-LPS displacement field (e.g. ITK, ANTs)
+
+	--outras <out.nii.gz>
+		output RAS-to-RAS displacement field (e.g. NiftyReg)
+
+	--outvox <out.mgz>
+		output file with displacements in source-voxel space
+
+OPTIONAL FLAGGED ARGUMENTS
+	While M3Z contains src geometry information, other file formats are 
+	missing this information and you need to explicitly pass it:
+
+	-g, --insrcgeom <geom.mgz>
+		specify source image geometry (moving volume)
+
+	-d, --downsample
+		Downsample output M3Z to spacing of 2.
+
+EXAMPLE 1
+	Convert FSL warp to M3Z (FreeSurfer):
+	   mri_warp_convert --infsl fsl.nii.gz --outm3z out.m3z
+
+EXAMPLE 2
+	Convert ITK warp (e.g. ANTs) to M3Z (FreeSurfer):
+	   mri_warp_convert --initk itk.nii.gz --outm3z out.m3z --insrcgeom 
+	src.nii.gz
+
+EXAMPLE 3
+	Convert M3Z (FreeSurfer) to ITK warp (e.g. ANTs):
+	   warp_convert --inm3z in.m3z --outitk out.nii.gz
+
+

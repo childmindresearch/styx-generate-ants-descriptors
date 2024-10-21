@@ -1,0 +1,13 @@
+
+=== Output of 'mris_deform --help' ===
+
+unknown option --help
+
+=== Output of 'mris_deform -help' ===
+
+unknown option -help
+
+=== Output of 'mris_deform' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_deform [options] <input surface> <input volume> <xform> <output surface>
+	

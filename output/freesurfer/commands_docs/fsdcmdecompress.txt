@@ -1,0 +1,85 @@
+
+=== Output of 'fsdcmdecompress --help' ===
+
+
+fsdcmdecompress --help
+  --i indcmfile --o outdcmfile
+  --dcmtk : use either dcmdrle.fs or dcmdjpeg.fs
+  --jpeg : DICOM is JPEG compressed, ignored without --dcmtk
+  --rle  : DICOM is RLE compressed, ignored without --dcmtk
+  --gdcm : use gdcmconv.fs (default)
+
+fsdcmdecompress 7.4.1
+
+This is a frontend script for decompressing DICOM files using either
+GDCM http://gdcm.sourceforge.net/wiki/index.php/Gdcmconv or DCMTK
+http://dicom.offis.de/dcmtk. The original purpose is to call this
+script from a C binary using a system() call to create a decompressed
+file that the binary can then use the standard FreeSurfer libraries to
+read. There are several ways this utility can be used depending upon
+the converter and whether the input file is RLE or JPEG compressed.
+
+By default, gdcmconv is used. This utility figures out for itself
+whether a file is RLE or JPEG compressed. It seems to work in more
+cases than the DCMTK routines. In this case, --jpeg and --rle have 
+no effect. 
+
+The use of DCMTK routines can be specfied in one of two ways. First,
+one can add --dcmtk. Second, one can specify
+
+  setenv FS_DCM_DECOMPRESS DCMTK
+
+before running the script. In this way, the script can be controlled
+by simply setting an environment variable without needing to create a
+new binary. Remember that if DCMTK is used, then one must specify
+--jpeg or --rle. In the C code (DICOMRead.c), one of these will always
+be added to the command line, but they will not have an effect unless
+DCMTK is used.
+
+=== Output of 'fsdcmdecompress -help' ===
+
+
+fsdcmdecompress --help
+  --i indcmfile --o outdcmfile
+  --dcmtk : use either dcmdrle.fs or dcmdjpeg.fs
+  --jpeg : DICOM is JPEG compressed, ignored without --dcmtk
+  --rle  : DICOM is RLE compressed, ignored without --dcmtk
+  --gdcm : use gdcmconv.fs (default)
+
+fsdcmdecompress 7.4.1
+
+This is a frontend script for decompressing DICOM files using either
+GDCM http://gdcm.sourceforge.net/wiki/index.php/Gdcmconv or DCMTK
+http://dicom.offis.de/dcmtk. The original purpose is to call this
+script from a C binary using a system() call to create a decompressed
+file that the binary can then use the standard FreeSurfer libraries to
+read. There are several ways this utility can be used depending upon
+the converter and whether the input file is RLE or JPEG compressed.
+
+By default, gdcmconv is used. This utility figures out for itself
+whether a file is RLE or JPEG compressed. It seems to work in more
+cases than the DCMTK routines. In this case, --jpeg and --rle have 
+no effect. 
+
+The use of DCMTK routines can be specfied in one of two ways. First,
+one can add --dcmtk. Second, one can specify
+
+  setenv FS_DCM_DECOMPRESS DCMTK
+
+before running the script. In this way, the script can be controlled
+by simply setting an environment variable without needing to create a
+new binary. Remember that if DCMTK is used, then one must specify
+--jpeg or --rle. In the C code (DICOMRead.c), one of these will always
+be added to the command line, but they will not have an effect unless
+DCMTK is used.
+
+=== Output of 'fsdcmdecompress' (no arguments) ===
+
+
+fsdcmdecompress --help
+  --i indcmfile --o outdcmfile
+  --dcmtk : use either dcmdrle.fs or dcmdjpeg.fs
+  --jpeg : DICOM is JPEG compressed, ignored without --dcmtk
+  --rle  : DICOM is RLE compressed, ignored without --dcmtk
+  --gdcm : use gdcmconv.fs (default)
+

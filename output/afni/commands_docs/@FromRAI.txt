@@ -1,0 +1,22 @@
+
+=== Output of '@FromRAI --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@FromRAI -help' ===
+
+
+Usage: @FromRAI <-xyz X Y Z> <-or ORIENT>
+
+   Changes the RAI coordinates X Y Z to
+   orientation ORIENT
+
+
+=== Output of '@FromRAI' (no arguments) ===
+
+
+Usage: @FromRAI <-xyz X Y Z> <-or ORIENT>
+
+   Changes the RAI coordinates X Y Z to
+   orientation ORIENT
+

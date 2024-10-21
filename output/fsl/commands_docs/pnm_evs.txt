@@ -1,0 +1,116 @@
+
+=== Output of 'pnm_evs --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+pnm_evs (Version 2.0)
+Copyright(c) 2011, University of Oxford (Mark Jenkinson)
+
+Usage: 
+pnm_evs [options] --tr=3.0 -i -o -r -c ... TBD ...
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image filename (of 4D functional/EPI data)
+	-o,--out	output filename (for confound/EV matrix)
+	--tr	TR of fMRI volumes (in seconds)
+
+Optional arguments (You may optionally specify one or more of):
+	-c,--cardiac	input filename for cardiac values (1 or 2 columns: time [phase])
+	-r,--respiratory	input filename for respiratory phase values (1 or 2 columns: time [phase])
+	--oc	order of basic cardiac regressors (number of Fourier pairs) - default=2
+	--or	order of basic respiratory regressors (number of Fourier pairs) - default=1
+	--multc	order of multiplicative cardiac terms (also need to set --multr) - default=0
+	--multr	order of multiplicative respiratory terms (also need to set --multc) - default=0
+	--csfmask	filename of csf mask image (and generate csf regressor)
+	--rvt	input filename of RVT data (2 columns: time value)
+	--heartrate	input filename for heartrate data (2 columns: time value)
+	--rvtsmooth	Optional smoothing of RVT regressor (in seconds - default 0)
+	--heartratesmooth	Optional smoothing of heart rate regressor (in seconds - e.g. 10)
+	--slicedir	specify slice direction (x/y/z) - default is z
+	--sliceorder	specify slice ordering (up/down/interleaved_up/interleaved_down)
+	--slicetiming	specify slice timing via an external file
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'pnm_evs -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+pnm_evs (Version 2.0)
+Copyright(c) 2011, University of Oxford (Mark Jenkinson)
+
+Usage: 
+pnm_evs [options] --tr=3.0 -i -o -r -c ... TBD ...
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image filename (of 4D functional/EPI data)
+	-o,--out	output filename (for confound/EV matrix)
+	--tr	TR of fMRI volumes (in seconds)
+
+Optional arguments (You may optionally specify one or more of):
+	-c,--cardiac	input filename for cardiac values (1 or 2 columns: time [phase])
+	-r,--respiratory	input filename for respiratory phase values (1 or 2 columns: time [phase])
+	--oc	order of basic cardiac regressors (number of Fourier pairs) - default=2
+	--or	order of basic respiratory regressors (number of Fourier pairs) - default=1
+	--multc	order of multiplicative cardiac terms (also need to set --multr) - default=0
+	--multr	order of multiplicative respiratory terms (also need to set --multc) - default=0
+	--csfmask	filename of csf mask image (and generate csf regressor)
+	--rvt	input filename of RVT data (2 columns: time value)
+	--heartrate	input filename for heartrate data (2 columns: time value)
+	--rvtsmooth	Optional smoothing of RVT regressor (in seconds - default 0)
+	--heartratesmooth	Optional smoothing of heart rate regressor (in seconds - e.g. 10)
+	--slicedir	specify slice direction (x/y/z) - default is z
+	--sliceorder	specify slice ordering (up/down/interleaved_up/interleaved_down)
+	--slicetiming	specify slice timing via an external file
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'pnm_evs' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	input image filename (of 4D functional/EPI data)
+	-o,--out	output filename (for confound/EV matrix)
+	--tr	TR of fMRI volumes (in seconds)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+pnm_evs (Version 2.0)
+Copyright(c) 2011, University of Oxford (Mark Jenkinson)
+
+Usage: 
+pnm_evs [options] --tr=3.0 -i -o -r -c ... TBD ...
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input image filename (of 4D functional/EPI data)
+	-o,--out	output filename (for confound/EV matrix)
+	--tr	TR of fMRI volumes (in seconds)
+
+Optional arguments (You may optionally specify one or more of):
+	-c,--cardiac	input filename for cardiac values (1 or 2 columns: time [phase])
+	-r,--respiratory	input filename for respiratory phase values (1 or 2 columns: time [phase])
+	--oc	order of basic cardiac regressors (number of Fourier pairs) - default=2
+	--or	order of basic respiratory regressors (number of Fourier pairs) - default=1
+	--multc	order of multiplicative cardiac terms (also need to set --multr) - default=0
+	--multr	order of multiplicative respiratory terms (also need to set --multc) - default=0
+	--csfmask	filename of csf mask image (and generate csf regressor)
+	--rvt	input filename of RVT data (2 columns: time value)
+	--heartrate	input filename for heartrate data (2 columns: time value)
+	--rvtsmooth	Optional smoothing of RVT regressor (in seconds - default 0)
+	--heartratesmooth	Optional smoothing of heart rate regressor (in seconds - e.g. 10)
+	--slicedir	specify slice direction (x/y/z) - default is z
+	--sliceorder	specify slice ordering (up/down/interleaved_up/interleaved_down)
+	--slicetiming	specify slice timing via an external file
+	--debug	turn on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

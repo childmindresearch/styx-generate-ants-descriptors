@@ -1,0 +1,34 @@
+
+=== Output of 'aff2rigid --help' ===
+
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/aff2rigid", line 89, in <module>
+    a=loadtxt(argv[1])
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.7/site-packages/numpy/lib/npyio.py", line 981, in loadtxt
+    fh = np.lib._datasource.open(fname, 'rt', encoding=encoding)
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.7/site-packages/numpy/lib/_datasource.py", line 269, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.7/site-packages/numpy/lib/_datasource.py", line 623, in open
+    raise IOError("%s not found." % path)
+OSError: --help not found.
+
+=== Output of 'aff2rigid -help' ===
+
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/aff2rigid", line 89, in <module>
+    a=loadtxt(argv[1])
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.7/site-packages/numpy/lib/npyio.py", line 981, in loadtxt
+    fh = np.lib._datasource.open(fname, 'rt', encoding=encoding)
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.7/site-packages/numpy/lib/_datasource.py", line 269, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.7/site-packages/numpy/lib/_datasource.py", line 623, in open
+    raise IOError("%s not found." % path)
+OSError: -help not found.
+
+=== Output of 'aff2rigid' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/aff2rigid <input2standard mat> <output mat>
+ 
+       First argument is the FLIRT transform (12 DOF) from the input image to standard
+       Second argument is the output matrix which will go from the input image to standard space (6 DOF)
+          aligning the AC, the AC-PC line and the mid-sagittal plane (in order of decreasing accuracy)

@@ -1,0 +1,180 @@
+
+=== Output of 'adjunct_apqc_tsnr_general --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of 'adjunct_apqc_tsnr_general -help' ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+Just an adjunct program for making TSNR plots for APQC.
+
+Ceci n'est pas un fichier d'aide utile!
+
+written by PA Taylor.
+
+EXTRA OPTS ~1~
+
+-montgap        A
+-montcolor      A 
+-montx          A
+-monty          A
+-opacity        A
+-blowup         A
+-save_ftype     A
+-set_dicom_xyz  A B C
+-set_ijk        A B C
+-set_subbricks  A B C
+-olay_alpha     A
+-olay_boxed     A
+-thr_olay       A
+-ulay_range_nz  A B 
+-ulay_range     A B
+-delta_slices   A B C
+-olay_disc_hot_range  A B
+-olay_cont_max  A 
+-cbar_cont      A
+-no_cor
+-no_sag
+-no_axi
+-echo 
+
+EXAMPLE ~1~
+
+1) case of having a mask (output will have discrete cbar, with ranges
+   determined by percentiles within the mask):
+
+    adjunct_apqc_tsnr                                 \
+        -ulay         MNI152_2009_template_SSW.nii.gz \
+        -focus        MNI152_2009_template_SSW.nii.gz \
+        -olay         TSNR*HEAD                       \
+        -mask         mask_epi_anat.*HEAD             \
+        -prefix       img1                            \
+        -prefix_cbar  img1.cbar
+
+2) case of NOT having a mask (output will have a continuous cbar, with
+   ranges determined by percentiles within the whole volume):
+
+    adjunct_apqc_tsnr                                 \
+        -ulay         MNI152_2009_template_SSW.nii.gz \
+        -focus        MNI152_2009_template_SSW.nii.gz \
+        -olay         TSNR*HEAD                       \
+        -prefix       img2                            \
+        -prefix_cbar  img2.cbar
+
+3) case of using the discrete hot/cold color cbar, but user puts in
+   the range for the colorbar (does not need/use mask):
+
+    adjunct_apqc_tsnr                                 \
+        -ulay         MNI152_2009_template_SSW.nii.gz \
+        -focus        MNI152_2009_template_SSW.nii.gz \
+        -olay         TSNR*HEAD                       \
+        -olay_disc_hot_range  50 200                  \
+        -prefix       img3                            \
+        -prefix_cbar  img3.cbar
+
+4) case of using continuous cbar, and user puts in the range for it
+   (does not need/use mask); you can also specify a continuous
+   colorbar of choice here (not req):
+
+    adjunct_apqc_tsnr                                 \
+        -ulay         MNI152_2009_template_SSW.nii.gz \
+        -focus        MNI152_2009_template_SSW.nii.gz \
+        -olay         TSNR*HEAD                       \
+        -olay_cont_max  200                           \
+        -cbar_cont    Magma                           \
+        -prefix       img4                            \
+        -prefix_cbar  img4.cbar
+
+
+=== Output of 'adjunct_apqc_tsnr_general' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+Just an adjunct program for making TSNR plots for APQC.
+
+Ceci n'est pas un fichier d'aide utile!
+
+written by PA Taylor.
+
+EXTRA OPTS ~1~
+
+-montgap        A
+-montcolor      A 
+-montx          A
+-monty          A
+-opacity        A
+-blowup         A
+-save_ftype     A
+-set_dicom_xyz  A B C
+-set_ijk        A B C
+-set_subbricks  A B C
+-olay_alpha     A
+-olay_boxed     A
+-thr_olay       A
+-ulay_range_nz  A B 
+-ulay_range     A B
+-delta_slices   A B C
+-olay_disc_hot_range  A B
+-olay_cont_max  A 
+-cbar_cont      A
+-no_cor
+-no_sag
+-no_axi
+-echo 
+
+EXAMPLE ~1~
+
+1) case of having a mask (output will have discrete cbar, with ranges
+   determined by percentiles within the mask):
+
+    adjunct_apqc_tsnr                                 \
+        -ulay         MNI152_2009_template_SSW.nii.gz \
+        -focus        MNI152_2009_template_SSW.nii.gz \
+        -olay         TSNR*HEAD                       \
+        -mask         mask_epi_anat.*HEAD             \
+        -prefix       img1                            \
+        -prefix_cbar  img1.cbar
+
+2) case of NOT having a mask (output will have a continuous cbar, with
+   ranges determined by percentiles within the whole volume):
+
+    adjunct_apqc_tsnr                                 \
+        -ulay         MNI152_2009_template_SSW.nii.gz \
+        -focus        MNI152_2009_template_SSW.nii.gz \
+        -olay         TSNR*HEAD                       \
+        -prefix       img2                            \
+        -prefix_cbar  img2.cbar
+
+3) case of using the discrete hot/cold color cbar, but user puts in
+   the range for the colorbar (does not need/use mask):
+
+    adjunct_apqc_tsnr                                 \
+        -ulay         MNI152_2009_template_SSW.nii.gz \
+        -focus        MNI152_2009_template_SSW.nii.gz \
+        -olay         TSNR*HEAD                       \
+        -olay_disc_hot_range  50 200                  \
+        -prefix       img3                            \
+        -prefix_cbar  img3.cbar
+
+4) case of using continuous cbar, and user puts in the range for it
+   (does not need/use mask); you can also specify a continuous
+   colorbar of choice here (not req):
+
+    adjunct_apqc_tsnr                                 \
+        -ulay         MNI152_2009_template_SSW.nii.gz \
+        -focus        MNI152_2009_template_SSW.nii.gz \
+        -olay         TSNR*HEAD                       \
+        -olay_cont_max  200                           \
+        -cbar_cont    Magma                           \
+        -prefix       img4                            \
+        -prefix_cbar  img4.cbar
+

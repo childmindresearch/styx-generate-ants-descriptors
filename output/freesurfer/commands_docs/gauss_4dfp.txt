@@ -1,0 +1,48 @@
+
+=== Output of 'gauss_4dfp --help' ===
+
+freesurfer gauss_4dfp.c
+Usage:	gauss_4dfp <4dfp|conc input> f_half [outroot]
+ e.g.,	gauss_4dfp pt349_study9to9 0.1
+ e.g.,	gauss_4dfp p1234ho5 0.7 p1234ho5_g7
+	options
+	-@<b|l>	output big or little endian (default input endian)
+	-w	(wrap) suppress x and y padding
+	-d	differentiate
+N.B.:	f_half is half frequency in 1/cm
+N.B.:	default output root is <inroot>_g<10*f_half>
+N.B.:	FWHM*f_half = (2ln2/pi) = 0.4412712
+N.B.:	conc files must have extension "conc"
+N.B.:	user outroot specification not possible with conc files
+
+=== Output of 'gauss_4dfp -help' ===
+
+freesurfer gauss_4dfp.c
+Usage:	gauss_4dfp <4dfp|conc input> f_half [outroot]
+ e.g.,	gauss_4dfp pt349_study9to9 0.1
+ e.g.,	gauss_4dfp p1234ho5 0.7 p1234ho5_g7
+	options
+	-@<b|l>	output big or little endian (default input endian)
+	-w	(wrap) suppress x and y padding
+	-d	differentiate
+N.B.:	f_half is half frequency in 1/cm
+N.B.:	default output root is <inroot>_g<10*f_half>
+N.B.:	FWHM*f_half = (2ln2/pi) = 0.4412712
+N.B.:	conc files must have extension "conc"
+N.B.:	user outroot specification not possible with conc files
+
+=== Output of 'gauss_4dfp' (no arguments) ===
+
+freesurfer gauss_4dfp.c
+Usage:	gauss_4dfp <4dfp|conc input> f_half [outroot]
+ e.g.,	gauss_4dfp pt349_study9to9 0.1
+ e.g.,	gauss_4dfp p1234ho5 0.7 p1234ho5_g7
+	options
+	-@<b|l>	output big or little endian (default input endian)
+	-w	(wrap) suppress x and y padding
+	-d	differentiate
+N.B.:	f_half is half frequency in 1/cm
+N.B.:	default output root is <inroot>_g<10*f_half>
+N.B.:	FWHM*f_half = (2ln2/pi) = 0.4412712
+N.B.:	conc files must have extension "conc"
+N.B.:	user outroot specification not possible with conc files

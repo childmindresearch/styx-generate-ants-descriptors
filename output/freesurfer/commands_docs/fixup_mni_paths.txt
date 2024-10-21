@@ -1,0 +1,123 @@
+
+=== Output of 'fixup_mni_paths --help' ===
+
+Using perl '/usr/bin/perl'
+Patching autocrop...(original file saved to autocrop.old)
+Patching field2imp...(original file saved to field2imp.old)
+Patching imp2field...(original file saved to imp2field.old)
+Patching make_template...(original file saved to make_template.old)
+Patching mritoself...(original file saved to mritoself.old)
+Patching mritotal...(original file saved to mritotal.old)
+Patching nu_correct...(original file saved to nu_correct.old)
+Patching nu_estimate...(original file saved to nu_estimate.old)
+Patching nu_estimate_np_and_em...(original file saved to nu_estimate_np_and_em.old)
+Patching nu_evaluate...(original file saved to nu_evaluate.old)
+Patching resample_labels...(original file saved to resample_labels.old)
+Patching sharpen_volume...(original file saved to sharpen_volume.old)
+Patching xfmtool...(original file saved to xfmtool.old)
+done.
+Here are the changes:
+diff autocrop autocrop.old
+diff field2imp field2imp.old
+diff imp2field imp2field.old
+diff make_template make_template.old
+diff mritoself mritoself.old
+diff mritotal mritotal.old
+diff nu_correct nu_correct.old
+diff nu_estimate nu_estimate.old
+diff nu_estimate_np_and_em nu_estimate_np_and_em.old
+diff nu_evaluate nu_evaluate.old
+diff resample_labels resample_labels.old
+diff sharpen_volume sharpen_volume.old
+diff xfmtool xfmtool.old
+done.
+Note: not all systems will require a patch,
+and may not show any differences.
+Now a test of the MNI tool 'nu_correct'...
+nu_correct, version 1.12.0
+
+Usage: nu_correct [-help] [options] in.mnc out.mnc
+
+A version number and usage message should have been displayed.
+
+=== Output of 'fixup_mni_paths -help' ===
+
+Using perl '/usr/bin/perl'
+Patching autocrop...(original file saved to autocrop.old)
+mv: overwrite 'autocrop.old'? Patching field2imp...(original file saved to field2imp.old)
+mv: overwrite 'field2imp.old'? Patching imp2field...(original file saved to imp2field.old)
+mv: overwrite 'imp2field.old'? Patching make_template...(original file saved to make_template.old)
+mv: overwrite 'make_template.old'? Patching mritoself...(original file saved to mritoself.old)
+mv: overwrite 'mritoself.old'? Patching mritotal...(original file saved to mritotal.old)
+mv: overwrite 'mritotal.old'? Patching nu_correct...(original file saved to nu_correct.old)
+mv: overwrite 'nu_correct.old'? Patching nu_estimate...(original file saved to nu_estimate.old)
+mv: overwrite 'nu_estimate.old'? Patching nu_estimate_np_and_em...(original file saved to nu_estimate_np_and_em.old)
+mv: overwrite 'nu_estimate_np_and_em.old'? Patching nu_evaluate...(original file saved to nu_evaluate.old)
+mv: overwrite 'nu_evaluate.old'? Patching resample_labels...(original file saved to resample_labels.old)
+mv: overwrite 'resample_labels.old'? Patching sharpen_volume...(original file saved to sharpen_volume.old)
+mv: overwrite 'sharpen_volume.old'? Patching xfmtool...(original file saved to xfmtool.old)
+mv: overwrite 'xfmtool.old'? done.
+Here are the changes:
+diff autocrop autocrop.old
+diff field2imp field2imp.old
+diff imp2field imp2field.old
+diff make_template make_template.old
+diff mritoself mritoself.old
+diff mritotal mritotal.old
+diff nu_correct nu_correct.old
+diff nu_estimate nu_estimate.old
+diff nu_estimate_np_and_em nu_estimate_np_and_em.old
+diff nu_evaluate nu_evaluate.old
+diff resample_labels resample_labels.old
+diff sharpen_volume sharpen_volume.old
+diff xfmtool xfmtool.old
+done.
+Note: not all systems will require a patch,
+and may not show any differences.
+Now a test of the MNI tool 'nu_correct'...
+nu_correct, version 1.12.0
+
+Usage: nu_correct [-help] [options] in.mnc out.mnc
+
+A version number and usage message should have been displayed.
+
+=== Output of 'fixup_mni_paths' (no arguments) ===
+
+Using perl '/usr/bin/perl'
+Patching autocrop...(original file saved to autocrop.old)
+mv: overwrite 'autocrop.old'? Patching field2imp...(original file saved to field2imp.old)
+mv: overwrite 'field2imp.old'? Patching imp2field...(original file saved to imp2field.old)
+mv: overwrite 'imp2field.old'? Patching make_template...(original file saved to make_template.old)
+mv: overwrite 'make_template.old'? Patching mritoself...(original file saved to mritoself.old)
+mv: overwrite 'mritoself.old'? Patching mritotal...(original file saved to mritotal.old)
+mv: overwrite 'mritotal.old'? Patching nu_correct...(original file saved to nu_correct.old)
+mv: overwrite 'nu_correct.old'? Patching nu_estimate...(original file saved to nu_estimate.old)
+mv: overwrite 'nu_estimate.old'? Patching nu_estimate_np_and_em...(original file saved to nu_estimate_np_and_em.old)
+mv: overwrite 'nu_estimate_np_and_em.old'? Patching nu_evaluate...(original file saved to nu_evaluate.old)
+mv: overwrite 'nu_evaluate.old'? Patching resample_labels...(original file saved to resample_labels.old)
+mv: overwrite 'resample_labels.old'? Patching sharpen_volume...(original file saved to sharpen_volume.old)
+mv: overwrite 'sharpen_volume.old'? Patching xfmtool...(original file saved to xfmtool.old)
+mv: overwrite 'xfmtool.old'? done.
+Here are the changes:
+diff autocrop autocrop.old
+diff field2imp field2imp.old
+diff imp2field imp2field.old
+diff make_template make_template.old
+diff mritoself mritoself.old
+diff mritotal mritotal.old
+diff nu_correct nu_correct.old
+diff nu_estimate nu_estimate.old
+diff nu_estimate_np_and_em nu_estimate_np_and_em.old
+diff nu_evaluate nu_evaluate.old
+diff resample_labels resample_labels.old
+diff sharpen_volume sharpen_volume.old
+diff xfmtool xfmtool.old
+done.
+Note: not all systems will require a patch,
+and may not show any differences.
+Now a test of the MNI tool 'nu_correct'...
+nu_correct, version 1.12.0
+
+Usage: nu_correct [-help] [options] in.mnc out.mnc
+
+A version number and usage message should have been displayed.

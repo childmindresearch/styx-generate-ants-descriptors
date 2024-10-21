@@ -1,0 +1,133 @@
+
+=== Output of 'asl_file --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+asl_file
+
+Usage: 
+asl_file --data=<asldata> --ibf=rpt --iaf=tc --diff --out=<diffdata>
+
+
+Compulsory arguments (You MUST set one or more of):
+	--data,--datafile	data file
+	--ntis	Number of TIs in file
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	-v,--version	display version identification
+	--mask	mask
+	--ibf,--inblockform	Input block format:
+          rpt - blocks of measurements that include all TIs
+          tis - blocks of repeated measurements at a single TI
+	--iaf,--inaslform	ASL data form:
+          diff - differenced data {default}
+          tc   - Tag-Control pairs
+          ct   - Control-Tag pairs
+          tcb  - Tag-Control pairs, tags and controls grouped together within block
+          ctb - Control-Tag pairs, tags and controls grouped together within block
+	--rpts	Number of repeats at each TI as comma separated list, not required if the number of repeats is same for all TIs  (only for use with --ibf=tis)
+	--pairs,--inpairs	Data contains adjacent pairs of measuremnts (e.g. Tag, Control) DEPRECEATED used --iaf instead
+
+	--spairs	Split the pairs within the data, e.g. to separate tag and control images in output
+	--diff	Take the difference between the pairs, i.e. Tag control difference
+	--surrdiff	Do surround subtraction on the pairs
+
+	--extrapolate	Option to extrapolate the edge of the brain to fix the artefact on the edge of the brain
+	--neighbour	Neighbour size for extrapolation, must be an odd number between 3 and 9. Default: 5
+
+	--pvgm	GM partial volume map
+	--pvwm	WM partial volume map
+	--kernel	Kernel size (in voxels) of partial volume correction, must be an odd number between 3 and 9. Default: 5
+
+	--out	Output data file
+	--obf,--outblockform	Output block format (for --out=):
+          rpt - blocks of measurements that include all TIs
+          tis - blocks of repeated measurements at a single TI
+          Default is same as input block format (--ibf)
+	--mean	Output ASL data having taken mean at each TI to file
+	--split	Split data into separate files each each TI, specify filename root
+
+	--epoch	Output epochs of ASL data (takes mean at each TI within the epoch)
+	--elen,--epochlen	Length of epochs in number of repeats
+	--eol,--epochol	Ammount of overlap between epochs in number of repeats
+	--eunit,--epochunit	Epochs to be determined over:
+          rpt - repeats in the data {default}
+          tis - TIs in the data
+
+	--deconv	Deconvolution of data with arterial input functions
+	--aif	Arterial input functions for deconvolution (4D volume, one aif for each voxel within mask)
+
+
+
+
+=== Output of 'asl_file -help' ===
+
+
+-e: Option doesn't exist!
+
+=== Output of 'asl_file' (no arguments) ===
+
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+asl_file
+
+Usage: 
+asl_file --data=<asldata> --ibf=rpt --iaf=tc --diff --out=<diffdata>
+
+
+Compulsory arguments (You MUST set one or more of):
+	--data,--datafile	data file
+	--ntis	Number of TIs in file
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	-v,--version	display version identification
+	--mask	mask
+	--ibf,--inblockform	Input block format:
+          rpt - blocks of measurements that include all TIs
+          tis - blocks of repeated measurements at a single TI
+	--iaf,--inaslform	ASL data form:
+          diff - differenced data {default}
+          tc   - Tag-Control pairs
+          ct   - Control-Tag pairs
+          tcb  - Tag-Control pairs, tags and controls grouped together within block
+          ctb - Control-Tag pairs, tags and controls grouped together within block
+	--rpts	Number of repeats at each TI as comma separated list, not required if the number of repeats is same for all TIs  (only for use with --ibf=tis)
+	--pairs,--inpairs	Data contains adjacent pairs of measuremnts (e.g. Tag, Control) DEPRECEATED used --iaf instead
+
+	--spairs	Split the pairs within the data, e.g. to separate tag and control images in output
+	--diff	Take the difference between the pairs, i.e. Tag control difference
+	--surrdiff	Do surround subtraction on the pairs
+
+	--extrapolate	Option to extrapolate the edge of the brain to fix the artefact on the edge of the brain
+	--neighbour	Neighbour size for extrapolation, must be an odd number between 3 and 9. Default: 5
+
+	--pvgm	GM partial volume map
+	--pvwm	WM partial volume map
+	--kernel	Kernel size (in voxels) of partial volume correction, must be an odd number between 3 and 9. Default: 5
+
+	--out	Output data file
+	--obf,--outblockform	Output block format (for --out=):
+          rpt - blocks of measurements that include all TIs
+          tis - blocks of repeated measurements at a single TI
+          Default is same as input block format (--ibf)
+	--mean	Output ASL data having taken mean at each TI to file
+	--split	Split data into separate files each each TI, specify filename root
+
+	--epoch	Output epochs of ASL data (takes mean at each TI within the epoch)
+	--elen,--epochlen	Length of epochs in number of repeats
+	--eol,--epochol	Ammount of overlap between epochs in number of repeats
+	--eunit,--epochunit	Epochs to be determined over:
+          rpt - repeats in the data {default}
+          tis - TIs in the data
+
+	--deconv	Deconvolution of data with arterial input functions
+	--aif	Arterial input functions for deconvolution (4D volume, one aif for each voxel within mask)
+
+
+
+
+Not all of the compulsory arguments have been provided

@@ -1,0 +1,15 @@
+
+=== Output of 'BayesianGroupAna.R --help' ===
+
+/opt/afni/src/../install/BayesianGroupAna.R: line 8: syntax error near unexpected token `('
+/opt/afni/src/../install/BayesianGroupAna.R: line 8: `brms.test <- require(brms)'
+
+=== Output of 'BayesianGroupAna.R -help' ===
+
+/opt/afni/src/../install/BayesianGroupAna.R: line 8: syntax error near unexpected token `('
+/opt/afni/src/../install/BayesianGroupAna.R: line 8: `brms.test <- require(brms)'
+
+=== Output of 'BayesianGroupAna.R' (no arguments) ===
+
+/opt/afni/src/../install/BayesianGroupAna.R: line 8: syntax error near unexpected token `('
+/opt/afni/src/../install/BayesianGroupAna.R: line 8: `brms.test <- require(brms)'

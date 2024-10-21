@@ -1,0 +1,10 @@
+
+=== Output of 'create_lut --help' ===
+
+
+=== Output of 'create_lut -help' ===
+
+
+=== Output of 'create_lut' (no arguments) ===
+
+Usage: create_lut <output_file_root>

@@ -1,0 +1,65 @@
+
+=== Output of 'niprobe --help' ===
+
+[7m** ERROR:[0m Bad option --help. See niprobe -help for details.
+   Here's hoping these excerpts from '/opt/afni/src/../install/niprobe -help' enlighten:
+        '-dup: Duplicate the element before showing it.'
+        '-match MATCH: If MATCH is exact, then attribute name'
+        '-quiet: quiet stderr messages, and don't echo attribute'
+
+=== Output of 'niprobe -help' ===
+
+
+   Usage: niprobe [-dup] [-nodata] streamspec
+
+A program based on niccc which could bear no more modifications
+This program is also for conducting certain NIML tests and checking
+the content of niml files and streams.
+Examples:
+    niprobe -find_nel_named histogram -f h.mean.20_mm-G-SK04.niml.hist \
+               | 1dplot -sepscl -stdin 
+    niprobe -find_nel_named histogram -f h.mean.20_mm-G-SK04.niml.hist \
+               | niprobe -attribute window 'stdin:' 
+    niprobe -find_nel_named AFNI_labeltable -f lh.OccROIs.niml.dset
+
+Mandatory arguments:
+   streamspec: A string defining a NIML stream.
+
+Options:
+   -dup: Duplicate the element before showing it.
+         This is to test NI_duplicate function.
+   -nodata: Show header parts only in output
+   -attribute ATTR: Dump the value of attribute ATTR
+   -match MATCH: If MATCH is exact, then attribute name
+                 is matched exactly. If MATCH is partial,
+                 then a match of all the characters in ATTR
+                 is enough. For example, an ATTR of COEF would
+                 match any of COEF COEF.1 COEF.2, etc.
+            Default is -match exact
+   -f: streamspec is a filename (last option on the command line)
+   -s: streamspec is an element string like: 
+            '<T font=9 coords="2.3 23 2"/>'
+            (last option on the command line)
+   -stdout: write elements to stdout (default), instead of stderr
+   -stderr: write elements to stderr, instead of stdout
+   -#: put the # at the beginning of lines with no data (default)
+   -No#: Do not put the # at the beginning of lines with no data 
+   -quiet: quiet stderr messages, and don't echo attribute
+           name with -attribute option
+   -find_nel_with_attr ATTR ATTRVAL: Only output elements 
+               that have an attribute ATTR of value ATTRVAL.
+               a status of 1 is returned if no match is found.
+   -find_nel_named NAME: Only print element named NAME
+   -skip_nel_with_attr ATTR ATTRVAL: Do not output elements 
+               that have an attribute ATTR of value ATTRVAL.
+   -mw MAX_WAIT: Don't wait on a stream for more than MAX_WAIT
+                 before you receive an element. Default is 100 msec.
+                 Set MAX_WAIT to -1 to wait forever and a day
+   niprobe returns a status of 0 if it the stream opened.
+         and there were no interruptions.
+
+
+=== Output of 'niprobe' (no arguments) ===
+
+[7m** FATAL ERROR:[0m Too few options
+** Program compile date = Sep 12 2024

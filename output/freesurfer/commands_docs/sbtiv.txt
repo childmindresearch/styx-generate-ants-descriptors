@@ -1,0 +1,30 @@
+
+=== Output of 'sbtiv --help' ===
+
+usage: sbtiv [-h] [-o FILE] [-l FILE] FILE
+
+Calculates the total intracranial volume of a subject by summing individual
+volumes computed by samseg. A file containing a list of intracranial
+labelnames can be provided via the '--labels' flag, but if omitted, a default
+list is used. Labelnames must be identical to those defined in the samseg
+atlas.
+
+positional arguments:
+  FILE                  Volume stats input file.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o FILE, --out FILE   Intracranial stats output file.
+  -l FILE, --labels FILE
+                        File containing a list of intracranial structure
+                        labelnames to include in the calculation.
+
+=== Output of 'sbtiv -help' ===
+
+usage: sbtiv [-h] [-o FILE] [-l FILE] FILE
+sbtiv: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'sbtiv' (no arguments) ===
+
+usage: sbtiv [-h] [-o FILE] [-l FILE] FILE
+sbtiv: error: the following arguments are required: FILE

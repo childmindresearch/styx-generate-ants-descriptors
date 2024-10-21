@@ -1,0 +1,30 @@
+
+=== Output of 'randomise_parallel --help' ===
+
+/usr/local/fsl/bin/randomise_parallel <randomise options>
+
+Actual number of permutations performed may differ slightly from those
+  requested due to tasking an equal number of permutations per fragment.
+
+Caution: if a design has less unique permutations than those requested,
+  the defragment script will not work correctly!
+
+=== Output of 'randomise_parallel -help' ===
+
+/usr/local/fsl/bin/randomise_parallel <randomise options>
+
+Actual number of permutations performed may differ slightly from those
+  requested due to tasking an equal number of permutations per fragment.
+
+Caution: if a design has less unique permutations than those requested,
+  the defragment script will not work correctly!
+
+=== Output of 'randomise_parallel' (no arguments) ===
+
+/usr/local/fsl/bin/randomise_parallel <randomise options>
+
+Actual number of permutations performed may differ slightly from those
+  requested due to tasking an equal number of permutations per fragment.
+
+Caution: if a design has less unique permutations than those requested,
+  the defragment script will not work correctly!

@@ -1,0 +1,1032 @@
+
+=== Output of 'physio_calc.py --help' ===
+
+physio_calc.py: error: unrecognized arguments: --help
+
+=== Output of 'physio_calc.py -help' ===
+
+Overview ~1~
+
+This program creates slice-based regressors for regressing out
+components of cardiac and respiratory rates, as well as the
+respiration volume per time (RVT).
+
+Much of the calculations are based on the following papers:
+
+  Glover GH, Li TQ, Ress D (2000). Image-based method for
+  retrospective correction of physiological motion effects in fMRI:
+  RETROICOR. Magn Reson Med 44(1):162-7.
+
+  Birn RM, Diamond JB, Smith MA, Bandettini PA (2006). Separating
+  respiratory-variation-related fluctuations from
+  neuronal-activity-related fluctuations in fMRI. Neuroimage
+  31(4):1536-48.
+
+This code has been informed by earlier programs that estimated
+RETROICOR and RVT regressors, namely the RetroTS.py code by J Zosky,
+which itself follows on from the original RetroTS.m code by ZS Saad.
+That being said, the current code's implementation was written
+separately, to understand the underlying processes and algorithms
+afresh, to modularize several pieces, to refactorize others, and to
+produce more QC outputs and logs of information.  Several steps in the
+eventual regressor estimation depend on processes like peak- (and
+trough-) finding and outlier rejection, which can be reasonably
+implemented in many ways.  We do not expect exact matching of outcomes
+between this and the previous versions.
+
+Below, "resp" refers to respiratory input and results, and "card"
+refers to the same for cardiac data.
+
+============================================================================
+
+Options ~1~
+
+optional arguments:
+  -resp_file RESP_FILE  Path to one respiration data file
+  -card_file CARD_FILE  Path to one cardiac data file
+  -phys_file PHYS_FILE  BIDS-formatted physio file in tab-separated format.
+                        May be gzipped
+  -phys_json PHYS_JSON  BIDS-formatted physio metadata JSON file. If not
+                        specified, the JSON corresponding to the '-phys_file
+                        ..' will be loaded
+  -freq FREQ            Physiological signal sampling frequency (in Hz)
+  -start_time START_TIME
+                        The start time for the physio time series, relative to
+                        the initial MRI volume (in s) (def: None)
+  -prefilt_max_freq PREFILT_MAX_FREQ
+                        Allow for downsampling of the input physio time
+                        series, by providing a maximum sampling frequency (in
+                        Hz). This is applied just after badness checks. Values
+                        <=0 mean that no downsampling will occur (def: -1)
+  -prefilt_mode PREFILT_MODE
+                        Filter input physio time series (after badness
+                        checks), likely aiming at reducing noise; can be
+                        combined usefully with prefilt_max_freq. Allowed
+                        modes: none, median
+  -prefilt_win_card PREFILT_WIN_CARD
+                        Window size (in s) for card time series, if
+                        prefiltering input physio time series with
+                        '-prefilt_mode ..'; value must be >0 (def: 0.1, only
+                        used if prefiltering is on)
+  -prefilt_win_resp PREFILT_WIN_RESP
+                        Window size (in s) for resp time series, if
+                        prefiltering input physio time series with
+                        '-prefilt_mode ..'; value must be >0 (def: 0.25, only
+                        used if prefiltering is on)
+  -do_interact          Enter into interactive mode as the last stage of
+                        peak/trough estimation for the physio time series
+                        (def: only automatic peak/trough estimation)
+  -out_dir OUT_DIR      Output directory name (can include path)
+  -prefix PREFIX        Prefix of output filenames, without path (def: physio)
+  -dset_epi DSET_EPI    Accompanying EPI/FMRI dset to which the physio
+                        regressors will be applied, for obtaining the
+                        volumetric parameters (namely, dset_tr, dset_nslice,
+                        dset_nt)
+  -dset_tr DSET_TR      FMRI dataset's repetition time (TR), which defines the
+                        time interval between consecutive volumes (in s)
+  -dset_nt DSET_NT      Integer number of time points to have in the output
+                        (should likely match FMRI dataset's number of volumes)
+  -dset_nslice DSET_NSLICE
+                        Integer number of slices in FMRI dataset
+  -dset_slice_times SLI_T1 [STI_T2 ...]
+                        Slice time values (space separated list of numbers)
+  -dset_slice_pattern DSET_SLICE_PATTERN
+                        Slice timing pattern code (def: None). Use
+                        '-disp_all_slice_patterns' to see all allowed
+                        patterns. Alternatively, one can enter the filename of
+                        a file containing a single column of slice times.
+  -do_fix_nan           Fix (= replace with interpolation) any NaN values in
+                        the physio time series (def: exit if any appears)
+  -do_fix_null          Fix (= replace with interpolation) any null or missing
+                        values in the physio time series (def: exit if any
+                        appears)
+  -do_fix_outliers      Fix (= replace with interpolation) any outliers in the
+                        physio time series (def: don't change them and
+                        continue)
+  -extra_fix_list FVAL1 [FVAL2 ...]
+                        List of one or more values that will also be
+                        considered 'bad' if they appear in the physio time
+                        series, and replaced with interpolated values
+  -remove_val_list RVAL1 [RVAL2 ...]
+                        List of one or more values that will removed (not
+                        interpolated: the time series will be shorter, if any
+                        are found) if they appear in the physio time series;
+                        this is necessary with some manufacturers' outputs,
+                        see "Notes of input peculiarities," below.
+  -rvt_shift_list SHIFT1 [SHIFT2 ...]
+                        Provide one or more values to specify how many and
+                        what kinds of shifted copies of RVT are output as
+                        regressors. Units are seconds, and including 0 may be
+                        useful. Shifts could also be entered via
+                        '-rvt_shift_linspace ..' (def: 0 1 2 3 4)
+  -rvt_shift_linspace START STOP N
+                        Alternative to '-rvt_shift_list ..'. Provide three
+                        space-separated values (start stop N) used to
+                        determine how many and what kinds of shifted copies of
+                        RVT are output as regressors, according to the Python-
+                        Numpy function linspace(start, stop, N). Both start
+                        and stop (units of seconds) can be negative, zero or
+                        positive. Including 0 may be useful. Example params: 0
+                        4 5, which lead to shifts of 0, 1, 2, 3 and 4 sec
+                        (def: None, use '-rvt_shift_list')
+  -rvt_off              Turn off output of RVT regressors
+  -no_card_out          Turn off output of cardiac regressors
+  -no_resp_out          Turn off output of respiratory regressors
+  -do_extend_bp_resp    Use less strict initial bandpass for resp data
+  -min_bpm_resp MIN_BPM_RESP
+                        Set the minimum breaths per minute for respiratory
+                        proc (def: 6.0)
+  -max_bpm_resp MAX_BPM_RESP
+                        Set the maximum breaths per minute for respiratory
+                        proc (def: 60.0)
+  -min_bpm_card MIN_BPM_CARD
+                        Set the minimum beats per minute for cardiac proc
+                        (def: 25.0)
+  -max_bpm_card MAX_BPM_CARD
+                        Set the maximum beats per minute for cardiac proc
+                        (def: 250.0)
+  -img_verb IMG_VERB    Verbosity level for saving QC images during
+                        processing, by choosing one integer: 0 - Do not save
+                        graphs 1 - Save end results (card and resp peaks,
+                        final RVT) 2 - Save end results and intermediate steps
+                        (bandpassing, peak refinement, etc.) (def: 1)
+  -img_figsize WID LEN  Figure dimensions used for QC images (def: depends on
+                        length of physio time series)
+  -img_fontsize IMG_FONTSIZE
+                        Font size used for QC images (def: 10)
+  -img_line_time IMG_LINE_TIME
+                        Maximum time duration per line in the QC images, in
+                        units of sec (def: 60)
+  -img_fig_line IMG_FIG_LINE
+                        Maximum number of lines per fig in the QC images (def:
+                        6)
+  -img_dot_freq IMG_DOT_FREQ
+                        Maximum number of dots per line in the QC images (to
+                        save filesize and plot time), in units of dots per sec
+                        (def: 50)
+  -img_bp_max_f IMG_BP_MAX_F
+                        Maximum frequency in the bandpass QC images (i.e.,
+                        upper value of x-axis), in units of Hz (def: 5.0)
+  -save_proc_peaks      Write out the final set of peaks indices to a text
+                        file called PREFIX_LABEL_proc_peaks_00.1D ('LABEL' is
+                        'card', 'resp', etc.), which is a single column of the
+                        integer values (def: don't write them out)
+  -save_proc_troughs    Write out the final set of trough indices to a text
+                        file called PREFIX_LABEL_proc_troughs_00.1D ('LABEL'
+                        is 'card', 'resp', etc.), which is a single column of
+                        the integer values (def: don't write them out). The
+                        file is only output for LABEL types where troughs were
+                        estimated (e.g., resp).
+  -verb VERB            Integer values to control verbosity level (def: 0)
+  -disp_all_slice_patterns
+                        Display all allowed slice pattern names
+  -disp_all_opts        Display all options for this program
+  -ver                  Display program version number
+  -help                 Display help text in terminal
+  -hview                Display help text in a text editor (AFNI
+                        functionality)
+
+============================================================================
+
+Notes on usage and inputs ~1~
+
+* Physio data input: 
+  At least one of the following input option sets must be used:
+    -card_file 
+    -resp_file 
+    -card_file  and  -resp_file 
+    -phys_file  and  -phys_json
+
+* FMRI information input:
+  It is preferable to use:
+    -dset_epi
+  to provide EPI dset for which regressors will be made, to provide
+  the volumetric information that would otherwise be provided with:
+    -dset_tr
+    -dset_nslice
+    -dset_nt
+  ... and the slice timing information
+
+* Slice timing input:
+  If '-dset_epi ..' is not used to provide the slice timing (and other
+  useful) volumetric information, then exactly one of the following
+  input option must be used:
+    -dset_slice_times
+    -dset_slice_pattern
+
+* Physio information input: 
+  Each of the following input options must be provided through some
+  combination of phys_json file, dset_epi file, or the command line
+  opts themselves:
+    -freq
+    -dset_tr
+    -dset_nslice
+    -dset_nt
+
+* The following table shows which keys from 'phys_json' can be used to
+  set (= replace) certain command line argument/option usage:
+    ARG/OPT           JSON KEY               EPS VAL  
+    freq              SamplingFrequency      1.000e-03
+    start_time        StartTime              1.000e-03
+
+  The 'EPS VAL' shows the maximum difference tolerated between a
+  JSON-provided key and an option-provided one, in case both exist in
+  a command line call.  It would be better to avoid such dual-calling.
+
+============================================================================
+
+Notes on input peculiarities ~1~
+
+With Siemens physiological monitoring, values of 5000, 5003 and 6000 can be 
+used as trigger events to mark the beginning or end of something, like the 
+beginning of a TR.  The meanings, from the Siemens Matlab code are:
+    5000 = cardiac pulse on
+    5003 = cardiac pulse off
+    6000 = cardiac pulse off
+    6002 = phys recording on
+    6003 = phys recording off
+
+It appears that the number is inserted into the series, in which case,
+5000 values could simply be removed rather than replaced by an
+interpolation of the two adjacent values, using the option
+'remove_val_list ..'.
+
+============================================================================
+
+Notes on prefiltering physio time series ~1~
+
+Many physio time series contain noisy spikes or occasional blips.  The
+effects of these can be reduced during processing with some
+"prefiltering".  At present, this includes using a moving median
+filter along the time series, to try to remove spiky things that are
+likely nonphysiological.  This can be implemented by using this opt+arg:
+    -prefilt_mode median
+
+An additional decision to make then becomes what width of filter to
+apply.  That is, over how many points should the median be calculated?
+One wants to balance making it large enough to be stable/useful with
+small enough to not remove real features (like real peaks, troughs or
+other time series changes).  This is done by choosing a time interval,
+and this interval is specified separately for each of the card and
+resp time series, because each has a different expected time scale of
+variability (and experimental design can affect this choice, as well).  
+So, the user can use:
+    -prefilt_win_card  TIME_C
+    -prefilt_win_resp  TIME_R
+... and replace TIME_* with real time values, in using of seconds.  There
+are default time values in place, when '-prefilt_mode ..' is used; see
+above.
+
+Finally, physio time series are acquired with a variety of sampling
+frequencies.  These can easily range from 50 Hz to 2000 Hz (or more).
+That means 50 (or 2000) point estimates per second---which is a lot
+for most applications.  Consider that typical FMRI sampling rates are
+TR = 1-2 sec or so, meaning that they have 0.5 or 1 point estimates
+per sec.  Additionally, many (human) cardiac cycles are roughly of
+order 1 per sec or so, and (human) respiration is at a much slower
+rate.  All this is to say, having a highly sampled physio time series
+can be unnecessary for most practical applications and analyses.  We
+can reduce computational cost and processing time by downsampling it
+near the beginning of processing. This would be done by specifying a
+max sampling frequency MAX_F for the input data, to downsample to (or 
+near to), via: 
+    -prefilt_max_freq  MAX_F
+
+All of the above prefiltering is applied after initial 'badness'
+checks for outliers or missing values, so those processes can be a bit
+slow for densely acquired data.
+
+*Recommendation*
+In general, at least for human applications, it seems hard to see why
+one would need more than 50 physio measures per second.  It also seems
+like median filtering over even relatively small windows typically be
+useful.  So, perhaps consider adding these options to most processing 
+(but adjust as appropriate!):
+    -prefilt_max_freq   50 
+    -prefilt_mode       median
+
+If reasonable, the '-prefilt_win_card ..' and '-prefilt_win_resp ..'
+values could also be adjusted.
+
+============================================================================
+
+User interaction for peak/trough editing ~1~
+
+This program includes functionality whereby the user can directly edit
+the peaks and troughs that have estimated.  This includes adding,
+deleting or moving the points around, with the built-in constraint of
+keeping the points on the displayed physio time series line.  It's
+kind of fun.
+
+To enter interactive mode during the runtime of the program, use the
+'-do_interact' option.  Then, at some stage during the processing, a
+Matplotlib panel will pop up, showing estimated troughs and/or peaks,
+which the user can edit if desired.  Upon closing the pop-up panel,
+the final locations of peaks/troughs are kept and used for the
+remainder of the code's run.
+
+Key+mouse bindings being used:
+
+            4  : delete the vertex (peak or trough) nearest to mouse point
+            3  : add a peak vertex
+            2  : add a trough vertex
+            1  : toggle vertex visibility+editability on and off
+   Left-click  : select closest vertex, which can then be dragged along
+                the reference line.
+
+   Some additional Matplotlib keyboard shortcuts:
+            f  : toggle fullscreen view of panel
+            o  : toggle zoom-to-rectangle mode
+            p  : toggle pan/zoom mode
+            r  : reset panel view (not point edits, but zoom/scroll/etc.)
+            q  : quit/close viewer (also Ctrl+w), when done editing
+
+For more on the Matplotlib panel navigation keypresses and tips, see:
+https://matplotlib.org/3.2.2/users/navigation_toolbar.html
+
+At present, there is no "undo" functionality. If you accidentally
+delete a point, you can add one back, or vice versa.
+
+============================================================================
+
+Output files ~1~
+
+The following files will/can be created in the output dir, with the
+chosen prefix PREFIX.  Some are primary output files (like the file of
+physio and RVT regressors), and some are helpful QC images.  The
+*resp* files are only output if respiratory signal information were
+input, and similarly for *card* files with cardiac input.  At present,
+RVT is only calculated from resp input.
+
+  PREFIX_slibase.1D         : slice-based regressor file, which can include
+                              card, resp and RVT regressors, and provided 
+                              to afni_proc.py for inclusion in FMRI processing
+
+  PREFIX_regressors_phys.svg: QC image of all physio regressors (including
+                              card and/or resp), corresponding to slice=0
+                              physio regressors in *slibase.1D
+  PREFIX_regressors_rvt_resp.svg: 
+                              QC image of all RVT regressors from resp data,
+                              corresponding to all shifted RVT regressors in
+                              in *slibase.1D
+
+  PREFIX_resp_review.txt    : summary statistics and information for resp proc
+  PREFIX_card_review.txt    : summary statistics and information for card proc
+
+  PREFIX_pc_cmd.tcsh        : log/copy of the command used
+  PREFIX_info.json          : reference dictionary of all command inputs after
+                              interpreting user options and integrating
+                              default values
+
+  PREFIX_card_*_final_peaks*.svg
+                            : QC image of final peak estimation for card data.
+                              Can be several files, depending on length of
+                              input data. Colorbands highlight longer (red)  
+                              and shorter (blue) intervals, compared to median 
+                              (white)
+  PREFIX_resp_10_final_peaks_troughs*.svg
+                            : same as above image but for resp data (so also
+                              includes troughs)
+
+The following text files are only output when using the
+'-save_proc_peaks' and/or '-save_proc_troughs' option flag(s):
+
+  PREFIX_card_peaks_00.1D   : 1D column file of peak indices for card data,
+                              corresponding to card*final_peaks*svg image.
+  PREFIX_resp_peaks_00.1D   : 1D column file of peak indices for resp data,
+                              corresponding to resp*final_peaks*svg image.
+  PREFIX_resp_troughs_00.1D : 1D column file of trough indices for resp data,
+                              corresponding to resp*final_peaks*svg image.
+
+The following intermediate QC images are only output when the value of
+'-img_verb' is 2 or more.  In each time series plotting case, there
+may be multiple images, depending on time series length:
+
+  PREFIX_card_*_peaks*.svg  : QC images showing intermediate stages of peak
+                              calculation for card data
+  PREFIX_resp_*_peaks*.svg  : same as above image but for resp data peaks
+  PREFIX_resp_*_troughs*.svg: same as above image but for resp data troughs
+
+  PREFIX_card_bandpass_spectrum.svg,
+  PREFIX_resp_bandpass_spectrum.svg
+                            : QC images showing intermediate stage of peak
+                              and/or trough estimation, namely the Fourier
+                              Transform frequency spectrum (magnitude only),
+                              both full and bandpassed.
+
+  PREFIX_card_bandpass_ts_peaks*.svg,
+  PREFIX_resp_bandpass_ts_peaks*.svg,
+  PREFIX_resp_bandpass_ts_troughs*.svg
+                            : QC images showing intermediate stage of peak
+                              and/or trough estimation, namely the initial
+                              peak/trough estimation on the bandpassed
+                              physio time series
+
+  PREFIX_card_20_est_phase*.svg, 
+  PREFIX_resp_20_est_phase*.svg
+                            : QC images showing intermediate stages of phase
+                              calculation for card and/or resp data
+
+  PREFIX_resp_21_rvt_env*.svg
+                            : QC images showing intermediate stages of RVT
+                              calculation, namely envelope estimation
+
+  PREFIX_resp_22_rvt_measure*.svg
+                            : QC images showing intermediate stages of RVT
+                              calculation, RVT per input time series point
+
+============================================================================
+
+Interpreting coloration in images ~1~
+
+The QC images contain images that are supposed to be helpful in
+interpreting the data.  Here are some notes on various aspects.
+
+When viewing physio time series, the interval that overlaps the FMRI
+dataset in time has a white background, while any parts that do not
+have a light gray background.  Essentially, only the overlap regions
+should affect regressor estimation---the parts in gray are useful to
+have as realistic boundary conditions, though.
+
+Peaks are always shown as downward pointing triangles, and troughs are
+upward pointing triangles.
+
+When viewing "final" peak and trough images, there will be color bands
+made of red/white/blue rectangles shown in the subplots.  These
+highlight the relative duration of a given interpeak interval (top
+band in the subplot) and/or intertrough interval (bottom intervals),
+relative to their median values across the entire time series.
+Namely:
+   white : interval matches median
+   blue  : interval is shorter than median (darker blue -> much shorter)
+   red   : interval is longer than median (darker red -> much longer)
+The more intense colors mean that the interval is further than the median,
+counting in standard deviations of the interpeak or intertrough intervals.  
+This coloration is meant to help point out variability across time: this
+might reflect natural variability of the physio time series, or possibly
+draw attention to a QC issue like an out-of-place or missing extremum 
+(which could be edited in "interactive mode").
+
+============================================================================
+
+Examples ~1~
+
+  Example 1
+
+    physio_calc.py                                                           \
+        -card_file           physiopy/test000c                               \
+        -freq                400                                             \
+        -dset_epi            DSET_MRI                                        \
+        -dset_slice_pattern  alt+z                                           \
+        -extra_fix_list      5000                                            \
+        -do_fix_nan                                                          \
+        -out_dir             OUT_DIR                                         \
+        -prefix              PREFIX
+
+  Example 2
+
+    physio_calc.py                                                           \
+        -phys_file           physiopy/test003c.tsv.gz                        \
+        -phys_json           physiopy/test003c.json                          \
+        -dset_tr             2.2                                             \
+        -dset_nt             34                                              \
+        -dset_nslice         34                                              \
+        -dset_slice_pattern  alt+z                                           \
+        -do_fix_nan                                                          \
+        -extra_fix_list      5000                                            \
+        -out_dir             OUT_DIR                                         \
+        -prefix              PREFIX
+
+  Example 3 
+
+    physio_calc.py                                                           \
+        -card_file           sub-005_ses-01_task-rest_run-1_physio-ECG.txt   \
+        -resp_file           sub-005_ses-01_task-rest_run-1_physio-Resp.txt  \
+        -freq                50                                              \
+        -dset_tr             2.2                                             \
+        -dset_nt             219                                             \
+        -dset_nslice         33                                              \
+        -dset_slice_pattern  alt+z                                           \
+        -do_fix_nan                                                          \
+        -out_dir             OUT_DIR                                         \
+        -prefix              PREFIX
+
+============================================================================
+written by: Peter Lauren, Paul Taylor, Richard Reynolds and 
+            Daniel Glen (SSCC, NIMH, NIH, USA)
+
+============================================================================
+
+=== Output of 'physio_calc.py' (no arguments) ===
+
+Overview ~1~
+
+This program creates slice-based regressors for regressing out
+components of cardiac and respiratory rates, as well as the
+respiration volume per time (RVT).
+
+Much of the calculations are based on the following papers:
+
+  Glover GH, Li TQ, Ress D (2000). Image-based method for
+  retrospective correction of physiological motion effects in fMRI:
+  RETROICOR. Magn Reson Med 44(1):162-7.
+
+  Birn RM, Diamond JB, Smith MA, Bandettini PA (2006). Separating
+  respiratory-variation-related fluctuations from
+  neuronal-activity-related fluctuations in fMRI. Neuroimage
+  31(4):1536-48.
+
+This code has been informed by earlier programs that estimated
+RETROICOR and RVT regressors, namely the RetroTS.py code by J Zosky,
+which itself follows on from the original RetroTS.m code by ZS Saad.
+That being said, the current code's implementation was written
+separately, to understand the underlying processes and algorithms
+afresh, to modularize several pieces, to refactorize others, and to
+produce more QC outputs and logs of information.  Several steps in the
+eventual regressor estimation depend on processes like peak- (and
+trough-) finding and outlier rejection, which can be reasonably
+implemented in many ways.  We do not expect exact matching of outcomes
+between this and the previous versions.
+
+Below, "resp" refers to respiratory input and results, and "card"
+refers to the same for cardiac data.
+
+============================================================================
+
+Options ~1~
+
+optional arguments:
+  -resp_file RESP_FILE  Path to one respiration data file
+  -card_file CARD_FILE  Path to one cardiac data file
+  -phys_file PHYS_FILE  BIDS-formatted physio file in tab-separated format.
+                        May be gzipped
+  -phys_json PHYS_JSON  BIDS-formatted physio metadata JSON file. If not
+                        specified, the JSON corresponding to the '-phys_file
+                        ..' will be loaded
+  -freq FREQ            Physiological signal sampling frequency (in Hz)
+  -start_time START_TIME
+                        The start time for the physio time series, relative to
+                        the initial MRI volume (in s) (def: None)
+  -prefilt_max_freq PREFILT_MAX_FREQ
+                        Allow for downsampling of the input physio time
+                        series, by providing a maximum sampling frequency (in
+                        Hz). This is applied just after badness checks. Values
+                        <=0 mean that no downsampling will occur (def: -1)
+  -prefilt_mode PREFILT_MODE
+                        Filter input physio time series (after badness
+                        checks), likely aiming at reducing noise; can be
+                        combined usefully with prefilt_max_freq. Allowed
+                        modes: none, median
+  -prefilt_win_card PREFILT_WIN_CARD
+                        Window size (in s) for card time series, if
+                        prefiltering input physio time series with
+                        '-prefilt_mode ..'; value must be >0 (def: 0.1, only
+                        used if prefiltering is on)
+  -prefilt_win_resp PREFILT_WIN_RESP
+                        Window size (in s) for resp time series, if
+                        prefiltering input physio time series with
+                        '-prefilt_mode ..'; value must be >0 (def: 0.25, only
+                        used if prefiltering is on)
+  -do_interact          Enter into interactive mode as the last stage of
+                        peak/trough estimation for the physio time series
+                        (def: only automatic peak/trough estimation)
+  -out_dir OUT_DIR      Output directory name (can include path)
+  -prefix PREFIX        Prefix of output filenames, without path (def: physio)
+  -dset_epi DSET_EPI    Accompanying EPI/FMRI dset to which the physio
+                        regressors will be applied, for obtaining the
+                        volumetric parameters (namely, dset_tr, dset_nslice,
+                        dset_nt)
+  -dset_tr DSET_TR      FMRI dataset's repetition time (TR), which defines the
+                        time interval between consecutive volumes (in s)
+  -dset_nt DSET_NT      Integer number of time points to have in the output
+                        (should likely match FMRI dataset's number of volumes)
+  -dset_nslice DSET_NSLICE
+                        Integer number of slices in FMRI dataset
+  -dset_slice_times SLI_T1 [STI_T2 ...]
+                        Slice time values (space separated list of numbers)
+  -dset_slice_pattern DSET_SLICE_PATTERN
+                        Slice timing pattern code (def: None). Use
+                        '-disp_all_slice_patterns' to see all allowed
+                        patterns. Alternatively, one can enter the filename of
+                        a file containing a single column of slice times.
+  -do_fix_nan           Fix (= replace with interpolation) any NaN values in
+                        the physio time series (def: exit if any appears)
+  -do_fix_null          Fix (= replace with interpolation) any null or missing
+                        values in the physio time series (def: exit if any
+                        appears)
+  -do_fix_outliers      Fix (= replace with interpolation) any outliers in the
+                        physio time series (def: don't change them and
+                        continue)
+  -extra_fix_list FVAL1 [FVAL2 ...]
+                        List of one or more values that will also be
+                        considered 'bad' if they appear in the physio time
+                        series, and replaced with interpolated values
+  -remove_val_list RVAL1 [RVAL2 ...]
+                        List of one or more values that will removed (not
+                        interpolated: the time series will be shorter, if any
+                        are found) if they appear in the physio time series;
+                        this is necessary with some manufacturers' outputs,
+                        see "Notes of input peculiarities," below.
+  -rvt_shift_list SHIFT1 [SHIFT2 ...]
+                        Provide one or more values to specify how many and
+                        what kinds of shifted copies of RVT are output as
+                        regressors. Units are seconds, and including 0 may be
+                        useful. Shifts could also be entered via
+                        '-rvt_shift_linspace ..' (def: 0 1 2 3 4)
+  -rvt_shift_linspace START STOP N
+                        Alternative to '-rvt_shift_list ..'. Provide three
+                        space-separated values (start stop N) used to
+                        determine how many and what kinds of shifted copies of
+                        RVT are output as regressors, according to the Python-
+                        Numpy function linspace(start, stop, N). Both start
+                        and stop (units of seconds) can be negative, zero or
+                        positive. Including 0 may be useful. Example params: 0
+                        4 5, which lead to shifts of 0, 1, 2, 3 and 4 sec
+                        (def: None, use '-rvt_shift_list')
+  -rvt_off              Turn off output of RVT regressors
+  -no_card_out          Turn off output of cardiac regressors
+  -no_resp_out          Turn off output of respiratory regressors
+  -do_extend_bp_resp    Use less strict initial bandpass for resp data
+  -min_bpm_resp MIN_BPM_RESP
+                        Set the minimum breaths per minute for respiratory
+                        proc (def: 6.0)
+  -max_bpm_resp MAX_BPM_RESP
+                        Set the maximum breaths per minute for respiratory
+                        proc (def: 60.0)
+  -min_bpm_card MIN_BPM_CARD
+                        Set the minimum beats per minute for cardiac proc
+                        (def: 25.0)
+  -max_bpm_card MAX_BPM_CARD
+                        Set the maximum beats per minute for cardiac proc
+                        (def: 250.0)
+  -img_verb IMG_VERB    Verbosity level for saving QC images during
+                        processing, by choosing one integer: 0 - Do not save
+                        graphs 1 - Save end results (card and resp peaks,
+                        final RVT) 2 - Save end results and intermediate steps
+                        (bandpassing, peak refinement, etc.) (def: 1)
+  -img_figsize WID LEN  Figure dimensions used for QC images (def: depends on
+                        length of physio time series)
+  -img_fontsize IMG_FONTSIZE
+                        Font size used for QC images (def: 10)
+  -img_line_time IMG_LINE_TIME
+                        Maximum time duration per line in the QC images, in
+                        units of sec (def: 60)
+  -img_fig_line IMG_FIG_LINE
+                        Maximum number of lines per fig in the QC images (def:
+                        6)
+  -img_dot_freq IMG_DOT_FREQ
+                        Maximum number of dots per line in the QC images (to
+                        save filesize and plot time), in units of dots per sec
+                        (def: 50)
+  -img_bp_max_f IMG_BP_MAX_F
+                        Maximum frequency in the bandpass QC images (i.e.,
+                        upper value of x-axis), in units of Hz (def: 5.0)
+  -save_proc_peaks      Write out the final set of peaks indices to a text
+                        file called PREFIX_LABEL_proc_peaks_00.1D ('LABEL' is
+                        'card', 'resp', etc.), which is a single column of the
+                        integer values (def: don't write them out)
+  -save_proc_troughs    Write out the final set of trough indices to a text
+                        file called PREFIX_LABEL_proc_troughs_00.1D ('LABEL'
+                        is 'card', 'resp', etc.), which is a single column of
+                        the integer values (def: don't write them out). The
+                        file is only output for LABEL types where troughs were
+                        estimated (e.g., resp).
+  -verb VERB            Integer values to control verbosity level (def: 0)
+  -disp_all_slice_patterns
+                        Display all allowed slice pattern names
+  -disp_all_opts        Display all options for this program
+  -ver                  Display program version number
+  -help                 Display help text in terminal
+  -hview                Display help text in a text editor (AFNI
+                        functionality)
+
+============================================================================
+
+Notes on usage and inputs ~1~
+
+* Physio data input: 
+  At least one of the following input option sets must be used:
+    -card_file 
+    -resp_file 
+    -card_file  and  -resp_file 
+    -phys_file  and  -phys_json
+
+* FMRI information input:
+  It is preferable to use:
+    -dset_epi
+  to provide EPI dset for which regressors will be made, to provide
+  the volumetric information that would otherwise be provided with:
+    -dset_tr
+    -dset_nslice
+    -dset_nt
+  ... and the slice timing information
+
+* Slice timing input:
+  If '-dset_epi ..' is not used to provide the slice timing (and other
+  useful) volumetric information, then exactly one of the following
+  input option must be used:
+    -dset_slice_times
+    -dset_slice_pattern
+
+* Physio information input: 
+  Each of the following input options must be provided through some
+  combination of phys_json file, dset_epi file, or the command line
+  opts themselves:
+    -freq
+    -dset_tr
+    -dset_nslice
+    -dset_nt
+
+* The following table shows which keys from 'phys_json' can be used to
+  set (= replace) certain command line argument/option usage:
+    ARG/OPT           JSON KEY               EPS VAL  
+    freq              SamplingFrequency      1.000e-03
+    start_time        StartTime              1.000e-03
+
+  The 'EPS VAL' shows the maximum difference tolerated between a
+  JSON-provided key and an option-provided one, in case both exist in
+  a command line call.  It would be better to avoid such dual-calling.
+
+============================================================================
+
+Notes on input peculiarities ~1~
+
+With Siemens physiological monitoring, values of 5000, 5003 and 6000 can be 
+used as trigger events to mark the beginning or end of something, like the 
+beginning of a TR.  The meanings, from the Siemens Matlab code are:
+    5000 = cardiac pulse on
+    5003 = cardiac pulse off
+    6000 = cardiac pulse off
+    6002 = phys recording on
+    6003 = phys recording off
+
+It appears that the number is inserted into the series, in which case,
+5000 values could simply be removed rather than replaced by an
+interpolation of the two adjacent values, using the option
+'remove_val_list ..'.
+
+============================================================================
+
+Notes on prefiltering physio time series ~1~
+
+Many physio time series contain noisy spikes or occasional blips.  The
+effects of these can be reduced during processing with some
+"prefiltering".  At present, this includes using a moving median
+filter along the time series, to try to remove spiky things that are
+likely nonphysiological.  This can be implemented by using this opt+arg:
+    -prefilt_mode median
+
+An additional decision to make then becomes what width of filter to
+apply.  That is, over how many points should the median be calculated?
+One wants to balance making it large enough to be stable/useful with
+small enough to not remove real features (like real peaks, troughs or
+other time series changes).  This is done by choosing a time interval,
+and this interval is specified separately for each of the card and
+resp time series, because each has a different expected time scale of
+variability (and experimental design can affect this choice, as well).  
+So, the user can use:
+    -prefilt_win_card  TIME_C
+    -prefilt_win_resp  TIME_R
+... and replace TIME_* with real time values, in using of seconds.  There
+are default time values in place, when '-prefilt_mode ..' is used; see
+above.
+
+Finally, physio time series are acquired with a variety of sampling
+frequencies.  These can easily range from 50 Hz to 2000 Hz (or more).
+That means 50 (or 2000) point estimates per second---which is a lot
+for most applications.  Consider that typical FMRI sampling rates are
+TR = 1-2 sec or so, meaning that they have 0.5 or 1 point estimates
+per sec.  Additionally, many (human) cardiac cycles are roughly of
+order 1 per sec or so, and (human) respiration is at a much slower
+rate.  All this is to say, having a highly sampled physio time series
+can be unnecessary for most practical applications and analyses.  We
+can reduce computational cost and processing time by downsampling it
+near the beginning of processing. This would be done by specifying a
+max sampling frequency MAX_F for the input data, to downsample to (or 
+near to), via: 
+    -prefilt_max_freq  MAX_F
+
+All of the above prefiltering is applied after initial 'badness'
+checks for outliers or missing values, so those processes can be a bit
+slow for densely acquired data.
+
+*Recommendation*
+In general, at least for human applications, it seems hard to see why
+one would need more than 50 physio measures per second.  It also seems
+like median filtering over even relatively small windows typically be
+useful.  So, perhaps consider adding these options to most processing 
+(but adjust as appropriate!):
+    -prefilt_max_freq   50 
+    -prefilt_mode       median
+
+If reasonable, the '-prefilt_win_card ..' and '-prefilt_win_resp ..'
+values could also be adjusted.
+
+============================================================================
+
+User interaction for peak/trough editing ~1~
+
+This program includes functionality whereby the user can directly edit
+the peaks and troughs that have estimated.  This includes adding,
+deleting or moving the points around, with the built-in constraint of
+keeping the points on the displayed physio time series line.  It's
+kind of fun.
+
+To enter interactive mode during the runtime of the program, use the
+'-do_interact' option.  Then, at some stage during the processing, a
+Matplotlib panel will pop up, showing estimated troughs and/or peaks,
+which the user can edit if desired.  Upon closing the pop-up panel,
+the final locations of peaks/troughs are kept and used for the
+remainder of the code's run.
+
+Key+mouse bindings being used:
+
+            4  : delete the vertex (peak or trough) nearest to mouse point
+            3  : add a peak vertex
+            2  : add a trough vertex
+            1  : toggle vertex visibility+editability on and off
+   Left-click  : select closest vertex, which can then be dragged along
+                the reference line.
+
+   Some additional Matplotlib keyboard shortcuts:
+            f  : toggle fullscreen view of panel
+            o  : toggle zoom-to-rectangle mode
+            p  : toggle pan/zoom mode
+            r  : reset panel view (not point edits, but zoom/scroll/etc.)
+            q  : quit/close viewer (also Ctrl+w), when done editing
+
+For more on the Matplotlib panel navigation keypresses and tips, see:
+https://matplotlib.org/3.2.2/users/navigation_toolbar.html
+
+At present, there is no "undo" functionality. If you accidentally
+delete a point, you can add one back, or vice versa.
+
+============================================================================
+
+Output files ~1~
+
+The following files will/can be created in the output dir, with the
+chosen prefix PREFIX.  Some are primary output files (like the file of
+physio and RVT regressors), and some are helpful QC images.  The
+*resp* files are only output if respiratory signal information were
+input, and similarly for *card* files with cardiac input.  At present,
+RVT is only calculated from resp input.
+
+  PREFIX_slibase.1D         : slice-based regressor file, which can include
+                              card, resp and RVT regressors, and provided 
+                              to afni_proc.py for inclusion in FMRI processing
+
+  PREFIX_regressors_phys.svg: QC image of all physio regressors (including
+                              card and/or resp), corresponding to slice=0
+                              physio regressors in *slibase.1D
+  PREFIX_regressors_rvt_resp.svg: 
+                              QC image of all RVT regressors from resp data,
+                              corresponding to all shifted RVT regressors in
+                              in *slibase.1D
+
+  PREFIX_resp_review.txt    : summary statistics and information for resp proc
+  PREFIX_card_review.txt    : summary statistics and information for card proc
+
+  PREFIX_pc_cmd.tcsh        : log/copy of the command used
+  PREFIX_info.json          : reference dictionary of all command inputs after
+                              interpreting user options and integrating
+                              default values
+
+  PREFIX_card_*_final_peaks*.svg
+                            : QC image of final peak estimation for card data.
+                              Can be several files, depending on length of
+                              input data. Colorbands highlight longer (red)  
+                              and shorter (blue) intervals, compared to median 
+                              (white)
+  PREFIX_resp_10_final_peaks_troughs*.svg
+                            : same as above image but for resp data (so also
+                              includes troughs)
+
+The following text files are only output when using the
+'-save_proc_peaks' and/or '-save_proc_troughs' option flag(s):
+
+  PREFIX_card_peaks_00.1D   : 1D column file of peak indices for card data,
+                              corresponding to card*final_peaks*svg image.
+  PREFIX_resp_peaks_00.1D   : 1D column file of peak indices for resp data,
+                              corresponding to resp*final_peaks*svg image.
+  PREFIX_resp_troughs_00.1D : 1D column file of trough indices for resp data,
+                              corresponding to resp*final_peaks*svg image.
+
+The following intermediate QC images are only output when the value of
+'-img_verb' is 2 or more.  In each time series plotting case, there
+may be multiple images, depending on time series length:
+
+  PREFIX_card_*_peaks*.svg  : QC images showing intermediate stages of peak
+                              calculation for card data
+  PREFIX_resp_*_peaks*.svg  : same as above image but for resp data peaks
+  PREFIX_resp_*_troughs*.svg: same as above image but for resp data troughs
+
+  PREFIX_card_bandpass_spectrum.svg,
+  PREFIX_resp_bandpass_spectrum.svg
+                            : QC images showing intermediate stage of peak
+                              and/or trough estimation, namely the Fourier
+                              Transform frequency spectrum (magnitude only),
+                              both full and bandpassed.
+
+  PREFIX_card_bandpass_ts_peaks*.svg,
+  PREFIX_resp_bandpass_ts_peaks*.svg,
+  PREFIX_resp_bandpass_ts_troughs*.svg
+                            : QC images showing intermediate stage of peak
+                              and/or trough estimation, namely the initial
+                              peak/trough estimation on the bandpassed
+                              physio time series
+
+  PREFIX_card_20_est_phase*.svg, 
+  PREFIX_resp_20_est_phase*.svg
+                            : QC images showing intermediate stages of phase
+                              calculation for card and/or resp data
+
+  PREFIX_resp_21_rvt_env*.svg
+                            : QC images showing intermediate stages of RVT
+                              calculation, namely envelope estimation
+
+  PREFIX_resp_22_rvt_measure*.svg
+                            : QC images showing intermediate stages of RVT
+                              calculation, RVT per input time series point
+
+============================================================================
+
+Interpreting coloration in images ~1~
+
+The QC images contain images that are supposed to be helpful in
+interpreting the data.  Here are some notes on various aspects.
+
+When viewing physio time series, the interval that overlaps the FMRI
+dataset in time has a white background, while any parts that do not
+have a light gray background.  Essentially, only the overlap regions
+should affect regressor estimation---the parts in gray are useful to
+have as realistic boundary conditions, though.
+
+Peaks are always shown as downward pointing triangles, and troughs are
+upward pointing triangles.
+
+When viewing "final" peak and trough images, there will be color bands
+made of red/white/blue rectangles shown in the subplots.  These
+highlight the relative duration of a given interpeak interval (top
+band in the subplot) and/or intertrough interval (bottom intervals),
+relative to their median values across the entire time series.
+Namely:
+   white : interval matches median
+   blue  : interval is shorter than median (darker blue -> much shorter)
+   red   : interval is longer than median (darker red -> much longer)
+The more intense colors mean that the interval is further than the median,
+counting in standard deviations of the interpeak or intertrough intervals.  
+This coloration is meant to help point out variability across time: this
+might reflect natural variability of the physio time series, or possibly
+draw attention to a QC issue like an out-of-place or missing extremum 
+(which could be edited in "interactive mode").
+
+============================================================================
+
+Examples ~1~
+
+  Example 1
+
+    physio_calc.py                                                           \
+        -card_file           physiopy/test000c                               \
+        -freq                400                                             \
+        -dset_epi            DSET_MRI                                        \
+        -dset_slice_pattern  alt+z                                           \
+        -extra_fix_list      5000                                            \
+        -do_fix_nan                                                          \
+        -out_dir             OUT_DIR                                         \
+        -prefix              PREFIX
+
+  Example 2
+
+    physio_calc.py                                                           \
+        -phys_file           physiopy/test003c.tsv.gz                        \
+        -phys_json           physiopy/test003c.json                          \
+        -dset_tr             2.2                                             \
+        -dset_nt             34                                              \
+        -dset_nslice         34                                              \
+        -dset_slice_pattern  alt+z                                           \
+        -do_fix_nan                                                          \
+        -extra_fix_list      5000                                            \
+        -out_dir             OUT_DIR                                         \
+        -prefix              PREFIX
+
+  Example 3 
+
+    physio_calc.py                                                           \
+        -card_file           sub-005_ses-01_task-rest_run-1_physio-ECG.txt   \
+        -resp_file           sub-005_ses-01_task-rest_run-1_physio-Resp.txt  \
+        -freq                50                                              \
+        -dset_tr             2.2                                             \
+        -dset_nt             219                                             \
+        -dset_nslice         33                                              \
+        -dset_slice_pattern  alt+z                                           \
+        -do_fix_nan                                                          \
+        -out_dir             OUT_DIR                                         \
+        -prefix              PREFIX
+
+============================================================================
+written by: Peter Lauren, Paul Taylor, Richard Reynolds and 
+            Daniel Glen (SSCC, NIMH, NIH, USA)
+
+============================================================================

@@ -1,0 +1,96 @@
+
+=== Output of 'dmri_pathstats --help' ===
+
+
+USAGE: ./dmri_pathstats
+
+   --intrk <file>:
+     Input .trk file
+   --rois <file1> <file2>:
+     Input labeling ROIs for .trk file (optional)
+   --intrc <file>:
+     Input tracula directory
+   --meas <file> [...]:
+     Input microstructural measure volume(s) (optional)
+   --measname <name> [...]:
+     Name(s) of microstructural measure(s) (as many as volumes)
+   --dtbase <file>:
+     Base name of input dtifit volumes (optional)
+   --path <name>:
+     Name of pathway (optional, written to output files)
+   --subj <name>:
+     Name of subject (optional, written to output files)
+   --out <file>:
+     Output text file for overall path measures
+   --outvox <file>:
+     Output text file for voxel-by-voxel measures along path (optional)
+   --median <file>:
+     Output .trk file of median streamline (optional)
+   --ends   <base>:
+     Base name of output volumes of streamline ends (optional)
+   --ref <file>:
+     Reference volume (needed only if using --ends without --dtbase)
+   --pthr <num>:
+     Lower threshold on path posterior distribution,
+     as a portion of the maximum (range: 0-1, default: 0.2)
+   --fthr <num>:
+     Lower threshold on FA (range: 0-1, default: no threshold)
+
+
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+
+
+...
+
+
+=== Output of 'dmri_pathstats -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'dmri_pathstats' (no arguments) ===
+
+
+USAGE: ./dmri_pathstats
+
+   --intrk <file>:
+     Input .trk file
+   --rois <file1> <file2>:
+     Input labeling ROIs for .trk file (optional)
+   --intrc <file>:
+     Input tracula directory
+   --meas <file> [...]:
+     Input microstructural measure volume(s) (optional)
+   --measname <name> [...]:
+     Name(s) of microstructural measure(s) (as many as volumes)
+   --dtbase <file>:
+     Base name of input dtifit volumes (optional)
+   --path <name>:
+     Name of pathway (optional, written to output files)
+   --subj <name>:
+     Name of subject (optional, written to output files)
+   --out <file>:
+     Output text file for overall path measures
+   --outvox <file>:
+     Output text file for voxel-by-voxel measures along path (optional)
+   --median <file>:
+     Output .trk file of median streamline (optional)
+   --ends   <base>:
+     Base name of output volumes of streamline ends (optional)
+   --ref <file>:
+     Reference volume (needed only if using --ends without --dtbase)
+   --pthr <num>:
+     Lower threshold on path posterior distribution,
+     as a portion of the maximum (range: 0-1, default: 0.2)
+   --fthr <num>:
+     Lower threshold on FA (range: 0-1, default: no threshold)
+
+
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+

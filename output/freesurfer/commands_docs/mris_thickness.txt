@@ -1,0 +1,48 @@
+
+=== Output of 'mris_thickness --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_thickness [options] <subject name> <hemi> <thickness file>
+
+This program measures the thickness of the cortical surface and
+writes the resulting scalar field into a 'curvature' file <thickness file>.
+
+valid options are:
+
+-max <max>	 use <max> to threshold thickness (default=5mm)
+-fill_holes <cortex label> <fsaverage cortex label> fill in thickness in holes in the cortex label
+
+-thickness-from-seg surf label seg.mgz dmaxmm (eg, 6) ddeltamm (eg, .01) output.mgz
+  This is a stand-alone option that allows thickness to be computed from a surface created around
+  a segmentation by tracing a ray from one side to the other along the normal to the surface.
+  The calculations are limited to the label. The output is a surface overlay with the values
+  of the thickness at each vertex in the label. dmax is the maximum distance searched.
+  ddelta is the step size.
+
+
+-vector  compute the thickness using a variationally derived vector field instead of shortest distance
+
+=== Output of 'mris_thickness -help' ===
+
+unknown option -help
+
+=== Output of 'mris_thickness' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_thickness [options] <subject name> <hemi> <thickness file>
+
+This program measures the thickness of the cortical surface and
+writes the resulting scalar field into a 'curvature' file <thickness file>.
+
+valid options are:
+
+-max <max>	 use <max> to threshold thickness (default=5mm)
+-fill_holes <cortex label> <fsaverage cortex label> fill in thickness in holes in the cortex label
+
+-thickness-from-seg surf label seg.mgz dmaxmm (eg, 6) ddeltamm (eg, .01) output.mgz
+  This is a stand-alone option that allows thickness to be computed from a surface created around
+  a segmentation by tracing a ray from one side to the other along the normal to the surface.
+  The calculations are limited to the label. The output is a surface overlay with the values
+  of the thickness at each vertex in the label. dmax is the maximum distance searched.
+  ddelta is the step size.
+
+
+-vector  compute the thickness using a variationally derived vector field instead of shortest distance

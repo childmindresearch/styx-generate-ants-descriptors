@@ -1,0 +1,36 @@
+
+=== Output of 'fslmerge --help' ===
+
+
+Usage: fslmerge <-x/y/z/t/a/tr> <output> <file1 file2 .......> [tr value in seconds]
+     -t : concatenate images in time
+     -x : concatenate images in the x direction
+     -y : concatenate images in the y direction
+     -z : concatenate images in the z direction
+     -a : auto-choose: single slices -> volume, volumes -> 4D (time series)
+     -tr : concatenate images in time and set the output image tr to the final option value
+     -n <N> : only use volume <N> from each input file (first volume is 0 not 1)
+
+=== Output of 'fslmerge -help' ===
+
+
+Usage: fslmerge <-x/y/z/t/a/tr> <output> <file1 file2 .......> [tr value in seconds]
+     -t : concatenate images in time
+     -x : concatenate images in the x direction
+     -y : concatenate images in the y direction
+     -z : concatenate images in the z direction
+     -a : auto-choose: single slices -> volume, volumes -> 4D (time series)
+     -tr : concatenate images in time and set the output image tr to the final option value
+     -n <N> : only use volume <N> from each input file (first volume is 0 not 1)
+
+=== Output of 'fslmerge' (no arguments) ===
+
+
+Usage: fslmerge <-x/y/z/t/a/tr> <output> <file1 file2 .......> [tr value in seconds]
+     -t : concatenate images in time
+     -x : concatenate images in the x direction
+     -y : concatenate images in the y direction
+     -z : concatenate images in the z direction
+     -a : auto-choose: single slices -> volume, volumes -> 4D (time series)
+     -tr : concatenate images in time and set the output image tr to the final option value
+     -n <N> : only use volume <N> from each input file (first volume is 0 not 1)

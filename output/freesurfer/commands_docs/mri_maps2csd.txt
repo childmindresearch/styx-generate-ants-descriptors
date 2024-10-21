@@ -1,0 +1,51 @@
+
+=== Output of 'mri_maps2csd --help' ===
+
+/usr/local/freesurfer/bin/mri_maps2csd   inputs
+
+   --i input (or just put them on the command line)
+   
+   --csd csdfile
+   --pdf pdffile : PDF created from CSD
+   --s subjectname hemi surf
+   --thresh thresh (-log10 cluster-forming thresh)
+   --sign +1,-1,0 : a sign causes the thresh to be adjusted
+   
+   --csd-apply csdfile applyout : apply a CSD file to the inputs and output p-val of max cluster
+   
+   --sd SUBJECTS_DIR
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+
+
+=== Output of 'mri_maps2csd -help' ===
+
+ERROR: must specify a surface
+
+=== Output of 'mri_maps2csd' (no arguments) ===
+
+/usr/local/freesurfer/bin/mri_maps2csd   inputs
+
+   --i input (or just put them on the command line)
+   
+   --csd csdfile
+   --pdf pdffile : PDF created from CSD
+   --s subjectname hemi surf
+   --thresh thresh (-log10 cluster-forming thresh)
+   --sign +1,-1,0 : a sign causes the thresh to be adjusted
+   
+   --csd-apply csdfile applyout : apply a CSD file to the inputs and output p-val of max cluster
+   
+   --sd SUBJECTS_DIR
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

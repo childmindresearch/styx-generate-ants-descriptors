@@ -1,0 +1,26 @@
+
+=== Output of 'mri_label_volume --help' ===
+
+unknown option --help
+
+=== Output of 'mri_label_volume -help' ===
+
+unknown option -help
+
+=== Output of 'mri_label_volume' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_label_volume [options] <volume> <label 1> <label 2> ...
+valid options are:
+  -pv <fname>   - compute partial volume effects using intensity volume <fname>
+  -icv <fname>  - normalize by the intracranial volume in <fname>
+  -s <subject>  - output in spreadsheet mode, including <subject> name in file
+  -a            - compute volume of all non-zero voxels (e.g. for computing brain volume)
+  -t <in> <out> - replace label <in> with label <out>. Useful for compute e.g. whole hippo vol
+  -b <brain vol>- compute the brain volume from <brain vol> and normalize by it
+  -p            - compute volume as a % of all non-zero labels
+  -l <fname>    - log results to <fname>
+  -atlas_icv <fname> <scalefactor> - specify LTA or XFM atlas transform file
+  and scale factor to use for ICV correction (c.f. Buckner et al. 2004)
+  -eTIV <fname> <scalefactor> - same as -atlas_icv
+  -eTIV_matdat <fname> <scalefactor> <subject> - same as -eTIV,
+  and generate matlab data appending <subject> to structure

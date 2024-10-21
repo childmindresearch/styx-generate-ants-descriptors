@@ -1,0 +1,161 @@
+
+=== Output of 'generate_b0 --help' ===
+
+b0 inhomogeneity generation ... 
+Image Exception : #63 :: No image files match: abs_possumtmp
+Image Exception : #22 :: Failed to read volume abs_possumtmp
+Error : No image files match: abs_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume abs_possumtmp
+Error : No image files match: abs_possumtmp
+/usr/local/fsl/bin/generate_b0: line 99: 13428 Aborted                 (core dumped) fslcomplex -realabs ${fmap} ${fmap}abs_possumtmp 0 1
+Image Exception : #63 :: No image files match: phase1_possumtmp
+Image Exception : #22 :: Failed to read volume phase1_possumtmp
+Error : No image files match: phase1_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume phase1_possumtmp
+Error : No image files match: phase1_possumtmp
+/usr/local/fsl/bin/generate_b0: line 100: 13429 Aborted                 (core dumped) fslcomplex -realphase ${fmap} ${fmap}phase1_possumtmp 0 0
+Image Exception : #63 :: No image files match: phase2_possumtmp
+Image Exception : #22 :: Failed to read volume phase2_possumtmp
+Error : No image files match: phase2_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume phase2_possumtmp
+Error : No image files match: phase2_possumtmp
+/usr/local/fsl/bin/generate_b0: line 101: 13430 Aborted                 (core dumped) fslcomplex -realphase ${fmap} ${fmap}phase2_possumtmp 1 1
+Image Exception : #63 :: No image files match: phase1_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: phase1_possumtmp
+/usr/local/fsl/bin/generate_b0: line 103: 13431 Aborted                 (core dumped) fslmaths ${fmap}phase1_possumtmp -sub ${fmap}phase2_possumtmp ${fmap}phasediff_possumtmp -odt float
+Image Exception : #63 :: No image files match: abs_possumtmp
+Image Exception : #22 :: Failed to read volume abs_possumtmp
+Error : No image files match: abs_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume abs_possumtmp
+Error : No image files match: abs_possumtmp
+/usr/local/fsl/bin/generate_b0: line 105: 13432 Aborted                 (core dumped) fslcomplex -complexpolar ${fmap}abs_possumtmp ${fmap}phasediff_possumtmp ${fmap}complex_possumtmp 0 0
+Image Exception : #63 :: No image files match: complex_possumtmp
+Image Exception : #22 :: Failed to read volume complex_possumtmp
+Error : No image files match: complex_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume complex_possumtmp
+Error : No image files match: complex_possumtmp
+/usr/local/fsl/bin/generate_b0: line 106: 13433 Aborted                 (core dumped) fslcomplex -realphase ${fmap}complex_possumtmp ${fmap}phase_possumtmp 0 0
+Loading volumes
+Image Exception : #63 :: No image files match: phase_possumtmp
+Image Exception : #22 :: Failed to read volume phase_possumtmp
+Error : No image files match: phase_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume phase_possumtmp
+Error : No image files match: phase_possumtmp
+/usr/local/fsl/bin/generate_b0: line 108: 13434 Aborted                 (core dumped) prelude -a ${fmap}abs_possumtmp -p ${fmap}phase_possumtmp -o ${fmap}uphase_possumtmp -v
+Image Exception : #63 :: No image files match: uphase_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: uphase_possumtmp
+/usr/local/fsl/bin/generate_b0: line 109: 13435 Aborted                 (core dumped) fslmaths ${fmap}uphase_possumtmp -mul 1000 -div ${TEdiff} ${fmap}_b0_radps_possumtmp -odt float
+Image Exception : #63 :: No image files match: _b0_radps_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: _b0_radps_possumtmp
+/usr/local/fsl/bin/generate_b0: line 110: 13436 Aborted                 (core dumped) fslmaths ${fmap}_b0_radps_possumtmp -div ${gamma} ${fmap}_b0_tesla_possumtmp -odt float
+
+Error: input image abs_possumtmp not valid
+
+Image Exception : #63 :: No image files match: abs_brain_possumtmp
+Image Exception : #22 :: Failed to read volume abs_brain_possumtmp
+Error : No image files match: abs_brain_possumtmp
+Failed to read volume abs_brain_possumtmp
+Error : No image files match: abs_brain_possumtmp
+Image Exception : #8 :: Fslread: DT 0 not supported
+Fslread: DT 0 not supported
+Image Exception : #63 :: No image files match: _b0_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: _b0_possumtmp
+/usr/local/fsl/bin/generate_b0: line 119: 13510 Aborted                 (core dumped) fslmaths ${fmap}_b0_possumtmp -mul -1 ${fmap}_possum
+rm: cannot remove '*possumtmp*': No such file or directory
+
+=== Output of 'generate_b0 -help' ===
+
+b0 inhomogeneity generation ... 
+Image Exception : #63 :: No image files match: abs_possumtmp
+Image Exception : #22 :: Failed to read volume abs_possumtmp
+Error : No image files match: abs_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume abs_possumtmp
+Error : No image files match: abs_possumtmp
+/usr/local/fsl/bin/generate_b0: line 99: 13546 Aborted                 (core dumped) fslcomplex -realabs ${fmap} ${fmap}abs_possumtmp 0 1
+Image Exception : #63 :: No image files match: phase1_possumtmp
+Image Exception : #22 :: Failed to read volume phase1_possumtmp
+Error : No image files match: phase1_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume phase1_possumtmp
+Error : No image files match: phase1_possumtmp
+/usr/local/fsl/bin/generate_b0: line 100: 13547 Aborted                 (core dumped) fslcomplex -realphase ${fmap} ${fmap}phase1_possumtmp 0 0
+Image Exception : #63 :: No image files match: phase2_possumtmp
+Image Exception : #22 :: Failed to read volume phase2_possumtmp
+Error : No image files match: phase2_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume phase2_possumtmp
+Error : No image files match: phase2_possumtmp
+/usr/local/fsl/bin/generate_b0: line 101: 13548 Aborted                 (core dumped) fslcomplex -realphase ${fmap} ${fmap}phase2_possumtmp 1 1
+Image Exception : #63 :: No image files match: phase1_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: phase1_possumtmp
+/usr/local/fsl/bin/generate_b0: line 103: 13549 Aborted                 (core dumped) fslmaths ${fmap}phase1_possumtmp -sub ${fmap}phase2_possumtmp ${fmap}phasediff_possumtmp -odt float
+Image Exception : #63 :: No image files match: abs_possumtmp
+Image Exception : #22 :: Failed to read volume abs_possumtmp
+Error : No image files match: abs_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume abs_possumtmp
+Error : No image files match: abs_possumtmp
+/usr/local/fsl/bin/generate_b0: line 105: 13550 Aborted                 (core dumped) fslcomplex -complexpolar ${fmap}abs_possumtmp ${fmap}phasediff_possumtmp ${fmap}complex_possumtmp 0 0
+Image Exception : #63 :: No image files match: complex_possumtmp
+Image Exception : #22 :: Failed to read volume complex_possumtmp
+Error : No image files match: complex_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume complex_possumtmp
+Error : No image files match: complex_possumtmp
+/usr/local/fsl/bin/generate_b0: line 106: 13551 Aborted                 (core dumped) fslcomplex -realphase ${fmap}complex_possumtmp ${fmap}phase_possumtmp 0 0
+Loading volumes
+Image Exception : #63 :: No image files match: phase_possumtmp
+Image Exception : #22 :: Failed to read volume phase_possumtmp
+Error : No image files match: phase_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume phase_possumtmp
+Error : No image files match: phase_possumtmp
+/usr/local/fsl/bin/generate_b0: line 108: 13552 Aborted                 (core dumped) prelude -a ${fmap}abs_possumtmp -p ${fmap}phase_possumtmp -o ${fmap}uphase_possumtmp -v
+Image Exception : #63 :: No image files match: uphase_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: uphase_possumtmp
+/usr/local/fsl/bin/generate_b0: line 109: 13553 Aborted                 (core dumped) fslmaths ${fmap}uphase_possumtmp -mul 1000 -div ${TEdiff} ${fmap}_b0_radps_possumtmp -odt float
+Image Exception : #63 :: No image files match: _b0_radps_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: _b0_radps_possumtmp
+/usr/local/fsl/bin/generate_b0: line 110: 13554 Aborted                 (core dumped) fslmaths ${fmap}_b0_radps_possumtmp -div ${gamma} ${fmap}_b0_tesla_possumtmp -odt float
+
+Error: input image abs_possumtmp not valid
+
+Image Exception : #63 :: No image files match: abs_brain_possumtmp
+Image Exception : #22 :: Failed to read volume abs_brain_possumtmp
+Error : No image files match: abs_brain_possumtmp
+Failed to read volume abs_brain_possumtmp
+Error : No image files match: abs_brain_possumtmp
+Image Exception : #8 :: Fslread: DT 0 not supported
+Fslread: DT 0 not supported
+Image Exception : #63 :: No image files match: _b0_possumtmp
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: _b0_possumtmp
+/usr/local/fsl/bin/generate_b0: line 119: 13628 Aborted                 (core dumped) fslmaths ${fmap}_b0_possumtmp -mul -1 ${fmap}_possum
+rm: cannot remove '*possumtmp*': No such file or directory
+
+=== Output of 'generate_b0' (no arguments) ===
+
+./generate_b0 <structural> <fieldmap> <TEdiff>
+
+Used for generating B0 inhomogeneity image for POSSUM.
+
+<structural> is a T1 weighted image, preferably 1x1x1mm voxel size.
+<fieldmap> are 2 complex volumes (in the one file) acquired for two different TE's.
+<TEdiff> is the difference of those two TE's (default=2.5ms).
+Note that structural and fieldmap need to have the same dimensions and voxel sizes.
+Default filename of the output is <fieldmap>_possum.
+

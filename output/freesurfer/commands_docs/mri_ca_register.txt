@@ -1,0 +1,270 @@
+
+=== Output of 'mri_ca_register --help' ===
+
+unknown option --help
+
+=== Output of 'mri_ca_register -help' ===
+
+				Help
+
+NAME
+	mri_ca_register
+
+SYNOPSIS
+	mri_ca_register <invol> <template> <outvol>
+
+DESCRIPTION
+	This generates a multi-dimensional talairach transform from a gca file
+	and talairach.lta file
+
+POSITIONAL ARGUMENTS
+	invol
+		input volume
+
+	template
+		template in gca format
+
+	outvol
+		output volume in m3d format
+
+REQUIRED FLAGGED ARGUMENTS
+	**********************************************************************
+	********************
+
+OPTIONAL FLAGGED ARGUMENTS
+	-tol
+		defines convergence of registration
+
+	-mask
+		specifies volume to use as a mask
+
+	-T
+		transform in lta format
+
+	-level
+		defines how many surrounding voxels will be used in 
+		interpolations, default is 6
+
+	-ri
+		allows reading of multiple intensity normalization
+
+	-align
+
+	-invert-and-save gcamfile
+
+	-dist distance
+
+	-regularize regularize
+
+	-regularize-mean regularizemean
+
+	-scale_smoothness smoothness
+
+	-nobright 
+
+	-renormalize_map
+
+	-renormalize intensity_file
+
+	-read_lta 
+
+	-smoothness smoothness
+
+	-samples samples
+
+	-nsmall nsmall
+
+	-fixed
+
+	-optimal
+
+	-noneg noneg
+
+	-wm
+
+	-min_avgs <n>
+
+	-tl
+
+	-relabel relable
+
+	-relabel_avgs relable_avgs
+
+	-reset_avgs reset_avgs
+
+	-vf vf_fname
+
+	-diag diagfname
+
+	-tr tr
+
+	-te te
+
+	-example T1 seg
+
+	-<no>bigventricles
+
+	-uncompress
+
+	-secondpassrenorm
+
+	-threads nompthreads
+
+OUTPUTS
+	outvol
+		multidimensional transform in m3d format
+
+EXAMPLE 1
+	mri_ca_register -levels 6 -mask subject1/mri/brain -T subject1/mri/
+	transforms/talairach_one.lta subject1/mri/norm_one.mgh single_one.gca 
+	subject1/mri/transforms/talairach_one.m3d 
+
+EXAMPLE 2
+	mri_ca_register -tol 1 -mask subject1/mri/brain -T subject1/mri/
+	transforms/talairach_multi.lta subject1/mri/norm_multi.mgh multi_
+	one.gca subject1/mri/transforms/talairach_multi.m3d
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	**********************************************************************
+	******
+
+
+
+=== Output of 'mri_ca_register' (no arguments) ===
+
+				Help
+
+NAME
+	mri_ca_register
+
+SYNOPSIS
+	mri_ca_register <invol> <template> <outvol>
+
+DESCRIPTION
+	This generates a multi-dimensional talairach transform from a gca file
+	and talairach.lta file
+
+POSITIONAL ARGUMENTS
+	invol
+		input volume
+
+	template
+		template in gca format
+
+	outvol
+		output volume in m3d format
+
+REQUIRED FLAGGED ARGUMENTS
+	**********************************************************************
+	********************
+
+OPTIONAL FLAGGED ARGUMENTS
+	-tol
+		defines convergence of registration
+
+	-mask
+		specifies volume to use as a mask
+
+	-T
+		transform in lta format
+
+	-level
+		defines how many surrounding voxels will be used in 
+		interpolations, default is 6
+
+	-ri
+		allows reading of multiple intensity normalization
+
+	-align
+
+	-invert-and-save gcamfile
+
+	-dist distance
+
+	-regularize regularize
+
+	-regularize-mean regularizemean
+
+	-scale_smoothness smoothness
+
+	-nobright 
+
+	-renormalize_map
+
+	-renormalize intensity_file
+
+	-read_lta 
+
+	-smoothness smoothness
+
+	-samples samples
+
+	-nsmall nsmall
+
+	-fixed
+
+	-optimal
+
+	-noneg noneg
+
+	-wm
+
+	-min_avgs <n>
+
+	-tl
+
+	-relabel relable
+
+	-relabel_avgs relable_avgs
+
+	-reset_avgs reset_avgs
+
+	-vf vf_fname
+
+	-diag diagfname
+
+	-tr tr
+
+	-te te
+
+	-example T1 seg
+
+	-<no>bigventricles
+
+	-uncompress
+
+	-secondpassrenorm
+
+	-threads nompthreads
+
+OUTPUTS
+	outvol
+		multidimensional transform in m3d format
+
+EXAMPLE 1
+	mri_ca_register -levels 6 -mask subject1/mri/brain -T subject1/mri/
+	transforms/talairach_one.lta subject1/mri/norm_one.mgh single_one.gca 
+	subject1/mri/transforms/talairach_one.m3d 
+
+EXAMPLE 2
+	mri_ca_register -tol 1 -mask subject1/mri/brain -T subject1/mri/
+	transforms/talairach_multi.lta subject1/mri/norm_multi.mgh multi_
+	one.gca subject1/mri/transforms/talairach_multi.m3d
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	**********************************************************************
+	******
+
+

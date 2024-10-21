@@ -1,0 +1,98 @@
+
+=== Output of '3dUpsample --help' ===
+
+++ 3dUpsample: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+++ Authored by: RWCox
+[7m** ERROR:[0m Unknown argument on command line: '--help'
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dUpsample -help' enlighten:
+        '-verb      = Be eloquently and mellifluosly verbose.'
+        '-input dataset = An alternate way to specify dataset'
+        '-prefix pp = Define the prefix name of the output dataset.'
+
+=== Output of '3dUpsample -help' ===
+
+Usage: 3dUpsample [options] n dataset
+
+* Upsamples a 3D+time dataset, in the time direction,
+   by a factor of 'n'.
+* The value of 'n' must be between 2 and 320 (inclusive).
+* The output dataset is in float format by default.
+
+Options:
+--------
+ -1 or -one = Use linear interpolation. Otherwise,
+ or -linear   7th order polynomial interpolation is used.
+
+ -prefix pp = Define the prefix name of the output dataset.
+              [default prefix is 'Upsam']
+
+ -verb      = Be eloquently and mellifluosly verbose.
+
+ -n n       = An alternate way to specify n
+ -input dataset = An alternate way to specify dataset
+
+ -datum ddd = Use datatype ddd at output. Choose from
+              float (default), short, byte.
+Example:
+--------
+ 3dUpsample -prefix LongFred 5 Fred+orig
+
+Nota Bene:
+----------
+* You should not use this for files that were 3dTcat-ed across
+   imaging run boundaries, since that will result in interpolating
+   between non-contiguous time samples!
+* If the input has M time points, the output will have n*M time
+   points.  The last n-1 of them will be past the end of the original
+   time series.
+* This program gobbles up memory and diskspace as a function of n.
+  You can reduce output file size with -datum option.
+
+--- RW Cox - April 2008
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dUpsample' (no arguments) ===
+
+Usage: 3dUpsample [options] n dataset
+
+* Upsamples a 3D+time dataset, in the time direction,
+   by a factor of 'n'.
+* The value of 'n' must be between 2 and 320 (inclusive).
+* The output dataset is in float format by default.
+
+Options:
+--------
+ -1 or -one = Use linear interpolation. Otherwise,
+ or -linear   7th order polynomial interpolation is used.
+
+ -prefix pp = Define the prefix name of the output dataset.
+              [default prefix is 'Upsam']
+
+ -verb      = Be eloquently and mellifluosly verbose.
+
+ -n n       = An alternate way to specify n
+ -input dataset = An alternate way to specify dataset
+
+ -datum ddd = Use datatype ddd at output. Choose from
+              float (default), short, byte.
+Example:
+--------
+ 3dUpsample -prefix LongFred 5 Fred+orig
+
+Nota Bene:
+----------
+* You should not use this for files that were 3dTcat-ed across
+   imaging run boundaries, since that will result in interpolating
+   between non-contiguous time samples!
+* If the input has M time points, the output will have n*M time
+   points.  The last n-1 of them will be past the end of the original
+   time series.
+* This program gobbles up memory and diskspace as a function of n.
+  You can reduce output file size with -datum option.
+
+--- RW Cox - April 2008
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

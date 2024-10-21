@@ -1,0 +1,74 @@
+
+=== Output of 'mris_compute_lgi --help' ===
+
+
+USAGE: mris_compute_lgi [options] --i <input surface>
+
+Produces a surface map file containing local gyrification measures.
+Output file is named <input surface>_lgi, where <input surface> is the
+specified input surface (ex. lh.pial produces lh.pial_lgi).
+
+Required Arguments
+  --i       : input surface file, typically lh.pial or rh.pial
+
+Optional Arguments
+  --close_sphere_size <mm> : use sphere of size <mm> mm for morph
+                             closing operation (default: 15)
+  --smooth_iters <iters>   : smooth outer-surface <iters> number of
+                             iterations (default: 30)
+  --step_size <steps>      : skip every <steps> vertices when
+                             computing lGI (default: 100)
+  --help    : short descriptive help
+  --version : script version info
+  --echo    : enable command echo, for debug
+  --debug   : same as --echo
+  --dontrun : just show commands (dont run them)
+
+Version: mris_compute_lgi 7.4.1
+
+Computes local measurements of gyrification at thousands of points over the 
+entire cortical surface using the method described in:
+
+"A Surface-based Approach to Quantify Local Cortical Gyrification",
+Schaer M. et al., IEEE Transactions on Medical Imaging, 2007, TMI-2007-0180
+
+Input is a pial surface mesh, and the output a scalar data file containing
+the local gyrification index data at each vertices.
+
+Example:
+
+  mris_compute_lgi --i lh.pial
+
+produces lh.pial_lgi
+
+See also http://surfer.nmr.mgh.harvard.edu/fswiki/LGI
+
+=== Output of 'mris_compute_lgi -help' ===
+
+ERROR: missing input filename!  See  mris_compute_lgi --help
+
+=== Output of 'mris_compute_lgi' (no arguments) ===
+
+
+USAGE: mris_compute_lgi [options] --i <input surface>
+
+Produces a surface map file containing local gyrification measures.
+Output file is named <input surface>_lgi, where <input surface> is the
+specified input surface (ex. lh.pial produces lh.pial_lgi).
+
+Required Arguments
+  --i       : input surface file, typically lh.pial or rh.pial
+
+Optional Arguments
+  --close_sphere_size <mm> : use sphere of size <mm> mm for morph
+                             closing operation (default: 15)
+  --smooth_iters <iters>   : smooth outer-surface <iters> number of
+                             iterations (default: 30)
+  --step_size <steps>      : skip every <steps> vertices when
+                             computing lGI (default: 100)
+  --help    : short descriptive help
+  --version : script version info
+  --echo    : enable command echo, for debug
+  --debug   : same as --echo
+  --dontrun : just show commands (dont run them)
+

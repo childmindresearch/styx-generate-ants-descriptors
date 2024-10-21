@@ -1,0 +1,21 @@
+
+=== Output of 'dmri_projectEndPoints --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_projectEndPoints -i streamlineFile.trk -sl surfaceFile_lh.orig -sr surfaceFile_rh.orig
+                       -ol left_overlayFile -or right_overlayFile
+		       -ri reference_Image
+
+=== Output of 'dmri_projectEndPoints -help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_projectEndPoints -i streamlineFile.trk -sl surfaceFile_lh.orig -sr surfaceFile_rh.orig
+                       -ol left_overlayFile -or right_overlayFile
+		       -ri reference_Image
+
+=== Output of 'dmri_projectEndPoints' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_projectEndPoints -i streamlineFile.trk -sl surfaceFile_lh.orig -sr surfaceFile_rh.orig
+                       -ol left_overlayFile -or right_overlayFile
+		       -ri reference_Image

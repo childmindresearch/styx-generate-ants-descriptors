@@ -1,0 +1,10 @@
+
+=== Output of 'mri_joint_density --help' ===
+
+usage: (null) [options] <vol1> <vol2> <output density file>
+=== Output of 'mri_joint_density -help' ===
+
+usage: (null) [options] <vol1> <vol2> <output density file>
+=== Output of 'mri_joint_density' (no arguments) ===
+
+usage: (null) [options] <vol1> <vol2> <output density file>

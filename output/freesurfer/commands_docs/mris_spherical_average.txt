@@ -1,0 +1,39 @@
+
+=== Output of 'mris_spherical_average --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_spherical_average [option] <which> <fname> <hemi> <spherical surf> <subject 1> ... <output>
+where which is one of
+	coords
+	label
+	vals
+	curv
+	area
+
+This program will add a template into an average surface.
+
+valid options are:
+
+-segment        only use largest connected component of label
+-n              normalize output so it can be interpreted as a probability
+-orig  <name>   use <name> as original surface position default=orig
+-o  <output subject name>   use <output subject> as the space to write the results in instead of the last subject given
+-osdir  <output subject dir>   use <output subject dir> as the subjects dir for the output subject'
+-sdir  <subjects dir>   use <subject dir> as the subjects dir'
+-average_area   compute threshold for label that will give the average label apporximately the average surface area
+-s <cond #>     generate summary statistics and write
+                them into sigavg<cond #>-<hemi>.w and
+                sigvar<cond #>-<hemi>.w.
+
+=== Output of 'mris_spherical_average -help' ===
+
+unknown option -help
+
+=== Output of 'mris_spherical_average' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_spherical_average [option] <which> <fname> <hemi> <spherical surf> <subject 1> ... <output>
+where which is one of
+	coords
+	label
+	vals
+	curv
+	area

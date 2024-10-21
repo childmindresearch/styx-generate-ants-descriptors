@@ -1,0 +1,68 @@
+
+=== Output of 'dmri_forrest --help' ===
+
+
+USAGE: /usr/local/freesurfer/bin/dmri_forrest
+
+Basic inputs (all files must be in common space)
+   --test <dir>:
+     Test subject directory
+   --train <file>:
+     Text file with list of training subject directories
+   --mask <file>:
+     Name of input brain mask volume
+     (Name relative to test/training subject directory)
+   --tract <file> [...]:
+     Name(s) of input tract label volume(s)
+     (Names relative to test/training subject directory)
+   --seg <file>:
+     Name of input aparc+aseg volume (optional)
+     (Name relative to test/training subject directory)
+   --diff <file>:
+     Name of input diffusion orientation volume (optional)
+     (Name relative to test/training subject directory)
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+
+
+...
+
+
+=== Output of 'dmri_forrest -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'dmri_forrest' (no arguments) ===
+
+
+USAGE: /usr/local/freesurfer/bin/dmri_forrest
+
+Basic inputs (all files must be in common space)
+   --test <dir>:
+     Test subject directory
+   --train <file>:
+     Text file with list of training subject directories
+   --mask <file>:
+     Name of input brain mask volume
+     (Name relative to test/training subject directory)
+   --tract <file> [...]:
+     Name(s) of input tract label volume(s)
+     (Names relative to test/training subject directory)
+   --seg <file>:
+     Name of input aparc+aseg volume (optional)
+     (Name relative to test/training subject directory)
+   --diff <file>:
+     Name of input diffusion orientation volume (optional)
+     (Name relative to test/training subject directory)
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+

@@ -1,0 +1,264 @@
+
+=== Output of 'mris_curvature --help' ===
+
+				Help
+
+NAME
+	mris_curvature
+
+SYNOPSIS
+	mris_curvature [<options>] insurf
+
+DESCRIPTION
+	This program will compute the second fundamental form of a cortical 
+	surface. It will create two new files <hemi>.<surface>.H and 
+	<hemi>.<surface>.K with the mean and Gaussian curvature respectively.
+
+POSITIONAL ARGUMENTS
+	<insurf>
+		input surface file
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-w
+		save curvature files (will only generate screen output without
+		this option)
+
+	-max
+		save  1st (max) principal curvature in ?h.<surface>.max file
+
+	-mgh
+		save outputs in .mgz format
+
+	-min
+		save  2nd (min) principal curvature in ?h.<surface>.min file
+
+	-a <avgs>
+		perform <avgs> iterative averages of curvature measure before 
+		saving
+
+	-nbrs <nbrs>
+		set neighborhood size to nbrs 
+
+	-seed N
+		set random number generator to seed N
+
+	-curvs surf nbrhdsize stem
+		Stand-alone option to save H (mean), K (gaussian), k1, and k2 
+		curvatures to stem.{curvname}.mgz
+
+	-H surf nbrhdsize stem
+		Stand-alone option to save H mean curvature to stem.H.mgz
+
+	-K surf nbrhdsize stem
+		Stand-alone option to save K gaussian curvature to stem.K.mgz
+
+	-k1 surf nbrhdsize stem
+		Stand-alone option to save k1 (primary principle) curvature to
+		stem.k1.mgz 
+
+	-k2 surf nbrhdsize stem
+		Stand-alone option to save k2 (secondary principle) curvature 
+		to stem.k2.mgz 
+
+	-k1k2 surf nbrhdsize stem
+		Stand-alone option to save k1 and k2 curvature to 
+		stem.{k1,k2}.mgz 
+
+OUTPUTS
+	insurf.h
+		mean curvature file
+
+	insurf.K
+		gaussian curvature file
+
+EXAMPLE 1
+	mris_curvature lh.pial
+	Compute the curvature and do not produce output files. 
+
+EXAMPLE 2
+	mris_curvature -w -a 10 lh.pial
+	Smooth 10 iterations and produce output files.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_curvature -help' ===
+
+				Help
+
+NAME
+	mris_curvature
+
+SYNOPSIS
+	mris_curvature [<options>] insurf
+
+DESCRIPTION
+	This program will compute the second fundamental form of a cortical 
+	surface. It will create two new files <hemi>.<surface>.H and 
+	<hemi>.<surface>.K with the mean and Gaussian curvature respectively.
+
+POSITIONAL ARGUMENTS
+	<insurf>
+		input surface file
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-w
+		save curvature files (will only generate screen output without
+		this option)
+
+	-max
+		save  1st (max) principal curvature in ?h.<surface>.max file
+
+	-mgh
+		save outputs in .mgz format
+
+	-min
+		save  2nd (min) principal curvature in ?h.<surface>.min file
+
+	-a <avgs>
+		perform <avgs> iterative averages of curvature measure before 
+		saving
+
+	-nbrs <nbrs>
+		set neighborhood size to nbrs 
+
+	-seed N
+		set random number generator to seed N
+
+	-curvs surf nbrhdsize stem
+		Stand-alone option to save H (mean), K (gaussian), k1, and k2 
+		curvatures to stem.{curvname}.mgz
+
+	-H surf nbrhdsize stem
+		Stand-alone option to save H mean curvature to stem.H.mgz
+
+	-K surf nbrhdsize stem
+		Stand-alone option to save K gaussian curvature to stem.K.mgz
+
+	-k1 surf nbrhdsize stem
+		Stand-alone option to save k1 (primary principle) curvature to
+		stem.k1.mgz 
+
+	-k2 surf nbrhdsize stem
+		Stand-alone option to save k2 (secondary principle) curvature 
+		to stem.k2.mgz 
+
+	-k1k2 surf nbrhdsize stem
+		Stand-alone option to save k1 and k2 curvature to 
+		stem.{k1,k2}.mgz 
+
+OUTPUTS
+	insurf.h
+		mean curvature file
+
+	insurf.K
+		gaussian curvature file
+
+EXAMPLE 1
+	mris_curvature lh.pial
+	Compute the curvature and do not produce output files. 
+
+EXAMPLE 2
+	mris_curvature -w -a 10 lh.pial
+	Smooth 10 iterations and produce output files.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_curvature' (no arguments) ===
+
+				Help
+
+NAME
+	mris_curvature
+
+SYNOPSIS
+	mris_curvature [<options>] insurf
+
+DESCRIPTION
+	This program will compute the second fundamental form of a cortical 
+	surface. It will create two new files <hemi>.<surface>.H and 
+	<hemi>.<surface>.K with the mean and Gaussian curvature respectively.
+
+POSITIONAL ARGUMENTS
+	<insurf>
+		input surface file
+
+REQUIRED FLAGGED ARGUMENTS
+	None.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-w
+		save curvature files (will only generate screen output without
+		this option)
+
+	-max
+		save  1st (max) principal curvature in ?h.<surface>.max file
+
+	-mgh
+		save outputs in .mgz format
+
+	-min
+		save  2nd (min) principal curvature in ?h.<surface>.min file
+
+	-a <avgs>
+		perform <avgs> iterative averages of curvature measure before 
+		saving
+
+	-nbrs <nbrs>
+		set neighborhood size to nbrs 
+
+	-seed N
+		set random number generator to seed N
+
+	-curvs surf nbrhdsize stem
+		Stand-alone option to save H (mean), K (gaussian), k1, and k2 
+		curvatures to stem.{curvname}.mgz
+
+	-H surf nbrhdsize stem
+		Stand-alone option to save H mean curvature to stem.H.mgz
+
+	-K surf nbrhdsize stem
+		Stand-alone option to save K gaussian curvature to stem.K.mgz
+
+	-k1 surf nbrhdsize stem
+		Stand-alone option to save k1 (primary principle) curvature to
+		stem.k1.mgz 
+
+	-k2 surf nbrhdsize stem
+		Stand-alone option to save k2 (secondary principle) curvature 
+		to stem.k2.mgz 
+
+	-k1k2 surf nbrhdsize stem
+		Stand-alone option to save k1 and k2 curvature to 
+		stem.{k1,k2}.mgz 
+
+OUTPUTS
+	insurf.h
+		mean curvature file
+
+	insurf.K
+		gaussian curvature file
+
+EXAMPLE 1
+	mris_curvature lh.pial
+	Compute the curvature and do not produce output files. 
+
+EXAMPLE 2
+	mris_curvature -w -a 10 lh.pial
+	Smooth 10 iterations and produce output files.
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

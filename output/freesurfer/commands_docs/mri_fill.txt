@@ -1,0 +1,315 @@
+
+=== Output of 'mri_fill --help' ===
+
+				Help
+
+NAME
+	mri_fill
+
+SYNOPSIS
+	mri_fill [options] <input MR directory> <output MR directory>
+
+DESCRIPTION
+	This program creates hemispheric cutting planes and fills white matter
+	with specific values for subsequent surface tesselation.
+
+POSITIONAL ARGUMENTS
+	<input MR directory>
+		input directory
+
+	<output MR directory>
+		output directory 
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	Where options
+
+	-T <threshold>
+		specify fill_holes threshold (default=1)
+
+	-xform <xformname>
+		use xform dst offset to get an accurate Talairach volume
+
+	-segmentation <filename>
+		aseg volume used to perform fill
+
+	-atlas <filename>
+		specify atlas to use for auto-filling
+
+	-fillven
+		fill ventricles
+
+	Seed point options in Talairach coordinates
+
+	-C <x> <y> <z>
+		Talairach coords of the seed for the corpus callosum
+
+	-P <x> <y> <z>
+		Talairach coords of the seed for the pons
+
+	-lh <x> <y> <z>
+		Talairach coords of the white matter seed for the left 
+		hemisphere
+
+	-rh <x> <y> <z>
+		Talairach coords of the white matter seed for the right 
+		hemisphere
+
+	Alternative seed point options in voxel coordinates
+
+	-CV <x> <y> <z>
+		voxel coords of the seed for the corpus callosum
+
+	-PV <x> <y> <z>
+		voxel coords of the seed for the pons
+
+	-auto-man auto.mgz man.mgz edits.txt
+		Get edits based on the difference between auto and man and 
+		apply to the output. Edit col,row,slice,autoval,manval will be
+		written to the edits.txt file
+
+	-no-auto-man 
+		Turns off -auto-man
+
+	-pointset invol outvol ps {ps2 ...} 
+		Stand-alone option: takes one or more pointsets and fills in 
+		the all the voxels that intersect lines connecting any two 
+		points within a given point set.
+
+	-ctab colortable  
+		Embed color table in the output 
+
+OUTPUTS
+	filled
+		The filled volume for the cortical reconstruction- used for 
+		subsequent surface tesselation.
+
+EXAMPLE 1
+	mri_fill SUBJECT/mri/wm/. SUBJECT/mri/filled
+	
+	Takes a subjects wm volume as input and uses this to find cutting 
+	planes to seperate the hemispheres and remove the brainstem, and fills
+	hemispheres with specific values as filled volume output.
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_segment
+
+
+
+=== Output of 'mri_fill -help' ===
+
+				Help
+
+NAME
+	mri_fill
+
+SYNOPSIS
+	mri_fill [options] <input MR directory> <output MR directory>
+
+DESCRIPTION
+	This program creates hemispheric cutting planes and fills white matter
+	with specific values for subsequent surface tesselation.
+
+POSITIONAL ARGUMENTS
+	<input MR directory>
+		input directory
+
+	<output MR directory>
+		output directory 
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	Where options
+
+	-T <threshold>
+		specify fill_holes threshold (default=1)
+
+	-xform <xformname>
+		use xform dst offset to get an accurate Talairach volume
+
+	-segmentation <filename>
+		aseg volume used to perform fill
+
+	-atlas <filename>
+		specify atlas to use for auto-filling
+
+	-fillven
+		fill ventricles
+
+	Seed point options in Talairach coordinates
+
+	-C <x> <y> <z>
+		Talairach coords of the seed for the corpus callosum
+
+	-P <x> <y> <z>
+		Talairach coords of the seed for the pons
+
+	-lh <x> <y> <z>
+		Talairach coords of the white matter seed for the left 
+		hemisphere
+
+	-rh <x> <y> <z>
+		Talairach coords of the white matter seed for the right 
+		hemisphere
+
+	Alternative seed point options in voxel coordinates
+
+	-CV <x> <y> <z>
+		voxel coords of the seed for the corpus callosum
+
+	-PV <x> <y> <z>
+		voxel coords of the seed for the pons
+
+	-auto-man auto.mgz man.mgz edits.txt
+		Get edits based on the difference between auto and man and 
+		apply to the output. Edit col,row,slice,autoval,manval will be
+		written to the edits.txt file
+
+	-no-auto-man 
+		Turns off -auto-man
+
+	-pointset invol outvol ps {ps2 ...} 
+		Stand-alone option: takes one or more pointsets and fills in 
+		the all the voxels that intersect lines connecting any two 
+		points within a given point set.
+
+	-ctab colortable  
+		Embed color table in the output 
+
+OUTPUTS
+	filled
+		The filled volume for the cortical reconstruction- used for 
+		subsequent surface tesselation.
+
+EXAMPLE 1
+	mri_fill SUBJECT/mri/wm/. SUBJECT/mri/filled
+	
+	Takes a subjects wm volume as input and uses this to find cutting 
+	planes to seperate the hemispheres and remove the brainstem, and fills
+	hemispheres with specific values as filled volume output.
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_segment
+
+
+
+=== Output of 'mri_fill' (no arguments) ===
+
+				Help
+
+NAME
+	mri_fill
+
+SYNOPSIS
+	mri_fill [options] <input MR directory> <output MR directory>
+
+DESCRIPTION
+	This program creates hemispheric cutting planes and fills white matter
+	with specific values for subsequent surface tesselation.
+
+POSITIONAL ARGUMENTS
+	<input MR directory>
+		input directory
+
+	<output MR directory>
+		output directory 
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	Where options
+
+	-T <threshold>
+		specify fill_holes threshold (default=1)
+
+	-xform <xformname>
+		use xform dst offset to get an accurate Talairach volume
+
+	-segmentation <filename>
+		aseg volume used to perform fill
+
+	-atlas <filename>
+		specify atlas to use for auto-filling
+
+	-fillven
+		fill ventricles
+
+	Seed point options in Talairach coordinates
+
+	-C <x> <y> <z>
+		Talairach coords of the seed for the corpus callosum
+
+	-P <x> <y> <z>
+		Talairach coords of the seed for the pons
+
+	-lh <x> <y> <z>
+		Talairach coords of the white matter seed for the left 
+		hemisphere
+
+	-rh <x> <y> <z>
+		Talairach coords of the white matter seed for the right 
+		hemisphere
+
+	Alternative seed point options in voxel coordinates
+
+	-CV <x> <y> <z>
+		voxel coords of the seed for the corpus callosum
+
+	-PV <x> <y> <z>
+		voxel coords of the seed for the pons
+
+	-auto-man auto.mgz man.mgz edits.txt
+		Get edits based on the difference between auto and man and 
+		apply to the output. Edit col,row,slice,autoval,manval will be
+		written to the edits.txt file
+
+	-no-auto-man 
+		Turns off -auto-man
+
+	-pointset invol outvol ps {ps2 ...} 
+		Stand-alone option: takes one or more pointsets and fills in 
+		the all the voxels that intersect lines connecting any two 
+		points within a given point set.
+
+	-ctab colortable  
+		Embed color table in the output 
+
+OUTPUTS
+	filled
+		The filled volume for the cortical reconstruction- used for 
+		subsequent surface tesselation.
+
+EXAMPLE 1
+	mri_fill SUBJECT/mri/wm/. SUBJECT/mri/filled
+	
+	Takes a subjects wm volume as input and uses this to find cutting 
+	planes to seperate the hemispheres and remove the brainstem, and fills
+	hemispheres with specific values as filled volume output.
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_segment
+
+

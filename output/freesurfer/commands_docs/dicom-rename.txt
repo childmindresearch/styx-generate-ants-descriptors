@@ -1,0 +1,84 @@
+
+=== Output of 'dicom-rename --help' ===
+
+USAGE: dicom-rename
+
+Copies dicom file(s) to new path with more meaningful names
+
+ --o outbase
+
+   --version    : print version and exit
+   --help       : print help and exit
+
+
+Renames (actually copies) input dicom files to a new name that
+takes the form outbase-SSS-IIIII.dcm. The output can be used
+with dcmdir-info-mgh.
+
+Example:
+
+dicom-rename dicomdir/* --o mydicoms/bert
+
+This will find all the dicoms in dicomdir/*, and rename them to
+mydicoms/bert-SSS-IIIII.dcm, where SSS is the series number (dicom tag
+20,11) and IIIII is the image number (dicom tag 20,13). The series
+number and image number are padded with zeros to make them 3 or 5
+digits long. Note: does not actually rename the dicom file; it just
+copies it to a new name (ie, it will not delete the input file(s)).
+
+It is ok if input files are not dicom. The script will only use the
+files in the list that are dicom.
+
+This script is especially useful when copying data from a Siemens CD
+where the file names are often uninterpretable.
+
+
+See also cp-dicom, dcmdir-info-mgh, mri_probedicom, unpacksdcmdir
+
+=== Output of 'dicom-rename -help' ===
+
+USAGE: dicom-rename
+
+Copies dicom file(s) to new path with more meaningful names
+
+ --o outbase
+
+   --version    : print version and exit
+   --help       : print help and exit
+
+
+Renames (actually copies) input dicom files to a new name that
+takes the form outbase-SSS-IIIII.dcm. The output can be used
+with dcmdir-info-mgh.
+
+Example:
+
+dicom-rename dicomdir/* --o mydicoms/bert
+
+This will find all the dicoms in dicomdir/*, and rename them to
+mydicoms/bert-SSS-IIIII.dcm, where SSS is the series number (dicom tag
+20,11) and IIIII is the image number (dicom tag 20,13). The series
+number and image number are padded with zeros to make them 3 or 5
+digits long. Note: does not actually rename the dicom file; it just
+copies it to a new name (ie, it will not delete the input file(s)).
+
+It is ok if input files are not dicom. The script will only use the
+files in the list that are dicom.
+
+This script is especially useful when copying data from a Siemens CD
+where the file names are often uninterpretable.
+
+
+See also cp-dicom, dcmdir-info-mgh, mri_probedicom, unpacksdcmdir
+
+=== Output of 'dicom-rename' (no arguments) ===
+
+USAGE: dicom-rename
+
+Copies dicom file(s) to new path with more meaningful names
+
+ --o outbase
+
+   --version    : print version and exit
+   --help       : print help and exit
+

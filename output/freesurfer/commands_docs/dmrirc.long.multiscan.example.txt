@@ -1,0 +1,18 @@
+
+=== Output of 'dmrirc.long.multiscan.example --help' ===
+
+/usr/local/freesurfer/bin/dmrirc.long.multiscan.example: line 40: setenv: command not found
+/usr/local/freesurfer/bin/dmrirc.long.multiscan.example: line 51: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/dmrirc.long.multiscan.example: line 51: `set subjlist = ( huey-visit1 \'
+
+=== Output of 'dmrirc.long.multiscan.example -help' ===
+
+/usr/local/freesurfer/bin/dmrirc.long.multiscan.example: line 40: setenv: command not found
+/usr/local/freesurfer/bin/dmrirc.long.multiscan.example: line 51: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/dmrirc.long.multiscan.example: line 51: `set subjlist = ( huey-visit1 \'
+
+=== Output of 'dmrirc.long.multiscan.example' (no arguments) ===
+
+/usr/local/freesurfer/bin/dmrirc.long.multiscan.example: line 40: setenv: command not found
+/usr/local/freesurfer/bin/dmrirc.long.multiscan.example: line 51: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/dmrirc.long.multiscan.example: line 51: `set subjlist = ( huey-visit1 \'

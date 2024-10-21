@@ -1,0 +1,98 @@
+
+=== Output of '@Install_APMULTI_Demo2_realtime --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Install_APMULTI_Demo2_realtime -help' ===
+
+   
+Overview ~1~
+
+This script fetches the demo data+scripts corresponding to AFNI's Demo #2
+for experimenting with AFNI's real-time system, possibly in the context of
+multi-echo data.  This demonstrates commands one can use to run a real-time
+system, mimicking what happens at a scanner.
+
+The applied programs are:
+
+   Dimon                : to send data to afni
+   afni                 : volreg, possibly send data to realtime_receiver.py
+   realtime_receiver.py : to receive (and possibly print) some data from afni
+                          (motion, ROI averages?, voxel data?)
+
+After the archive is downloaded and unpacked, see its README_welcome.txt
+for details.
+
+Options ~1~
+
+   [-wget] : Use wget to download archive. Script chooses by default
+             with preference for curl
+   [-curl] : Use curl to download archive. Script chooses by default
+             with preference for curl
+
+Examples ~1~
+
+1) Just get everything, default operation:
+
+    @Install_APMULTI_Demo2_realtime
+
+2) Get everything, specify download tool:
+
+    @Install_APMULTI_Demo2_realtime -wget
+
+
+
+=== Output of '@Install_APMULTI_Demo2_realtime' (no arguments) ===
+
+++ Going to fetch demo: APMULTI_Demo2_realtime
+/usr/bin/curl
+curl -O https://afni.nimh.nih.gov/pub/dist/data/afni_demos/APMULTI_Demo2_realtime.tgz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 11 12.9M   11 1472k    0     0  9142k      0  0:00:01 --:--:--  0:00:01 9086k100 12.9M  100 12.9M    0     0  14.2M      0 --:--:-- --:--:-- --:--:-- 14.1M
+tar xzf APMULTI_Demo2_realtime.tgz
+
+              Welcome to APMULTI demo 02 - realtime
+                (AFNI realtime system processing)
+
+This package demonstrates much of the common functionality of AFNI's real-time
+system.  The input is a collection of 12 volumes, initially stored as:
+
+   DICOM with a single echo
+   DICOM with 3 echoes
+   NIFTI with a single echo
+
+
+To run the complete set of scripts, it is enough to:
+
+   tcsh run.regress
+
+This relies on cmd.regress, which might backup the regression comparison files
+(some of the log/* text files).  It can also be run to clean the old results
+(see clean_rt in cmd.regress).  This full script takes about 75 seconds to run
+(presently), mostly due to 'sleep' statements between script pieces.
+
+
+
+To run a single realtime process (e.g. with rt.00.basic), one can:
+
+   cd rt.00.basic
+   tcsh run.8.all
+
+This will run all scripts in that directory.
+
+Alternatively, one might want to run and monitor the scripts.  In this case,
+one would usually run a single script per terminal window (using 3 or 4 
+terminal windows, depending), as in:
+
+   cd rt.00.basic
+   tcsh run.0.receiver
+   tcsh run.1.afni
+   tcsh run.2.dimon
+   tcsh run.3.stats
+
+There is also a run.9.cleanup script in each directory.
+
+--------------------
+R Reynolds  Feb 2022
+

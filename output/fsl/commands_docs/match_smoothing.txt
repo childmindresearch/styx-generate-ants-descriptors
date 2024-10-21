@@ -1,0 +1,18 @@
+
+=== Output of 'match_smoothing --help' ===
+
+Usage: match_smoothing <example_func> <func_smoothing_FWHM_in_mm> <example_structural> <standard_space_resolution>
+e.g.,  match_smoothing raw_fmri 5 structural 2
+The output is smoothing sigma needed to be applied to the structural data in its native space
+
+=== Output of 'match_smoothing -help' ===
+
+Usage: match_smoothing <example_func> <func_smoothing_FWHM_in_mm> <example_structural> <standard_space_resolution>
+e.g.,  match_smoothing raw_fmri 5 structural 2
+The output is smoothing sigma needed to be applied to the structural data in its native space
+
+=== Output of 'match_smoothing' (no arguments) ===
+
+Usage: match_smoothing <example_func> <func_smoothing_FWHM_in_mm> <example_structural> <standard_space_resolution>
+e.g.,  match_smoothing raw_fmri 5 structural 2
+The output is smoothing sigma needed to be applied to the structural data in its native space

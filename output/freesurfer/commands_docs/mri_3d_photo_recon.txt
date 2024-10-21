@@ -1,0 +1,89 @@
+
+=== Output of 'mri_3d_photo_recon --help' ===
+
+[ Using Seed :  0  ]
+usage: mri_3d_photo_recon [-h] --input_photo_dir
+                          [INPUT_PHOTO_DIR [INPUT_PHOTO_DIR ...]]
+                          --input_segmentation_dir
+                          [INPUT_SEGMENTATION_DIR [INPUT_SEGMENTATION_DIR ...]]
+                          [--ref_mask REF_MASK] [--ref_surface REF_SURFACE]
+                          [--ref_soft_mask REF_SOFT_MASK]
+                          [--mesh_reorient_with_indices MESH_REORIENT_WITH_INDICES]
+                          [--photos_of_posterior_side]
+                          [--order_posterior_to_anterior] [--allow_z_stretch]
+                          [--rigid_only_for_photos] --slice_thickness
+                          SLICE_THICKNESS --photo_resolution PHOTO_RESOLUTION
+                          --output_directory OUTPUT_DIRECTORY [--gpu GPU]
+
+Code for 3D photo reconstruction (Tregidgo, et al., MICCAI 2020)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --input_photo_dir [INPUT_PHOTO_DIR [INPUT_PHOTO_DIR ...]]
+                        Directory with input photos (required)
+  --input_segmentation_dir [INPUT_SEGMENTATION_DIR [INPUT_SEGMENTATION_DIR ...]]
+                        Directory with input slab masks / segmentations
+                        (required)
+  --ref_mask REF_MASK   Reference binary mask
+  --ref_surface REF_SURFACE
+                        Reference surface file
+  --ref_soft_mask REF_SOFT_MASK
+                        Reference soft mask
+  --mesh_reorient_with_indices MESH_REORIENT_WITH_INDICES
+                        Vertex indices of frontal pole, occipital pole, and
+                        top of central sulcus, separated with commas, for mesh
+                        alignment
+  --photos_of_posterior_side
+                        Use when photos are taken of posterior side of slabs
+                        (default is anterior side)
+  --order_posterior_to_anterior
+                        Use when photos are ordered from posterior to anterior
+                        (default is anterior to posterior)
+  --allow_z_stretch     Use to adjust the slice thickness to best match the
+                        reference. You should probably *never* use this with
+                        soft references (ref_soft_mask)
+  --rigid_only_for_photos
+                        Switch on if you want photos to deform only rigidly
+                        (not affine)
+  --slice_thickness SLICE_THICKNESS
+                        Slice thickness in mm
+  --photo_resolution PHOTO_RESOLUTION
+                        Resolution of the photos in mm
+  --output_directory OUTPUT_DIRECTORY
+                        Output directory with reconstructed photo volume and
+                        reference
+  --gpu GPU             Index of GPU to use
+
+=== Output of 'mri_3d_photo_recon -help' ===
+
+usage: mri_3d_photo_recon [-h] --input_photo_dir
+                          [INPUT_PHOTO_DIR [INPUT_PHOTO_DIR ...]]
+                          --input_segmentation_dir
+                          [INPUT_SEGMENTATION_DIR [INPUT_SEGMENTATION_DIR ...]]
+                          [--ref_mask REF_MASK] [--ref_surface REF_SURFACE]
+                          [--ref_soft_mask REF_SOFT_MASK]
+                          [--mesh_reorient_with_indices MESH_REORIENT_WITH_INDICES]
+                          [--photos_of_posterior_side]
+                          [--order_posterior_to_anterior] [--allow_z_stretch]
+                          [--rigid_only_for_photos] --slice_thickness
+                          SLICE_THICKNESS --photo_resolution PHOTO_RESOLUTION
+                          --output_directory OUTPUT_DIRECTORY [--gpu GPU]
+mri_3d_photo_recon: error: argument -h/--help: ignored explicit argument 'elp'
+[ Using Seed :  0  ]
+
+=== Output of 'mri_3d_photo_recon' (no arguments) ===
+
+usage: mri_3d_photo_recon [-h] --input_photo_dir
+                          [INPUT_PHOTO_DIR [INPUT_PHOTO_DIR ...]]
+                          --input_segmentation_dir
+                          [INPUT_SEGMENTATION_DIR [INPUT_SEGMENTATION_DIR ...]]
+                          [--ref_mask REF_MASK] [--ref_surface REF_SURFACE]
+                          [--ref_soft_mask REF_SOFT_MASK]
+                          [--mesh_reorient_with_indices MESH_REORIENT_WITH_INDICES]
+                          [--photos_of_posterior_side]
+                          [--order_posterior_to_anterior] [--allow_z_stretch]
+                          [--rigid_only_for_photos] --slice_thickness
+                          SLICE_THICKNESS --photo_resolution PHOTO_RESOLUTION
+                          --output_directory OUTPUT_DIRECTORY [--gpu GPU]
+mri_3d_photo_recon: error: the following arguments are required: --input_photo_dir, --input_segmentation_dir, --slice_thickness, --photo_resolution, --output_directory
+[ Using Seed :  0  ]

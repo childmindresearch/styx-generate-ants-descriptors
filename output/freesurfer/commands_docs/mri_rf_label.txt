@@ -1,0 +1,320 @@
+
+=== Output of 'mri_rf_label --help' ===
+
+				Help
+
+NAME
+	mri_ca_label
+
+SYNOPSIS
+	mri_ca_label [<options>] invol1 [invol2 ...] xform gcafile outvol
+
+DESCRIPTION
+	**********************************************************
+
+POSITIONAL ARGUMENTS
+	invol1 [invol2 ...]
+		input volume(s)
+
+	xform
+		transform file
+
+	gcafile
+
+	outvol
+		output volume
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-cross-sequence
+		label a volume acquired with sequence different than atlas
+
+	-nogibbs
+		disable gibbs priors
+
+	-wm <path>
+		use wm segmentation
+
+	-conform
+		interpolate volume to be isotropic 1mm^3
+
+	-normpd
+		normalize PD image to GCA means
+
+	-tl <gca_tl>
+		use file to label thin temporal lobe
+
+	-debug_voxel <x> <y> <z>
+		debug voxel
+
+	-debug_node <x> <y> <z>
+		debug node
+
+	-debug_label <int n>
+		debug label
+
+	-tr <float n>
+		set TR in msec
+
+	-te <float n>
+		set TE in msec
+
+	-alpha <float n>
+		set alpha in radians
+
+	-example <mri_vol> <segmentation>
+		use T1 (mri_vol) and segmentation as example
+
+	-pthresh <float n>
+		use p threshold n for adaptive renormalization (default=.7)
+
+	-niter <int n>
+		apply max likelihood for n iterations (default=2)
+
+	-novar
+		do not use variance in classification
+
+	-regularize <float n>
+		regularize variance to be sigma+nC(noise)
+
+	-nohippo
+		do not auto-edit hippocampus
+
+	-fwm <mri_vol>
+		use fixed white matter segmentation from wm
+
+	-mri <mri_vol>
+		write most likely MR volume to mri_vol
+
+	-heq <mri_vol>
+		use histogram equalization from mri_vol
+
+	-renorm <mri_vol>
+		renormalize using predicted intensity values in mri_vol
+
+	-flash
+		use FLASH forward model to predict intensity values
+
+	-flash_params <filename>
+		use FLASH forward model and tissue params in filename to 
+		predict
+
+	-renormalize <wsize> <iter>
+		renorm class means <iter> times after initial label with 
+		window of <wsize>
+
+	-r <mri_vol>
+		set input volume
+
+	-h
+		use GCA to histogram normalize input image
+
+	-a <int n>
+		mean filter n time to conditional densities
+
+	-w <int n> <filename>
+		write snapshots of gibbs process every n times to filename
+
+	-m <mri_vol>
+		use mri_vol to mask final labeling
+
+	-e <int n>
+		expand
+
+	-n <int n>
+		set max iterations to n (default=200)
+
+	-f <int f> <float t>
+		filter labeled volume with threshold t (default=.5) mode 
+		filter f (default=0)times
+
+	-L <mri_vol> <LTA>
+		longitudinal processing: mri_vol is label from tp1, LTA is 
+		registration from tp1 to current data
+
+	-RELABEL_UNLIKELY <1/0> <wsize> <sigma> <thresh>
+		reclassify voxels at least <thresh> std devs from the mean 
+		using a <wsize> Gaussian window (with <sigma> standard dev) to
+		recompute priors and likelihoods
+
+OUTPUTS
+	outvol
+		output volume
+
+EXAMPLE 1
+	******************************************************
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_cc
+
+
+
+=== Output of 'mri_rf_label -help' ===
+
+unknown option -help
+
+=== Output of 'mri_rf_label' (no arguments) ===
+
+				Help
+
+NAME
+	mri_ca_label
+
+SYNOPSIS
+	mri_ca_label [<options>] invol1 [invol2 ...] xform gcafile outvol
+
+DESCRIPTION
+	**********************************************************
+
+POSITIONAL ARGUMENTS
+	invol1 [invol2 ...]
+		input volume(s)
+
+	xform
+		transform file
+
+	gcafile
+
+	outvol
+		output volume
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-cross-sequence
+		label a volume acquired with sequence different than atlas
+
+	-nogibbs
+		disable gibbs priors
+
+	-wm <path>
+		use wm segmentation
+
+	-conform
+		interpolate volume to be isotropic 1mm^3
+
+	-normpd
+		normalize PD image to GCA means
+
+	-tl <gca_tl>
+		use file to label thin temporal lobe
+
+	-debug_voxel <x> <y> <z>
+		debug voxel
+
+	-debug_node <x> <y> <z>
+		debug node
+
+	-debug_label <int n>
+		debug label
+
+	-tr <float n>
+		set TR in msec
+
+	-te <float n>
+		set TE in msec
+
+	-alpha <float n>
+		set alpha in radians
+
+	-example <mri_vol> <segmentation>
+		use T1 (mri_vol) and segmentation as example
+
+	-pthresh <float n>
+		use p threshold n for adaptive renormalization (default=.7)
+
+	-niter <int n>
+		apply max likelihood for n iterations (default=2)
+
+	-novar
+		do not use variance in classification
+
+	-regularize <float n>
+		regularize variance to be sigma+nC(noise)
+
+	-nohippo
+		do not auto-edit hippocampus
+
+	-fwm <mri_vol>
+		use fixed white matter segmentation from wm
+
+	-mri <mri_vol>
+		write most likely MR volume to mri_vol
+
+	-heq <mri_vol>
+		use histogram equalization from mri_vol
+
+	-renorm <mri_vol>
+		renormalize using predicted intensity values in mri_vol
+
+	-flash
+		use FLASH forward model to predict intensity values
+
+	-flash_params <filename>
+		use FLASH forward model and tissue params in filename to 
+		predict
+
+	-renormalize <wsize> <iter>
+		renorm class means <iter> times after initial label with 
+		window of <wsize>
+
+	-r <mri_vol>
+		set input volume
+
+	-h
+		use GCA to histogram normalize input image
+
+	-a <int n>
+		mean filter n time to conditional densities
+
+	-w <int n> <filename>
+		write snapshots of gibbs process every n times to filename
+
+	-m <mri_vol>
+		use mri_vol to mask final labeling
+
+	-e <int n>
+		expand
+
+	-n <int n>
+		set max iterations to n (default=200)
+
+	-f <int f> <float t>
+		filter labeled volume with threshold t (default=.5) mode 
+		filter f (default=0)times
+
+	-L <mri_vol> <LTA>
+		longitudinal processing: mri_vol is label from tp1, LTA is 
+		registration from tp1 to current data
+
+	-RELABEL_UNLIKELY <1/0> <wsize> <sigma> <thresh>
+		reclassify voxels at least <thresh> std devs from the mean 
+		using a <wsize> Gaussian window (with <sigma> standard dev) to
+		recompute priors and likelihoods
+
+OUTPUTS
+	outvol
+		output volume
+
+EXAMPLE 1
+	******************************************************
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_cc
+
+

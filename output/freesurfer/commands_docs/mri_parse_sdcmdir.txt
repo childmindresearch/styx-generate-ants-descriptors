@@ -1,0 +1,71 @@
+
+=== Output of 'mri_parse_sdcmdir --help' ===
+
+
+USAGE: /usr/local/freesurfer/bin/mri_parse_sdcmdir 
+
+   --d sdicomdir  : path to siemens dicom directory 
+   --o outfile    : write results to outfile (default is stdout)
+   --sortbyrun    : assign run numbers
+   --summarize    : only print out info for run leaders
+   --dwi          : try to read dwi params. Generally no need to.
+   --help         : how to use this program 
+
+
+This program parses the Siemens DICOM files in a given directory, and 
+prints out information about each file. The output is printed to stdout
+unless a file name is passed with the --o flag.
+
+The most useful information is that which cannot be easily obtained by 
+probing a dicom file. This includes: the run number, number of frames 
+in the run, number of slices in the run, and, for mosaics, the number 
+of rows and cols in the volume.
+
+There are 14 columns in the output:
+  1. File Number
+  2. File Name 
+  3. Series Number
+  4. Series Error Flag (1 for error)
+  5. Image Number
+  6. Mosaic Flag   (1 for mosaics)
+  7. Number of Rows    in the Volume
+  8. Number of Columns in the Volume
+  9. Number of Slices  in the Volume for the Series
+ 10. Number of Frames in the Series
+ 11. Repetition Time (sec)
+ 12. Echo Time (ms)
+ 13. Protocol Name  - white space stripped (but see BUGS)
+
+Arguments:
+
+  --d sdicomdir : this is the name of the directory where the 
+      dicom files are located (required).
+
+  --o outfile : this is the name of a file to which the results will be 
+      printed. If unspecified, the results will be printed to stdout.
+
+  --summarize : forces print out of information for the first file in the run.
+
+BUGS:
+Prior to 5/25/05, the protocol name was stripped of anything that
+was not a number or letter. After 5/25/05 it is only stripped of
+white space.
+
+
+
+=== Output of 'mri_parse_sdcmdir -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_parse_sdcmdir' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_parse_sdcmdir 
+
+   --d sdicomdir  : path to siemens dicom directory 
+   --o outfile    : write results to outfile (default is stdout)
+   --sortbyrun    : assign run numbers
+   --summarize    : only print out info for run leaders
+   --dwi          : try to read dwi params. Generally no need to.
+   --help         : how to use this program 
+

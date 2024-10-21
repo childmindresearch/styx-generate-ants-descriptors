@@ -1,0 +1,56 @@
+Command '/opt/afni/src/../install/3dNotes --help' timed out after 10 seconds
+Command '/opt/afni/src/../install/3dretroicor --help' timed out after 10 seconds
+Command '/opt/afni/src/../install/@DO.examples ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@DriveSuma ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_3dPFM_Demo ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_APMULTI_Demo1_rest ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_AfniRetinoDemo ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_DBSproc ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_FATCAT_DEMO ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_FATCAT_DEMO2 ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_InstaCorr_Demo ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_MACAQUE_DEMO ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_MACAQUE_DEMO_REST ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_MBM_Marmoset ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_NIH_Marmoset ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_NMT ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_RAT_DEMO_REST ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_RSFMRI_Motion_Group_Demo ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Install_TSrestMovieDemo ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@Spharm.examples ' timed out after 10 seconds
+Command '/opt/afni/src/../install/@get.afni.version --help' timed out after 10 seconds
+Command '/opt/afni/src/../install/DriveSuma ' timed out after 10 seconds
+Command '/opt/afni/src/../install/plugout_ijk ' timed out after 10 seconds
+Command '/opt/afni/src/../install/plugout_tt ' timed out after 10 seconds
+Command '/opt/afni/src/../install/plugout_tta ' timed out after 10 seconds
+Command '/opt/afni/src/../install/test_afni_prog_help.tcsh ' timed out after 10 seconds
+
+Timeout Summary:
+      1 Timeout Summary:
+      1 Command '/opt/afni/src/../install/test_afni_prog_help.tcsh ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/plugout_tta ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/plugout_tt ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/plugout_ijk ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/DriveSuma ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@get.afni.version --help' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Spharm.examples ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_TSrestMovieDemo ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_RSFMRI_Motion_Group_Demo ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_RAT_DEMO_REST ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_NMT ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_NIH_Marmoset ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_MBM_Marmoset ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_MACAQUE_DEMO_REST ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_MACAQUE_DEMO ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_InstaCorr_Demo ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_FATCAT_DEMO2 ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_FATCAT_DEMO ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_DBSproc ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_AfniRetinoDemo ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_APMULTI_Demo1_rest ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@Install_3dPFM_Demo ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@DriveSuma ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/@DO.examples ' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/3dretroicor --help' timed out after 10 seconds
+      1 Command '/opt/afni/src/../install/3dNotes --help' timed out after 10 seconds
+      1 

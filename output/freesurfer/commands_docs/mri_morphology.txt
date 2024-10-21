@@ -1,0 +1,15 @@
+
+=== Output of 'mri_morphology --help' ===
+
+unknown option --help
+
+=== Output of 'mri_morphology -help' ===
+
+unknown option -help
+
+=== Output of 'mri_morphology' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_morphology [options] <volume> <operation> <# iter> <out volume>
+	where <operation> can be [open,close,dilate,erode,mode,fill_holes,erode_bottom,dilate_thresh,erode_thresh]
+	valid options are:
+	-l <label>  only apply operations to <label> instead of all nonzero voxels

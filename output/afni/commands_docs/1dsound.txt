@@ -1,0 +1,276 @@
+
+=== Output of '1dsound --help' ===
+
+[7m** ERROR:[0m Unknown option: --help
+   Here's hoping these excerpts from '/opt/afni/src/../install/1dsound -help' enlighten:
+        '-- see https://brew.sh/ -- and then using command'
+        '-tper X      = X seconds of sound per time point in 'tsfile'.'
+        '-despike     = apply a simple despiking algorithm, to avoid the artifact'
+
+=== Output of '1dsound -help' ===
+
+
+Usage: 1dsound [options] tsfile
+
+Program to create a sound file from a 1D file (column of numbers).
+
+Is this program useful? Probably not, but it can be fun.
+
+-------
+OPTIONS
+-------
+
+ ===== output filename =====
+
+ -prefix ppp  = Output filename will be ppp.au
+                [Sun audio format https://en.wikipedia.org/wiki/Au_file_format]
+                + If you don't use '-prefix', the output is file 'sound.au'.
+                + If 'ppp' ends in '.au', this program won't add another '.au.
+
+ ===== encoding details =====
+
+ -16PCM       = Output in 16-bit linear PCM encoding (uncompressed)
+                + Less quantization noise (audible hiss)            :)
+                + Takes twice as much disk space for output as 8-bit output :(
+              +++ This is the default method now!
+                + https://en.wikipedia.org/wiki/Pulse-code_modulation
+
+ -8PCM        = Output in 8-bit linear PCM encoding
+                + There is no good reason to use this option.
+
+ -8ulaw       = Output in 8-bit mu-law encoding.
+                + Provides a little better quality than -8PCM,
+                  but still has audible quantization noise hiss.
+                +  https://en.wikipedia.org/wiki/M-law_algorithm
+
+ -tper X      = X seconds of sound per time point in 'tsfile'.
+ -TR X          Allowed range for 'X' is 0.01 to 1.0 (inclusive).
+ -dt X          [default time step is 0.2 s]
+                You can use '-tper', '-dt', or '-TR', as you like.
+
+ ===== how the sound timeseries is produced from the data timeseries =====
+
+ -FM          = Output sound is frequency modulated between 110 and 1760 Hz
+                from min to max in the input 1D file.
+                + Usually 'sounds terrible'.
+                + The only reason this is here is that it was the first method
+                  I implemented, and I kept it for the sake of nostalgia.
+
+ -notes       = Output sound is a sequence of notes, low to high pitch
+                based on min to max in the input 1D file.
+              +++ This is the default method of operation.
+                + A pentatonic scale is used, which usually 'sounds nice':
+                  https://en.wikipedia.org/wiki/Pentatonic_scale
+
+ -notewave W  = Selects the shape of the notes used. 'W' is one of these:
+ -waveform W      sine     = pure sine wave (sounds simplistic)
+                  sqsine   = square root of sine wave (a little harsh and loud)
+                  square   = square wave              (a lot harsh and loud)
+                  triangle = triangle wave            [the default waveform]
+
+ -despike     = apply a simple despiking algorithm, to avoid the artifact
+                of one very large or small value making all the other notes
+                end up being the same.
+
+ ===== Notes about notes =====
+
+ ** At this time, the default production method is '-notes',      **
+ **               using the triangle waveform (I like this best). **
+
+ ** With '-notes', up to 6 columns of the input file will be used **
+ ** to produce a polyphonic sound (in a single channel).          **
+ ** (Any columns past the 6th in the input 'tsfile' are ignored.) **
+
+ ===== hear the sound right away! =====
+
+ -play        = Plays the sound file after it is written.
+                On this computer: can't find any sound playing program  :(
+            ===>> Playing sound on a remote computer is
+                  annoying, pointless, and likely to get you punched.
+
+--------
+EXAMPLES
+--------
+The first 2 examples are purely synthetic, using 'data' files created
+on the command line. The third example uses a data file that was written
+out of an AFNI graph viewer using the 'w' keystroke.
+
+ 1dsound -prefix A1 '1D: 0 1 2 1 0 1 2 0 1 2'
+
+ 1deval -num 100 -expr 'sin(x+0.01*x*x)' | 1dsound -tper 0.1 -prefix A2 1D:stdin
+
+ 1dsound -prefix -tper 0.1 A3 028_044_003.1D
+
+-----
+NOTES
+-----
+* File can be played with the 'sox' audio package command
+    play A1.au gain -5
+  + Here 'gain -5' turns the volume down :)
+  + sox is not provided with AFNI :(
+  + To see if sox is on your system, type the command 'which sox'
+  + If you have sox, you can add 'reverb 99' at the end of the
+    'play' command line, and have some extra fun.
+  + Many other effects are available with sox 'play',
+    and they can also be used to produce edited sound files:
+    http://sox.sourceforge.net/sox.html#EFFECTS
+  + You can convert the .au file produced from here to other
+    formats using sox; for example:
+      sox Bob.au Cox.au BobCox.aiff
+    combines the 2 .au input files to a 2-channel (stereo)
+    Apple .aiff output file. See this for more information:
+    http://sox.sourceforge.net/soxformat.html
+
+* Creation of the file does not depend on sox, so if you have
+  another way to play .au files, you can use that.
+  * Mac OS X: Quicktime (GUI) or afplay (command line) programs.
+              + sox can be installed by first installing 'brew'
+                -- see https://brew.sh/ -- and then using command
+                'brew install sox'.
+  * Linux:    Getting sox is probably the simplest thing to do.
+              + Or install the mplayer package (which also does videos).
+              + Another possibility is the aplay program.
+
+* The audio output file is sampled at 16K bytes per second.
+  For example, a 30 second file will be 960K bytes in size,
+  at 16 bits per sample.
+
+* The auditory effect varies significantly with the '-tper'
+  parameter X; '-tper 0.02' is very different than '-tper 0.4'.
+
+--- Quick hack for experimentation and fun - RWCox - Aug 2018 ---
+
+
+=== Output of '1dsound' (no arguments) ===
+
+
+Usage: 1dsound [options] tsfile
+
+Program to create a sound file from a 1D file (column of numbers).
+
+Is this program useful? Probably not, but it can be fun.
+
+-------
+OPTIONS
+-------
+
+ ===== output filename =====
+
+ -prefix ppp  = Output filename will be ppp.au
+                [Sun audio format https://en.wikipedia.org/wiki/Au_file_format]
+                + If you don't use '-prefix', the output is file 'sound.au'.
+                + If 'ppp' ends in '.au', this program won't add another '.au.
+
+ ===== encoding details =====
+
+ -16PCM       = Output in 16-bit linear PCM encoding (uncompressed)
+                + Less quantization noise (audible hiss)            :)
+                + Takes twice as much disk space for output as 8-bit output :(
+              +++ This is the default method now!
+                + https://en.wikipedia.org/wiki/Pulse-code_modulation
+
+ -8PCM        = Output in 8-bit linear PCM encoding
+                + There is no good reason to use this option.
+
+ -8ulaw       = Output in 8-bit mu-law encoding.
+                + Provides a little better quality than -8PCM,
+                  but still has audible quantization noise hiss.
+                +  https://en.wikipedia.org/wiki/M-law_algorithm
+
+ -tper X      = X seconds of sound per time point in 'tsfile'.
+ -TR X          Allowed range for 'X' is 0.01 to 1.0 (inclusive).
+ -dt X          [default time step is 0.2 s]
+                You can use '-tper', '-dt', or '-TR', as you like.
+
+ ===== how the sound timeseries is produced from the data timeseries =====
+
+ -FM          = Output sound is frequency modulated between 110 and 1760 Hz
+                from min to max in the input 1D file.
+                + Usually 'sounds terrible'.
+                + The only reason this is here is that it was the first method
+                  I implemented, and I kept it for the sake of nostalgia.
+
+ -notes       = Output sound is a sequence of notes, low to high pitch
+                based on min to max in the input 1D file.
+              +++ This is the default method of operation.
+                + A pentatonic scale is used, which usually 'sounds nice':
+                  https://en.wikipedia.org/wiki/Pentatonic_scale
+
+ -notewave W  = Selects the shape of the notes used. 'W' is one of these:
+ -waveform W      sine     = pure sine wave (sounds simplistic)
+                  sqsine   = square root of sine wave (a little harsh and loud)
+                  square   = square wave              (a lot harsh and loud)
+                  triangle = triangle wave            [the default waveform]
+
+ -despike     = apply a simple despiking algorithm, to avoid the artifact
+                of one very large or small value making all the other notes
+                end up being the same.
+
+ ===== Notes about notes =====
+
+ ** At this time, the default production method is '-notes',      **
+ **               using the triangle waveform (I like this best). **
+
+ ** With '-notes', up to 6 columns of the input file will be used **
+ ** to produce a polyphonic sound (in a single channel).          **
+ ** (Any columns past the 6th in the input 'tsfile' are ignored.) **
+
+ ===== hear the sound right away! =====
+
+ -play        = Plays the sound file after it is written.
+                On this computer: can't find any sound playing program  :(
+            ===>> Playing sound on a remote computer is
+                  annoying, pointless, and likely to get you punched.
+
+--------
+EXAMPLES
+--------
+The first 2 examples are purely synthetic, using 'data' files created
+on the command line. The third example uses a data file that was written
+out of an AFNI graph viewer using the 'w' keystroke.
+
+ 1dsound -prefix A1 '1D: 0 1 2 1 0 1 2 0 1 2'
+
+ 1deval -num 100 -expr 'sin(x+0.01*x*x)' | 1dsound -tper 0.1 -prefix A2 1D:stdin
+
+ 1dsound -prefix -tper 0.1 A3 028_044_003.1D
+
+-----
+NOTES
+-----
+* File can be played with the 'sox' audio package command
+    play A1.au gain -5
+  + Here 'gain -5' turns the volume down :)
+  + sox is not provided with AFNI :(
+  + To see if sox is on your system, type the command 'which sox'
+  + If you have sox, you can add 'reverb 99' at the end of the
+    'play' command line, and have some extra fun.
+  + Many other effects are available with sox 'play',
+    and they can also be used to produce edited sound files:
+    http://sox.sourceforge.net/sox.html#EFFECTS
+  + You can convert the .au file produced from here to other
+    formats using sox; for example:
+      sox Bob.au Cox.au BobCox.aiff
+    combines the 2 .au input files to a 2-channel (stereo)
+    Apple .aiff output file. See this for more information:
+    http://sox.sourceforge.net/soxformat.html
+
+* Creation of the file does not depend on sox, so if you have
+  another way to play .au files, you can use that.
+  * Mac OS X: Quicktime (GUI) or afplay (command line) programs.
+              + sox can be installed by first installing 'brew'
+                -- see https://brew.sh/ -- and then using command
+                'brew install sox'.
+  * Linux:    Getting sox is probably the simplest thing to do.
+              + Or install the mplayer package (which also does videos).
+              + Another possibility is the aplay program.
+
+* The audio output file is sampled at 16K bytes per second.
+  For example, a 30 second file will be 960K bytes in size,
+  at 16 bits per sample.
+
+* The auditory effect varies significantly with the '-tper'
+  parameter X; '-tper 0.02' is very different than '-tper 0.4'.
+
+--- Quick hack for experimentation and fun - RWCox - Aug 2018 ---
+

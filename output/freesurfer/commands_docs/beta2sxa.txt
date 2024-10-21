@@ -1,0 +1,80 @@
+
+=== Output of 'beta2sxa --help' ===
+
+
+beta2sxa
+ --b beta
+ --nc Nc
+ --nper Nper
+ --o sxa : default is h.beta
+
+beta2sxa 7.4.1
+
+This is a little script to create files that can be plotted in
+tkmedit or tksurfer by passing it as the -t option. This is
+convenient whenever your data is a table. The output format
+is the the "selavg" format used by Anders a billion years ago. 
+z z b1 z b2 z b3 z ...
+
+Eg, 4 groups with 18 subjects per group are stored in a single file
+called data.nii. You would then run
+
+beta2sxa --b data.nii --nc 4 --nper 18 
+
+By default, this will create h.data.nii and h.data.dat. You would
+then run
+
+tkmedit subject orig.mgz -reg register.dat -t h.data.nii
+tksurfer subject lh inflated -reg register.dat -t h.data.nii
+
+If the 4 groups with 18 subjects per group are stored in a different
+files the,
+
+beta2sxa --b data1.nii --b data2.nii --b data3.nii --b data4.nii \
+  --nc 4 --nper 18 --o h.data.nii
+
+
+=== Output of 'beta2sxa -help' ===
+
+
+beta2sxa
+ --b beta
+ --nc Nc
+ --nper Nper
+ --o sxa : default is h.beta
+
+beta2sxa 7.4.1
+
+This is a little script to create files that can be plotted in
+tkmedit or tksurfer by passing it as the -t option. This is
+convenient whenever your data is a table. The output format
+is the the "selavg" format used by Anders a billion years ago. 
+z z b1 z b2 z b3 z ...
+
+Eg, 4 groups with 18 subjects per group are stored in a single file
+called data.nii. You would then run
+
+beta2sxa --b data.nii --nc 4 --nper 18 
+
+By default, this will create h.data.nii and h.data.dat. You would
+then run
+
+tkmedit subject orig.mgz -reg register.dat -t h.data.nii
+tksurfer subject lh inflated -reg register.dat -t h.data.nii
+
+If the 4 groups with 18 subjects per group are stored in a different
+files the,
+
+beta2sxa --b data1.nii --b data2.nii --b data3.nii --b data4.nii \
+  --nc 4 --nper 18 --o h.data.nii
+
+
+=== Output of 'beta2sxa' (no arguments) ===
+
+
+beta2sxa
+ --b beta
+ --nc Nc
+ --nper Nper
+ --o sxa : default is h.beta
+

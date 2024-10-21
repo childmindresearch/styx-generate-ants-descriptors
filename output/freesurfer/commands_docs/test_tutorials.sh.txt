@@ -1,0 +1,155 @@
+
+=== Output of 'test_tutorials.sh --help' ===
+
+
+
+
+  Usage: test_tutorials.sh <options>
+
+  Optional Arguments:
+
+	-all			: Do all tutorials
+	-quick			: Performs a quick subset of commands
+
+	-auto_quit_freeview	: Automatically closes freeview after opening 
+ 	-skip_all_guis		: Skips all commands that open a GUI
+	-skip_tk_guis		: Skips commands that open a tk GUI (tkmedit, tksurfer, etc)
+	-skip_qdec_guis		: Skips commands that open qdec
+
+	-individual_subject	: Do Interaction with Individual Subject Data tutorial
+	-troubleshooting	: Do Troubleshooting tutorial
+	-group_analysis		: Do Group Analysis tutorial
+	-qdec			: Do QDEC tutorial
+	-longitudinal		: Do Longitudinal tutorial
+	-roi_analysis		: Do ROI Analysis tutorial
+	-diffusion		: Do Diffusion tutorial
+	-tracula		: Do TRACULA tutorial
+	-fsfast			: Do FSFASt tutorial
+	-multimodal		: DO Mulimodal tutorial
+
+  Examples:
+
+	Run all tutorial commands:
+
+	  $> test_tutorials.sh -all
+
+	Run a quick test to ensure basic functionaity:
+ 
+   	  $> test_tutorials.sh -quick
+	
+	Run diffusion tutorial and multimodal tutorial:
+
+	  $> test_tutorials.sh -diffusion -multimodal
+	
+	Run all tutorial commands and automatically close freeview after opening:
+
+	  $> test_tutorials.sh -all _freeview
+
+	Run all tutorial commands but skip all GUI calls:
+
+	  $> test_tutorials.sh -all -skip_all_guis
+
+
+=== Output of 'test_tutorials.sh -help' ===
+
+
+
+
+  Usage: test_tutorials.sh <options>
+
+  Optional Arguments:
+
+	-all			: Do all tutorials
+	-quick			: Performs a quick subset of commands
+
+	-auto_quit_freeview	: Automatically closes freeview after opening 
+ 	-skip_all_guis		: Skips all commands that open a GUI
+	-skip_tk_guis		: Skips commands that open a tk GUI (tkmedit, tksurfer, etc)
+	-skip_qdec_guis		: Skips commands that open qdec
+
+	-individual_subject	: Do Interaction with Individual Subject Data tutorial
+	-troubleshooting	: Do Troubleshooting tutorial
+	-group_analysis		: Do Group Analysis tutorial
+	-qdec			: Do QDEC tutorial
+	-longitudinal		: Do Longitudinal tutorial
+	-roi_analysis		: Do ROI Analysis tutorial
+	-diffusion		: Do Diffusion tutorial
+	-tracula		: Do TRACULA tutorial
+	-fsfast			: Do FSFASt tutorial
+	-multimodal		: DO Mulimodal tutorial
+
+  Examples:
+
+	Run all tutorial commands:
+
+	  $> test_tutorials.sh -all
+
+	Run a quick test to ensure basic functionaity:
+ 
+   	  $> test_tutorials.sh -quick
+	
+	Run diffusion tutorial and multimodal tutorial:
+
+	  $> test_tutorials.sh -diffusion -multimodal
+	
+	Run all tutorial commands and automatically close freeview after opening:
+
+	  $> test_tutorials.sh -all _freeview
+
+	Run all tutorial commands but skip all GUI calls:
+
+	  $> test_tutorials.sh -all -skip_all_guis
+
+
+=== Output of 'test_tutorials.sh' (no arguments) ===
+
+
+  ERROR: Requires at least 1 argument.
+
+
+
+  Usage: test_tutorials.sh <options>
+
+  Optional Arguments:
+
+	-all			: Do all tutorials
+	-quick			: Performs a quick subset of commands
+
+	-auto_quit_freeview	: Automatically closes freeview after opening 
+ 	-skip_all_guis		: Skips all commands that open a GUI
+	-skip_tk_guis		: Skips commands that open a tk GUI (tkmedit, tksurfer, etc)
+	-skip_qdec_guis		: Skips commands that open qdec
+
+	-individual_subject	: Do Interaction with Individual Subject Data tutorial
+	-troubleshooting	: Do Troubleshooting tutorial
+	-group_analysis		: Do Group Analysis tutorial
+	-qdec			: Do QDEC tutorial
+	-longitudinal		: Do Longitudinal tutorial
+	-roi_analysis		: Do ROI Analysis tutorial
+	-diffusion		: Do Diffusion tutorial
+	-tracula		: Do TRACULA tutorial
+	-fsfast			: Do FSFASt tutorial
+	-multimodal		: DO Mulimodal tutorial
+
+  Examples:
+
+	Run all tutorial commands:
+
+	  $> test_tutorials.sh -all
+
+	Run a quick test to ensure basic functionaity:
+ 
+   	  $> test_tutorials.sh -quick
+	
+	Run diffusion tutorial and multimodal tutorial:
+
+	  $> test_tutorials.sh -diffusion -multimodal
+	
+	Run all tutorial commands and automatically close freeview after opening:
+
+	  $> test_tutorials.sh -all _freeview
+
+	Run all tutorial commands but skip all GUI calls:
+
+	  $> test_tutorials.sh -all -skip_all_guis
+

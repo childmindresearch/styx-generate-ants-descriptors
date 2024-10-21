@@ -1,0 +1,87 @@
+
+=== Output of 'mris_diff --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mris_diff surf1 surf2
+OR: /usr/local/freesurfer/bin/mris_diff required:
+   --s1 subj1 
+   --s2 subj2 
+   --sd1 subj1_directory (default is SUBJECTS_DIR)
+   --sd2 subj2_directory (default is SUBJECTS_DIR)
+   --hemi hemi (rh or lh)
+   and one of:
+   --surf surf
+   --curv curv
+   --aparc aparc
+   --aparc2 aparc2   optional different name to compare to aparc
+
+other options:
+   --simple surf1 surf2 <rmsdiff.mgz>: just report whether the surfaces are different
+   --simple-patch surf patch1 patch2 : just report whether the patches are different
+   --thresh N    threshold (default=0) [note: not currently implemented!] 
+   --maxerrs N   stop looping after N errors (default=10)
+   --renumbered  the vertices or faces may have been renumbered and a few deleted
+   --worst-bucket worstbucketfile : compute the worst histogram bucket each vertex is in
+   --grid {[xyz]} spacingfloat grid_file : label the vertices of edges that span a grid
+
+   --no-check-xyz  : do not check vertex xyz
+   --no-check-nxyz : do not check vertex normals
+   --xyz-rms xyzrmsfile : compute and save rms diff between xyz
+   --angle-rms anglermsfile : compute angle on sphere between xyz
+   --seed seed : set random seed for degenerate normals
+   --min-dist surf1 surf2 exactflag mindist : compute vertex-by-vert RMS distance between surfs
+     surfs do not need to have the same number of vertices. Output on surf2
+
+   --debug       turn on debugging
+   --gdiag_no Gdiag_no
+   --checkopts   don't run anything, just check options and exit
+   --help        print out information on how to use program
+   --version     print out version and exit
+
+7.4.1
+
+WARNING: this program is not yet tested!
+
+=== Output of 'mris_diff -help' ===
+
+ERROR: surface 2 not specified
+
+=== Output of 'mris_diff' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mris_diff surf1 surf2
+OR: /usr/local/freesurfer/bin/mris_diff required:
+   --s1 subj1 
+   --s2 subj2 
+   --sd1 subj1_directory (default is SUBJECTS_DIR)
+   --sd2 subj2_directory (default is SUBJECTS_DIR)
+   --hemi hemi (rh or lh)
+   and one of:
+   --surf surf
+   --curv curv
+   --aparc aparc
+   --aparc2 aparc2   optional different name to compare to aparc
+
+other options:
+   --simple surf1 surf2 <rmsdiff.mgz>: just report whether the surfaces are different
+   --simple-patch surf patch1 patch2 : just report whether the patches are different
+   --thresh N    threshold (default=0) [note: not currently implemented!] 
+   --maxerrs N   stop looping after N errors (default=10)
+   --renumbered  the vertices or faces may have been renumbered and a few deleted
+   --worst-bucket worstbucketfile : compute the worst histogram bucket each vertex is in
+   --grid {[xyz]} spacingfloat grid_file : label the vertices of edges that span a grid
+
+   --no-check-xyz  : do not check vertex xyz
+   --no-check-nxyz : do not check vertex normals
+   --xyz-rms xyzrmsfile : compute and save rms diff between xyz
+   --angle-rms anglermsfile : compute angle on sphere between xyz
+   --seed seed : set random seed for degenerate normals
+   --min-dist surf1 surf2 exactflag mindist : compute vertex-by-vert RMS distance between surfs
+     surfs do not need to have the same number of vertices. Output on surf2
+
+   --debug       turn on debugging
+   --gdiag_no Gdiag_no
+   --checkopts   don't run anything, just check options and exit
+   --help        print out information on how to use program
+   --version     print out version and exit
+
+7.4.1
+

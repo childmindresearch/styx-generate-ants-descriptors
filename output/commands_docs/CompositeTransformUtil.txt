@@ -1,3 +1,0 @@
-Usage: CompositeTransformUtil --disassemble <CompositeTransform FileName> <transform name prefix>
-or
-CompositeTransformUtil  --assemble <CompositeTransform> <transform 1> <transform 2 > ... <transform N>

@@ -1,0 +1,12 @@
+
+=== Output of 'inflate_subject_new --help' ===
+
+/usr/local/freesurfer/subjects/--help/scripts: No such file or directory.
+
+=== Output of 'inflate_subject_new -help' ===
+
+/usr/local/freesurfer/subjects/-help/scripts: No such file or directory.
+
+=== Output of 'inflate_subject_new' (no arguments) ===
+
+/usr/local/freesurfer/subjects//scripts: No such file or directory.

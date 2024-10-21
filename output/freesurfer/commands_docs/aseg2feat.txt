@@ -1,0 +1,119 @@
+
+=== Output of 'aseg2feat --help' ===
+
+
+USAGE: aseg2feat
+
+ --feat featdir  <--feat featdir>  : Feat output directory
+ --featdirfile file : file with a list of feat directories
+
+Optional flags and arguments:
+
+ --seg segvol       : change seg volume (default is aseg)
+ --aparc+aseg       : use aparc+aseg
+ --svstats          : save in featdir/stats
+ --standard         : map to standard space
+ --help             : print help and exit
+ --debug            : turn on debugging
+ --version          : print version and exit
+
+aseg2feat 7.4.1
+
+SUMMARY
+
+Resamples the FreeSurfer automatic subcortical segmentation (aseg) to
+the FEAT functional space. This is a front-end for the FreeSurfer
+mri_label2vol program (see mri_label2vol --help). See aparc2feat for
+resampling the cortical parcellation (aparc).
+
+COMMAND-LINE ARGUMENTS
+
+--feat featdir
+
+featdir is the feat directory. reg-feat2anat must have already been run. Multiple
+--feat arguments can be supplied. Eg, --feat dir1 --feat dir2 ...
+
+--featdirfile file
+
+file is an ASCII file with a list of feat directories. This may be more convenient
+than specifying all of them with --feat on the command-line. Multiple
+--featdirfile flags are allowed. Can be used in conjunction with --feat.
+
+--seg segvol
+
+Change the segmentation volume. Default is aseg. Newer version of
+recon-all will also create an aparc+aseg.mgz, which has all the
+subcortical and cortical segmentations in it (see
+$FREESURFER_HOME/FreeSurferColorLUT.txt).
+
+--aparc+aseg 
+
+Use aparc+aseg.mgz. Same as --seg aparc+aseg.mgz.
+
+--standard
+
+Map results to standard space instead of native functional space. Implies
+--svstats.
+
+--svstats
+
+Flag to save result in featdir/stats instead of featdir/reg/freesurfer
+
+--reg regfile
+
+By default uses anat2exf.register.dat in reg/freesurfer (for native
+only).
+
+EXAMPLES
+
+aseg2feat --feat fbert.feat
+
+aseg2feat --feat fbert.feat --seg aparc+aseg
+
+To view the segmentation in the functional space:
+
+  tkmedit -f fbert.feat/example_func.nii.gz \
+     -segmentation fbert.feat/reg/freesurfer/aseg.nii.gz
+
+
+NOTES
+
+The result is stored in featdir/reg/freesurfer/aseg.nii.gz. The aseg.nii.gz
+will be the same size as the example_func and in voxel-for-voxel
+registration. The value of a voxel indicates which structure it
+belongs to. The correspondance between index number and structure can
+be found in $FREESURFER_HOME/tkmeditColorsCMA.  Eg, left putamen
+is 12.
+
+A binary mask of the left putamen can be constructed with:
+
+avwmaths featdir/reg/freesurfer/aseg.nii.gz \
+         -thr 12 -uthr 12 \
+         featdir/reg/freesurfer/lh.putamen.nii.gz
+
+SEE ALSO
+
+reg-feat2anat, aparc2feat, mri_label2vol
+
+=== Output of 'aseg2feat -help' ===
+
+ERROR: flag -help not recognized
+
+=== Output of 'aseg2feat' (no arguments) ===
+
+
+USAGE: aseg2feat
+
+ --feat featdir  <--feat featdir>  : Feat output directory
+ --featdirfile file : file with a list of feat directories
+
+Optional flags and arguments:
+
+ --seg segvol       : change seg volume (default is aseg)
+ --aparc+aseg       : use aparc+aseg
+ --svstats          : save in featdir/stats
+ --standard         : map to standard space
+ --help             : print help and exit
+ --debug            : turn on debugging
+ --version          : print version and exit
+

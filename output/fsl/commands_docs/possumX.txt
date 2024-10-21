@@ -1,0 +1,48 @@
+
+=== Output of 'possumX --help' ===
+
+subjectdir is --help
+subject directory --help not found
+--help/motion not found
+--help/MRpar not found
+--help/slcprof not found
+--help/pulse not found
+--help/pulse.info not found
+could not find --help/brain or --help/object
+
+=== Output of 'possumX -help' ===
+
+subjectdir is -help
+subject directory -help not found
+-help/motion not found
+-help/MRpar not found
+-help/slcprof not found
+-help/pulse not found
+-help/pulse.info not found
+could not find -help/brain or -help/object
+
+=== Output of 'possumX' (no arguments) ===
+
+
+Usage: possumX <subject directory> [options]
+
+Subject directory needs to contain:
+1.  brain
+2.  MRpar
+3.  motion 
+4.  slcprof
+5.  pulse, pulse.info, pulse.readme, pulse.posx, pulse.posy, pulse.posz
+optional
+6.  T2
+7.  T2timecourse
+8.  b0z_dz and (in case of motion) b0x_dx, b0x_dy, ... b0z_dy
+9.  b0extra
+10. b0timecourse
+
+In case there is a cluster enviroment (e.g. SGE):
+-n (number of processors, default 1)
+-t (estimated running time per processor (minutes), default 2000)
+-s (marix segment size [default 10000], purely for memory efficiency)
+-a (architecture [e.g., darwin or lx24-amd64])
+-v verbose
+-j (place hold for till this job finishes)

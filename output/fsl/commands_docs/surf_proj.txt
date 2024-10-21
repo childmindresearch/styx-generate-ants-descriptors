@@ -1,0 +1,43 @@
+
+=== Output of 'surf_proj --help' ===
+
+terminate called after throwing an instance of 'Utilities::X_OptionError'
+  what():  --help: Option doesn't exist!
+timeout: the monitored command dumped core
+
+=== Output of 'surf_proj -help' ===
+
+terminate called after throwing an instance of 'Utilities::X_OptionError'
+  what():  -h: Option doesn't exist!
+timeout: the monitored command dumped core
+
+=== Output of 'surf_proj' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	--data	data to project onto surface
+	--surf	surface file
+	--out	output file
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+
+
+Usage: 
+
+
+Compulsory arguments (You MUST set one or more of):
+	--data	data to project onto surface
+	--surf	surface file
+	--out	output file
+
+Optional arguments (You may optionally specify one or more of):
+	--meshref	surface volume ref (default=same as data)
+	--xfm	data2surf transform (default=Identity)
+	--meshspace	meshspace (default='caret')
+	--step	average over step (mm - default=1)
+	--direction	if>0 goes towards brain (default=0 ie both directions)
+	--operation	what to do with values: 'mean' (default), 'max', 'median', 'last'
+	--surfout	output surface file, not ascii matrix (valid only for scalars)
+
+

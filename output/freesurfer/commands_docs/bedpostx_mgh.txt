@@ -1,0 +1,56 @@
+
+=== Output of 'bedpostx_mgh --help' ===
+
+cat: /etc/fslversion: No such file or directory
+/usr/local/freesurfer/bin/bedpostx_mgh: line 131: [: -lt: unary operator expected
+
+=== Output of 'bedpostx_mgh -help' ===
+
+cat: /etc/fslversion: No such file or directory
+/usr/local/freesurfer/bin/bedpostx_mgh: line 131: [: -lt: unary operator expected
+
+=== Output of 'bedpostx_mgh' (no arguments) ===
+
+cat: /etc/fslversion: No such file or directory
+/usr/local/freesurfer/bin/bedpostx_mgh: line 131: [: -lt: unary operator expected
+
+Usage: bedpostx <subject directory> [options]
+
+expects to find bvals and bvecs in subject directory
+expects to find data and nodif_brain_mask in subject directory
+expects to find grad_dev in subject directory, if -g is set
+options (old syntax)
+-n (number of fibres per voxel, default 3)
+-w (ARD weight, more weight means less secondary fibres per voxel, default 1)
+-b (burnin period, default 1000)
+-j (number of jumps, default 1250)
+-s (sample every, default 25)
+-model (Deconvolution model. 1: with sticks, 2: with sticks with a range of diffusivities (default), 3: with zeppelins)
+-g (consider gradient nonlinearities, default off)
+
+
+ALTERNATIVELY: you can pass on xfibres options onto directly bedpostx
+ For example:  bedpostx <subject directory> --noard --cnonlinear
+ Type 'xfibres --help' for a list of available options 
+ Default options will be bedpostx default (see above), and not xfibres default.
+
+Note: Use EITHER old OR new syntax.
+
+This is a modified version of FSL's bedpostx that is compatible with
+the PBS queueing system running on launchpad and can be used by MGH
+Martinos Center users to parallelize computation.
+
+This script runs the exact same algorithm as bedpostx, but it submits
+the processing for each slice as a separate PBS job. Thus,
+bedpostx_mgh will give you the same result as bedpostx, but do it
+an order of magnitude faster.
+
+Command line options and the structure of the input directory are the
+same as for the original bedpostx.
+
+Do not submit bedpostx_mgh as a job on launchpad. Run it directly at
+the launchpad prompt and it will submit the jobs for you. Note that
+this will generate a large number of jobs, so don't launch it on more
+than one data set at the same time. You may get some PBS emails about
+jobs being held that you have to release - you can ignore these
+emails as this script will take care of that.

@@ -1,0 +1,9 @@
+
+=== Output of 'clear_fs_env.csh --help' ===
+
+
+=== Output of 'clear_fs_env.csh -help' ===
+
+
+=== Output of 'clear_fs_env.csh' (no arguments) ===
+

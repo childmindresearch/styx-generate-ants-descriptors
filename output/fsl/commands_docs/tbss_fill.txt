@@ -1,0 +1,21 @@
+
+=== Output of 'tbss_fill --help' ===
+
+
+Usage: tbss_fill <stats_image> <threshold> <mean_FA> <output> [-n]
+  -n : include negative stat values (below -threshold)
+
+
+=== Output of 'tbss_fill -help' ===
+
+
+Usage: tbss_fill <stats_image> <threshold> <mean_FA> <output> [-n]
+  -n : include negative stat values (below -threshold)
+
+
+=== Output of 'tbss_fill' (no arguments) ===
+
+
+Usage: tbss_fill <stats_image> <threshold> <mean_FA> <output> [-n]
+  -n : include negative stat values (below -threshold)
+

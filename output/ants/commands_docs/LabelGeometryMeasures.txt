@@ -1,0 +1,15 @@
+
+=== Output of 'LabelGeometryMeasures --help' ===
+
+Usage 1: LabelGeometryMeasures imageDimension labelImage [intensityImage] [csvFile]
+To output to csvFile without an intensity image, use "none" or "na" as the third arg
+
+=== Output of 'LabelGeometryMeasures -help' ===
+
+Usage 1: LabelGeometryMeasures imageDimension labelImage [intensityImage] [csvFile]
+To output to csvFile without an intensity image, use "none" or "na" as the third arg
+
+=== Output of 'LabelGeometryMeasures' (no arguments) ===
+
+Usage 1: LabelGeometryMeasures imageDimension labelImage [intensityImage] [csvFile]
+To output to csvFile without an intensity image, use "none" or "na" as the third arg

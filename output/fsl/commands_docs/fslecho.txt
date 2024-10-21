@@ -1,0 +1,12 @@
+
+=== Output of 'fslecho --help' ===
+
+--help
+
+=== Output of 'fslecho -help' ===
+
+-help
+
+=== Output of 'fslecho' (no arguments) ===
+
+

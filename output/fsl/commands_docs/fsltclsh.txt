@@ -1,0 +1,9 @@
+
+=== Output of 'fsltclsh --help' ===
+
+
+=== Output of 'fsltclsh -help' ===
+
+
+=== Output of 'fsltclsh' (no arguments) ===
+

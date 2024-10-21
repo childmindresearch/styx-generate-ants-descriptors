@@ -1,0 +1,110 @@
+
+=== Output of '@extract_meica_ortvec --help' ===
+
+** bad option 1 : '--help'
+
+=== Output of '@extract_meica_ortvec -help' ===
+
+   @extract_meica_ortvec        - project good MEICA components out of bad ones
+
+   The MEICA process, via tedana.py, creates a set of components:
+
+        accepted        : components it things are good BOLD
+        ignored         : components it decides not to bother with
+        midk_rejected   : components it "borderline" rejects
+        rejected        : components it more strongly rejects
+
+   Together, this full matrix is fit to the data, and the fit of the
+   rejected components is subtracted from the data.  But the rejected
+   components are correlated with accepted ones.
+
+   To more conservatively keep the entirety of the accepted components,
+   projection components are created here by projecting the good ones
+   out of the bad ones, and taking the result as more strictly bad ones,
+   which can be projected later.
+
+   This script (currently) relies on being run from a tedana.py output
+   directory, probably of name TED.XXX.
+
+   sample commands:
+
+      @extract_meica_ortvec -prefix run_5_meica_orts.1D
+
+      @extract_meica_ortvec -meica_dir tedana_r01/TED.r01   \
+            -work_dir tedana_r01/work.orts                  \
+            -prefix tedana_r01/meica_orts.1D
+
+   options:
+
+      -prefix         PREFIX    : name for output 1D ortvec file
+      -meica_dir      MDIR      : directory for meica files
+      -reject_ignored VAL       : VAL=0/1, do we reject ignored components
+                                  (default = 0, keep, do not reject)
+                                  (should probably never reject)
+      -reject_midk    VAL       : VAL=0/1, do we reject midk components
+                                  (default = 1, reject)
+                                  (should probably default to keeping)
+      -work_dir       WDIR      : sub-directory for work
+      -verb           VLEVEL    : set verbosity level
+
+   
+   More options will be added, but this is enough to get used by
+   afni_proc.py for now.
+
+   -------
+
+   Author: R Reynolds  May, 2018
+
+
+=== Output of '@extract_meica_ortvec' (no arguments) ===
+
+   @extract_meica_ortvec        - project good MEICA components out of bad ones
+
+   The MEICA process, via tedana.py, creates a set of components:
+
+        accepted        : components it things are good BOLD
+        ignored         : components it decides not to bother with
+        midk_rejected   : components it "borderline" rejects
+        rejected        : components it more strongly rejects
+
+   Together, this full matrix is fit to the data, and the fit of the
+   rejected components is subtracted from the data.  But the rejected
+   components are correlated with accepted ones.
+
+   To more conservatively keep the entirety of the accepted components,
+   projection components are created here by projecting the good ones
+   out of the bad ones, and taking the result as more strictly bad ones,
+   which can be projected later.
+
+   This script (currently) relies on being run from a tedana.py output
+   directory, probably of name TED.XXX.
+
+   sample commands:
+
+      @extract_meica_ortvec -prefix run_5_meica_orts.1D
+
+      @extract_meica_ortvec -meica_dir tedana_r01/TED.r01   \
+            -work_dir tedana_r01/work.orts                  \
+            -prefix tedana_r01/meica_orts.1D
+
+   options:
+
+      -prefix         PREFIX    : name for output 1D ortvec file
+      -meica_dir      MDIR      : directory for meica files
+      -reject_ignored VAL       : VAL=0/1, do we reject ignored components
+                                  (default = 0, keep, do not reject)
+                                  (should probably never reject)
+      -reject_midk    VAL       : VAL=0/1, do we reject midk components
+                                  (default = 1, reject)
+                                  (should probably default to keeping)
+      -work_dir       WDIR      : sub-directory for work
+      -verb           VLEVEL    : set verbosity level
+
+   
+   More options will be added, but this is enough to get used by
+   afni_proc.py for now.
+
+   -------
+
+   Author: R Reynolds  May, 2018
+

@@ -1,0 +1,53 @@
+
+=== Output of 'fslvbm_1_bet --help' ===
+
+--help_struc
+error : two first arguments should be input and output names, see bet -h for help
+/usr/local/fsl/bin/bet failed during command:--help_struc --help_struc_brain -f 0.4
+-help_struc
+error : two first arguments should be input and output names, see bet -h for help
+/usr/local/fsl/bin/bet failed during command:-help_struc -help_struc_brain -f 0.4
+Done running BET, now running slicesdir:
+--help_struc
+/usr/local/fsl/bin/slicesdir: line 141: 10993 Segmentation fault      (core dumped) ${FSLDIR}/bin/slicer $A $B -s 1 $sliceropts
+
+ Cannot open slicesdir/grota.png for reading
+/usr/local/fsl/bin/slicesdir: line 141: 11000 Segmentation fault      (core dumped) ${FSLDIR}/bin/pngappend $convertopts slicesdir/${Q}.png
+/usr/local/fsl/bin/slicesdir: line 136: dc: command not found
+/usr/local/fsl/bin/slicesdir: line 139: dc: command not found
+/usr/local/fsl/bin/slicesdir: line 117: [: -lt: unary operator expected
+
+Finished. To view, point your web browser at
+file:/struc/slicesdir/index.html
+
+=== Output of 'fslvbm_1_bet -help' ===
+
+--help_struc
+error : two first arguments should be input and output names, see bet -h for help
+/usr/local/fsl/bin/bet failed during command:--help_struc --help_struc_brain -f 0.4
+-help_struc
+error : two first arguments should be input and output names, see bet -h for help
+/usr/local/fsl/bin/bet failed during command:-help_struc -help_struc_brain -f 0.4
+Done running BET, now running slicesdir:
+--help_struc
+/usr/local/fsl/bin/slicesdir: line 141: 11292 Segmentation fault      (core dumped) ${FSLDIR}/bin/slicer $A $B -s 1 $sliceropts
+
+ Cannot open slicesdir/grota.png for reading
+/usr/local/fsl/bin/slicesdir: line 141: 11299 Segmentation fault      (core dumped) ${FSLDIR}/bin/pngappend $convertopts slicesdir/${Q}.png
+/usr/local/fsl/bin/slicesdir: line 136: dc: command not found
+/usr/local/fsl/bin/slicesdir: line 139: dc: command not found
+/usr/local/fsl/bin/slicesdir: line 117: [: -lt: unary operator expected
+
+Finished. To view, point your web browser at
+file:/struc/slicesdir/index.html
+
+=== Output of 'fslvbm_1_bet' (no arguments) ===
+
+
+Usage: fslvbm_1_bet  <-b or -N>  [options to be passed on to BET] 
+
+-b  : default BET brain extraction (which uses -f 0.4)
+-N  : increased robustness in the brain extraction when a lot of neck is present
+
+e.g.,   fslvbm_1_bet -b  -f 0.6 -R
+

@@ -1,0 +1,105 @@
+
+=== Output of 'mm --help' ===
+
+exp(tmp)=22026.5
+exp(tmp)=2.68812e+43
+exp(tmp)=7.22597e+86
+exp(tmp)=1.94243e+130
+exp(tmp)=5.22147e+173
+exp(tmp)=1.40359e+217
+exp(tmp)=3.77302e+260
+exp(tmp)=1.01423e+304
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+mm
+
+Usage: 
+mm -d <filename>
+mm --verbose
+mm --mask=<mask> --sdf=<filename> --logdir=<logdir>
+
+Compulsory arguments (You MUST set one or more of):
+	--sdf,--spatialdatafile	spatial map data file
+	-m,--mask	mask file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	--debug,--debuglevel	set debug level
+	--timingon	turn timing on
+	-h,--help	display this message
+	--edf,--epiexampledatafile	example epi data file
+	-l,--ld,--logdir	log directory
+	--ns,--nonspatial	Nonspatial mixture model
+	--fmp,--fixmrfprec	Fix MRF precision to mrfprecstart throughout
+	--mps,--mrfprecstart	MRF precision initial value (default is 10)
+	--mpm,--mrfprecmultiplier	Update multiplier for MRF precision (default is -1, do not multipy)
+	--im,--initmultiplier	Init multiplier (default is 0.3)
+	--nut,--noupdatetheta	Turn off updating of distribution parameters after non-spatial fit
+	--zfstatmode	Turn on zfstat mode - this enforces no deactivation class
+	--phi	phi (default is 0.05)
+	--ni,--niters	niters (default is -1: auto stop)
+	--th,--thresh	threshold for use when displaying classification maps in MM.html report (default is 0.5, -1 indicates no thresholding)
+
+
+
+Not all of the compulsory arguments have been provided
+
+=== Output of 'mm -help' ===
+
+exp(tmp)=22026.5
+exp(tmp)=2.68812e+43
+exp(tmp)=7.22597e+86
+exp(tmp)=1.94243e+130
+exp(tmp)=5.22147e+173
+exp(tmp)=1.40359e+217
+exp(tmp)=3.77302e+260
+exp(tmp)=1.01423e+304
+
+-e: Option doesn't exist!
+
+=== Output of 'mm' (no arguments) ===
+
+exp(tmp)=22026.5
+exp(tmp)=2.68812e+43
+exp(tmp)=7.22597e+86
+exp(tmp)=1.94243e+130
+exp(tmp)=5.22147e+173
+exp(tmp)=1.40359e+217
+exp(tmp)=3.77302e+260
+exp(tmp)=1.01423e+304
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+mm
+
+Usage: 
+mm -d <filename>
+mm --verbose
+mm --mask=<mask> --sdf=<filename> --logdir=<logdir>
+
+Compulsory arguments (You MUST set one or more of):
+	--sdf,--spatialdatafile	spatial map data file
+	-m,--mask	mask file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	--debug,--debuglevel	set debug level
+	--timingon	turn timing on
+	-h,--help	display this message
+	--edf,--epiexampledatafile	example epi data file
+	-l,--ld,--logdir	log directory
+	--ns,--nonspatial	Nonspatial mixture model
+	--fmp,--fixmrfprec	Fix MRF precision to mrfprecstart throughout
+	--mps,--mrfprecstart	MRF precision initial value (default is 10)
+	--mpm,--mrfprecmultiplier	Update multiplier for MRF precision (default is -1, do not multipy)
+	--im,--initmultiplier	Init multiplier (default is 0.3)
+	--nut,--noupdatetheta	Turn off updating of distribution parameters after non-spatial fit
+	--zfstatmode	Turn on zfstat mode - this enforces no deactivation class
+	--phi	phi (default is 0.05)
+	--ni,--niters	niters (default is -1: auto stop)
+	--th,--thresh	threshold for use when displaying classification maps in MM.html report (default is 0.5, -1 indicates no thresholding)
+
+
+
+Not all of the compulsory arguments have been provided

@@ -1,0 +1,39 @@
+
+=== Output of 'mris_AA_shrinkwrap --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_AA_shrinkwrap [options] <T1 vol> <PD vol> <output dir>
+
+This program positions the tessellation of the cortical surface
+at the white matter surface, then the gray matter surface
+and generate surface files for these surfaces as well as a
+'curvature' file for the cortical thickness, and a surface file
+which approximates layer IV of the cortical sheet.
+
+valid options are:
+
+-q    omit self-intersection and only generate gray/white surface.
+-c    create curvature and area files from white matter surface
+-a <avgs>   average curvature values <avgs> times (default=10)
+-whiteonly  only generate white matter surface
+
+=== Output of 'mris_AA_shrinkwrap -help' ===
+
+unknown option -help
+usage: /usr/local/freesurfer/bin/mris_AA_shrinkwrap [options] <T1 vol> <PD vol> <output dir>
+
+This program positions the tessellation of the cortical surface
+at the white matter surface, then the gray matter surface
+and generate surface files for these surfaces as well as a
+'curvature' file for the cortical thickness, and a surface file
+which approximates layer IV of the cortical sheet.
+
+valid options are:
+
+-q    omit self-intersection and only generate gray/white surface.
+-c    create curvature and area files from white matter surface
+-a <avgs>   average curvature values <avgs> times (default=10)
+-whiteonly  only generate white matter surface
+
+=== Output of 'mris_AA_shrinkwrap' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_AA_shrinkwrap [options] <T1 vol> <PD vol> <output dir>

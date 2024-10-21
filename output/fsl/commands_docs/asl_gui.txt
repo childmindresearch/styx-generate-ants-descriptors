@@ -1,0 +1,18 @@
+
+=== Output of 'asl_gui --help' ===
+
+/usr/local/fsl/fslpython/envs/fslpython/lib/python3.7/site-packages/wx/lib/pubsub/__init__.py:25: wxPyDeprecationWarning: wx.lib.pubsub has been deprecated, plese migrate your code to use pypubsub, available on PyPI.
+  wx.wxPyDeprecationWarning)
+Unable to access the X Display, is $DISPLAY set properly?
+
+=== Output of 'asl_gui -help' ===
+
+/usr/local/fsl/fslpython/envs/fslpython/lib/python3.7/site-packages/wx/lib/pubsub/__init__.py:25: wxPyDeprecationWarning: wx.lib.pubsub has been deprecated, plese migrate your code to use pypubsub, available on PyPI.
+  wx.wxPyDeprecationWarning)
+Unable to access the X Display, is $DISPLAY set properly?
+
+=== Output of 'asl_gui' (no arguments) ===
+
+/usr/local/fsl/fslpython/envs/fslpython/lib/python3.7/site-packages/wx/lib/pubsub/__init__.py:25: wxPyDeprecationWarning: wx.lib.pubsub has been deprecated, plese migrate your code to use pypubsub, available on PyPI.
+  wx.wxPyDeprecationWarning)
+Unable to access the X Display, is $DISPLAY set properly?

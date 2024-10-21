@@ -1,0 +1,59 @@
+
+=== Output of 'quick.alpha.vals.py --help' ===
+
+Traceback (most recent call last):
+  File "/opt/afni/src/../install/quick.alpha.vals.py", line 47, in <module>
+    mdata = LAD.Afni1D(infile, verb=0)
+  File "/opt/afni/install/afnipy/lib_afni1D.py", line 98, in __init__
+    if self.init_from_general_name(self.fname): return None
+  File "/opt/afni/install/afnipy/lib_afni1D.py", line 3211, in init_from_general_name
+    if self.init_from_1D(aname.rpve()): return 1 # failure
+  File "/opt/afni/install/afnipy/lib_afni1D.py", line 3323, in init_from_1D
+    tmat, clines = TD.read_data_file(fname, verb=self.verb)
+  File "/opt/afni/install/afnipy/lib_textdata.py", line 86, in read_data_file
+    data, clines, alist = read_married_file(filename, nlines=nlines, verb=verb)
+  File "/opt/afni/install/afnipy/lib_textdata.py", line 136, in read_married_file
+    data = fp.read()
+  File "/usr/lib/python3.6/codecs.py", line 321, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 1600: invalid start byte
+
+=== Output of 'quick.alpha.vals.py -help' ===
+
+
+quick.alpha.vals.py   - make an alpha table from slow_surf_clustsim.py results
+
+   Run this on each z.max.area file output by slow_surf_clustsim.py.  In some
+   cases the z.max.area might not have as many lines as iterations, for which
+   the -niter option can be applied.
+
+   usage: quick.alpha.vals.py [-niter N] max_file
+
+       -niter: number of iterations that should be in the z file
+
+            ** Note: -niter should match that from slow_surf_clustsim.py.
+
+   This pathetic program will surely be enhanced.  Someday.
+
+   R Reynolds
+
+
+=== Output of 'quick.alpha.vals.py' (no arguments) ===
+
+
+quick.alpha.vals.py   - make an alpha table from slow_surf_clustsim.py results
+
+   Run this on each z.max.area file output by slow_surf_clustsim.py.  In some
+   cases the z.max.area might not have as many lines as iterations, for which
+   the -niter option can be applied.
+
+   usage: quick.alpha.vals.py [-niter N] max_file
+
+       -niter: number of iterations that should be in the z file
+
+            ** Note: -niter should match that from slow_surf_clustsim.py.
+
+   This pathetic program will surely be enhanced.  Someday.
+
+   R Reynolds
+

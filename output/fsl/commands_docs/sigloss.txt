@@ -1,0 +1,82 @@
+
+=== Output of 'sigloss --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+sigloss 
+Copyright(c) 2004, University of Oxford (Mark Jenkinson)
+Estimates signal loss from a field map (in rad/s) - possibly saved by fugue
+
+
+Usage: 
+sigloss [options] -i b0map -m mask -s sigloss_estimate
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input b0 map image filename (in rad/s)
+	-s,--sigloss	output signal loss image filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	input mask filename
+	--te	echo time (in seconds)
+	-d,--slicedir	slice direction (either x , y or z)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'sigloss -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+sigloss 
+Copyright(c) 2004, University of Oxford (Mark Jenkinson)
+Estimates signal loss from a field map (in rad/s) - possibly saved by fugue
+
+
+Usage: 
+sigloss [options] -i b0map -m mask -s sigloss_estimate
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input b0 map image filename (in rad/s)
+	-s,--sigloss	output signal loss image filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	input mask filename
+	--te	echo time (in seconds)
+	-d,--slicedir	slice direction (either x , y or z)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'sigloss' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	input b0 map image filename (in rad/s)
+	-s,--sigloss	output signal loss image filename
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+sigloss 
+Copyright(c) 2004, University of Oxford (Mark Jenkinson)
+Estimates signal loss from a field map (in rad/s) - possibly saved by fugue
+
+
+Usage: 
+sigloss [options] -i b0map -m mask -s sigloss_estimate
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input b0 map image filename (in rad/s)
+	-s,--sigloss	output signal loss image filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask	input mask filename
+	--te	echo time (in seconds)
+	-d,--slicedir	slice direction (either x , y or z)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

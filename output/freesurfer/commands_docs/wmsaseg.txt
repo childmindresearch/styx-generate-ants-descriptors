@@ -1,0 +1,200 @@
+
+=== Output of 'wmsaseg --help' ===
+
+
+wmsaseg --s subject
+  --s+orig origsubject : get T2 and PD from origsubject (good for long)
+  --s+long : get T2 and PD from orig long subject (origsubject.long.base_base)
+  --sub output sub dir (default is wmsa)
+  --gca gcafile
+  --no-reg : do not register mode to anat
+  --no-canorm : do not run mri_ca_norm (eg, if used another)
+  --init-spm : default is fsl
+  --reg-only : only perform registration
+  --halo1
+  --halo2
+
+wmsaseg 7.4.1
+
+This program is still under development. Use at your own risk.
+
+To use, put T2.mgz and PD.mgz into subject/mri/orig, then run
+
+wmsaseg --s subject
+
+
+mri_ca_normalize fails (causes T1.canorm.mgz to be saturated) with the 
+wmsa.lta and the wmsa GCA, but this "works" 
+
+set gca = $FREESURFER_HOME/average/RB_all_2008-03-26.gca
+set lta = talairach.lta
+mri_ca_normalize -mask $mdir/brainmask.mgz \
+  $normuse $pdanat $t2anat $gca $lta $t1norm $pdnorm $t2norm
+
+# To see accuracy of wmsa.lta
+set gca = /space/dijon/21/users/jpacheco/FreeSurfer-WMSA-03122007/average/wmsa_new_eesmith.gca
+tkregister2 --mov $gca \
+  --targ ../brainmask.mgz --lta-inv wmsa.lta --reg reg.wmsa.dat \
+  --surfs --s $subject
+tkregister2 --targ $gca --mov ../T2.anat.mgz --lta wmsa.lta --reg sdlkfj
+
+
+# To see accuracy of talairach.lta
+tkregister2 --mov $FREESURFER_HOME/average/RB_all_2008-03-26.gca \
+  --targ ../brainmask.mgz --lta-inv talairach.lta --reg talairach.lta.reg.dat \
+  --surfs --s $subject
+
+bbregister --s $subject --12 --t1 --init-spm --reg reg12.dat\
+  --mov $FREESURFER_HOME/average/RB_all_2008-03-26.gca 
+
+tkregister2  --reg junk.dat --regheader --s fsaverage --surfs \
+  --mov $FREESURFER_HOME/average/RB_all_2008-03-26.gca 
+
+# Check talairach.xfm
+tkregister2 --ixfm talairach.xfm --zero-cras \
+  --reg talairach.xfm.reg.dat --surfs \
+  --mov $FREESURFER_HOME/subjects/fsaverage/mri/orig.mgz \
+  --s $subject 
+
+# To see accuracy of talairach_with_skull.lta
+tkregister2 --mov $FREESURFER_HOME/average/RB_all_withskull_2008-03-26.gca \
+  --targ ../nu.mgz --lta-inv talairach_with_skull.lta --reg talairach_with_skull.lta.reg.dat \
+  --surfs --s subject
+
+set subject = 0724
+set mdir = $SUBJECTS_DIR/$subject/mri
+tkregister2 --mov $FREESURFER_HOME/average/RB_all_2008-03-26.gca \
+  --targ $mdir/nu.mgz --lta-inv $mdir/transforms/talairach.lta \
+  --reg $mdir/transforms/talairach.lta.reg.dat \
+  --surfs --s $subject --noedit
+tkregister2 --mov $FREESURFER_HOME/subjects/fsaverage/mri/orig.mgz \
+  --s $subject --ixfm $mdir/transforms/talairach.xfm --zero-cras \
+  --reg $mdir/transforms/talairach.xfm.reg.dat --noedit
+rms-reg-diff $mdir/transforms/talairach.lta.reg.dat $mdir/transforms/talairach.xfm.reg.dat  
+
+
+mri_vol2vol --mov ../norm.mgz --m3z talairach.m3z --no-save-reg \
+  --targ $SUBJECTS_DIR/fsaverage/mri/orig.mgz --o junk.mgh \
+  --s $subject
+
+tkregister2 --mov $FREESURFER_HOME/average/RB_all_2008-03-26.gca \
+  --targ junk.mgh --regheader --reg junk.dat --s fsaverage --surfs
+
+tkregister2 --mov junk.mgh --regheader --reg junk.dat \
+  --s RB_all_2008-03-26 --surfs --fstarg --fmov-targ
+
+mri_vol2vol --mov ../norm.mgz --m3z wmsa.m3z --no-save-reg \
+  --targ $SUBJECTS_DIR/fsaverage/mri/orig.mgz --o junk2.mgh \
+  --s $subject
+
+tkregister2 --mov junk2.mgh --regheader --reg junk.dat \
+  --s wmsa_new_eesmith --surfs --fstarg --fmov-targ
+
+
+=== Output of 'wmsaseg -help' ===
+
+
+wmsaseg --s subject
+  --s+orig origsubject : get T2 and PD from origsubject (good for long)
+  --s+long : get T2 and PD from orig long subject (origsubject.long.base_base)
+  --sub output sub dir (default is wmsa)
+  --gca gcafile
+  --no-reg : do not register mode to anat
+  --no-canorm : do not run mri_ca_norm (eg, if used another)
+  --init-spm : default is fsl
+  --reg-only : only perform registration
+  --halo1
+  --halo2
+
+wmsaseg 7.4.1
+
+This program is still under development. Use at your own risk.
+
+To use, put T2.mgz and PD.mgz into subject/mri/orig, then run
+
+wmsaseg --s subject
+
+
+mri_ca_normalize fails (causes T1.canorm.mgz to be saturated) with the 
+wmsa.lta and the wmsa GCA, but this "works" 
+
+set gca = $FREESURFER_HOME/average/RB_all_2008-03-26.gca
+set lta = talairach.lta
+mri_ca_normalize -mask $mdir/brainmask.mgz \
+  $normuse $pdanat $t2anat $gca $lta $t1norm $pdnorm $t2norm
+
+# To see accuracy of wmsa.lta
+set gca = /space/dijon/21/users/jpacheco/FreeSurfer-WMSA-03122007/average/wmsa_new_eesmith.gca
+tkregister2 --mov $gca \
+  --targ ../brainmask.mgz --lta-inv wmsa.lta --reg reg.wmsa.dat \
+  --surfs --s $subject
+tkregister2 --targ $gca --mov ../T2.anat.mgz --lta wmsa.lta --reg sdlkfj
+
+
+# To see accuracy of talairach.lta
+tkregister2 --mov $FREESURFER_HOME/average/RB_all_2008-03-26.gca \
+  --targ ../brainmask.mgz --lta-inv talairach.lta --reg talairach.lta.reg.dat \
+  --surfs --s $subject
+
+bbregister --s $subject --12 --t1 --init-spm --reg reg12.dat\
+  --mov $FREESURFER_HOME/average/RB_all_2008-03-26.gca 
+
+tkregister2  --reg junk.dat --regheader --s fsaverage --surfs \
+  --mov $FREESURFER_HOME/average/RB_all_2008-03-26.gca 
+
+# Check talairach.xfm
+tkregister2 --ixfm talairach.xfm --zero-cras \
+  --reg talairach.xfm.reg.dat --surfs \
+  --mov $FREESURFER_HOME/subjects/fsaverage/mri/orig.mgz \
+  --s $subject 
+
+# To see accuracy of talairach_with_skull.lta
+tkregister2 --mov $FREESURFER_HOME/average/RB_all_withskull_2008-03-26.gca \
+  --targ ../nu.mgz --lta-inv talairach_with_skull.lta --reg talairach_with_skull.lta.reg.dat \
+  --surfs --s subject
+
+set subject = 0724
+set mdir = $SUBJECTS_DIR/$subject/mri
+tkregister2 --mov $FREESURFER_HOME/average/RB_all_2008-03-26.gca \
+  --targ $mdir/nu.mgz --lta-inv $mdir/transforms/talairach.lta \
+  --reg $mdir/transforms/talairach.lta.reg.dat \
+  --surfs --s $subject --noedit
+tkregister2 --mov $FREESURFER_HOME/subjects/fsaverage/mri/orig.mgz \
+  --s $subject --ixfm $mdir/transforms/talairach.xfm --zero-cras \
+  --reg $mdir/transforms/talairach.xfm.reg.dat --noedit
+rms-reg-diff $mdir/transforms/talairach.lta.reg.dat $mdir/transforms/talairach.xfm.reg.dat  
+
+
+mri_vol2vol --mov ../norm.mgz --m3z talairach.m3z --no-save-reg \
+  --targ $SUBJECTS_DIR/fsaverage/mri/orig.mgz --o junk.mgh \
+  --s $subject
+
+tkregister2 --mov $FREESURFER_HOME/average/RB_all_2008-03-26.gca \
+  --targ junk.mgh --regheader --reg junk.dat --s fsaverage --surfs
+
+tkregister2 --mov junk.mgh --regheader --reg junk.dat \
+  --s RB_all_2008-03-26 --surfs --fstarg --fmov-targ
+
+mri_vol2vol --mov ../norm.mgz --m3z wmsa.m3z --no-save-reg \
+  --targ $SUBJECTS_DIR/fsaverage/mri/orig.mgz --o junk2.mgh \
+  --s $subject
+
+tkregister2 --mov junk2.mgh --regheader --reg junk.dat \
+  --s wmsa_new_eesmith --surfs --fstarg --fmov-targ
+
+
+=== Output of 'wmsaseg' (no arguments) ===
+
+
+wmsaseg --s subject
+  --s+orig origsubject : get T2 and PD from origsubject (good for long)
+  --s+long : get T2 and PD from orig long subject (origsubject.long.base_base)
+  --sub output sub dir (default is wmsa)
+  --gca gcafile
+  --no-reg : do not register mode to anat
+  --no-canorm : do not run mri_ca_norm (eg, if used another)
+  --init-spm : default is fsl
+  --reg-only : only perform registration
+  --halo1
+  --halo2
+

@@ -1,0 +1,45 @@
+
+=== Output of 'check_recons.sh --help' ===
+
+ 
+  Checks the status of subjects being processed by recon-all
+  in the SUBJECTS_DIR, or in the directory passed as an argument.
+
+  Must specify zero or one arguments.
+
+  USAGE:
+
+  check_recons.sh     (Uses SUBJECTS_DIR)
+  check_recons.sh     <subject_directory>
+
+
+=== Output of 'check_recons.sh -help' ===
+
+ 
+  Checks the status of subjects being processed by recon-all
+  in the SUBJECTS_DIR, or in the directory passed as an argument.
+
+  Must specify zero or one arguments.
+
+  USAGE:
+
+  check_recons.sh     (Uses SUBJECTS_DIR)
+  check_recons.sh     <subject_directory>
+
+
+=== Output of 'check_recons.sh' (no arguments) ===
+
+SUBJECTS_DIR=/usr/local/freesurfer/subjects
+(5) Subjects completed SUCCESSFULLY:
+bert
+cvs_avg35
+cvs_avg35_inMNI152
+fsaverage
+fsaverage_sym
+
+(0) Subjects completed with ERRORS:
+
+(0) Subjects STILL RUNNING:
+
+(0) Subjects INACTIVE for more than 60 minutes and may have not exited gracefully:
+

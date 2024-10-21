@@ -1,0 +1,13 @@
+
+=== Output of 'mris_compute_layer_intensities --help' ===
+
+unknown option --help
+
+=== Output of 'mris_compute_layer_intensities -help' ===
+
+unknown option -help
+
+=== Output of 'mris_compute_layer_intensities' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_compute_layer_intensities [options] <input intensity volume> <layer volume fractions file> <input surface> <output overlay>
+	

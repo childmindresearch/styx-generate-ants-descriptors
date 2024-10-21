@@ -1,0 +1,18 @@
+
+=== Output of 'compute_vox2vox --help' ===
+
+freesurfer compute_vox2vox.c
+Usage:	compute_vox2vox <(4dfp) source> <t4file> <(4dfp) target>
+	option
+
+=== Output of 'compute_vox2vox -help' ===
+
+freesurfer compute_vox2vox.c
+Usage:	compute_vox2vox <(4dfp) source> <t4file> <(4dfp) target>
+	option
+
+=== Output of 'compute_vox2vox' (no arguments) ===
+
+freesurfer compute_vox2vox.c
+Usage:	compute_vox2vox <(4dfp) source> <t4file> <(4dfp) target>
+	option

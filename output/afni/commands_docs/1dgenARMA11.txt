@@ -1,0 +1,173 @@
+
+=== Output of '1dgenARMA11 --help' ===
+
+[7m** FATAL ERROR:[0m Unrecognized option: '--help'
+** Program compile date = Sep 12 2024
+
+=== Output of '1dgenARMA11 -help' ===
+
+Program to generate an ARMA(1,1) time series, for simulation studies.
+Results are written to stdout.
+
+Usage: 1dgenARMA11 [options]
+
+Options:
+========
+ -num N  }  These equivalent options specify the length of the time
+ -len N  }  series vector to generate.
+
+ -nvec M  = The number of time series vectors to generate;
+            if this option is not given, defaults to 1.
+
+ -a a     = Specify ARMA(1,1) parameters 'a'.
+ -b b     = Specify ARMA(1,1) parameter 'b' directly.
+ -lam lam = Specify ARMA(1,1) parameter 'b' indirectly.
+
+ -sig ss  = Set standard deviation of results [default=1].
+ -norm    = Normalize time series so sum of squares is 1.
+ -seed dd = Set random number seed.
+
+  * The correlation coefficient r(k) of noise samples k units apart in time,
+     for k >= 1, is given by r(k) = lam * a^(k-1)
+     where                   lam  = (b+a)(1+a*b)/(1+2*a*b+b*b)
+     (N.B.: lam=a when b=0 -- AR(1) noise has r(k)=a^k for k >= 0)
+     (N.B.: lam=b when a=0 -- MA(1) noise has r(k)=b for k=1, r(k)=0 for k>1)
+  * lam can be bigger or smaller than a, depending on the sign of b:
+     b > 0 means lam > a;  b < 0 means lam < a.
+  * What I call (a,b) here is sometimes called (p,q) in the ARMA literature.
+  * For a noise model which is the sum of AR(1) and white noise, 0 < lam < a
+     (i.e., a > 0  and  -a < b < 0 ).
+
+ -CORcut cc = The exact ARMA(1,1) correlation matrix (for a != 0)
+              has no non-zero entries.  The calculations in this
+              program set correlations below a cutoff to zero.
+              The default cutoff is 0.00010, but can be altered with
+              this option.  The usual reason to use this option is
+              to test the sensitivity of the results to the cutoff.
+
+-----------------------------
+A restricted ARMA(3,1) model:
+-----------------------------
+Skip the '-a', '-b', and '-lam' options, and use a model with 3 roots
+
+ -arma31 a r theta vrat
+
+ where the roots are z = a, z = r*exp(I*theta), z = r*exp(-I*theta)
+ and vrat = s^2/(s^2+w^2) [so 0 < vrat < 1], where s = variance
+ of the pure AR(3) component and w = variance of extra white noise
+ added to the AR(3) process -- this is the 'restricted' ARMA(3,1).
+
+ If the data has given TR, and you want a frequency of f Hz, in
+ the noise model, then theta = 2 * PI * TR * f. If theta > PI,
+ then you are modeling noise beyond the Nyquist frequency and
+ the gods (and this program) won't be happy.
+
+  # csh syntax for 'set' variable assignment commands
+  set nt = 500
+  set tr = 1
+  set df = `ccalc "1/($nt*$tr)"`
+  set f1 = 0.10
+  set t1 = `ccalc "2*PI*$tr*$f1"`
+  1dgenARMA11 -nvec 500 -len $nt -arma31 0.8 0.9 $t1 0.9 -CORcut 0.0001 \
+       | 1dfft -nodetrend stdin: > qqq.1D
+  3dTstat -mean -prefix stdout: qqq.1D \
+       | 1dplot -stdin -num 201 -dt $df -xlabel 'frequency' -ylabel '|FFT|'
+---------------------------------------------------------------------------
+A similar option is now available for a restricted ARMA(5,1) model:
+ -arma51 a r1 theta1 r2 theta2 vrat
+where now the roots are
+ z = a  z = r1*exp(I*theta1)  z = r1*exp(-I*theta1)
+        z = r2*exp(I*theta2)  z = r2*exp(-I*theta2)
+This model allows the simulation of two separate frequencies in the 'noise'.
+---------------------------------------------------------------------------
+
+Author: RWCox [for his own demented and deranged purposes]
+
+Examples:
+  1dgenARMA11 -num 200 -a .8 -lam 0.7 | 1dplot -stdin
+  1dgenARMA11 -num 2000 -a .8 -lam 0.7 | 1dfft -nodetrend stdin: stdout: | 1dplot -stdin
+
+
+=== Output of '1dgenARMA11' (no arguments) ===
+
+Program to generate an ARMA(1,1) time series, for simulation studies.
+Results are written to stdout.
+
+Usage: 1dgenARMA11 [options]
+
+Options:
+========
+ -num N  }  These equivalent options specify the length of the time
+ -len N  }  series vector to generate.
+
+ -nvec M  = The number of time series vectors to generate;
+            if this option is not given, defaults to 1.
+
+ -a a     = Specify ARMA(1,1) parameters 'a'.
+ -b b     = Specify ARMA(1,1) parameter 'b' directly.
+ -lam lam = Specify ARMA(1,1) parameter 'b' indirectly.
+
+ -sig ss  = Set standard deviation of results [default=1].
+ -norm    = Normalize time series so sum of squares is 1.
+ -seed dd = Set random number seed.
+
+  * The correlation coefficient r(k) of noise samples k units apart in time,
+     for k >= 1, is given by r(k) = lam * a^(k-1)
+     where                   lam  = (b+a)(1+a*b)/(1+2*a*b+b*b)
+     (N.B.: lam=a when b=0 -- AR(1) noise has r(k)=a^k for k >= 0)
+     (N.B.: lam=b when a=0 -- MA(1) noise has r(k)=b for k=1, r(k)=0 for k>1)
+  * lam can be bigger or smaller than a, depending on the sign of b:
+     b > 0 means lam > a;  b < 0 means lam < a.
+  * What I call (a,b) here is sometimes called (p,q) in the ARMA literature.
+  * For a noise model which is the sum of AR(1) and white noise, 0 < lam < a
+     (i.e., a > 0  and  -a < b < 0 ).
+
+ -CORcut cc = The exact ARMA(1,1) correlation matrix (for a != 0)
+              has no non-zero entries.  The calculations in this
+              program set correlations below a cutoff to zero.
+              The default cutoff is 0.00010, but can be altered with
+              this option.  The usual reason to use this option is
+              to test the sensitivity of the results to the cutoff.
+
+-----------------------------
+A restricted ARMA(3,1) model:
+-----------------------------
+Skip the '-a', '-b', and '-lam' options, and use a model with 3 roots
+
+ -arma31 a r theta vrat
+
+ where the roots are z = a, z = r*exp(I*theta), z = r*exp(-I*theta)
+ and vrat = s^2/(s^2+w^2) [so 0 < vrat < 1], where s = variance
+ of the pure AR(3) component and w = variance of extra white noise
+ added to the AR(3) process -- this is the 'restricted' ARMA(3,1).
+
+ If the data has given TR, and you want a frequency of f Hz, in
+ the noise model, then theta = 2 * PI * TR * f. If theta > PI,
+ then you are modeling noise beyond the Nyquist frequency and
+ the gods (and this program) won't be happy.
+
+  # csh syntax for 'set' variable assignment commands
+  set nt = 500
+  set tr = 1
+  set df = `ccalc "1/($nt*$tr)"`
+  set f1 = 0.10
+  set t1 = `ccalc "2*PI*$tr*$f1"`
+  1dgenARMA11 -nvec 500 -len $nt -arma31 0.8 0.9 $t1 0.9 -CORcut 0.0001 \
+       | 1dfft -nodetrend stdin: > qqq.1D
+  3dTstat -mean -prefix stdout: qqq.1D \
+       | 1dplot -stdin -num 201 -dt $df -xlabel 'frequency' -ylabel '|FFT|'
+---------------------------------------------------------------------------
+A similar option is now available for a restricted ARMA(5,1) model:
+ -arma51 a r1 theta1 r2 theta2 vrat
+where now the roots are
+ z = a  z = r1*exp(I*theta1)  z = r1*exp(-I*theta1)
+        z = r2*exp(I*theta2)  z = r2*exp(-I*theta2)
+This model allows the simulation of two separate frequencies in the 'noise'.
+---------------------------------------------------------------------------
+
+Author: RWCox [for his own demented and deranged purposes]
+
+Examples:
+  1dgenARMA11 -num 200 -a .8 -lam 0.7 | 1dplot -stdin
+  1dgenARMA11 -num 2000 -a .8 -lam 0.7 | 1dfft -nodetrend stdin: stdout: | 1dplot -stdin
+

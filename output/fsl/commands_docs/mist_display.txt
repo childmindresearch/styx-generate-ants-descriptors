@@ -1,0 +1,24 @@
+
+=== Output of 'mist_display --help' ===
+
+usage: mist_display [-h] {simple,pvals,noscalars} ...
+
+Show scalars on mesh
+
+positional arguments:
+  {simple,pvals,noscalars}
+                        Mode
+    simple              Show scalars with specified range
+    pvals               Show pvals
+    noscalars           Just show mesh
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+=== Output of 'mist_display -help' ===
+
+usage: mist_display [-h] {simple,pvals,noscalars} ...
+mist_display: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'mist_display' (no arguments) ===
+

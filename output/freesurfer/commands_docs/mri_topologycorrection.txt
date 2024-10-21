@@ -1,0 +1,16 @@
+
+=== Output of 'mri_topologycorrection --help' ===
+
+
+Mode:          unknown option --help
+
+=== Output of 'mri_topologycorrection -help' ===
+
+
+Mode:          unknown option -help
+
+=== Output of 'mri_topologycorrection' (no arguments) ===
+
+
+
+Usage: /usr/local/freesurfer/bin/mri_topologycorrection options input_orig_file input_segmented_file output_folder

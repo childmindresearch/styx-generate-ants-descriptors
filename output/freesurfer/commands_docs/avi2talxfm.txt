@@ -1,0 +1,12 @@
+
+=== Output of 'avi2talxfm --help' ===
+
+av2talxfm InVol Targ Vox2Vox XFMOut
+
+=== Output of 'avi2talxfm -help' ===
+
+av2talxfm InVol Targ Vox2Vox XFMOut
+
+=== Output of 'avi2talxfm' (no arguments) ===
+
+av2talxfm InVol Targ Vox2Vox XFMOut

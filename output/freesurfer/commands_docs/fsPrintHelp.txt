@@ -1,0 +1,20 @@
+
+=== Output of 'fsPrintHelp --help' ===
+
+I/O warning : failed to load external entity "/usr/local/freesurfer/docs/xml/--help.help.xml"
+Document not parsed successfully. 
+
+=== Output of 'fsPrintHelp -help' ===
+
+I/O warning : failed to load external entity "/usr/local/freesurfer/docs/xml/-help.help.xml"
+Document not parsed successfully. 
+
+=== Output of 'fsPrintHelp' (no arguments) ===
+
+/dev/stdin:1: parser error : Document is empty
+
+^
+/dev/stdin:1: parser error : Start tag expected, '<' not found
+
+^
+Document not parsed successfully. 

@@ -1,0 +1,159 @@
+
+=== Output of '@Install_SURFLAYERS_DEMO1 --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Install_SURFLAYERS_DEMO1 -help' ===
+
+   
+Overview ~1~
+
+This script fetches 6 driver scripts for 3 datasets from the 2021
+OHBM poster and demo video about SurfLayers by:
+Torrisi, Lauren, Taylor, Park, Feinberg, Glen
+
+The 6 driver scripts work with three different sets of data:
+
+  A) AFNI example 3T FT data with audiovisual paradigm:
+
+        01_drive_AFNISUMA_FT_both 
+        02_drive_AFNISUMA_FT_patch
+
+     Data used with these scripts are distributed in the AFNI Bootcamp 
+     download, specifically in the following directories:
+
+        AFNI_data6/FT_analysis/FT/SUMA/
+            The output of FreeSurfer's recon-all and AFNI's 
+            @SUMA_Make_Spec_FS.
+
+        AFNI_data6/FT_analysis/FT_analysis/FT.results/
+            The output of AFNI's afni_proc.py, specifically directory
+            output by the s05* script in the
+            AFNI_data6/FT_analysis/FT_analysis (but you could use any
+            of the volumetric output dirs from afni_proc.py).
+
+   
+  B) 7T left-hand finger tapping task with accelerated GRASE data:
+ 
+        03_drive_AFNISUMA_M1_hemiOne 
+        04_drive_AFNISUMA_M1_hemiSpec
+
+     Data used with these scripts are included in this demo.
+  
+  C) 7T retinotopic 'meridian mapping' also with accelerated GRASE:
+
+        05_drive_AFNISUMA_V1_calcarine
+        06_drive_AFNISUMA_V1_20surfs
+
+     Data used with these scripts are included in this demo.
+   
+After the archive is downloaded and unpacked, see its README.txt
+for details.
+
+Options ~1~
+
+   [-wget] : Use wget to download archive. Script chooses by default
+             with preference for curl
+   [-curl] : Use curl to download archive. Script chooses by default
+             with preference for curl
+
+Examples ~1~
+
+1) Just get everything, default operation:
+
+    @Install_SURFLAYERS_DEMO1
+
+2) Get everything, specify download tool:
+
+    @Install_SURFLAYERS_DEMO1 -wget
+
+
+
+=== Output of '@Install_SURFLAYERS_DEMO1' (no arguments) ===
+
+++ Going to fetch demo:  SURFLAYERS_DEMO1
+/usr/bin/curl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 11 50.3M   11 6064k    0     0  17.7M      0  0:00:02 --:--:--  0:00:02 17.6M 62 50.3M   62 31.6M    0     0  23.7M      0  0:00:02  0:00:01  0:00:01 23.6M100 50.3M  100 50.3M    0     0  24.5M      0  0:00:02  0:00:02 --:--:-- 24.5M
+SURFLAYERS_DEMO1/
+SURFLAYERS_DEMO1/._.DS_Store
+SURFLAYERS_DEMO1/.DS_Store
+SURFLAYERS_DEMO1/s06_afni_sl_demo_V1_20surfs
+SURFLAYERS_DEMO1/s04_afni_sl_demo_M1_hemiSpec
+SURFLAYERS_DEMO1/s02_afni_sl_demo_FT_patch
+SURFLAYERS_DEMO1/s01_afni_sl_demo_FT_both
+SURFLAYERS_DEMO1/s03_afni_sl_demo_M1_hemiOne
+SURFLAYERS_DEMO1/README.txt
+SURFLAYERS_DEMO1/._dataset3
+SURFLAYERS_DEMO1/dataset3/
+SURFLAYERS_DEMO1/dataset2/
+SURFLAYERS_DEMO1/s05_afni_sl_demo_V1_calcarine
+SURFLAYERS_DEMO1/dataset2/anat_final.fig9_M1_crop.nii
+SURFLAYERS_DEMO1/dataset2/._.DS_Store
+SURFLAYERS_DEMO1/dataset2/.DS_Store
+SURFLAYERS_DEMO1/dataset2/stats.csgrase_fig9_M1_vol_REML.nii
+SURFLAYERS_DEMO1/dataset2/._surflayers_reg_and_inf
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/rh.pial.gii
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/._newspec.spec
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/newspec.spec
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/._rh.smoothwm.gii
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/rh.smoothwm.gii
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/inf.surf.rh.01.gii
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/inf.surf.rh.02.gii
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/._rh.inf.smoothwm_240.gii
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/rh.inf.smoothwm_240.gii
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/rh.inf.pial_240.gii
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/isurf.rh.02.gii
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/._isurf.rh.01.gii
+SURFLAYERS_DEMO1/dataset2/surflayers_reg_and_inf/isurf.rh.01.gii
+SURFLAYERS_DEMO1/dataset3/anat_final.bowties_crop.nii
+SURFLAYERS_DEMO1/dataset3/patch04/
+SURFLAYERS_DEMO1/dataset3/patch20/
+SURFLAYERS_DEMO1/dataset3/._stats.bowties_new2_VOL_csgrase_REML.nii
+SURFLAYERS_DEMO1/dataset3/stats.bowties_new2_VOL_csgrase_REML.nii
+SURFLAYERS_DEMO1/dataset3/patch20/._SurfPatch_A.gii
+SURFLAYERS_DEMO1/dataset3/patch20/SurfPatch_A.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.18.gii
+SURFLAYERS_DEMO1/dataset3/patch20/SurfPatch_B.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.19.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.09.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.08.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.20.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.06.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.12.gii
+SURFLAYERS_DEMO1/dataset3/patch20/._isurf.lh.13.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.13.gii
+SURFLAYERS_DEMO1/dataset3/patch20/._isurf.lh.07.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.07.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.11.gii
+SURFLAYERS_DEMO1/dataset3/patch20/._isurf.lh.05.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.05.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.04.gii
+SURFLAYERS_DEMO1/dataset3/patch20/._isurf.lh.10.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.10.gii
+SURFLAYERS_DEMO1/dataset3/patch20/._isurf.lh.14.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.14.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.01.gii
+SURFLAYERS_DEMO1/dataset3/patch20/._isurf.lh.15.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.15.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.03.gii
+SURFLAYERS_DEMO1/dataset3/patch20/._isurf.lh.17.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.17.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.16.gii
+SURFLAYERS_DEMO1/dataset3/patch20/._isurf.lh.02.gii
+SURFLAYERS_DEMO1/dataset3/patch20/isurf.lh.02.gii
+SURFLAYERS_DEMO1/dataset3/patch04/.DS_Store
+SURFLAYERS_DEMO1/dataset3/patch04/SurfPatch_A.gii
+SURFLAYERS_DEMO1/dataset3/patch04/SurfPatch_B.gii
+SURFLAYERS_DEMO1/dataset3/patch04/._isurf.lh.04.gii
+SURFLAYERS_DEMO1/dataset3/patch04/isurf.lh.04.gii
+SURFLAYERS_DEMO1/dataset3/patch04/._isurf.lh.01.gii
+SURFLAYERS_DEMO1/dataset3/patch04/isurf.lh.01.gii
+SURFLAYERS_DEMO1/dataset3/patch04/._isurf.lh.03.gii
+SURFLAYERS_DEMO1/dataset3/patch04/isurf.lh.03.gii
+SURFLAYERS_DEMO1/dataset3/patch04/._isurf.lh.02.gii
+SURFLAYERS_DEMO1/dataset3/patch04/isurf.lh.02.gii
+Follow examples in ./SURFLAYERS_DEMO1/README.txt 
+********************************************************

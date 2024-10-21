@@ -1,0 +1,78 @@
+
+=== Output of '@afni_refacer_make_master --help' ===
+
+** ERROR in @afni_refacer_make_master: need at least 9 input datasets
+
+=== Output of '@afni_refacer_make_master -help' ===
+
+
+Usage:
+   @afni_refacer_make_master list-of-datasets
+
+* This script makes a new mask/shell dataset for use with
+   @afni_refacer_run. You probably do not need to run this script.
+* This script has no options. The command line should be
+   a list of T1-weighted dataset names that have NOT been
+   skull-stripped or defaced or refaced.
+* The output is a dataset afni_refacer_shell.nii.gz that
+   contains the average 'face', which will be applied in
+   script @afni_refacer_run.
+* Where I say 'face', I mean 'non-brain tissue', which includes
+   some skull regions, thus altering the outer shape of the
+   head to some extent (including the ears).
+* A minimum of 9 input datasets is required; 20 is probably
+   enough to produce a master for refacing purposes.
+* This script depends on the existence of two datasets:
+   MNI152_2009_template_SSW.nii.gz = MNI-space skull stripping template
+   afni_refacer_MNIbmask10.nii.gz  = MNI-space dilated brain mask
+* These datasets should be in the AFNI executable directory, and are
+   supplied with the pre-compiled AFNI binaries.
+* The first dataset is used (by @afni_refacer_make_onebigA12 and
+   @afni_refacer_run) to align a dataset to MNI space
+* The second dataset is used to mask off the brain region when making
+   the output dataset afni_refacer_shell.nii.gz
+* Modifying this script, and the other @afni_refacer_XXX scripts, to
+   use a different template will require replacing the two datasets
+   listed above appropriately.
+* And possibly modifying the 3dcalc command 'extend it downwards',
+   below.
+
+Author - The Face of Imperial Zhark, Who is Terrible to Behold!
+
+
+=== Output of '@afni_refacer_make_master' (no arguments) ===
+
+
+Usage:
+   @afni_refacer_make_master list-of-datasets
+
+* This script makes a new mask/shell dataset for use with
+   @afni_refacer_run. You probably do not need to run this script.
+* This script has no options. The command line should be
+   a list of T1-weighted dataset names that have NOT been
+   skull-stripped or defaced or refaced.
+* The output is a dataset afni_refacer_shell.nii.gz that
+   contains the average 'face', which will be applied in
+   script @afni_refacer_run.
+* Where I say 'face', I mean 'non-brain tissue', which includes
+   some skull regions, thus altering the outer shape of the
+   head to some extent (including the ears).
+* A minimum of 9 input datasets is required; 20 is probably
+   enough to produce a master for refacing purposes.
+* This script depends on the existence of two datasets:
+   MNI152_2009_template_SSW.nii.gz = MNI-space skull stripping template
+   afni_refacer_MNIbmask10.nii.gz  = MNI-space dilated brain mask
+* These datasets should be in the AFNI executable directory, and are
+   supplied with the pre-compiled AFNI binaries.
+* The first dataset is used (by @afni_refacer_make_onebigA12 and
+   @afni_refacer_run) to align a dataset to MNI space
+* The second dataset is used to mask off the brain region when making
+   the output dataset afni_refacer_shell.nii.gz
+* Modifying this script, and the other @afni_refacer_XXX scripts, to
+   use a different template will require replacing the two datasets
+   listed above appropriately.
+* And possibly modifying the 3dcalc command 'extend it downwards',
+   below.
+
+Author - The Face of Imperial Zhark, Who is Terrible to Behold!
+

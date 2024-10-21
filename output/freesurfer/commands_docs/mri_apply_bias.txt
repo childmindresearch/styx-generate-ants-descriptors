@@ -1,0 +1,12 @@
+
+=== Output of 'mri_apply_bias --help' ===
+
+unknown option --help
+
+=== Output of 'mri_apply_bias -help' ===
+
+unknown option -help
+
+=== Output of 'mri_apply_bias' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_apply_bias [options] <input vol> <bias vol> <output volume>

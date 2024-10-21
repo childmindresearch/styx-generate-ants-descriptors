@@ -1,0 +1,45 @@
+
+=== Output of 'mri_compute_overlap --help' ===
+
+unknown option --help
+
+=== Output of 'mri_compute_overlap -help' ===
+
+
+mri_compute_overlap
+
+Computes three different types of overlap measures either for all the existing labels
+in the input volumes or a subset of them that the users lists in the command line. The
+three overlap measures are the following: 
+(1) `volume difference` = 2*|A|-|B|/|A|+|B|
+(2) `volume overlap (Dice)`    = 2*|AB|/|A|+|B|; the intersection over the mean of the segmentation volumes
+(3) `volume overlap (Jaccard)` = |AB|/|A+B|; the intersection over the union of the segmentation volumes
+
+
+usage: /usr/local/freesurfer/bin/mri_compute_overlap [options] <volume 1> <volume 2> ... <volume N> [label numbers]
+
+Options:
+  -a		compute overlap of all labels (if missing, labels of interest should be listed)
+  -s		show label name for segmentation
+  -total	compute the total overlap (# of voxels that are the same)
+  -nosummary	not computing total label summary
+  -mask <vol>	limit the domain of the calculation to the nonzero voxels in <vol>
+  -l <fname>	filename to write results to
+  -q		do not display results on std display (default is false; if -l is used, this option is set)
+  -t <l1>  <l2>	translating label l1 to label l2
+  -h		print help
+
+=== Output of 'mri_compute_overlap' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_compute_overlap [options] <volume 1> <volume 2> ... <volume N> [label numbers]
+
+Options:
+  -a		compute overlap of all labels (if missing, labels of interest should be listed)
+  -s		show label name for segmentation
+  -total	compute the total overlap (# of voxels that are the same)
+  -nosummary	not computing total label summary
+  -mask <vol>	limit the domain of the calculation to the nonzero voxels in <vol>
+  -l <fname>	filename to write results to
+  -q		do not display results on std display (default is false; if -l is used, this option is set)
+  -t <l1>  <l2>	translating label l1 to label l2
+  -h		print help

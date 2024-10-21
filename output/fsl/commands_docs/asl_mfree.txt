@@ -1,0 +1,95 @@
+
+=== Output of 'asl_mfree --help' ===
+
+v1.0.1-dirty (Mon Aug 5 11:15:23 2019)
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+asl_mfree
+
+Usage: 
+asl_mfree --verbose
+
+
+Compulsory arguments (You MUST set one or more of):
+	--data,--datafile	ASL data file
+	--mask	mask
+	--out	Output directory name
+	--aif	Arterial input functions for deconvolution (4D volume, one aif for each voxel within mask)
+	--dt	Temporal spacing in data (s)
+
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	--metric	Metric image
+	--mthresh	Metric threshold
+
+	--tcorrect	Apply correction for timing difference between AIF and tissue curve
+	--bata	arterial BAT image
+	--batt	tissue BAT image
+	--bat	Estimate tissue BAT from data (and save this image)
+	--bat_grad_thr	Edge detection gradient threshold (default: 0.2)
+	--t1	T1 (of blood) value
+	--fa	Flip angle (if using LL readout)
+	--std	Calculate standard deviations on perfusion values using wild bootstrapping
+	--nwb	Number of permuatations for wild bootstrapping 
+
+	--turbo_quasar	Specify this is a Turbo QUASAR Sequence
+	--shift_factor	Slice shifting factor in Turbo QUASAR <default value: 1> 
+
+
+
+
+Not all of the compulsory arguments have been provided
+
+=== Output of 'asl_mfree -help' ===
+
+v1.0.1-dirty (Mon Aug 5 11:15:23 2019)
+
+-e: Option doesn't exist!
+
+=== Output of 'asl_mfree' (no arguments) ===
+
+v1.0.1-dirty (Mon Aug 5 11:15:23 2019)
+
+
+
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+asl_mfree
+
+Usage: 
+asl_mfree --verbose
+
+
+Compulsory arguments (You MUST set one or more of):
+	--data,--datafile	ASL data file
+	--mask	mask
+	--out	Output directory name
+	--aif	Arterial input functions for deconvolution (4D volume, one aif for each voxel within mask)
+	--dt	Temporal spacing in data (s)
+
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	--metric	Metric image
+	--mthresh	Metric threshold
+
+	--tcorrect	Apply correction for timing difference between AIF and tissue curve
+	--bata	arterial BAT image
+	--batt	tissue BAT image
+	--bat	Estimate tissue BAT from data (and save this image)
+	--bat_grad_thr	Edge detection gradient threshold (default: 0.2)
+	--t1	T1 (of blood) value
+	--fa	Flip angle (if using LL readout)
+	--std	Calculate standard deviations on perfusion values using wild bootstrapping
+	--nwb	Number of permuatations for wild bootstrapping 
+
+	--turbo_quasar	Specify this is a Turbo QUASAR Sequence
+	--shift_factor	Slice shifting factor in Turbo QUASAR <default value: 1> 
+
+
+
+
+Not all of the compulsory arguments have been provided

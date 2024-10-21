@@ -1,0 +1,52 @@
+
+=== Output of 'mris_register_to_label --help' ===
+
+
+mris_register_to_label
+  --surf surface
+  --reg regfile
+  --mri_reg fvol
+
+
+  --cost costfile
+
+  --mov volfname : volume on which label points are specified
+  --res resolution
+  --max_rot angle : max angle (degrees) to search over
+  --max_trans dist :max translation (mm) to search over
+  --s subject     : specify name of subject (for register.dat file)
+  --label <label>   : load label <label> and limit calculations to it
+
+  --out-reg outreg : reg at lowest cost (updated continuously)
+  --downsample N : downsample input volume by a factor of N
+
+
+7.4.1
+
+
+=== Output of 'mris_register_to_label -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mris_register_to_label' (no arguments) ===
+
+
+mris_register_to_label
+  --surf surface
+  --reg regfile
+  --mri_reg fvol
+
+
+  --cost costfile
+
+  --mov volfname : volume on which label points are specified
+  --res resolution
+  --max_rot angle : max angle (degrees) to search over
+  --max_trans dist :max translation (mm) to search over
+  --s subject     : specify name of subject (for register.dat file)
+  --label <label>   : load label <label> and limit calculations to it
+
+  --out-reg outreg : reg at lowest cost (updated continuously)
+  --downsample N : downsample input volume by a factor of N
+

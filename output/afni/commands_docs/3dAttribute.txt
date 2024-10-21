@@ -1,0 +1,180 @@
+
+=== Output of '3dAttribute --help' ===
+
+Usage ~1~
+
+3dAttribute [options] aname dset
+
+Prints (to stdout) the value of the attribute 'aname' from
+the header of dataset 'dset'.  If the attribute doesn't exist,
+prints nothing and sets the exit status to 1.
+
+See the full list of attributes in README.attributes here:
+  https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.attributes.html
+
+Options ~1~
+
+  -name = Include attribute name in printout
+  -all  = Print all attributes [don't put aname on command line]
+          Also implies '-name'.  Attributes print in whatever order
+          they are in the .HEAD file, one per line.  You may want
+          to do '3dAttribute -all elvis+orig | sort' to get them
+          in alphabetical order.
+  -center = Center of volume in RAI coordinates.
+            Note that center is not itself an attribute in the 
+           .HEAD file. It is calculated from other attributes.
+
+  Special options for string attributes:
+
+    -ssep SSEP    Use string SSEP as a separator between strings for
+                  multiple sub-bricks. The default is '~', which is what
+                  is used internally in AFNI's .HEAD file. For tcsh,
+                  I recommend ' ' which makes parsing easy, assuming each
+                  individual string contains no spaces to begin with.
+                  Try -ssep 'NUM'
+    -sprep SPREP  Use string SPREP to replace blank space in string 
+                  attributes.
+    -quote        Use single quote around each string.
+
+Examples ~1~
+
+  3dAttribute -quote -ssep ' '  BRICK_LABS SomeStatDset+tlrc.HEAD
+
+  3dAttribute -quote -ssep 'NUM' -sprep '+' BRICK_LABS SomeStatDset+tlrc.HEAD
+
+  3dAttribute BRICK_STATAUX SomeStatDset+tlrc.HEAD'[0]'
+  # ... which outputs information for just the [0]th brick of a dset.
+  # If that dset were an F-stat, then the output might look like:
+  #    0 4 2 2 430
+  # ... which, in order, translate to:
+  #    0 --> the index of the brick in question
+  #    4 --> the brick's statistical code, findable in README.attributes:
+  #          '#define FUNC_FT_TYPE    4  /* fift: F-statistic */'
+  #          to be an F-statistic
+  #    2 --> the number of parameters for that stat (shown subsequently)
+  #    2 --> here, the 1st parameter for the F-stat: 'Numerator DOF'
+  #  430 --> here, the 2nd parameter for the F-stat: 'Denominator DOF'
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dAttribute -help' ===
+
+Usage ~1~
+
+3dAttribute [options] aname dset
+
+Prints (to stdout) the value of the attribute 'aname' from
+the header of dataset 'dset'.  If the attribute doesn't exist,
+prints nothing and sets the exit status to 1.
+
+See the full list of attributes in README.attributes here:
+  https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.attributes.html
+
+Options ~1~
+
+  -name = Include attribute name in printout
+  -all  = Print all attributes [don't put aname on command line]
+          Also implies '-name'.  Attributes print in whatever order
+          they are in the .HEAD file, one per line.  You may want
+          to do '3dAttribute -all elvis+orig | sort' to get them
+          in alphabetical order.
+  -center = Center of volume in RAI coordinates.
+            Note that center is not itself an attribute in the 
+           .HEAD file. It is calculated from other attributes.
+
+  Special options for string attributes:
+
+    -ssep SSEP    Use string SSEP as a separator between strings for
+                  multiple sub-bricks. The default is '~', which is what
+                  is used internally in AFNI's .HEAD file. For tcsh,
+                  I recommend ' ' which makes parsing easy, assuming each
+                  individual string contains no spaces to begin with.
+                  Try -ssep 'NUM'
+    -sprep SPREP  Use string SPREP to replace blank space in string 
+                  attributes.
+    -quote        Use single quote around each string.
+
+Examples ~1~
+
+  3dAttribute -quote -ssep ' '  BRICK_LABS SomeStatDset+tlrc.HEAD
+
+  3dAttribute -quote -ssep 'NUM' -sprep '+' BRICK_LABS SomeStatDset+tlrc.HEAD
+
+  3dAttribute BRICK_STATAUX SomeStatDset+tlrc.HEAD'[0]'
+  # ... which outputs information for just the [0]th brick of a dset.
+  # If that dset were an F-stat, then the output might look like:
+  #    0 4 2 2 430
+  # ... which, in order, translate to:
+  #    0 --> the index of the brick in question
+  #    4 --> the brick's statistical code, findable in README.attributes:
+  #          '#define FUNC_FT_TYPE    4  /* fift: F-statistic */'
+  #          to be an F-statistic
+  #    2 --> the number of parameters for that stat (shown subsequently)
+  #    2 --> here, the 1st parameter for the F-stat: 'Numerator DOF'
+  #  430 --> here, the 2nd parameter for the F-stat: 'Denominator DOF'
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dAttribute' (no arguments) ===
+
+Usage ~1~
+
+3dAttribute [options] aname dset
+
+Prints (to stdout) the value of the attribute 'aname' from
+the header of dataset 'dset'.  If the attribute doesn't exist,
+prints nothing and sets the exit status to 1.
+
+See the full list of attributes in README.attributes here:
+  https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.attributes.html
+
+Options ~1~
+
+  -name = Include attribute name in printout
+  -all  = Print all attributes [don't put aname on command line]
+          Also implies '-name'.  Attributes print in whatever order
+          they are in the .HEAD file, one per line.  You may want
+          to do '3dAttribute -all elvis+orig | sort' to get them
+          in alphabetical order.
+  -center = Center of volume in RAI coordinates.
+            Note that center is not itself an attribute in the 
+           .HEAD file. It is calculated from other attributes.
+
+  Special options for string attributes:
+
+    -ssep SSEP    Use string SSEP as a separator between strings for
+                  multiple sub-bricks. The default is '~', which is what
+                  is used internally in AFNI's .HEAD file. For tcsh,
+                  I recommend ' ' which makes parsing easy, assuming each
+                  individual string contains no spaces to begin with.
+                  Try -ssep 'NUM'
+    -sprep SPREP  Use string SPREP to replace blank space in string 
+                  attributes.
+    -quote        Use single quote around each string.
+
+Examples ~1~
+
+  3dAttribute -quote -ssep ' '  BRICK_LABS SomeStatDset+tlrc.HEAD
+
+  3dAttribute -quote -ssep 'NUM' -sprep '+' BRICK_LABS SomeStatDset+tlrc.HEAD
+
+  3dAttribute BRICK_STATAUX SomeStatDset+tlrc.HEAD'[0]'
+  # ... which outputs information for just the [0]th brick of a dset.
+  # If that dset were an F-stat, then the output might look like:
+  #    0 4 2 2 430
+  # ... which, in order, translate to:
+  #    0 --> the index of the brick in question
+  #    4 --> the brick's statistical code, findable in README.attributes:
+  #          '#define FUNC_FT_TYPE    4  /* fift: F-statistic */'
+  #          to be an F-statistic
+  #    2 --> the number of parameters for that stat (shown subsequently)
+  #    2 --> here, the 1st parameter for the F-stat: 'Numerator DOF'
+  #  430 --> here, the 2nd parameter for the F-stat: 'Denominator DOF'
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

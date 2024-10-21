@@ -1,0 +1,30 @@
+
+=== Output of 'mri_threshold --help' ===
+
+
+This program will lower threshold an input volume
+
+Options:
+
+  -B bval: It will binarize the output volume to be bval.
+  -U Instead of lower thresholding the volume it will upper threshold it.
+  -F fnum: Apply thresholding to a specific frame indexed by fnum.
+  -? : print usage
+
+=== Output of 'mri_threshold -help' ===
+
+unknown option -help
+usage: /usr/local/freesurfer/bin/mri_threshold [options] <in vol> <thresh> <out_vol>
+
+=== Output of 'mri_threshold' (no arguments) ===
+
+
+This program will lower threshold an input volume
+usage: /usr/local/freesurfer/bin/mri_threshold [options] <in vol> <thresh> <out_vol>
+
+Options:
+
+  -B bval: It will binarize the output volume to be bval.
+  -U Instead of lower thresholding the volume it will upper threshold it.
+  -F fnum: Apply thresholding to a specific frame indexed by fnum.
+  -? : print usage

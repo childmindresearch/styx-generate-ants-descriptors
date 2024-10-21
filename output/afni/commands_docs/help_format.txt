@@ -1,0 +1,16 @@
+
+=== Output of 'help_format --help' ===
+
+<tt>
+</tt>
+
+=== Output of 'help_format -help' ===
+
+Reads from stdin; lines with http://... hyperlinks
+get converted into HTML <a href=...> hyperlinks.
+Purpose: formatting AFNI '-help' files for the Web.
+
+=== Output of 'help_format' (no arguments) ===
+
+<tt>
+</tt>

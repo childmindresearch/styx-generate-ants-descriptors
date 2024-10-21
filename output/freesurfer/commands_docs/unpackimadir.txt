@@ -1,0 +1,16 @@
+
+=== Output of 'unpackimadir --help' ===
+
+unpackimadir 7.4.1
+Mon Oct 21 20:22:00 UTC 2024
+ERROR: must specify a source directory
+
+=== Output of 'unpackimadir -help' ===
+
+unpackimadir 7.4.1
+Mon Oct 21 20:22:00 UTC 2024
+ERROR: must specify a source directory
+
+=== Output of 'unpackimadir' (no arguments) ===
+
+USAGE: unpackimadir -src sourcedir -targ targdir

@@ -1,0 +1,228 @@
+
+=== Output of 'antsBrainExtraction.sh --help' ===
+
+
+antsBrainExtraction.sh performs template-based brain extraction.
+
+Usage:
+
+antsBrainExtraction.sh -d imageDimension
+              -a anatomicalImage
+              -e brainExtractionTemplate
+              -m brainExtractionProbabilityMask
+              <OPT_ARGS>
+              -o outputPrefix
+
+Example:
+
+  bash /opt/ants/bin/antsBrainExtraction.sh -d 3 -a t1.nii.gz -e brainWithSkullTemplate.nii.gz -m brainPrior.nii.gz -o output
+
+Required arguments:
+
+     -d:  Image dimension                       2 or 3 for 2- or 3-dimensional image (default = 3)
+     -a:  Anatomical image                      Structural image, typically T1.  If more than one
+                                                anatomical image is specified, subsequently specified
+                                                images are used during the segmentation process.  However,
+                                                only the first image is used in the registration of priors.
+                                                Our suggestion would be to specify the T1 as the first image.
+     -e:  Brain extraction template             Anatomical template.
+     -m:  Brain extraction probability mask     Brain probability mask, with intensity range 1 (definitely brain)
+                                                to 0 (definitely background).
+     -o:  Output prefix                         Output directory + file prefix.
+
+Optional arguments:
+
+     -c:  Tissue classification                 A k-means segmentation is run to find gray or white matter around
+                                                the edge of the initial brain mask warped from the template.
+                                                This produces a segmentation image with K classes, ordered by mean
+                                                intensity in increasing order. With this option, you can control
+                                                K and tell the script which classes represent CSF, gray and white matter.
+                                                Format (\"KxcsfLabelxgmLabelxwmLabel\").
+                                                Examples:
+                                                         -c 3x1x2x3 for T1 with K=3, CSF=1, GM=2, WM=3 (default)
+                                                         -c 3x3x2x1 for T2 with K=3, CSF=3, GM=2, WM=1
+                                                         -c 3x1x3x2 for FLAIR with K=3, CSF=1 GM=3, WM=2
+                                                         -c 4x4x2x3 uses K=4, CSF=4, GM=2, WM=3
+
+     -f:  Brain extraction registration mask    Mask used for registration to limit the metric computation to
+                                                a specific region.
+
+     -k:  Keep temporary files                  Keep brain extraction/segmentation warps, etc (default = 0).
+
+     -q:  Use single floating point precision   Use antsRegistration with single (1) or double (0) floating point precision (default = 0).
+
+     -r:  Initial moving transform              An ITK affine transform (eg, from antsAI or ITK-SNAP) for the moving image.
+                                                Without this option, this script calls antsAI to search for a good initial moving
+                                                transform.
+
+     -R:  Rotation search parameters            Rotation search parameters for antsAI in format step,arcFraction. The step is in
+                                                degrees, the arc fraction goes from 0 (no search) to 1 (search -180 to 180
+                                                degree rotations in increements of step). The search begins at -(180*arcFraction)
+                                                in each dimension - users should choose parameters so that there is a search point
+                                                near zero rotation. Default = 20,0.12.
+
+     -s:  Image file suffix                     Any of the standard ITK IO formats e.g. nrrd, nii.gz, mhd (default = nii.gz)
+
+     -T:  Translation search parameters         Translation search parameters for antsAI in format step,range. The step is in
+                                                mm, -range to range will be tested in each dimension. The default does not search
+                                                left-right translations because the brain is usually well-centered along this
+                                                dimension in human images. Default = 40,0x40x40.
+
+     -u:  Use random seeding                    Use random number generated from system clock (1) or a fixed seed (0). To produce identical
+                                                results, multi-threading must also be disabled by setting the environment variable
+                                                ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1. Default = 1.
+
+     -z:  Test / debug mode                     If > 0, runs a faster version of the script. Only for debugging, results will not be good.
+
+
+=== Output of 'antsBrainExtraction.sh -help' ===
+
+
+antsBrainExtraction.sh performs template-based brain extraction.
+
+Usage:
+
+antsBrainExtraction.sh -d imageDimension
+              -a anatomicalImage
+              -e brainExtractionTemplate
+              -m brainExtractionProbabilityMask
+              <OPT_ARGS>
+              -o outputPrefix
+
+Example:
+
+  bash /opt/ants/bin/antsBrainExtraction.sh -d 3 -a t1.nii.gz -e brainWithSkullTemplate.nii.gz -m brainPrior.nii.gz -o output
+
+Required arguments:
+
+     -d:  Image dimension                       2 or 3 for 2- or 3-dimensional image (default = 3)
+     -a:  Anatomical image                      Structural image, typically T1.  If more than one
+                                                anatomical image is specified, subsequently specified
+                                                images are used during the segmentation process.  However,
+                                                only the first image is used in the registration of priors.
+                                                Our suggestion would be to specify the T1 as the first image.
+     -e:  Brain extraction template             Anatomical template.
+     -m:  Brain extraction probability mask     Brain probability mask, with intensity range 1 (definitely brain)
+                                                to 0 (definitely background).
+     -o:  Output prefix                         Output directory + file prefix.
+
+Optional arguments:
+
+     -c:  Tissue classification                 A k-means segmentation is run to find gray or white matter around
+                                                the edge of the initial brain mask warped from the template.
+                                                This produces a segmentation image with K classes, ordered by mean
+                                                intensity in increasing order. With this option, you can control
+                                                K and tell the script which classes represent CSF, gray and white matter.
+                                                Format (\"KxcsfLabelxgmLabelxwmLabel\").
+                                                Examples:
+                                                         -c 3x1x2x3 for T1 with K=3, CSF=1, GM=2, WM=3 (default)
+                                                         -c 3x3x2x1 for T2 with K=3, CSF=3, GM=2, WM=1
+                                                         -c 3x1x3x2 for FLAIR with K=3, CSF=1 GM=3, WM=2
+                                                         -c 4x4x2x3 uses K=4, CSF=4, GM=2, WM=3
+
+     -f:  Brain extraction registration mask    Mask used for registration to limit the metric computation to
+                                                a specific region.
+
+     -k:  Keep temporary files                  Keep brain extraction/segmentation warps, etc (default = 0).
+
+     -q:  Use single floating point precision   Use antsRegistration with single (1) or double (0) floating point precision (default = 0).
+
+     -r:  Initial moving transform              An ITK affine transform (eg, from antsAI or ITK-SNAP) for the moving image.
+                                                Without this option, this script calls antsAI to search for a good initial moving
+                                                transform.
+
+     -R:  Rotation search parameters            Rotation search parameters for antsAI in format step,arcFraction. The step is in
+                                                degrees, the arc fraction goes from 0 (no search) to 1 (search -180 to 180
+                                                degree rotations in increements of step). The search begins at -(180*arcFraction)
+                                                in each dimension - users should choose parameters so that there is a search point
+                                                near zero rotation. Default = 20,0.12.
+
+     -s:  Image file suffix                     Any of the standard ITK IO formats e.g. nrrd, nii.gz, mhd (default = nii.gz)
+
+     -T:  Translation search parameters         Translation search parameters for antsAI in format step,range. The step is in
+                                                mm, -range to range will be tested in each dimension. The default does not search
+                                                left-right translations because the brain is usually well-centered along this
+                                                dimension in human images. Default = 40,0x40x40.
+
+     -u:  Use random seeding                    Use random number generated from system clock (1) or a fixed seed (0). To produce identical
+                                                results, multi-threading must also be disabled by setting the environment variable
+                                                ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1. Default = 1.
+
+     -z:  Test / debug mode                     If > 0, runs a faster version of the script. Only for debugging, results will not be good.
+
+
+=== Output of 'antsBrainExtraction.sh' (no arguments) ===
+
+
+antsBrainExtraction.sh performs template-based brain extraction.
+
+Usage:
+
+antsBrainExtraction.sh -d imageDimension
+              -a anatomicalImage
+              -e brainExtractionTemplate
+              -m brainExtractionProbabilityMask
+              <OPT_ARGS>
+              -o outputPrefix
+
+Example:
+
+  bash /opt/ants/bin/antsBrainExtraction.sh -d 3 -a t1.nii.gz -e brainWithSkullTemplate.nii.gz -m brainPrior.nii.gz -o output
+
+Required arguments:
+
+     -d:  Image dimension                       2 or 3 for 2- or 3-dimensional image (default = 3)
+     -a:  Anatomical image                      Structural image, typically T1.  If more than one
+                                                anatomical image is specified, subsequently specified
+                                                images are used during the segmentation process.  However,
+                                                only the first image is used in the registration of priors.
+                                                Our suggestion would be to specify the T1 as the first image.
+     -e:  Brain extraction template             Anatomical template.
+     -m:  Brain extraction probability mask     Brain probability mask, with intensity range 1 (definitely brain)
+                                                to 0 (definitely background).
+     -o:  Output prefix                         Output directory + file prefix.
+
+Optional arguments:
+
+     -c:  Tissue classification                 A k-means segmentation is run to find gray or white matter around
+                                                the edge of the initial brain mask warped from the template.
+                                                This produces a segmentation image with K classes, ordered by mean
+                                                intensity in increasing order. With this option, you can control
+                                                K and tell the script which classes represent CSF, gray and white matter.
+                                                Format (\"KxcsfLabelxgmLabelxwmLabel\").
+                                                Examples:
+                                                         -c 3x1x2x3 for T1 with K=3, CSF=1, GM=2, WM=3 (default)
+                                                         -c 3x3x2x1 for T2 with K=3, CSF=3, GM=2, WM=1
+                                                         -c 3x1x3x2 for FLAIR with K=3, CSF=1 GM=3, WM=2
+                                                         -c 4x4x2x3 uses K=4, CSF=4, GM=2, WM=3
+
+     -f:  Brain extraction registration mask    Mask used for registration to limit the metric computation to
+                                                a specific region.
+
+     -k:  Keep temporary files                  Keep brain extraction/segmentation warps, etc (default = 0).
+
+     -q:  Use single floating point precision   Use antsRegistration with single (1) or double (0) floating point precision (default = 0).
+
+     -r:  Initial moving transform              An ITK affine transform (eg, from antsAI or ITK-SNAP) for the moving image.
+                                                Without this option, this script calls antsAI to search for a good initial moving
+                                                transform.
+
+     -R:  Rotation search parameters            Rotation search parameters for antsAI in format step,arcFraction. The step is in
+                                                degrees, the arc fraction goes from 0 (no search) to 1 (search -180 to 180
+                                                degree rotations in increements of step). The search begins at -(180*arcFraction)
+                                                in each dimension - users should choose parameters so that there is a search point
+                                                near zero rotation. Default = 20,0.12.
+
+     -s:  Image file suffix                     Any of the standard ITK IO formats e.g. nrrd, nii.gz, mhd (default = nii.gz)
+
+     -T:  Translation search parameters         Translation search parameters for antsAI in format step,range. The step is in
+                                                mm, -range to range will be tested in each dimension. The default does not search
+                                                left-right translations because the brain is usually well-centered along this
+                                                dimension in human images. Default = 40,0x40x40.
+
+     -u:  Use random seeding                    Use random number generated from system clock (1) or a fixed seed (0). To produce identical
+                                                results, multi-threading must also be disabled by setting the environment variable
+                                                ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1. Default = 1.
+
+     -z:  Test / debug mode                     If > 0, runs a faster version of the script. Only for debugging, results will not be good.
+

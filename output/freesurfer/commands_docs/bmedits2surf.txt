@@ -1,0 +1,85 @@
+
+=== Output of 'bmedits2surf --help' ===
+
+
+bmedits2surf --s subject
+ --self : output will be on self instead of fsaverage
+ --overwrite : force overwriting of existing results
+ --tmp tmpdir, --cleanup, --no-cleanup, --debug 
+ --lh, --rh : only do one hemi
+ --no-surfs : do not computes surfs, only stats
+ 
+ --help : without it you are helpless
+ 
+bmedits2surf 7.4.1
+
+This program computes a binary map of surface locations near where the
+brainmask.mgz has been edited. It creates two files for each hemisphere,
+one for each type of edit. These will be
+
+subject/surf/lh.bmerase.fsa.mgh
+subject/surf/rh.bmerase.fsa.mgh
+subject/surf/lh.bmclone.fsa.mgh
+subject/surf/rh.bmclone.fsa.mgh
+
+These are binary masks on fsaverage space. They can be concatenated
+together to make maps of the likelyhood that a given spatial location
+is affected by a brainmask edit. Currently, this will not include
+changes to brainmask.finalsurfs.mgz.
+
+It will also create 
+  subject/stats/bmclone.dat
+  subject/stats/bmerase.dat
+The first number will be the number of voxels cloned/edited
+
+See also wmedits2surf
+
+
+=== Output of 'bmedits2surf -help' ===
+
+
+bmedits2surf --s subject
+ --self : output will be on self instead of fsaverage
+ --overwrite : force overwriting of existing results
+ --tmp tmpdir, --cleanup, --no-cleanup, --debug 
+ --lh, --rh : only do one hemi
+ --no-surfs : do not computes surfs, only stats
+ 
+ --help : without it you are helpless
+ 
+bmedits2surf 7.4.1
+
+This program computes a binary map of surface locations near where the
+brainmask.mgz has been edited. It creates two files for each hemisphere,
+one for each type of edit. These will be
+
+subject/surf/lh.bmerase.fsa.mgh
+subject/surf/rh.bmerase.fsa.mgh
+subject/surf/lh.bmclone.fsa.mgh
+subject/surf/rh.bmclone.fsa.mgh
+
+These are binary masks on fsaverage space. They can be concatenated
+together to make maps of the likelyhood that a given spatial location
+is affected by a brainmask edit. Currently, this will not include
+changes to brainmask.finalsurfs.mgz.
+
+It will also create 
+  subject/stats/bmclone.dat
+  subject/stats/bmerase.dat
+The first number will be the number of voxels cloned/edited
+
+See also wmedits2surf
+
+
+=== Output of 'bmedits2surf' (no arguments) ===
+
+
+bmedits2surf --s subject
+ --self : output will be on self instead of fsaverage
+ --overwrite : force overwriting of existing results
+ --tmp tmpdir, --cleanup, --no-cleanup, --debug 
+ --lh, --rh : only do one hemi
+ --no-surfs : do not computes surfs, only stats
+ 
+ --help : without it you are helpless
+ 

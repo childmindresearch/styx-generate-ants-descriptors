@@ -1,0 +1,27 @@
+
+=== Output of 'afni_vcheck --help' ===
+
+++ now fetching https://afni.nimh.nih.gov/pub/dist/AFNI.version
+This program was compiled with the following settings:
+  Version ID   = AFNI_24.2.06
+Latest version listed at AFNI web site:
+  Version ID   = AFNI_24.3.03
+
+=== Output of 'afni_vcheck -help' ===
+
+Usage: afni_vcheck
+Overview ~1~
+ Prints out the AFNI version with which it was compiled,
+ and checks across the Web for the latest version available.
+N.B. ~1~
+ Doing the check across the Web will mean that your
+ computer's access to our server will be logged here.
+ If you don't want this, don't use this program!
+
+=== Output of 'afni_vcheck' (no arguments) ===
+
+++ now fetching https://afni.nimh.nih.gov/pub/dist/AFNI.version
+This program was compiled with the following settings:
+  Version ID   = AFNI_24.2.06
+Latest version listed at AFNI web site:
+  Version ID   = AFNI_24.3.03

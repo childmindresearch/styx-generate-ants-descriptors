@@ -1,0 +1,24 @@
+
+=== Output of 'mist_1_train --help' ===
+
+Multimodal Image Segmentation Tool (MIST), part of FSL
+
+Error: Unable to read configuration file
+
+Please refer to the FSL wiki for usage instructions
+
+=== Output of 'mist_1_train -help' ===
+
+Multimodal Image Segmentation Tool (MIST), part of FSL
+
+Error: Unable to read configuration file
+
+Please refer to the FSL wiki for usage instructions
+
+=== Output of 'mist_1_train' (no arguments) ===
+
+Multimodal Image Segmentation Tool (MIST), part of FSL
+
+Error: Unable to read configuration file
+
+Please refer to the FSL wiki for usage instructions

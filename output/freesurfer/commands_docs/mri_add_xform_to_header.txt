@@ -1,0 +1,135 @@
+
+=== Output of 'mri_add_xform_to_header --help' ===
+
+				Help
+
+NAME
+	mri_add_xform_to_header
+
+SYNOPSIS
+	mri_add_xform_to_header <options> xfmfile invol outvol
+
+DESCRIPTION
+	this program adds specified xform to the volume header.
+
+POSITIONAL ARGUMENTS
+	xfm file
+
+	input volume
+
+REQUIRED FLAGGED ARGUMENTS
+	**********************************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	-v
+		Be verbose
+
+	-c
+		Do not try to load the xfmfile, just copy name
+
+OUTPUTS
+	output volume
+
+EXAMPLE 1
+	*******************************************
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	*****************************************************
+
+
+
+=== Output of 'mri_add_xform_to_header -help' ===
+
+				Help
+
+NAME
+	mri_add_xform_to_header
+
+SYNOPSIS
+	mri_add_xform_to_header <options> xfmfile invol outvol
+
+DESCRIPTION
+	this program adds specified xform to the volume header.
+
+POSITIONAL ARGUMENTS
+	xfm file
+
+	input volume
+
+REQUIRED FLAGGED ARGUMENTS
+	**********************************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	-v
+		Be verbose
+
+	-c
+		Do not try to load the xfmfile, just copy name
+
+OUTPUTS
+	output volume
+
+EXAMPLE 1
+	*******************************************
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	*****************************************************
+
+
+
+=== Output of 'mri_add_xform_to_header' (no arguments) ===
+
+				Help
+
+NAME
+	mri_add_xform_to_header
+
+SYNOPSIS
+	mri_add_xform_to_header <options> xfmfile invol outvol
+
+DESCRIPTION
+	this program adds specified xform to the volume header.
+
+POSITIONAL ARGUMENTS
+	xfm file
+
+	input volume
+
+REQUIRED FLAGGED ARGUMENTS
+	**********************************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	-v
+		Be verbose
+
+	-c
+		Do not try to load the xfmfile, just copy name
+
+OUTPUTS
+	output volume
+
+EXAMPLE 1
+	*******************************************
+
+BUGS
+	None
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	*****************************************************
+
+

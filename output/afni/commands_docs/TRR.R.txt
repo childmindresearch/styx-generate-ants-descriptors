@@ -1,0 +1,15 @@
+
+=== Output of 'TRR.R --help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/TRR.R --args /opt/afni/src/../install/TRR.R --help
+
+=== Output of 'TRR.R -help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/TRR.R --args /opt/afni/src/../install/TRR.R -help
+
+=== Output of 'TRR.R' (no arguments) ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/TRR.R --args /opt/afni/src/../install/TRR.R

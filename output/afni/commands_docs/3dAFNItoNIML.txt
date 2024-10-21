@@ -1,0 +1,39 @@
+
+=== Output of '3dAFNItoNIML --help' ===
+
+++ 3dAFNItoNIML: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+** Illegal option: --help
+
+=== Output of '3dAFNItoNIML -help' ===
+
+Usage: 3dAFNItoNIML [options] dset
+ Dumps AFNI dataset header information to stdout in NIML format.
+ Mostly for debugging and testing purposes!
+
+ OPTIONS:
+  -data          == Also put the data into the output (will be huge).
+  -ascii         == Format in ASCII, not binary (even huger).
+  -tcp:host:port == Instead of stdout, send the dataset to a socket.
+                    (implies '-data' as well)
+
+-- RWCox - Mar 2005
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dAFNItoNIML' (no arguments) ===
+
+Usage: 3dAFNItoNIML [options] dset
+ Dumps AFNI dataset header information to stdout in NIML format.
+ Mostly for debugging and testing purposes!
+
+ OPTIONS:
+  -data          == Also put the data into the output (will be huge).
+  -ascii         == Format in ASCII, not binary (even huger).
+  -tcp:host:port == Instead of stdout, send the dataset to a socket.
+                    (implies '-data' as well)
+
+-- RWCox - Mar 2005
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

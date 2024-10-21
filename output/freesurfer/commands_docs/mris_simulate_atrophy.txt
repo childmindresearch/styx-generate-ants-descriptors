@@ -1,0 +1,16 @@
+
+=== Output of 'mris_simulate_atrophy --help' ===
+
+unknown option --help
+
+=== Output of 'mris_simulate_atrophy -help' ===
+
+unknown option -help
+
+=== Output of 'mris_simulate_atrophy' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_simulate_atrophy [options] <subject> <hemi> <label> <atrophy fraction> <output volume>
+
+options:
+  -a <atrophy %> - % atrophy to simulate of structure
+  -n <sigma>     - gaussian noise level to add

@@ -1,0 +1,21 @@
+
+=== Output of 'fdt_rotate_bvecs --help' ===
+
+Usage: <original bvecs> <rotated bvecs> <ecclog>
+
+<ecclog>	is the output log file from eddy_correct
+
+
+=== Output of 'fdt_rotate_bvecs -help' ===
+
+Usage: <original bvecs> <rotated bvecs> <ecclog>
+
+<ecclog>	is the output log file from eddy_correct
+
+
+=== Output of 'fdt_rotate_bvecs' (no arguments) ===
+
+Usage: <original bvecs> <rotated bvecs> <ecclog>
+
+<ecclog>	is the output log file from eddy_correct
+

@@ -1,0 +1,82 @@
+
+=== Output of 'fsl_boxplot --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_boxplot (Version 1.0)
+Copyright(c) 2007, University of Oxford (Christian F. Beckmann)
+
+Usage: 
+fsl_boxplot [options] 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        comma-separated list of input file names (ASCII text matrices, one column per boxplot)
+	-o,--out	output filename for the PNG file
+
+Optional arguments (You may optionally specify one or more of):
+	--help	        display this message
+	-t,--title	plot title
+	-l,--legend	file name of ASCII text file, one row per legend entry
+	-x,--xlabel	X-axis label
+	-y,--ylabel	Y-axis label
+	-h,--height	plot height in pixels (default 450)
+	-w,--width	plot width in pixels (default 80*#boxplots)
+
+
+
+=== Output of 'fsl_boxplot -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_boxplot (Version 1.0)
+Copyright(c) 2007, University of Oxford (Christian F. Beckmann)
+
+Usage: 
+fsl_boxplot [options] 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        comma-separated list of input file names (ASCII text matrices, one column per boxplot)
+	-o,--out	output filename for the PNG file
+
+Optional arguments (You may optionally specify one or more of):
+	--help	        display this message
+	-t,--title	plot title
+	-l,--legend	file name of ASCII text file, one row per legend entry
+	-x,--xlabel	X-axis label
+	-y,--ylabel	Y-axis label
+	-h,--height	plot height in pixels (default 450)
+	-w,--width	plot width in pixels (default 80*#boxplots)
+
+
+
+-h: Missing non-optional argument!
+
+=== Output of 'fsl_boxplot' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        comma-separated list of input file names (ASCII text matrices, one column per boxplot)
+	-o,--out	output filename for the PNG file
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_boxplot (Version 1.0)
+Copyright(c) 2007, University of Oxford (Christian F. Beckmann)
+
+Usage: 
+fsl_boxplot [options] 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        comma-separated list of input file names (ASCII text matrices, one column per boxplot)
+	-o,--out	output filename for the PNG file
+
+Optional arguments (You may optionally specify one or more of):
+	--help	        display this message
+	-t,--title	plot title
+	-l,--legend	file name of ASCII text file, one row per legend entry
+	-x,--xlabel	X-axis label
+	-y,--ylabel	Y-axis label
+	-h,--height	plot height in pixels (default 450)
+	-w,--width	plot width in pixels (default 80*#boxplots)
+
+

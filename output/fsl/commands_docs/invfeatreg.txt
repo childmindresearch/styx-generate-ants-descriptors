@@ -1,0 +1,24 @@
+
+=== Output of 'invfeatreg --help' ===
+
+/usr/local/fsl/bin/invfeatreg: line 79: cd: --: invalid option
+cd: usage: cd [-L|[-P [-e]] [-@]] [dir]
+Found nonlinear warp field...starting warp field inversion...
+Image Exception : #63 :: No image files match: highres2standard_warp
+Image Exception : #22 :: Failed to read volume highres2standard_warp
+Error : No image files match: highres2standard_warp
+invwarp: Problem reading warp-file highres2standard_warp
+
+=== Output of 'invfeatreg -help' ===
+
+/usr/local/fsl/bin/invfeatreg: line 79: cd: -h: invalid option
+cd: usage: cd [-L|[-P [-e]] [-@]] [dir]
+Found nonlinear warp field...starting warp field inversion...
+Image Exception : #63 :: No image files match: highres2standard_warp
+Image Exception : #22 :: Failed to read volume highres2standard_warp
+Error : No image files match: highres2standard_warp
+invwarp: Problem reading warp-file highres2standard_warp
+
+=== Output of 'invfeatreg' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/invfeatreg <feat_directory>

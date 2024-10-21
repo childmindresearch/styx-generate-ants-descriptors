@@ -1,0 +1,36 @@
+
+=== Output of 'fslview --help' ===
+
+Fslview is now deprecated, please type:
+
+fsleyes
+
+to launch our great new image viewer, or type:
+
+fslview_deprecated
+
+to launch the old fslview
+
+=== Output of 'fslview -help' ===
+
+Fslview is now deprecated, please type:
+
+fsleyes
+
+to launch our great new image viewer, or type:
+
+fslview_deprecated
+
+to launch the old fslview
+
+=== Output of 'fslview' (no arguments) ===
+
+Fslview is now deprecated, please type:
+
+fsleyes
+
+to launch our great new image viewer, or type:
+
+fslview_deprecated
+
+to launch the old fslview

@@ -1,0 +1,27 @@
+
+=== Output of 'fslsize --help' ===
+
+dim1		0
+dim2		0
+dim3		0
+dim4		0
+pixdim1		0.000000
+pixdim2		0.000000
+pixdim3		0.000000
+pixdim4		0.000000
+
+=== Output of 'fslsize -help' ===
+
+dim1		0
+dim2		0
+dim3		0
+dim4		0
+pixdim1		0.000000
+pixdim2		0.000000
+pixdim3		0.000000
+pixdim4		0.000000
+
+=== Output of 'fslsize' (no arguments) ===
+
+Usage: fslsize <filename> [-s]
+  -s  output using short format (one line)

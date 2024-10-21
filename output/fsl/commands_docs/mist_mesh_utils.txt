@@ -1,0 +1,38 @@
+
+=== Output of 'mist_mesh_utils --help' ===
+
+usage: mist_mesh_utils [-h]
+                       {volume,rewrite,gifti,register,distances,paireddistances,nonoverlapping,mean,affinetransform,warp}
+                       ...
+
+Mesh utilities for mmsubseg
+
+positional arguments:
+  {volume,rewrite,gifti,register,distances,paireddistances,nonoverlapping,mean,affinetransform,warp}
+                        Mode
+    volume              Compute mesh volume
+    rewrite             Rewrite mesh
+    gifti               Convert mesh to gifti
+    register            Register shape to reference
+    distances           Compute distances of points on input meshes to
+                        reference mesh
+    paireddistances     Compute difference between two timepoints in distance
+                        to reference mesh
+    nonoverlapping      Create non-overlapping voxelwise segmentation from
+                        meshes
+    mean                Calculate mean of meshes with same polys
+    affinetransform     Apply affine transformation
+    warp                Apply warp
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+=== Output of 'mist_mesh_utils -help' ===
+
+usage: mist_mesh_utils [-h]
+                       {volume,rewrite,gifti,register,distances,paireddistances,nonoverlapping,mean,affinetransform,warp}
+                       ...
+mist_mesh_utils: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'mist_mesh_utils' (no arguments) ===
+

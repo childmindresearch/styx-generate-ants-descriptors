@@ -1,0 +1,21 @@
+
+=== Output of 'design_ttest2 --help' ===
+
+
+Usage: design_ttest2 <design_files_rootname> <NgroupA> <NgroupB> [-m]
+-m : include individual group mean contrasts
+
+
+=== Output of 'design_ttest2 -help' ===
+
+
+Usage: design_ttest2 <design_files_rootname> <NgroupA> <NgroupB> [-m]
+-m : include individual group mean contrasts
+
+
+=== Output of 'design_ttest2' (no arguments) ===
+
+
+Usage: design_ttest2 <design_files_rootname> <NgroupA> <NgroupB> [-m]
+-m : include individual group mean contrasts
+

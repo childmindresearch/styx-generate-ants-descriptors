@@ -1,0 +1,202 @@
+
+=== Output of 'afni_system_check.py --help' ===
+
+** error: unknown trailing arguments : ['--help']
+
+=== Output of 'afni_system_check.py -help' ===
+
+
+=============================================================================
+afni_system_check.py    - perform various system checks
+
+This program is intended to be helpful for figuring out AFNI installation
+issues.
+
+examples
+
+   1.  afni_system_check.py -check_all
+   2a. afni_system_check.py -find_prog python
+   2b. afni_system_check.py -find_prog python -exact yes
+   3a. afni_system_check.py -disp_R_ver_for_lib $R_LIBS
+   3b. afni_system_check.py -disp_abin
+
+-----------------------------------------------------------------------------
+terminal options:
+
+   -help                : show this help
+   -help_dot_files      : show help on shell setup files
+   -help_rc_files       : SAME
+   -hist                : show program history
+   -show_valid_opts     : show valid options for program
+   -todo                : show current todo list
+   -ver                 : show current version
+
+   NOTE: either a terminal or an action option is required
+
+action options:
+
+   -check_all           : perform all system checks
+                          - see section, "details displayed via -check_all"
+   -disp_num_cpu        : display number of CPUs available
+   -disp_R_ver_for_lib  : display the R version used when building an R library
+                          - this refers to those installed by rPkgsInstall,
+                            most likely under $R_LIBS
+   -disp_abin           : display directory containing 'afni' (or this)
+   -disp_ver_afni       : display AFNI package version (else "None")
+   -disp_ver_matplotlib : display matplotlib version (else "None")
+   -disp_ver_pylibs LIB LIB ... :
+                          display versions of given python libraries (else NONE)
+                          - use 'ALL' to include the default test list
+   -dot_file_list       : list all found dot files (startup files)
+   -dot_file_show       : display contents of all found dot files
+   -dot_file_pack NAME  : create a NAME.tgz package containing dot files
+   -find_prog PROG      : search PATH for PROG
+                          - default is *PROG*, case-insensitive
+                          - see also -casematch, -exact
+
+other options:
+
+   -casematch yes/no    : match case in -find_prog
+   -data_root DDIR      : search for class data under DDIR
+   -exact yes/no        : search for PROG without wildcards in -find_prog
+   -use_asc_path        : prepend ASC dir to PATH
+                          (to test programs in same directory as ASC.py)
+   -verb LEVEL          : set the verbosity level
+
+-----------------------------------------------------------------------------
+details displayed via -check_all (just run to see):
+
+   general information:
+      - CPU, operating system and version, # CPUs, login shell
+
+   AFNI and related tests:
+      - which afni, python, R and tcsh, along with versions
+      - check for multiple afni packages in PATH
+      - check that various AFNI programs run
+      - check for AFNI $HOME dot files (.afnirc, .sumarc, etc.)
+      - warn on tcsh version 6.22.03
+
+   python libs:
+      - check that various python libraries are found and loaded
+
+   environment vars:
+      - show PATH, PYTHONPATH, R_LIBS, LD_LIBRARY_PATH, DYLD_LIBRARY_PATH, etc.
+
+   evaluation of dot files:
+      - show the output of "init_user_dotfiles -test", restricted
+        to shells of interest (user shells plus tcsh)
+
+   data checks:
+      - check for AFNI bootcamp data directories and atlases
+
+   OS specific:
+      - on linux, check for programs and version of dnf, yum
+      - on macs, check for homebrew, fink, flat_namespace, etc.
+
+   final overview:
+      - report anything that seems to need fixing for a bootcamp
+        (details shown earlier)
+
+-----------------------------------------------------------------------------
+R Reynolds    July, 2013
+=============================================================================
+
+
+=== Output of 'afni_system_check.py' (no arguments) ===
+
+
+=============================================================================
+afni_system_check.py    - perform various system checks
+
+This program is intended to be helpful for figuring out AFNI installation
+issues.
+
+examples
+
+   1.  afni_system_check.py -check_all
+   2a. afni_system_check.py -find_prog python
+   2b. afni_system_check.py -find_prog python -exact yes
+   3a. afni_system_check.py -disp_R_ver_for_lib $R_LIBS
+   3b. afni_system_check.py -disp_abin
+
+-----------------------------------------------------------------------------
+terminal options:
+
+   -help                : show this help
+   -help_dot_files      : show help on shell setup files
+   -help_rc_files       : SAME
+   -hist                : show program history
+   -show_valid_opts     : show valid options for program
+   -todo                : show current todo list
+   -ver                 : show current version
+
+   NOTE: either a terminal or an action option is required
+
+action options:
+
+   -check_all           : perform all system checks
+                          - see section, "details displayed via -check_all"
+   -disp_num_cpu        : display number of CPUs available
+   -disp_R_ver_for_lib  : display the R version used when building an R library
+                          - this refers to those installed by rPkgsInstall,
+                            most likely under $R_LIBS
+   -disp_abin           : display directory containing 'afni' (or this)
+   -disp_ver_afni       : display AFNI package version (else "None")
+   -disp_ver_matplotlib : display matplotlib version (else "None")
+   -disp_ver_pylibs LIB LIB ... :
+                          display versions of given python libraries (else NONE)
+                          - use 'ALL' to include the default test list
+   -dot_file_list       : list all found dot files (startup files)
+   -dot_file_show       : display contents of all found dot files
+   -dot_file_pack NAME  : create a NAME.tgz package containing dot files
+   -find_prog PROG      : search PATH for PROG
+                          - default is *PROG*, case-insensitive
+                          - see also -casematch, -exact
+
+other options:
+
+   -casematch yes/no    : match case in -find_prog
+   -data_root DDIR      : search for class data under DDIR
+   -exact yes/no        : search for PROG without wildcards in -find_prog
+   -use_asc_path        : prepend ASC dir to PATH
+                          (to test programs in same directory as ASC.py)
+   -verb LEVEL          : set the verbosity level
+
+-----------------------------------------------------------------------------
+details displayed via -check_all (just run to see):
+
+   general information:
+      - CPU, operating system and version, # CPUs, login shell
+
+   AFNI and related tests:
+      - which afni, python, R and tcsh, along with versions
+      - check for multiple afni packages in PATH
+      - check that various AFNI programs run
+      - check for AFNI $HOME dot files (.afnirc, .sumarc, etc.)
+      - warn on tcsh version 6.22.03
+
+   python libs:
+      - check that various python libraries are found and loaded
+
+   environment vars:
+      - show PATH, PYTHONPATH, R_LIBS, LD_LIBRARY_PATH, DYLD_LIBRARY_PATH, etc.
+
+   evaluation of dot files:
+      - show the output of "init_user_dotfiles -test", restricted
+        to shells of interest (user shells plus tcsh)
+
+   data checks:
+      - check for AFNI bootcamp data directories and atlases
+
+   OS specific:
+      - on linux, check for programs and version of dnf, yum
+      - on macs, check for homebrew, fink, flat_namespace, etc.
+
+   final overview:
+      - report anything that seems to need fixing for a bootcamp
+        (details shown earlier)
+
+-----------------------------------------------------------------------------
+R Reynolds    July, 2013
+=============================================================================
+

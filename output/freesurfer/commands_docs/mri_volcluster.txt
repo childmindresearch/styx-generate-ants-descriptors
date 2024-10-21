@@ -1,0 +1,345 @@
+
+=== Output of 'mri_volcluster --help' ===
+
+
+USAGE: /usr/local/freesurfer/bin/mri_volcluster 
+
+   --in infile : source of volume values
+
+   --sum file   : text summary file 
+   --out      output volid 
+   --ocn      output cluster number volid 
+   --cwsig    clusterwise sig volid 
+   --pointset pointset.dat : create a freeview pointset of the clusters
+
+   --thmin   minthresh : minimum intensity threshold
+   --thmax   maxthresh : maximum intensity threshold
+   --sign    sign      : <abs> or pos/neg for one-sided tests
+   --no-adjust  : do not adjust thresh for one-tailed tests (assumes z for GRF)
+   --match matchval : set thmin=matchval-0.5 and thmax=matchval+0.5
+
+   --cwpvalthresh pval : require clusters to have cwp < thresh
+      with --fwhm or --csd
+
+   --reg     register.dat : for reporting talairach coords
+   --mni152reg : input is in mni152 space
+   --regheader subject : use header registration with subject
+   --fsaverage : assume input is in fsaverage space
+   --frame   frameno <0>
+
+   --csd csdfile <--csd csdfile ...>
+   --cwsig cwsig : map of corrected cluster-wise significances
+   --vwsig vwsig : map of corrected voxel-wise significances
+   --maxcwpval maxcwpvalfile.txt : save p-value of the largest (max) cluster (1.0 if no cluster)
+   --csdpdf csdpdffile : PDF/CDF of cluster and max sig
+   --csdpdf-only : write csd pdf file and exit.
+
+   --fwhm fwhm : fwhm in mm3, forces GRF analysis
+   --fwhmdat fwhm.dat : text file with fwhm in mm3 for GRF
+
+   --minsize    minimum volume (mm^3)
+   --minsizevox minimum volume (voxels)
+   --mindist distance threshold <0>
+   --allowdiag  : define contiguity to include diagonal
+   --bonferroni N : addition correction across N (eg, spaces)
+   --bonferroni-max N : apply bonf cor to maximum (only applies with --sig2p-max)
+   --sig2p-max : convert max from sig to p
+   --gte : use >= when computing p-value from CSD
+
+   --mask      mask volid (same dim as input)
+   --mask_type file format 
+   --maskframe frameno <0> 
+   --maskthresh  upper threshold 
+   --masksign   <abs>, neg, pos 
+   --maskinvert  
+   --outmask      final binary mask
+   --outmask_type file format 
+
+
+   --label   label file
+   --nlabelcluster n : save nth cluster in label
+   --labelbase  base : save all clusters under base-NNNN.label
+
+   --synth   synthfunc (uniform,loguniform,gaussian)
+   --diag diagno : set diagnostic level
+   --fill invol outvol matchval (stand-alone to remove islands and holes)
+   --help    : how to use this program 
+
+
+DESCRIPTION:
+
+This program will find clusters in a volume. A cluster is a set of
+contiguous voxels which meet a threshold criteria. The set may also
+have to reach a certain minimum number of voxels to be considered a
+cluster. The results can be saved in four ways: (1) a text summary
+file, (2) a new volume which is same as the input volume but with all
+the voxels that do not belong to a cluster set to zero, (3) a volume
+with each voxel's value equal to the cluster number in the summary
+file to which the voxel belongs, and (4) one cluster can be saved as a
+label file. The search space within the volume can be restricted to be
+within a mask. Two voxels are considered contiguous if they share a 
+common row, column, or slice (except for --allowdiag).
+
+COMMAND-LINE ARGUMENTS:
+
+  --in input-volid : path/name of the input volume to be clustered.
+
+  --in_type typename : name of the file format type of the input
+    volume. See FILE TYPES below.
+
+  --frame n : perform the cluster analysis on the nth frame. The first
+    frame corresponds to n=0.
+
+  --reg registration-file : registration file created by either tkregister
+    or tkmedit. Note: the subject listed in the registration file must 
+    have an entry under $SUBJECTS_DIR.
+
+  --thmin minthresh : voxel values must exceed this amount to be considered
+    as a candidate for a cluster.
+
+  --thmax maxthresh : the value of a voxel must be less than this
+    amount to be considered as a candidate for a cluster. Default is
+    infinity.
+
+  --sign sign-name : the value of a voxel must be this sign to be considered
+    as a candidate for a cluster. pos = positive, neg = negative, abs = 
+    absolute (ie, ignore sign). Default is abs. When neg is used, the 
+    interpretation of minthreshold and maxthreshold are reversed.
+--csd csdfile <--csd csdfile>
+
+    Load one or more CSD files. CSD stands for 'Cluster Simulation Data'. This
+    file is produced by running mri_glmfit with --sim. The the threshold and hemi
+    info are obtained from the CSD file and cannot be specified on the command-
+    line. If more than one CSD is specified, they are merged into one CSD internally.
+    When a CSD file is specified, three more columns are added to the summary table:
+      1. CWP - cluster-wise pvalue. The pvalue of the cluster corrected for 
+         multiple comparisons
+      2. CWPLow - lower 90% confidence limit of CWP based on binomial distribution
+      3. CWPHi  - upper 90% confidence limit of CWP based on binomial distribution
+    In addition, the user can specify --ocp, which saves the sigificance map of 
+    the clusters in which the value of each voxel is the -log10(pvalue) of cluster
+    to which the vertex belongs.
+
+--csdpdf csdpdfile
+
+    Compute PDF/CDF of CSD data and save in csdpdffile. This is mostly good for debugging.
+
+--csdpdf-only
+
+    Only write the csd pdf file.
+
+  --minsize volume : minimum volume (in mm^3) of contiguous voxels that
+    meet the threshold criteria needed to become a cluster. See also
+    --minsizevox.
+
+  --minsizevox number : minimum number of contiguous voxels that meet
+    the threshold criteria needed to become a cluster. See also --minsize.
+
+  --mindistance distance : minimum distance (in mm) that the peaks of two
+    clusters must be separated in order for them to be considered two
+    distinct clusters. If two clusters are closer than this amount, the
+    cluster with the lower peak is eliminated.
+
+  --allowdiag : (no argument) allow two voxels that share a corner to 
+    be considered contiguous.
+
+  --mask mask-volid: path/name of a mask used to restrict the region
+    over which clusters will be searched. For example, this could be used
+    to restrict the search space to only the brain (ie, exclude eyeballs).
+    The mask must have the same dimension as the input volume.
+
+  --mask_type typename : name of the file format type of the mask
+    volume. See FILE TYPES below.
+
+  --maskframe n : use the nth frame of the mask volume as the mask,
+    where n = 0 indicates the first frame. Default is 0.
+
+  --maskthresh maskthresh: use only those voxels in the mask whose
+    value exceeds the given threshold (see also --masksign and
+    --maskinvert).
+
+  --masksign sign-name : threshold the mask based on the sign of the
+    value at each mask voxel: pos = positive, neg = negative, abs = 
+    absolute (ie, ignore sign). Default is abs. When neg is used, the 
+    a mask voxel value must be less than -maskthresh.
+
+  --maskinverse : after determining which voxels are in the mask based
+    on the threshold and sign, take only voxels that are outside of the
+    mask.
+
+  --outmask outmask-volid: path/name of the final binary mask after
+    considering thresholding, sign, and inversion. This is mainly useful
+    for debuggin.
+
+  --outmask_type typename : name of the file format type of the outmask
+    volume. See FILE TYPES below.
+
+  --sumfile sumfilename : save a summary of the results in ASCII into 
+    sumfilename. See SUMMARY FILE below.
+
+  --out out-volid: path/name of the output volume after
+    clustering. All voxels that were not part of a cluster have their
+    values set to zero. Otherwise, their values do not change.
+
+  --out_type typename : name of the file format type of the output 
+    volume. See FILE TYPES below.
+
+  --ocn ocn-volid: path/name of the output volume after clustering
+    where the value at each voxel is the cluster number (as found in the
+    summary file). Voxels that did not belong to a cluster have their
+    values set to zero. Also creates ocn-volid.lut. This is a color
+    lookup table so that the OCN can be loaded as a segmentation in
+    tkmedit with -segmentation ocn-volid.fmt ocn-volid.lut.
+
+  --ocn_type typename : name of the file format type of the output 
+    cluster number volume. See FILE TYPES below.
+
+  --label label-file : save the nth cluster (see -nlabelcluster) as a
+    label file in the subject's anatomical space. Note: make sure that the
+    label file includes a forward slash (/) or the label will be saved
+    into the subjects anatomical direcotry. For example: ./mylabel.label.
+    Requires --nlabelcluster.
+
+  --nlabelcluster n : save the nth cluster (see -label) as a label file.
+
+  --labelbase base : save each cluster in its own label file. The name
+    of the file will be base-NNNN.label, where NNNN is the four digit,
+    zero-padded cluster number. All clusters found will be saved.
+
+SUMMARY FILE
+
+The summary file produced by --sumfile is in ASCII text. The summary
+file will have a short header indicating the conditions underwhich the
+clustering was performed followed by rows of data with 7 columns. Each
+row reprsents a different cluster. Each column has the following
+interpretation: (1) cluster number, (2) number of voxels in the
+cluster, (3) cluster volume in mm^3, (4-6) Talairach X, Y, and Z (mm),
+(7) maximum value inside the cluster. The Talairach coordinates are
+the 'true' coordinates (not MNI). Part of a summary file is 
+shown below as an example:
+
+-----------------------------------------------------------------------
+Cluster Growing Summary (mri_volcluster)
+Input Volume:      grp-subj-p1p2vlor/bold/sxa-h20/tal-ffx-rfx/novvfix/sig
+Frame Number:      0
+Minimum Threshold: 2
+Maximum Threshold: inifinity
+Threshold Sign:    abs
+Distance Threshold: 10 (mm)
+Size Threshold:    640 mm^3
+Size Threshold:    10 voxels
+Voxel Size:        64 mm^3
+Registration:      grp-subj-p1p2vlor/bold/sxa-h20/tal-ffx-rfx/register.dat
+Mask Vol:          talbrain/mask
+Mask Thresh:       0.500000
+Mask Sign:         pos
+Mask Invert:       0
+AllowDiag:         1
+NClusters          26
+
+Cluster Size(n) Size(mm^3)  TalX   TalY    TalZ     Max
+  1      348      22272.0   59.40 -66.72  -13.48   5.66192
+  2       45       2880.0  -39.60  26.79   -8.07   5.45487
+  3       27       1728.0   55.44  16.60   21.28   4.95684
+-----------------------------------------------------------------------
+
+
+FILE TYPES/FORMATS:
+
+mri_volcluster can read/write any file format that can be read/written
+by mri_convert. The most relevent ones are: bshort, bfloat, analyze,
+analyze4d. When specifying bshort/bfloat, the volume id is the
+stem. Ie, if the volume is f_000.bshort, f_001.bshort, ..., then the
+volume id is 'f' (no quotes).
+
+KNOWN BUGS:
+
+When specifying a label file, make sure that the label file includes a
+forward slash (/) or the label will be saved into the subjects
+anatomical direcotry. For example: ./mylabel.label.
+
+BUG REPORTS:
+
+Send bug reports to analysis-bugs@nmr.mgh.harvard.edu. Make sure to
+include the version number (--version) , the full command-line used,
+the type of computer operating system, anything printed to the screen,
+a description of what you think is wrong and why, and anything else
+that may be helpful. Users at the NMR Center should also include the
+directory that they ran it from. NOTE: bug reports that do not have
+sufficient information to diagnose the problem will probably be either
+ignored or placed at the bottom of the list. BE CLEAR!
+
+AUTHOR:
+
+Douglas N. Greve, Ph.D; NMR Center, MGH, greve@nmr.mgh.harvard.edu
+
+=== Output of 'mri_volcluster -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_volcluster' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_volcluster 
+
+   --in infile : source of volume values
+
+   --sum file   : text summary file 
+   --out      output volid 
+   --ocn      output cluster number volid 
+   --cwsig    clusterwise sig volid 
+   --pointset pointset.dat : create a freeview pointset of the clusters
+
+   --thmin   minthresh : minimum intensity threshold
+   --thmax   maxthresh : maximum intensity threshold
+   --sign    sign      : <abs> or pos/neg for one-sided tests
+   --no-adjust  : do not adjust thresh for one-tailed tests (assumes z for GRF)
+   --match matchval : set thmin=matchval-0.5 and thmax=matchval+0.5
+
+   --cwpvalthresh pval : require clusters to have cwp < thresh
+      with --fwhm or --csd
+
+   --reg     register.dat : for reporting talairach coords
+   --mni152reg : input is in mni152 space
+   --regheader subject : use header registration with subject
+   --fsaverage : assume input is in fsaverage space
+   --frame   frameno <0>
+
+   --csd csdfile <--csd csdfile ...>
+   --cwsig cwsig : map of corrected cluster-wise significances
+   --vwsig vwsig : map of corrected voxel-wise significances
+   --maxcwpval maxcwpvalfile.txt : save p-value of the largest (max) cluster (1.0 if no cluster)
+   --csdpdf csdpdffile : PDF/CDF of cluster and max sig
+   --csdpdf-only : write csd pdf file and exit.
+
+   --fwhm fwhm : fwhm in mm3, forces GRF analysis
+   --fwhmdat fwhm.dat : text file with fwhm in mm3 for GRF
+
+   --minsize    minimum volume (mm^3)
+   --minsizevox minimum volume (voxels)
+   --mindist distance threshold <0>
+   --allowdiag  : define contiguity to include diagonal
+   --bonferroni N : addition correction across N (eg, spaces)
+   --bonferroni-max N : apply bonf cor to maximum (only applies with --sig2p-max)
+   --sig2p-max : convert max from sig to p
+   --gte : use >= when computing p-value from CSD
+
+   --mask      mask volid (same dim as input)
+   --mask_type file format 
+   --maskframe frameno <0> 
+   --maskthresh  upper threshold 
+   --masksign   <abs>, neg, pos 
+   --maskinvert  
+   --outmask      final binary mask
+   --outmask_type file format 
+
+
+   --label   label file
+   --nlabelcluster n : save nth cluster in label
+   --labelbase  base : save all clusters under base-NNNN.label
+
+   --synth   synthfunc (uniform,loguniform,gaussian)
+   --diag diagno : set diagnostic level
+   --fill invol outvol matchval (stand-alone to remove islands and holes)
+   --help    : how to use this program 
+

@@ -1,0 +1,69 @@
+
+=== Output of 'mri_fdr --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_fdr 
+
+   --i input <mask> <output> <frame>: source volume or surface overlay
+     --i input <mask> <output> <frame>: another source volume or surface overlay
+   --fdr FDR : value between 0 and 1, typically .05
+
+   --f defaultframe : use input frame when not specing frame in --i
+   --pos : only consider positive voxels
+   --neg : only consider negative voxels
+   --abs : consider all voxels regardless of sign (default)
+   --no-log10p : input is raw p-values, not -log10(p)
+   --thfile txtfile : write threshold to text file
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+This is a program that performs False Discovery Rate correction.
+Basic usage:
+  mri_fdr --fdr .05 --i sig.mgh mask.mgh output.mgh 
+To perform FDR on both the left and right hemis simultaneously:
+  mri_fdr --fdr .05 --i lh.sig.mgh lh.mask.mgh lh.output.mgh 
+                    --i rh.sig.mgh rh.mask.mgh rh.output.mgh 
+Masks are optional
+Outputs are optional (in which case you probably just want the threshold)
+  You can capture the threshold in a text file with --thfile
+The input is assumed to be -log10(p). If that is not the case then --no-log10p
+Output threshold will be -log10(p) unless --no-log10p
+If you want to spec an output but not a mask,  then set the mask file to 'nomask'
+If you want to spec a frame but not an output, then set the output file to 'nooutput'
+
+  Thresholding of Statistical Maps in Functional Neuroimaging Using
+  the False Discovery Rate.  Christopher R. Genovese, Nicole A. Lazar,
+  Thomas E. Nichols (2002).  NeuroImage 15:870-878.
+
+
+=== Output of 'mri_fdr -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_fdr' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_fdr 
+
+   --i input <mask> <output> <frame>: source volume or surface overlay
+     --i input <mask> <output> <frame>: another source volume or surface overlay
+   --fdr FDR : value between 0 and 1, typically .05
+
+   --f defaultframe : use input frame when not specing frame in --i
+   --pos : only consider positive voxels
+   --neg : only consider negative voxels
+   --abs : consider all voxels regardless of sign (default)
+   --no-log10p : input is raw p-values, not -log10(p)
+   --thfile txtfile : write threshold to text file
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

@@ -1,0 +1,1690 @@
+
+=== Output of '@chauffeur_afni --help' ===
+
+** unexpected option #1 = '--help'
+
+=== Output of '@chauffeur_afni -help' ===
+
+
+OVERVIEW ~1~
+
+This was originally a helper function in processing scripts, to take
+quality control (QC) snapshots automatically.  It wraps around a lot
+(but not all) of the veeery useful "driving AFNI" functionality.  You,
+dear user, can still accomplish all the same with those commands, but
+I just wanted to add in some other calculations, as well, to try to
+make the process of generating montages of images easier.
+
+The purpose of this function is to generate montage images easily and
+quickly while processing-- even if on a remote server (because it uses
+xvfb to make a virtual X11 environment)-- to be able to see what is
+happening in data processing at useful stages: for example, alignment
+of two sets without having to click any buttons in the AFNI GUI.  This
+makes it easier to review batch processing, discuss processing with
+one's boss, prepare for a presentation or publication, etc. For
+example, this program is used in most all of FATCAT's fat_proc_*
+scripts, and even TORTOISE includes calls to it for auto-QC imaging if
+the user has AFNI installed (and suuuurely they should??).
+
+Each call to this function will make a set of montages in the axial,
+coronal and sagittal planes, of user-specified dimensionality.
+
+This function can be used on both 3D and 4D data sets, but for the
+latter, probably @djunct_4d_imager would be much more simple to use.
+
+A lot of the help descriptions for command line options, below, will
+refer to the variables in the "AFNI Driver" doc:
+https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.driver.html
+or variables in the "AFNI Environment" doc:
+https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.environment.html
+References to these are sometimes noted explicitly with "see DR" or
+"see ENV", respectively, and potentially with the particular variable.
+For example, "(see ENV: SAVE_AGIF)".
+
+Added ~July 15, 2018: the capability to select a single slice across a
+4D data set and to view it with both underlay and overlay options
+(hitherto, @djunct_4d_imager had a subset of this capability but only
+for ulays).
+
+++ constructed by PA Taylor (NIMH, NIH, USA).
+
+# =========================================================================
+
+COMMAND OPTIONS ~1~
+
+-help, -h          :see helpfile (here, in fact)
+-hview             :popup help
+-ver               :see version number
+
+-ulay    UUU       :name of underlay dset (required); can be 3D or 4D
+                    set, depending on the circumstances.  For 4D, 
+                    though, strongly consider using "@djunct_4d_imager".
+
+-olay    OOO       :name of overlay dset (opt).
+
+-mode_4D           :for each viewing plane (sag, cor, axi) one slice
+                    is selected across all volumes in a 4D data set
+                    (e.g., using one of the "-set_* .." opts, below).
+                    A montage of those slices is made for any ulay UUU
+                    and olay OOO selected.  Note that with this
+                    option:
+                    + the user cannot threshold by statistic with the 
+                      "-thr_olay_p2stat .." opt (-> because different
+                      stats in a volume might have different conversions)
+                    + when using this opt, at least on of UUU and OOO 
+                      *must* have >1 volumes.
+                    + if one of the ulay/olay volumes has only one brick, 
+                      it will be viewed in the same way across the entire
+                      montage (i.e., as if it were a constant volume
+                      throughout 'time').
+
+-olay_off          :explicitly state you are not using olay (opt);
+                    if not used and no olay is given, then the user
+                    just gets prompted to be sure they haven't 
+                    forgotten the olay dset.
+
+-prefix  PPP       :prefix for output files (required).
+
+-ulay_range UMIN UMAX :specify min and max range values of ulay dset;
+                    if a "%" is on both numbers, then treat the
+                    numerical part of UMIN and UMAX as percentiles
+                    from which to calculate actual values; otherwise,
+                    treat UMIN and UMAX as values directly. (def:
+                    UMIN=0% and UMAX=98%). (See DR: SET_ULAY_RANGE)
+                    Also, see "Special Ulay Range" and "Combining %ile
+                    values..." in NOTES, below.
+
+-ulay_range_nz UMIN UMAX 
+                   :same as the preceding opt, but when "%" is on both
+                    numbers, here the percentiles are only calculated
+                    over the *non-zero* voxels.  The above one is more
+                    in line with the AFNI GUI default behavior for
+                    percentile calcs (though GUI by default works
+                    slicewise). If %ile values are not given, then
+                    both this and the above option produce identical
+                    results for the same UMIN and UMAX values.  (See
+                    DR: SET_ULAY_RANGE) "Special Ulay Range" and
+                    "Combining %ile values..." in NOTES, below.
+
+-ulay_range_am UMIN UMAX 
+                   :same as the preceding opt, but over just *automasked* 
+                    voxels
+
+-ulay_min_fac UMF  :a finesse-full option for further adjusting ulay
+                    grayscale mapping, when applying '-ulay_range_am
+                    ..'.  UMF must be a numerical value in range (0,
+                    1].  This value is used to lower the lower end of
+                    the ulay range (UMIN) by this fraction of the difference
+                    between the upper and lower bounds. Thus, if A and B are
+                    the min and max, respectively, for the ulay, then 
+                    A -> max(0, A-UMF*(B-A)).
+
+-edgy_ulay         :turn the ulay volume into edges (via 3dedge3).  All 
+                    other opt/values like the '-ulay_range*' will refer
+                    to this edge-ified version, *except* for the 
+                    '-box_focus_slices AMASK_FOCUS_ULAY' one, whereby
+                    the original ulay will still be automasked.
+                    If using this option, extensive testing has found
+                    that '-ulay_range_nz 0% 50%' or thereabouts might
+                    be a nice scale for the brightness.
+
+-edge_enhance_ulay EE
+                   :a related (but different) way to enhance edges of
+                    the ulay than '-edgy_ulay': first, calculate
+                    edges, yes, but then use those to scale up the
+                    values in the ulay set *at* edge locations.  The
+                    ulay set value at edges will be multiplied by
+                    '1+EE' (one plus the edge enhancement factor).  A
+                    good value to try using is probably EE=0.5 (and
+                    yes, you always need to provide that EE value).
+
+-globalrange  GR   :specify how lookup range for matching ulay values
+                    is done (def: VOLUME);
+                    (see ENV: AFNI_IMAGE_GLOBALRANGE)
+                    Ignored if '-ulay_range* ..' is set.
+                    Note for '-mode_4D': this setting applies to the
+                    resliced volume (i.e., the one made of one slice
+                    of each subbrick).  See "Combining %ile
+                    values..." in NOTES, below.
+
+-func_range FR     :specify upper value FR of the olay dset to be
+                    matched to top of colorbar (def: calc 98%ile non-zero
+                    value of dset and use that).
+
+-func_range_perc_nz FRP 
+                   :alternative to "-func_range ..."; specify a
+                    percentile value FRP to use to make the upper
+                    value of the olay dset to be matched to the top of
+                    the colorbar (def: calc 98%ile non-zero value of dset 
+                    and use that).  NB: this percentile range is always
+                    among *non-zero* voxel values with this option; see 
+                    below.
+
+-func_range_perc FRP :same as above option, but this is a percentile
+                   among *all* voxel values, not just those with
+                   non-zero values (def: 100).
+
+-func_range_perc_am FRP :same as above option, but this is a percentile
+                   among *automasked* voxel values.
+
+-obliquify  OBL    :the ulay and/or the olay may have been acquired
+                    with oblique coordinate axes; by default, the
+                    viewer shows these data sets in each of their
+                    oblique coordinates. You can choose to apply the
+                    obliquity information to show the data in
+                    different coords, though, via the value of OBL:
+                      "ALL" : apply the obliquity of all entered
+                              dsets (via '3dWarp -deoblique ...')
+                              to show each in scanner coords
+                      "o2u" : send the olay to the ulay's oblique
+                              coords
+                      "ob2u": send the olay and any box_focus to the 
+                              ulay's oblique coords
+                      "u2o" : send the ulay to the olay's oblique
+                              coords
+                      "ub2o": send the ulay and any box_focus to the 
+                              olay's oblique coords
+
+-obl_resam_ulay OIU :if using '-obliquity ..', then you might want to
+                    specify the method of resampling/interpolation for
+                    the dset being re-gridded; this option specifies
+                    that method for the ulay (see below for other
+                    dsets).  Any valid transform opt for 3dWarp is
+                    allowed: cubic, NN, etc.  (def: OIU = wsinc5)
+
+-obl_resam_olay OIO :same as for '-obl_interp_ulay ..', but for the
+                    olay dset (def: OIO = wsinc5)
+
+-obl_resam_box  OIB :same as for '-obl_interp_ulay ..', but for the
+                    '-box_focus_slices ..' dset (def: OIB = wsinc5)
+
+-func_resam  RES   :set the resampling mode for dsets; valid values
+                    are:   NN  Li  Cu  Bk
+                    (def: NN; hey, voxels are voxels). 
+                    (See DR: SET_FUNC_RESAM)
+
+-thr_olay THR      :threshold the olay dset at THR (def: 0, or
+                    unthreshold). If you are thresholding a statistic
+                    brick, then you should see the "-thr_olay_p2stat ..."
+                    option, below. (See DR: SET_THRESHNEW)
+-thrflag   'fff'   :further control of how the THR value is interpreted 
+                    (def: "*"). (See DR: SET_THRESHNEW)
+
+-thr_olay_p2stat PP :an alternative way to specify a voxelwise
+                    threshold (i.e., instead of "-thr_olay ..."), when
+                    thresholding based on a statistic; you can specify
+                    the p-value you want, and using internal header
+                    information, the appropriate value for whatever
+                    statistic is in the statistic brick will be
+                    calculated and applied; you likely need to use
+                    "-set_subbricks i j k" with this, where 'k' would
+                    be the index of the statistic brick (and likely
+                    'j' would be the index of the associated
+                    coefficient/beta brick; 'i' would be the brick of
+                    the underlay volume, and if there is only a single
+                    volume there, it could just be either '0' or
+                    '-1'). And see next option '-thr_olay_pside', below.
+
+-thr_olay_pside SS :(required if using '-thr_olay_p2stat ..') specify the
+                    sidedness of the testing for the conversion of 
+                    p-to-stat.  Valid values for SS at present include:
+                        bisided
+                        2sided 
+                        1sided
+
+-cbar    CCC       :specify a new colorbar, where CCC can be any of the
+                    cbars in the standard AFNI list, Matplotlib colornames,
+                    or hex values (def: Plasma).
+
+-colorscale_idx_file CI CF 
+                   :another way to specify a colorbar, in this case
+                    one created by the user.  Two arguments must be
+                    input.  First, CI is a colorscale index, which
+                    must be in the (inclusive) range [01, 99], using
+                    two numbers.  (The user has to enter this, because
+                    they might have one/more of these specified
+                    already in their ~/.afnirc file, and hence avoid
+                    duplicating an index.)  Second, CF is the
+                    colorscale filename; the file contains the name of
+                    the colorbar in the first line, and then either 2
+                    columns (values and colors) or 1 column (just
+                    colors; will be evenly spaced).  An example CF is:
+                          Yellow-Lime-Red-Blue
+                            1.0 #ffff00
+                            0.7 limegreen
+                            0.5 #ff0000
+                            0.3 #aa00aa
+                            0.0 #0000ff
+                    Note the types of AFNI-allowed colornames used here
+                    (hex and specific colorname). 
+                    (see ENV: AFNI_COLORSCALE_xx)
+
+-pbar_posonly      :for color range specification, default is to use
+                    both positive and negative values; enter this flag
+                    to use only the positive range. (See DR:
+                    SET_PBAR_ALL)
+
+-pbar_saveim PBS   :if an olay is used, then you can save the color pbar
+                    (=colorbar) that is used in plotting.  PBS is the
+                    name of the file (including path), with allowed
+                    extensions jpg, png, or ppm (def: jpg).  
+                    When this option is used, a text file of the same
+                    name as PBS but with extension 'txt' will also be
+                    saved, which is now (>May 8, 2019) a
+                    dictionary-like file of relevant information:
+                    min/max range, threshold value (0, if no thr is
+                    specified), as well as the ability to store
+                    comments on what those values mean (see
+                    -pbar_comm_* options, below).  See also '-pbar_dim
+                    ..'  for relation pbar optioning.  (See DR:
+                    PBAR_SAVEIM)
+
+-pbar_comm_range PBR :if using '-pbar_saveim ..', one can save a
+                    text/string comment on why the pbar range was
+                    chosen.  For example, '99%ile in mask'.  This will
+                    be output in the PBS.txt file (the value of the
+                    key 'pbar_comm').  Use quotes around on command
+                    line.
+
+-ulay_comm  UC     :if using '-pbar_saveim ..', one can save a
+                    text/string comment on why the ulay range was 
+                    chosen.  For example, '0-25% in volume'. This will
+                    be output in the PBS.txt file (the value of the
+                    key 'ulay_comm').  Use quotes around on command
+                    line.
+
+-pbar_comm_thr PBT :similar to '-pbar_comm_range ..', but for storing a
+                    comment about the selected threshold value. It
+                    will also be stored in the PBS.txt file (the value
+                    of the key 'vthr_comm').
+
+-pbar_comm_gen PBG :similar to '-pbar_comm_range ..', but for storing a
+                    general comment about the pbar or plot or color range. 
+                    It will also be stored in the PBS.txt file (the value
+                    of the key 'gen_comm').
+
+-pbar_for  PF      :tiny option, mainly for APQC purposes.  In the output
+                    txt file of info for the pbar, can state if the pbar
+                    refers to something other than the 'olay' (such as the
+                    'ulay' or 'dset').  (def: olay)
+
+-pbar_dim PBD      :if '-pbar_saveim ..' is used to save the color pbar
+                    of the olay, then this option can specify the
+                    orientation of the colorbar image and its pixel
+                    dimensions. This is done by specifying the
+                    'dimstring' part of the PBAR_SAVEIM input (see DR:
+                    PBAR_SAVEIM).  The default value is '64x512H',
+                    which means to have a vertical cbar that is 64
+                    pixels wide and 512 pixels tall which is then
+                    tipped horizontally on its side; to leave it vertical
+                    just don't put an 'H' at the end. 
+
+-XXXnpane P        :same option as in 'afni', for colorbar control: 
+                    << set the number of 'panes' in the continuous
+                    colorscale to the value 'P', where P is an even
+                    integer between 256 and 2048 (inclusive).
+                    Probably will work best if P is an integral
+                    multiple of 256 (e.g., 256, 512, 1024, 2048).
+                    [This option is for the mysterious Dr ZXu.] >>
+                    One use of this option: for ROI atlases with integer
+                    values >255.
+
+-cbar_ncolors NC   :set colorscale mode (def: 99) (See DR:
+                    SET_PBAR_ALL, the 2nd usage case, description
+                    about '99').
+
+-cbar_topval  TOPV :set colorscale mode (def: 1) (See DR:
+                    SET_PBAR_ALL, the 2nd usage case, description
+                    about 'topval').
+                    Now, the value of TOPV could also be a special
+                    keyword, 'EMPTY' (yes, written in all caps), which
+                    gives the same behavior as making TOPV the empty
+                    "", but makes scripting easier (not needing to
+                    pass double quotes in shell variables...).  This
+                    is probably only useful if defining a discrete
+                    colorbar (see Examples).
+
+-opacity   OO      :enter an "opacity factor" for the olay, where OO is 
+                    an integer in the interval [0, 9], with the 9 being
+                    opaque (see DR).
+
+-blowup  BB        :enter a "blowup factor", where BB is an integer 
+                    in the interval [1, 8].  Increases spatial resolution
+                    in the output by a factor of BB (see DR; def: 2).
+
+-set_xhairs XX     :specify type and/or existence of crosshairs in the
+                    image.  At the time of writing, the available keywords
+                    to use are:
+                      OFF, SINGLE, MULTI, LR_AP, LR_IS, AP_IS, LR, AP, IS
+                    (see DR: SET_XHAIRS).
+
+-set_xhair_gap GG  :specify gap in the crosshairs to the specified number
+                    of pixels GG (see DR: SET_XHAIR_GAP).
+
+-delta_slices DS DC DA :when montaging, (DS, DC, DA) is the integer
+                     number of slices to use as spacing between views
+                     along the (sag, cor, axi) axes, respectively
+                     (def: automatically calculate to ~evenly fit the
+                     number of selected montage slices along this
+                     axis).  (See DR: "mont=PxQ:R"; basically, each D?
+                     is the 'R' value along the given axis).  Users
+                     can specify a delta_slice value along *some* axis
+                     and leave other(s) to be chosen automatically, by
+                     specifying a D? value >0 for their own value, and
+                     given any other D? value -1.  For example:
+                      -delta_slices 40 -1 -1
+                     would specify every 40th slice along the sag axis, 
+                     while the cor and axi spacing would be automatically 
+                     calculated.
+
+-set_subbricks i j k :for 3D image viewing, specify subbricks being
+                    viewed in the ulay, olay and threshold dsets (def:
+                    "-1 -1 -1", which means ignore these values).
+                    This is the way to specify different overlay and
+                    threshold subbricks for displaying, such as using
+                    the "beta" or "coefficient" for color and the
+                    "statistic" as the threshold level.  (See DR:
+                    SET_SUBBRICKS)
+
+-save_ftype  FTYPE :type of file as which to save images; key types are
+                    listed in the Driver description (def: PNG) (See
+                    DR: SAVE_ALLJPEG, SAVE_ALLPNG, SAVE_MPEG,
+                    SAVE_AGIF, SAVE_JPEG, SAVE_PNG; for which the user
+                    would enter just the non-"SAVE_" part, just as
+                    "PNG", "MPEG", etc.)
+
+-set_ijk  II JJ KK :Set the controller coordinates to the given
+                    triple, which are integer index selectors along
+                    the three spatial axes.  This essentially
+                    specifies the middle image in the montage (def:
+                    for each coordinate, choose middle slice along
+                    axis).
+-set_dicom_xyz XX YY ZZ :Set the controller coordinates to the given
+                    triple, which are the (x, y, z) coordinates in
+                    AFNI's favorite RAI DICOM notation.  (def: for
+                    each coordinate, choose middle slice along axis).
+
+-box_focus_slices REF :Use a dset REF to define a narrow range of
+                    where slices cover. This is done by autoboxing the
+                    REF dset (with '3dAutobox -noclust', so if it
+                    hasn't been masked already, it's not useful), and
+                    using the midpoint of the box's FOV as the new
+                    center; also, the montage slices are chosen to be
+                    evenly spread within the box FOV, though they
+                    *still* show the unboxed dataset.  This is
+                    different than cropping (see '-crop*' below for
+                    that); this is only to try to avoid showing empty
+                    slices and such. If the ulay is a template dset,
+                    you might make REF that template.  Just for '3D'
+                    dset viewing
+                    NEW: enter a keyword for the argument REF,
+                    instructing the program to make a focus box from
+                    the ulay or olay: AMASK_FOCUS_ULAY or
+                    AMASK_FOCUS_OLAY, respectively.  Mask is just made
+                    using default 3dAutomask (with '-clfrac 0.2', to
+                    err on the side of inclusivity)-- may not be
+                    perfect, but provide some useful focus while
+                    hopefully not cutting off regions that should
+                    still be included.
+                    NB: if your olay dset is a mask and you want to use
+                    it for this box-focusing, then make REF be the name
+                    of the file itself, not AMASK_FOCUS_OLAY, because
+                    automasking a mask does weird things.
+
+-clusterize "-opt0 v0 -opt1 v1 ..."  
+                   :input a set of options "-opt0 v0 -opt1 v1 ..." for
+                    3dClusterize to use internally, so that the
+                    overlay dataset is clusterized.  Can be combined
+                    with Alpha+Boxed.  See the "Clusterize
+                    capabilities" description in the NOTES below for
+                    what options go where when clusterizing.  Examples
+                    are also included below.
+
+-clusterize_wami CW :if using '-clusterize ..', then this option can be used
+                    to run AFNI's whereami_afni program on the results.
+                    The user provides the name of an allowed atlas for
+                    reference (see the top of whereami_afni's help), and a text
+                    file reporting the relative overlap of each ROI will be 
+                    produced in the outputs.  
+
+-montx  MX         :in creating a montage, the number of image panels in
+                    a row, i.e., the number of columns (def: 3); the
+                    total number of panels per axis is: MX*MY (see
+                    below "-monty ...").  (See DR: "mont=PxQ:R";
+                    basically, MX is the 'P' value).
+
+-monty  MY         :in creating a montage, the number of image panels in
+                    a column, i.e., the number of rows (def: 3); the
+                    total number of panels per axis is: MX*MY (see
+                    above "-montx ...").  (See DR: "mont=PxQ:R";
+                    basically, MY is the 'Q' value).
+
+-montgap  MG       :in creating a montage, one can put a border (or "gap")
+                    between the image panels.  This is specified as a
+                    number of pixels with which to insert between images
+                    (def: 0).  (See DR: "mont=PxQ:R" additional option 
+                    ":G:C";  basically, MG is the 'G' value).
+
+-montcolor  MC     :in creating a montage, one can put a border (or "gap")
+                    between the image panels (see "-montgap", above);
+                    one can also specify a color for this gap, using
+                    the present option (def: 'black').  (See DR:
+                    "mont=PxQ:R" additional option ":G:C"; basically,
+                    MC is the 'C' value).
+
+-button_press BP   :simulate a button press for one of the following
+                    buttons in an image viewer window:
+                       Norm Colr Swap
+                    You can enter more than one of these button presses here
+                    *if* you put all of them within a single pair of quotes, 
+                    such as:  -button_press "Colr Swap".  Note that the order
+                    of the button presses matters.
+                    (See DR: "butpress=name")
+
+-no_cor            :no coronal slice views output (def: this view is shown)
+-no_axi            :no axial slice views output (def: this view is shown)
+-no_sag            :no sagittal slice views output (def: this view is shown)
+                    NB: when '-mode_4D' is on, the sagittal view will ALWAYS
+                    shown; effectively, this opt is then disabled.
+
+-olay_alpha {No|Yes|Linear|Quadratic} 
+                   :In addition to representing olay values as colors
+                    with a threshold, one also apply opacity
+                    information to 'soften' the effect of
+                    thresholding; see DR: SET_FUNC_ALPHA for a
+                    description of this behavior (def: "No", which is
+                    just standard thresholding stuff).
+                    Prodigal functionality returned: one can now
+                    specify whether fading is "Quadratic" (= "Yes",
+                    too, since this is default fading) or "Linear":
+                    that is, how quickly opacity drops off, with the
+                    former being much faster.  At present, a possible
+                    rule of thumb: try Quadratic for individual
+                    results and Linear for group results.
+
+-olay_boxed {No|Yes} :a partner parameter for the fancy alpha-based olay
+                    viewing; put a box around supra-threshold
+                    voxels/clusters. Default value is "No".  (see DR:
+                    SET_FUNC_BOXED)
+
+-image_zoom_nn_no  :the default zoom is set to NN mode, so no smoothing
+                    occurs (see ENV: AFNI_IMAGE_ZOOM_NN).  This option
+                    changes behavior internally to set this variable
+                    to have the value "NO".
+
+-agif_delay AD     :when using "-save_ftype AGIF", this option can be used
+                    to specify the time delay between frames.  Units are
+                    "centi-seconds" = 100ths of seconds (def: 30).
+                    (see ENV: AFNI_AGIF_DELAY)
+
+-left_is_left LIL  :specify explicitly whether image left is dataset left
+                    (LIL -> YES) or image left is dataset right (LIL -> NO)
+                    (def: no value given).
+                    (see ENV: AFNI_LEFT_IS_LEFT)
+
+-left_is_posterior LIP  :specify explicitly whether image left is dataset 
+                    posterior (LIP -> YES) or image left is dataset anterior 
+                    (LIP -> NO) (def: no value given).
+                    (see ENV: AFNI_LEFT_IS_POSTERIOR)
+
+-crop_axi_x CAX1 CAX2,
+-crop_axi_y CAY1 CAY2 :crop axial image(s) to be between voxels CAX1 and
+                    CAX2 along the x-axis (inclusive) and CAY1 and CAY2 
+                    along the y-axis. These values are integer row and 
+                    column numbers.
+                    (See DR: "crop=x1:x2,y1:y2"; CAX1 is x1, etc.;
+                    def: no cropping -- CAX1=0, CAX2=0, etc.)
+-crop_sag_x CSX1 CSX2,
+-crop_sag_y CSY1 CSY2 :same as other '-crop_*' above, but for sagittal
+                    images.
+-crop_cor_x CCX1 CCX2,
+-crop_cor_y CCY1 CCY2 :same as other '-crop_*' above, but for coronal
+                    images.
+
+-zerocolor ZC      :Change the default 'background' ulay color of zero
+                    values (def: "Black"); ZC can be set to any allowed
+                    AFNI value (see ENV: AFNI_IMAGE_ZEROCOLOR).  This 
+                    option is mainly for G. Chen, who flaunts convention
+                    whenever possible.
+
+-label_mode    LM  :control labels, ON/OFF and location (def: 1);
+                    (see ENV: AFNI_IMAGE_LABEL_MODE)
+-label_size    LS  :control labels, size (def: 3);
+                    (see ENV: AFNI_IMAGE_LABEL_SIZE)
+-label_color   LC  :control labels, color (def: white);
+                    (see ENV: AFNI_IMAGE_LABEL_COLOR)
+-label_setback LB  :control labels, offset from edge (def: 0.01);
+                    (see ENV: AFNI_IMAGE_LABEL_SETBACK)
+-label_string LSTR :control labels, string automatically appended
+                    to the slice (def: "");
+                    (see ENV: AFNI_IMAGE_LABEL_STRING)
+
+-image_label_ijk   :If this option is used, then the image label will
+                    be based on the slice index rather than the
+                    spatial (mm) coordinate; thanks, Bob.
+                    (see ENV: AFNI_IMAGE_LABEL_IJK)
+
+-pass              :does nothing (no, really).
+
+-cmd2script C2S    :output a script that can drive AFNI to make
+                    (essentially) the same image being output here.
+
+-c2s_text   C2ST   :when using '-cmd2script ..', then this option can
+                    be used to add text in the (top of the) script's 
+                    pop-up message.
+
+-c2s_text2  C2ST   :when using '-cmd2script ..', then this option can
+                    be used to add a second line of text in the script's 
+                    pop-up message.
+
+-c2s_mont_1x1      :when using '-cmd2script ..', use this flag so that 
+                    the output script just has a 1x1 "montage" size, 
+                    regardless of the actual image montage size. Sometimes
+                    large montages are useful in images, but not in the 
+                    interactive GUI session.
+
+-dry_run           :run all the parts of the chauffeur *except* making 
+                    the images; this is useful if we just want the
+                    '-cmd2script ..' script, for example.
+
+-no_clean          :by default, the temporary directory of copying
+                    files and such is now (as of July 8, 2018)
+                    removed; using this option means that that working
+                    directory should *not* be removed.
+
+-do_clean          :Use this option to remove the temporary directory
+                    of copied/intermediate files. (As of July 8, 2019,
+                    this is the new default behavior.  Thus, this opt
+                    is only here for backwards compatibility).
+
+-echo              :run script verbosely (with 'set echo' executed)
+
+# ========================================================================
+
+NOTES ~1~
+
+Description of "4D mode" ~2~
+
+    In this case the assumption/requirement is that you have at least
+    one 4D data set to look at; for each viewing plane, one slice is
+    selected across time for viewing.  For each viewing plane, the
+    slices across time are spatially concatenated to form a single,
+    temporary 3D dset (a "planar" or "slicewise" volume), which is
+    what is actually put into AFNI to generate images in that relevant
+    plane.  How percentile values are calculated is discussed in the
+    next "NOTE", below.
+
+    When both an overlay and underlay are used, the usual resampling
+    rules of the AFNI GUI apply (and user can specify the resampling
+    option with "-func_resam .."). 
+
+    If one volume is 4D and one is 3D (e.g., for checking alignment
+    across time), then the relevant single slice of the 3D volume is
+    basically just repeated in a given plane.
+
+
+Combining %ile values "-mode_4D" for olay and/or ulay ~2~
+
+    When using a percentile to set a range in 4D mode for either ulay
+    (e.g., "-ulay_range* ..") or olay (e.g., "-func_range_perc_nz*
+    .."), that percentile is calculated for each of the three "planar"
+    or "slicewise" volumes, and then the *max* of those three numbers
+    is applied with the colorbar.
+
+    If one of your ulay or olay in 4D mode is just a 3D volume and you
+    want a percentile related to the whole thing, you can calculate
+    any of those values beforehand using "3dBrickStat -percentile ..",
+    and then apply those.
+
+
+Special Ulay Range ~2~
+
+    If UMAX is a percentile >100%, then what happens is this:
+        the 98%ile value in the dset is calculated, and the
+        result is multiplied by (UMAX/98); the ulay dataset
+        is 'ceilinged' at the 98%ile value, and its upper
+        range is set to UMAX/98.
+
+    The purpose of this madness?  To give a nice, controllably darkened
+    ulay (esp. when that is an anatomical).  My suspicion is that
+    having a darker-than-usual ulay is nice to allow the overlay colors
+    to show up better.  I am currently of the opinion that a UMAX of
+    around ~150-190% is a nice value (and UMIN can be set to 0%)
+
+Clusterize capabilities (with alpha+boxed) ~2~
+
+It is now possible to include both Clusterizing and the Alpha+Boxed
+functionality from the GUI in @chauffeur_afni.  A few rules for using
+this:
+
+    + There is a new '-clusterize ..' option, where users would put
+      3dClusterize options for the clustering (e.g., '-NN ..' and
+      '-clust_nvox ..').  But not *everything goes here; in fact, most
+      other cluster-necessary information is provided through existing
+      @chauffeur_afni options, listed below.
+
+      - Put the utilized Clusterize options in quotes, so it will be
+        read in as a single opt.
+
+    + The Olay and Thr volumes (for visualizing and thresholding,
+      respectively) are specified with the '-set_subbricks ..'
+      (instead of including '-idat ..' and '-ithr ..' via '-clusterize ..').
+
+    + The threshold value is specified with either '-thr_olay ..' or
+      '-thr_olay_pside ..' (instead of including it after sidedness
+      via '-clusterize ..').  3dClusterize's 'within_range'
+      functionality cannot be used here.
+
+      - 1sided thresholding is only to the right side.
+
+      - If the user selects "1sided" thresholding, then '-pbar_posonly' 
+        will automatically be switched on.
+
+    + Sidedness must *always* be included, using '-thr_olay_pside ..', 
+      even if not converting a p-value. 
+
+    + The Clusterize report is output in the same place as the final
+      images, as PREFIX_clust_rep.txt.
+
+The ability to run 'whereami_afni' on the output clusters is also now
+included, via the '-clusterize_wami ..' option.  This leads to a
+report of the overlap of each cluster in the cluster map with the
+specified atlas.  The output text file of information is then:
+PREFIX_clust_whereami.txt.
+
+There are a couple examples of using this functionality, below, in
+EXAMPLES.
+
+# ========================================================================
+
+TROUBLESHOOTING ~1~
+
+1) Sometimes, people running this program (or others that use it)
+   might see an error involving "/tmp/.X11-unix", such as:
+
+     -- trying to start Xvfb :570
+     [1] 53344
+     _XSERVTransmkdir: ERROR: euid != 0,directory /tmp/.X11-unix will not be created.
+     _XSERVTransSocketUNIXCreateListener: mkdir(/tmp/.X11-unix) failed, errno = 2
+     _XSERVTransMakeAllCOTSServerListeners: failed to create listener for local
+     (EE)
+     Fatal server error:
+     (EE) Cannot establish any listening sockets - Make sure an X server isn't already running(EE)
+
+   The following has appears to be a good solution (NB: it does
+   require having administrative or sudo privileges):
+
+     mkdir /tmp/.X11-unix
+     sudo chmod 1777 /tmp/.X11-unix
+     sudo chown root /tmp/.X11-unix/
+
+   This is described more here:
+     https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/tutorials/auto_image/auto_%40chauffeur_afni.html#troubleshooting
+
+# ========================================================================
+
+EXAMPLES ~1~
+
+ A) Basic vanilla: make a 3x5 montage of just a ulay; there will
+    be 15 slices shown, evenly spaced along each axis, with some
+    labels on the corners.
+
+    @chauffeur_afni                     \
+        -ulay    MY_ULAY.nii.gz         \
+        -prefix  PRETTY_PICTURE         \
+        -montx 5 -monty 3               \
+        -set_xhairs OFF                 \
+        -label_mode 1 -label_size 4     \
+        -do_clean  
+
+
+ B) Make a 3x5 montage of an overlaid data set that has an ROI
+    map, so we want it to be colored-by-integer.  Put the images
+    into a pre-existing directory, SUBDIR/.
+
+    @chauffeur_afni                       \
+        -ulay  MY_ULAY.nii.gz             \
+        -olay  MY_OLAY.nii.gz             \
+        -pbar_posonly                     \
+        -cbar "ROI_i256"                  \
+        -func_range 256                   \
+        -opacity 4                        \
+        -prefix   SUBDIR/PRETTY_PICTURE2  \
+        -montx 5 -monty 3                 \
+        -set_xhairs OFF                   \
+        -label_mode 1 -label_size 4       \
+        -do_clean 
+
+
+ C) Make a 3x5 montage of an overlaid data set that shows the
+    beta coefficients stored in brick [1] while thresholding the
+    associated statistic stored in brick [2] at voxelwise p=0.001, 
+    overlaid on the anatomical volume.
+
+    @chauffeur_afni                       \
+        -ulay  anat.nii.gz                \
+        -olay  stats.nii.gz               \
+        -cbar Plasma                      \
+        -func_range 3                     \
+        -thr_olay_p2stat 0.001            \
+        -thr_olay_pside  bisided          \
+        -set_subbricks -1 1 2             \
+        -opacity 4                        \
+        -prefix   STAT_MAP                \
+        -montx 5 -monty 3                 \
+        -set_xhairs OFF                   \
+        -label_mode 1 -label_size 4       \
+        -do_clean 
+
+  D) Fun way to enter a colorbar-- note all the '-cbar*' options
+     working together here, and the way they are used to make a
+     discrete cbar.  (You might also enjoy the '-colorscale_idx_file ..' 
+     option, as another way to enter your own colorbar; colors
+     entered there are *not* discrete regions, but get blended
+     together.)
+     NB 1: now you can replace the "" with the keyword EMPTY, to make
+           scripting easier (needing to keep quotes around can be a pain).
+     NB 2: the string following cbar probably can*not* be split into
+           multiple lines with continuation-of-line chars.  Mi dispiace.
+
+    @chauffeur_afni                       \
+        -ulay FT_anat+orig.               \
+        -olay FT_anat+orig.               \
+        -func_range_perc 95               \
+        -prefix AAA                       \
+        -pbar_saveim BBB.jpg              \
+        -pbar_posonly                     \
+        -cbar_ncolors 6                   \
+        -cbar_topval ""                   \
+        -cbar "1000=yellow 800=cyan 600=rbgyr20_10 400=rbgyr20_08 200=rbgyr20_05 100=rbgyr20_03 0=none"
+
+  E) Included Clusterizing, with Alpha+Boxed on. Also select the Olay
+     (idat) and Thr (ithr) volumes descriptively, with subbrick labels.
+
+    @chauffeur_afni                                                 \
+        -ulay               anat.nii.gz                             \
+        -olay               stats.nii.gz                            \
+        -cbar               Reds_and_Blues_Inv                      \
+        -clusterize         "-NN 1 -clust_nvox 157"                 \
+        -func_range         3                                       \
+        -set_subbricks      -1 "vis#0_Coef"  "vis#0_Tstat"          \
+        -thr_olay_p2stat    0.001                                   \
+        -thr_olay_pside     bisided                                 \
+        -olay_alpha         Yes                                     \
+        -olay_boxed         Yes                                     \
+        -opacity            7                                       \
+        -prefix             img_e                                   \
+        -montx 3 -monty 3                                           \
+        -set_xhairs OFF                                             \
+        -label_mode 1 -label_size 4                                 \
+        -no_clean
+
+  F) Included Clusterizing, with Alpha+Boxed on, similar to above, but
+     1sided example, and using 'whereami_afni' functionality:
+
+    @chauffeur_afni                                                 \
+        -pbar_posonly                                               \
+        -ulay               anat.nii.gz                             \
+        -olay               stats.nii.gz                            \
+        -cbar               "Spectrum:yellow_to_red"                \
+        -clusterize         "-NN 1 -clust_nvox 157"                 \
+        -clusterize_wami    "MNI_Glasser_HCP_v1.0"                  \
+        -func_range 3                                               \
+        -set_subbricks      -1 1 2                                  \
+        -thr_olay           3.314300                                \
+        -thr_olay_pside     1sided                                  \
+        -olay_alpha         Yes                                     \
+        -olay_boxed         Yes                                     \
+        -opacity            7                                       \
+        -prefix             img_f                                   \
+        -montx 3 -monty 3                                           \
+        -set_xhairs OFF                                             \
+        -label_mode 1 -label_size 4                                 \
+        -no_clean
+
+
+# -------------------------------------------------------------------
+
+
+=== Output of '@chauffeur_afni' (no arguments) ===
+
+
+OVERVIEW ~1~
+
+This was originally a helper function in processing scripts, to take
+quality control (QC) snapshots automatically.  It wraps around a lot
+(but not all) of the veeery useful "driving AFNI" functionality.  You,
+dear user, can still accomplish all the same with those commands, but
+I just wanted to add in some other calculations, as well, to try to
+make the process of generating montages of images easier.
+
+The purpose of this function is to generate montage images easily and
+quickly while processing-- even if on a remote server (because it uses
+xvfb to make a virtual X11 environment)-- to be able to see what is
+happening in data processing at useful stages: for example, alignment
+of two sets without having to click any buttons in the AFNI GUI.  This
+makes it easier to review batch processing, discuss processing with
+one's boss, prepare for a presentation or publication, etc. For
+example, this program is used in most all of FATCAT's fat_proc_*
+scripts, and even TORTOISE includes calls to it for auto-QC imaging if
+the user has AFNI installed (and suuuurely they should??).
+
+Each call to this function will make a set of montages in the axial,
+coronal and sagittal planes, of user-specified dimensionality.
+
+This function can be used on both 3D and 4D data sets, but for the
+latter, probably @djunct_4d_imager would be much more simple to use.
+
+A lot of the help descriptions for command line options, below, will
+refer to the variables in the "AFNI Driver" doc:
+https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.driver.html
+or variables in the "AFNI Environment" doc:
+https://afni.nimh.nih.gov/pub/dist/doc/program_help/README.environment.html
+References to these are sometimes noted explicitly with "see DR" or
+"see ENV", respectively, and potentially with the particular variable.
+For example, "(see ENV: SAVE_AGIF)".
+
+Added ~July 15, 2018: the capability to select a single slice across a
+4D data set and to view it with both underlay and overlay options
+(hitherto, @djunct_4d_imager had a subset of this capability but only
+for ulays).
+
+++ constructed by PA Taylor (NIMH, NIH, USA).
+
+# =========================================================================
+
+COMMAND OPTIONS ~1~
+
+-help, -h          :see helpfile (here, in fact)
+-hview             :popup help
+-ver               :see version number
+
+-ulay    UUU       :name of underlay dset (required); can be 3D or 4D
+                    set, depending on the circumstances.  For 4D, 
+                    though, strongly consider using "@djunct_4d_imager".
+
+-olay    OOO       :name of overlay dset (opt).
+
+-mode_4D           :for each viewing plane (sag, cor, axi) one slice
+                    is selected across all volumes in a 4D data set
+                    (e.g., using one of the "-set_* .." opts, below).
+                    A montage of those slices is made for any ulay UUU
+                    and olay OOO selected.  Note that with this
+                    option:
+                    + the user cannot threshold by statistic with the 
+                      "-thr_olay_p2stat .." opt (-> because different
+                      stats in a volume might have different conversions)
+                    + when using this opt, at least on of UUU and OOO 
+                      *must* have >1 volumes.
+                    + if one of the ulay/olay volumes has only one brick, 
+                      it will be viewed in the same way across the entire
+                      montage (i.e., as if it were a constant volume
+                      throughout 'time').
+
+-olay_off          :explicitly state you are not using olay (opt);
+                    if not used and no olay is given, then the user
+                    just gets prompted to be sure they haven't 
+                    forgotten the olay dset.
+
+-prefix  PPP       :prefix for output files (required).
+
+-ulay_range UMIN UMAX :specify min and max range values of ulay dset;
+                    if a "%" is on both numbers, then treat the
+                    numerical part of UMIN and UMAX as percentiles
+                    from which to calculate actual values; otherwise,
+                    treat UMIN and UMAX as values directly. (def:
+                    UMIN=0% and UMAX=98%). (See DR: SET_ULAY_RANGE)
+                    Also, see "Special Ulay Range" and "Combining %ile
+                    values..." in NOTES, below.
+
+-ulay_range_nz UMIN UMAX 
+                   :same as the preceding opt, but when "%" is on both
+                    numbers, here the percentiles are only calculated
+                    over the *non-zero* voxels.  The above one is more
+                    in line with the AFNI GUI default behavior for
+                    percentile calcs (though GUI by default works
+                    slicewise). If %ile values are not given, then
+                    both this and the above option produce identical
+                    results for the same UMIN and UMAX values.  (See
+                    DR: SET_ULAY_RANGE) "Special Ulay Range" and
+                    "Combining %ile values..." in NOTES, below.
+
+-ulay_range_am UMIN UMAX 
+                   :same as the preceding opt, but over just *automasked* 
+                    voxels
+
+-ulay_min_fac UMF  :a finesse-full option for further adjusting ulay
+                    grayscale mapping, when applying '-ulay_range_am
+                    ..'.  UMF must be a numerical value in range (0,
+                    1].  This value is used to lower the lower end of
+                    the ulay range (UMIN) by this fraction of the difference
+                    between the upper and lower bounds. Thus, if A and B are
+                    the min and max, respectively, for the ulay, then 
+                    A -> max(0, A-UMF*(B-A)).
+
+-edgy_ulay         :turn the ulay volume into edges (via 3dedge3).  All 
+                    other opt/values like the '-ulay_range*' will refer
+                    to this edge-ified version, *except* for the 
+                    '-box_focus_slices AMASK_FOCUS_ULAY' one, whereby
+                    the original ulay will still be automasked.
+                    If using this option, extensive testing has found
+                    that '-ulay_range_nz 0% 50%' or thereabouts might
+                    be a nice scale for the brightness.
+
+-edge_enhance_ulay EE
+                   :a related (but different) way to enhance edges of
+                    the ulay than '-edgy_ulay': first, calculate
+                    edges, yes, but then use those to scale up the
+                    values in the ulay set *at* edge locations.  The
+                    ulay set value at edges will be multiplied by
+                    '1+EE' (one plus the edge enhancement factor).  A
+                    good value to try using is probably EE=0.5 (and
+                    yes, you always need to provide that EE value).
+
+-globalrange  GR   :specify how lookup range for matching ulay values
+                    is done (def: VOLUME);
+                    (see ENV: AFNI_IMAGE_GLOBALRANGE)
+                    Ignored if '-ulay_range* ..' is set.
+                    Note for '-mode_4D': this setting applies to the
+                    resliced volume (i.e., the one made of one slice
+                    of each subbrick).  See "Combining %ile
+                    values..." in NOTES, below.
+
+-func_range FR     :specify upper value FR of the olay dset to be
+                    matched to top of colorbar (def: calc 98%ile non-zero
+                    value of dset and use that).
+
+-func_range_perc_nz FRP 
+                   :alternative to "-func_range ..."; specify a
+                    percentile value FRP to use to make the upper
+                    value of the olay dset to be matched to the top of
+                    the colorbar (def: calc 98%ile non-zero value of dset 
+                    and use that).  NB: this percentile range is always
+                    among *non-zero* voxel values with this option; see 
+                    below.
+
+-func_range_perc FRP :same as above option, but this is a percentile
+                   among *all* voxel values, not just those with
+                   non-zero values (def: 100).
+
+-func_range_perc_am FRP :same as above option, but this is a percentile
+                   among *automasked* voxel values.
+
+-obliquify  OBL    :the ulay and/or the olay may have been acquired
+                    with oblique coordinate axes; by default, the
+                    viewer shows these data sets in each of their
+                    oblique coordinates. You can choose to apply the
+                    obliquity information to show the data in
+                    different coords, though, via the value of OBL:
+                      "ALL" : apply the obliquity of all entered
+                              dsets (via '3dWarp -deoblique ...')
+                              to show each in scanner coords
+                      "o2u" : send the olay to the ulay's oblique
+                              coords
+                      "ob2u": send the olay and any box_focus to the 
+                              ulay's oblique coords
+                      "u2o" : send the ulay to the olay's oblique
+                              coords
+                      "ub2o": send the ulay and any box_focus to the 
+                              olay's oblique coords
+
+-obl_resam_ulay OIU :if using '-obliquity ..', then you might want to
+                    specify the method of resampling/interpolation for
+                    the dset being re-gridded; this option specifies
+                    that method for the ulay (see below for other
+                    dsets).  Any valid transform opt for 3dWarp is
+                    allowed: cubic, NN, etc.  (def: OIU = wsinc5)
+
+-obl_resam_olay OIO :same as for '-obl_interp_ulay ..', but for the
+                    olay dset (def: OIO = wsinc5)
+
+-obl_resam_box  OIB :same as for '-obl_interp_ulay ..', but for the
+                    '-box_focus_slices ..' dset (def: OIB = wsinc5)
+
+-func_resam  RES   :set the resampling mode for dsets; valid values
+                    are:   NN  Li  Cu  Bk
+                    (def: NN; hey, voxels are voxels). 
+                    (See DR: SET_FUNC_RESAM)
+
+-thr_olay THR      :threshold the olay dset at THR (def: 0, or
+                    unthreshold). If you are thresholding a statistic
+                    brick, then you should see the "-thr_olay_p2stat ..."
+                    option, below. (See DR: SET_THRESHNEW)
+-thrflag   'fff'   :further control of how the THR value is interpreted 
+                    (def: "*"). (See DR: SET_THRESHNEW)
+
+-thr_olay_p2stat PP :an alternative way to specify a voxelwise
+                    threshold (i.e., instead of "-thr_olay ..."), when
+                    thresholding based on a statistic; you can specify
+                    the p-value you want, and using internal header
+                    information, the appropriate value for whatever
+                    statistic is in the statistic brick will be
+                    calculated and applied; you likely need to use
+                    "-set_subbricks i j k" with this, where 'k' would
+                    be the index of the statistic brick (and likely
+                    'j' would be the index of the associated
+                    coefficient/beta brick; 'i' would be the brick of
+                    the underlay volume, and if there is only a single
+                    volume there, it could just be either '0' or
+                    '-1'). And see next option '-thr_olay_pside', below.
+
+-thr_olay_pside SS :(required if using '-thr_olay_p2stat ..') specify the
+                    sidedness of the testing for the conversion of 
+                    p-to-stat.  Valid values for SS at present include:
+                        bisided
+                        2sided 
+                        1sided
+
+-cbar    CCC       :specify a new colorbar, where CCC can be any of the
+                    cbars in the standard AFNI list, Matplotlib colornames,
+                    or hex values (def: Plasma).
+
+-colorscale_idx_file CI CF 
+                   :another way to specify a colorbar, in this case
+                    one created by the user.  Two arguments must be
+                    input.  First, CI is a colorscale index, which
+                    must be in the (inclusive) range [01, 99], using
+                    two numbers.  (The user has to enter this, because
+                    they might have one/more of these specified
+                    already in their ~/.afnirc file, and hence avoid
+                    duplicating an index.)  Second, CF is the
+                    colorscale filename; the file contains the name of
+                    the colorbar in the first line, and then either 2
+                    columns (values and colors) or 1 column (just
+                    colors; will be evenly spaced).  An example CF is:
+                          Yellow-Lime-Red-Blue
+                            1.0 #ffff00
+                            0.7 limegreen
+                            0.5 #ff0000
+                            0.3 #aa00aa
+                            0.0 #0000ff
+                    Note the types of AFNI-allowed colornames used here
+                    (hex and specific colorname). 
+                    (see ENV: AFNI_COLORSCALE_xx)
+
+-pbar_posonly      :for color range specification, default is to use
+                    both positive and negative values; enter this flag
+                    to use only the positive range. (See DR:
+                    SET_PBAR_ALL)
+
+-pbar_saveim PBS   :if an olay is used, then you can save the color pbar
+                    (=colorbar) that is used in plotting.  PBS is the
+                    name of the file (including path), with allowed
+                    extensions jpg, png, or ppm (def: jpg).  
+                    When this option is used, a text file of the same
+                    name as PBS but with extension 'txt' will also be
+                    saved, which is now (>May 8, 2019) a
+                    dictionary-like file of relevant information:
+                    min/max range, threshold value (0, if no thr is
+                    specified), as well as the ability to store
+                    comments on what those values mean (see
+                    -pbar_comm_* options, below).  See also '-pbar_dim
+                    ..'  for relation pbar optioning.  (See DR:
+                    PBAR_SAVEIM)
+
+-pbar_comm_range PBR :if using '-pbar_saveim ..', one can save a
+                    text/string comment on why the pbar range was
+                    chosen.  For example, '99%ile in mask'.  This will
+                    be output in the PBS.txt file (the value of the
+                    key 'pbar_comm').  Use quotes around on command
+                    line.
+
+-ulay_comm  UC     :if using '-pbar_saveim ..', one can save a
+                    text/string comment on why the ulay range was 
+                    chosen.  For example, '0-25% in volume'. This will
+                    be output in the PBS.txt file (the value of the
+                    key 'ulay_comm').  Use quotes around on command
+                    line.
+
+-pbar_comm_thr PBT :similar to '-pbar_comm_range ..', but for storing a
+                    comment about the selected threshold value. It
+                    will also be stored in the PBS.txt file (the value
+                    of the key 'vthr_comm').
+
+-pbar_comm_gen PBG :similar to '-pbar_comm_range ..', but for storing a
+                    general comment about the pbar or plot or color range. 
+                    It will also be stored in the PBS.txt file (the value
+                    of the key 'gen_comm').
+
+-pbar_for  PF      :tiny option, mainly for APQC purposes.  In the output
+                    txt file of info for the pbar, can state if the pbar
+                    refers to something other than the 'olay' (such as the
+                    'ulay' or 'dset').  (def: olay)
+
+-pbar_dim PBD      :if '-pbar_saveim ..' is used to save the color pbar
+                    of the olay, then this option can specify the
+                    orientation of the colorbar image and its pixel
+                    dimensions. This is done by specifying the
+                    'dimstring' part of the PBAR_SAVEIM input (see DR:
+                    PBAR_SAVEIM).  The default value is '64x512H',
+                    which means to have a vertical cbar that is 64
+                    pixels wide and 512 pixels tall which is then
+                    tipped horizontally on its side; to leave it vertical
+                    just don't put an 'H' at the end. 
+
+-XXXnpane P        :same option as in 'afni', for colorbar control: 
+                    << set the number of 'panes' in the continuous
+                    colorscale to the value 'P', where P is an even
+                    integer between 256 and 2048 (inclusive).
+                    Probably will work best if P is an integral
+                    multiple of 256 (e.g., 256, 512, 1024, 2048).
+                    [This option is for the mysterious Dr ZXu.] >>
+                    One use of this option: for ROI atlases with integer
+                    values >255.
+
+-cbar_ncolors NC   :set colorscale mode (def: 99) (See DR:
+                    SET_PBAR_ALL, the 2nd usage case, description
+                    about '99').
+
+-cbar_topval  TOPV :set colorscale mode (def: 1) (See DR:
+                    SET_PBAR_ALL, the 2nd usage case, description
+                    about 'topval').
+                    Now, the value of TOPV could also be a special
+                    keyword, 'EMPTY' (yes, written in all caps), which
+                    gives the same behavior as making TOPV the empty
+                    "", but makes scripting easier (not needing to
+                    pass double quotes in shell variables...).  This
+                    is probably only useful if defining a discrete
+                    colorbar (see Examples).
+
+-opacity   OO      :enter an "opacity factor" for the olay, where OO is 
+                    an integer in the interval [0, 9], with the 9 being
+                    opaque (see DR).
+
+-blowup  BB        :enter a "blowup factor", where BB is an integer 
+                    in the interval [1, 8].  Increases spatial resolution
+                    in the output by a factor of BB (see DR; def: 2).
+
+-set_xhairs XX     :specify type and/or existence of crosshairs in the
+                    image.  At the time of writing, the available keywords
+                    to use are:
+                      OFF, SINGLE, MULTI, LR_AP, LR_IS, AP_IS, LR, AP, IS
+                    (see DR: SET_XHAIRS).
+
+-set_xhair_gap GG  :specify gap in the crosshairs to the specified number
+                    of pixels GG (see DR: SET_XHAIR_GAP).
+
+-delta_slices DS DC DA :when montaging, (DS, DC, DA) is the integer
+                     number of slices to use as spacing between views
+                     along the (sag, cor, axi) axes, respectively
+                     (def: automatically calculate to ~evenly fit the
+                     number of selected montage slices along this
+                     axis).  (See DR: "mont=PxQ:R"; basically, each D?
+                     is the 'R' value along the given axis).  Users
+                     can specify a delta_slice value along *some* axis
+                     and leave other(s) to be chosen automatically, by
+                     specifying a D? value >0 for their own value, and
+                     given any other D? value -1.  For example:
+                      -delta_slices 40 -1 -1
+                     would specify every 40th slice along the sag axis, 
+                     while the cor and axi spacing would be automatically 
+                     calculated.
+
+-set_subbricks i j k :for 3D image viewing, specify subbricks being
+                    viewed in the ulay, olay and threshold dsets (def:
+                    "-1 -1 -1", which means ignore these values).
+                    This is the way to specify different overlay and
+                    threshold subbricks for displaying, such as using
+                    the "beta" or "coefficient" for color and the
+                    "statistic" as the threshold level.  (See DR:
+                    SET_SUBBRICKS)
+
+-save_ftype  FTYPE :type of file as which to save images; key types are
+                    listed in the Driver description (def: PNG) (See
+                    DR: SAVE_ALLJPEG, SAVE_ALLPNG, SAVE_MPEG,
+                    SAVE_AGIF, SAVE_JPEG, SAVE_PNG; for which the user
+                    would enter just the non-"SAVE_" part, just as
+                    "PNG", "MPEG", etc.)
+
+-set_ijk  II JJ KK :Set the controller coordinates to the given
+                    triple, which are integer index selectors along
+                    the three spatial axes.  This essentially
+                    specifies the middle image in the montage (def:
+                    for each coordinate, choose middle slice along
+                    axis).
+-set_dicom_xyz XX YY ZZ :Set the controller coordinates to the given
+                    triple, which are the (x, y, z) coordinates in
+                    AFNI's favorite RAI DICOM notation.  (def: for
+                    each coordinate, choose middle slice along axis).
+
+-box_focus_slices REF :Use a dset REF to define a narrow range of
+                    where slices cover. This is done by autoboxing the
+                    REF dset (with '3dAutobox -noclust', so if it
+                    hasn't been masked already, it's not useful), and
+                    using the midpoint of the box's FOV as the new
+                    center; also, the montage slices are chosen to be
+                    evenly spread within the box FOV, though they
+                    *still* show the unboxed dataset.  This is
+                    different than cropping (see '-crop*' below for
+                    that); this is only to try to avoid showing empty
+                    slices and such. If the ulay is a template dset,
+                    you might make REF that template.  Just for '3D'
+                    dset viewing
+                    NEW: enter a keyword for the argument REF,
+                    instructing the program to make a focus box from
+                    the ulay or olay: AMASK_FOCUS_ULAY or
+                    AMASK_FOCUS_OLAY, respectively.  Mask is just made
+                    using default 3dAutomask (with '-clfrac 0.2', to
+                    err on the side of inclusivity)-- may not be
+                    perfect, but provide some useful focus while
+                    hopefully not cutting off regions that should
+                    still be included.
+                    NB: if your olay dset is a mask and you want to use
+                    it for this box-focusing, then make REF be the name
+                    of the file itself, not AMASK_FOCUS_OLAY, because
+                    automasking a mask does weird things.
+
+-clusterize "-opt0 v0 -opt1 v1 ..."  
+                   :input a set of options "-opt0 v0 -opt1 v1 ..." for
+                    3dClusterize to use internally, so that the
+                    overlay dataset is clusterized.  Can be combined
+                    with Alpha+Boxed.  See the "Clusterize
+                    capabilities" description in the NOTES below for
+                    what options go where when clusterizing.  Examples
+                    are also included below.
+
+-clusterize_wami CW :if using '-clusterize ..', then this option can be used
+                    to run AFNI's whereami_afni program on the results.
+                    The user provides the name of an allowed atlas for
+                    reference (see the top of whereami_afni's help), and a text
+                    file reporting the relative overlap of each ROI will be 
+                    produced in the outputs.  
+
+-montx  MX         :in creating a montage, the number of image panels in
+                    a row, i.e., the number of columns (def: 3); the
+                    total number of panels per axis is: MX*MY (see
+                    below "-monty ...").  (See DR: "mont=PxQ:R";
+                    basically, MX is the 'P' value).
+
+-monty  MY         :in creating a montage, the number of image panels in
+                    a column, i.e., the number of rows (def: 3); the
+                    total number of panels per axis is: MX*MY (see
+                    above "-montx ...").  (See DR: "mont=PxQ:R";
+                    basically, MY is the 'Q' value).
+
+-montgap  MG       :in creating a montage, one can put a border (or "gap")
+                    between the image panels.  This is specified as a
+                    number of pixels with which to insert between images
+                    (def: 0).  (See DR: "mont=PxQ:R" additional option 
+                    ":G:C";  basically, MG is the 'G' value).
+
+-montcolor  MC     :in creating a montage, one can put a border (or "gap")
+                    between the image panels (see "-montgap", above);
+                    one can also specify a color for this gap, using
+                    the present option (def: 'black').  (See DR:
+                    "mont=PxQ:R" additional option ":G:C"; basically,
+                    MC is the 'C' value).
+
+-button_press BP   :simulate a button press for one of the following
+                    buttons in an image viewer window:
+                       Norm Colr Swap
+                    You can enter more than one of these button presses here
+                    *if* you put all of them within a single pair of quotes, 
+                    such as:  -button_press "Colr Swap".  Note that the order
+                    of the button presses matters.
+                    (See DR: "butpress=name")
+
+-no_cor            :no coronal slice views output (def: this view is shown)
+-no_axi            :no axial slice views output (def: this view is shown)
+-no_sag            :no sagittal slice views output (def: this view is shown)
+                    NB: when '-mode_4D' is on, the sagittal view will ALWAYS
+                    shown; effectively, this opt is then disabled.
+
+-olay_alpha {No|Yes|Linear|Quadratic} 
+                   :In addition to representing olay values as colors
+                    with a threshold, one also apply opacity
+                    information to 'soften' the effect of
+                    thresholding; see DR: SET_FUNC_ALPHA for a
+                    description of this behavior (def: "No", which is
+                    just standard thresholding stuff).
+                    Prodigal functionality returned: one can now
+                    specify whether fading is "Quadratic" (= "Yes",
+                    too, since this is default fading) or "Linear":
+                    that is, how quickly opacity drops off, with the
+                    former being much faster.  At present, a possible
+                    rule of thumb: try Quadratic for individual
+                    results and Linear for group results.
+
+-olay_boxed {No|Yes} :a partner parameter for the fancy alpha-based olay
+                    viewing; put a box around supra-threshold
+                    voxels/clusters. Default value is "No".  (see DR:
+                    SET_FUNC_BOXED)
+
+-image_zoom_nn_no  :the default zoom is set to NN mode, so no smoothing
+                    occurs (see ENV: AFNI_IMAGE_ZOOM_NN).  This option
+                    changes behavior internally to set this variable
+                    to have the value "NO".
+
+-agif_delay AD     :when using "-save_ftype AGIF", this option can be used
+                    to specify the time delay between frames.  Units are
+                    "centi-seconds" = 100ths of seconds (def: 30).
+                    (see ENV: AFNI_AGIF_DELAY)
+
+-left_is_left LIL  :specify explicitly whether image left is dataset left
+                    (LIL -> YES) or image left is dataset right (LIL -> NO)
+                    (def: no value given).
+                    (see ENV: AFNI_LEFT_IS_LEFT)
+
+-left_is_posterior LIP  :specify explicitly whether image left is dataset 
+                    posterior (LIP -> YES) or image left is dataset anterior 
+                    (LIP -> NO) (def: no value given).
+                    (see ENV: AFNI_LEFT_IS_POSTERIOR)
+
+-crop_axi_x CAX1 CAX2,
+-crop_axi_y CAY1 CAY2 :crop axial image(s) to be between voxels CAX1 and
+                    CAX2 along the x-axis (inclusive) and CAY1 and CAY2 
+                    along the y-axis. These values are integer row and 
+                    column numbers.
+                    (See DR: "crop=x1:x2,y1:y2"; CAX1 is x1, etc.;
+                    def: no cropping -- CAX1=0, CAX2=0, etc.)
+-crop_sag_x CSX1 CSX2,
+-crop_sag_y CSY1 CSY2 :same as other '-crop_*' above, but for sagittal
+                    images.
+-crop_cor_x CCX1 CCX2,
+-crop_cor_y CCY1 CCY2 :same as other '-crop_*' above, but for coronal
+                    images.
+
+-zerocolor ZC      :Change the default 'background' ulay color of zero
+                    values (def: "Black"); ZC can be set to any allowed
+                    AFNI value (see ENV: AFNI_IMAGE_ZEROCOLOR).  This 
+                    option is mainly for G. Chen, who flaunts convention
+                    whenever possible.
+
+-label_mode    LM  :control labels, ON/OFF and location (def: 1);
+                    (see ENV: AFNI_IMAGE_LABEL_MODE)
+-label_size    LS  :control labels, size (def: 3);
+                    (see ENV: AFNI_IMAGE_LABEL_SIZE)
+-label_color   LC  :control labels, color (def: white);
+                    (see ENV: AFNI_IMAGE_LABEL_COLOR)
+-label_setback LB  :control labels, offset from edge (def: 0.01);
+                    (see ENV: AFNI_IMAGE_LABEL_SETBACK)
+-label_string LSTR :control labels, string automatically appended
+                    to the slice (def: "");
+                    (see ENV: AFNI_IMAGE_LABEL_STRING)
+
+-image_label_ijk   :If this option is used, then the image label will
+                    be based on the slice index rather than the
+                    spatial (mm) coordinate; thanks, Bob.
+                    (see ENV: AFNI_IMAGE_LABEL_IJK)
+
+-pass              :does nothing (no, really).
+
+-cmd2script C2S    :output a script that can drive AFNI to make
+                    (essentially) the same image being output here.
+
+-c2s_text   C2ST   :when using '-cmd2script ..', then this option can
+                    be used to add text in the (top of the) script's 
+                    pop-up message.
+
+-c2s_text2  C2ST   :when using '-cmd2script ..', then this option can
+                    be used to add a second line of text in the script's 
+                    pop-up message.
+
+-c2s_mont_1x1      :when using '-cmd2script ..', use this flag so that 
+                    the output script just has a 1x1 "montage" size, 
+                    regardless of the actual image montage size. Sometimes
+                    large montages are useful in images, but not in the 
+                    interactive GUI session.
+
+-dry_run           :run all the parts of the chauffeur *except* making 
+                    the images; this is useful if we just want the
+                    '-cmd2script ..' script, for example.
+
+-no_clean          :by default, the temporary directory of copying
+                    files and such is now (as of July 8, 2018)
+                    removed; using this option means that that working
+                    directory should *not* be removed.
+
+-do_clean          :Use this option to remove the temporary directory
+                    of copied/intermediate files. (As of July 8, 2019,
+                    this is the new default behavior.  Thus, this opt
+                    is only here for backwards compatibility).
+
+-echo              :run script verbosely (with 'set echo' executed)
+
+# ========================================================================
+
+NOTES ~1~
+
+Description of "4D mode" ~2~
+
+    In this case the assumption/requirement is that you have at least
+    one 4D data set to look at; for each viewing plane, one slice is
+    selected across time for viewing.  For each viewing plane, the
+    slices across time are spatially concatenated to form a single,
+    temporary 3D dset (a "planar" or "slicewise" volume), which is
+    what is actually put into AFNI to generate images in that relevant
+    plane.  How percentile values are calculated is discussed in the
+    next "NOTE", below.
+
+    When both an overlay and underlay are used, the usual resampling
+    rules of the AFNI GUI apply (and user can specify the resampling
+    option with "-func_resam .."). 
+
+    If one volume is 4D and one is 3D (e.g., for checking alignment
+    across time), then the relevant single slice of the 3D volume is
+    basically just repeated in a given plane.
+
+
+Combining %ile values "-mode_4D" for olay and/or ulay ~2~
+
+    When using a percentile to set a range in 4D mode for either ulay
+    (e.g., "-ulay_range* ..") or olay (e.g., "-func_range_perc_nz*
+    .."), that percentile is calculated for each of the three "planar"
+    or "slicewise" volumes, and then the *max* of those three numbers
+    is applied with the colorbar.
+
+    If one of your ulay or olay in 4D mode is just a 3D volume and you
+    want a percentile related to the whole thing, you can calculate
+    any of those values beforehand using "3dBrickStat -percentile ..",
+    and then apply those.
+
+
+Special Ulay Range ~2~
+
+    If UMAX is a percentile >100%, then what happens is this:
+        the 98%ile value in the dset is calculated, and the
+        result is multiplied by (UMAX/98); the ulay dataset
+        is 'ceilinged' at the 98%ile value, and its upper
+        range is set to UMAX/98.
+
+    The purpose of this madness?  To give a nice, controllably darkened
+    ulay (esp. when that is an anatomical).  My suspicion is that
+    having a darker-than-usual ulay is nice to allow the overlay colors
+    to show up better.  I am currently of the opinion that a UMAX of
+    around ~150-190% is a nice value (and UMIN can be set to 0%)
+
+Clusterize capabilities (with alpha+boxed) ~2~
+
+It is now possible to include both Clusterizing and the Alpha+Boxed
+functionality from the GUI in @chauffeur_afni.  A few rules for using
+this:
+
+    + There is a new '-clusterize ..' option, where users would put
+      3dClusterize options for the clustering (e.g., '-NN ..' and
+      '-clust_nvox ..').  But not *everything goes here; in fact, most
+      other cluster-necessary information is provided through existing
+      @chauffeur_afni options, listed below.
+
+      - Put the utilized Clusterize options in quotes, so it will be
+        read in as a single opt.
+
+    + The Olay and Thr volumes (for visualizing and thresholding,
+      respectively) are specified with the '-set_subbricks ..'
+      (instead of including '-idat ..' and '-ithr ..' via '-clusterize ..').
+
+    + The threshold value is specified with either '-thr_olay ..' or
+      '-thr_olay_pside ..' (instead of including it after sidedness
+      via '-clusterize ..').  3dClusterize's 'within_range'
+      functionality cannot be used here.
+
+      - 1sided thresholding is only to the right side.
+
+      - If the user selects "1sided" thresholding, then '-pbar_posonly' 
+        will automatically be switched on.
+
+    + Sidedness must *always* be included, using '-thr_olay_pside ..', 
+      even if not converting a p-value. 
+
+    + The Clusterize report is output in the same place as the final
+      images, as PREFIX_clust_rep.txt.
+
+The ability to run 'whereami_afni' on the output clusters is also now
+included, via the '-clusterize_wami ..' option.  This leads to a
+report of the overlap of each cluster in the cluster map with the
+specified atlas.  The output text file of information is then:
+PREFIX_clust_whereami.txt.
+
+There are a couple examples of using this functionality, below, in
+EXAMPLES.
+
+# ========================================================================
+
+TROUBLESHOOTING ~1~
+
+1) Sometimes, people running this program (or others that use it)
+   might see an error involving "/tmp/.X11-unix", such as:
+
+     -- trying to start Xvfb :570
+     [1] 53344
+     _XSERVTransmkdir: ERROR: euid != 0,directory /tmp/.X11-unix will not be created.
+     _XSERVTransSocketUNIXCreateListener: mkdir(/tmp/.X11-unix) failed, errno = 2
+     _XSERVTransMakeAllCOTSServerListeners: failed to create listener for local
+     (EE)
+     Fatal server error:
+     (EE) Cannot establish any listening sockets - Make sure an X server isn't already running(EE)
+
+   The following has appears to be a good solution (NB: it does
+   require having administrative or sudo privileges):
+
+     mkdir /tmp/.X11-unix
+     sudo chmod 1777 /tmp/.X11-unix
+     sudo chown root /tmp/.X11-unix/
+
+   This is described more here:
+     https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/tutorials/auto_image/auto_%40chauffeur_afni.html#troubleshooting
+
+# ========================================================================
+
+EXAMPLES ~1~
+
+ A) Basic vanilla: make a 3x5 montage of just a ulay; there will
+    be 15 slices shown, evenly spaced along each axis, with some
+    labels on the corners.
+
+    @chauffeur_afni                     \
+        -ulay    MY_ULAY.nii.gz         \
+        -prefix  PRETTY_PICTURE         \
+        -montx 5 -monty 3               \
+        -set_xhairs OFF                 \
+        -label_mode 1 -label_size 4     \
+        -do_clean  
+
+
+ B) Make a 3x5 montage of an overlaid data set that has an ROI
+    map, so we want it to be colored-by-integer.  Put the images
+    into a pre-existing directory, SUBDIR/.
+
+    @chauffeur_afni                       \
+        -ulay  MY_ULAY.nii.gz             \
+        -olay  MY_OLAY.nii.gz             \
+        -pbar_posonly                     \
+        -cbar "ROI_i256"                  \
+        -func_range 256                   \
+        -opacity 4                        \
+        -prefix   SUBDIR/PRETTY_PICTURE2  \
+        -montx 5 -monty 3                 \
+        -set_xhairs OFF                   \
+        -label_mode 1 -label_size 4       \
+        -do_clean 
+
+
+ C) Make a 3x5 montage of an overlaid data set that shows the
+    beta coefficients stored in brick [1] while thresholding the
+    associated statistic stored in brick [2] at voxelwise p=0.001, 
+    overlaid on the anatomical volume.
+
+    @chauffeur_afni                       \
+        -ulay  anat.nii.gz                \
+        -olay  stats.nii.gz               \
+        -cbar Plasma                      \
+        -func_range 3                     \
+        -thr_olay_p2stat 0.001            \
+        -thr_olay_pside  bisided          \
+        -set_subbricks -1 1 2             \
+        -opacity 4                        \
+        -prefix   STAT_MAP                \
+        -montx 5 -monty 3                 \
+        -set_xhairs OFF                   \
+        -label_mode 1 -label_size 4       \
+        -do_clean 
+
+  D) Fun way to enter a colorbar-- note all the '-cbar*' options
+     working together here, and the way they are used to make a
+     discrete cbar.  (You might also enjoy the '-colorscale_idx_file ..' 
+     option, as another way to enter your own colorbar; colors
+     entered there are *not* discrete regions, but get blended
+     together.)
+     NB 1: now you can replace the "" with the keyword EMPTY, to make
+           scripting easier (needing to keep quotes around can be a pain).
+     NB 2: the string following cbar probably can*not* be split into
+           multiple lines with continuation-of-line chars.  Mi dispiace.
+
+    @chauffeur_afni                       \
+        -ulay FT_anat+orig.               \
+        -olay FT_anat+orig.               \
+        -func_range_perc 95               \
+        -prefix AAA                       \
+        -pbar_saveim BBB.jpg              \
+        -pbar_posonly                     \
+        -cbar_ncolors 6                   \
+        -cbar_topval ""                   \
+        -cbar "1000=yellow 800=cyan 600=rbgyr20_10 400=rbgyr20_08 200=rbgyr20_05 100=rbgyr20_03 0=none"
+
+  E) Included Clusterizing, with Alpha+Boxed on. Also select the Olay
+     (idat) and Thr (ithr) volumes descriptively, with subbrick labels.
+
+    @chauffeur_afni                                                 \
+        -ulay               anat.nii.gz                             \
+        -olay               stats.nii.gz                            \
+        -cbar               Reds_and_Blues_Inv                      \
+        -clusterize         "-NN 1 -clust_nvox 157"                 \
+        -func_range         3                                       \
+        -set_subbricks      -1 "vis#0_Coef"  "vis#0_Tstat"          \
+        -thr_olay_p2stat    0.001                                   \
+        -thr_olay_pside     bisided                                 \
+        -olay_alpha         Yes                                     \
+        -olay_boxed         Yes                                     \
+        -opacity            7                                       \
+        -prefix             img_e                                   \
+        -montx 3 -monty 3                                           \
+        -set_xhairs OFF                                             \
+        -label_mode 1 -label_size 4                                 \
+        -no_clean
+
+  F) Included Clusterizing, with Alpha+Boxed on, similar to above, but
+     1sided example, and using 'whereami_afni' functionality:
+
+    @chauffeur_afni                                                 \
+        -pbar_posonly                                               \
+        -ulay               anat.nii.gz                             \
+        -olay               stats.nii.gz                            \
+        -cbar               "Spectrum:yellow_to_red"                \
+        -clusterize         "-NN 1 -clust_nvox 157"                 \
+        -clusterize_wami    "MNI_Glasser_HCP_v1.0"                  \
+        -func_range 3                                               \
+        -set_subbricks      -1 1 2                                  \
+        -thr_olay           3.314300                                \
+        -thr_olay_pside     1sided                                  \
+        -olay_alpha         Yes                                     \
+        -olay_boxed         Yes                                     \
+        -opacity            7                                       \
+        -prefix             img_f                                   \
+        -montx 3 -monty 3                                           \
+        -set_xhairs OFF                                             \
+        -label_mode 1 -label_size 4                                 \
+        -no_clean
+
+
+# -------------------------------------------------------------------
+

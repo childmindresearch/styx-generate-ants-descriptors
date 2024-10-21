@@ -1,0 +1,14 @@
+
+=== Output of 'mris_rf_label --help' ===
+
+unknown option --help
+
+=== Output of 'mris_rf_label -help' ===
+
+unknown option -help
+
+=== Output of 'mris_rf_label' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_rf_label [options]  <subject> <RF classifier> <output name>
+	--hemi <hemi>    - process <hemi> instead of lh
+	--surf <surf>    - change default surface name from 'white' to <surf>

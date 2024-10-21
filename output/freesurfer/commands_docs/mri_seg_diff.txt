@@ -1,0 +1,77 @@
+
+=== Output of 'mri_seg_diff --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_seg_diff 
+
+Options for creating a diff
+   --seg1 seg1 : first segmentation (eg, unedited)
+   --seg2 seg2 : second segmentation (eg, edited)
+   --diff  outdifffile : output diff seg volume 
+   --diff-force : force creation of a diff even if no diff
+
+Options for merging with a diff
+   --seg seg  : source seg (eg, unedited) 
+   --diff-in indifffile : input diff seg volume 
+   --merged mergefile   : unedited merged with diff 
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+
+  This program computes and merges differences in segmentation volumes
+  (eg, aseg.auto.mgz and aseg.mgz) primarily for the purpose of
+  managing manual edits to aseg.mgz. 
+
+  When computing a difference, it compares seg1 to seg2 at each
+  voxel. If they are the same, then the diff volume voxel gets a value
+  of 256 (Voxel-Unchanged in FreeSurferColorLUT.txt). If they are
+  different, then it takes the value of seg2. The diff seg can be
+  loaded as a segmentation in tkmedit. If there is no difference,
+  then the difference volume will not be written unless you use
+  --diff-force.
+
+  When merging a difference, a voxel in the merged seg will take the
+  value of the input seg if the diff-in has a value of 256. If the
+  diff-in value is something other than 256, then the merged value
+  will be the diff-in value.
+
+  EXAMPLES:
+
+  # Determine manual edits 
+  mri_seg_diff --seg1 aseg.auto.mgz --seg2 aseg.mgz --diff aseg.manedits.mgz
+
+  # Merge manual edits 
+  mri_seg_diff --seg aseg.auto.mgz --merged aseg.mgz --diff-in aseg.manedits.mgz
+
+
+=== Output of 'mri_seg_diff -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_seg_diff' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_seg_diff 
+
+Options for creating a diff
+   --seg1 seg1 : first segmentation (eg, unedited)
+   --seg2 seg2 : second segmentation (eg, edited)
+   --diff  outdifffile : output diff seg volume 
+   --diff-force : force creation of a diff even if no diff
+
+Options for merging with a diff
+   --seg seg  : source seg (eg, unedited) 
+   --diff-in indifffile : input diff seg volume 
+   --merged mergefile   : unedited merged with diff 
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

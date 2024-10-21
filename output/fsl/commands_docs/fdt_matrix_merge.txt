@@ -1,0 +1,22 @@
+
+=== Output of 'fdt_matrix_merge --help' ===
+
+merge 7 files
+
+Could not open matrix file This
+terminate called after throwing an instance of 'std::logic_error'
+  what():  Mat::operator(): index out of bounds
+timeout: the monitored command dumped core
+
+=== Output of 'fdt_matrix_merge -help' ===
+
+merge 7 files
+
+Could not open matrix file This
+terminate called after throwing an instance of 'std::logic_error'
+  what():  Mat::operator(): index out of bounds
+timeout: the monitored command dumped core
+
+=== Output of 'fdt_matrix_merge' (no arguments) ===
+
+fdt_matrix_merge <matlist> <outfile> [-omatrix4]

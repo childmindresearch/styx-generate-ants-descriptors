@@ -1,0 +1,21 @@
+
+=== Output of 'proj_thresh --help' ===
+
+
+usage:proj_thresh <lots of volumes/surfaces> threshold
+  please use EITHER volumes OR surfaces
+
+
+=== Output of 'proj_thresh -help' ===
+
+
+usage:proj_thresh <lots of volumes/surfaces> threshold
+  please use EITHER volumes OR surfaces
+
+
+=== Output of 'proj_thresh' (no arguments) ===
+
+
+usage:proj_thresh <lots of volumes/surfaces> threshold
+  please use EITHER volumes OR surfaces
+

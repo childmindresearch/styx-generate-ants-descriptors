@@ -1,0 +1,49 @@
+
+=== Output of 'niccc --help' ===
+
+** Bad option --help. See niccc -help for details.
+
+=== Output of 'niccc -help' ===
+
+
+   Usage: niccc [-dup] [-nodata] streamspec
+
+A program for conducting certain NIML tests 
+on input from streamspec and write the results to stderr
+
+Example:
+    niccc file:Something.niml 
+
+Mandatory arguments:
+   streamspec: A string defining a NIML stream.
+
+Options:
+   -dup: Duplicate the element before showing it.
+         This is to test NI_duplicate function.
+   -nodata: Show header parts only in output
+   -attribute ATTR: Dump the value of attribute ATTR
+   -match MATCH: If MATCH is exact, then attribute name
+                 is matched exactly. If MATCH is partial,
+                 then a match of all the characters in ATTR
+                 is enough. For example, an ATTR of COEF would
+                 match any of COEF COEF.1 COEF.2, etc.
+            Default is -match exact
+   -f: streamspec is a filename.
+   -s: streamspec is an element string like: 
+            '<T font=9 coords="2.3 23 2"/>'
+   -stdout: write elements to stdout, instead of stderr
+   -#: put the # at the beginning of lines with no data
+   -quiet: quiet stderr messages, and don't echo attribute
+           name with -attribute option
+   -find_nel_with_attr ATTR ATTRVAL: Only output elements 
+               that have an attribute ATTR of value ATTRVAL.
+               a status of 1 is returned if no match is found.
+   -skip_nel_with_attr ATTR ATTRVAL: Do not output elements 
+               that have an attribute ATTR of value ATTRVAL.
+   niccc returns a status of 0 if it the stream opened.
+         and there were no interruptions.
+
+
+=== Output of 'niccc' (no arguments) ===
+
+** ERROR: Too few options

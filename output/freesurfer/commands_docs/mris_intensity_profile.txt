@@ -1,0 +1,29 @@
+
+=== Output of 'mris_intensity_profile --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_intensity_profile [options] <subject name> <hemi> <volume> <output file>
+
+This program computes the intensity profile of the cortical ribbon
+and writes the resulting measurement into a 'curvature' file
+<output file>.
+
+valid options are:
+
+-write_surf %s write the variational pial surface target locations 
+-sdir %s specifies the SUBJECTS_DIR 
+-white %s specifies WHITE surface filename.
+-pial %s specifies PIAL surface filename.
+-normalize normalized sampling w.r.t. thickness  
+-mean %s outputs the mean profile-integral to the specified file (output is in curv format).
+-xform %s specify the registration xform that maps the T1 volume (from which the surfaces were computed) to the input volume to be sampled.
+-src %s source volume used when computing the registration xform
+-dst %s destination volume used when computing the registration xform
+-invert this flag asks to apply the registration xform inversely 
+
+=== Output of 'mris_intensity_profile -help' ===
+
+unknown option -help
+
+=== Output of 'mris_intensity_profile' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_intensity_profile [options] <subject name> <hemi> <volume> <output file>

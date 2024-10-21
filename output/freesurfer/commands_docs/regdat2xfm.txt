@@ -1,0 +1,12 @@
+
+=== Output of 'regdat2xfm --help' ===
+
+error: regdat2xfm has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'regdat2xfm -help' ===
+
+error: regdat2xfm has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'regdat2xfm' (no arguments) ===
+
+error: regdat2xfm has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

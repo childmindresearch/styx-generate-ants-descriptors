@@ -1,0 +1,14 @@
+
+=== Output of 'mri_fslmat_to_lta --help' ===
+
+unknown option --help
+
+=== Output of 'mri_fslmat_to_lta -help' ===
+
+unknown option -help
+
+=== Output of 'mri_fslmat_to_lta' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_fslmat_to_lta <src vol> <target vol> <fslmat_file> <lta_file> 
+this program creates the lta-transformation file using 
+information of src and target volumes and fslmat_file 

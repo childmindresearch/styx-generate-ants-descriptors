@@ -1,0 +1,142 @@
+
+=== Output of '@djunct_anonymize --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of '@djunct_anonymize -help' ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+Helper program to anonymize files.
+
+NB: Default behavior of this program is to overwrite your file
+(removing header info), so you might want to make a copy first!
+(... or, use the '-copy_to ..' option).
+
+written by PA Taylor
+
+# --------------------------------------------------------------------
+
+COMMAND OPTIONS ~1~
+
+-input     II  :(req) input dataset.
+
+-add_note  AN  :(opt) after anonymizing, add a note "AN" to the history.
+
+-copy_to CT    :(opt) by default, this program overwrites the header info
+                of the input file II.  Instead, you can use this opt
+                to first copy the input to a new file CT, which is then
+                anonymized (the input file will *not* be).
+
+-overwrite     :(opt) if using "-copy to ..", won't overwrite existing
+                file by default; use this opt to copy over preexisting
+                file.
+
+# --------------------------------------------------------------------
+
+NOTES ~1~
+
+This program is mainly a wrapper for two AFNI programs to anonymize
+header info:
+
+    3drefit -denote ...
+
+    nifti_tool -strip_extras -overwrite ...
+
+(The latter is only called if the input file is a NIFTI.)
+
+# --------------------------------------------------------------------
+
+Examples ~1~
+
+1) Basic usage: overwrite input file:
+
+    @djunct_anonymize              \
+        -input FILE.nii
+
+2) Copy file first, then purge header info:
+
+    @djunct_anonymize              \
+        -input FILE.nii            \
+        -copy_to NEW_FILE.nii      
+
+3) Same as #2, but then add a note to the new file's history:
+
+    @djunct_anonymize              \
+        -input FILE.nii            \
+        -copy_to NEW_FILE.nii      \
+        -add_note "This program makes a header as clean as a well-taken Arsenal corner"
+
+
+=== Output of '@djunct_anonymize' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+Helper program to anonymize files.
+
+NB: Default behavior of this program is to overwrite your file
+(removing header info), so you might want to make a copy first!
+(... or, use the '-copy_to ..' option).
+
+written by PA Taylor
+
+# --------------------------------------------------------------------
+
+COMMAND OPTIONS ~1~
+
+-input     II  :(req) input dataset.
+
+-add_note  AN  :(opt) after anonymizing, add a note "AN" to the history.
+
+-copy_to CT    :(opt) by default, this program overwrites the header info
+                of the input file II.  Instead, you can use this opt
+                to first copy the input to a new file CT, which is then
+                anonymized (the input file will *not* be).
+
+-overwrite     :(opt) if using "-copy to ..", won't overwrite existing
+                file by default; use this opt to copy over preexisting
+                file.
+
+# --------------------------------------------------------------------
+
+NOTES ~1~
+
+This program is mainly a wrapper for two AFNI programs to anonymize
+header info:
+
+    3drefit -denote ...
+
+    nifti_tool -strip_extras -overwrite ...
+
+(The latter is only called if the input file is a NIFTI.)
+
+# --------------------------------------------------------------------
+
+Examples ~1~
+
+1) Basic usage: overwrite input file:
+
+    @djunct_anonymize              \
+        -input FILE.nii
+
+2) Copy file first, then purge header info:
+
+    @djunct_anonymize              \
+        -input FILE.nii            \
+        -copy_to NEW_FILE.nii      
+
+3) Same as #2, but then add a note to the new file's history:
+
+    @djunct_anonymize              \
+        -input FILE.nii            \
+        -copy_to NEW_FILE.nii      \
+        -add_note "This program makes a header as clean as a well-taken Arsenal corner"
+

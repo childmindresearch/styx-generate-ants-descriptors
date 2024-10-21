@@ -1,0 +1,12 @@
+
+=== Output of 'fsfirst.fsl --help' ===
+
+FSLDIR: Undefined variable.
+
+=== Output of 'fsfirst.fsl -help' ===
+
+FSLDIR: Undefined variable.
+
+=== Output of 'fsfirst.fsl' (no arguments) ===
+
+FSLDIR: Undefined variable.

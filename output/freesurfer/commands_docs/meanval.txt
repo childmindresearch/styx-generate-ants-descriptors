@@ -1,0 +1,23 @@
+
+=== Output of 'meanval --help' ===
+
+
+meanval --i invol --m mask --o meanval.dat
+  --avgwf avgwf
+
+meanval 7.4.1
+
+=== Output of 'meanval -help' ===
+
+
+meanval --i invol --m mask --o meanval.dat
+  --avgwf avgwf
+
+meanval 7.4.1
+
+=== Output of 'meanval' (no arguments) ===
+
+
+meanval --i invol --m mask --o meanval.dat
+  --avgwf avgwf
+

@@ -1,0 +1,88 @@
+
+=== Output of 'mri_segcentroids --help' ===
+
+				Help
+
+NAME
+	mri_segcentroids
+
+SYNOPSIS
+	mri_segcentroids [options] --i <segvol> --o <outfile>
+
+DESCRIPTION
+	computes the center of mass for individual structures in a 
+	segmentation
+
+REQUIRED FLAGGED ARGUMENTS
+	--i segvol
+		input segmentation
+
+	--o outfile
+		output text file
+
+OPTIONAL FLAGGED ARGUMENTS
+	--p pointset
+		Save centroids as a Freeview pointset (json)
+
+	--reg lta
+		apply a linear registration (lta)
+
+	--weights vol
+		compute weighted centroid with provided voxel weights
+
+	--ctab lut
+		specify label lookup table
+
+	--ctab-default
+		use default FreeSurferColorLUT.txt for lookup table
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_segcentroids -help' ===
+
+ERROR: unknown option -help
+
+=== Output of 'mri_segcentroids' (no arguments) ===
+
+				Help
+
+NAME
+	mri_segcentroids
+
+SYNOPSIS
+	mri_segcentroids [options] --i <segvol> --o <outfile>
+
+DESCRIPTION
+	computes the center of mass for individual structures in a 
+	segmentation
+
+REQUIRED FLAGGED ARGUMENTS
+	--i segvol
+		input segmentation
+
+	--o outfile
+		output text file
+
+OPTIONAL FLAGGED ARGUMENTS
+	--p pointset
+		Save centroids as a Freeview pointset (json)
+
+	--reg lta
+		apply a linear registration (lta)
+
+	--weights vol
+		compute weighted centroid with provided voxel weights
+
+	--ctab lut
+		specify label lookup table
+
+	--ctab-default
+		use default FreeSurferColorLUT.txt for lookup table
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

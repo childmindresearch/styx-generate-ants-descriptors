@@ -1,0 +1,42 @@
+
+=== Output of 'ConvertInputImagePixelTypeToFloat --help' ===
+
+Usage:   ConvertInputImagePixelTypeToFloat infile.nii out.ext TYPE-OPTION 
+ ext is the extension you want, e.g. tif.  
+ TYPE-OPTION  :  TYPE 
+  0  :  char   
+  1  :  unsigned char   
+  2  :  short   
+  3  :  unsigned short   
+  4  :  int   
+  5  :  unsigned int   
+ Note that some pixel types are not supported by some image formats. e.g.  int is not supported by jpg. 
+ You can easily extend this for other pixel types with a few lines of code and adding usage info. 
+
+=== Output of 'ConvertInputImagePixelTypeToFloat -help' ===
+
+Usage:   ConvertInputImagePixelTypeToFloat infile.nii out.ext TYPE-OPTION 
+ ext is the extension you want, e.g. tif.  
+ TYPE-OPTION  :  TYPE 
+  0  :  char   
+  1  :  unsigned char   
+  2  :  short   
+  3  :  unsigned short   
+  4  :  int   
+  5  :  unsigned int   
+ Note that some pixel types are not supported by some image formats. e.g.  int is not supported by jpg. 
+ You can easily extend this for other pixel types with a few lines of code and adding usage info. 
+
+=== Output of 'ConvertInputImagePixelTypeToFloat' (no arguments) ===
+
+Usage:   ConvertInputImagePixelTypeToFloat infile.nii out.ext TYPE-OPTION 
+ ext is the extension you want, e.g. tif.  
+ TYPE-OPTION  :  TYPE 
+  0  :  char   
+  1  :  unsigned char   
+  2  :  short   
+  3  :  unsigned short   
+  4  :  int   
+  5  :  unsigned int   
+ Note that some pixel types are not supported by some image formats. e.g.  int is not supported by jpg. 
+ You can easily extend this for other pixel types with a few lines of code and adding usage info. 

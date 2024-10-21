@@ -1,0 +1,15 @@
+
+=== Output of 'LaplacianThickness --help' ===
+
+Usage:   LaplacianThickness WM.nii GM.nii   Out.nii  {smoothparam=1} {priorthickval=500} {dT=0.01} {sulcus-prior=0} {laplacian-tolerance=0.001}
+ a good value for sulcus prior (if not 0, which disables its use) is 0.15 -- in a function :  1/(1.+exp(-0.1*(laplacian-img-value-sulcprob)/0.01)) 
+
+=== Output of 'LaplacianThickness -help' ===
+
+Usage:   LaplacianThickness WM.nii GM.nii   Out.nii  {smoothparam=1} {priorthickval=500} {dT=0.01} {sulcus-prior=0} {laplacian-tolerance=0.001}
+ a good value for sulcus prior (if not 0, which disables its use) is 0.15 -- in a function :  1/(1.+exp(-0.1*(laplacian-img-value-sulcprob)/0.01)) 
+
+=== Output of 'LaplacianThickness' (no arguments) ===
+
+Usage:   LaplacianThickness WM.nii GM.nii   Out.nii  {smoothparam=1} {priorthickval=500} {dT=0.01} {sulcus-prior=0} {laplacian-tolerance=0.001}
+ a good value for sulcus prior (if not 0, which disables its use) is 0.15 -- in a function :  1/(1.+exp(-0.1*(laplacian-img-value-sulcprob)/0.01)) 

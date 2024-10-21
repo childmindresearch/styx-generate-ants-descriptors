@@ -1,0 +1,41 @@
+
+=== Output of 'surf2surf --help' ===
+
+terminate called after throwing an instance of 'Utilities::X_OptionError'
+  what():  --help: Option doesn't exist!
+timeout: the monitored command dumped core
+
+=== Output of 'surf2surf -help' ===
+
+terminate called after throwing an instance of 'Utilities::X_OptionError'
+  what():  -h: Option doesn't exist!
+timeout: the monitored command dumped core
+
+=== Output of 'surf2surf' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--surfin	input surface
+	-o,--surfout	output surface
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+surf2surf - conversions between surface formats and/or conventions
+
+Usage: 
+Usage: surf2surf -i <inputSurface> -o <outputSurface> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--surfin	input surface
+	-o,--surfout	output surface
+
+Optional arguments (You may optionally specify one or more of):
+	--convin	input convention [default=caret] - only used if output convention is different
+	--convout	output convention [default=same as input]
+	--volin		input ref volume - Must set this if changing conventions
+	--volout	output ref volume [default=same as input]
+	--xfm		in-to-out ascii matrix or out-to-in warpfield [default=identity]
+	--outputtype	output type: ASCII, VTK, GIFTI_ASCII, GIFTI_BIN, GIFTI_BIN_GZ (default)
+	--values	set output scalar values (e.g. --values=mysurface.func.gii or --values=1)
+
+

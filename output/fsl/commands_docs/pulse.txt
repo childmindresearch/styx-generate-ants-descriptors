@@ -1,0 +1,133 @@
+
+=== Output of 'pulse --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+pulse
+Copyright(c) 2003, University of Oxford (Ivana Drobnjak and Mark Jenkinson)
+
+Usage: 
+pulse -i <input digital brain> -o <output base name> [optional arguments]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--inp	4D digital brain, resolution can be any.
+	-o,--out	pulse sequence matrix
+
+Optional arguments (You may optionally specify one or more of):
+	--seq	default=epi (epi OR ge)
+	--angle	default=90 (flip angle in degrees)
+	--te	default=0.03s (the time from the first RF to the first echo (in epi center of the k-space, in GE it is the center of the first line of the k-space)
+	--tr	default=3s (the time between the two RF pulses applied on the same part of the object (in epi the acquisition time for the whole k-space in GE time for the first line)
+	--trslc	default=0.12s (the time that takes for the acquisition of one slice)
+	--nx	default=64 (resolution in x of the output image)
+	--ny	default=64 (resolution in y of the output image)
+	--dx	default=0.004m (image voxel x-dimension)
+	--dy	default=0.004m (image voxel y-dimension) 
+	--maxG	default=0.055 T/m (maximum gradient strength) 
+	--riset	default=0.00022s (time it takes for the gradient to reach its max value) 
+	--bw	default=100000Hz ( receiving bandwidth) 
+	--numvol	default=1 (number of volumes)
+	--numslc	default=1 (number of slices)
+	--slcthk	default=0.006m (slice thickness)
+	--gap	default=0m (gap between the slices in m)
+	--zstart	default=0m (the lowest position in the slice direction in m)
+	--slcdir	default=z- (x+,x-, y+,y- or z+,or z- slice acquisition direction/orientation)
+	--phasedir	default=y+ (x+,x-, y+,y- or z+,or z- phase encode direction/orientation)
+	--readdir	default=x+ (x+,x-, y+,y- or z+,or z- read-out direction/orientation) 
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-k,--kcoord	default=no (saving k-space coordinates)
+	--cover	default=100 (phase partial Fourier coverage in  %. min=50 max=100)
+
+
+
+=== Output of 'pulse -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+pulse
+Copyright(c) 2003, University of Oxford (Ivana Drobnjak and Mark Jenkinson)
+
+Usage: 
+pulse -i <input digital brain> -o <output base name> [optional arguments]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--inp	4D digital brain, resolution can be any.
+	-o,--out	pulse sequence matrix
+
+Optional arguments (You may optionally specify one or more of):
+	--seq	default=epi (epi OR ge)
+	--angle	default=90 (flip angle in degrees)
+	--te	default=0.03s (the time from the first RF to the first echo (in epi center of the k-space, in GE it is the center of the first line of the k-space)
+	--tr	default=3s (the time between the two RF pulses applied on the same part of the object (in epi the acquisition time for the whole k-space in GE time for the first line)
+	--trslc	default=0.12s (the time that takes for the acquisition of one slice)
+	--nx	default=64 (resolution in x of the output image)
+	--ny	default=64 (resolution in y of the output image)
+	--dx	default=0.004m (image voxel x-dimension)
+	--dy	default=0.004m (image voxel y-dimension) 
+	--maxG	default=0.055 T/m (maximum gradient strength) 
+	--riset	default=0.00022s (time it takes for the gradient to reach its max value) 
+	--bw	default=100000Hz ( receiving bandwidth) 
+	--numvol	default=1 (number of volumes)
+	--numslc	default=1 (number of slices)
+	--slcthk	default=0.006m (slice thickness)
+	--gap	default=0m (gap between the slices in m)
+	--zstart	default=0m (the lowest position in the slice direction in m)
+	--slcdir	default=z- (x+,x-, y+,y- or z+,or z- slice acquisition direction/orientation)
+	--phasedir	default=y+ (x+,x-, y+,y- or z+,or z- phase encode direction/orientation)
+	--readdir	default=x+ (x+,x-, y+,y- or z+,or z- read-out direction/orientation) 
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-k,--kcoord	default=no (saving k-space coordinates)
+	--cover	default=100 (phase partial Fourier coverage in  %. min=50 max=100)
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'pulse' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--inp	4D digital brain, resolution can be any.
+	-o,--out	pulse sequence matrix
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+pulse
+Copyright(c) 2003, University of Oxford (Ivana Drobnjak and Mark Jenkinson)
+
+Usage: 
+pulse -i <input digital brain> -o <output base name> [optional arguments]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--inp	4D digital brain, resolution can be any.
+	-o,--out	pulse sequence matrix
+
+Optional arguments (You may optionally specify one or more of):
+	--seq	default=epi (epi OR ge)
+	--angle	default=90 (flip angle in degrees)
+	--te	default=0.03s (the time from the first RF to the first echo (in epi center of the k-space, in GE it is the center of the first line of the k-space)
+	--tr	default=3s (the time between the two RF pulses applied on the same part of the object (in epi the acquisition time for the whole k-space in GE time for the first line)
+	--trslc	default=0.12s (the time that takes for the acquisition of one slice)
+	--nx	default=64 (resolution in x of the output image)
+	--ny	default=64 (resolution in y of the output image)
+	--dx	default=0.004m (image voxel x-dimension)
+	--dy	default=0.004m (image voxel y-dimension) 
+	--maxG	default=0.055 T/m (maximum gradient strength) 
+	--riset	default=0.00022s (time it takes for the gradient to reach its max value) 
+	--bw	default=100000Hz ( receiving bandwidth) 
+	--numvol	default=1 (number of volumes)
+	--numslc	default=1 (number of slices)
+	--slcthk	default=0.006m (slice thickness)
+	--gap	default=0m (gap between the slices in m)
+	--zstart	default=0m (the lowest position in the slice direction in m)
+	--slcdir	default=z- (x+,x-, y+,y- or z+,or z- slice acquisition direction/orientation)
+	--phasedir	default=y+ (x+,x-, y+,y- or z+,or z- phase encode direction/orientation)
+	--readdir	default=x+ (x+,x-, y+,y- or z+,or z- read-out direction/orientation) 
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-k,--kcoord	default=no (saving k-space coordinates)
+	--cover	default=100 (phase partial Fourier coverage in  %. min=50 max=100)
+
+

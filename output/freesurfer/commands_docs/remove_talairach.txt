@@ -1,0 +1,9 @@
+
+=== Output of 'remove_talairach --help' ===
+
+
+=== Output of 'remove_talairach -help' ===
+
+
+=== Output of 'remove_talairach' (no arguments) ===
+

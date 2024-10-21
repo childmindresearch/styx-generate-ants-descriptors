@@ -1,0 +1,48 @@
+
+=== Output of 'setlabelstat --help' ===
+
+
+USAGE: setlabelstat
+
+  -i inlabelfile 
+  -o outlabelfile
+  -s statval
+
+  -help
+
+setlabelstat 7.4.1
+
+Replaces the stat values in a label file with the single stat value
+supplied on the command-line.
+
+
+
+=== Output of 'setlabelstat -help' ===
+
+
+USAGE: setlabelstat
+
+  -i inlabelfile 
+  -o outlabelfile
+  -s statval
+
+  -help
+
+setlabelstat 7.4.1
+
+Replaces the stat values in a label file with the single stat value
+supplied on the command-line.
+
+
+
+=== Output of 'setlabelstat' (no arguments) ===
+
+
+USAGE: setlabelstat
+
+  -i inlabelfile 
+  -o outlabelfile
+  -s statval
+
+  -help
+

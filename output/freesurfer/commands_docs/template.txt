@@ -1,0 +1,12 @@
+
+=== Output of 'template --help' ===
+
+result = 2699.561778
+
+=== Output of 'template -help' ===
+
+result = 2699.561778
+
+=== Output of 'template' (no arguments) ===
+
+result = 2699.561778

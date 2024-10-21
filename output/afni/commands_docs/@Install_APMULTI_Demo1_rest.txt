@@ -1,0 +1,47 @@
+
+=== Output of '@Install_APMULTI_Demo1_rest --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Install_APMULTI_Demo1_rest -help' ===
+
+   
+Overview ~1~
+
+This script fetches the demo data+scripts corresponding to AFNI's
+Demo #1 for processing multi-echo FMRI data (in this case, rest).  It
+corresponds to the Demo first presented at OHBM 2021:
+
+    "Multiple ways to process multi-echo FMRI data with AFNI"
+    by RC Reynolds, SJ Gotts, AW Gilmore, DR Glen, PA Taylor
+
+After the archive is downloaded and unpacked, see its README_welcome.txt
+for details.
+
+Options ~1~
+
+   [-wget] : Use wget to download archive. Script chooses by default
+             with preference for curl
+   [-curl] : Use curl to download archive. Script chooses by default
+             with preference for curl
+
+Examples ~1~
+
+1) Just get everything, default operation:
+
+    @Install_APMULTI_Demo1_rest
+
+2) Get everything, specify download tool:
+
+    @Install_APMULTI_Demo1_rest -wget
+
+
+
+=== Output of '@Install_APMULTI_Demo1_rest' (no arguments) ===
+
+++ Going to fetch demo: APMULTI_Demo1_rest
+/usr/bin/curl
+curl -O https://afni.nimh.nih.gov/pub/dist/data/afni_demos/APMULTI_Demo1_rest.tgz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0  534M    0 3872k    0     0  14.4M      0  0:00:37 --:--:--  0:00:37 14.4M  4  534M    4 25.2M    0     0  19.9M      0  0:00:26  0:00:01  0:00:25 19.9M  8  534M    8 45.5M    0     0  20.1M      0  0:00:26  0:00:02  0:00:24 20.1M 12  534M   12 65.3M    0     0  20.0M      0  0:00:26  0:00:03  0:00:23 20.0M 16  534M   16 87.5M    0     0  20.5M      0  0:00:26  0:00:04  0:00:22 20.5M 20  534M   20  110M    0     0  20.9M      0  0:00:25  0:00:05  0:00:20 21.3M 24  534M   24  130M    0     0  20.8M      0  0:00:25  0:00:06  0:00:19 21.1M 28  534M   28  151M    0     0  20.9M      0  0:00:25  0:00:07  0:00:18 21.2M 32  534M   32  172M    0     0  20.8M      0  0:00:25  0:00:08  0:00:17 21.4M 36  534M   36  193M    0     0  20.9M      0  0:00:25  0:00:09  0:00:16 21.2MCommand timed out after 10 seconds

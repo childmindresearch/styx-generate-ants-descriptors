@@ -1,0 +1,134 @@
+
+=== Output of 'mri_volsynth --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_volsynth 
+
+   --o volid <fmt> : output volume path id and format
+
+ Get geometry from template
+   --template templateid : see also --curv
+   --nframes nframes : override template
+   --offset : use template as intensity offset
+   --offset-mid : use middle frame of template as intensity offset
+   --curv subject hemi : save output as curv (uses lh.thickness as template)
+
+ Specify geometry explicitly
+   --dim nc nr ns nf : required without template (overrides template)
+   --res dc dr ds df : voxel resolution (df is TR, use msec) (overrides template)
+   --vox-size dc dr ds : changes template voxel res AND dim
+   --tr TR : time between frames in msec 
+   --cdircos x y z
+   --rdircos x y z
+   --sdircos x y z
+   --c_ras   c_r c_a c_s : 'center' voxel
+   --p0   p0r p0a p0s : first voxel
+   --precision precision : eg, float
+
+ Value distribution flags
+   --seed seed (default is time-based auto)
+   --seedfile fname : write seed value to this file
+   --pdf pdfname : <gaussian>, uniform, const, delta, 
+      sphere, z, t, F, chi2, voxcrs, checker, sliceno, indexno
+      crs, grid
+   --bb c r s dc dr ds : bounding box (In=ValA, Out=ValB)
+   --gmean mean : use mean for gaussian (def is 0)
+   --gstd  std  : use std for gaussian standard dev (def is 1)
+   --delta-crsf col row slice frame : 0-based
+   --delta-val val : set delta value to val. Default is 1.
+   --delta-val-off offval : set delta background value to offval. Default is 0.
+   --grid dcol, drow, dslice
+   --dof dof : dof for t and chi2 
+   --dof-num numdof : numerator dof for F
+   --dof-den dendof : denomenator dof for F
+   --rescale : rescale z, t, F, or chi2 after smoothing
+   --val-a value : set ValA (default 1)
+   --val-b value : set ValB (default 0)
+   --vox-radius voxradius : radius (in voxels) for sphere
+   --mm-radius  radius : radius (in mm) for sphere, will be iso in voxels
+   --sphere-center col row slice
+   --hsc min max : multiply each frame by a random number bet min and max
+   --abs : compute absolute value
+   --cp control.dat : set control point voxels = 1 
+
+ Other arguments
+   --spike tp : set all values at time point tp to 1e9
+   --fwhm fwhm_mm : smooth by FWHM mm
+   --sum2 fname   : save sum vol^2 into fname (implies delta,nf=1,no-output)
+   --dim-surf : set dim to nvertices x 1 x 1 
+   --ctab colortable : embed ctab
+
+Synthesizes a volume with the given geometry and pdf. Default pdf 
+is gaussian (mean 0, std 1). If uniform is chosen, then the min
+is 0 and the max is 1. If const is chosen, then all voxels are set
+to ValA. If delta, the middle voxel is set to 1, the rest to 0 unless
+the actual location is chosen with --delta-crsf. If sphere, then
+a spherical binary mask centered in the volume with radius half
+the field of view.
+Example: to create an empty volume (all voxels=0), named myvol.mgz,
+based on parameters from an existing volume:
+  mri_volsynth --gstd 0 --vol myvol.mgz --temp some_existing_vol.mgz
+
+
+=== Output of 'mri_volsynth -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_volsynth' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_volsynth 
+
+   --o volid <fmt> : output volume path id and format
+
+ Get geometry from template
+   --template templateid : see also --curv
+   --nframes nframes : override template
+   --offset : use template as intensity offset
+   --offset-mid : use middle frame of template as intensity offset
+   --curv subject hemi : save output as curv (uses lh.thickness as template)
+
+ Specify geometry explicitly
+   --dim nc nr ns nf : required without template (overrides template)
+   --res dc dr ds df : voxel resolution (df is TR, use msec) (overrides template)
+   --vox-size dc dr ds : changes template voxel res AND dim
+   --tr TR : time between frames in msec 
+   --cdircos x y z
+   --rdircos x y z
+   --sdircos x y z
+   --c_ras   c_r c_a c_s : 'center' voxel
+   --p0   p0r p0a p0s : first voxel
+   --precision precision : eg, float
+
+ Value distribution flags
+   --seed seed (default is time-based auto)
+   --seedfile fname : write seed value to this file
+   --pdf pdfname : <gaussian>, uniform, const, delta, 
+      sphere, z, t, F, chi2, voxcrs, checker, sliceno, indexno
+      crs, grid
+   --bb c r s dc dr ds : bounding box (In=ValA, Out=ValB)
+   --gmean mean : use mean for gaussian (def is 0)
+   --gstd  std  : use std for gaussian standard dev (def is 1)
+   --delta-crsf col row slice frame : 0-based
+   --delta-val val : set delta value to val. Default is 1.
+   --delta-val-off offval : set delta background value to offval. Default is 0.
+   --grid dcol, drow, dslice
+   --dof dof : dof for t and chi2 
+   --dof-num numdof : numerator dof for F
+   --dof-den dendof : denomenator dof for F
+   --rescale : rescale z, t, F, or chi2 after smoothing
+   --val-a value : set ValA (default 1)
+   --val-b value : set ValB (default 0)
+   --vox-radius voxradius : radius (in voxels) for sphere
+   --mm-radius  radius : radius (in mm) for sphere, will be iso in voxels
+   --sphere-center col row slice
+   --hsc min max : multiply each frame by a random number bet min and max
+   --abs : compute absolute value
+   --cp control.dat : set control point voxels = 1 
+
+ Other arguments
+   --spike tp : set all values at time point tp to 1e9
+   --fwhm fwhm_mm : smooth by FWHM mm
+   --sum2 fname   : save sum vol^2 into fname (implies delta,nf=1,no-output)
+   --dim-surf : set dim to nvertices x 1 x 1 
+   --ctab colortable : embed ctab
+

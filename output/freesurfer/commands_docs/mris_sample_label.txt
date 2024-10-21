@@ -1,0 +1,17 @@
+
+=== Output of 'mris_sample_label --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_sample_label [options] <input label file> <input surface file> <output label file>
+
+This program will sample a label onto a surface model.
+
+valid options are:
+
+
+=== Output of 'mris_sample_label -help' ===
+
+unknown option -help
+
+=== Output of 'mris_sample_label' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_sample_label [options] <input label file> <input surface file> <output label file>

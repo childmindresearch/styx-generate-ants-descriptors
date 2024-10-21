@@ -1,0 +1,207 @@
+
+=== Output of '@Spharm.examples --help' ===
+
+Error: Option or parameter '--help' not understood
+   Here's hoping these excerpts from '@Spharm.examples -help' enlighten:
+        '-h_view: Open -help output in a GUI editor'
+        '-h_find WORD: Search for lines containing WORD in -help'
+        '-h_web: Open webpage with help for this program'
+
+=== Output of '@Spharm.examples -help' ===
+
+
+Usage: @Spharm.examples
+A script to demonstrate the usage of spherical harmonics decomposition 
+with SUMA
+
+To run it you will need some of SUMA's N27 tlrc surfaces, which can be 
+downloaded from: https://afni.nimh.nih.gov/pub/dist/tgz/suma_TT_N27.tgz
+The surfaces needed are lh.pial.gii, lh.smoothwm.gii, lh.sphere.gii, and TT_N27_lh.spec
+
+To change the parameter settings, make a copy of this script
+and modify the section at the top called 'INIT_VARS'
+If you do not make a copy of this script, future AFNI updates will
+overwrite your changes.
+
+Global Help Options:
+--------------------
+
+   -h_web: Open webpage with help for this program
+   -hweb: Same as -h_web
+   -h_view: Open -help output in a GUI editor
+   -hview: Same as -hview
+   -all_opts: List all of the options for this script
+   -h_find WORD: Search for lines containing WORD in -help
+                 output. Seach is approximate.
+
+         Ziad S. Saad               SSCC/NIMH/NIH
+
+
+=== Output of '@Spharm.examples' (no arguments) ===
+
+
+Missing TT_N27_lh.spec or other related files. Perhaps you are not running
+the script from a directory containing the sample surfaces.
+
+Do you want to download and install the demo surfaces from:
+   https://afni.nimh.nih.gov/pub/dist/tgz/suma_TT_N27.tgz
+[Y|n]:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 10  174M   10 18.5M    0     0  21.3M      0  0:00:08 --:--:--  0:00:08 21.3M 25  174M   25 44.5M    0     0  23.8M      0  0:00:07  0:00:01  0:00:06 23.7M 39  174M   39 69.6M    0     0  24.2M      0  0:00:07  0:00:02  0:00:05 24.2M 52  174M   52 91.8M    0     0  23.7M      0  0:00:07  0:00:03  0:00:04 23.7M 67  174M   67  117M    0     0  24.1M      0  0:00:07  0:00:04  0:00:03 24.1M 82  174M   82  143M    0     0  24.4M      0  0:00:07  0:00:05  0:00:02 25.0M 97  174M   97  169M    0     0  24.6M      0  0:00:07  0:00:06  0:00:01 25.0M100  174M  100  174M    0     0  24.7M      0  0:00:07  0:00:07 --:--:-- 25.0M
+suma_TT_N27/
+suma_TT_N27/aseg.nii.gz
+suma_TT_N27/std.60.rh.pial.gii
+suma_TT_N27/aparc.a2009s+aseg_REN_unkn.nii.gz
+suma_TT_N27/lh.aparc.a2009s.annot.1D.cmap
+suma_TT_N27/lh.sphere.reg.gii
+suma_TT_N27/aparc+aseg_REN_vent.nii.gz
+suma_TT_N27/std.141.lh.aparc.annot.niml.dset
+suma_TT_N27/lh.ribbon.nii.gz
+suma_TT_N27/aparc+aseg_REN_all.nii.gz
+suma_TT_N27/aparc+aseg_REN_unkn.nii.gz
+suma_TT_N27/lh.smoothwm.gii
+suma_TT_N27/nu.nii.gz
+suma_TT_N27/aparc.a2009s+aseg_REN_vent.nii.gz
+suma_TT_N27/aparc+aseg_REN_gmrois.nii.gz
+suma_TT_N27/rh.aparc.FS.annot.gii
+suma_TT_N27/std.60.lh.smoothwm.gii
+suma_TT_N27/std.60.rh.sphere.gii
+suma_TT_N27/qc_01_fs_parc_wb_mask_TT_N27.jpg
+suma_TT_N27/std.60.rh.curv.niml.dset
+suma_TT_N27/lh.white.gii
+suma_TT_N27/brain.finalsurfs.nii.gz
+suma_TT_N27/rh.white.gii
+suma_TT_N27/std.60.rh.sphere.reg.gii
+suma_TT_N27/norm.nii.gz
+suma_TT_N27/std.60.TT_N27_rh.MI.1D
+suma_TT_N27/std.60.rh.aparc.a2009s.annot.niml.dset
+suma_TT_N27/std.60.lh.sulc.niml.dset
+suma_TT_N27/std.60.lh.pial.gii
+suma_TT_N27/std.141.rh.white.gii
+suma_TT_N27/std.141.rh.smoothwm.gii
+suma_TT_N27/rh.aparc.a2009s.annot.niml.dset
+suma_TT_N27/aparc+aseg_REN_gm.nii.gz
+suma_TT_N27/qc_03_fs_gm_TT_N27.jpg
+suma_TT_N27/std.141.lh.white.gii
+suma_TT_N27/lh.sulc.gii.dset
+suma_TT_N27/stats_fs_rois_2000_TT_N27.1D
+suma_TT_N27/std.141.lh.thickness.niml.dset
+suma_TT_N27/std.60.rh.aparc.annot.niml.dset
+suma_TT_N27/lh.aparc.FS.annot.gii
+suma_TT_N27/stats_fs_segs_2000_TT_N27.1D
+suma_TT_N27/aparc.a2009s+aseg_REN_wmat.nii.gz
+suma_TT_N27/std.141.rh.sphere.gii
+suma_TT_N27/aparc.a2009s+aseg_REN_othr.nii.gz
+suma_TT_N27/qc_02_fs_tiss_TT_N27.jpg
+suma_TT_N27/std.60.rh.inflated.gii
+suma_TT_N27/rh.pial.gii
+suma_TT_N27/aparc+aseg_REN_wmat.nii.gz
+suma_TT_N27/std.141.rh.curv.niml.dset
+suma_TT_N27/aparc+aseg_REN_othr.nii.gz
+suma_TT_N27/lh.aparc.DKTatlas.FS.annot.gii
+suma_TT_N27/std.141.rh.sphere.reg.gii
+suma_TT_N27/std.141.rh.pial.gii
+suma_TT_N27/lh.aparc.a2009s.annot.1D.roi
+suma_TT_N27/std.141.lh.inflated.gii
+suma_TT_N27/std.141.lh.sulc.niml.dset
+suma_TT_N27/lh.pial.gii
+suma_TT_N27/std.141.rh.aparc.a2009s.annot.niml.dset
+suma_TT_N27/qc_05_fs_aa_REN_all_TT_N27.jpg
+suma_TT_N27/wm.asegedit.nii.gz
+suma_TT_N27/lh.sphere.gii
+suma_TT_N27/std.141.lh.pial.gii
+suma_TT_N27/rh.aparc.annot.niml.dset
+suma_TT_N27/lh.curv.gii.dset
+suma_TT_N27/rh.inflated.gii
+suma_TT_N27/std.60.TT_N27_lh.MI.1D
+suma_TT_N27/std.141.rh.thickness.niml.dset
+suma_TT_N27/aparc.a2009s+aseg_REN_all.nii.gz
+suma_TT_N27/aparc.a2009s+aseg_REN_gm.nii.gz
+suma_TT_N27/rh.aparc.DKTatlas.FS.annot.gii
+suma_TT_N27/T1.nii.gz
+suma_TT_N27/std.60.TT_N27_lh.niml.M2M
+suma_TT_N27/std.141.rh.aparc.DKTatlas.annot.niml.dset
+suma_TT_N27/aparc+aseg_REN_all.niml.lt
+suma_TT_N27/rh.sphere.reg.gii
+suma_TT_N27/qc_04_fs_wm_TT_N27.jpg
+suma_TT_N27/lh.thickness.gii.dset
+suma_TT_N27/rh.smoothwm.gii
+suma_TT_N27/std.60.lh.sphere.gii
+suma_TT_N27/std.60.rh.thickness.niml.dset
+suma_TT_N27/aparc.a2009s+aseg_REN_all.niml.lt
+suma_TT_N27/std.60.rh.inf_200.gii
+suma_TT_N27/std.60.TT_N27_rh.spec
+suma_TT_N27/TT_N27_SurfVol.nii
+suma_TT_N27/aparc.a2009s+aseg.nii.gz
+suma_TT_N27/rh.inf_200.gii
+suma_TT_N27/TT_N27_rh.spec
+suma_TT_N27/rh.ribbon.nii.gz
+suma_TT_N27/std.141.lh.aparc.DKTatlas.annot.niml.dset
+suma_TT_N27/aparc+aseg.nii.gz
+suma_TT_N27/std.60.lh.curv.niml.dset
+suma_TT_N27/std.60.TT_N27_both.spec
+suma_TT_N27/fs_ap_wm.nii.gz
+suma_TT_N27/brainmask.auto.nii.gz
+suma_TT_N27/std.60.lh.inf_200.gii
+suma_TT_N27/lh.inf_200.gii
+suma_TT_N27/std.141.rh.aparc.annot.niml.dset
+suma_TT_N27/std.60.rh.sulc.niml.dset
+suma_TT_N27/run_suma_00_basic.txt
+suma_TT_N27/lh.aparc.a2009s.annot.niml.dset
+suma_TT_N27/std.60.lh.sphere.reg.gii
+suma_TT_N27/wm.seg.nii.gz
+suma_TT_N27/std.60.lh.aparc.DKTatlas.annot.niml.dset
+suma_TT_N27/std.60.rh.smoothwm.gii
+suma_TT_N27/std.60.lh.thickness.niml.dset
+suma_TT_N27/std.141.TT_N27_rh.MI.1D
+suma_TT_N27/aparc.a2009s+aseg_REN_gmrois.nii.gz
+suma_TT_N27/rh.aparc.a2009s.annot.1D.roi
+suma_TT_N27/std.60.TT_N27_rh.niml.M2M
+suma_TT_N27/rh.sulc.gii.dset
+suma_TT_N27/qc_00_fs_brainmask_TT_N27.jpg
+suma_TT_N27/run_suma_01_with_afni.tcsh
+suma_TT_N27/std.60.lh.aparc.a2009s.annot.niml.dset
+suma_TT_N27/std.60.rh.aparc.DKTatlas.annot.niml.dset
+suma_TT_N27/SessionAtlases.niml
+suma_TT_N27/std.141.TT_N27_lh.spec
+suma_TT_N27/fs_parc_wb_mask.nii.gz
+suma_TT_N27/aparc+aseg_REN_csf.nii.gz
+suma_TT_N27/std.141.lh.smoothwm.gii
+suma_TT_N27/std.60.lh.inflated.gii
+suma_TT_N27/rh.aparc.a2009s.annot.1D.cmap
+suma_TT_N27/std.141.TT_N27_rh.niml.M2M
+suma_TT_N27/std.141.TT_N27_both.spec
+suma_TT_N27/std.141.rh.inflated.gii
+suma_TT_N27/std.141.lh.curv.niml.dset
+suma_TT_N27/std.141.rh.inf_200.gii
+suma_TT_N27/std.141.TT_N27_rh.spec
+suma_TT_N27/aparc.a2009s+aseg_REN_csf.nii.gz
+suma_TT_N27/lh.aparc.annot.niml.dset
+suma_TT_N27/std.141.rh.sulc.niml.dset
+suma_TT_N27/rh.sphere.gii
+suma_TT_N27/std.141.lh.sphere.reg.gii
+suma_TT_N27/std.60.rh.white.gii
+suma_TT_N27/aseg.auto.nii.gz
+suma_TT_N27/fs_table.niml.lt
+suma_TT_N27/std.141.TT_N27_lh.MI.1D
+suma_TT_N27/lh.aparc.DKTatlas.annot.niml.dset
+suma_TT_N27/fs_ap_latvent.nii.gz
+suma_TT_N27/std.60.lh.white.gii
+suma_TT_N27/std.141.lh.inf_200.gii
+suma_TT_N27/brainmask.nii.gz
+suma_TT_N27/brain.nii.gz
+suma_TT_N27/rh.aparc.DKTatlas.annot.niml.dset
+suma_TT_N27/stats_fs_rois_2009_TT_N27.1D
+suma_TT_N27/rh.thickness.gii.dset
+suma_TT_N27/TT_N27_lh.spec
+suma_TT_N27/std.60.TT_N27_lh.spec
+suma_TT_N27/stats_fs_segs_2009_TT_N27.1D
+suma_TT_N27/TT_N27_both.spec
+suma_TT_N27/wm.nii.gz
+suma_TT_N27/lh.inflated.gii
+suma_TT_N27/std.60.lh.aparc.annot.niml.dset
+suma_TT_N27/std.141.lh.sphere.gii
+suma_TT_N27/rh.curv.gii.dset
+suma_TT_N27/std.141.lh.aparc.a2009s.annot.niml.dset
+suma_TT_N27/std.141.TT_N27_lh.niml.M2M
+Command timed out after 10 seconds

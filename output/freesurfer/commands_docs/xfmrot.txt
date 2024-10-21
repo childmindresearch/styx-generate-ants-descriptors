@@ -1,0 +1,24 @@
+
+=== Output of 'xfmrot --help' ===
+
+xfmrot <transform file> <input vector file> [<output vector file>]
+
+Transform file can be an eddy_correct/eddy log file or a .mat file.
+Input vector file can be formatted in 3 rows or 3 columns.
+Output vector file will have the same format as input.
+
+=== Output of 'xfmrot -help' ===
+
+xfmrot <transform file> <input vector file> [<output vector file>]
+
+Transform file can be an eddy_correct/eddy log file or a .mat file.
+Input vector file can be formatted in 3 rows or 3 columns.
+Output vector file will have the same format as input.
+
+=== Output of 'xfmrot' (no arguments) ===
+
+xfmrot <transform file> <input vector file> [<output vector file>]
+
+Transform file can be an eddy_correct/eddy log file or a .mat file.
+Input vector file can be formatted in 3 rows or 3 columns.
+Output vector file will have the same format as input.

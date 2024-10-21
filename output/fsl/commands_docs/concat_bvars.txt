@@ -1,0 +1,14 @@
+
+=== Output of 'concat_bvars --help' ===
+
+
+=== Output of 'concat_bvars -help' ===
+
+
+=== Output of 'concat_bvars' (no arguments) ===
+
+
+Usage:   concat_bvars <output_bvars.bvars> <list_of_input_bvars>
+
+e.g.:  concat_bvars lhipp_all.bvars sub1_lhipp.bvars sub2_lhipp.bvars ... subN_lhipp.bvars
+

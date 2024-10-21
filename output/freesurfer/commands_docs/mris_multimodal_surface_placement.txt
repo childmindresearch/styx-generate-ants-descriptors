@@ -1,0 +1,24 @@
+
+=== Output of 'mris_multimodal_surface_placement --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/mris_multimodal_surface_placement -i surface -o surface -b spheresurf -n normals.vtk -v values.vtk -d debugVertex -s step_size -k numberOfSteps  -g gradientSigma -a aseg.aparc  -w whitesurface -p pOfCSF  -min/max -t1 image -t2 image -flair image
+
+=== Output of 'mris_multimodal_surface_placement -help' ===
+
+1
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+
+=== Output of 'mris_multimodal_surface_placement' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/mris_multimodal_surface_placement -i surface -o surface -b spheresurf -n normals.vtk -v values.vtk -d debugVertex -s step_size -k numberOfSteps  -g gradientSigma -a aseg.aparc  -w whitesurface -p pOfCSF  -min/max -t1 image -t2 image -flair image

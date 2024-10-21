@@ -1,0 +1,116 @@
+
+=== Output of 'convertwarp --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+convertwarp
+Copyright(c) 2001-2012, University of Oxford
+
+Usage: 
+convertwarp -m affine_matrix_file -r refvol -o output_warp
+convertwarp --ref=refvol --premat=mat1 --warp1=vol1 --warp2=vol2 --postmat=mat2 --out=output_warp
+convertwarp -r refvol -s shiftmapvol -o output_warp
+
+Compulsory arguments (You MUST set one or more of):
+	-o,--out	filename for output (warp) image - always in 'field' format
+	-r,--ref	filename for reference image
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--premat	filename of pre-affine transform
+	-w,--warp1	filename for initial warp (follows pre-affine)
+	--midmat	filename of mid-warp-affine transform
+	--warp2	filename for secondary warp (after initial warp, before post-affine)
+	--postmat	filename of post-affine transform
+	-s,--shiftmap	filename for shiftmap (applied first)
+	-d,--shiftdir	direction to apply shiftmap {x,y,z,x-,y-,z-}
+	-j,--jacobian	calculate and save Jacobian of final warp field
+	--jstats	print out statistics of the Jacobian of the warpfield
+	--constrainj	constrain the Jacobian of the warpfield to lie within specified min/max limits
+	--jmin	minimum acceptable Jacobian value for constraint (default 0.01)
+	--jmax	maximum acceptable Jacobian value for constraint (default 100.0)
+	--abs	use absolute warp convention (default): x' = w(x)
+	--rel	use relative warp convention: x' = x + w(x)
+	--absout	force output to use absolute warp convention: x' = w(x)
+	--relout	force output to use relative warp convention: x' = x + w(x)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'convertwarp -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+convertwarp
+Copyright(c) 2001-2012, University of Oxford
+
+Usage: 
+convertwarp -m affine_matrix_file -r refvol -o output_warp
+convertwarp --ref=refvol --premat=mat1 --warp1=vol1 --warp2=vol2 --postmat=mat2 --out=output_warp
+convertwarp -r refvol -s shiftmapvol -o output_warp
+
+Compulsory arguments (You MUST set one or more of):
+	-o,--out	filename for output (warp) image - always in 'field' format
+	-r,--ref	filename for reference image
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--premat	filename of pre-affine transform
+	-w,--warp1	filename for initial warp (follows pre-affine)
+	--midmat	filename of mid-warp-affine transform
+	--warp2	filename for secondary warp (after initial warp, before post-affine)
+	--postmat	filename of post-affine transform
+	-s,--shiftmap	filename for shiftmap (applied first)
+	-d,--shiftdir	direction to apply shiftmap {x,y,z,x-,y-,z-}
+	-j,--jacobian	calculate and save Jacobian of final warp field
+	--jstats	print out statistics of the Jacobian of the warpfield
+	--constrainj	constrain the Jacobian of the warpfield to lie within specified min/max limits
+	--jmin	minimum acceptable Jacobian value for constraint (default 0.01)
+	--jmax	maximum acceptable Jacobian value for constraint (default 100.0)
+	--abs	use absolute warp convention (default): x' = w(x)
+	--rel	use relative warp convention: x' = x + w(x)
+	--absout	force output to use absolute warp convention: x' = w(x)
+	--relout	force output to use relative warp convention: x' = x + w(x)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'convertwarp' (no arguments) ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+convertwarp
+Copyright(c) 2001-2012, University of Oxford
+
+Usage: 
+convertwarp -m affine_matrix_file -r refvol -o output_warp
+convertwarp --ref=refvol --premat=mat1 --warp1=vol1 --warp2=vol2 --postmat=mat2 --out=output_warp
+convertwarp -r refvol -s shiftmapvol -o output_warp
+
+Compulsory arguments (You MUST set one or more of):
+	-o,--out	filename for output (warp) image - always in 'field' format
+	-r,--ref	filename for reference image
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--premat	filename of pre-affine transform
+	-w,--warp1	filename for initial warp (follows pre-affine)
+	--midmat	filename of mid-warp-affine transform
+	--warp2	filename for secondary warp (after initial warp, before post-affine)
+	--postmat	filename of post-affine transform
+	-s,--shiftmap	filename for shiftmap (applied first)
+	-d,--shiftdir	direction to apply shiftmap {x,y,z,x-,y-,z-}
+	-j,--jacobian	calculate and save Jacobian of final warp field
+	--jstats	print out statistics of the Jacobian of the warpfield
+	--constrainj	constrain the Jacobian of the warpfield to lie within specified min/max limits
+	--jmin	minimum acceptable Jacobian value for constraint (default 0.01)
+	--jmax	maximum acceptable Jacobian value for constraint (default 100.0)
+	--abs	use absolute warp convention (default): x' = w(x)
+	--rel	use relative warp convention: x' = x + w(x)
+	--absout	force output to use absolute warp convention: x' = w(x)
+	--relout	force output to use relative warp convention: x' = x + w(x)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

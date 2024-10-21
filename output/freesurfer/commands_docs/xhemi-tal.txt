@@ -1,0 +1,26 @@
+
+=== Output of 'xhemi-tal --help' ===
+
+
+xhemi-tal --s subject
+
+xhemi-tal 7.4.1
+
+Computes the talairach.xfm for xhemi (see xhemireg) based on the
+original (unflipped) talairach.xfm
+
+=== Output of 'xhemi-tal -help' ===
+
+
+xhemi-tal --s subject
+
+xhemi-tal 7.4.1
+
+Computes the talairach.xfm for xhemi (see xhemireg) based on the
+original (unflipped) talairach.xfm
+
+=== Output of 'xhemi-tal' (no arguments) ===
+
+
+xhemi-tal --s subject
+

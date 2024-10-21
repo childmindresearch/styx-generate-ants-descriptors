@@ -1,0 +1,17 @@
+
+=== Output of 'mris_reverse --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_reverse [options] <input surface> <output surface>
+
+This reverses a cortical surface
+
+valid options are:
+
+
+=== Output of 'mris_reverse -help' ===
+
+unknown option -help
+
+=== Output of 'mris_reverse' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_reverse [options] <input surface> <output surface>

@@ -1,0 +1,42 @@
+
+=== Output of 'mris_niters2fwhm --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mris_niters2fwhm --s --h --surf --dof --niters 
+
+   --s subject 
+   --h hemi 
+   --surf surf
+   --dof  dof
+   --niters nitersmax
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+WARNING: this program is not yet tested!
+
+=== Output of 'mris_niters2fwhm -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mris_niters2fwhm' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mris_niters2fwhm --s --h --surf --dof --niters 
+
+   --s subject 
+   --h hemi 
+   --surf surf
+   --dof  dof
+   --niters nitersmax
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

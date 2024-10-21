@@ -1,5 +1,0 @@
-Basic useage ex: 
-AverageTensorImages ImageDimension  average.nii mathtype list-of-files-via-wildcard 
- e.g. 
-   AverageTensorImages 3  average.nii  1  *registered.nii 
- mathtype=[0=log-euclidean, 1=euclidean] 

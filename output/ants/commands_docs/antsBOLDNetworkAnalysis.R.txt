@@ -1,0 +1,12 @@
+
+=== Output of 'antsBOLDNetworkAnalysis.R --help' ===
+
+/usr/bin/env: 'Rscript': No such file or directory
+
+=== Output of 'antsBOLDNetworkAnalysis.R -help' ===
+
+/usr/bin/env: 'Rscript': No such file or directory
+
+=== Output of 'antsBOLDNetworkAnalysis.R' (no arguments) ===
+
+/usr/bin/env: 'Rscript': No such file or directory

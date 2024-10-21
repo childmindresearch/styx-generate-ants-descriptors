@@ -1,0 +1,25 @@
+
+=== Output of 'adjunct_calc_mont_dims.py --help' ===
+
+++ Command line: ['/opt/afni/src/../install/adjunct_calc_mont_dims.py', '--help']
+** ERROR: too few args! Need exactly one integer
+   and an output filename (and one optional integer
+   the max num of columns output).
+
+=== Output of 'adjunct_calc_mont_dims.py -help' ===
+
+++ Command line: ['/opt/afni/src/../install/adjunct_calc_mont_dims.py', '-help']
+
+Just a simple helper function for the fat_proc* scripts.  
+
+Nuthin' to see here, folks!
+
+
+=== Output of 'adjunct_calc_mont_dims.py' (no arguments) ===
+
+++ Command line: ['/opt/afni/src/../install/adjunct_calc_mont_dims.py']
+
+Just a simple helper function for the fat_proc* scripts.  
+
+Nuthin' to see here, folks!
+

@@ -1,0 +1,77 @@
+
+=== Output of 'samseg-long --help' ===
+
+
+samseg-long -o outputdir 
+ --i input1 --i input2 ...
+ --mc, --no-mc : align all inputs using robust register (choose one)
+ --threads nthreads
+  --save-posteriors : save posterior probs
+ --force-update
+
+samseg-long 7.4.1
+
+For longitudinal samseg analysis. All inputs must be a single modality. If
+you are going to run surface analysis, then they all must be T1w.
+
+samseg-long --i timepoint1.mgz --i timepoint2.mgz --mc --o samseglongdir
+
+This will create the samseglongdir folder. This folder will have a base
+folder and time point folders called tp001, tp002, etc. Each of these is a 
+samseg output folder.
+
+Create a base subject by transfering all the base samseg analysis to the
+recon-all base subject. The name of the base subject can be anything:
+   samseg2recon --base --s subject_base  --samseg samseglongdir
+Now run recon-all on the base
+   recon-all -s subject_base -autorecon2-samseg -autorecon3
+
+Create a subject for each time point by transfering all the samseg analysis 
+from that TP to the subject for that TP. The subject name can be anything
+   samseg2recon --long 2 --s long.tp002  --samseg samseglongdir
+Then run
+   recon-all -long-samseg subject_base long.tp002 -autorecon2-samseg -autorecon3
+
+=== Output of 'samseg-long -help' ===
+
+
+samseg-long -o outputdir 
+ --i input1 --i input2 ...
+ --mc, --no-mc : align all inputs using robust register (choose one)
+ --threads nthreads
+  --save-posteriors : save posterior probs
+ --force-update
+
+samseg-long 7.4.1
+
+For longitudinal samseg analysis. All inputs must be a single modality. If
+you are going to run surface analysis, then they all must be T1w.
+
+samseg-long --i timepoint1.mgz --i timepoint2.mgz --mc --o samseglongdir
+
+This will create the samseglongdir folder. This folder will have a base
+folder and time point folders called tp001, tp002, etc. Each of these is a 
+samseg output folder.
+
+Create a base subject by transfering all the base samseg analysis to the
+recon-all base subject. The name of the base subject can be anything:
+   samseg2recon --base --s subject_base  --samseg samseglongdir
+Now run recon-all on the base
+   recon-all -s subject_base -autorecon2-samseg -autorecon3
+
+Create a subject for each time point by transfering all the samseg analysis 
+from that TP to the subject for that TP. The subject name can be anything
+   samseg2recon --long 2 --s long.tp002  --samseg samseglongdir
+Then run
+   recon-all -long-samseg subject_base long.tp002 -autorecon2-samseg -autorecon3
+
+=== Output of 'samseg-long' (no arguments) ===
+
+
+samseg-long -o outputdir 
+ --i input1 --i input2 ...
+ --mc, --no-mc : align all inputs using robust register (choose one)
+ --threads nthreads
+  --save-posteriors : save posterior probs
+ --force-update
+

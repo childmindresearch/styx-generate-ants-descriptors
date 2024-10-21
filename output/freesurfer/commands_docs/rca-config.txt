@@ -1,0 +1,12 @@
+
+=== Output of 'rca-config --help' ===
+
+USAGE: recon-config source-config updated-config unknown-args-file args...
+
+=== Output of 'rca-config -help' ===
+
+USAGE: recon-config source-config updated-config unknown-args-file args...
+
+=== Output of 'rca-config' (no arguments) ===
+
+USAGE: recon-config source-config updated-config unknown-args-file args...

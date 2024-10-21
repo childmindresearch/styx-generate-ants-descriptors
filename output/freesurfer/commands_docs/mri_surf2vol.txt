@@ -1,0 +1,258 @@
+
+=== Output of 'mri_surf2vol --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_surf2vol 
+  
+  Method 1
+  --so surface overlay : path to surface and matching overlay 
+  --lta ltafile : registration file
+  --o outfile : path to output volume
+  --subject subject : when not specifying LTA or ribbon
+  --ribbon ribbonfile : when not specifying LTA or subject
+  --merge vol : merge with this vol, replacing surface values
+  
+
+  Method 2
+  --surfval surfvalpath <fmt>
+  --mkmask : make a mask instead of loading surfval
+  --hemi hemisphere (lh or rh)
+  --surf surfname (default is white)
+  --projfrac thickness fraction 
+  --fillribbon
+  --fill-projfrac start stop delta : implies --fillribbon
+  --reg volume registration file
+  --identity subjid : use identity (must supply subject name)
+  --subject subject : override subject in reg 
+  --template vol : output like this volume
+  --fstal res : use fs talairach registration
+  --merge vol : merge with this vol (becomes template)
+  --o outfile      : path to output volume
+  --vtxvol vtxfile : vertex map volume path id
+  --flat2mri surf patch overlay res avg output
+  --sphpvf radius nvox voxsize fsubsamp icoorder outvol outsurf
+  
+  Applies to both methods
+  --mask-to-cortex : mask to ?h.cortex.label
+  --mask-to-label labelfile : mask to the passed label file
+  --mask surfacemask: mask to the passed mask
+  --add const : add constant value to each non-zero output voxel
+  --copy-ctab : setenv FS_COPY_HEADER_CTAB 1
+  --sd subjectsdir : FreeSurfer subjects' directory
+  --help    : hidden secrets of success
+  --gdiagno number : set diag level
+  --version : print version and exit
+  
+
+7.4.1
+
+Resamples a surface into a volume using one of two methods. 
+
+Method 1 (new method)
+  This method fills the ribbon by construction using ribbon.mgz
+
+  --so surface overlay
+     Specify full path to a surface (eg, lh.white) and full path to the overlay.
+     Multiple --so flags are possible. Eg, to fill both lh and rh or specify one
+     overlay for white and another for pial.
+
+  --lta LTA : registration file
+     LTA contains info about the output space. Do not specify if you want the
+     the output to be in conformed space (but spec --subject or --ribbon)
+
+  --subject subjectname 
+     For use when LTA is not used or does not have a subjectname
+
+  --ribbon ribbonfile
+     Specify path to ribbon rather than using ribbon.mgz
+
+  --merge mergevolume
+     Merge the output volume with this volume. Ie, each voxel that is not
+     assigned a value from the surface inherits its value from the merge
+     volume. 
+
+Example: to create a conformed volume with the thickness
+  mri_surf2vol --o thickness-in-volume.nii.gz --subject bert \
+     --so $SUBJECTS_DIR/bert/surf/lh.white $SUBJECTS_DIR/bert/surf/lh.thickness \
+     --so $SUBJECTS_DIR/bert/surf/rh.white $SUBJECTS_DIR/bert/surf/rh.thickness 
+
+Method 2 (old method)
+  Option not to fill the ribbon. Ribbon fill uses projection instead of construction
+  and so can leave some holes.
+
+FLAGS AND ARGUMENTS
+
+--surfval surfvalpath <fmt>
+
+This is the source of the surface values, and, optionally, the format.
+If the format is not included, the format will be inferred from the
+path name. See FORMATS below. A mask can be created instead; see --mkmask.
+
+--mkmask 
+
+Create a binary (ie, 1/0) mask of all the locations where a surface
+vertex intersects a volume voxel. This is done instead of mapping
+surface values to the volume.
+
+--hemi hemisphere
+
+Hemisphere (lh or rh) that the source surface values refer to.
+
+--surf surfname
+
+Surface to use as found in surf directory. The actual surface file
+name will be hemi.surfname. Default is white.
+
+--projfrac fraction
+
+When sampling into the volume, compute the XYZ of the vertex as the
+XYZ of the vertex on the white/gray boundary projected fraction of the
+cortical thickncess along the surface normal. For example, to place
+the vertex half way into the cortical sheet, set fraction = 0.5. The
+fraction can be any number (including negatives).
+
+--fillribbon
+
+Fill the entire ribbon (iterate projfrac from 0 to 1 by .05)
+
+--fill-projfrac start stop delta
+
+Fill the entire ribbon by iterating projfrac from min to max by delta.
+Note that the volume can be filled 'into' the surface by setting stop < 0,
+eg, --fill-projfrac -1 0 0.05
+
+--reg volume registration file
+
+Contains the matrix that maps XYZ in the reference anatomical to XYZ
+in the functional volume. The format of this file is that as output by
+tkregister2 and includes the name of the subject. It will be assumed
+that the input surface values are sampled on the surface of this
+subject. Cannot be used with --volregidentity.
+
+--identity subjid
+
+Use identity matrix for the registration between the surface and the
+template volume (ie, template volume is the anatomical ref). Must supply
+subjid (which is usually obtained from the volreg). Cannot be used with
+--volreg.
+
+--template template volume <fmt>
+
+This is the volume that will be used as a template for the output
+volume in terms of the field-of-view, geometry, and precision. If the
+format is not included, the format will be inferred from the path
+name. Not needed with --merge. See FORMATS below.
+
+--fstal res
+
+sets volreg to $FREESURFER_HOME/average/mni305.cor.subfov$res.reg 
+and template to $FREESURFER_HOME/average/mni305.cor.subfov$res.mgz
+res can be 1 or 2.
+
+--merge mergevolume
+
+Merge the output volume with this volume. Ie, each voxel that is not
+assigned a value from the surface inherits its value from the merge
+volume. The merge volume becomes the template volume (ie, --template
+not needed or used).
+
+--o output volume 
+
+Path name of the output volume. If the format is not included, the
+format will be inferred from the path name. See FORMATS below.
+
+--vtxvol vertex output volume 
+
+Path name of the vertex output volume. The vertex volume is the the
+same as the output volume except that the voxel value is the number of
+the vertex that mapped to that voxel. If no vertex mapped to a voxel,
+the value is set to -1. This volume is mainly helpful for
+debugging. If the format is not included, the format will be inferred
+from the path name. See FORMATS below.
+
+--sd subjectsdir
+
+Use subjectsdir as the FreeSurfer subjects directory. If unspecified,
+the value of the environment variable SUBJECTS_DIR is used.
+
+--gdiagno diagnostic level
+
+Sets the diagnostic level (only good for debugging).
+
+--version
+
+Print out version string and exit.
+
+--help 
+
+Prints out all this information.
+
+FORMATS
+
+Data file format can be specified implicitly (through the path name)
+or explicitly. All formats accepted by mri_convert can be used. In addition,
+the surface value file can be paint format. If paint format is used, make
+sure to put ./ in front of the pathname.
+
+BUGS
+
+If paint format is used, make sure to put ./ in front of the pathname.
+
+BUG REPORTING
+
+Report bugs to analysis-bugs@nmr.mgh.harvard.edu. Include the following 
+formatted as a list as follows: (1) command-line, (2) directory where
+the program was run (for those in the MGH-NMR Center), (3) version, 
+(4) text output, (5) description of the problem.
+
+SEE ALSO 
+
+mri_convert, mri_vol2surf
+
+=== Output of 'mri_surf2vol -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_surf2vol' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_surf2vol 
+  
+  Method 1
+  --so surface overlay : path to surface and matching overlay 
+  --lta ltafile : registration file
+  --o outfile : path to output volume
+  --subject subject : when not specifying LTA or ribbon
+  --ribbon ribbonfile : when not specifying LTA or subject
+  --merge vol : merge with this vol, replacing surface values
+  
+
+  Method 2
+  --surfval surfvalpath <fmt>
+  --mkmask : make a mask instead of loading surfval
+  --hemi hemisphere (lh or rh)
+  --surf surfname (default is white)
+  --projfrac thickness fraction 
+  --fillribbon
+  --fill-projfrac start stop delta : implies --fillribbon
+  --reg volume registration file
+  --identity subjid : use identity (must supply subject name)
+  --subject subject : override subject in reg 
+  --template vol : output like this volume
+  --fstal res : use fs talairach registration
+  --merge vol : merge with this vol (becomes template)
+  --o outfile      : path to output volume
+  --vtxvol vtxfile : vertex map volume path id
+  --flat2mri surf patch overlay res avg output
+  --sphpvf radius nvox voxsize fsubsamp icoorder outvol outsurf
+  
+  Applies to both methods
+  --mask-to-cortex : mask to ?h.cortex.label
+  --mask-to-label labelfile : mask to the passed label file
+  --mask surfacemask: mask to the passed mask
+  --add const : add constant value to each non-zero output voxel
+  --copy-ctab : setenv FS_COPY_HEADER_CTAB 1
+  --sd subjectsdir : FreeSurfer subjects' directory
+  --help    : hidden secrets of success
+  --gdiagno number : set diag level
+  --version : print version and exit
+  

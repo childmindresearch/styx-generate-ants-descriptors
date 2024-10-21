@@ -1,0 +1,40 @@
+
+=== Output of '@DriveAfni --help' ===
+
+No parameters such as (--help) accepted. See @DriveAfni -help.
+
+=== Output of '@DriveAfni -help' ===
+
+
+@DriveAfni  - a demo program for driving 'afni' from a script
+
+The purpose is for one to review this script while executing it.
+
+This program requires the AFNI_data6 class data directory and must
+be run just above it (i.e. typing 'ls' should include AFNI_data6
+in the output).
+
+     one output file is created: ./SavedAxiale.jpg
+
+See README.driver for details on driver commands.
+See also 'plugout_drive -help'.
+See also 'DriveSuma -help'.
+
+
+=== Output of '@DriveAfni' (no arguments) ===
+
+
+** Directory AFNI_data6/afni not found.
+
+You could be in the wrong directory,
+or you may not have AFNI_data6 on disk.
+
+This directory is in archive:
+    https://afni.nimh.nih.gov/pub/dist/edu/data/AFNI_data6.tgz
+
+To install archive and rerun this script run the following commands
+    mkdir ./demo && cd demo
+    curl -O https://afni.nimh.nih.gov/pub/dist/edu/data/AFNI_data6.tgz
+    tar xzf AFNI_data6.tgz
+    @DriveAfni
+

@@ -1,0 +1,68 @@
+
+=== Output of 'biasfield --help' ===
+
+
+biasfield
+
+  --s subject
+
+   --tmp tmpdir
+   --nocleanup
+   --help
+   --debug
+   --version : script version info
+
+Version: biasfield 7.4.1
+
+Computes the bias field by dividing the (unconformed) orig.mgz by the
+norm.mgz.  The bias field is smoothed by 10mm FWHM to remove anatomy.
+The bias field is normalized so that the mean bias field in the
+central corpus callosum is 1. The output is a file called
+biasfield.mgz in the subject mri dir. Also creates a file called
+rawavg.cor.norm.mgz, which is the rawavg.mgz in 256^3, 1mm^3 space
+with the bias field removed (note that this is not fully conformed).
+
+NOTE: this cannot be run if the rawavg.mgz is already conformed or
+if the inputs (001.mgz, etc) have been conformed.
+
+
+=== Output of 'biasfield -help' ===
+
+
+biasfield
+
+  --s subject
+
+   --tmp tmpdir
+   --nocleanup
+   --help
+   --debug
+   --version : script version info
+
+Version: biasfield 7.4.1
+
+Computes the bias field by dividing the (unconformed) orig.mgz by the
+norm.mgz.  The bias field is smoothed by 10mm FWHM to remove anatomy.
+The bias field is normalized so that the mean bias field in the
+central corpus callosum is 1. The output is a file called
+biasfield.mgz in the subject mri dir. Also creates a file called
+rawavg.cor.norm.mgz, which is the rawavg.mgz in 256^3, 1mm^3 space
+with the bias field removed (note that this is not fully conformed).
+
+NOTE: this cannot be run if the rawavg.mgz is already conformed or
+if the inputs (001.mgz, etc) have been conformed.
+
+
+=== Output of 'biasfield' (no arguments) ===
+
+
+biasfield
+
+  --s subject
+
+   --tmp tmpdir
+   --nocleanup
+   --help
+   --debug
+   --version : script version info
+

@@ -1,0 +1,24 @@
+
+=== Output of 'mri_ribbon --help' ===
+
+Usage: mri_ribbon [-l fname.label] \ 
+       inner_surface_fname \ 
+       outer_surface_fname \ 
+       input_volume_pref \ 
+       output_volume_pref
+
+=== Output of 'mri_ribbon -help' ===
+
+Usage: mri_ribbon [-l fname.label] \ 
+       inner_surface_fname \ 
+       outer_surface_fname \ 
+       input_volume_pref \ 
+       output_volume_pref
+
+=== Output of 'mri_ribbon' (no arguments) ===
+
+Usage: mri_ribbon [-l fname.label] \ 
+       inner_surface_fname \ 
+       outer_surface_fname \ 
+       input_volume_pref \ 
+       output_volume_pref

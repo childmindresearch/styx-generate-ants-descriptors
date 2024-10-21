@@ -1,0 +1,229 @@
+
+=== Output of 'fsl_rigid_register --help' ===
+
+
+USAGE: fsl_rigid_register
+
+Required Arguments:
+   -r refvol    : reference/target volume
+   -i inputvol  : input/moveable volume
+   -o outputvol : input resampled to reference
+
+Optional Arguments
+   -fslmat fsmatfile  : spec explicitly
+   -regmat regmatfile : get reg matrix as register.dat file
+   -xfmmat xfmmatfile :  get reg matrix as MNI xfm file
+   -ltamat ltamatfile :  get reg matrix as MGH lta file
+   -noinitgeom : do not initialize matrix based on geometry
+   -applyxfm xfmfile : do not reg, just apply xfm to input
+   -applyinitxfm     : do not reg, just apply init xfm to input
+   -initxfm  xfmfile : use this as an initial matrix (instead of geom)
+   -maxangle maxangle : only search over +/- maxangle degrees
+   -interp method : <trilinear>, nearestneighbour, sinc
+   -dof dof : use dof instead of 6
+   -bins bins : number of bins to use (default 256)
+   -cost cost : objective function (default corratio)
+      valid costs are mutualinfo corratio normcorr normmi leastsq
+   -tmp  tmpdir (default is ). Implies -nocleanup
+   -tmpdir  tmpdir : same as -tmp
+   -nocleanup  : do not delete temporary files
+   -cleanup  : delete temporary files (default)
+   -subject subject  : only puts it in the register.dat file
+
+   -version : print version and exit
+   -help    : print help and exit
+
+
+This is a front-end for the FSL (www.fmrib.ox.ac.uk/fsl/index.html)
+flirt program. Computes the registration matrix that transforms
+inputvol to refvol and resamples inputvol to outputvol using that
+matrix. The matrix is stored in outputvol.fslmat. The registration is
+constrained to be rigid (ie, 6 dof). The input and ref volumes are
+automatically converted to analyze, and the output volume is
+automatically converted from analyze to the output format. Note: if
+using COR as output, the COR directory must exist prior to running
+this script. The FLIRT/FSL registration matrix will be stored in
+outvol.fslmat (unless -fslmat).
+
+By default, an init FSL registration matrix is computed from the
+geometry information in the header ref and input headers. This is a
+good idea because the anlyze format does not keep the direction cosine
+info around.
+
+-fslmat fslmatfile
+
+Store the FSL registration matrix in fslmatfile instead of outvol.fslmat
+
+-regmat regmatfile
+
+Convert the FSL matrix to register.dat format and save in regmatfile. You
+will have to edit the subject name.
+
+-ltamat ltamatfile
+
+Convert the FSL matrix to an MGH lta file.
+
+-noinitgeom
+
+Do not compute init registration matrix from geometry.
+
+-initxfm fslmatfile
+
+Use matrix in fslmatfile as the initial registation matrix. If no
+initialization is specified, the identity is assumed. Forces
+-noinitgeom.
+
+-maxangle maxangle
+
+Search only +/- maxangle degrees around the initial starting
+point. Default is 90.
+
+-applyxfm
+
+When the -applyxfm flag is is used, the input is resampled to the
+output using the FSL mat file supplied as the argument to the
+-applyxfm.  The ref volume is still needed in order to get the proper
+geometry for the output file. Forces -noinitgeom.
+
+-dof dof
+
+Non-rigid registration can be performed by changing the dof from 6.
+
+
+BUGS:
+
+If using COR as output, the COR directory must exist prior to running
+this script.
+
+
+=== Output of 'fsl_rigid_register -help' ===
+
+
+USAGE: fsl_rigid_register
+
+Required Arguments:
+   -r refvol    : reference/target volume
+   -i inputvol  : input/moveable volume
+   -o outputvol : input resampled to reference
+
+Optional Arguments
+   -fslmat fsmatfile  : spec explicitly
+   -regmat regmatfile : get reg matrix as register.dat file
+   -xfmmat xfmmatfile :  get reg matrix as MNI xfm file
+   -ltamat ltamatfile :  get reg matrix as MGH lta file
+   -noinitgeom : do not initialize matrix based on geometry
+   -applyxfm xfmfile : do not reg, just apply xfm to input
+   -applyinitxfm     : do not reg, just apply init xfm to input
+   -initxfm  xfmfile : use this as an initial matrix (instead of geom)
+   -maxangle maxangle : only search over +/- maxangle degrees
+   -interp method : <trilinear>, nearestneighbour, sinc
+   -dof dof : use dof instead of 6
+   -bins bins : number of bins to use (default 256)
+   -cost cost : objective function (default corratio)
+      valid costs are mutualinfo corratio normcorr normmi leastsq
+   -tmp  tmpdir (default is ). Implies -nocleanup
+   -tmpdir  tmpdir : same as -tmp
+   -nocleanup  : do not delete temporary files
+   -cleanup  : delete temporary files (default)
+   -subject subject  : only puts it in the register.dat file
+
+   -version : print version and exit
+   -help    : print help and exit
+
+
+This is a front-end for the FSL (www.fmrib.ox.ac.uk/fsl/index.html)
+flirt program. Computes the registration matrix that transforms
+inputvol to refvol and resamples inputvol to outputvol using that
+matrix. The matrix is stored in outputvol.fslmat. The registration is
+constrained to be rigid (ie, 6 dof). The input and ref volumes are
+automatically converted to analyze, and the output volume is
+automatically converted from analyze to the output format. Note: if
+using COR as output, the COR directory must exist prior to running
+this script. The FLIRT/FSL registration matrix will be stored in
+outvol.fslmat (unless -fslmat).
+
+By default, an init FSL registration matrix is computed from the
+geometry information in the header ref and input headers. This is a
+good idea because the anlyze format does not keep the direction cosine
+info around.
+
+-fslmat fslmatfile
+
+Store the FSL registration matrix in fslmatfile instead of outvol.fslmat
+
+-regmat regmatfile
+
+Convert the FSL matrix to register.dat format and save in regmatfile. You
+will have to edit the subject name.
+
+-ltamat ltamatfile
+
+Convert the FSL matrix to an MGH lta file.
+
+-noinitgeom
+
+Do not compute init registration matrix from geometry.
+
+-initxfm fslmatfile
+
+Use matrix in fslmatfile as the initial registation matrix. If no
+initialization is specified, the identity is assumed. Forces
+-noinitgeom.
+
+-maxangle maxangle
+
+Search only +/- maxangle degrees around the initial starting
+point. Default is 90.
+
+-applyxfm
+
+When the -applyxfm flag is is used, the input is resampled to the
+output using the FSL mat file supplied as the argument to the
+-applyxfm.  The ref volume is still needed in order to get the proper
+geometry for the output file. Forces -noinitgeom.
+
+-dof dof
+
+Non-rigid registration can be performed by changing the dof from 6.
+
+
+BUGS:
+
+If using COR as output, the COR directory must exist prior to running
+this script.
+
+
+=== Output of 'fsl_rigid_register' (no arguments) ===
+
+
+USAGE: fsl_rigid_register
+
+Required Arguments:
+   -r refvol    : reference/target volume
+   -i inputvol  : input/moveable volume
+   -o outputvol : input resampled to reference
+
+Optional Arguments
+   -fslmat fsmatfile  : spec explicitly
+   -regmat regmatfile : get reg matrix as register.dat file
+   -xfmmat xfmmatfile :  get reg matrix as MNI xfm file
+   -ltamat ltamatfile :  get reg matrix as MGH lta file
+   -noinitgeom : do not initialize matrix based on geometry
+   -applyxfm xfmfile : do not reg, just apply xfm to input
+   -applyinitxfm     : do not reg, just apply init xfm to input
+   -initxfm  xfmfile : use this as an initial matrix (instead of geom)
+   -maxangle maxangle : only search over +/- maxangle degrees
+   -interp method : <trilinear>, nearestneighbour, sinc
+   -dof dof : use dof instead of 6
+   -bins bins : number of bins to use (default 256)
+   -cost cost : objective function (default corratio)
+      valid costs are mutualinfo corratio normcorr normmi leastsq
+   -tmp  tmpdir (default is ). Implies -nocleanup
+   -tmpdir  tmpdir : same as -tmp
+   -nocleanup  : do not delete temporary files
+   -cleanup  : delete temporary files (default)
+   -subject subject  : only puts it in the register.dat file
+
+   -version : print version and exit
+   -help    : print help and exit
+

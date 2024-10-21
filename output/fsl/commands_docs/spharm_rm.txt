@@ -1,0 +1,73 @@
+
+=== Output of 'spharm_rm --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+spharm_rm
+Copyright(c) 2006, University of Oxford (Mark Jenkinson)
+
+Usage: 
+spharm_rm [options] -i <input_image> -o <output_image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input filename
+	-o,--out	output filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m	mask filename
+	-n	number of terms to remove (order is 1,x,y,z,z^2+(x^2+y^2)/2,zx,zy,xy,x^2-y^2)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'spharm_rm -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+spharm_rm
+Copyright(c) 2006, University of Oxford (Mark Jenkinson)
+
+Usage: 
+spharm_rm [options] -i <input_image> -o <output_image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input filename
+	-o,--out	output filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m	mask filename
+	-n	number of terms to remove (order is 1,x,y,z,z^2+(x^2+y^2)/2,zx,zy,xy,x^2-y^2)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'spharm_rm' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	input filename
+	-o,--out	output filename
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+spharm_rm
+Copyright(c) 2006, University of Oxford (Mark Jenkinson)
+
+Usage: 
+spharm_rm [options] -i <input_image> -o <output_image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input filename
+	-o,--out	output filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m	mask filename
+	-n	number of terms to remove (order is 1,x,y,z,z^2+(x^2+y^2)/2,zx,zy,xy,x^2-y^2)
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

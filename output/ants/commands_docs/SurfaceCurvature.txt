@@ -1,0 +1,75 @@
+
+=== Output of 'SurfaceCurvature --help' ===
+
+ This implements The Shape Operator for Differential Analysis of Images (google for the pdf)
+ By B. Avants and J.C. Gee 
+ Documentation is on demand --- if there is enough interest, documentation will improve.
+ There are several modes of operation and you must try parameters and input either binary or gray scale images to see the different effects ---- experimentation or reading the (minimal) documentation /  paper / code is needed to understand the program 
+ usage :  SurfaceCurvature FileNameIn FileNameOut sigma option  
+ e.g  :   SurfaceCurvature    BrainIn.nii BrainOut.nii   3  0 
+ option 0 means just compute mean curvature from intensity 
+ option 5 means characterize surface from intensity 
+ option 6 means compute gaussian curvature 
+ option 7 means surface area 
+ ... 
+ for surface characterization 
+ 1 == (+) bowl 
+ 2 == (-) bowl  
+ 3 == (+) saddle 
+ 4 == (-) saddle 
+ 5 == (+) U 
+ 6 == (-) U 
+ 7 == flat 
+ 8 == a perfectly even saddle (rare) 
+ 
+ we add 128 to mean curvature results s.t. they are differentiated from background (zero) 
+
+=== Output of 'SurfaceCurvature -help' ===
+
+ This implements The Shape Operator for Differential Analysis of Images (google for the pdf)
+ By B. Avants and J.C. Gee 
+ Documentation is on demand --- if there is enough interest, documentation will improve.
+ There are several modes of operation and you must try parameters and input either binary or gray scale images to see the different effects ---- experimentation or reading the (minimal) documentation /  paper / code is needed to understand the program 
+ usage :  SurfaceCurvature FileNameIn FileNameOut sigma option  
+ e.g  :   SurfaceCurvature    BrainIn.nii BrainOut.nii   3  0 
+ option 0 means just compute mean curvature from intensity 
+ option 5 means characterize surface from intensity 
+ option 6 means compute gaussian curvature 
+ option 7 means surface area 
+ ... 
+ for surface characterization 
+ 1 == (+) bowl 
+ 2 == (-) bowl  
+ 3 == (+) saddle 
+ 4 == (-) saddle 
+ 5 == (+) U 
+ 6 == (-) U 
+ 7 == flat 
+ 8 == a perfectly even saddle (rare) 
+ 
+ we add 128 to mean curvature results s.t. they are differentiated from background (zero) 
+
+=== Output of 'SurfaceCurvature' (no arguments) ===
+
+ This implements The Shape Operator for Differential Analysis of Images (google for the pdf)
+ By B. Avants and J.C. Gee 
+ Documentation is on demand --- if there is enough interest, documentation will improve.
+ There are several modes of operation and you must try parameters and input either binary or gray scale images to see the different effects ---- experimentation or reading the (minimal) documentation /  paper / code is needed to understand the program 
+ usage :  SurfaceCurvature FileNameIn FileNameOut sigma option  
+ e.g  :   SurfaceCurvature    BrainIn.nii BrainOut.nii   3  0 
+ option 0 means just compute mean curvature from intensity 
+ option 5 means characterize surface from intensity 
+ option 6 means compute gaussian curvature 
+ option 7 means surface area 
+ ... 
+ for surface characterization 
+ 1 == (+) bowl 
+ 2 == (-) bowl  
+ 3 == (+) saddle 
+ 4 == (-) saddle 
+ 5 == (+) U 
+ 6 == (-) U 
+ 7 == flat 
+ 8 == a perfectly even saddle (rare) 
+ 
+ we add 128 to mean curvature results s.t. they are differentiated from background (zero) 

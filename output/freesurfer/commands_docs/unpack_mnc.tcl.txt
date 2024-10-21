@@ -1,0 +1,15 @@
+
+=== Output of 'unpack_mnc.tcl --help' ===
+
+/usr/local/freesurfer/bin/unpack_mnc.tcl: line 35: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/unpack_mnc.tcl: line 35: `if { [ catch "exec pwd" workingDir]} {set targetDir $env(HOME)} else { set targetDir $workingDir}'
+
+=== Output of 'unpack_mnc.tcl -help' ===
+
+/usr/local/freesurfer/bin/unpack_mnc.tcl: line 35: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/unpack_mnc.tcl: line 35: `if { [ catch "exec pwd" workingDir]} {set targetDir $env(HOME)} else { set targetDir $workingDir}'
+
+=== Output of 'unpack_mnc.tcl' (no arguments) ===
+
+/usr/local/freesurfer/bin/unpack_mnc.tcl: line 35: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/unpack_mnc.tcl: line 35: `if { [ catch "exec pwd" workingDir]} {set targetDir $env(HOME)} else { set targetDir $workingDir}'

@@ -1,0 +1,17 @@
+
+=== Output of 'mri_correct_segmentations --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_correct_segmentations [options] fname1 fname2 
+
+
+Correcting automated infant segmentation
+
+=== Output of 'mri_correct_segmentations -help' ===
+
+unknown option -help
+
+=== Output of 'mri_correct_segmentations' (no arguments) ===
+
+processing 0 input files
+USAGE: /usr/local/freesurfer/bin/mri_correct_segmentations [options] fname1 fname2 
+

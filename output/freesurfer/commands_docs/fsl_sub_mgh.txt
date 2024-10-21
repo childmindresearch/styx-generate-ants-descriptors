@@ -1,0 +1,47 @@
+
+=== Output of 'fsl_sub_mgh --help' ===
+
+getopt: unrecognized option '--help'
+basename: missing operand
+Try 'basename --help' for more information.
+7072
+
+=== Output of 'fsl_sub_mgh -help' ===
+
+getopt: invalid option -- 'h'
+getopt: invalid option -- 'e'
+basename: missing operand
+Try 'basename --help' for more information.
+7087
+
+=== Output of 'fsl_sub_mgh' (no arguments) ===
+
+
+fsl_sub_mgh V1.0beta - wrapper for job control system such as SGE
+
+Usage: fsl_sub_mgh [options] <command>
+
+fsl_sub_mgh gzip *.img *.hdr
+fsl_sub_mgh -q short.q gzip *.img *.hdr
+fsl_sub_mgh -a darwin regscript rawdata outputdir ...
+
+  -T <minutes>          Estimated job length in minutes, used to auto-set queue name
+  -q <queuename>        Possible values for <queuename> are "verylong.q", "long.q" 
+                        and "short.q". See below for details
+                        Default is "long.q".
+  -a <arch-name>        Architecture [e.g., darwin or lx24-amd64]
+  -p <job-priority>     Lower priority [0:-1024] default = 0                 
+  -M <email-address>    Who to email, default = root@fmrib.ox.ac.uk 
+  -j <jid>              Place a hold on this task until job jid has completed
+  -t <filename>         Specify a task file of commands to execute in parallel
+  -N <jobname>          Specify jobname as it will appear on queue
+  -l <logdirname>       Where to output logfiles
+  -m <mailoptions>      Change the SGE mail options, see qsub for details
+  -F                    Use flags embedded in scripts to set SGE queuing options
+  -v                    Verbose mode.
+  -s <shell-path>       Change the PBS shell option, see pbsubmit for details
+
+  This is a modified version of FSL's fsl_sub that is compatible with
+  the PBS queueing system running on launchpad/seychelles. The above command
+  line options work with SGE, but they may not all work with PBS. This modified
+  version is only intended to work with bedpostx_mgh.

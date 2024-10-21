@@ -1,0 +1,168 @@
+
+=== Output of 'mris_inflate --help' ===
+
+				Help
+
+NAME
+	mris_inflate - inflate cortical surface
+
+SYNOPSIS
+	mris_inflate [<options>] insurfacefile outsurfacefile
+
+DESCRIPTION
+	This program will inflate a cortical surface.
+
+POSITIONAL ARGUMENTS
+	insurfacefile
+		input surface file
+
+	outsurfacefile
+		output surface file 
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-n <# of iterations>
+		set the maximum # of iterations (default = 10)
+
+	-w <# of iterations>
+		write out a snapshot of the inflation every #th time step.
+
+	-dist <distance coefficient>
+		specify the relative strength of the metric preserving term in
+		the cost functional versus the smoothing term (default = 
+		0.100000).
+
+	-no-save-sulc
+		do not save ?h.sulc
+
+	-sulc sulcname
+		save to ?h.sulcname
+
+	-mm
+		compute sulc in mm without zero meaning or scaling
+
+	-scale 0/1
+		disable or enable scaling of inflated brain
+
+OUTPUTS
+	outsurfacefile
+		output surface file
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_inflate -help' ===
+
+				Help
+
+NAME
+	mris_inflate - inflate cortical surface
+
+SYNOPSIS
+	mris_inflate [<options>] insurfacefile outsurfacefile
+
+DESCRIPTION
+	This program will inflate a cortical surface.
+
+POSITIONAL ARGUMENTS
+	insurfacefile
+		input surface file
+
+	outsurfacefile
+		output surface file 
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-n <# of iterations>
+		set the maximum # of iterations (default = 10)
+
+	-w <# of iterations>
+		write out a snapshot of the inflation every #th time step.
+
+	-dist <distance coefficient>
+		specify the relative strength of the metric preserving term in
+		the cost functional versus the smoothing term (default = 
+		0.100000).
+
+	-no-save-sulc
+		do not save ?h.sulc
+
+	-sulc sulcname
+		save to ?h.sulcname
+
+	-mm
+		compute sulc in mm without zero meaning or scaling
+
+	-scale 0/1
+		disable or enable scaling of inflated brain
+
+OUTPUTS
+	outsurfacefile
+		output surface file
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_inflate' (no arguments) ===
+
+				Help
+
+NAME
+	mris_inflate - inflate cortical surface
+
+SYNOPSIS
+	mris_inflate [<options>] insurfacefile outsurfacefile
+
+DESCRIPTION
+	This program will inflate a cortical surface.
+
+POSITIONAL ARGUMENTS
+	insurfacefile
+		input surface file
+
+	outsurfacefile
+		output surface file 
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-n <# of iterations>
+		set the maximum # of iterations (default = 10)
+
+	-w <# of iterations>
+		write out a snapshot of the inflation every #th time step.
+
+	-dist <distance coefficient>
+		specify the relative strength of the metric preserving term in
+		the cost functional versus the smoothing term (default = 
+		0.100000).
+
+	-no-save-sulc
+		do not save ?h.sulc
+
+	-sulc sulcname
+		save to ?h.sulcname
+
+	-mm
+		compute sulc in mm without zero meaning or scaling
+
+	-scale 0/1
+		disable or enable scaling of inflated brain
+
+OUTPUTS
+	outsurfacefile
+		output surface file
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

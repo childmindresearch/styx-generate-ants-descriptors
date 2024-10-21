@@ -1,0 +1,27 @@
+
+=== Output of 'mri_easywarp --help' ===
+
+usage: mri_easywarp [-h] [--i I] [--o O] [--field FIELD] [--nearest]
+                    [--threads THREADS]
+
+EasyReg (warping code): deep learning registration simple and easy
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --i I              Input image
+  --o O              Output (deformed) image
+  --field FIELD      Deformation field
+  --nearest          (optional) Use nearest neighbor (rather than linear)
+                     interpolation
+  --threads THREADS  (optional) Number of cores to be used. Default is 1. You
+                     can use -1 to use all available cores
+
+=== Output of 'mri_easywarp -help' ===
+
+usage: mri_easywarp [-h] [--i I] [--o O] [--field FIELD] [--nearest]
+                    [--threads THREADS]
+mri_easywarp: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'mri_easywarp' (no arguments) ===
+
+Error: Input image must be provided

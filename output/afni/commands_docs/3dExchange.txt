@@ -1,0 +1,65 @@
+
+=== Output of '3dExchange --help' ===
+
+[7m** FATAL ERROR:[0m  Error - unknown option --help
+** Program compile date = Sep 12 2024
+
+=== Output of '3dExchange -help' ===
+
+Usage: 3dExchange [-prefix PREFIX] <-input DATASET>
+
+Replaces voxel values using mapping file with two columns of numbers
+with the first column of the input value and the second has the output value
+
+  -input DATASET :               Input dataset
+                                  Acceptable data types are:
+                                  byte, short, and floats.
+  -map MAPCOLS.1D :               Mapping columns - input is first column
+                                  output is second column
+  -prefix PREFIX: Output prefix
+
+  -ver = print author and version info
+  -help = print this help screen
+
+INPUT DATASET NAMES
+-------------------
+This program accepts datasets that are modified on input according to the
+following schemes:
+  'r1+orig[3..5]'                                    {sub-brick selector}
+  'r1+orig<100..200>'                                {sub-range selector}
+  'r1+orig[3..5]<100..200>'                          {both selectors}
+  '3dcalc( -a r1+orig -b r2+orig -expr 0.5*(a+b) )'  {calculation}
+For the gruesome details, see the output of 'afni -help'.
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dExchange' (no arguments) ===
+
+Usage: 3dExchange [-prefix PREFIX] <-input DATASET>
+
+Replaces voxel values using mapping file with two columns of numbers
+with the first column of the input value and the second has the output value
+
+  -input DATASET :               Input dataset
+                                  Acceptable data types are:
+                                  byte, short, and floats.
+  -map MAPCOLS.1D :               Mapping columns - input is first column
+                                  output is second column
+  -prefix PREFIX: Output prefix
+
+  -ver = print author and version info
+  -help = print this help screen
+
+INPUT DATASET NAMES
+-------------------
+This program accepts datasets that are modified on input according to the
+following schemes:
+  'r1+orig[3..5]'                                    {sub-brick selector}
+  'r1+orig<100..200>'                                {sub-range selector}
+  'r1+orig[3..5]<100..200>'                          {both selectors}
+  '3dcalc( -a r1+orig -b r2+orig -expr 0.5*(a+b) )'  {calculation}
+For the gruesome details, see the output of 'afni -help'.
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

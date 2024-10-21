@@ -1,0 +1,24 @@
+
+=== Output of 'StackSlices --help' ===
+
+Usage: StackSlices outputvolume x y z inputvolume(s)
+  The specific slice is chosen by specifying the index for x, y, xor z.
+  For example, an "x y z" selection of "30 -1 -1" will stack slice 30 
+  along the first dimension.  Also note that input 4-D volumes are treated 
+  as a series of 3-D volumes.
+
+=== Output of 'StackSlices -help' ===
+
+Usage: StackSlices outputvolume x y z inputvolume(s)
+  The specific slice is chosen by specifying the index for x, y, xor z.
+  For example, an "x y z" selection of "30 -1 -1" will stack slice 30 
+  along the first dimension.  Also note that input 4-D volumes are treated 
+  as a series of 3-D volumes.
+
+=== Output of 'StackSlices' (no arguments) ===
+
+Usage: StackSlices outputvolume x y z inputvolume(s)
+  The specific slice is chosen by specifying the index for x, y, xor z.
+  For example, an "x y z" selection of "30 -1 -1" will stack slice 30 
+  along the first dimension.  Also note that input 4-D volumes are treated 
+  as a series of 3-D volumes.

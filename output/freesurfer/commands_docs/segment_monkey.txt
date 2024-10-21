@@ -1,0 +1,12 @@
+
+=== Output of 'segment_monkey --help' ===
+
+ERROR: at least 1 control point must be selected
+
+=== Output of 'segment_monkey -help' ===
+
+ERROR: at least 1 control point must be selected
+
+=== Output of 'segment_monkey' (no arguments) ===
+
+ERROR: at least 1 control point must be selected

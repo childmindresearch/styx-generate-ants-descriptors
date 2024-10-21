@@ -1,0 +1,12 @@
+
+=== Output of 'histo_compute_joint_density --help' ===
+
+usage: /usr/local/freesurfer/bin/histo_compute_joint_density [options] <volume1> <volume2> <joint density file>
+
+=== Output of 'histo_compute_joint_density -help' ===
+
+unknown option -help
+
+=== Output of 'histo_compute_joint_density' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/histo_compute_joint_density [options] <volume1> <volume2> <joint density file>

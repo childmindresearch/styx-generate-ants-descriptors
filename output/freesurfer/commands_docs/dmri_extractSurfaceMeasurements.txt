@@ -1,0 +1,33 @@
+
+=== Output of 'dmri_extractSurfaceMeasurements --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_extractSurfaceMeasurements -i streamlineFile.trk -sl surfaceFile_lh.orig -tl overlayFile_lh.thickness -cl overlayFile_lh.curv
+-sr surfaceFile_rh.orig -tr overlayFile_rh.thickness -cr overlayFile_rh.curv -o outputDirectory
+-rid reference_image (NOTE: only use reference image when FA is not used
+-ria reference image for anatomical space (NOTE: when diffusion and anatomical spaces are not registered) 
+-t transformation from diffusion to anatomical space 
+-a annotationFile 
+OPTION: -fa <numFiles> <Filename> FA_file.nii.gz ... <Filename> <fileAddress>
+
+=== Output of 'dmri_extractSurfaceMeasurements -help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_extractSurfaceMeasurements -i streamlineFile.trk -sl surfaceFile_lh.orig -tl overlayFile_lh.thickness -cl overlayFile_lh.curv
+-sr surfaceFile_rh.orig -tr overlayFile_rh.thickness -cr overlayFile_rh.curv -o outputDirectory
+-rid reference_image (NOTE: only use reference image when FA is not used
+-ria reference image for anatomical space (NOTE: when diffusion and anatomical spaces are not registered) 
+-t transformation from diffusion to anatomical space 
+-a annotationFile 
+OPTION: -fa <numFiles> <Filename> FA_file.nii.gz ... <Filename> <fileAddress>
+
+=== Output of 'dmri_extractSurfaceMeasurements' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_extractSurfaceMeasurements -i streamlineFile.trk -sl surfaceFile_lh.orig -tl overlayFile_lh.thickness -cl overlayFile_lh.curv
+-sr surfaceFile_rh.orig -tr overlayFile_rh.thickness -cr overlayFile_rh.curv -o outputDirectory
+-rid reference_image (NOTE: only use reference image when FA is not used
+-ria reference image for anatomical space (NOTE: when diffusion and anatomical spaces are not registered) 
+-t transformation from diffusion to anatomical space 
+-a annotationFile 
+OPTION: -fa <numFiles> <Filename> FA_file.nii.gz ... <Filename> <fileAddress>

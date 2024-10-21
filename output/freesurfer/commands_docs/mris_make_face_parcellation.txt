@@ -1,0 +1,54 @@
+
+=== Output of 'mris_make_face_parcellation --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_make_face_parcellation [options] <input surface> <ico file> <output annot>
+
+example: /usr/local/freesurfer/bin/mris_make_face_parcellation lh.sphere.reg $FREESURFER_HOME/lib/bem/ic3.tri ./lh.ic3.annot
+  surf should be either:
+    sphere: units will be approximately equal size within subject but 
+            not in correspondence across subjects
+    sphere.reg: units will be different sizes within subject but 
+            in correspondence across subjects
+  Note: do not use inflated as was suggested by previous versions! 
+  
+
+This generates a parcellation based on which icosahedral face each vertex maps to.
+Options: 
+  -ctab colortable.txt
+  
+
+=== Output of 'mris_make_face_parcellation -help' ===
+
+usage: /usr/local/freesurfer/bin/mris_make_face_parcellation [options] <input surface> <ico file> <output annot>
+
+example: /usr/local/freesurfer/bin/mris_make_face_parcellation lh.sphere.reg $FREESURFER_HOME/lib/bem/ic3.tri ./lh.ic3.annot
+  surf should be either:
+    sphere: units will be approximately equal size within subject but 
+            not in correspondence across subjects
+    sphere.reg: units will be different sizes within subject but 
+            in correspondence across subjects
+  Note: do not use inflated as was suggested by previous versions! 
+  
+
+This generates a parcellation based on which icosahedral face each vertex maps to.
+Options: 
+  -ctab colortable.txt
+  
+
+=== Output of 'mris_make_face_parcellation' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_make_face_parcellation [options] <input surface> <ico file> <output annot>
+
+example: /usr/local/freesurfer/bin/mris_make_face_parcellation lh.sphere.reg $FREESURFER_HOME/lib/bem/ic3.tri ./lh.ic3.annot
+  surf should be either:
+    sphere: units will be approximately equal size within subject but 
+            not in correspondence across subjects
+    sphere.reg: units will be different sizes within subject but 
+            in correspondence across subjects
+  Note: do not use inflated as was suggested by previous versions! 
+  
+
+This generates a parcellation based on which icosahedral face each vertex maps to.
+Options: 
+  -ctab colortable.txt
+  

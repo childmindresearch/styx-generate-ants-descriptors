@@ -1,0 +1,46 @@
+
+=== Output of 'mris_register_label_map --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mris_register_label_map 
+
+   --subjects  SUBJECT_LIST: list of training subjects 
+   --trgsubject SUBJECT: name of target subject 
+   --prior      PRIOR: name of prior surface overlay 
+   --label      LABEL: name of label for each subject 
+   --temp-vol volfile : template volume 
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --sdir      SUBJECTS_DIR
+   --version   print out version and exit
+   --v         VNO  debug this vertex
+
+7.4.1
+
+WARNING: this program is not yet tested!
+
+=== Output of 'mris_register_label_map -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mris_register_label_map' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mris_register_label_map 
+
+   --subjects  SUBJECT_LIST: list of training subjects 
+   --trgsubject SUBJECT: name of target subject 
+   --prior      PRIOR: name of prior surface overlay 
+   --label      LABEL: name of label for each subject 
+   --temp-vol volfile : template volume 
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --sdir      SUBJECTS_DIR
+   --version   print out version and exit
+   --v         VNO  debug this vertex
+
+7.4.1
+

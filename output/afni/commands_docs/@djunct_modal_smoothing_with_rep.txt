@@ -1,0 +1,64 @@
+
+=== Output of '@djunct_modal_smoothing_with_rep --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of '@djunct_modal_smoothing_with_rep -help' ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+Brief script to perform modal (= "Glenian") smoothing of ROI maps, but
+also to check and see if that smoothing process eliminated any ROIs.
+If it did, put those lost souls back.  NB: those replaced ROIs could
+be ugly or weird!
+
+written by PA Taylor
+ver = 0.5
+
+# --------------------------------------------------------------------
+
+COMMAND OPTIONS ~1~
+
+-hview
+-help
+-ver
+-input       (NB: assumes < 10**5 subbricks in this dset)
+-prefix
+-modesmooth  (NB: fills in X in: 3dLocalstat -nbhd "SPHERE(-X)" ...)
+-overwrite
+-no_clean
+
+
+=== Output of '@djunct_modal_smoothing_with_rep' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+Brief script to perform modal (= "Glenian") smoothing of ROI maps, but
+also to check and see if that smoothing process eliminated any ROIs.
+If it did, put those lost souls back.  NB: those replaced ROIs could
+be ugly or weird!
+
+written by PA Taylor
+ver = 0.5
+
+# --------------------------------------------------------------------
+
+COMMAND OPTIONS ~1~
+
+-hview
+-help
+-ver
+-input       (NB: assumes < 10**5 subbricks in this dset)
+-prefix
+-modesmooth  (NB: fills in X in: 3dLocalstat -nbhd "SPHERE(-X)" ...)
+-overwrite
+-no_clean
+

@@ -1,0 +1,18 @@
+
+=== Output of '3dISC --help' ===
+
+Error in library(data.table) : there is no package called ‘data.table’
+Calls: source ... suppressPackageStartupMessages -> withCallingHandlers -> library
+Execution halted
+
+=== Output of '3dISC -help' ===
+
+Error in library(data.table) : there is no package called ‘data.table’
+Calls: source ... suppressPackageStartupMessages -> withCallingHandlers -> library
+Execution halted
+
+=== Output of '3dISC' (no arguments) ===
+
+Error in library(data.table) : there is no package called ‘data.table’
+Calls: source ... suppressPackageStartupMessages -> withCallingHandlers -> library
+Execution halted

@@ -1,0 +1,19 @@
+
+=== Output of 'dmri_groupByEndpoints --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_groupByEndpoints -s streamlineFile -i imageFile -d outputDirectory
+
+=== Output of 'dmri_groupByEndpoints -help' ===
+
+terminate called after throwing an instance of 'itk::ImageFileReaderException'
+  what():  /usr/pubsw/packages/itk/4.13.2_centos8/include/ITK-4.13/itkImageFileReader.hxx:87:
+FileName must be specified
+timeout: the monitored command dumped core
+
+=== Output of 'dmri_groupByEndpoints' (no arguments) ===
+
+terminate called after throwing an instance of 'itk::ImageFileReaderException'
+  what():  /usr/pubsw/packages/itk/4.13.2_centos8/include/ITK-4.13/itkImageFileReader.hxx:87:
+FileName must be specified
+timeout: the monitored command dumped core

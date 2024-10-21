@@ -1,0 +1,110 @@
+
+=== Output of 'mris_volsmooth --help' ===
+
+
+USAGE: mris_volsmooth
+
+ --i invol       : source volume
+ --o outvol      : output volume
+ --reg volreg    : registers vol to surface anatomical
+ --projfrac frac : project frac of thickness along surface normal
+ --projfrac-avg min max delta : average along normal
+ --fill-ribbon : fill ribbon
+ --surf-out basename : save smoothed surfaces as basename.?h.mgh
+ 
+ --fwhm fwhm     : suface FWHM in mm
+ --niters niters  : specify smoothing with niters instead of fwhm
+ 
+ --vol-fwhm volfwm : volume smoothing outside of surface
+ 
+ --log logfile    : explicity set log file
+ --nocleanup      : do not delete temporary files
+ --version        : print version and exit
+ --help           : print help and exit
+ --debug          : turn on debugging
+
+mris_volsmooth 7.4.1
+
+Performs surface-based smoothing inside a volume. This is just a
+front-end for a series of programs which will sample a volume to a
+surface, smooth on the surface, then replace the surface voxels in the
+volume with values that were smoothed on the surface. This can make it
+convenient for interfacing volume-based functional analysis tools with
+surface-based smoothing. When complete, values not on the surface will
+be the same as in the input volume. Both hemispheres are
+smoothed. Areas outside of the ?h.cortex.label are not smoothed.  One
+can optionally smooth non-surface voxels in the volume with
+
+--i invol
+
+Input volume with values that will be smoothed on the surface.
+
+--o outvol
+
+Duh.
+
+--reg volreg
+
+tkregister-style registration matrix that maps between the input/output
+volumes and the FreeSurfer surface anatomical. See tkregister2.
+
+--projfrac frac
+
+When sampling to/from the surface, project along the surface normal
+an amount equal to frac*thickeness at each vertex. See mri_vol2surf.
+Default is 0.5 (ie, half way into the ribbon).
+
+--projfrac-avg min max delta
+
+Same idea as --projfrac, but sample at each of the points between min
+and max at a spacing of delta. The samples are then averaged
+together. The idea here is to average along the normal. Eg,
+--projfrac-avg 0 1 .1 will sample along the normal between the white
+(0) and pial (1) every 10% for a total of 11 samples. These will then
+be averaged together. The values are then projected back into the
+surface with --projfrac 0.5.
+
+--fwhm fwhm
+
+Smooth on the surface by full-width/half-max in mm. See also --niters.
+
+--niters niters
+
+Specify surface smoothing by number of nearest neighbor smoothing
+iterations instead of fwhm.
+
+--vol-fwhm volfwhm
+
+Smooth in the volume. In this case, the surface voxels and non-surface 
+voxels are smoothed entirely seprately (ie, surface voxels are only 
+smoothed with other surface voxels and non-surface voxels are only 
+smoothed with other non-surface voxels).
+
+=== Output of 'mris_volsmooth -help' ===
+
+ERROR: flag -help not recognized
+
+=== Output of 'mris_volsmooth' (no arguments) ===
+
+
+USAGE: mris_volsmooth
+
+ --i invol       : source volume
+ --o outvol      : output volume
+ --reg volreg    : registers vol to surface anatomical
+ --projfrac frac : project frac of thickness along surface normal
+ --projfrac-avg min max delta : average along normal
+ --fill-ribbon : fill ribbon
+ --surf-out basename : save smoothed surfaces as basename.?h.mgh
+ 
+ --fwhm fwhm     : suface FWHM in mm
+ --niters niters  : specify smoothing with niters instead of fwhm
+ 
+ --vol-fwhm volfwm : volume smoothing outside of surface
+ 
+ --log logfile    : explicity set log file
+ --nocleanup      : do not delete temporary files
+ --version        : print version and exit
+ --help           : print help and exit
+ --debug          : turn on debugging
+

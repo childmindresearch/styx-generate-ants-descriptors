@@ -1,0 +1,15 @@
+
+=== Output of 'smooth.R --help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/smooth.R --args /opt/afni/src/../install/smooth.R --help
+
+=== Output of 'smooth.R -help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/smooth.R --args /opt/afni/src/../install/smooth.R -help
+
+=== Output of 'smooth.R' (no arguments) ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/smooth.R --args /opt/afni/src/../install/smooth.R

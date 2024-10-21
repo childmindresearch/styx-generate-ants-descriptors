@@ -1,0 +1,12 @@
+
+=== Output of 'estnoise --help' ===
+
+Usage: estnoise <4d_input_data> [spatial_sigma temp_hp_sigma temp_lp_sigma]
+
+=== Output of 'estnoise -help' ===
+
+Usage: estnoise <4d_input_data> [spatial_sigma temp_hp_sigma temp_lp_sigma]
+
+=== Output of 'estnoise' (no arguments) ===
+
+Usage: estnoise <4d_input_data> [spatial_sigma temp_hp_sigma temp_lp_sigma]

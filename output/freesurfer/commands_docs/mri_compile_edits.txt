@@ -1,0 +1,14 @@
+
+=== Output of 'mri_compile_edits --help' ===
+
+unknown option --help
+
+=== Output of 'mri_compile_edits -help' ===
+
+unknown option -help
+
+=== Output of 'mri_compile_edits' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_compile_edits [options] <subject name> <output volume>
+program to create a single volume showing
+all the volumetric edits made to a subject

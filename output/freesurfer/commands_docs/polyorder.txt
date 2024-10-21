@@ -1,0 +1,55 @@
+
+=== Output of 'polyorder --help' ===
+
+
+polyorder --help
+  --ntp ntp : number of time points (ie, number of TRs)
+  --TR TRsec : TR in seconds
+  --cutoff fCutOffHz : cutoff frequency in Hz
+
+polyorder 7.4.1
+
+Computes the order of polynomial regressors needed to achieve a
+highpass filter with the given cutoff frequency. This can then be
+entered into mkanalysis-sess with the --polyfit option. Note that the
+value here depends on the number of time points and the TR.  If these
+change from run to run, then the order of the polynomials will need to
+change.
+
+Example:
+
+polyorder --ntp 100 --TR 2 --cutoff 0.05
+28
+
+
+=== Output of 'polyorder -help' ===
+
+
+polyorder --help
+  --ntp ntp : number of time points (ie, number of TRs)
+  --TR TRsec : TR in seconds
+  --cutoff fCutOffHz : cutoff frequency in Hz
+
+polyorder 7.4.1
+
+Computes the order of polynomial regressors needed to achieve a
+highpass filter with the given cutoff frequency. This can then be
+entered into mkanalysis-sess with the --polyfit option. Note that the
+value here depends on the number of time points and the TR.  If these
+change from run to run, then the order of the polynomials will need to
+change.
+
+Example:
+
+polyorder --ntp 100 --TR 2 --cutoff 0.05
+28
+
+
+=== Output of 'polyorder' (no arguments) ===
+
+
+polyorder --help
+  --ntp ntp : number of time points (ie, number of TRs)
+  --TR TRsec : TR in seconds
+  --cutoff fCutOffHz : cutoff frequency in Hz
+

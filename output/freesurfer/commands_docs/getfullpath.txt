@@ -1,0 +1,14 @@
+
+=== Output of 'getfullpath --help' ===
+
+if: Expression Syntax.
+
+=== Output of 'getfullpath -help' ===
+
+dirname: invalid option -- 'h'
+Try 'dirname --help' for more information.
+if: Missing file name.
+
+=== Output of 'getfullpath' (no arguments) ===
+
+getfullpath filename

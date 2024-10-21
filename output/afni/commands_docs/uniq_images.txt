@@ -1,0 +1,38 @@
+
+=== Output of 'uniq_images --help' ===
+
+
+** Error: Failed parsing data row 0 of 1D file '--help'
+          Check for illegal non-numeric characters in:
+          'v R'
+          You can have text entries set to 0 with -ok_1D_text or by 
+          setting environment variable AFNI_1D_ZERO_TEXT to YES.
+[7m** ERROR:[0m mri_read: do not recognize image file --help
+[7m** ERROR:[0m           -- FWIW: length seen as 1716 bytes
+[7m** ERROR:[0m Can't read from file --help
+[7m** FATAL ERROR:[0m Didn't get at least 1 input file :-(
+** Program compile date = Sep 12 2024
+
+=== Output of 'uniq_images -help' ===
+
+Usage: uniq_images fileA fileB ...
+
+* Simple program to read in a list of image filenames,
+  determine which files have unique images inside, and
+  echo out only a list of the filenames with unique images.
+* This program is meant for use in scripts that deal with DICOM
+  servers that sometimes deal out multiple copies of the same
+  image in different filenames :-(
+* Author: Zhark the Comparator, October 2015.
+
+=== Output of 'uniq_images' (no arguments) ===
+
+Usage: uniq_images fileA fileB ...
+
+* Simple program to read in a list of image filenames,
+  determine which files have unique images inside, and
+  echo out only a list of the filenames with unique images.
+* This program is meant for use in scripts that deal with DICOM
+  servers that sometimes deal out multiple copies of the same
+  image in different filenames :-(
+* Author: Zhark the Comparator, October 2015.

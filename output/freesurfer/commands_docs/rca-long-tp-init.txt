@@ -1,0 +1,52 @@
+
+=== Output of 'rca-long-tp-init --help' ===
+
+
+rca-long-tp-init -long tp base
+  -uselongbasectrlvol
+  -hemi lh|rh
+  -expert expertoptsfile
+  -s subject : good for testing; put after -long
+
+rca-long-tp-init 7.4.1
+
+rca-long-tp-init - initialize long timepoint subject for recon-all
+processing. Mostly, code was just cut out of recon-all, so there are
+some things that look funny (eg, longitudinal is explicitly set to 1
+and checked eventhough that is what this script does). I wanted to
+keep things as consistent as possible with recon-all. While this can
+be run outside of recon-all, it is mostly supposed to be run from
+within recon-all. It creates its own "local" log file but will append
+to log, status, and cmd files if they are passed.
+
+
+=== Output of 'rca-long-tp-init -help' ===
+
+
+rca-long-tp-init -long tp base
+  -uselongbasectrlvol
+  -hemi lh|rh
+  -expert expertoptsfile
+  -s subject : good for testing; put after -long
+
+rca-long-tp-init 7.4.1
+
+rca-long-tp-init - initialize long timepoint subject for recon-all
+processing. Mostly, code was just cut out of recon-all, so there are
+some things that look funny (eg, longitudinal is explicitly set to 1
+and checked eventhough that is what this script does). I wanted to
+keep things as consistent as possible with recon-all. While this can
+be run outside of recon-all, it is mostly supposed to be run from
+within recon-all. It creates its own "local" log file but will append
+to log, status, and cmd files if they are passed.
+
+
+=== Output of 'rca-long-tp-init' (no arguments) ===
+
+
+rca-long-tp-init -long tp base
+  -uselongbasectrlvol
+  -hemi lh|rh
+  -expert expertoptsfile
+  -s subject : good for testing; put after -long
+

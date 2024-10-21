@@ -1,0 +1,12 @@
+
+=== Output of 'connectgraph --help' ===
+
+error: connectgraph has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'connectgraph -help' ===
+
+error: connectgraph has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'connectgraph' (no arguments) ===
+
+error: connectgraph has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

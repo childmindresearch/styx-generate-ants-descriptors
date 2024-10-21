@@ -1,0 +1,17 @@
+
+=== Output of 'surfconvert --help' ===
+
+argv[1--help
+Mesh::load:error reading file: --help  ... Unknown format
+
+=== Output of 'surfconvert -help' ===
+
+argv[1-help
+Mesh::load:error reading file: -help  ... Unknown format
+
+=== Output of 'surfconvert' (no arguments) ===
+
+surfconvert  < surfaces> <output path> <data> 
+options:  
+--data add data (requires argument)  
+--rescale (requires argument)  

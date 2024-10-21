@@ -1,0 +1,14 @@
+
+=== Output of 'mri_evaluate_morph --help' ===
+
+usage: /usr/local/freesurfer/bin/mri_evaluate_morph [options] <xform name> <s1> <s2> ... <output file>
+
+This program will compute the overlap of a set of segmentations for a given morph
+
+=== Output of 'mri_evaluate_morph -help' ===
+
+unknown option -help
+
+=== Output of 'mri_evaluate_morph' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_evaluate_morph [options] <xform name> <s1> <s2> ... <output file>

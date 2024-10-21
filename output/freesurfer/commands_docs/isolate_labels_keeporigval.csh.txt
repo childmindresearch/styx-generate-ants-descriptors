@@ -1,0 +1,60 @@
+
+=== Output of 'isolate_labels_keeporigval.csh --help' ===
+
+USAGE: isoltae_labels
+
+Required Arguments:
+   --vol labelvol        : label volume to be analyzed
+   --outprefix outprefix : prefix of binary label file(s)
+
+Optional Arguments
+
+   --L label        : the particular label to be analyzed
+   --l label        : the particular label to be analyzed
+   --version        : print version and exit
+   --help           : print help and exit
+
+
+Separates out a particular or all lables into individual binary files 
+keeping the original label values (for subsequent shape analysis).
+
+
+Required Arguments:
+
+--vol labelvol
+
+Label volume to be analyzed
+
+--outprefix outprefix
+
+Text file where the results are written
+
+Optional Arguments:
+
+--L label
+--l label
+
+The particular label to be analyzed. By default, it is ALL labels in the volume.
+
+BUGS:
+
+=== Output of 'isolate_labels_keeporigval.csh -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'isolate_labels_keeporigval.csh' (no arguments) ===
+
+USAGE: isoltae_labels
+
+Required Arguments:
+   --vol labelvol        : label volume to be analyzed
+   --outprefix outprefix : prefix of binary label file(s)
+
+Optional Arguments
+
+   --L label        : the particular label to be analyzed
+   --l label        : the particular label to be analyzed
+   --version        : print version and exit
+   --help           : print help and exit
+

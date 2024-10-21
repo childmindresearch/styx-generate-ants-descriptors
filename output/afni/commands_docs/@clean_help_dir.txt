@@ -1,0 +1,18 @@
+
+=== Output of '@clean_help_dir --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@clean_help_dir -help' ===
+
+
+@clean_help_dir is a script to cleanup your /home/afni_user/.afni/help directory.
+It deletes older help files that differ little from the latest version.
+
+Ziad S. Saad   saadz@mail.nih.gov
+
+
+=== Output of '@clean_help_dir' (no arguments) ===
+
+Could not find home directory /home/afni_user/.afni/help
+Failed

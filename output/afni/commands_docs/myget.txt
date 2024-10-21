@@ -1,0 +1,12 @@
+
+=== Output of 'myget --help' ===
+
+Can't open URL --help
+
+=== Output of 'myget -help' ===
+
+Usage: myget [-1|-1.1] URL > filename
+
+=== Output of 'myget' (no arguments) ===
+
+Usage: myget [-1|-1.1] URL > filename

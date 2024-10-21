@@ -1,0 +1,12 @@
+
+=== Output of 'mri_edit_segmentation --help' ===
+
+unknown option --help
+
+=== Output of 'mri_edit_segmentation -help' ===
+
+unknown option -help
+
+=== Output of 'mri_edit_segmentation' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_edit_segmentation [options] <input segmentation> <T1 volume> <output segmentation>

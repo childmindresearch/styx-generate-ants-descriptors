@@ -1,0 +1,32 @@
+
+=== Output of 'mris_distance_transform --help' ===
+
+This program computes the distance transform of a label on the surface
+
+valid options are:
+
+	-anterior <dist>   - only use anteriormost <dist> portion of label
+	-posterior <dist>  - only use posteriormost <dist> portion of label
+	-divide <n>        - divide label into <n> units along primary eigendirection
+	-olabel            - output label subdivisions
+usage: /usr/local/freesurfer/bin/mris_distance_transform [options] <surface> <label> <mode> <output file>
+where mode is one of 'signed', 'unsigned', 'outside'
+
+=== Output of 'mris_distance_transform -help' ===
+
+unknown option -help
+This program computes the distance transform of a label on the surface
+
+valid options are:
+
+	-anterior <dist>   - only use anteriormost <dist> portion of label
+	-posterior <dist>  - only use posteriormost <dist> portion of label
+	-divide <n>        - divide label into <n> units along primary eigendirection
+	-olabel            - output label subdivisions
+usage: /usr/local/freesurfer/bin/mris_distance_transform [options] <surface> <label> <mode> <output file>
+where mode is one of 'signed', 'unsigned', 'outside'
+
+=== Output of 'mris_distance_transform' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_distance_transform [options] <surface> <label> <mode> <output file>
+where mode is one of 'signed', 'unsigned', 'outside'

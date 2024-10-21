@@ -1,0 +1,246 @@
+
+=== Output of 'spmregister --help' ===
+
+
+USAGE: spmregister
+
+Required Arguments:
+   --s subjid   or  --fsvol full/path/to.mgz 
+   --mov volid  : input/movable volume
+   --reg register.dat
+
+Optional Arguments
+   --frame frameno : reg to frameno (default 0=1st)
+   --mid-frame : reg to middle frame (not with --frame)
+   --template-out template : save template (good with --frame)
+   --fsvol volid : use FreeSurfer volid (default brainmask)
+   --force-ras : force input geometry to be RAS
+   --o outvol : resample mov and save as outvol
+
+   --tmp tmpdir  : temporary dir (implies --nocleanup)
+   --nocleanup  : do not delete temporary files
+   --version : print version and exit
+   --help    : print help and exit
+
+
+Registers a volume to its FreeSurfer anatomical using SPMs spm_coreg
+with Normalised Mutual Information and creates a FreeSurfer
+register.dat file. Does not resample. Requires matlab and SPM (should
+work with either spm2 or spm5). The registration is rigid (ie, 6 DOF).
+
+--s subjid
+
+Id of the subject as found in SUBJECTS_DIR. The reference volume is
+the mri/brain volume (this can be changed with --fsvol). This is
+converted to analyze using mri_convert.
+
+--mov volid
+
+Volume identifier of the movable volume. This must be specified in
+a way suitable for mri_convert. Uses first frame unless --frame
+is specified. For this to work correctly, the movable volume must
+have correct geometry information (eg, a valid SPM-style .mat file)
+otherwise the results may be unpredictable.
+
+--reg regfile
+
+Output registration file. This will map RAS in the reference to
+RAS in the movable. This file/matrix is in a format understood
+by freesurfer (see tkregister2 --help for docs). It will contain
+the subjectname.
+
+--frame frameno
+
+Use something other than the first frame. Eg, FSL uses the the middle
+frame (see --mid-frame). For SPM analyze, you should specify the file
+that corresonds to the frame you want because each file only has one
+frame.
+
+--mid-frame
+
+Use the middle frame of the mov volume as the template.
+
+--template-out template
+
+Save the mov template. Good when template is something other than
+the first frame of the mov volume.
+
+--force-ras
+
+Force input geometry to be RAS. This was designed to be used when
+registering SPM2 spatially normalized (affine) volumes. Eg, when
+data is registered to spm2/templates/EPI.mnc, SPM will not write
+a .mat file with the normalized volume (which will be RAS). But
+without a .mat file, the assumption is that the volume will be
+LAS.
+
+--matlab path-to-matlab-binary
+
+Use the given matlab binary instead of the PATH default. This can be
+handy if your default matlab version is incompatable with SPM. Note:
+you can also set the FS_SPMREG_MATLAB environment variable to point
+to path-to-matlab-binary. Eg: 
+
+    --matlab /usr/pubsw/common/matlab/7.0.1/bin/matlab
+    setenv FS_SPMREG_MATLAB /usr/pubsw/common/matlab/7.0.1/bin/matlab
+
+NOTES:
+
+Uses normalized mutual information.
+
+BUGS
+
+There may be a series of warnings of the form:
+"Warning: Assuming a scalefactor of 1 for refvol.spm_rigid_register.nii".
+This can be ignored.
+
+The movable volume needs to have "valid" geometry (eg, SPM-style .mat
+file). "Valid" means that the direction cosines roughly identify
+Right, Anterior, and Superior (though they do not need to be perfectly
+correct).
+
+This script executes matlab, and errors inside matlab are often hard
+to catch and report properly. If matlab fails with an error that is
+not caught, and registration file will still be created based on the
+header geometry information. This may look like a correct registration
+if the anatomical and functional were acquired during the same session.
+
+SEE ALSO: tkregister2, mri_vol2surf, mri_convert, mri_rigid_register,
+fsl_rigid_register, spm_coreg.m.
+
+
+
+=== Output of 'spmregister -help' ===
+
+
+USAGE: spmregister
+
+Required Arguments:
+   --s subjid   or  --fsvol full/path/to.mgz 
+   --mov volid  : input/movable volume
+   --reg register.dat
+
+Optional Arguments
+   --frame frameno : reg to frameno (default 0=1st)
+   --mid-frame : reg to middle frame (not with --frame)
+   --template-out template : save template (good with --frame)
+   --fsvol volid : use FreeSurfer volid (default brainmask)
+   --force-ras : force input geometry to be RAS
+   --o outvol : resample mov and save as outvol
+
+   --tmp tmpdir  : temporary dir (implies --nocleanup)
+   --nocleanup  : do not delete temporary files
+   --version : print version and exit
+   --help    : print help and exit
+
+
+Registers a volume to its FreeSurfer anatomical using SPMs spm_coreg
+with Normalised Mutual Information and creates a FreeSurfer
+register.dat file. Does not resample. Requires matlab and SPM (should
+work with either spm2 or spm5). The registration is rigid (ie, 6 DOF).
+
+--s subjid
+
+Id of the subject as found in SUBJECTS_DIR. The reference volume is
+the mri/brain volume (this can be changed with --fsvol). This is
+converted to analyze using mri_convert.
+
+--mov volid
+
+Volume identifier of the movable volume. This must be specified in
+a way suitable for mri_convert. Uses first frame unless --frame
+is specified. For this to work correctly, the movable volume must
+have correct geometry information (eg, a valid SPM-style .mat file)
+otherwise the results may be unpredictable.
+
+--reg regfile
+
+Output registration file. This will map RAS in the reference to
+RAS in the movable. This file/matrix is in a format understood
+by freesurfer (see tkregister2 --help for docs). It will contain
+the subjectname.
+
+--frame frameno
+
+Use something other than the first frame. Eg, FSL uses the the middle
+frame (see --mid-frame). For SPM analyze, you should specify the file
+that corresonds to the frame you want because each file only has one
+frame.
+
+--mid-frame
+
+Use the middle frame of the mov volume as the template.
+
+--template-out template
+
+Save the mov template. Good when template is something other than
+the first frame of the mov volume.
+
+--force-ras
+
+Force input geometry to be RAS. This was designed to be used when
+registering SPM2 spatially normalized (affine) volumes. Eg, when
+data is registered to spm2/templates/EPI.mnc, SPM will not write
+a .mat file with the normalized volume (which will be RAS). But
+without a .mat file, the assumption is that the volume will be
+LAS.
+
+--matlab path-to-matlab-binary
+
+Use the given matlab binary instead of the PATH default. This can be
+handy if your default matlab version is incompatable with SPM. Note:
+you can also set the FS_SPMREG_MATLAB environment variable to point
+to path-to-matlab-binary. Eg: 
+
+    --matlab /usr/pubsw/common/matlab/7.0.1/bin/matlab
+    setenv FS_SPMREG_MATLAB /usr/pubsw/common/matlab/7.0.1/bin/matlab
+
+NOTES:
+
+Uses normalized mutual information.
+
+BUGS
+
+There may be a series of warnings of the form:
+"Warning: Assuming a scalefactor of 1 for refvol.spm_rigid_register.nii".
+This can be ignored.
+
+The movable volume needs to have "valid" geometry (eg, SPM-style .mat
+file). "Valid" means that the direction cosines roughly identify
+Right, Anterior, and Superior (though they do not need to be perfectly
+correct).
+
+This script executes matlab, and errors inside matlab are often hard
+to catch and report properly. If matlab fails with an error that is
+not caught, and registration file will still be created based on the
+header geometry information. This may look like a correct registration
+if the anatomical and functional were acquired during the same session.
+
+SEE ALSO: tkregister2, mri_vol2surf, mri_convert, mri_rigid_register,
+fsl_rigid_register, spm_coreg.m.
+
+
+
+=== Output of 'spmregister' (no arguments) ===
+
+
+USAGE: spmregister
+
+Required Arguments:
+   --s subjid   or  --fsvol full/path/to.mgz 
+   --mov volid  : input/movable volume
+   --reg register.dat
+
+Optional Arguments
+   --frame frameno : reg to frameno (default 0=1st)
+   --mid-frame : reg to middle frame (not with --frame)
+   --template-out template : save template (good with --frame)
+   --fsvol volid : use FreeSurfer volid (default brainmask)
+   --force-ras : force input geometry to be RAS
+   --o outvol : resample mov and save as outvol
+
+   --tmp tmpdir  : temporary dir (implies --nocleanup)
+   --nocleanup  : do not delete temporary files
+   --version : print version and exit
+   --help    : print help and exit
+

@@ -1,0 +1,117 @@
+
+=== Output of 'randomise --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+randomise v2.9
+
+Usage: 
+randomise -i <input> -o <output> -d <design.mat> -t <design.con> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i <input>	4D input image
+	-o <out_root>	output file-rootname
+
+Optional arguments (You may optionally specify one or more of):
+	-D		demean data temporally before model fitting ( demean model as well if required )
+	-1		perform 1-sample group-mean test instead of generic permutation test
+	-m <mask>	mask image
+	-d <design.mat>	design matrix file
+	-t <design.con>	t contrasts file
+	-f <design.fts>	f contrasts file
+	-e <design.grp>	exchangeability block labels file
+	--effective_design <design2.mat>	alternative design for determining valid permutations
+	-q		print out how many unique permutations would be generated and exit
+	-Q		print out information required for parallel mode and exit
+	-n <n_perm>	number of permutations (default 5000, set to 0 for exhaustive)
+	-x		output voxelwise corrected p-value images
+	--fonly		calculate f-statistics only
+	-T		carry out Threshold-Free Cluster Enhancement
+	--T2		carry out Threshold-Free Cluster Enhancement with 2D optimisation (e.g. for TBSS data); H=2, E=1, C=26
+	-c <thresh>	carry out cluster-based thresholding
+	-C <thresh>	carry out cluster-mass-based thresholding
+	-F <thresh>	carry out f cluster thresholding
+	-S <thresh>	carry out f cluster-mass thresholding
+	-v <std>	use variance smoothing for t-stats (std is in mm)
+	-h,--help	display this message
+	--quiet		switch off diagnostic messages
+	--twopass	carry out cluster normalisation thresholding
+	-R		output raw ( unpermuted ) statistic images
+	--uncorrp	output uncorrected p-value images
+	-P		output permutation vector text file
+	-N		output null distribution text files
+	--norcmask	don't remove constant voxels from mask
+	--seed <seed>	specific integer seed for random number generator
+	--tfce_H <H>	TFCE height parameter (default=2)
+	--tfce_D <H>	TFCE delta parameter overide
+	--tfce_E <E>	TFCE extent parameter (default=0.5)
+	--tfce_C <C>	TFCE connectivity (6 or 26; default=6)
+	--vxl		list of numbers indicating voxelwise EVs position in the design matrix (list order corresponds to files in vxf option).
+	--vxf		list of 4D images containing voxelwise EVs (list order corresponds to numbers in vxl option).
+	--permuteBlocks	permute exchangeability blocks. Caution BETA option
+	--glm_output	output glm information for t-statistics ( unpermuted case only )
+	--film	output stats to simulate the output of film
+
+
+
+=== Output of 'randomise -help' ===
+
+-e: Missing non-optional argument!
+try: randomise --help
+
+=== Output of 'randomise' (no arguments) ===
+
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+randomise v2.9
+
+Usage: 
+randomise -i <input> -o <output> -d <design.mat> -t <design.con> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i <input>	4D input image
+	-o <out_root>	output file-rootname
+
+Optional arguments (You may optionally specify one or more of):
+	-D		demean data temporally before model fitting ( demean model as well if required )
+	-1		perform 1-sample group-mean test instead of generic permutation test
+	-m <mask>	mask image
+	-d <design.mat>	design matrix file
+	-t <design.con>	t contrasts file
+	-f <design.fts>	f contrasts file
+	-e <design.grp>	exchangeability block labels file
+	--effective_design <design2.mat>	alternative design for determining valid permutations
+	-q		print out how many unique permutations would be generated and exit
+	-Q		print out information required for parallel mode and exit
+	-n <n_perm>	number of permutations (default 5000, set to 0 for exhaustive)
+	-x		output voxelwise corrected p-value images
+	--fonly		calculate f-statistics only
+	-T		carry out Threshold-Free Cluster Enhancement
+	--T2		carry out Threshold-Free Cluster Enhancement with 2D optimisation (e.g. for TBSS data); H=2, E=1, C=26
+	-c <thresh>	carry out cluster-based thresholding
+	-C <thresh>	carry out cluster-mass-based thresholding
+	-F <thresh>	carry out f cluster thresholding
+	-S <thresh>	carry out f cluster-mass thresholding
+	-v <std>	use variance smoothing for t-stats (std is in mm)
+	-h,--help	display this message
+	--quiet		switch off diagnostic messages
+	--twopass	carry out cluster normalisation thresholding
+	-R		output raw ( unpermuted ) statistic images
+	--uncorrp	output uncorrected p-value images
+	-P		output permutation vector text file
+	-N		output null distribution text files
+	--norcmask	don't remove constant voxels from mask
+	--seed <seed>	specific integer seed for random number generator
+	--tfce_H <H>	TFCE height parameter (default=2)
+	--tfce_D <H>	TFCE delta parameter overide
+	--tfce_E <E>	TFCE extent parameter (default=0.5)
+	--tfce_C <C>	TFCE connectivity (6 or 26; default=6)
+	--vxl		list of numbers indicating voxelwise EVs position in the design matrix (list order corresponds to files in vxf option).
+	--vxf		list of 4D images containing voxelwise EVs (list order corresponds to numbers in vxl option).
+	--permuteBlocks	permute exchangeability blocks. Caution BETA option
+	--glm_output	output glm information for t-statistics ( unpermuted case only )
+	--film	output stats to simulate the output of film
+
+

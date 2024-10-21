@@ -1,0 +1,12 @@
+
+=== Output of 'ANTSIntegrateVelocityField --help' ===
+
+Usage:   ANTSIntegrateVelocityField reference_image  VelocityIn.mhd DeformationOut.nii.gz  time0 time1 dT  
+
+=== Output of 'ANTSIntegrateVelocityField -help' ===
+
+Usage:   ANTSIntegrateVelocityField reference_image  VelocityIn.mhd DeformationOut.nii.gz  time0 time1 dT  
+
+=== Output of 'ANTSIntegrateVelocityField' (no arguments) ===
+
+Usage:   ANTSIntegrateVelocityField reference_image  VelocityIn.mhd DeformationOut.nii.gz  time0 time1 dT  

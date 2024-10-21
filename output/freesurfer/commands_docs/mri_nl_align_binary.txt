@@ -1,0 +1,14 @@
+
+=== Output of 'mri_nl_align_binary --help' ===
+
+unknown option --HELP
+usage: /usr/local/freesurfer/bin/mri_nl_align_binary <source> <target> <warp>
+
+=== Output of 'mri_nl_align_binary -help' ===
+
+unknown option -HELP
+usage: /usr/local/freesurfer/bin/mri_nl_align_binary <source> <target> <warp>
+
+=== Output of 'mri_nl_align_binary' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_nl_align_binary <source> <target> <warp>

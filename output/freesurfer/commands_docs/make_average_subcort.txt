@@ -1,0 +1,52 @@
+
+=== Output of 'make_average_subcort --help' ===
+
+
+make_average_subcort
+  --subjects s1 s2 ...
+  --o outvol
+
+make_average_subcort 7.4.1
+
+This creates an average subcortical mask for the given inputs
+subjects.  The final mask is in fsaverage/mni305 space. It is designed
+to be used for the subcortical analysis in FSFAST where one needs to
+exclude cortical voxels from the subcortical analysis.
+
+Example Usage:
+
+make_average_subcort --o subcort.mgz \
+  --subjects 004 008 017 021 032 039 040 045 049 067 073 074 \
+   080 084 091 092 093 095 097 099 102 103 106 108 111 114 123 \
+   124 128 129 130 131 133 136 138 140 141 144 145 149
+
+
+=== Output of 'make_average_subcort -help' ===
+
+
+make_average_subcort
+  --subjects s1 s2 ...
+  --o outvol
+
+make_average_subcort 7.4.1
+
+This creates an average subcortical mask for the given inputs
+subjects.  The final mask is in fsaverage/mni305 space. It is designed
+to be used for the subcortical analysis in FSFAST where one needs to
+exclude cortical voxels from the subcortical analysis.
+
+Example Usage:
+
+make_average_subcort --o subcort.mgz \
+  --subjects 004 008 017 021 032 039 040 045 049 067 073 074 \
+   080 084 091 092 093 095 097 099 102 103 106 108 111 114 123 \
+   124 128 129 130 131 133 136 138 140 141 144 145 149
+
+
+=== Output of 'make_average_subcort' (no arguments) ===
+
+
+make_average_subcort
+  --subjects s1 s2 ...
+  --o outvol
+

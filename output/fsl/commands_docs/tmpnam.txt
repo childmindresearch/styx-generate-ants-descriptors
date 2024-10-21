@@ -1,0 +1,12 @@
+
+=== Output of 'tmpnam --help' ===
+
+--help_VxkkCH
+
+=== Output of 'tmpnam -help' ===
+
+-help_sS8O8F
+
+=== Output of 'tmpnam' (no arguments) ===
+
+/tmp/fsl_HYlLzJ

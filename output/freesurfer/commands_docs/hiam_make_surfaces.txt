@@ -1,0 +1,12 @@
+
+=== Output of 'hiam_make_surfaces --help' ===
+
+unknown option --help
+
+=== Output of 'hiam_make_surfaces -help' ===
+
+unknown option -help
+
+=== Output of 'hiam_make_surfaces' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/hiam_make_surfaces [options] <subject name> <structure: RA LA RH LH>

@@ -1,0 +1,12 @@
+
+=== Output of 'mri_elastic_energy --help' ===
+
+error: mri_elastic_energy has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_elastic_energy -help' ===
+
+error: mri_elastic_energy has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_elastic_energy' (no arguments) ===
+
+error: mri_elastic_energy has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

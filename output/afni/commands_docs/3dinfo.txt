@@ -1,0 +1,596 @@
+
+=== Output of '3dinfo --help' ===
+
+[7m** ERROR:[0m Option --help unknown
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dinfo -help' enlighten:
+        '-help: The entire help output'
+        '-HELP: Extreme help, same as -help in majority of cases.'
+        '-h: Mini help, at time, same as -help in many cases.'
+
+=== Output of '3dinfo -help' ===
+
+
+Prints out sort-of-useful information from a 3D dataset's header
+Usage: 3dinfo [-verb OR -short] dataset [dataset ...] ~1~
+  -verb means to print out lots of stuff
+  -VERB means even more stuff [including slice time offsets]
+  -short means to print out less stuff [now the default]
+  -no_hist means to omit the HISTORY text
+
+  -h: Mini help, at time, same as -help in many cases.
+  -help: The entire help output
+  -HELP: Extreme help, same as -help in majority of cases.
+  -h_view: Open help in text editor. AFNI will try to find a GUI editor
+  -hview : on your machine. You can control which it should use by
+           setting environment variable AFNI_GUI_EDITOR.
+  -h_web: Open help in web browser. AFNI will try to find a browser.
+  -hweb : on your machine. You can control which it should use by
+          setting environment variable AFNI_GUI_EDITOR. 
+  -h_find WORD: Look for lines in this programs's -help output that match
+                (approximately) WORD.
+  -h_raw: Help string unedited
+  -h_spx: Help string in sphinx loveliness, but do not try to autoformat
+  -h_aspx: Help string in sphinx with autoformatting of options, etc.
+  -all_opts: Try to identify all options for the program from the
+             output of its -help option. Some options might be missed
+             and others misidentified. Use this output for hints only.
+  
+----------------------------------------------------------------------
+Alternative Usage 1 (without either of the above options): ~1~
+   Output a large block of text per dataset.  This has multiple options:
+
+   -label2index label dataset  : output index corresponding to label ~2~
+
+        example: 3dinfo -label2index aud#0_Coef stats.FT+tlrc
+
+        Prints to stdout the index corresponding to the sub-brick with
+           the name label, or a blank line if label not found.
+        The ONLY output is this sub-brick index.
+        This is intended for used in a script, as in this tcsh fragment:
+           set face = `3dinfo -label2index Face#0 AA_Decon+orig`
+           set hous = `3dinfo -label2index House#0 AA_Decon+orig`
+           3dcalc -a AA_Decon+orig"[$face]" -b AA_Decon+orig"[$hous]" ...
+      * Added per the request and efforts of Colm Connolly.
+
+   -niml_hdr dataset           : output entire NIML-formatted header ~2~
+
+        example: 3dinfo -niml_hdr stats.FT+tlrc
+
+        Prints to stdout the NIML-formatted equivalent of the .HEAD file.
+
+   -subbrick_info dataset      : output only sub-brick part of info ~2~
+
+        example: 3dinfo -subbrick_info stats.FT+tlrc
+
+        Prints to stdout only the part of the full '3dinfo -VERB. output
+        that includes sub-brick info.  The first such line might look like:
+
+           -- At sub-brick #0 'Full_Fstat' datum type is float:  0 to 971.2
+
+----------------------------------------------------------------------
+Alternate Usage 2: ~1~
+  3dinfo <OPTION> [OPTION ..] dataset [dataset ...]
+  Outputs a specific piece of information depending on OPTION.
+  This can form a table of outputs per dataset.
+
+  ==============================================================
+  Options producing one value (string) ~2~
+  ==============================================================
+   -exists: 1 if dset is loadable, 0 otherwise
+            This works on prefix also.
+   -id: Idcodestring of dset
+   -is_labeltable: 1 if dset has a labeltable attached.
+   -is_atlas: 1 if dset is an atlas.
+   -is_atlas_or_labeltable: 1 if dset has an atlas or has a labeltable.
+   -is_nifti: 1 if dset is NIFTI format, 0 otherwise
+   -is_slice_timing_nz: is there slice timing, and is it not uniformly 0
+   -dset_extension: show filename extension for valid dataset (e.g. .nii.gz)
+   -storage_mode: show internal storage mode of dataset (e.g. NIFTI)
+   -space: dataset's space
+   -gen_space: datasets generic space
+   -av_space: AFNI format's view extension for the space
+   -nifti_code: what AFNI would use for an output NIFTI (q)sform_code
+   -is_oblique: 1 if dset is oblique
+   -handedness: L if orientation is Left handed, R if it is right handed
+   -obliquity: Angle from plumb direction.
+               Angles of 0 (or close) are for cardinal orientations
+
+   -prefix: Return the prefix
+   -prefix_noext: Return the prefix without extensions
+   -ni: Return the number of voxels in i dimension
+   -nj: Return the number of voxels in j dimension
+   -nk: Return the number of voxels in k dimension
+   -nijk: Return ni*nj*nk
+   -nv: Return number of points in time or the number of sub-bricks
+   -nt: same as -nv
+   -n3: same as -ni -nj -nk
+   -n4: same as -ni -nj -nk -nv
+   -nvi: The maximum sub-brick index (= nv -1 )
+   -nti: same as -nvi
+   -ntimes: Return number of sub-bricks points in time
+        This is an option for debugging use, stay away from it.
+   -max_node: For a surface-based dset, return the maximum node index
+   -di: Signed displacement per voxel along i direction, aka dx
+   -dj: Signed displacement per voxel along j direction, aka dy
+   -dk: Signed displacement per voxel along k direction, aka dz
+   -d3: same as -di -dj -dk
+   -adi: Voxel size along i direction (abs(di))
+   -adj: Voxel size along j direction (abs(dj))
+   -adk: Voxel size along k direction (abs(dk))
+   -ad3: same as -adi -adj -adk
+   -voxvol: Voxel volume in cubic millimeters
+   -oi: Volume origin along the i direction
+   -oj: Volume origin along the j direction
+   -ok: Volume origin along the k direction
+   -o3: same as -oi -oj -ok
+   -dcx: volumetric center in x direction (DICOM coordinates)
+   -dcy: volumetric center in y direction (DICOM coordinates)
+   -dcz: volumetric center in z direction (DICOM coordinates)
+   -dc3: same as -dcx -dcy -dcz
+   -tr: The TR value in seconds.
+   -dmin: The dataset's minimum value, scaled by fac
+   -dmax: The dataset's maximum value, scaled by fac
+   -dminus: The dataset's minimum value, unscaled.
+   -dmaxus: The dataset's maximum value, unscaled.
+   -smode: Dset storage mode string.
+   -header_name: Value of dset structure (sub)field 'header_name'
+   -brick_name: Value of dset structure (sub)field 'brick_name'
+   -iname: Name of dset as input on the command line
+   -orient: Value of orientation string.
+            For example, LPI means:
+               i direction grows from Left(negative) to Right(positive).
+               j direction grows from Posterior (neg.) to Anterior (pos.)
+               k direction grows from Inferior (neg.) to Superior (pos.)
+   -extent: The spatial extent of the dataset along R, L, A, P, I and S
+   -Rextent: Extent along R
+   -Lextent: Extent along L
+   -Aextent: Extent along P
+   -Pextent: Extent along P
+   -Iextent: Extent along I
+   -Sextent: Extent along S
+   -all_names: Value of various dset structures handling filenames.
+
+  ==============================================================
+  Options producing one value per sub-brick ~2~
+  ==============================================================
+   -fac: Return the float scaling factor
+   -label: The label of each sub-brick
+   -datum: The data storage type
+   -min: The minimum value, scaled by fac
+   -max: The maximum value, scaled by fac
+   -minus: The minimum value, unscaled.
+   -maxus: The maximum value, unscaled.
+
+  ==============================================================
+  Options producing multiple values (strings of multiple lines) ~2~
+  ==============================================================
+   You can specify the delimiter between sub-brick parameters with
+       -sb_delim DELIM. Default DELIM is "|"
+   -labeltable: Show label table, if any
+   -labeltable_as_atlas_points: Show label table in atlas point format.
+   -atlas_points: Show atlas points list, if any
+   -history: History note. 
+   -slice_timing: Show slice timing. 
+
+  ==============================================================
+  Options affecting output format ~2~
+  ==============================================================
+   -header_line: Output as the first line the names of attributes
+                 in each field (column)
+   -hdr: Same as -header_line
+   -sb_delim SB_DELIM: Delimiter string between sub-brick values
+                       Default SB_DELIM is "|"
+   -NA_flag NAFLAG: String to use when a field is not found or not
+                    applicable. Default is "NA"
+   -atr_delim ATR_DELIM: Delimiter string between attributes
+                         Default ATR_DELIM is the tab character.
+
+  ==============================================================
+  Options for displaying ijk_to_xyz matrices ~2~
+  ==============================================================
+   A set of functions for displaying the matrices that tell us where
+   the data actually is in space!  These 4x4---well 3x4, in practice,
+   because the bottom row of the matrix *must* be (0, 0, 0, 1)---
+   can be related to the NIFTI sform and qform matrices (which are LPI
+   native), but these aform_* matrices are RAI (DICOM) native.
+   There are several types of matrices. Linear affine are the most general
+   (containing translation, rotation, shear and scaling info), followed by
+   orthogonal (no shear info; only translation, rotation and scale),
+   followed by cardinal (no rotation info; only translation and scale).
+   The 'scale' info is the voxel sizes. The 'translation' determines the
+   origin location in space.  The 'rotation' describes a, well, rotation
+   relative to the scanner coords---this is the dreaded 'obliquity'. The
+   'shear'... well, that could also be present, but it is not common, at
+   least to describe just-acquired data: it would tilt the axes away from
+   being mutually 90 deg to each other (i.e., they wouldn't be
+   orthogonal); this would likely just result from an alignment process.
+   Note: the NIFTI sform can be linear affine, in general; in practice, it
+   is often just orthogonal.  The NIFTI qform is a quaternion representation
+   of the orthogonalized sform; if sform is orthogonal, then they contain
+   the same information (common, but not required).
+   The aform_real matrix is AFNI's equivalent of the NIFTI sform; it *can*
+   encode general linear affine mappings. (In practice, it rarely does so.)
+   The aform_orth is the orthogonalized aform_real, and thus equivalent
+   to the NIFTI qform.  If aform_real is orthogonal (no shear info), then
+   these two matrices are equal.  The aform_card is the cardinalized form of
+   the aform_orth;  NIFTI does not have an equivalent.  AFNI typically uses
+   this matrix to display your data on a rectangle that is parallel to your
+   computer screen, without any need to regrid/resample the data (hence, no
+   blurring introduced).  This can be though of displaying your dataset in
+   a way that you *wish* your subject had been oriented.  Note that if
+   there is no obliquity in the acquired data (that is, aform_orth does not
+   contain any rotation relative to the scanner coords), then
+    aform_card == aform_orth.
+   The aform_card is an AFNI convenience (ha!) matrix, it does not have an
+   equivalent in the NIFTI stable of matrices.
+   -aform_real: Display full 3x4 'aform_real' matrix (AFNI's RAI equivalent
+                of the sform matrix in NIFTI, may contain obliquity info),
+                with comment line first.
+   -aform_real_oneline: Display full 'aform_real' matrix (see '-aform_real')
+                        as 1 row of 12 numbers. No additional comment.
+   -aform_real_refit_ori XXX: Display full 3x4 'aform_real' matrix (see 
+                        '-aform_real')
+                        *if* the dset were reoriented (via 3drefit) to
+                        new orient XXX.  Includes comment line first.
+   -is_aform_real_orth: if true, aform_real == aform_orth, which should be
+                        a very common occurrence.
+   -aform_orth: Display full 3x4 'aform_orth' matrix (AFNI's RAI matrix
+                equivalent of the NIFTI quaternion, which may contain
+                obliquity info), with comment line first.
+                This matrix is the orthogonalized form of aform_real,
+                and veeery often AFNI-produced dsets, we will have:
+                aform_orth == aform_real.
+  -perm_to_orient YYY: Display 3x3 permutation matrix to go from the
+                       dset's current orientation to the YYY orient.
+
+  ==============================================================
+  Options requiring dataset pairing at input ~2~
+  ==============================================================
+    3dinfo allows you to make some comparisons between dataset pairs.
+    The comparison is always done in both directions whether or not
+    the answer can be different. For example:
+          3dinfo -same_grid dset1 dset2 
+    will output two values, one comparing dset1 to dset2 and the second
+    comparing dset2 to dset1. With -same_grid, the answers will always
+    be identical, but this might be different for other queries.
+    This behaviour allows you to mix options requiring dataset pairs
+    with those that do not. For example:
+          3dinfo -header_line -prefix -n4 -same_grid \
+                              DSET1+orig DSET2.nii DSET3.nii DSET4.nii
+
+   -same_grid: Output 1 if the grid is identical between two dsets
+                      0 otherwise. 
+               For -same_grid to be 1, all of -same_dim, -same_delta,
+               -same_orient, -same_center, and -same_obl must return 1
+   -same_dim: 1 if dimensions (nx,ny,nz) are the same between dset pairs
+   -same_delta: 1 if voxels sizes are the same between dset pairs
+   -same_orient: 1 if orientation is the same between dset pairs
+   -same_center: 1 if geometric center is the same between dset pairs
+   -same_obl: 1 if obliquity is the same between dset pairs
+   -same_all_grid: Equivalent to listing all of -same_dim -same_delta
+                   -same_orient, -same_center, and -same_obl on the 
+                   command line.
+   -val_diff: Output the sum of absolute differences of all voxels in the
+              dataset pair. A -1.0 value indicates a grid mismatch between
+              volume pairs.
+   -sval_diff: Same as -val_diff, but the sum is divided (scaled) by the 
+               total number of voxels that are not zero in at least one
+               of the two datasets.
+
+   -monog_pairs: Instead of pairing each dset with the first, pair each
+                couple separately. This requires you to have an even
+                number of dsets on the command line
+
+ Examples with csh syntax using datasets in your afni binaries directory ~1~
+
+  0- First get some datasets with which we'll play
+     set dsets = ( `apsearch -list_all_afni_P_dsets` )
+
+  1- The classic
+     3dinfo $dsets[1]
+
+  2- Produce a table of results using 1-value-options for two datasets
+     3dinfo  -echo_edu -prefix_noext -prefix -space -ni -nj -nk -nt  \
+               $dsets[1-2]
+
+  3- Use some of the options that operate on pairs, mix with other options
+     3dinfo -echo_edu -header_line -prefix -n4 -same_grid $dsets[1-4]
+
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dinfo' (no arguments) ===
+
+
+Prints out sort-of-useful information from a 3D dataset's header
+Usage: 3dinfo [-verb OR -short] dataset [dataset ...] ~1~
+  -verb means to print out lots of stuff
+  -VERB means even more stuff [including slice time offsets]
+  -short means to print out less stuff [now the default]
+  -no_hist means to omit the HISTORY text
+
+  -h: Mini help, at time, same as -help in many cases.
+  -help: The entire help output
+  -HELP: Extreme help, same as -help in majority of cases.
+  -h_view: Open help in text editor. AFNI will try to find a GUI editor
+  -hview : on your machine. You can control which it should use by
+           setting environment variable AFNI_GUI_EDITOR.
+  -h_web: Open help in web browser. AFNI will try to find a browser.
+  -hweb : on your machine. You can control which it should use by
+          setting environment variable AFNI_GUI_EDITOR. 
+  -h_find WORD: Look for lines in this programs's -help output that match
+                (approximately) WORD.
+  -h_raw: Help string unedited
+  -h_spx: Help string in sphinx loveliness, but do not try to autoformat
+  -h_aspx: Help string in sphinx with autoformatting of options, etc.
+  -all_opts: Try to identify all options for the program from the
+             output of its -help option. Some options might be missed
+             and others misidentified. Use this output for hints only.
+  
+----------------------------------------------------------------------
+Alternative Usage 1 (without either of the above options): ~1~
+   Output a large block of text per dataset.  This has multiple options:
+
+   -label2index label dataset  : output index corresponding to label ~2~
+
+        example: 3dinfo -label2index aud#0_Coef stats.FT+tlrc
+
+        Prints to stdout the index corresponding to the sub-brick with
+           the name label, or a blank line if label not found.
+        The ONLY output is this sub-brick index.
+        This is intended for used in a script, as in this tcsh fragment:
+           set face = `3dinfo -label2index Face#0 AA_Decon+orig`
+           set hous = `3dinfo -label2index House#0 AA_Decon+orig`
+           3dcalc -a AA_Decon+orig"[$face]" -b AA_Decon+orig"[$hous]" ...
+      * Added per the request and efforts of Colm Connolly.
+
+   -niml_hdr dataset           : output entire NIML-formatted header ~2~
+
+        example: 3dinfo -niml_hdr stats.FT+tlrc
+
+        Prints to stdout the NIML-formatted equivalent of the .HEAD file.
+
+   -subbrick_info dataset      : output only sub-brick part of info ~2~
+
+        example: 3dinfo -subbrick_info stats.FT+tlrc
+
+        Prints to stdout only the part of the full '3dinfo -VERB. output
+        that includes sub-brick info.  The first such line might look like:
+
+           -- At sub-brick #0 'Full_Fstat' datum type is float:  0 to 971.2
+
+----------------------------------------------------------------------
+Alternate Usage 2: ~1~
+  3dinfo <OPTION> [OPTION ..] dataset [dataset ...]
+  Outputs a specific piece of information depending on OPTION.
+  This can form a table of outputs per dataset.
+
+  ==============================================================
+  Options producing one value (string) ~2~
+  ==============================================================
+   -exists: 1 if dset is loadable, 0 otherwise
+            This works on prefix also.
+   -id: Idcodestring of dset
+   -is_labeltable: 1 if dset has a labeltable attached.
+   -is_atlas: 1 if dset is an atlas.
+   -is_atlas_or_labeltable: 1 if dset has an atlas or has a labeltable.
+   -is_nifti: 1 if dset is NIFTI format, 0 otherwise
+   -is_slice_timing_nz: is there slice timing, and is it not uniformly 0
+   -dset_extension: show filename extension for valid dataset (e.g. .nii.gz)
+   -storage_mode: show internal storage mode of dataset (e.g. NIFTI)
+   -space: dataset's space
+   -gen_space: datasets generic space
+   -av_space: AFNI format's view extension for the space
+   -nifti_code: what AFNI would use for an output NIFTI (q)sform_code
+   -is_oblique: 1 if dset is oblique
+   -handedness: L if orientation is Left handed, R if it is right handed
+   -obliquity: Angle from plumb direction.
+               Angles of 0 (or close) are for cardinal orientations
+
+   -prefix: Return the prefix
+   -prefix_noext: Return the prefix without extensions
+   -ni: Return the number of voxels in i dimension
+   -nj: Return the number of voxels in j dimension
+   -nk: Return the number of voxels in k dimension
+   -nijk: Return ni*nj*nk
+   -nv: Return number of points in time or the number of sub-bricks
+   -nt: same as -nv
+   -n3: same as -ni -nj -nk
+   -n4: same as -ni -nj -nk -nv
+   -nvi: The maximum sub-brick index (= nv -1 )
+   -nti: same as -nvi
+   -ntimes: Return number of sub-bricks points in time
+        This is an option for debugging use, stay away from it.
+   -max_node: For a surface-based dset, return the maximum node index
+   -di: Signed displacement per voxel along i direction, aka dx
+   -dj: Signed displacement per voxel along j direction, aka dy
+   -dk: Signed displacement per voxel along k direction, aka dz
+   -d3: same as -di -dj -dk
+   -adi: Voxel size along i direction (abs(di))
+   -adj: Voxel size along j direction (abs(dj))
+   -adk: Voxel size along k direction (abs(dk))
+   -ad3: same as -adi -adj -adk
+   -voxvol: Voxel volume in cubic millimeters
+   -oi: Volume origin along the i direction
+   -oj: Volume origin along the j direction
+   -ok: Volume origin along the k direction
+   -o3: same as -oi -oj -ok
+   -dcx: volumetric center in x direction (DICOM coordinates)
+   -dcy: volumetric center in y direction (DICOM coordinates)
+   -dcz: volumetric center in z direction (DICOM coordinates)
+   -dc3: same as -dcx -dcy -dcz
+   -tr: The TR value in seconds.
+   -dmin: The dataset's minimum value, scaled by fac
+   -dmax: The dataset's maximum value, scaled by fac
+   -dminus: The dataset's minimum value, unscaled.
+   -dmaxus: The dataset's maximum value, unscaled.
+   -smode: Dset storage mode string.
+   -header_name: Value of dset structure (sub)field 'header_name'
+   -brick_name: Value of dset structure (sub)field 'brick_name'
+   -iname: Name of dset as input on the command line
+   -orient: Value of orientation string.
+            For example, LPI means:
+               i direction grows from Left(negative) to Right(positive).
+               j direction grows from Posterior (neg.) to Anterior (pos.)
+               k direction grows from Inferior (neg.) to Superior (pos.)
+   -extent: The spatial extent of the dataset along R, L, A, P, I and S
+   -Rextent: Extent along R
+   -Lextent: Extent along L
+   -Aextent: Extent along P
+   -Pextent: Extent along P
+   -Iextent: Extent along I
+   -Sextent: Extent along S
+   -all_names: Value of various dset structures handling filenames.
+
+  ==============================================================
+  Options producing one value per sub-brick ~2~
+  ==============================================================
+   -fac: Return the float scaling factor
+   -label: The label of each sub-brick
+   -datum: The data storage type
+   -min: The minimum value, scaled by fac
+   -max: The maximum value, scaled by fac
+   -minus: The minimum value, unscaled.
+   -maxus: The maximum value, unscaled.
+
+  ==============================================================
+  Options producing multiple values (strings of multiple lines) ~2~
+  ==============================================================
+   You can specify the delimiter between sub-brick parameters with
+       -sb_delim DELIM. Default DELIM is "|"
+   -labeltable: Show label table, if any
+   -labeltable_as_atlas_points: Show label table in atlas point format.
+   -atlas_points: Show atlas points list, if any
+   -history: History note. 
+   -slice_timing: Show slice timing. 
+
+  ==============================================================
+  Options affecting output format ~2~
+  ==============================================================
+   -header_line: Output as the first line the names of attributes
+                 in each field (column)
+   -hdr: Same as -header_line
+   -sb_delim SB_DELIM: Delimiter string between sub-brick values
+                       Default SB_DELIM is "|"
+   -NA_flag NAFLAG: String to use when a field is not found or not
+                    applicable. Default is "NA"
+   -atr_delim ATR_DELIM: Delimiter string between attributes
+                         Default ATR_DELIM is the tab character.
+
+  ==============================================================
+  Options for displaying ijk_to_xyz matrices ~2~
+  ==============================================================
+   A set of functions for displaying the matrices that tell us where
+   the data actually is in space!  These 4x4---well 3x4, in practice,
+   because the bottom row of the matrix *must* be (0, 0, 0, 1)---
+   can be related to the NIFTI sform and qform matrices (which are LPI
+   native), but these aform_* matrices are RAI (DICOM) native.
+   There are several types of matrices. Linear affine are the most general
+   (containing translation, rotation, shear and scaling info), followed by
+   orthogonal (no shear info; only translation, rotation and scale),
+   followed by cardinal (no rotation info; only translation and scale).
+   The 'scale' info is the voxel sizes. The 'translation' determines the
+   origin location in space.  The 'rotation' describes a, well, rotation
+   relative to the scanner coords---this is the dreaded 'obliquity'. The
+   'shear'... well, that could also be present, but it is not common, at
+   least to describe just-acquired data: it would tilt the axes away from
+   being mutually 90 deg to each other (i.e., they wouldn't be
+   orthogonal); this would likely just result from an alignment process.
+   Note: the NIFTI sform can be linear affine, in general; in practice, it
+   is often just orthogonal.  The NIFTI qform is a quaternion representation
+   of the orthogonalized sform; if sform is orthogonal, then they contain
+   the same information (common, but not required).
+   The aform_real matrix is AFNI's equivalent of the NIFTI sform; it *can*
+   encode general linear affine mappings. (In practice, it rarely does so.)
+   The aform_orth is the orthogonalized aform_real, and thus equivalent
+   to the NIFTI qform.  If aform_real is orthogonal (no shear info), then
+   these two matrices are equal.  The aform_card is the cardinalized form of
+   the aform_orth;  NIFTI does not have an equivalent.  AFNI typically uses
+   this matrix to display your data on a rectangle that is parallel to your
+   computer screen, without any need to regrid/resample the data (hence, no
+   blurring introduced).  This can be though of displaying your dataset in
+   a way that you *wish* your subject had been oriented.  Note that if
+   there is no obliquity in the acquired data (that is, aform_orth does not
+   contain any rotation relative to the scanner coords), then
+    aform_card == aform_orth.
+   The aform_card is an AFNI convenience (ha!) matrix, it does not have an
+   equivalent in the NIFTI stable of matrices.
+   -aform_real: Display full 3x4 'aform_real' matrix (AFNI's RAI equivalent
+                of the sform matrix in NIFTI, may contain obliquity info),
+                with comment line first.
+   -aform_real_oneline: Display full 'aform_real' matrix (see '-aform_real')
+                        as 1 row of 12 numbers. No additional comment.
+   -aform_real_refit_ori XXX: Display full 3x4 'aform_real' matrix (see 
+                        '-aform_real')
+                        *if* the dset were reoriented (via 3drefit) to
+                        new orient XXX.  Includes comment line first.
+   -is_aform_real_orth: if true, aform_real == aform_orth, which should be
+                        a very common occurrence.
+   -aform_orth: Display full 3x4 'aform_orth' matrix (AFNI's RAI matrix
+                equivalent of the NIFTI quaternion, which may contain
+                obliquity info), with comment line first.
+                This matrix is the orthogonalized form of aform_real,
+                and veeery often AFNI-produced dsets, we will have:
+                aform_orth == aform_real.
+  -perm_to_orient YYY: Display 3x3 permutation matrix to go from the
+                       dset's current orientation to the YYY orient.
+
+  ==============================================================
+  Options requiring dataset pairing at input ~2~
+  ==============================================================
+    3dinfo allows you to make some comparisons between dataset pairs.
+    The comparison is always done in both directions whether or not
+    the answer can be different. For example:
+          3dinfo -same_grid dset1 dset2 
+    will output two values, one comparing dset1 to dset2 and the second
+    comparing dset2 to dset1. With -same_grid, the answers will always
+    be identical, but this might be different for other queries.
+    This behaviour allows you to mix options requiring dataset pairs
+    with those that do not. For example:
+          3dinfo -header_line -prefix -n4 -same_grid \
+                              DSET1+orig DSET2.nii DSET3.nii DSET4.nii
+
+   -same_grid: Output 1 if the grid is identical between two dsets
+                      0 otherwise. 
+               For -same_grid to be 1, all of -same_dim, -same_delta,
+               -same_orient, -same_center, and -same_obl must return 1
+   -same_dim: 1 if dimensions (nx,ny,nz) are the same between dset pairs
+   -same_delta: 1 if voxels sizes are the same between dset pairs
+   -same_orient: 1 if orientation is the same between dset pairs
+   -same_center: 1 if geometric center is the same between dset pairs
+   -same_obl: 1 if obliquity is the same between dset pairs
+   -same_all_grid: Equivalent to listing all of -same_dim -same_delta
+                   -same_orient, -same_center, and -same_obl on the 
+                   command line.
+   -val_diff: Output the sum of absolute differences of all voxels in the
+              dataset pair. A -1.0 value indicates a grid mismatch between
+              volume pairs.
+   -sval_diff: Same as -val_diff, but the sum is divided (scaled) by the 
+               total number of voxels that are not zero in at least one
+               of the two datasets.
+
+   -monog_pairs: Instead of pairing each dset with the first, pair each
+                couple separately. This requires you to have an even
+                number of dsets on the command line
+
+ Examples with csh syntax using datasets in your afni binaries directory ~1~
+
+  0- First get some datasets with which we'll play
+     set dsets = ( `apsearch -list_all_afni_P_dsets` )
+
+  1- The classic
+     3dinfo $dsets[1]
+
+  2- Produce a table of results using 1-value-options for two datasets
+     3dinfo  -echo_edu -prefix_noext -prefix -space -ni -nj -nk -nt  \
+               $dsets[1-2]
+
+  3- Use some of the options that operate on pairs, mix with other options
+     3dinfo -echo_edu -header_line -prefix -n4 -same_grid $dsets[1-4]
+
+
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

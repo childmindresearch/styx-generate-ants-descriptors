@@ -1,0 +1,17 @@
+
+=== Output of 'mri_compute_change_map --help' ===
+
+unknown option --help
+
+=== Output of 'mri_compute_change_map -help' ===
+
+unknown option -help
+
+=== Output of 'mri_compute_change_map' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_compute_change_map [options] <volume1> <volume2> <transform> <out volume>
+	where <transform> should take volume2 coords into volume1 space
+	valid options are:
+	-m                 : mean filter output before writing
+	-s <sigma>           smooth with Gaussian filter before writing
+	the output map will be in register with <volume1>

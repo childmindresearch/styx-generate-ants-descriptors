@@ -1,0 +1,18 @@
+
+=== Output of 'fsledithd --help' ===
+
+Image Exception : #63 :: No image files match: --help
+No image files match: --help
+/usr/local/fsl/bin/fsledithd: line 130: nano: command not found
+
+=== Output of 'fsledithd -help' ===
+
+Image Exception : #63 :: No image files match: -help
+No image files match: -help
+/usr/local/fsl/bin/fsledithd: line 130: nano: command not found
+
+=== Output of 'fsledithd' (no arguments) ===
+
+
+Usage: fsledithd <input> [editor]
+

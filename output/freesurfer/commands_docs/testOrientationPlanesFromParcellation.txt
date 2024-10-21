@@ -1,0 +1,17 @@
+
+=== Output of 'testOrientationPlanesFromParcellation --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/testOrientationPlanesFromParcellation -i input -o output -bb
+
+=== Output of 'testOrientationPlanesFromParcellation -help' ===
+
+terminate called after throwing an instance of 'itk::ImageFileReaderException'
+  what():  /usr/pubsw/packages/itk/4.13.2_centos8/include/ITK-4.13/itkImageFileReader.hxx:87:
+FileName must be specified
+timeout: the monitored command dumped core
+
+=== Output of 'testOrientationPlanesFromParcellation' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/testOrientationPlanesFromParcellation -i input -o output -bb

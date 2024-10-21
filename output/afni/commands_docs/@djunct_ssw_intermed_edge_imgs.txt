@@ -1,0 +1,92 @@
+
+=== Output of '@djunct_ssw_intermed_edge_imgs --help' ===
+
+
+
+** ERROR: unexpected option #1 = '--help'
+
+
+
+=== Output of '@djunct_ssw_intermed_edge_imgs -help' ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+More helpful helpfile description coming (some day...)
+
+This is just a helper script for other things (like SSW).
+
+written by PA Taylor
+
+# --------------------------------------------------------------------
+
+COMMAND OPTIONS ~1~
+
+-hview
+-help
+-ver
+-ulay
+-olay
+-prefix
+-box_focus_slices
+-montgap
+-cbar
+-ulay_range
+-montx
+-monty
+-no_clean
+
+NOTES TO SELF ~1~
+
+If using -box_focus_slices, don't use the AMASK_FOCUS_OLAY keyword,
+but instead repeat the name of the olay explicitly.  This is because
+this program creates an edgified version of the olay, which gets
+passed into @chauffeur_afni, and then using the AMASK* functionality
+would try to 'automask' that dset, typically leaves no voxels and
+leads to an error.  Repeating the name of the input olay leads to
+correct behavior.  (Ask me how I discovered *this* tidbit of
+knowledge?)
+
+
+=== Output of '@djunct_ssw_intermed_edge_imgs' (no arguments) ===
+
+-------------------------------------------------------------------------
+
+OVERVIEW ~1~
+
+More helpful helpfile description coming (some day...)
+
+This is just a helper script for other things (like SSW).
+
+written by PA Taylor
+
+# --------------------------------------------------------------------
+
+COMMAND OPTIONS ~1~
+
+-hview
+-help
+-ver
+-ulay
+-olay
+-prefix
+-box_focus_slices
+-montgap
+-cbar
+-ulay_range
+-montx
+-monty
+-no_clean
+
+NOTES TO SELF ~1~
+
+If using -box_focus_slices, don't use the AMASK_FOCUS_OLAY keyword,
+but instead repeat the name of the olay explicitly.  This is because
+this program creates an edgified version of the olay, which gets
+passed into @chauffeur_afni, and then using the AMASK* functionality
+would try to 'automask' that dset, typically leaves no voxels and
+leads to an error.  Repeating the name of the input olay leads to
+correct behavior.  (Ask me how I discovered *this* tidbit of
+knowledge?)
+

@@ -1,0 +1,33 @@
+
+=== Output of 'browse-minc-header.tcl --help' ===
+
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 31: proc: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 33: global: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 34: .listBoxFrame.leftList: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 35: .listBoxFrame.rightList: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 36: foreach: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 38: .listBoxFrame.leftList: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 39: syntax error near unexpected token `}'
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 39: `       }'
+
+=== Output of 'browse-minc-header.tcl -help' ===
+
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 31: proc: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 33: global: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 34: .listBoxFrame.leftList: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 35: .listBoxFrame.rightList: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 36: foreach: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 38: .listBoxFrame.leftList: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 39: syntax error near unexpected token `}'
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 39: `       }'
+
+=== Output of 'browse-minc-header.tcl' (no arguments) ===
+
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 31: proc: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 33: global: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 34: .listBoxFrame.leftList: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 35: .listBoxFrame.rightList: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 36: foreach: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 38: .listBoxFrame.leftList: command not found
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 39: syntax error near unexpected token `}'
+/usr/local/freesurfer/bin/browse-minc-header.tcl: line 39: `       }'

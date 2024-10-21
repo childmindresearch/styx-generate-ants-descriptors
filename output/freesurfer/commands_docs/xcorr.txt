@@ -1,0 +1,43 @@
+
+=== Output of 'xcorr --help' ===
+
+
+xcorr --i1 f1 --i2 f2 --o xcorrfile
+  --log logfile
+  --tmp tmpdir
+  --no-cleanup
+
+xcorr 7.4.1
+
+Computes the voxel-for-voxel correlation coefficient between two volumes.
+Each voxel has a time course in each volume. Each time course is normalized,
+then multiplied together, and the product is summed to compute the Pearson
+correlation coefficient at each voxel.
+
+
+
+=== Output of 'xcorr -help' ===
+
+
+xcorr --i1 f1 --i2 f2 --o xcorrfile
+  --log logfile
+  --tmp tmpdir
+  --no-cleanup
+
+xcorr 7.4.1
+
+Computes the voxel-for-voxel correlation coefficient between two volumes.
+Each voxel has a time course in each volume. Each time course is normalized,
+then multiplied together, and the product is summed to compute the Pearson
+correlation coefficient at each voxel.
+
+
+
+=== Output of 'xcorr' (no arguments) ===
+
+
+xcorr --i1 f1 --i2 f2 --o xcorrfile
+  --log logfile
+  --tmp tmpdir
+  --no-cleanup
+

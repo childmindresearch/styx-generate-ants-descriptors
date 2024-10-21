@@ -1,0 +1,18 @@
+
+=== Output of 'avscale --help' ===
+
+Image error
+terminate called after throwing an instance of 'std::logic_error'
+  what():  basic_string::_S_construct null not valid
+timeout: the monitored command dumped core
+
+=== Output of 'avscale -help' ===
+
+Image error
+terminate called after throwing an instance of 'std::logic_error'
+  what():  basic_string::_S_construct null not valid
+timeout: the monitored command dumped core
+
+=== Output of 'avscale' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/avscale [--allparams/--inverteddies] matrixfile [non-reference-volume]

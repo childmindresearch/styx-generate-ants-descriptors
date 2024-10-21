@@ -1,0 +1,34 @@
+
+=== Output of 'mri_edit_segmentation_with_surfaces --help' ===
+
+usage: /usr/local/freesurfer/bin/mri_edit_segmentation_with_surfaces [options] <aseg name> <surface dir> <norm volume> <output volume>
+
+This program edits an aseg with the surface
+
+valid options are:
+
+-l <label file>              - limit calculations to specified label
+-hypo <1|0>                  - turn hypointensity editing on/off
+-cerebellum <1|0>            - turn cerebellum editing on/off
+-cortex <1|0>                - turn cortex editing on/off
+-a <annotation file>         - compute properties for each label
+                               in the annotation file separately
+
+=== Output of 'mri_edit_segmentation_with_surfaces -help' ===
+
+unknown option -help
+
+=== Output of 'mri_edit_segmentation_with_surfaces' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_edit_segmentation_with_surfaces [options] <aseg name> <surface dir> <norm volume> <output volume>
+
+This program edits an aseg with the surface
+
+valid options are:
+
+-l <label file>              - limit calculations to specified label
+-hypo <1|0>                  - turn hypointensity editing on/off
+-cerebellum <1|0>            - turn cerebellum editing on/off
+-cortex <1|0>                - turn cortex editing on/off
+-a <annotation file>         - compute properties for each label
+                               in the annotation file separately

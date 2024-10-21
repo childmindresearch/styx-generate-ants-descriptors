@@ -1,0 +1,15 @@
+
+=== Output of 'labels_union --help' ===
+
+usage:   /usr/local/freesurfer/bin/labels_union <label1> <label2> <outputname>
+example: /usr/local/freesurfer/bin/labels_union rh.BA3a.label rh.BA3b.label rh.BA3ab.union.label
+
+=== Output of 'labels_union -help' ===
+
+usage:   /usr/local/freesurfer/bin/labels_union <label1> <label2> <outputname>
+example: /usr/local/freesurfer/bin/labels_union rh.BA3a.label rh.BA3b.label rh.BA3ab.union.label
+
+=== Output of 'labels_union' (no arguments) ===
+
+usage:   /usr/local/freesurfer/bin/labels_union <label1> <label2> <outputname>
+example: /usr/local/freesurfer/bin/labels_union rh.BA3a.label rh.BA3b.label rh.BA3ab.union.label

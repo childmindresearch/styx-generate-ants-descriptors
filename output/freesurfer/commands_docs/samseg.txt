@@ -1,0 +1,266 @@
+
+=== Output of 'samseg --help' ===
+
+
+samseg
+  --i file.mgz <--i file2.mgz> <--i file3.mgz>... <--i>
+  --t1w t1file.mgz <--t1w t2file2.mgz> <--t2w t2file.mgz> <--flair flairfile.mgz> <--mode modename modefile.mgz>  
+     Note: using the t1w/t2w/flair/modename will cause input to be conformed unless --hires
+      --refmode modename (t1w/t2w/flair/modename)  
+  --o outdir 
+  --options OptionsFile : json file for advanced
+  --dissection-photo [left/right/both] : Mode to process 3D reconstructed dissection photos. You need to specify whether it is a left hemisphere, right, or both are present
+  --history : Turns on save history
+  --s subject : create subject, sets outdir to subject/mri/samseg
+                the first input must be the conformed T1 weighted input
+  --save-posteriors : save posterior probs
+  --save-probabilities : save post, prior, and likelihood as 3-frame vol foreach tissue type
+  --save-p : same as --save-prosteriors and --save-probabilities
+  --no-save-warp : do not save m3z-style warp
+  --mrf/--no-mrf : do or do not do MRF (default is 0)
+  --threads nthreads : set the number of CPUs to use
+  --atlas SAMSEG_DATA_DIR
+  --gmm gmmfile
+  --no-block-coordinate-descent (or --no-bcd) :  sets SAMSEG_DONT_USE_BLOCK_COORDINATE_DESCENT 1
+  --logdomain-costandgradient-calculator : sets SAMSEG_USE_LOGDOMAIN_COSTANDGRADIENT_CALCULATOR 1 (--no- to turn off)
+
+  --recon : run recon-all 
+  --fill : use samseg to create filled.mgz instead of recon-all
+  --normalization2 : use samseg to create brain.mgz instead of recon-all (with --recon) 
+  --use-t2w : use the t2-weighted input when running recon-all
+  --use-flair : use the FLAIR-weighted input when running recon-all
+  --hires  : use -hires when running recon-all
+  --sd SUBJECTS_DIR
+
+ --pallidum-separate : Move pallidum outside of global white matter class. Use this flag when
+   analyzing T2 or FLAIR
+ --stiffness K : mesh stiffness
+ --lesion : Turn on lesion segmentation
+ --lesion-mask-pattern A B : Needed when using T2 (eg, 0 1)
+ --bias-field-smoothing-kernel widthMM : width of bias field smoothness
+ --reg reg.{lta,mat} : registration file (LTA or  as output by samseg)
+    allows using the reg from one run with another run
+ --regmat reg.{lta.mat} same as --reg
+ --initlta init.lta : initial registration
+ --reg-only : only perform registration
+ --ssdd SAMSEG_DATA_DIR : where the atlas is located
+ --save-mesh : save the mesh (probably for longitudinal analysis)
+ --options optionsfile : to pass to run_samseg
+ --max-iters iters
+ --dice seg.mgz
+ --ignore-unknown
+ --smooth-wm-cortex sigma : smooth wm and cortex priors
+ --profile file.prof : run run_samseg inside the cProfile python profiler
+
+samseg 7.4.1
+
+Inputs can be specified in two ways. One way is simply with --i
+input1.mgz <--i input2.mgz>. In this case, each input will be a
+separate input to samseg; all the inputs must be in registration with
+each other. The alternative is with the "fsr-import" options:
+--t1w/--t2w/--flair/--mode. If multiple acquisitions within modality
+are specified, they will be registered and averaged together. If
+multiple modalities are specified, then they will be registered
+together for input to samseg. The registration is performed with
+fsr-coreg. Within modality, the volumes must be the same dimension,
+voxel size, etc.  The inputs can differ in dimension, etc, between
+modality. When using the fsr-import option, one must supply a
+--refmode to indicate which mode the other modes should be registered
+to.
+
+When running with --recon, the input must be specified with the
+fsr-input options. One of the modes must be t1w. The --refmode should
+probably be t1w. If the input includes a t2-weighted and/or a FLAIR image, 
+the user can supply a --use-t2w or --use-flair to indicate that the recon
+should be done with T2/FLAIR pial refinement. 
+
+You can change the atlas dir with either
+  setenv SAMSEG_DATA_DIR /path/to/atlas
+or
+  --atlas /path/to/atlas
+
+
+
+Example,
+samseg --t1w run1.T1.slice0.dicom  --t1w run2.T1.slice0.dicom \
+  --t2w T2.nii.gz  --mode pd myPDimage.mgz --flair FLAIR-weighted.dcm ...
+
+To use the --inilta, the LTA should map from the input volume to the
+atlas (eg, $FREESURFER_HOME/average/samseg/20Subjects_smoothing2_down2_smoothingForAffine2/template.nii)
+
+eg, 
+mri_coreg --mov $atlas --targ orig.mgz --dof 12 --reg coreg.lta 
+
+Example 
+
+recon samseg --t1w 001.mgz --t2w T2raw.mgz --s subject --recon --use-t2w --refmode t1w 
+
+This will do a whole-brain multimodal segmentation using the
+T1-weighted 001.mgz and the T2-weighted T2raw.mgz. The output will go
+into $SUBJECTS_DIR/$subject/samseg.  recon-all will be run using the
+SAMSEG segmentation and the bias corrected t1w and t2w. The pial
+surface will be refined with the T2 because --use-t2w was specified.
+
+
+
+
+
+=== Output of 'samseg -help' ===
+
+
+samseg
+  --i file.mgz <--i file2.mgz> <--i file3.mgz>... <--i>
+  --t1w t1file.mgz <--t1w t2file2.mgz> <--t2w t2file.mgz> <--flair flairfile.mgz> <--mode modename modefile.mgz>  
+     Note: using the t1w/t2w/flair/modename will cause input to be conformed unless --hires
+      --refmode modename (t1w/t2w/flair/modename)  
+  --o outdir 
+  --options OptionsFile : json file for advanced
+  --dissection-photo [left/right/both] : Mode to process 3D reconstructed dissection photos. You need to specify whether it is a left hemisphere, right, or both are present
+  --history : Turns on save history
+  --s subject : create subject, sets outdir to subject/mri/samseg
+                the first input must be the conformed T1 weighted input
+  --save-posteriors : save posterior probs
+  --save-probabilities : save post, prior, and likelihood as 3-frame vol foreach tissue type
+  --save-p : same as --save-prosteriors and --save-probabilities
+  --no-save-warp : do not save m3z-style warp
+  --mrf/--no-mrf : do or do not do MRF (default is 0)
+  --threads nthreads : set the number of CPUs to use
+  --atlas SAMSEG_DATA_DIR
+  --gmm gmmfile
+  --no-block-coordinate-descent (or --no-bcd) :  sets SAMSEG_DONT_USE_BLOCK_COORDINATE_DESCENT 1
+  --logdomain-costandgradient-calculator : sets SAMSEG_USE_LOGDOMAIN_COSTANDGRADIENT_CALCULATOR 1 (--no- to turn off)
+
+  --recon : run recon-all 
+  --fill : use samseg to create filled.mgz instead of recon-all
+  --normalization2 : use samseg to create brain.mgz instead of recon-all (with --recon) 
+  --use-t2w : use the t2-weighted input when running recon-all
+  --use-flair : use the FLAIR-weighted input when running recon-all
+  --hires  : use -hires when running recon-all
+  --sd SUBJECTS_DIR
+
+ --pallidum-separate : Move pallidum outside of global white matter class. Use this flag when
+   analyzing T2 or FLAIR
+ --stiffness K : mesh stiffness
+ --lesion : Turn on lesion segmentation
+ --lesion-mask-pattern A B : Needed when using T2 (eg, 0 1)
+ --bias-field-smoothing-kernel widthMM : width of bias field smoothness
+ --reg reg.{lta,mat} : registration file (LTA or  as output by samseg)
+    allows using the reg from one run with another run
+ --regmat reg.{lta.mat} same as --reg
+ --initlta init.lta : initial registration
+ --reg-only : only perform registration
+ --ssdd SAMSEG_DATA_DIR : where the atlas is located
+ --save-mesh : save the mesh (probably for longitudinal analysis)
+ --options optionsfile : to pass to run_samseg
+ --max-iters iters
+ --dice seg.mgz
+ --ignore-unknown
+ --smooth-wm-cortex sigma : smooth wm and cortex priors
+ --profile file.prof : run run_samseg inside the cProfile python profiler
+
+samseg 7.4.1
+
+Inputs can be specified in two ways. One way is simply with --i
+input1.mgz <--i input2.mgz>. In this case, each input will be a
+separate input to samseg; all the inputs must be in registration with
+each other. The alternative is with the "fsr-import" options:
+--t1w/--t2w/--flair/--mode. If multiple acquisitions within modality
+are specified, they will be registered and averaged together. If
+multiple modalities are specified, then they will be registered
+together for input to samseg. The registration is performed with
+fsr-coreg. Within modality, the volumes must be the same dimension,
+voxel size, etc.  The inputs can differ in dimension, etc, between
+modality. When using the fsr-import option, one must supply a
+--refmode to indicate which mode the other modes should be registered
+to.
+
+When running with --recon, the input must be specified with the
+fsr-input options. One of the modes must be t1w. The --refmode should
+probably be t1w. If the input includes a t2-weighted and/or a FLAIR image, 
+the user can supply a --use-t2w or --use-flair to indicate that the recon
+should be done with T2/FLAIR pial refinement. 
+
+You can change the atlas dir with either
+  setenv SAMSEG_DATA_DIR /path/to/atlas
+or
+  --atlas /path/to/atlas
+
+
+
+Example,
+samseg --t1w run1.T1.slice0.dicom  --t1w run2.T1.slice0.dicom \
+  --t2w T2.nii.gz  --mode pd myPDimage.mgz --flair FLAIR-weighted.dcm ...
+
+To use the --inilta, the LTA should map from the input volume to the
+atlas (eg, $FREESURFER_HOME/average/samseg/20Subjects_smoothing2_down2_smoothingForAffine2/template.nii)
+
+eg, 
+mri_coreg --mov $atlas --targ orig.mgz --dof 12 --reg coreg.lta 
+
+Example 
+
+recon samseg --t1w 001.mgz --t2w T2raw.mgz --s subject --recon --use-t2w --refmode t1w 
+
+This will do a whole-brain multimodal segmentation using the
+T1-weighted 001.mgz and the T2-weighted T2raw.mgz. The output will go
+into $SUBJECTS_DIR/$subject/samseg.  recon-all will be run using the
+SAMSEG segmentation and the bias corrected t1w and t2w. The pial
+surface will be refined with the T2 because --use-t2w was specified.
+
+
+
+
+
+=== Output of 'samseg' (no arguments) ===
+
+
+samseg
+  --i file.mgz <--i file2.mgz> <--i file3.mgz>... <--i>
+  --t1w t1file.mgz <--t1w t2file2.mgz> <--t2w t2file.mgz> <--flair flairfile.mgz> <--mode modename modefile.mgz>  
+     Note: using the t1w/t2w/flair/modename will cause input to be conformed unless --hires
+      --refmode modename (t1w/t2w/flair/modename)  
+  --o outdir 
+  --options OptionsFile : json file for advanced
+  --dissection-photo [left/right/both] : Mode to process 3D reconstructed dissection photos. You need to specify whether it is a left hemisphere, right, or both are present
+  --history : Turns on save history
+  --s subject : create subject, sets outdir to subject/mri/samseg
+                the first input must be the conformed T1 weighted input
+  --save-posteriors : save posterior probs
+  --save-probabilities : save post, prior, and likelihood as 3-frame vol foreach tissue type
+  --save-p : same as --save-prosteriors and --save-probabilities
+  --no-save-warp : do not save m3z-style warp
+  --mrf/--no-mrf : do or do not do MRF (default is 0)
+  --threads nthreads : set the number of CPUs to use
+  --atlas SAMSEG_DATA_DIR
+  --gmm gmmfile
+  --no-block-coordinate-descent (or --no-bcd) :  sets SAMSEG_DONT_USE_BLOCK_COORDINATE_DESCENT 1
+  --logdomain-costandgradient-calculator : sets SAMSEG_USE_LOGDOMAIN_COSTANDGRADIENT_CALCULATOR 1 (--no- to turn off)
+
+  --recon : run recon-all 
+  --fill : use samseg to create filled.mgz instead of recon-all
+  --normalization2 : use samseg to create brain.mgz instead of recon-all (with --recon) 
+  --use-t2w : use the t2-weighted input when running recon-all
+  --use-flair : use the FLAIR-weighted input when running recon-all
+  --hires  : use -hires when running recon-all
+  --sd SUBJECTS_DIR
+
+ --pallidum-separate : Move pallidum outside of global white matter class. Use this flag when
+   analyzing T2 or FLAIR
+ --stiffness K : mesh stiffness
+ --lesion : Turn on lesion segmentation
+ --lesion-mask-pattern A B : Needed when using T2 (eg, 0 1)
+ --bias-field-smoothing-kernel widthMM : width of bias field smoothness
+ --reg reg.{lta,mat} : registration file (LTA or  as output by samseg)
+    allows using the reg from one run with another run
+ --regmat reg.{lta.mat} same as --reg
+ --initlta init.lta : initial registration
+ --reg-only : only perform registration
+ --ssdd SAMSEG_DATA_DIR : where the atlas is located
+ --save-mesh : save the mesh (probably for longitudinal analysis)
+ --options optionsfile : to pass to run_samseg
+ --max-iters iters
+ --dice seg.mgz
+ --ignore-unknown
+ --smooth-wm-cortex sigma : smooth wm and cortex priors
+ --profile file.prof : run run_samseg inside the cProfile python profiler
+

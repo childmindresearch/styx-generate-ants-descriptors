@@ -1,0 +1,105 @@
+
+=== Output of 'mris_remove_intersection --help' ===
+
+				Help
+
+NAME
+	mris_remove_intersection
+
+SYNOPSIS
+	mris_remove_intersection [options] <surface in-file> <corrected 
+	surface out-file>
+
+DESCRIPTION
+	
+
+POSITIONAL ARGUMENTS
+	<surface in-file>
+
+	<corrected surface out-file>
+
+OPTIONAL FLAGGED ARGUMENTS
+	-fill-holes
+		Fill any holes in the intersection mark map (and include them 
+		in the fix); also applies to -map.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-map surface mapfile.mgz (projdistmm) 
+		Stand-alone flag to create a binary map of intersections. If 
+		projdistmm is specified, then the surface is projected along 
+		the normal 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_remove_intersection -help' ===
+
+				Help
+
+NAME
+	mris_remove_intersection
+
+SYNOPSIS
+	mris_remove_intersection [options] <surface in-file> <corrected 
+	surface out-file>
+
+DESCRIPTION
+	
+
+POSITIONAL ARGUMENTS
+	<surface in-file>
+
+	<corrected surface out-file>
+
+OPTIONAL FLAGGED ARGUMENTS
+	-fill-holes
+		Fill any holes in the intersection mark map (and include them 
+		in the fix); also applies to -map.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-map surface mapfile.mgz (projdistmm) 
+		Stand-alone flag to create a binary map of intersections. If 
+		projdistmm is specified, then the surface is projected along 
+		the normal 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mris_remove_intersection' (no arguments) ===
+
+				Help
+
+NAME
+	mris_remove_intersection
+
+SYNOPSIS
+	mris_remove_intersection [options] <surface in-file> <corrected 
+	surface out-file>
+
+DESCRIPTION
+	
+
+POSITIONAL ARGUMENTS
+	<surface in-file>
+
+	<corrected surface out-file>
+
+OPTIONAL FLAGGED ARGUMENTS
+	-fill-holes
+		Fill any holes in the intersection mark map (and include them 
+		in the fix); also applies to -map.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-map surface mapfile.mgz (projdistmm) 
+		Stand-alone flag to create a binary map of intersections. If 
+		projdistmm is specified, then the surface is projected along 
+		the normal 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

@@ -1,4 +1,0 @@
-Basic useage ex: 
-MemoryTest ImageDimension whichmetric image1.ext image2.ext NumberOfFieldsToAllocate 
-  outimage and logfile are optional  
-  Metric 0 - MeanSquareDifference, 1 - Cross-Correlation, 2-Mutual Information  

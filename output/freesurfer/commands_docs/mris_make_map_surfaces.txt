@@ -1,0 +1,12 @@
+
+=== Output of 'mris_make_map_surfaces --help' ===
+
+error: mris_make_map_surfaces has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mris_make_map_surfaces -help' ===
+
+error: mris_make_map_surfaces has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mris_make_map_surfaces' (no arguments) ===
+
+error: mris_make_map_surfaces has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

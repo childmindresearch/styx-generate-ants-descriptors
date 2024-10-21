@@ -1,0 +1,12 @@
+
+=== Output of 'mris_segment --help' ===
+
+unknown option --help
+
+=== Output of 'mris_segment -help' ===
+
+unknown option -help
+
+=== Output of 'mris_segment' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_segment [options] <subject 1> ... <output subject> <output file>

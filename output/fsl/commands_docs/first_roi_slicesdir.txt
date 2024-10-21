@@ -1,0 +1,32 @@
+
+=== Output of 'first_roi_slicesdir --help' ===
+
+total number of image:  1
+/usr/local/fsl/bin/first_roi_slicesdir: line 87: bc: command not found
+number of image pairs: 
+/usr/local/fsl/bin/first_roi_slicesdir: line 92: [: 1: unary operator expected
+run slicesdir
+
+Finished. To view, point your web browser at
+file://slicesdir/index.html
+removing files...
+
+=== Output of 'first_roi_slicesdir -help' ===
+
+total number of image:  1
+/usr/local/fsl/bin/first_roi_slicesdir: line 87: bc: command not found
+number of image pairs: 
+/usr/local/fsl/bin/first_roi_slicesdir: line 92: [: 1: unary operator expected
+run slicesdir
+
+Finished. To view, point your web browser at
+file://slicesdir/index.html
+removing files...
+
+=== Output of 'first_roi_slicesdir' (no arguments) ===
+
+
+Usage:   first_roi_slicesdir  <input_t1_images> <input_label_images>
+
+e.g.:  first_roi_slicesdir *_t1.nii.gz *_L_Hipp_first.nii.gz 
+

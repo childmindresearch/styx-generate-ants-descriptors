@@ -1,0 +1,47 @@
+
+=== Output of '3dOverlap --help' ===
+
+++ 3dOverlap: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+** Illegal option: --help
+
+=== Output of '3dOverlap -help' ===
+
+Usage: 3dOverlap [options] dset1 dset2 ...
+Output = count of number of voxels that are nonzero in ALL
+         of the input dataset sub-bricks
+The result is simply a number printed to stdout.  (If a single
+brick was input, this is just the count of number of nonzero
+voxels in that brick.)
+Options:
+  -save ppp = Save the count of overlaps at each voxel into a
+              dataset with prefix 'ppp' (properly thresholded,
+              this could be used as a mask dataset).
+Example:
+  3dOverlap -save abcnum a+orig b+orig c+orig
+  3dmaskave -mask 'abcnum+orig<3..3>' a+orig
+
+Also see program 3dABoverlap :)
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dOverlap' (no arguments) ===
+
+Usage: 3dOverlap [options] dset1 dset2 ...
+Output = count of number of voxels that are nonzero in ALL
+         of the input dataset sub-bricks
+The result is simply a number printed to stdout.  (If a single
+brick was input, this is just the count of number of nonzero
+voxels in that brick.)
+Options:
+  -save ppp = Save the count of overlaps at each voxel into a
+              dataset with prefix 'ppp' (properly thresholded,
+              this could be used as a mask dataset).
+Example:
+  3dOverlap -save abcnum a+orig b+orig c+orig
+  3dmaskave -mask 'abcnum+orig<3..3>' a+orig
+
+Also see program 3dABoverlap :)
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

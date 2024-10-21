@@ -1,0 +1,119 @@
+
+=== Output of '3dPval --help' ===
+
+[7m** FATAL ERROR:[0m unknown option --help
+** Program compile date = Sep 12 2024
+
+=== Output of '3dPval -help' ===
+
+
+Usage: 3dPval [options] dataset
+
+* Converts a dataset's statistical sub-bricks to p-values.
+
+* Sub-bricks not internally marked as statistical volumes are unchanged.
+
+* However, all output volumes will be converted to float format!
+
+* If you wish to convert only sub-brick #3 (say) of a dataset, then
+   something like this command should do the job:
+     3dPval -prefix Zork.nii InputDataset.nii'[3]'
+
+* Note that sub-bricks being marked as statistical volumes, and
+   having value-to-FDR conversion curves attached, are AFNI-only
+   ideas, and are not part of any standard, NIfTI or otherwise!
+   In other words, this program will be useless for a random dataset
+   which you download from some random non-AFNI-centric site :(
+
+* Also note that SMALLER p- and q-values are more 'significant', but
+   that the AFNI GUI provides interactive thresholding for values
+   ABOVE a user-chosen level, so using the GUI to threshold on a
+   p-value or q-value volume will have the opposite result to what
+   you might wish for.
+
+* Although the program now allows conversion of statistic values
+   to z-scores or FDR q-values, instead of p-values, you can only
+   do one type of conversion per run of 3dPval. If you want p-values
+   AND q-values, you'll have to run this program twice.
+
+* Finally, 'sub-brick' is AFNI jargon for a single 3D volume inside
+   a multi-volume dataset.
+
+Options:
+=======
+ -zscore   = Convert statistic to a z-score instead, an N(0,1) deviate
+               that represents the same p-value.
+
+ -log2     = Convert statistic to -log2(p)
+ -log10    = Convert statistic to -log10(p)
+
+ -qval     = Convert statistic to a q-value (FDR) instead:
+             + This option only works with datasets that have
+               FDR curves inserted in their headers, which most
+               AFNI statistics programs will do. The program
+               3drefit can also do this, with the -addFDR option.
+
+ -prefix p = Prefix name for output file (default name is 'Pval')
+
+
+AUTHOR: The Man With The Golden p < 0.000001
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dPval' (no arguments) ===
+
+
+Usage: 3dPval [options] dataset
+
+* Converts a dataset's statistical sub-bricks to p-values.
+
+* Sub-bricks not internally marked as statistical volumes are unchanged.
+
+* However, all output volumes will be converted to float format!
+
+* If you wish to convert only sub-brick #3 (say) of a dataset, then
+   something like this command should do the job:
+     3dPval -prefix Zork.nii InputDataset.nii'[3]'
+
+* Note that sub-bricks being marked as statistical volumes, and
+   having value-to-FDR conversion curves attached, are AFNI-only
+   ideas, and are not part of any standard, NIfTI or otherwise!
+   In other words, this program will be useless for a random dataset
+   which you download from some random non-AFNI-centric site :(
+
+* Also note that SMALLER p- and q-values are more 'significant', but
+   that the AFNI GUI provides interactive thresholding for values
+   ABOVE a user-chosen level, so using the GUI to threshold on a
+   p-value or q-value volume will have the opposite result to what
+   you might wish for.
+
+* Although the program now allows conversion of statistic values
+   to z-scores or FDR q-values, instead of p-values, you can only
+   do one type of conversion per run of 3dPval. If you want p-values
+   AND q-values, you'll have to run this program twice.
+
+* Finally, 'sub-brick' is AFNI jargon for a single 3D volume inside
+   a multi-volume dataset.
+
+Options:
+=======
+ -zscore   = Convert statistic to a z-score instead, an N(0,1) deviate
+               that represents the same p-value.
+
+ -log2     = Convert statistic to -log2(p)
+ -log10    = Convert statistic to -log10(p)
+
+ -qval     = Convert statistic to a q-value (FDR) instead:
+             + This option only works with datasets that have
+               FDR curves inserted in their headers, which most
+               AFNI statistics programs will do. The program
+               3drefit can also do this, with the -addFDR option.
+
+ -prefix p = Prefix name for output file (default name is 'Pval')
+
+
+AUTHOR: The Man With The Golden p < 0.000001
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

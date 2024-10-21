@@ -1,0 +1,158 @@
+
+=== Output of 'mri_probe_ima --help' ===
+
+
+USAGE: /usr/local/freesurfer/bin/mri_probe_ima 
+
+   --i imafile           : path to ima file 
+
+   --key keystring       : string from dictionary
+   --o offset type <len> : decimal offset, data type, and len
+   --attr attrname       : print value of file info attribute
+
+   --fileinfo            : print interpreted file info
+   --dictionary          : print dictionary (no file needed)
+   --ob stem             : dump binary pixel data into bshort
+   --help                : how to use this program 
+   --version             : print version and exit
+
+
+This program allows the user to query a Siemens IMA file, 
+and can be used to print out a single value from the IMA header 
+or to dump lots of info.
+
+DESCRIPTION
+
+A single value can be queried in one of three ways: (1) offset/type, 
+(2) key string, (3) attribute name. In the offset method, the user supplies 
+an offset which is the number of bytes into the header; the user also supplies  
+a type string indicating the data type (short, int, long, float, double, string). 
+If a string type is specified, the user must also supply the string length. In  
+the key method, the user supplies a key string from a dictionary (see below). 
+In the attribute method, the user supplies an attribute name. The difference 
+between an attribute and a key is that an attribute may have been interpreted 
+in some way (eg, the raw (key-based) row resolution for mosaics is wrong, 
+but the attribute is correct). 
+
+A dump of header information can be obtained in two ways. First, if only 
+a file name is given, then the dictionary with corresponding values will  
+be dumped. If the --fileinfo flag is added, then values that have been  
+interpreted are printed out. 
+
+ARGUMENTS
+
+  --i imafile
+
+      Path to the IMA file to be probe. If this is the only option, 
+      the dictionary with corresponding values is printed out. See also
+      --dictionary.
+
+  --o offset type <stringlen>
+
+      offset is the number of bytes from the beginning of the file. type 
+      is the type of data. Valid values are short, int, long, float, double, 
+      and string. If string is used, the length of the string must be supplied.
+
+  --d key 
+
+      key is a string as found in the dictionary (see DICTIONARY below).
+
+  --attr attrname
+
+     Name of an attribute.
+
+  --fileinfo 
+
+     Dump the interpreted file information.
+
+  --dictionary
+
+     Dump the dictionary (no ima file name need be supplied). Each entry has
+     six columns: entry number, key string, offset, type string, number of 
+     bytes in the type, and the string length. If only the imafile is supplied,
+     the dictionary will be printed out with the value as a seventh column.
+
+  --ob bstem
+
+     Save pixel data to bstem_000.bshort instead of img_000.bshort
+
+DICTIONARY
+
+The dictionary is a list of character strings (keys) that describe an 
+aspect of a value in the IMA header along with its offset, data type,  
+and, if a string, the length of the string. The dictionary is unique to 
+to this program and does not represent anything official from Siemens 
+or anyone else. The key names, offsets, and data types were gleaned from 
+other programs and reverse engineering. 
+
+ATTRIBUTES
+
+  isima     : returns 1 if the file is a Siemens IMA file, 0 otherwise 
+  studydate : date of the scan  (YYYYMMDD)
+  studytime : time of the scan  (HHMMSS)
+  voldim    : number of columns, rows, and slices in the volume. 
+  volres    : spacing between columns, rows, and slices in the volume
+  nframes   : number of frames (expected)
+  ismosaic  : returns 1 if slices are mosaiced, 0 otherwise
+  nfilesact : actual number of files found for this series
+  nfilesexp : number of files expected for this series
+  error     : 1 if actual number of files does not equal expected, 0 otherwise
+  tr        : repetition time (sec)
+  pulseseq  : pulse sequence name
+  patname   : patient name 
+  patdob    : patient date of birth (YYYYMMDD)
+  patgender : patient gender
+  pixeldata : stores pixel data as a 2D image in img_000.bshort
+
+AUTHOR
+
+Written by Douglas N. Greve.
+
+BUG REPORTING
+
+Send bug reports to analysis-bugs@nmr.mgh.harvard.edu. Make sure to include
+enough information to replicate the problem. This includes, but is not limited
+to, the version and command-line.
+
+BUGS
+
+This program does not make use of any 'official' documentation from Siemens. 
+As such, some of the results may be wrong. Some of the header elements may or
+may not be filled with legitimate values, depending upon how the pulse sequence
+was programmed.
+
+The G28_Pre_PixelSize_Row and G28_Pre_PixelSize_Column values are 
+incorrect for mosaics. This is actually the way Siemens stores 
+these values and is not an bug in  this program.
+
+G20_Rel_Study (3200, long) appears to be the Series Number. There is
+another variable (G20_Rel_Series, 3204, long), but this has garbage in
+it, at least in the MGH-NMR files.
+
+
+VERSION
+
+   7.4.1
+
+
+=== Output of 'mri_probe_ima -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_probe_ima' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_probe_ima 
+
+   --i imafile           : path to ima file 
+
+   --key keystring       : string from dictionary
+   --o offset type <len> : decimal offset, data type, and len
+   --attr attrname       : print value of file info attribute
+
+   --fileinfo            : print interpreted file info
+   --dictionary          : print dictionary (no file needed)
+   --ob stem             : dump binary pixel data into bshort
+   --help                : how to use this program 
+   --version             : print version and exit
+

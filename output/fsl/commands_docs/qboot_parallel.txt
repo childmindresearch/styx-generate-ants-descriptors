@@ -1,0 +1,24 @@
+
+=== Output of 'qboot_parallel --help' ===
+
+subjectdir is --help
+subject directory --help not found
+
+=== Output of 'qboot_parallel -help' ===
+
+subjectdir is -help
+subject directory -help not found
+
+=== Output of 'qboot_parallel' (no arguments) ===
+
+
+Usage: qboot_parallel <subject directory> [options]
+
+expects to find bvals and bvecs in subject directory
+expects to find data and nodif_brain_mask in subject directory
+
+ You can pass on qboot options
+ Default qboot options are utilised otherwise
+ For example:  qboot_parallel <subject directory> --lmax=6 --lambda=0.006
+ Type 'qboot --help' for a list of available options 
+

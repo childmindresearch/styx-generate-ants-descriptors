@@ -1,0 +1,286 @@
+
+=== Output of 'fat_mvm_prep.py --help' ===
+
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     ++ July, 2014.  Written by PA Taylor.
+     ++ Combine FATCAT output with CSV data for statistical modeling.
+     
+     This program is designed to prep and combine network-based data from
+     an MRI study with other subject data (clinical, neurophysiological,
+     genetic, etc.) for repeated measure, statistical analysis with
+     3dMVM (written by G. Chen).
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     This program reads in a group-worth of information from a CSV file
+     (which could be dumped from a study spreadsheet) as well as the
+     group's set of matrix files output by either 3dTrackID (*.grid)
+     or by 3dNetCorr (*.netcc).  Then, it outputs a tabular text
+     (*_MVMtbl.txt) file which can be called straightforwardly in 3dMVM.
+     
+     It also produces a record (*_MVMprep.log) of: how it matched CSV
+     subject IDs with matrix file paths (for user verification); a list
+     of the ROIs found across all subjects (which are the only information
+     that is stored in the *_MVMtbl.txt file-- no analysis with missing
+     data is performed currently); and a list of the matrix file
+     parameters that were found for all subjects and entered into the
+     *_MVMtbl.txt file.
+     
+     The *_MVMtbl.txt file contains subject information, one subject per
+     row.  The titles of some columns are keywords:
+     - the first col must have header 'Subj' and contain the subject
+       identifiers;
+     - the penultimate col must have header 'matrPar' and contain
+       parameter identifiers ('FA', 'CC', etc.);
+     - the last col must have header 'Ausgang_val' and contain the
+       numerical parameter values themselves, e.g. output by 3dTrackID or
+       3dNetCorr.
+     
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     TO USE (from a terminal commandline):
+
+      $ fat_mvm_prep.py  -p PREFIX  -c CSV_FILE \
+                       { -m MATR_FILES | -l LIST}
+     
+     where:
+        -p, --prefix=PREFIX      :prefix for output files.
+        -c, --csv_in=CSV_FILE    :name of comma-separated variable (CSV)
+                                  file for input. Format notes: each row
+                                  contains a single subject's data, and
+                                  the first row contains column/variable
+                                  labels (with no spaces in them); first
+                                  column is subject IDs (no spaces); and
+                                  factor/categorical variables (gender,
+                                  etc.) should be recorded with at least
+                                  one character (i.e., M/F and not 0/1). 
+                                  I will replace spaces in the first row 
+                                  and column.
+        -m, --matr_in=MATR_FILES :one way of providing the set of matrix
+                                  (*.grid or *.netcc) files- by searchable
+                                  path.  This can be a globbable entry in
+                                  quotes containing wildcard characters,
+                                  such as 'DIR1/*/*000.grid'.
+                                  If this option is used instead of '-l',
+                                  below, then this program tries to match
+                                  each CSV subj ID to a matrix file by 
+                                  finding which matrix file path in the
+                                  MATR_FILES contains a given ID string;
+                                  this method may not always find unique
+                                  matches, in which case, use '-l'
+                                  approach.
+      -l, --list_match=LIST      :another way of inputting the matrix
+                                  (*.grid or *.netcc) files-- by explicit
+                                  path, matched per file with a CSV
+                                  subject ID.
+                                  The LIST text file contains two columns:
+                                  col 1: path to subject matrix file.
+                                  col 2: CSV IDs,
+                                  (first line can be a '#'-commented one.
+
+      -u, --unionize_rois        :mainly for GRID files (shouldn't affect
+                                  NETCC files)-- instead of making the ROI
+                                  list by taking the *intersection* of all
+                                  nonzero-regions in the matrix, make the
+                                  list as the *union* of elements across the 
+                                  group. In this case, there will likely be 
+                                  some zeros in properties, where there were
+                                  no tracts found, and the assumption would be
+                                  that those zeros are meaningful quantities
+                                  in your modeling (likely only for special 
+                                  purposes).  Choose wisely!
+
+      -N, --NA_warn_off          :switch to turn off the automatic
+                                  warnings as the data table is created. 3dMVM
+                                  will excise subjects with NA values, so there
+                                  shouldn't be NA values in columns you want to
+                                  model.  However, you might have NAs elsewhere
+                                  in the data table that might be annoying to 
+                                  have flagged, so perhaps turning off warnings
+                                  would then be useful. (Default is to warn.)
+      -E, --ExternLabsNo         :switch to turn off the writing/usage of 
+                                  user-defined labels in the *.grid/*.netcc 
+                                  files.  Can't see why this would be desired,
+                                  to be honest.
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     Example:
+        $ fat_mvm_prep.py  --prefix='study'                    \
+                            --csv_in='allsubj.csv'             \
+                            --matr_in='./GROUP/*/*_000.grid' 
+     or, equivalently:
+        $ fat_mvm_prep.py -p study -c allsubj.csv -m './GROUP/*/*_000.grid' 
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+   This program is part of AFNI-FATCAT:
+    Taylor PA, Saad ZS (2013). FATCAT: (An Efficient) Functional And
+    Tractographic Connectivity Analysis Toolbox. Brain Connectivity.
+
+   For citing the statistical approach, please use the following:
+    Chen, G., Adleman, N.E., Saad, Z.S., Leibenluft, E., Cox, R.W. (2014).
+    Applications of Multivariate Modeling to Neuroimaging Group Analysis:
+    A Comprehensive Alternative to Univariate General Linear Model. 
+    NeuroImage 99:571-588.
+    https://afni.nimh.nih.gov/pub/dist/HBM2014/Chen_in_press.pdf
+
+   The first application of this network-based statistical approach is
+    given in the following:
+    Taylor PA, Jacobson SW, van der Kouwe AJW, Molteno C, Chen G,
+    Wintermark P, Alhamud A, Jacobson JL, Meintjes EM (2014). A
+    DTI-based tractography study of effects on brain structure
+    associated with prenatal alcohol exposure in newborns. (accepted,
+    HBM)
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+=== Output of 'fat_mvm_prep.py -help' ===
+
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     ++ July, 2014.  Written by PA Taylor.
+     ++ Combine FATCAT output with CSV data for statistical modeling.
+     
+     This program is designed to prep and combine network-based data from
+     an MRI study with other subject data (clinical, neurophysiological,
+     genetic, etc.) for repeated measure, statistical analysis with
+     3dMVM (written by G. Chen).
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     This program reads in a group-worth of information from a CSV file
+     (which could be dumped from a study spreadsheet) as well as the
+     group's set of matrix files output by either 3dTrackID (*.grid)
+     or by 3dNetCorr (*.netcc).  Then, it outputs a tabular text
+     (*_MVMtbl.txt) file which can be called straightforwardly in 3dMVM.
+     
+     It also produces a record (*_MVMprep.log) of: how it matched CSV
+     subject IDs with matrix file paths (for user verification); a list
+     of the ROIs found across all subjects (which are the only information
+     that is stored in the *_MVMtbl.txt file-- no analysis with missing
+     data is performed currently); and a list of the matrix file
+     parameters that were found for all subjects and entered into the
+     *_MVMtbl.txt file.
+     
+     The *_MVMtbl.txt file contains subject information, one subject per
+     row.  The titles of some columns are keywords:
+     - the first col must have header 'Subj' and contain the subject
+       identifiers;
+     - the penultimate col must have header 'matrPar' and contain
+       parameter identifiers ('FA', 'CC', etc.);
+     - the last col must have header 'Ausgang_val' and contain the
+       numerical parameter values themselves, e.g. output by 3dTrackID or
+       3dNetCorr.
+     
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     TO USE (from a terminal commandline):
+
+      $ fat_mvm_prep.py  -p PREFIX  -c CSV_FILE \
+                       { -m MATR_FILES | -l LIST}
+     
+     where:
+        -p, --prefix=PREFIX      :prefix for output files.
+        -c, --csv_in=CSV_FILE    :name of comma-separated variable (CSV)
+                                  file for input. Format notes: each row
+                                  contains a single subject's data, and
+                                  the first row contains column/variable
+                                  labels (with no spaces in them); first
+                                  column is subject IDs (no spaces); and
+                                  factor/categorical variables (gender,
+                                  etc.) should be recorded with at least
+                                  one character (i.e., M/F and not 0/1). 
+                                  I will replace spaces in the first row 
+                                  and column.
+        -m, --matr_in=MATR_FILES :one way of providing the set of matrix
+                                  (*.grid or *.netcc) files- by searchable
+                                  path.  This can be a globbable entry in
+                                  quotes containing wildcard characters,
+                                  such as 'DIR1/*/*000.grid'.
+                                  If this option is used instead of '-l',
+                                  below, then this program tries to match
+                                  each CSV subj ID to a matrix file by 
+                                  finding which matrix file path in the
+                                  MATR_FILES contains a given ID string;
+                                  this method may not always find unique
+                                  matches, in which case, use '-l'
+                                  approach.
+      -l, --list_match=LIST      :another way of inputting the matrix
+                                  (*.grid or *.netcc) files-- by explicit
+                                  path, matched per file with a CSV
+                                  subject ID.
+                                  The LIST text file contains two columns:
+                                  col 1: path to subject matrix file.
+                                  col 2: CSV IDs,
+                                  (first line can be a '#'-commented one.
+
+      -u, --unionize_rois        :mainly for GRID files (shouldn't affect
+                                  NETCC files)-- instead of making the ROI
+                                  list by taking the *intersection* of all
+                                  nonzero-regions in the matrix, make the
+                                  list as the *union* of elements across the 
+                                  group. In this case, there will likely be 
+                                  some zeros in properties, where there were
+                                  no tracts found, and the assumption would be
+                                  that those zeros are meaningful quantities
+                                  in your modeling (likely only for special 
+                                  purposes).  Choose wisely!
+
+      -N, --NA_warn_off          :switch to turn off the automatic
+                                  warnings as the data table is created. 3dMVM
+                                  will excise subjects with NA values, so there
+                                  shouldn't be NA values in columns you want to
+                                  model.  However, you might have NAs elsewhere
+                                  in the data table that might be annoying to 
+                                  have flagged, so perhaps turning off warnings
+                                  would then be useful. (Default is to warn.)
+      -E, --ExternLabsNo         :switch to turn off the writing/usage of 
+                                  user-defined labels in the *.grid/*.netcc 
+                                  files.  Can't see why this would be desired,
+                                  to be honest.
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+     Example:
+        $ fat_mvm_prep.py  --prefix='study'                    \
+                            --csv_in='allsubj.csv'             \
+                            --matr_in='./GROUP/*/*_000.grid' 
+     or, equivalently:
+        $ fat_mvm_prep.py -p study -c allsubj.csv -m './GROUP/*/*_000.grid' 
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+   This program is part of AFNI-FATCAT:
+    Taylor PA, Saad ZS (2013). FATCAT: (An Efficient) Functional And
+    Tractographic Connectivity Analysis Toolbox. Brain Connectivity.
+
+   For citing the statistical approach, please use the following:
+    Chen, G., Adleman, N.E., Saad, Z.S., Leibenluft, E., Cox, R.W. (2014).
+    Applications of Multivariate Modeling to Neuroimaging Group Analysis:
+    A Comprehensive Alternative to Univariate General Linear Model. 
+    NeuroImage 99:571-588.
+    https://afni.nimh.nih.gov/pub/dist/HBM2014/Chen_in_press.pdf
+
+   The first application of this network-based statistical approach is
+    given in the following:
+    Taylor PA, Jacobson SW, van der Kouwe AJW, Molteno C, Chen G,
+    Wintermark P, Alhamud A, Jacobson JL, Meintjes EM (2014). A
+    DTI-based tractography study of effects on brain structure
+    associated with prenatal alcohol exposure in newborns. (accepted,
+    HBM)
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+=== Output of 'fat_mvm_prep.py' (no arguments) ===
+
+
+
+** ERROR: missing a necessary input.

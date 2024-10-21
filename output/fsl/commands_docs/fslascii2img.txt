@@ -1,0 +1,18 @@
+
+=== Output of 'fslascii2img --help' ===
+
+
+Usage: fslascii2img <input> <xsize> <ysize> <zsize> <tsize> <xdim> <ydim> <zdim> <TR>  <output>
+  where sizes are in voxels, dims are in mm, TR in sec 
+
+=== Output of 'fslascii2img -help' ===
+
+
+Usage: fslascii2img <input> <xsize> <ysize> <zsize> <tsize> <xdim> <ydim> <zdim> <TR>  <output>
+  where sizes are in voxels, dims are in mm, TR in sec 
+
+=== Output of 'fslascii2img' (no arguments) ===
+
+
+Usage: fslascii2img <input> <xsize> <ysize> <zsize> <tsize> <xdim> <ydim> <zdim> <TR>  <output>
+  where sizes are in voxels, dims are in mm, TR in sec 

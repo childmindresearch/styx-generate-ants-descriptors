@@ -1,0 +1,117 @@
+
+=== Output of '3dDFT --help' ===
+
+++ Authored by: Kevin Murphy & Zhark the Transformer
+[7m** ERROR:[0m ILLEGAL option: --help
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dDFT -help' enlighten:
+        '-taper f == taper 'f' fraction of data at ends (0 <= f <= 1).'
+        '-prefix PP  == use 'PP' as the prefix of the output file'
+        '-nfft N  == use 'N' for DFT length (must be >= #time points)'
+
+=== Output of '3dDFT -help' ===
+
+++ Authored by: Kevin Murphy & Zhark the Transformer
+Usage: 3dDFT [options] dataset
+       where 'dataset' is complex- or float-valued.
+ * Carries out the DFT along the time axis.
+ * To do the DFT along the spatial axes, use program 3dFFT.
+ * The input dataset can be complex-valued or float-valued.
+   If it is any other data type, it will be converted to floats
+   before processing.
+ * [June 2018] The FFT length used is NOT rounded up to a convenient
+   FFT radix; instead, the FFT size is actual value supplied in option
+   '-nfft' or the number of time points (if '-nfft' isn't used).
+ * However, if the FFT length has large prime factors (say > 97), the
+   Fast Fourier Transform algorithm will be relatively slow. This slowdown
+   is probably only noticeable for very long files, since reading and
+   writing datasets seems to take most of the elapsed time in 'normal' cases.
+
+OPTIONS:
+--------
+
+ -prefix PP  == use 'PP' as the prefix of the output file
+
+ -abs     == output float dataset = abs(DFT)
+            * Otherwise, the output file is complex-valued.
+              You can then use 3dcalc to extract the real part, the
+              imaginary part, the phase, etc.; see its '-cx2r' option:
+                3dcalc  -cx2r REAL -a cxset+orig-expr a -prefix rset+orig
+            * Please note that if you view a complex dataset in AFNI,
+              the default operation is that you are looking at the
+              absolute value of the dataset.
+             ++ You can control the way a complex IMAGE appears via
+                the 'Disp' control panel (ABS, PHASE, REAL, IMAGE).
+             ++ You can control the way a complex TIME SERIES graph appears
+                via environment variable AFNI_GRAPH_CX2R (in 'EditEnv').
+
+ -nfft N  == use 'N' for DFT length (must be >= #time points)
+
+ -detrend == least-squares remove linear drift before DFT
+              [for more intricate detrending, use 3dDetrend first]
+
+ -taper f == taper 'f' fraction of data at ends (0 <= f <= 1).
+              [Hamming 'raised cosine' taper of f/2 of the ]
+              [data length at each end; default is no taper]
+              [cf. 3dPeriodogam -help for tapering details!]
+
+ -inverse == Do the inverse DFT:
+               SUM{ data[j] * exp(+2*PI*i*j/nfft) } * 1/nfft
+             instead of the forward transform
+               SUM{ data[j] * exp(-2*PI*i*j/nfft) }
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dDFT' (no arguments) ===
+
+++ Authored by: Kevin Murphy & Zhark the Transformer
+Usage: 3dDFT [options] dataset
+       where 'dataset' is complex- or float-valued.
+ * Carries out the DFT along the time axis.
+ * To do the DFT along the spatial axes, use program 3dFFT.
+ * The input dataset can be complex-valued or float-valued.
+   If it is any other data type, it will be converted to floats
+   before processing.
+ * [June 2018] The FFT length used is NOT rounded up to a convenient
+   FFT radix; instead, the FFT size is actual value supplied in option
+   '-nfft' or the number of time points (if '-nfft' isn't used).
+ * However, if the FFT length has large prime factors (say > 97), the
+   Fast Fourier Transform algorithm will be relatively slow. This slowdown
+   is probably only noticeable for very long files, since reading and
+   writing datasets seems to take most of the elapsed time in 'normal' cases.
+
+OPTIONS:
+--------
+
+ -prefix PP  == use 'PP' as the prefix of the output file
+
+ -abs     == output float dataset = abs(DFT)
+            * Otherwise, the output file is complex-valued.
+              You can then use 3dcalc to extract the real part, the
+              imaginary part, the phase, etc.; see its '-cx2r' option:
+                3dcalc  -cx2r REAL -a cxset+orig-expr a -prefix rset+orig
+            * Please note that if you view a complex dataset in AFNI,
+              the default operation is that you are looking at the
+              absolute value of the dataset.
+             ++ You can control the way a complex IMAGE appears via
+                the 'Disp' control panel (ABS, PHASE, REAL, IMAGE).
+             ++ You can control the way a complex TIME SERIES graph appears
+                via environment variable AFNI_GRAPH_CX2R (in 'EditEnv').
+
+ -nfft N  == use 'N' for DFT length (must be >= #time points)
+
+ -detrend == least-squares remove linear drift before DFT
+              [for more intricate detrending, use 3dDetrend first]
+
+ -taper f == taper 'f' fraction of data at ends (0 <= f <= 1).
+              [Hamming 'raised cosine' taper of f/2 of the ]
+              [data length at each end; default is no taper]
+              [cf. 3dPeriodogam -help for tapering details!]
+
+ -inverse == Do the inverse DFT:
+               SUM{ data[j] * exp(+2*PI*i*j/nfft) } * 1/nfft
+             instead of the forward transform
+               SUM{ data[j] * exp(-2*PI*i*j/nfft) }
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

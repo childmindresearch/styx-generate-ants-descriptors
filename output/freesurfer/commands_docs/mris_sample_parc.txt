@@ -1,0 +1,164 @@
+
+=== Output of 'mris_sample_parc --help' ===
+
+Usage:
+------
+
+/usr/local/freesurfer/bin/mris_sample_parc [options] <subject name> <hemi> <parc name> <output annot>
+
+This program samples a volumetric parcellation onto a surface. 
+Manual labeling can be carried out directly on surface models 
+using drawing tools in tksurfer, or volumetrically in tkmedit, 
+then sampled onto the surfaces using mris_sample_parc.
+mris_ca_train is used to create an atlas from a set of 
+annotated subjects. The information output by mris_ca_train
+is then used by mris_ca_label to automatically assign a
+neuroanatomical label to each location on a cortical surface model.
+
+Required args:
+--------------
+
+  <subject name>       the subject id
+
+  <hemi>               hemisphere: rh or lh
+
+  <parc name>          parcellation filename
+
+  <output annot>       annotation filename
+
+Optional args:
+--------------
+
+  -sdir <directory>    use <directory> as subjects directory 
+                       (default: $SUBJECTS_DIR)
+
+  -surf <filename>     use <filename> as surface (default: 'white')
+
+  -fix <number>        fix topology of all labels smaller 
+                       than <number> vertices (default=-1, do all)
+
+  -replace <number>    replace label <number> with deeper ones
+
+  -trans <number_in> <number_out>      translate <number_in> to 
+                                       <number_out>
+
+  -cortex <cortex label file>          mask regions outside of the 
+                                       specified cortex label
+
+  -projmm <number>     project <number> millimeters along 
+                       surface normal (default=0.0)
+
+  -proj <number>       same as -projmm
+
+  -projfrac <number>   project <number> percent along surface 
+                       normal (default=0.5)
+
+  -file <filename>     use <filename> as translation 
+                       (default: 'cma_parcellation_colors.txt')
+
+  -ct <filename>       embed color table <filename> into output 
+                       annotation file
+
+  -v <number>          diagnostic level (default=0)
+
+  -f <number>          apply mode filter <number> times to 
+                       parcellation (default=0)
+
+  -a <number>          smooth surface <number> times (default=0)
+
+  -w <number>          use window size <number> for sampling
+                       (default=7)
+
+  -t <filename>        use thickness file <filename> 
+                       (default: 'thickness')
+
+  -u <number>          change largest connected unknown region to
+                       label <number> (default: don't change)
+
+  --help               print help info
+
+  --version            print version info
+
+=== Output of 'mris_sample_parc -help' ===
+
+unknown option -help
+
+=== Output of 'mris_sample_parc' (no arguments) ===
+
+Usage:
+------
+
+/usr/local/freesurfer/bin/mris_sample_parc [options] <subject name> <hemi> <parc name> <output annot>
+
+This program samples a volumetric parcellation onto a surface. 
+Manual labeling can be carried out directly on surface models 
+using drawing tools in tksurfer, or volumetrically in tkmedit, 
+then sampled onto the surfaces using mris_sample_parc.
+mris_ca_train is used to create an atlas from a set of 
+annotated subjects. The information output by mris_ca_train
+is then used by mris_ca_label to automatically assign a
+neuroanatomical label to each location on a cortical surface model.
+
+Required args:
+--------------
+
+  <subject name>       the subject id
+
+  <hemi>               hemisphere: rh or lh
+
+  <parc name>          parcellation filename
+
+  <output annot>       annotation filename
+
+Optional args:
+--------------
+
+  -sdir <directory>    use <directory> as subjects directory 
+                       (default: $SUBJECTS_DIR)
+
+  -surf <filename>     use <filename> as surface (default: 'white')
+
+  -fix <number>        fix topology of all labels smaller 
+                       than <number> vertices (default=-1, do all)
+
+  -replace <number>    replace label <number> with deeper ones
+
+  -trans <number_in> <number_out>      translate <number_in> to 
+                                       <number_out>
+
+  -cortex <cortex label file>          mask regions outside of the 
+                                       specified cortex label
+
+  -projmm <number>     project <number> millimeters along 
+                       surface normal (default=0.0)
+
+  -proj <number>       same as -projmm
+
+  -projfrac <number>   project <number> percent along surface 
+                       normal (default=0.5)
+
+  -file <filename>     use <filename> as translation 
+                       (default: 'cma_parcellation_colors.txt')
+
+  -ct <filename>       embed color table <filename> into output 
+                       annotation file
+
+  -v <number>          diagnostic level (default=0)
+
+  -f <number>          apply mode filter <number> times to 
+                       parcellation (default=0)
+
+  -a <number>          smooth surface <number> times (default=0)
+
+  -w <number>          use window size <number> for sampling
+                       (default=7)
+
+  -t <filename>        use thickness file <filename> 
+                       (default: 'thickness')
+
+  -u <number>          change largest connected unknown region to
+                       label <number> (default: don't change)
+
+  --help               print help info
+
+  --version            print version info

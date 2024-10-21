@@ -1,0 +1,45 @@
+
+=== Output of 'PermuteFlipImageOrientationAxes --help' ===
+
+Usage: 
+PermuteFlipImageOrientationAxes ImageDimension  inputImageFile  outputImageFile xperm yperm {zperm}  xflip yflip {zflip}  {FlipAboutOrigin}
+ for 3D:  PermuteFlipImageOrientationAxes 3  in.nii out.nii   2 0 1  1 1 1  
+ would map z=>x, x=>y, y=>z and flip each 
+ for 2D:  PermuteFlipImageOrientationAxes 2  in.nii out.nii   1 0  1 0  
+ would map x=>y, y=>x and flip x  
+
+ 0 1 2 for permute factors gives no axis permutation 
+ 1 2 0 maps y to x,  z to y and x to z 
+ the flip values are boolean -  0 1 0 would flip the y-axis only 
+
+ The FlipAboutOrigin boolean lets you flip about the coordinate set in the origin 
+
+=== Output of 'PermuteFlipImageOrientationAxes -help' ===
+
+Usage: 
+PermuteFlipImageOrientationAxes ImageDimension  inputImageFile  outputImageFile xperm yperm {zperm}  xflip yflip {zflip}  {FlipAboutOrigin}
+ for 3D:  PermuteFlipImageOrientationAxes 3  in.nii out.nii   2 0 1  1 1 1  
+ would map z=>x, x=>y, y=>z and flip each 
+ for 2D:  PermuteFlipImageOrientationAxes 2  in.nii out.nii   1 0  1 0  
+ would map x=>y, y=>x and flip x  
+
+ 0 1 2 for permute factors gives no axis permutation 
+ 1 2 0 maps y to x,  z to y and x to z 
+ the flip values are boolean -  0 1 0 would flip the y-axis only 
+
+ The FlipAboutOrigin boolean lets you flip about the coordinate set in the origin 
+
+=== Output of 'PermuteFlipImageOrientationAxes' (no arguments) ===
+
+Usage: 
+PermuteFlipImageOrientationAxes ImageDimension  inputImageFile  outputImageFile xperm yperm {zperm}  xflip yflip {zflip}  {FlipAboutOrigin}
+ for 3D:  PermuteFlipImageOrientationAxes 3  in.nii out.nii   2 0 1  1 1 1  
+ would map z=>x, x=>y, y=>z and flip each 
+ for 2D:  PermuteFlipImageOrientationAxes 2  in.nii out.nii   1 0  1 0  
+ would map x=>y, y=>x and flip x  
+
+ 0 1 2 for permute factors gives no axis permutation 
+ 1 2 0 maps y to x,  z to y and x to z 
+ the flip values are boolean -  0 1 0 would flip the y-axis only 
+
+ The FlipAboutOrigin boolean lets you flip about the coordinate set in the origin 

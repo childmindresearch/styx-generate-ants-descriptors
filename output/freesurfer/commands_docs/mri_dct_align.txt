@@ -1,0 +1,14 @@
+
+=== Output of 'mri_dct_align --help' ===
+
+unknown option --HELP
+usage: /usr/local/freesurfer/bin/mri_dct_align <source> <destination> <output xform>
+
+=== Output of 'mri_dct_align -help' ===
+
+unknown option -HELP
+usage: /usr/local/freesurfer/bin/mri_dct_align <source> <destination> <output xform>
+
+=== Output of 'mri_dct_align' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_dct_align <source> <destination> <output xform>

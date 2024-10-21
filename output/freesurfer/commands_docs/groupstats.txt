@@ -1,0 +1,121 @@
+
+=== Output of 'groupstats --help' ===
+
+
+groupstats --help
+  --o outdir : output folder
+  --fsgd group.fsgd   OR   --f subjectfile
+     if both are specified, gets subjects from subjectsfile
+  --fwhm fwhm <--fwhm fwhm2> : specify smoothing level(s)
+  --no-maps : only analyze ROI data
+  --lh : only analyze lh
+  --rh : only analyze rh
+  --sd SUBJECTS_DIR
+  --m map : use given mapname 
+  --srcsurfreg SrcSurfReg (default is sphere.reg)
+  --no-aparcstats : do not do aparcstats
+  --no-asegstats : do not do asegstats
+  --no-wparcstats : do not do wmparcstats
+  --no-stats : do not do any ROI stats
+  --new : append .new.mris_make_surfaces to map names
+  --base : sets meas thickness area volume curv sulc (excludes w-g.pct)
+  --keep53 : keep 5.3 aseg names (eg, Thalamus-Proper)
+  
+groupstats 7.4.1
+
+This is a script that runs a comprehensive group analysis on both maps
+and ROI results.  This script was originally designed to assist in the
+testing of FreeSurfer output (in conjunction with groupstatsdiff), so
+there are a lot of tests performed, more than one would normally do
+for a typical study. However, it is possible to use this to do almost
+all of your group analysis as it runs mris_preproc for the maps and
+asegstats2table/aparcstats2table for the ROIs and then mri_glmfit for
+both.
+
+Specify the subjects through an FSGD file (--fsgd) or a subject list
+file (--f) but not both. If a subject list file is specified, a
+one-sample-group-mean (OSGM) test will be performed. If an FSGD file
+is passed, it must have a "Contrast" line. Eg, if there are two
+groups, AD and HC, then add "Contrast ad-hc 1 -1" will compute the
+contrast between them. This is an alternative to using a contrast
+matrix in mri_glmfit.
+
+You can choose multiple smoothing levels with multiple --fwhm
+arguments.
+
+If the intent is to eventually use groupstatsdiff to test for a
+difference in FS versions (or some other difference), then make sure
+that the subject names are the same across versions.
+
+
+=== Output of 'groupstats -help' ===
+
+
+groupstats --help
+  --o outdir : output folder
+  --fsgd group.fsgd   OR   --f subjectfile
+     if both are specified, gets subjects from subjectsfile
+  --fwhm fwhm <--fwhm fwhm2> : specify smoothing level(s)
+  --no-maps : only analyze ROI data
+  --lh : only analyze lh
+  --rh : only analyze rh
+  --sd SUBJECTS_DIR
+  --m map : use given mapname 
+  --srcsurfreg SrcSurfReg (default is sphere.reg)
+  --no-aparcstats : do not do aparcstats
+  --no-asegstats : do not do asegstats
+  --no-wparcstats : do not do wmparcstats
+  --no-stats : do not do any ROI stats
+  --new : append .new.mris_make_surfaces to map names
+  --base : sets meas thickness area volume curv sulc (excludes w-g.pct)
+  --keep53 : keep 5.3 aseg names (eg, Thalamus-Proper)
+  
+groupstats 7.4.1
+
+This is a script that runs a comprehensive group analysis on both maps
+and ROI results.  This script was originally designed to assist in the
+testing of FreeSurfer output (in conjunction with groupstatsdiff), so
+there are a lot of tests performed, more than one would normally do
+for a typical study. However, it is possible to use this to do almost
+all of your group analysis as it runs mris_preproc for the maps and
+asegstats2table/aparcstats2table for the ROIs and then mri_glmfit for
+both.
+
+Specify the subjects through an FSGD file (--fsgd) or a subject list
+file (--f) but not both. If a subject list file is specified, a
+one-sample-group-mean (OSGM) test will be performed. If an FSGD file
+is passed, it must have a "Contrast" line. Eg, if there are two
+groups, AD and HC, then add "Contrast ad-hc 1 -1" will compute the
+contrast between them. This is an alternative to using a contrast
+matrix in mri_glmfit.
+
+You can choose multiple smoothing levels with multiple --fwhm
+arguments.
+
+If the intent is to eventually use groupstatsdiff to test for a
+difference in FS versions (or some other difference), then make sure
+that the subject names are the same across versions.
+
+
+=== Output of 'groupstats' (no arguments) ===
+
+
+groupstats --help
+  --o outdir : output folder
+  --fsgd group.fsgd   OR   --f subjectfile
+     if both are specified, gets subjects from subjectsfile
+  --fwhm fwhm <--fwhm fwhm2> : specify smoothing level(s)
+  --no-maps : only analyze ROI data
+  --lh : only analyze lh
+  --rh : only analyze rh
+  --sd SUBJECTS_DIR
+  --m map : use given mapname 
+  --srcsurfreg SrcSurfReg (default is sphere.reg)
+  --no-aparcstats : do not do aparcstats
+  --no-asegstats : do not do asegstats
+  --no-wparcstats : do not do wmparcstats
+  --no-stats : do not do any ROI stats
+  --new : append .new.mris_make_surfaces to map names
+  --base : sets meas thickness area volume curv sulc (excludes w-g.pct)
+  --keep53 : keep 5.3 aseg names (eg, Thalamus-Proper)
+  

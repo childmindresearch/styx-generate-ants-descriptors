@@ -1,0 +1,93 @@
+
+=== Output of 'mri_segment_hypothalamic_subunits --help' ===
+
+usage: mri_segment_hypothalamic_subunits [-h] [--s [S [S ...]]] [--sd SD]
+                                         [--write_posteriors] [--i I] [--o O]
+                                         [--post POST] [--resample RESAMPLE]
+                                         [--vol VOL] [--crop CROP [CROP ...]]
+                                         [--threads THREADS] [--cpu]
+
+This module can be run in two modes: a) on FreeSurfer subjects, and b) on any
+T1-weighted scan(s) of approximatively 1mm resolution.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --s [S [S ...]]       (required in FS mode) Name of one or several subjects
+                        in $SUBJECTS_DIR on which to run
+                        mri_segment_hypothalamic_subunits, assuming recon-all
+                        has been run on the specified subjects. The output
+                        segmentations will automatically be saved in each
+                        subject's mri folder. If no argument is given,
+                        mri_segment_hypothalamic_subunits will run on all the
+                        subjects in $SUBJECTS_DIR.
+  --sd SD               (FS mode, optional) override current $SUBJECTS_DIR
+  --write_posteriors    (FS mode, optional) save posteriors, default is False
+  --i I                 (required in T1 mode) Image(s) to segment. Can be a
+                        path to a single image or to a folder.
+  --o O                 (required in T1 mode) Segmentation output(s). Must be
+                        a folder if --i designates a folder.
+  --post POST           (T1 mode, optional) Posteriors output(s). Must be a
+                        folder if --i designates a folder.
+  --resample RESAMPLE   (T1 mode, optional) Resampled image(s). Must be a
+                        folder if --i designates a folder.
+  --vol VOL             (T1 mode, optional) Output CSV file with volumes for
+                        all structures and subjects.
+  --crop CROP [CROP ...]
+                        (both modes, optional) Size of the central patch to
+                        analyse (must be divisible by 8). The whole image is
+                        analysed by default.
+  --threads THREADS     (both modes, optional) Number of cores to be used.
+                        Default uses 1 core.
+  --cpu                 (both modes, optional) enforce running with CPU rather
+                        than GPU.
+
+=== Output of 'mri_segment_hypothalamic_subunits -help' ===
+
+usage: mri_segment_hypothalamic_subunits [-h] [--s [S [S ...]]] [--sd SD]
+                                         [--write_posteriors] [--i I] [--o O]
+                                         [--post POST] [--resample RESAMPLE]
+                                         [--vol VOL] [--crop CROP [CROP ...]]
+                                         [--threads THREADS] [--cpu]
+mri_segment_hypothalamic_subunits: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'mri_segment_hypothalamic_subunits' (no arguments) ===
+
+usage: mri_segment_hypothalamic_subunits [-h] [--s [S [S ...]]] [--sd SD]
+                                         [--write_posteriors] [--i I] [--o O]
+                                         [--post POST] [--resample RESAMPLE]
+                                         [--vol VOL] [--crop CROP [CROP ...]]
+                                         [--threads THREADS] [--cpu]
+
+This module can be run in two modes: a) on FreeSurfer subjects, and b) on any
+T1-weighted scan(s) of approximatively 1mm resolution.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --s [S [S ...]]       (required in FS mode) Name of one or several subjects
+                        in $SUBJECTS_DIR on which to run
+                        mri_segment_hypothalamic_subunits, assuming recon-all
+                        has been run on the specified subjects. The output
+                        segmentations will automatically be saved in each
+                        subject's mri folder. If no argument is given,
+                        mri_segment_hypothalamic_subunits will run on all the
+                        subjects in $SUBJECTS_DIR.
+  --sd SD               (FS mode, optional) override current $SUBJECTS_DIR
+  --write_posteriors    (FS mode, optional) save posteriors, default is False
+  --i I                 (required in T1 mode) Image(s) to segment. Can be a
+                        path to a single image or to a folder.
+  --o O                 (required in T1 mode) Segmentation output(s). Must be
+                        a folder if --i designates a folder.
+  --post POST           (T1 mode, optional) Posteriors output(s). Must be a
+                        folder if --i designates a folder.
+  --resample RESAMPLE   (T1 mode, optional) Resampled image(s). Must be a
+                        folder if --i designates a folder.
+  --vol VOL             (T1 mode, optional) Output CSV file with volumes for
+                        all structures and subjects.
+  --crop CROP [CROP ...]
+                        (both modes, optional) Size of the central patch to
+                        analyse (must be divisible by 8). The whole image is
+                        analysed by default.
+  --threads THREADS     (both modes, optional) Number of cores to be used.
+                        Default uses 1 core.
+  --cpu                 (both modes, optional) enforce running with CPU rather
+                        than GPU.

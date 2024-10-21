@@ -1,0 +1,36 @@
+
+=== Output of 'fs_temp_dir --help' ===
+
+				Help
+
+NAME
+	fs_temp_dir
+
+USAGE
+	fs_temp_dir [options]
+
+DESCRIPTION
+	Generates and creates an empty temporary directory. The resulting path
+	will be printed to stdout. The FS_TMPDIR environment variable can be 
+	used to override the default base temporary directory.
+
+OPTIONAL ARGUMENTS
+	-b, --base [dir]
+		Manually specify base temporary directory.
+
+	--scratch
+		Use /scratch directory if available, but FS_TMPDIR takes 
+		priority.
+
+	-h, --help
+		Print this help text and exit.
+
+
+
+=== Output of 'fs_temp_dir -help' ===
+
+error: unexpected argument '-help'
+
+=== Output of 'fs_temp_dir' (no arguments) ===
+
+/tmp/tmp.SF5J66

@@ -1,0 +1,37 @@
+
+=== Output of 'mri_twoclass --help' ===
+
+usage: /usr/local/freesurfer/bin/mri_twoclass [options] 
+	<segmentation volume> <output subject> <output volume> 
+	<c1_subject1> <c1_subject2>... : 
+	<c2_subject1> <c2_subject2>...
+where surf must be a spherical surface suitable for computing geodesics
+The <c1_subject> ... is a list of subjects from one class
+and the <c2_subject>... is a list of subjects from another class.
+valid options are:
+	-t <fthresh>       -  specify F threshold
+	-o <subject>       -  specify output subject name
+	-b                 -  perform bonferroni correction
+
+This program will compute the cross-subject statistics of two sets of labels.
+
+valid options are:
+
+
+=== Output of 'mri_twoclass -help' ===
+
+unknown option -help
+
+=== Output of 'mri_twoclass' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_twoclass [options] 
+	<segmentation volume> <output subject> <output volume> 
+	<c1_subject1> <c1_subject2>... : 
+	<c2_subject1> <c2_subject2>...
+where surf must be a spherical surface suitable for computing geodesics
+The <c1_subject> ... is a list of subjects from one class
+and the <c2_subject>... is a list of subjects from another class.
+valid options are:
+	-t <fthresh>       -  specify F threshold
+	-o <subject>       -  specify output subject name
+	-b                 -  perform bonferroni correction

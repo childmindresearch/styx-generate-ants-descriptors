@@ -1,0 +1,65 @@
+
+=== Output of 'xhemireg --help' ===
+
+
+xhemireg
+
+   --s subject
+
+   --lh : srchemi = lh (map from left to right) (default is to do lh and rh)
+   --reg       : perform reg to create sphere.reg
+   --rh : srchemi = rh (map from right to left) 
+   --o outdir  : output dir (subject/xhemireg.hemi by def)
+   --tal-compute    : recompute talairach registration (default)
+   --no-tal-compute  : do not perform talairach registration
+   --tal-estimate    : compute estimate of talairach registration from unflipped reg
+   --no-tal-estimate 
+   --gcaprep seg xfm : for training symmetrical GCA atlases (see gcaprepone)
+   --threads nthreads: only applies with --gcaprep
+   --version   : print version and exit
+   --help      : print help and exit
+
+
+
+=== Output of 'xhemireg -help' ===
+
+
+xhemireg
+
+   --s subject
+
+   --lh : srchemi = lh (map from left to right) (default is to do lh and rh)
+   --reg       : perform reg to create sphere.reg
+   --rh : srchemi = rh (map from right to left) 
+   --o outdir  : output dir (subject/xhemireg.hemi by def)
+   --tal-compute    : recompute talairach registration (default)
+   --no-tal-compute  : do not perform talairach registration
+   --tal-estimate    : compute estimate of talairach registration from unflipped reg
+   --no-tal-estimate 
+   --gcaprep seg xfm : for training symmetrical GCA atlases (see gcaprepone)
+   --threads nthreads: only applies with --gcaprep
+   --version   : print version and exit
+   --help      : print help and exit
+
+
+
+=== Output of 'xhemireg' (no arguments) ===
+
+
+xhemireg
+
+   --s subject
+
+   --lh : srchemi = lh (map from left to right) (default is to do lh and rh)
+   --reg       : perform reg to create sphere.reg
+   --rh : srchemi = rh (map from right to left) 
+   --o outdir  : output dir (subject/xhemireg.hemi by def)
+   --tal-compute    : recompute talairach registration (default)
+   --no-tal-compute  : do not perform talairach registration
+   --tal-estimate    : compute estimate of talairach registration from unflipped reg
+   --no-tal-estimate 
+   --gcaprep seg xfm : for training symmetrical GCA atlases (see gcaprepone)
+   --threads nthreads: only applies with --gcaprep
+   --version   : print version and exit
+   --help      : print help and exit
+

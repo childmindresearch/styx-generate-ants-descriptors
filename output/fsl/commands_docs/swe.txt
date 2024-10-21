@@ -1,0 +1,110 @@
+
+=== Output of 'swe --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+swe v1.0.3
+
+Usage: 
+swe -i <input> -o <output> -d <design.mat> -t <design.con> -s <design.sub> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i <input>	4D input image
+	-o <out_root>	output file-rootname
+	-d <design.mat>	design matrix file
+	-t <design.con>	t contrasts file
+	-s,--subj <design.sub>	subjects file
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask <mask>	mask image
+	-f <design.fts>	f contrasts file
+	--modified	use the modified "Homogeneous" SwE instead of the classic "Heterogeneous" SwE
+	--wb		inference is done using a non-parametric Wild Bootstrap procedure instead of a parametric procedure
+	--logp		return -log_10(p) images instead of 1-p images
+	-n <n_boot>	number of bootstraps (default 999)
+	-x,--corrp	output voxelwise corrected p-value images
+	--fonly		calculate f-statistics only
+	-T		carry out Threshold-Free Cluster Enhancement
+	--T2		carry out Threshold-Free Cluster Enhancement with 2D optimisation (e.g. for TBSS data); H=2, E=1, C=26
+	-c <thresh>	carry out cluster-extent-based inference for t-contrasts with the supplied cluster-forming threshold (supplied as an equivalent z-score if thresh >= 1 or as an uncorrected p-value if thresh < 1)
+	-C <thresh>	carry out cluster-mass-based inference for t-contrasts with the supplied cluster-forming threshold (supplied as an equivalent z-score if thresh >= 1 or as an uncorrected p-value if thresh < 1)
+	-F <thresh>	carry out cluster-extent-based inference for f-contrasts with the supplied cluster-forming threshold (supplied as an equivalent one-degree-of-freedom chi-squared-score if thresh >= 1 or as an uncorrected p-value if thresh < 1)
+	-S <thresh>	carry out cluster-mass-based inference for f-contrasts with the supplied cluster-forming threshold (supplied as an equivalent one-degree-of-freedom chi-squared-score if thresh >= 1 or as an uncorrected p-value if thresh < 1)
+	-h,--help	display this message
+	--quiet		switch off diagnostic messages
+	-R,--raw	output raw voxelwise statistic images
+	-E,--equivalent	output equivalent z (for t-contrast) or one-degree-of-freedom chi-squared (for f-contrast) statistic images
+	-D,--dof	output effective number of degrees of freedom images
+	--uncorrp	output uncorrected p-value images
+	-N		output null distribution text files
+	--norcmask	don't remove constant voxels from mask
+	--seed <seed>	specific integer seed for random number generator
+	--tfce_H <H>	TFCE height parameter (default=2)
+	--tfce_D <H>	TFCE delta parameter overide
+	--tfce_E <E>	TFCE extent parameter (default=0.5)
+	--tfce_C <C>	TFCE connectivity (6 or 26; default=6)
+	--vxl		list of numbers indicating voxelwise EVs position in the design matrix (list order corresponds to files in vxf option).
+	--vxf		list of 4D images containing voxelwise EVs (list order corresponds to numbers in vxl option).
+	--glm_output	output glm information (pe, cope & varcope)
+
+
+
+=== Output of 'swe -help' ===
+
+-e: Option doesn't exist!
+try: swe --help
+
+=== Output of 'swe' (no arguments) ===
+
+
+
+
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+swe v1.0.3
+
+Usage: 
+swe -i <input> -o <output> -d <design.mat> -t <design.con> -s <design.sub> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i <input>	4D input image
+	-o <out_root>	output file-rootname
+	-d <design.mat>	design matrix file
+	-t <design.con>	t contrasts file
+	-s,--subj <design.sub>	subjects file
+
+Optional arguments (You may optionally specify one or more of):
+	-m,--mask <mask>	mask image
+	-f <design.fts>	f contrasts file
+	--modified	use the modified "Homogeneous" SwE instead of the classic "Heterogeneous" SwE
+	--wb		inference is done using a non-parametric Wild Bootstrap procedure instead of a parametric procedure
+	--logp		return -log_10(p) images instead of 1-p images
+	-n <n_boot>	number of bootstraps (default 999)
+	-x,--corrp	output voxelwise corrected p-value images
+	--fonly		calculate f-statistics only
+	-T		carry out Threshold-Free Cluster Enhancement
+	--T2		carry out Threshold-Free Cluster Enhancement with 2D optimisation (e.g. for TBSS data); H=2, E=1, C=26
+	-c <thresh>	carry out cluster-extent-based inference for t-contrasts with the supplied cluster-forming threshold (supplied as an equivalent z-score if thresh >= 1 or as an uncorrected p-value if thresh < 1)
+	-C <thresh>	carry out cluster-mass-based inference for t-contrasts with the supplied cluster-forming threshold (supplied as an equivalent z-score if thresh >= 1 or as an uncorrected p-value if thresh < 1)
+	-F <thresh>	carry out cluster-extent-based inference for f-contrasts with the supplied cluster-forming threshold (supplied as an equivalent one-degree-of-freedom chi-squared-score if thresh >= 1 or as an uncorrected p-value if thresh < 1)
+	-S <thresh>	carry out cluster-mass-based inference for f-contrasts with the supplied cluster-forming threshold (supplied as an equivalent one-degree-of-freedom chi-squared-score if thresh >= 1 or as an uncorrected p-value if thresh < 1)
+	-h,--help	display this message
+	--quiet		switch off diagnostic messages
+	-R,--raw	output raw voxelwise statistic images
+	-E,--equivalent	output equivalent z (for t-contrast) or one-degree-of-freedom chi-squared (for f-contrast) statistic images
+	-D,--dof	output effective number of degrees of freedom images
+	--uncorrp	output uncorrected p-value images
+	-N		output null distribution text files
+	--norcmask	don't remove constant voxels from mask
+	--seed <seed>	specific integer seed for random number generator
+	--tfce_H <H>	TFCE height parameter (default=2)
+	--tfce_D <H>	TFCE delta parameter overide
+	--tfce_E <E>	TFCE extent parameter (default=0.5)
+	--tfce_C <C>	TFCE connectivity (6 or 26; default=6)
+	--vxl		list of numbers indicating voxelwise EVs position in the design matrix (list order corresponds to files in vxf option).
+	--vxf		list of 4D images containing voxelwise EVs (list order corresponds to numbers in vxl option).
+	--glm_output	output glm information (pe, cope & varcope)
+
+

@@ -1,0 +1,15 @@
+
+=== Output of 'mris_label_area --help' ===
+
+unknown option --help
+
+=== Output of 'mris_label_area -help' ===
+
+unknown option -help
+
+=== Output of 'mris_label_area' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_label_area [options] <subject name> <hemi> <surf name> <annot name> <label 1> <label 2> ...
+	p             - compute brain area as a pct of all brain labels
+	l <log fname> - log results to file (note %d will include label #)
+	b <brain vol> - load brain vol and use it to normalize areas

@@ -1,0 +1,23 @@
+
+=== Output of 'is-surface --help' ===
+
+ERROR: cannot find --help
+
+=== Output of 'is-surface -help' ===
+
+ERROR: cannot find -help
+
+=== Output of 'is-surface' (no arguments) ===
+
+is-surface file
+
+Determines whether file is a volume-encoded surface file
+by looking at the number of columns and rows.
+If there are more than 1000 columns and the number
+of rows is 1, then it is assumed to be a surface.
+
+Prints 0 (is NOT surface) or 1 (IS surface) to stdout. 
+
+If an error occurs, exists with 1
+
+is-surface 7.4.1

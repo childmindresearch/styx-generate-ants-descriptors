@@ -1,0 +1,102 @@
+
+=== Output of 'fdr --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fdr 
+Copyright(c) 2004-2012, University of Oxford (Mark Jenkinson)
+
+Usage: 
+fdr -i <pvalimage> [options]
+e.g.  fdr -i <pvalimage> -m <maskimage> -q 0.05
+      fdr -i <pvalimage> -a <adjustedimage>
+Note: if a mask is not specified, voxels where p>.9999 are ignored.
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input p-value filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m	mask filename
+	-q	q-value (FDR) threshold
+	-a	output image with FDR-adjusted p-values
+	--othresh	output a thresholded p-value image
+	--order 	output image of order values
+	--oneminusp	treat input as 1-p (also save output like this)
+	--positivecorr	use FDR correction factor that assumes positive correlation (default)
+	--independent	use FDR correction factor that assumes independence
+	--conservative	use conservative FDR correction factor (allows for any correlation)
+	--debug	switch on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'fdr -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fdr 
+Copyright(c) 2004-2012, University of Oxford (Mark Jenkinson)
+
+Usage: 
+fdr -i <pvalimage> [options]
+e.g.  fdr -i <pvalimage> -m <maskimage> -q 0.05
+      fdr -i <pvalimage> -a <adjustedimage>
+Note: if a mask is not specified, voxels where p>.9999 are ignored.
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input p-value filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m	mask filename
+	-q	q-value (FDR) threshold
+	-a	output image with FDR-adjusted p-values
+	--othresh	output a thresholded p-value image
+	--order 	output image of order values
+	--oneminusp	treat input as 1-p (also save output like this)
+	--positivecorr	use FDR correction factor that assumes positive correlation (default)
+	--independent	use FDR correction factor that assumes independence
+	--conservative	use conservative FDR correction factor (allows for any correlation)
+	--debug	switch on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'fdr' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	input p-value filename
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fdr 
+Copyright(c) 2004-2012, University of Oxford (Mark Jenkinson)
+
+Usage: 
+fdr -i <pvalimage> [options]
+e.g.  fdr -i <pvalimage> -m <maskimage> -q 0.05
+      fdr -i <pvalimage> -a <adjustedimage>
+Note: if a mask is not specified, voxels where p>.9999 are ignored.
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input p-value filename
+
+Optional arguments (You may optionally specify one or more of):
+	-m	mask filename
+	-q	q-value (FDR) threshold
+	-a	output image with FDR-adjusted p-values
+	--othresh	output a thresholded p-value image
+	--order 	output image of order values
+	--oneminusp	treat input as 1-p (also save output like this)
+	--positivecorr	use FDR correction factor that assumes positive correlation (default)
+	--independent	use FDR correction factor that assumes independence
+	--conservative	use conservative FDR correction factor (allows for any correlation)
+	--debug	switch on debugging output
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

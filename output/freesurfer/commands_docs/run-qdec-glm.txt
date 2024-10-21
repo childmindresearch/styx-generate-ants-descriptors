@@ -1,0 +1,13 @@
+
+=== Output of 'run-qdec-glm --help' ===
+
+ERROR: cannot fin --help
+
+=== Output of 'run-qdec-glm -help' ===
+
+ERROR: cannot fin -help
+
+=== Output of 'run-qdec-glm' (no arguments) ===
+
+run-qdec-glm qdecdir
+run-qdec-glm 7.4.1

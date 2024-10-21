@@ -1,0 +1,24 @@
+
+=== Output of 'mri_modify --help' ===
+
+Usage: mri_modify <-xras xr xa xs> <-yras yr ya ys> <-zras zr za zs> <-cras cr ca cs> \ 
+                  <-xsize size> <-ysize size> <-zsize size> \ 
+                  <-tr recoverytime> <-te echotime> <-ti inversiontime> <-fa angledegree> \ 
+                  <-xform new_file_name> \ 
+                  involume outvolume
+
+=== Output of 'mri_modify -help' ===
+
+Usage: mri_modify <-xras xr xa xs> <-yras yr ya ys> <-zras zr za zs> <-cras cr ca cs> \ 
+                  <-xsize size> <-ysize size> <-zsize size> \ 
+                  <-tr recoverytime> <-te echotime> <-ti inversiontime> <-fa angledegree> \ 
+                  <-xform new_file_name> \ 
+                  involume outvolume
+
+=== Output of 'mri_modify' (no arguments) ===
+
+Usage: mri_modify <-xras xr xa xs> <-yras yr ya ys> <-zras zr za zs> <-cras cr ca cs> \ 
+                  <-xsize size> <-ysize size> <-zsize size> \ 
+                  <-tr recoverytime> <-te echotime> <-ti inversiontime> <-fa angledegree> \ 
+                  <-xform new_file_name> \ 
+                  involume outvolume

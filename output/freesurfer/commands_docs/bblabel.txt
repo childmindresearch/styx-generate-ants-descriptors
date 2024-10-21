@@ -1,0 +1,100 @@
+
+=== Output of 'bblabel --help' ===
+
+
+USAGE: bblabel
+
+   --l labelfile 
+   --xmin xmin
+   --xmax xmax
+   --ymin ymin
+   --ymax ymax
+   --zmin zmin
+   --zmax zmax
+   --o outlabelfile 
+
+   --debug
+   --umask umask    : set unix file permission mask
+   --version        : print version and exit
+   --help           : print help and exit
+
+bblabel 7.4.1
+------------------------------------------------------------
+
+bblabel
+
+Applies a bounding box to a label. The bounding box is specified by
+six coordinates (xmin,xmax,ymin,ymax,zmin,zmax). Only those label
+points within this box are copied to the output. If a min is not
+specified, then -infinity is used. If a max is not specified, then
++infinity is used.
+
+Example:
+
+bblabel --l lh.G_cuneus.label --o lh.out.label \
+  --xmin 0 --ymax -90 --zmin 10 --zmax 20
+
+Keeps label points from lh.G_cuneus.label that have x > 0, y > -90,
+and z between 10 and 20. The result is stored in lh.out.label.
+
+------------------------------------------------------------
+
+=== Output of 'bblabel -help' ===
+
+
+USAGE: bblabel
+
+   --l labelfile 
+   --xmin xmin
+   --xmax xmax
+   --ymin ymin
+   --ymax ymax
+   --zmin zmin
+   --zmax zmax
+   --o outlabelfile 
+
+   --debug
+   --umask umask    : set unix file permission mask
+   --version        : print version and exit
+   --help           : print help and exit
+
+bblabel 7.4.1
+------------------------------------------------------------
+
+bblabel
+
+Applies a bounding box to a label. The bounding box is specified by
+six coordinates (xmin,xmax,ymin,ymax,zmin,zmax). Only those label
+points within this box are copied to the output. If a min is not
+specified, then -infinity is used. If a max is not specified, then
++infinity is used.
+
+Example:
+
+bblabel --l lh.G_cuneus.label --o lh.out.label \
+  --xmin 0 --ymax -90 --zmin 10 --zmax 20
+
+Keeps label points from lh.G_cuneus.label that have x > 0, y > -90,
+and z between 10 and 20. The result is stored in lh.out.label.
+
+------------------------------------------------------------
+
+=== Output of 'bblabel' (no arguments) ===
+
+
+USAGE: bblabel
+
+   --l labelfile 
+   --xmin xmin
+   --xmax xmax
+   --ymin ymin
+   --ymax ymax
+   --zmin zmin
+   --zmax zmax
+   --o outlabelfile 
+
+   --debug
+   --umask umask    : set unix file permission mask
+   --version        : print version and exit
+   --help           : print help and exit
+

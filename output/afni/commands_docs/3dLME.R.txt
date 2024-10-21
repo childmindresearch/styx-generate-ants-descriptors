@@ -1,0 +1,15 @@
+
+=== Output of '3dLME.R --help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dLME.R --args /opt/afni/src/../install/3dLME.R --help
+
+=== Output of '3dLME.R -help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dLME.R --args /opt/afni/src/../install/3dLME.R -help
+
+=== Output of '3dLME.R' (no arguments) ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  /opt/afni/src/../install/3dLME.R --args /opt/afni/src/../install/3dLME.R

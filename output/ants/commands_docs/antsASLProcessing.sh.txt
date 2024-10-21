@@ -1,0 +1,99 @@
+
+=== Output of 'antsASLProcessing.sh --help' ===
+
+antsASLProcessing.sh performs ASL processing based on ANTs tools.  Preprocessing of T1 images using antsCorticalThickness.sh is assumed.  The following steps are performed:
+  1) Calculation of average pCASL image.
+  2) Skull stripping of average pCASL image.
+  3) Registration of average pCASL image to T1 image.
+  4) (Robust) calculation of mean CBF.
+  5) Warping tissue priors and labels to ASL space.
+  6) Warping mean CBF image to template space for VBM analysis.
+
+Usage:
+Required arguments:
+antsASLProcessing.sh -a anatomical image (skull stripped)
+              -p brain segmentation priors (C-style, e.g. priors%d.nii.gz)
+              -g hard brain segmentation
+              -x t1 brain mask
+              -s raw pCASL image
+              -e brain template
+	      -l template labels
+              -t skull-stripped t1 to template transform prefix
+              -o output prefix
+Optional arguments:
+              -b blood T1 value (defaults to 0.67 s^-1)
+	      -r robustness parameter (defaults to 0.95)
+	      -h print help and exit
+	      -n number of bootstrap samples (defaults to 20)
+	      -c percent to sample per bootstrap run (defaults to 70)
+	      -k keep tmp files, including warps (defaults to false--takes lots of space to save)
+	      -i use inverse warps.  Warps are assumed to go in the direction of subject to template.
+	         If you are instead using template to subject warps (e.g. the brain segmentation prior warps from
+	         antsCorticalThickness.sh), use -i (binary switch--no arguments).
+	      -f bootstrap with replacement?  takes arguments "false" or "true"; defaults to false.
+
+=== Output of 'antsASLProcessing.sh -help' ===
+
+antsASLProcessing.sh performs ASL processing based on ANTs tools.  Preprocessing of T1 images using antsCorticalThickness.sh is assumed.  The following steps are performed:
+  1) Calculation of average pCASL image.
+  2) Skull stripping of average pCASL image.
+  3) Registration of average pCASL image to T1 image.
+  4) (Robust) calculation of mean CBF.
+  5) Warping tissue priors and labels to ASL space.
+  6) Warping mean CBF image to template space for VBM analysis.
+
+Usage:
+Required arguments:
+antsASLProcessing.sh -a anatomical image (skull stripped)
+              -p brain segmentation priors (C-style, e.g. priors%d.nii.gz)
+              -g hard brain segmentation
+              -x t1 brain mask
+              -s raw pCASL image
+              -e brain template
+	      -l template labels
+              -t skull-stripped t1 to template transform prefix
+              -o output prefix
+Optional arguments:
+              -b blood T1 value (defaults to 0.67 s^-1)
+	      -r robustness parameter (defaults to 0.95)
+	      -h print help and exit
+	      -n number of bootstrap samples (defaults to 20)
+	      -c percent to sample per bootstrap run (defaults to 70)
+	      -k keep tmp files, including warps (defaults to false--takes lots of space to save)
+	      -i use inverse warps.  Warps are assumed to go in the direction of subject to template.
+	         If you are instead using template to subject warps (e.g. the brain segmentation prior warps from
+	         antsCorticalThickness.sh), use -i (binary switch--no arguments).
+	      -f bootstrap with replacement?  takes arguments "false" or "true"; defaults to false.
+
+=== Output of 'antsASLProcessing.sh' (no arguments) ===
+
+antsASLProcessing.sh performs ASL processing based on ANTs tools.  Preprocessing of T1 images using antsCorticalThickness.sh is assumed.  The following steps are performed:
+  1) Calculation of average pCASL image.
+  2) Skull stripping of average pCASL image.
+  3) Registration of average pCASL image to T1 image.
+  4) (Robust) calculation of mean CBF.
+  5) Warping tissue priors and labels to ASL space.
+  6) Warping mean CBF image to template space for VBM analysis.
+
+Usage:
+Required arguments:
+antsASLProcessing.sh -a anatomical image (skull stripped)
+              -p brain segmentation priors (C-style, e.g. priors%d.nii.gz)
+              -g hard brain segmentation
+              -x t1 brain mask
+              -s raw pCASL image
+              -e brain template
+	      -l template labels
+              -t skull-stripped t1 to template transform prefix
+              -o output prefix
+Optional arguments:
+              -b blood T1 value (defaults to 0.67 s^-1)
+	      -r robustness parameter (defaults to 0.95)
+	      -h print help and exit
+	      -n number of bootstrap samples (defaults to 20)
+	      -c percent to sample per bootstrap run (defaults to 70)
+	      -k keep tmp files, including warps (defaults to false--takes lots of space to save)
+	      -i use inverse warps.  Warps are assumed to go in the direction of subject to template.
+	         If you are instead using template to subject warps (e.g. the brain segmentation prior warps from
+	         antsCorticalThickness.sh), use -i (binary switch--no arguments).
+	      -f bootstrap with replacement?  takes arguments "false" or "true"; defaults to false.

@@ -1,0 +1,140 @@
+
+=== Output of 'SurfLayers --help' ===
+
+** unknown option --help
+
+=== Output of 'SurfLayers -help' ===
+
+
+Overview ~1~
+
+This is a program to compute intermediate surfaces between two boundary surfaces
+
+SurfLayers computes new surfaces for a given number of cortical divisions
+at intermediate distances by simple computation of the fraction 
+between the inner and outer-most surfaces (aka "equi-distant"). 
+A single dividing surface would be halfway between the two surfaces.
+
+Options ~1~
+
+  -spec SPEC_DSET      :dataset that is the SUMA specification file
+                        describing input surfaces 
+
+  -outdir DIRNAME      :new directory for output (default: surflayers)
+
+  -states IN OUT       :typically smoothwm, pial states to describe inner
+                        and outer surfaces (default: "smoothwm pial")
+
+  -hemi  HH            :choose hemisphere: "lh", "rh" or "lh rh" (for both)
+
+  -n_intermed_surfs N  :total number of intermediate surfaces to create
+
+  -surf_A      SB      :inner boundary surface by filename (e.g. smoothwm.gii)
+
+  -surf_B      SA      :outer boundary surface by filename (e.g. pial.gii)
+
+  -surf_intermed_pref SIP  :name for interpolated surfaces 
+                        (default: isurf)
+  
+  -echo                :run script with 'set echo' (i.e., verbosely)
+
+  -no_clean            :do not remove temp files (probably just for testing)
+
+Notes ~1~
+
+Output includes a new directory containing:
++ isurf.lh.01...n.gii -  interpolated surfaces numbered 1 to n
++ other files too if -spec option was utilized
++ a run*tcsh script to view the output directly
+
+See also the quickspecSL program for creating a *.spec file.
+
+For more information or questions, please contact:
+  Salvatore (Sam) Torrisi (torrisi@berkeley.edu)
+  Daniel Glen (glend@mail.nih.gov)
+
+Examples ~1~
+
+  1) 
+
+  SurfLayers                       \
+      -spec std.60.myspec.lh.spec  \
+      -states "white pial"         \
+      -n_intermed_surfs 3
+
+  2) 
+
+  SurfLayers                       \
+      -surf_A lh.white.gii         \
+      -surf_B lh.pial.gii          \
+      -n_intermed_surfs 3
+
+
+
+=== Output of 'SurfLayers' (no arguments) ===
+
+
+Overview ~1~
+
+This is a program to compute intermediate surfaces between two boundary surfaces
+
+SurfLayers computes new surfaces for a given number of cortical divisions
+at intermediate distances by simple computation of the fraction 
+between the inner and outer-most surfaces (aka "equi-distant"). 
+A single dividing surface would be halfway between the two surfaces.
+
+Options ~1~
+
+  -spec SPEC_DSET      :dataset that is the SUMA specification file
+                        describing input surfaces 
+
+  -outdir DIRNAME      :new directory for output (default: surflayers)
+
+  -states IN OUT       :typically smoothwm, pial states to describe inner
+                        and outer surfaces (default: "smoothwm pial")
+
+  -hemi  HH            :choose hemisphere: "lh", "rh" or "lh rh" (for both)
+
+  -n_intermed_surfs N  :total number of intermediate surfaces to create
+
+  -surf_A      SB      :inner boundary surface by filename (e.g. smoothwm.gii)
+
+  -surf_B      SA      :outer boundary surface by filename (e.g. pial.gii)
+
+  -surf_intermed_pref SIP  :name for interpolated surfaces 
+                        (default: isurf)
+  
+  -echo                :run script with 'set echo' (i.e., verbosely)
+
+  -no_clean            :do not remove temp files (probably just for testing)
+
+Notes ~1~
+
+Output includes a new directory containing:
++ isurf.lh.01...n.gii -  interpolated surfaces numbered 1 to n
++ other files too if -spec option was utilized
++ a run*tcsh script to view the output directly
+
+See also the quickspecSL program for creating a *.spec file.
+
+For more information or questions, please contact:
+  Salvatore (Sam) Torrisi (torrisi@berkeley.edu)
+  Daniel Glen (glend@mail.nih.gov)
+
+Examples ~1~
+
+  1) 
+
+  SurfLayers                       \
+      -spec std.60.myspec.lh.spec  \
+      -states "white pial"         \
+      -n_intermed_surfs 3
+
+  2) 
+
+  SurfLayers                       \
+      -surf_A lh.white.gii         \
+      -surf_B lh.pial.gii          \
+      -n_intermed_surfs 3
+
+

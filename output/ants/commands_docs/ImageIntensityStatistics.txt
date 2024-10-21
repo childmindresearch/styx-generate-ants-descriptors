@@ -1,0 +1,12 @@
+
+=== Output of 'ImageIntensityStatistics --help' ===
+
+Usage: ImageIntensityStatistics imageDimension inputImage <labelImage>
+
+=== Output of 'ImageIntensityStatistics -help' ===
+
+Usage: ImageIntensityStatistics imageDimension inputImage <labelImage>
+
+=== Output of 'ImageIntensityStatistics' (no arguments) ===
+
+Usage: ImageIntensityStatistics imageDimension inputImage <labelImage>

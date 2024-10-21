@@ -1,0 +1,28 @@
+
+=== Output of 'sliceanimate --help' ===
+
+rm: invalid option -- 'a'
+Try 'rm ./--help' to remove the file '--help'.
+Try 'rm --help' for more information.
+whirlgif Rev 3.04 (c) 1997-1999 by Hans Dinsen-Hansen
+                  (c) 1995-1996 by Kevin Kadow
+                  (c) 1990-1993 by Mark Podlipec
+Can't open /tmp/Usage: for reading.
+rm: invalid option -- 'a'
+Try 'rm ./--help' to remove the file '--help'.
+Try 'rm --help' for more information.
+
+=== Output of 'sliceanimate -help' ===
+
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+whirlgif Rev 3.04 (c) 1997-1999 by Hans Dinsen-Hansen
+                  (c) 1995-1996 by Kevin Kadow
+                  (c) 1990-1993 by Mark Podlipec
+Can't open /tmp/_slice*.gif for reading.
+
+=== Output of 'sliceanimate' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/sliceanimate <volume> [slicer args]

@@ -1,0 +1,42 @@
+
+=== Output of 'fslcomplex --help' ===
+
+Usage: /usr/local/fsl/bin/fslcomplex <-outputtype> <input> <output> [startvol [endvol]]
+
+       /usr/local/fsl/bin/fslcomplex -realabs complexvol absvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -realphase complexvol phasevol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -realpolar complexvol absvol phasevol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -realcartesian complexvol realvol imagvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complex realvol imagvol complexvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complexpolar absvol phasevol complexvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complexsplit source dest [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complexmerge source1 source2 dest
+       /usr/local/fsl/bin/fslcomplex -copyonly source dest
+
+=== Output of 'fslcomplex -help' ===
+
+Usage: /usr/local/fsl/bin/fslcomplex <-outputtype> <input> <output> [startvol [endvol]]
+
+       /usr/local/fsl/bin/fslcomplex -realabs complexvol absvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -realphase complexvol phasevol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -realpolar complexvol absvol phasevol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -realcartesian complexvol realvol imagvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complex realvol imagvol complexvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complexpolar absvol phasevol complexvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complexsplit source dest [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complexmerge source1 source2 dest
+       /usr/local/fsl/bin/fslcomplex -copyonly source dest
+
+=== Output of 'fslcomplex' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/fslcomplex <-outputtype> <input> <output> [startvol [endvol]]
+
+       /usr/local/fsl/bin/fslcomplex -realabs complexvol absvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -realphase complexvol phasevol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -realpolar complexvol absvol phasevol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -realcartesian complexvol realvol imagvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complex realvol imagvol complexvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complexpolar absvol phasevol complexvol [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complexsplit source dest [startvol [endvol]]
+       /usr/local/fsl/bin/fslcomplex -complexmerge source1 source2 dest
+       /usr/local/fsl/bin/fslcomplex -copyonly source dest

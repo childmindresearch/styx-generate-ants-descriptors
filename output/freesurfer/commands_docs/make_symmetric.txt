@@ -1,0 +1,63 @@
+
+=== Output of 'make_symmetric --help' ===
+
+
+   Usage: make_symmetric hemi input.mgz output.mgz map.lta
+
+   Description: 
+    Registers input to the left/right reversed version using 
+    mri_robust_register making use of the half-way space. This results
+    in an upright, forward facing head position. Then mirrors selected
+    hemi ('lh' or 'rh') to the other. The transform map.lta is also
+    written that maps the input to the upright space.
+
+   Reference:
+    Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+    Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+    DOI-Link http://dx.doi.org/10.1016/j.neuroimage.2010.07.020 
+    Pre-Print http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+make_symmetric 7.4.1
+
+
+=== Output of 'make_symmetric -help' ===
+
+
+   Usage: make_symmetric hemi input.mgz output.mgz map.lta
+
+   Description: 
+    Registers input to the left/right reversed version using 
+    mri_robust_register making use of the half-way space. This results
+    in an upright, forward facing head position. Then mirrors selected
+    hemi ('lh' or 'rh') to the other. The transform map.lta is also
+    written that maps the input to the upright space.
+
+   Reference:
+    Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+    Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+    DOI-Link http://dx.doi.org/10.1016/j.neuroimage.2010.07.020 
+    Pre-Print http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+make_symmetric 7.4.1
+
+
+=== Output of 'make_symmetric' (no arguments) ===
+
+
+   Usage: make_symmetric hemi input.mgz output.mgz map.lta
+
+   Description: 
+    Registers input to the left/right reversed version using 
+    mri_robust_register making use of the half-way space. This results
+    in an upright, forward facing head position. Then mirrors selected
+    hemi ('lh' or 'rh') to the other. The transform map.lta is also
+    written that maps the input to the upright space.
+
+   Reference:
+    Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+    Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+    DOI-Link http://dx.doi.org/10.1016/j.neuroimage.2010.07.020 
+    Pre-Print http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+make_symmetric 7.4.1
+

@@ -1,0 +1,12 @@
+
+=== Output of 'RebaseTensorImage --help' ===
+
+Usage: RebaseTensorImage Dimension infile.nii outfile.nii <PHYSICAL/LOCAL/reference.nii.gz> 
+
+=== Output of 'RebaseTensorImage -help' ===
+
+Usage: RebaseTensorImage Dimension infile.nii outfile.nii <PHYSICAL/LOCAL/reference.nii.gz> 
+
+=== Output of 'RebaseTensorImage' (no arguments) ===
+
+Usage: RebaseTensorImage Dimension infile.nii outfile.nii <PHYSICAL/LOCAL/reference.nii.gz> 

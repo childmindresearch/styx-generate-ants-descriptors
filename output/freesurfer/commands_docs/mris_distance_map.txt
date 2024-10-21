@@ -1,0 +1,27 @@
+
+=== Output of 'mris_distance_map --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_distance_map [options] <input surface file> <output scalar field (.mgz)>
+
+This program will compute a distance map of each point on the surface to a
+reference point (vertex 0 by default)
+
+valid options are:
+
+=== Output of 'mris_distance_map -help' ===
+
+usage: /usr/local/freesurfer/bin/mris_distance_map [options] <input surface file> <output scalar field (.mgz)>
+
+This program will compute a distance map of each point on the surface to a
+reference point (vertex 0 by default)
+
+valid options are:
+
+=== Output of 'mris_distance_map' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_distance_map [options] <input surface file> <output scalar field (.mgz)>
+
+This program will compute a distance map of each point on the surface to a
+reference point (vertex 0 by default)
+
+valid options are:

@@ -1,0 +1,24 @@
+
+=== Output of 'morph_tables-lh --help' ===
+
+/usr/local/freesurfer/subjects/--help ~ 
+hostname: Command not found.
+~ 
+mri-structvits: Command not found.
+popd: Directory stack empty.
+
+=== Output of 'morph_tables-lh -help' ===
+
+/usr/local/freesurfer/subjects/-help ~ 
+hostname: Command not found.
+~ 
+mri-structvits: Command not found.
+popd: Directory stack empty.
+
+=== Output of 'morph_tables-lh' (no arguments) ===
+
+/usr/local/freesurfer/subjects ~ 
+hostname: Command not found.
+~ 
+mri-structvits: Command not found.
+popd: Directory stack empty.

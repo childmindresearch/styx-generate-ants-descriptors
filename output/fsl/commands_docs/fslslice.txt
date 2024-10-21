@@ -1,0 +1,15 @@
+
+=== Output of 'fslslice --help' ===
+
+Datatype 0 is NOT supported - please check your image
+
+=== Output of 'fslslice -help' ===
+
+Datatype 0 is NOT supported - please check your image
+
+=== Output of 'fslslice' (no arguments) ===
+
+Usage: fslslice <volume>
+
+Usage: fslslice <volume> <output basename>
+

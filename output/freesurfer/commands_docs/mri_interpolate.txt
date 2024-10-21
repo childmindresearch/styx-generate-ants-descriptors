@@ -1,0 +1,12 @@
+
+=== Output of 'mri_interpolate --help' ===
+
+error: mri_interpolate has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_interpolate -help' ===
+
+error: mri_interpolate has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_interpolate' (no arguments) ===
+
+error: mri_interpolate has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

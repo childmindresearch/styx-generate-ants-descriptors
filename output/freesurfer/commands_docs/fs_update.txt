@@ -1,0 +1,36 @@
+
+=== Output of 'fs_update --help' ===
+
+ Usage:
+
+ Update $FREESURFER_HOME:
+   $> fs_update
+
+ Update only certain files (directories copied recusrsively):
+   $> fs_update bin/mri_convert subjects/fsaverge
+
+ Show help:
+   $> fs_update -h, -help, --help
+
+
+=== Output of 'fs_update -help' ===
+
+ Usage:
+
+ Update $FREESURFER_HOME:
+   $> fs_update
+
+ Update only certain files (directories copied recusrsively):
+   $> fs_update bin/mri_convert subjects/fsaverge
+
+ Show help:
+   $> fs_update -h, -help, --help
+
+
+=== Output of 'fs_update' (no arguments) ===
+
+ Build is freesurfer-linux-centos8_x86_64-7.4.1-20230613-7eb8460
+
+   Running this will update some of your freesurfer binaries.
+
+

@@ -1,0 +1,21 @@
+
+=== Output of 'eddy_correct --help' ===
+
+
+Usage: eddy_correct <4dinput> <4doutput> <reference_no> [<interp>]
+       Choose interp from {trilinear,spline} def - trilinear 
+
+
+=== Output of 'eddy_correct -help' ===
+
+
+Usage: eddy_correct <4dinput> <4doutput> <reference_no> [<interp>]
+       Choose interp from {trilinear,spline} def - trilinear 
+
+
+=== Output of 'eddy_correct' (no arguments) ===
+
+
+Usage: eddy_correct <4dinput> <4doutput> <reference_no> [<interp>]
+       Choose interp from {trilinear,spline} def - trilinear 
+

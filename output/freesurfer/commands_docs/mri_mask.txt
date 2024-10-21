@@ -1,0 +1,281 @@
+
+=== Output of 'mri_mask --help' ===
+
+				Help
+
+NAME
+	mri_mask - applies a mask volume (typically skull stripped)
+
+SYNOPSIS
+	mri_mask [options] <in vol> <mask vol> <out vol>
+
+DESCRIPTION
+	This program applies a mask volume (typically skull stripped).
+
+POSITIONAL ARGUMENTS
+	in vol
+		input volume
+
+	mask vol
+		mask volume
+
+OPTIONAL FLAGGED ARGUMENTS
+	-xform %s
+		apply M3Z/LTA to transform mask to space of input volume (can 
+		be identity.nofile, will be inverted if needed)
+
+	-lta_src %s
+		source volume for -xform (if not available from the xform 
+		file)
+
+	-lta_dst %s
+		target volume for -xform (if not available from the xform 
+		file)
+
+	-T threshold
+		threshold mask volume at threshold (i.e., all values <= T 
+		considered as zero)
+
+	-samseg
+		assume mask is a samseg segmentation and mask all non-brain 
+		labels
+
+	-bb npad
+		Create and extract data from a bounding box around the mask. 
+		The bounding box is expanded by npad voxels in each direction.
+		npad should be at least 1 to avoid clipping
+
+	-bbm npad1 npad2 npad3
+		Create and extract data from a bounding box around the mask. 
+		The bounding box is expanded by npad[X] voxels in each 
+		direction. npad should be at least 1 to avoid clipping
+
+	-bbmm npad1a npad1b npad2a npad2b npad3a npad3b
+		Create and extract data from a bounding box around the mask. 
+		The bounding box is expanded by npad[X] voxels in each 
+		direction. npad should be at least 1 to avoid clipping
+
+	-abs
+		take abs() before applying threshold
+
+	-invert, -no-invert
+		Invert mask (or turn off inversion)
+
+	-rh
+		set mask in rh labels to 1 (assumes input mask is an aseg)
+
+	-lh
+		set mask in lh labels to 1 (assumes input mask is an aseg)
+
+	-dilate N
+		dilate mask N times before applying
+
+	-no_cerebellum
+		remove cerebellum from aseg mask (assumes input mask is an 
+		aseg)
+
+	-oval #
+		use oval as output instead of 0
+
+	-transfer #
+		transfer only voxel value # from mask to out
+
+	-keep_mask_deletion_edits
+		transfer voxel-deletion edits (voxels=1) from mask to out vol
+
+OUTPUTS
+	out vol
+		output volume
+
+REPORTING
+	Report bugs to <analysis-bugs@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_mask -help' ===
+
+unknown option -help
+				Help
+
+NAME
+	mri_mask - applies a mask volume (typically skull stripped)
+
+SYNOPSIS
+	mri_mask [options] <in vol> <mask vol> <out vol>
+
+DESCRIPTION
+	This program applies a mask volume (typically skull stripped).
+
+POSITIONAL ARGUMENTS
+	in vol
+		input volume
+
+	mask vol
+		mask volume
+
+OPTIONAL FLAGGED ARGUMENTS
+	-xform %s
+		apply M3Z/LTA to transform mask to space of input volume (can 
+		be identity.nofile, will be inverted if needed)
+
+	-lta_src %s
+		source volume for -xform (if not available from the xform 
+		file)
+
+	-lta_dst %s
+		target volume for -xform (if not available from the xform 
+		file)
+
+	-T threshold
+		threshold mask volume at threshold (i.e., all values <= T 
+		considered as zero)
+
+	-samseg
+		assume mask is a samseg segmentation and mask all non-brain 
+		labels
+
+	-bb npad
+		Create and extract data from a bounding box around the mask. 
+		The bounding box is expanded by npad voxels in each direction.
+		npad should be at least 1 to avoid clipping
+
+	-bbm npad1 npad2 npad3
+		Create and extract data from a bounding box around the mask. 
+		The bounding box is expanded by npad[X] voxels in each 
+		direction. npad should be at least 1 to avoid clipping
+
+	-bbmm npad1a npad1b npad2a npad2b npad3a npad3b
+		Create and extract data from a bounding box around the mask. 
+		The bounding box is expanded by npad[X] voxels in each 
+		direction. npad should be at least 1 to avoid clipping
+
+	-abs
+		take abs() before applying threshold
+
+	-invert, -no-invert
+		Invert mask (or turn off inversion)
+
+	-rh
+		set mask in rh labels to 1 (assumes input mask is an aseg)
+
+	-lh
+		set mask in lh labels to 1 (assumes input mask is an aseg)
+
+	-dilate N
+		dilate mask N times before applying
+
+	-no_cerebellum
+		remove cerebellum from aseg mask (assumes input mask is an 
+		aseg)
+
+	-oval #
+		use oval as output instead of 0
+
+	-transfer #
+		transfer only voxel value # from mask to out
+
+	-keep_mask_deletion_edits
+		transfer voxel-deletion edits (voxels=1) from mask to out vol
+
+OUTPUTS
+	out vol
+		output volume
+
+REPORTING
+	Report bugs to <analysis-bugs@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_mask' (no arguments) ===
+
+Incorrect number of arguments, argc = 1
+				Help
+
+NAME
+	mri_mask - applies a mask volume (typically skull stripped)
+
+SYNOPSIS
+	mri_mask [options] <in vol> <mask vol> <out vol>
+
+DESCRIPTION
+	This program applies a mask volume (typically skull stripped).
+
+POSITIONAL ARGUMENTS
+	in vol
+		input volume
+
+	mask vol
+		mask volume
+
+OPTIONAL FLAGGED ARGUMENTS
+	-xform %s
+		apply M3Z/LTA to transform mask to space of input volume (can 
+		be identity.nofile, will be inverted if needed)
+
+	-lta_src %s
+		source volume for -xform (if not available from the xform 
+		file)
+
+	-lta_dst %s
+		target volume for -xform (if not available from the xform 
+		file)
+
+	-T threshold
+		threshold mask volume at threshold (i.e., all values <= T 
+		considered as zero)
+
+	-samseg
+		assume mask is a samseg segmentation and mask all non-brain 
+		labels
+
+	-bb npad
+		Create and extract data from a bounding box around the mask. 
+		The bounding box is expanded by npad voxels in each direction.
+		npad should be at least 1 to avoid clipping
+
+	-bbm npad1 npad2 npad3
+		Create and extract data from a bounding box around the mask. 
+		The bounding box is expanded by npad[X] voxels in each 
+		direction. npad should be at least 1 to avoid clipping
+
+	-bbmm npad1a npad1b npad2a npad2b npad3a npad3b
+		Create and extract data from a bounding box around the mask. 
+		The bounding box is expanded by npad[X] voxels in each 
+		direction. npad should be at least 1 to avoid clipping
+
+	-abs
+		take abs() before applying threshold
+
+	-invert, -no-invert
+		Invert mask (or turn off inversion)
+
+	-rh
+		set mask in rh labels to 1 (assumes input mask is an aseg)
+
+	-lh
+		set mask in lh labels to 1 (assumes input mask is an aseg)
+
+	-dilate N
+		dilate mask N times before applying
+
+	-no_cerebellum
+		remove cerebellum from aseg mask (assumes input mask is an 
+		aseg)
+
+	-oval #
+		use oval as output instead of 0
+
+	-transfer #
+		transfer only voxel value # from mask to out
+
+	-keep_mask_deletion_edits
+		transfer voxel-deletion edits (voxels=1) from mask to out vol
+
+OUTPUTS
+	out vol
+		output volume
+
+REPORTING
+	Report bugs to <analysis-bugs@nmr.mgh.harvard.edu>
+
+

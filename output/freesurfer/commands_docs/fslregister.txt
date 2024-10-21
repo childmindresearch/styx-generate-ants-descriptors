@@ -1,0 +1,210 @@
+
+=== Output of 'fslregister --help' ===
+
+USAGE: fslregister
+
+Required Arguments:
+   --s subjid
+   --mov volid  : input/movable volume
+   --reg    register.dat
+
+Optional Arguments
+
+   --fslmat fsl.mat : output registration matrix in fsl format
+   --initfslmat matfile : supply initial fsl matrix file (implies --noinitxfm)
+   --noinitxfm  : do not initialize based on header goemetry
+   --niters niters  : iterate niter times (default is 1)
+ 
+   --dof  dof       : FLIRT DOF (default is 6)
+   --bins bins      : FLIRT bins (default is 256)
+   --cost cost      : FLIRT cost (default is corratio)
+   --maxangle angle : FLIRT max search angle (default is 90)
+   --no-new-schedule 
+ 
+   --no-allow-swap : do not allow swap dim of positive determinant input volumes
+   --no-trans : do not do a translation-only registration prior to full 
+ 
+   --betmov      : perform brain extration on mov
+   --betfvalue f : f value for bet, 0.1 default (passed with -f to bet)
+   --betfunc     : betfunc on mov instead of simply bet
+ 
+   --betref      : brain extration on ref (usually not needed)
+ 
+   --frame frameno : reg to frameno (default 0=1st)
+   --mid-frame  : use middle frame
+   --fsvol volid : use FreeSurfer volid (default brainmask)
+   --template-out template : save template (good with --frame)
+ 
+   --out outvol : have flirt reslice mov to targ
+   --verbose N  : flirt verbosity level
+   --tmp tmpdir : use tmpdir (implies --nocleanup)
+   --nocleanup  : do not delete temporary files
+   --nolog      : do produce a log file
+   --version    : print version and exit
+   --help       : print help and exit
+   --lta ltafile.lta : output reg in LTA format
+
+
+Registers a volume to its FreeSurfer anatomical using FSLs FLIRT and
+creates a FreeSurfer register.dat file. The registration is rigid (ie,
+6 DOF) unless changed with --dof. It is a good idea to initialize
+FLIRT with either --initxfm or --initfslmat.
+
+--s subjid
+
+Id of the subject as found in SUBJECTS_DIR. The reference volume is
+the mri/brain volume (this can be changed with --fsvol). This is
+converted to analyze using mri_convert.
+
+--mov volid
+
+Volume identifier of the movable volume. This must be specified in
+a way suitable for mri_convert. Uses first frame unless --frame
+is specified. For this to work correctly, the movable volume must
+have correct geometry information (eg, a valid SPM-style .mat file)
+otherwise the results may be unpredictable.
+
+--reg regfile
+
+Output registration file. This will map RAS in the reference to
+RAS in the movable. This file/matrix is in a format understood
+by freesurfer (see tkregister2 --help for docs). It will contain
+the subjectname.
+
+--initfslmat matfile
+
+Initialize FLIRT with the given matrix in the FSL/FLIRT-formated file.
+It is strongly suggested that you use this (or --initxfm), otherwise
+you may have to flip your volumes around to get things more-or-less
+lined up. All this matrix needs to do is to get the functional and
+the anatomical in the same orientation. To see whether your initial
+matrix gets you in the right orientation, run something like:
+
+  tkregister2  --mov func.nii --s subjid --surf brain \
+       --fslreg fsl.init.mat --tag --reg /tmp/reg.blah.234
+
+Flipping back and forth between the anatomical and the functional
+should show that the volumes are oriented more-or-less in the same way
+(eg, nose pointing in the same direction). You may or may not be able
+to tell whether the volumes are oriented the same left-right.  The
+registration does not need to be close at this point.
+
+--initxfm
+
+Initialize FLIRT based on the geometry information in the header of the
+reference and movable volumes. Note that the geometry information must
+be correct in these volumes.
+
+--niters nIterations
+
+Run FLIRT multiple times, using the output from the previous
+evaluation as an initialization for the next. This helps to remove
+sensitivity to initialization. Default is 4.
+
+--dof dof
+
+Degrees of freedom in the FLIRT registration. Default is 6, which is
+appropriate for registering two volumes from the same subject.
+
+--bins bins      : FLIRT bins (default is 256)
+--cost cost      : FLIRT cost (default is corratio)
+--maxangle angle : FLIRT max search angle (default is 70)
+
+These are just inputs for FLIRT.
+
+--nobetmov
+
+By default, the FSL Brain Extaction Tool (BET) is applied to the movable
+prior to registration. This turns it off.
+
+--betfvalue
+
+Change the value of the -f arg to bet (ie, bet -f f). Default is 0.1.
+
+--betfunc
+
+Run betfunc instead of just bet.
+
+--betref
+
+By default, the brain of the reference is NOT extracted because by
+default the FreeSurfer "brain" volume is used, which has already been
+skull stripped. The refernce can be changed with --fsvol.
+
+--fsvol volid
+
+Use the FreeSurfer volid as the reference volume. Uses "brain" by default.
+If you use something that has not been skull stripped, then consider using
+--betref.
+
+--frame frameno
+
+Use something other than the first frame. Eg, with FSL may want
+to use the middle frame. For SPM analyze, you should specify the
+file that corresonds to the frame you want because each file only
+has one frame.
+
+--out outvol
+
+Use FLIRT to resample the movable/functional volume to the reference space.
+
+
+BUGS
+
+SEE ALSO:
+
+tkregister2, mri_vol2surf, mri_convert, mri_rigid_register,
+fsl_rigid_register, Flirt.
+
+
+
+=== Output of 'fslregister -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'fslregister' (no arguments) ===
+
+USAGE: fslregister
+
+Required Arguments:
+   --s subjid
+   --mov volid  : input/movable volume
+   --reg    register.dat
+
+Optional Arguments
+
+   --fslmat fsl.mat : output registration matrix in fsl format
+   --initfslmat matfile : supply initial fsl matrix file (implies --noinitxfm)
+   --noinitxfm  : do not initialize based on header goemetry
+   --niters niters  : iterate niter times (default is 1)
+ 
+   --dof  dof       : FLIRT DOF (default is 6)
+   --bins bins      : FLIRT bins (default is 256)
+   --cost cost      : FLIRT cost (default is corratio)
+   --maxangle angle : FLIRT max search angle (default is 90)
+   --no-new-schedule 
+ 
+   --no-allow-swap : do not allow swap dim of positive determinant input volumes
+   --no-trans : do not do a translation-only registration prior to full 
+ 
+   --betmov      : perform brain extration on mov
+   --betfvalue f : f value for bet, 0.1 default (passed with -f to bet)
+   --betfunc     : betfunc on mov instead of simply bet
+ 
+   --betref      : brain extration on ref (usually not needed)
+ 
+   --frame frameno : reg to frameno (default 0=1st)
+   --mid-frame  : use middle frame
+   --fsvol volid : use FreeSurfer volid (default brainmask)
+   --template-out template : save template (good with --frame)
+ 
+   --out outvol : have flirt reslice mov to targ
+   --verbose N  : flirt verbosity level
+   --tmp tmpdir : use tmpdir (implies --nocleanup)
+   --nocleanup  : do not delete temporary files
+   --nolog      : do produce a log file
+   --version    : print version and exit
+   --help       : print help and exit
+   --lta ltafile.lta : output reg in LTA format
+

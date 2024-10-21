@@ -1,0 +1,12 @@
+
+=== Output of 'compute_label_vals.csh --help' ===
+
+subject: Undefined variable.
+
+=== Output of 'compute_label_vals.csh -help' ===
+
+subject: Undefined variable.
+
+=== Output of 'compute_label_vals.csh' (no arguments) ===
+
+subject: Undefined variable.

@@ -1,0 +1,607 @@
+
+=== Output of 'fslerrorreport --help' ===
+
+/usr/local/fsl/bin/fslerrorreport: line 93: quota: command not found
+ 
+######################################################################
+#### MACHINE INFORMATION
+######################################################################
+ 
+Uname:
+Linux
+ 
+df:
+Filesystem      1K-blocks     Used Available Use% Mounted on
+overlay        1055762868 63548428 938510968   7% /
+ 
+quota:
+ 
+Memory and Swap info:
+MemTotal:       32741712 kB
+MemFree:        13845088 kB
+MemAvailable:   31010292 kB
+Buffers:          278292 kB
+Cached:         16212408 kB
+SwapCached:           20 kB
+Active:          1110444 kB
+Inactive:       16083788 kB
+Active(anon):       4052 kB
+Inactive(anon):   711716 kB
+Active(file):    1106392 kB
+Inactive(file): 15372072 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       8388608 kB
+SwapFree:        8388340 kB
+Dirty:                40 kB
+Writeback:             0 kB
+AnonPages:        678636 kB
+Mapped:           306360 kB
+Shmem:             12236 kB
+KReclaimable:    1147116 kB
+Slab:            1344516 kB
+SReclaimable:    1147116 kB
+SUnreclaim:       197400 kB
+KernelStack:       10316 kB
+PageTables:        10528 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    24759464 kB
+Committed_AS:    3005536 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       34792 kB
+VmallocChunk:          0 kB
+Percpu:             8704 kB
+AnonHugePages:    415744 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      197632 kB
+DirectMap2M:    16447488 kB
+DirectMap1G:    27262976 kB
+ 
+######################################################################
+#### ENVIRONMENT INFORMATION
+######################################################################
+ 
+FSLDIR=/usr/local/fsl
+FSLOUTPUTTYPE=NIFTI_GZ
+ 
+LD_LIBRARY_PATH=/usr/local/fsl/lib
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/fsl/bin
+LD_LIBRARY_PATH=/usr/local/fsl/lib
+ 
+######################################################################
+#### DIRECTORY INFORMATION
+######################################################################
+ 
+PWD:
+/
+ 
+total 660
+-rw-r--r--   1 root root     41 Oct 21 20:14 --help
+-rw-r--r--   1 root root     48 Oct 21 20:16 --help.nii.gz
+-rw-r--r--   1 root root   6820 Oct 21 20:14 --help1.lut
+-rw-r--r--   1 root root  16264 Oct 21 20:14 --help1.map
+-rw-r--r--   1 root root   7320 Oct 21 20:14 --help1t.lut
+-rw-r--r--   1 root root  16764 Oct 21 20:14 --help1t.map
+-rw-r--r--   1 root root  15220 Oct 21 20:14 --help2.lut
+-rw-r--r--   1 root root  52150 Oct 21 20:14 --help2.map
+-rw-r--r--   1 root root  16220 Oct 21 20:14 --help2t.lut
+-rw-r--r--   1 root root  53150 Oct 21 20:14 --help2t.map
+-rw-r--r--   1 root root   9620 Oct 21 20:14 --help3.lut
+-rw-r--r--   1 root root   9614 Oct 21 20:14 --help3.map
+-rw-r--r--   1 root root    220 Oct 21 20:14 --help3t.lut
+-rw-r--r--   1 root root    214 Oct 21 20:14 --help3t.map
+-rw-r--r--   1 root root   1753 Oct 21 20:14 --help_tmp
+-rw-r--r--   1 root root     41 Oct 21 20:14 -help
+-rw-r--r--   1 root root     48 Oct 21 20:16 -help.nii.gz
+-rw-r--r--   1 root root   6820 Oct 21 20:14 -help1.lut
+-rw-r--r--   1 root root  16264 Oct 21 20:14 -help1.map
+-rw-r--r--   1 root root   7320 Oct 21 20:14 -help1t.lut
+-rw-r--r--   1 root root  16764 Oct 21 20:14 -help1t.map
+-rw-r--r--   1 root root  15220 Oct 21 20:14 -help2.lut
+-rw-r--r--   1 root root  52150 Oct 21 20:14 -help2.map
+-rw-r--r--   1 root root  16220 Oct 21 20:14 -help2t.lut
+-rw-r--r--   1 root root  53150 Oct 21 20:14 -help2t.map
+-rw-r--r--   1 root root   9620 Oct 21 20:14 -help3.lut
+-rw-r--r--   1 root root   9614 Oct 21 20:14 -help3.map
+-rw-r--r--   1 root root    220 Oct 21 20:14 -help3t.lut
+-rw-r--r--   1 root root    214 Oct 21 20:14 -help3t.map
+-rw-r--r--   1 root root      0 Oct 21 20:14 -help_tmp
+drwxr-xr-x   1 root root   4096 Oct 21 20:16 .
+drwxr-xr-x   1 root root   4096 Oct 21 20:16 ..
+-rwxr-xr-x   1 root root      0 Oct 21 20:14 .dockerenv
+drwxr-xr-x   2 root root   4096 Feb 11  2021 .empty
+-rw-r--r--   1 root root      1 Oct 21 20:14 Overlap_and_Volumes__.txt
+drwxr-xr-x   1 root root   4096 Feb 11  2021 bin
+drwxr-xr-x   2 root root   4096 Apr 24  2018 boot
+drwxr-xr-x   5 root root    340 Oct 21 20:14 dev
+drwxr-xr-x   1 root root   4096 Oct 21 20:14 etc
+-rw-r--r--   1 root root 100244 Dec  2  2020 fslinstaller.py
+drwxr-xr-x   2 root root   4096 Apr 24  2018 home
+drwxr-xr-x   1 root root   4096 May 23  2017 lib
+drwxr-xr-x   2 root root   4096 Jan 18  2021 lib64
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 logdir
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 logdir+
+drwxr-xr-x   2 root root   4096 Jan 18  2021 media
+drwxr-xr-x   2 root root   4096 Jan 18  2021 mnt
+drwxr-xr-x   2 root root   4096 Jan 18  2021 opt
+drwxrwxrwx   1 1000 1000   4096 Oct 21 20:14 output
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 p
+dr-xr-xr-x 338 root root      0 Oct 21 20:14 proc
+drwx------   1 root root   4096 Feb 11  2021 root
+drwxr-xr-x   1 root root   4096 Jan 21  2021 run
+drwxr-xr-x   1 root root   4096 Jan 21  2021 sbin
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 slicesdir
+drwxr-xr-x   2 root root   4096 Jan 18  2021 srv
+dr-xr-xr-x  11 root root      0 Oct 21 20:14 sys
+drwxrwxrwt   1 root root   4096 Oct 21 20:16 tmp
+drwxr-xr-x   1 root root   4096 Jan 18  2021 usr
+drwxr-xr-x   1 root root   4096 Jan 18  2021 var
+ 
+######################################################################
+#### IMAGE INFORMATION
+######################################################################
+ 
+filename	--help.nii.gz
+
+sizeof_hdr	348
+data_type	UNKNOWN
+dim0		0
+dim1		0
+dim2		0
+dim3		0
+dim4		0
+dim5		0
+dim6		0
+dim7		0
+vox_units	Unknown
+time_units	Unknown
+datatype	0
+nbyper		0
+bitpix		0
+pixdim0		0.000000
+pixdim1		0.000000
+pixdim2		0.000000
+pixdim3		0.000000
+pixdim4		0.000000
+pixdim5		0.000000
+pixdim6		0.000000
+pixdim7		0.000000
+vox_offset	352
+cal_max		0.000000
+cal_min		0.000000
+scl_slope	1.000000
+scl_inter	0.000000
+phase_dim	0
+freq_dim	0
+slice_dim	0
+slice_name	Unknown
+slice_code	0
+slice_start	0
+slice_end	0
+slice_duration	0.000000
+toffset		0.000000
+intent		Unknown
+intent_code	0
+intent_name	
+intent_p1	0.000000
+intent_p2	0.000000
+intent_p3	0.000000
+qform_name	Unknown
+qform_code	0
+qto_xyz:1	1.000000 0.000000 0.000000 0.000000 
+qto_xyz:2	0.000000 1.000000 0.000000 0.000000 
+qto_xyz:3	0.000000 0.000000 1.000000 0.000000 
+qto_xyz:4	0.000000 0.000000 0.000000 1.000000 
+qform_xorient	Left-to-Right
+qform_yorient	Posterior-to-Anterior
+qform_zorient	Inferior-to-Superior
+sform_name	Unknown
+sform_code	0
+sto_xyz:1	0.000000 0.000000 0.000000 0.000000 
+sto_xyz:2	0.000000 0.000000 0.000000 0.000000 
+sto_xyz:3	0.000000 0.000000 0.000000 0.000000 
+sto_xyz:4	0.000000 0.000000 0.000000 1.000000 
+sform_xorient	Unknown
+sform_yorient	Unknown
+sform_zorient	Unknown
+file_type	NIFTI-1+
+file_code	1
+descrip		
+aux_file	
+ 
+This error report is saved in the file: /tmp/fsl_hoSz9o.gz
+ 
+
+=== Output of 'fslerrorreport -help' ===
+
+/usr/local/fsl/bin/fslerrorreport: line 93: quota: command not found
+ 
+######################################################################
+#### MACHINE INFORMATION
+######################################################################
+ 
+Uname:
+Linux
+ 
+df:
+Filesystem      1K-blocks     Used Available Use% Mounted on
+overlay        1055762868 63548432 938510964   7% /
+ 
+quota:
+ 
+Memory and Swap info:
+MemTotal:       32741712 kB
+MemFree:        13843108 kB
+MemAvailable:   31008312 kB
+Buffers:          278292 kB
+Cached:         16212408 kB
+SwapCached:           20 kB
+Active:          1110444 kB
+Inactive:       16083788 kB
+Active(anon):       4052 kB
+Inactive(anon):   711716 kB
+Active(file):    1106392 kB
+Inactive(file): 15372072 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       8388608 kB
+SwapFree:        8388340 kB
+Dirty:                40 kB
+Writeback:             0 kB
+AnonPages:        679000 kB
+Mapped:           306724 kB
+Shmem:             12236 kB
+KReclaimable:    1147116 kB
+Slab:            1344516 kB
+SReclaimable:    1147116 kB
+SUnreclaim:       197400 kB
+KernelStack:       10316 kB
+PageTables:        10892 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    24759464 kB
+Committed_AS:    3005340 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       34760 kB
+VmallocChunk:          0 kB
+Percpu:             8704 kB
+AnonHugePages:    415744 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      197632 kB
+DirectMap2M:    16447488 kB
+DirectMap1G:    27262976 kB
+ 
+######################################################################
+#### ENVIRONMENT INFORMATION
+######################################################################
+ 
+FSLDIR=/usr/local/fsl
+FSLOUTPUTTYPE=NIFTI_GZ
+ 
+LD_LIBRARY_PATH=/usr/local/fsl/lib
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/fsl/bin
+LD_LIBRARY_PATH=/usr/local/fsl/lib
+ 
+######################################################################
+#### DIRECTORY INFORMATION
+######################################################################
+ 
+PWD:
+/
+ 
+total 660
+-rw-r--r--   1 root root     41 Oct 21 20:14 --help
+-rw-r--r--   1 root root     48 Oct 21 20:16 --help.nii.gz
+-rw-r--r--   1 root root   6820 Oct 21 20:14 --help1.lut
+-rw-r--r--   1 root root  16264 Oct 21 20:14 --help1.map
+-rw-r--r--   1 root root   7320 Oct 21 20:14 --help1t.lut
+-rw-r--r--   1 root root  16764 Oct 21 20:14 --help1t.map
+-rw-r--r--   1 root root  15220 Oct 21 20:14 --help2.lut
+-rw-r--r--   1 root root  52150 Oct 21 20:14 --help2.map
+-rw-r--r--   1 root root  16220 Oct 21 20:14 --help2t.lut
+-rw-r--r--   1 root root  53150 Oct 21 20:14 --help2t.map
+-rw-r--r--   1 root root   9620 Oct 21 20:14 --help3.lut
+-rw-r--r--   1 root root   9614 Oct 21 20:14 --help3.map
+-rw-r--r--   1 root root    220 Oct 21 20:14 --help3t.lut
+-rw-r--r--   1 root root    214 Oct 21 20:14 --help3t.map
+-rw-r--r--   1 root root   1753 Oct 21 20:14 --help_tmp
+-rw-r--r--   1 root root     41 Oct 21 20:14 -help
+-rw-r--r--   1 root root     48 Oct 21 20:16 -help.nii.gz
+-rw-r--r--   1 root root   6820 Oct 21 20:14 -help1.lut
+-rw-r--r--   1 root root  16264 Oct 21 20:14 -help1.map
+-rw-r--r--   1 root root   7320 Oct 21 20:14 -help1t.lut
+-rw-r--r--   1 root root  16764 Oct 21 20:14 -help1t.map
+-rw-r--r--   1 root root  15220 Oct 21 20:14 -help2.lut
+-rw-r--r--   1 root root  52150 Oct 21 20:14 -help2.map
+-rw-r--r--   1 root root  16220 Oct 21 20:14 -help2t.lut
+-rw-r--r--   1 root root  53150 Oct 21 20:14 -help2t.map
+-rw-r--r--   1 root root   9620 Oct 21 20:14 -help3.lut
+-rw-r--r--   1 root root   9614 Oct 21 20:14 -help3.map
+-rw-r--r--   1 root root    220 Oct 21 20:14 -help3t.lut
+-rw-r--r--   1 root root    214 Oct 21 20:14 -help3t.map
+-rw-r--r--   1 root root      0 Oct 21 20:14 -help_tmp
+drwxr-xr-x   1 root root   4096 Oct 21 20:16 .
+drwxr-xr-x   1 root root   4096 Oct 21 20:16 ..
+-rwxr-xr-x   1 root root      0 Oct 21 20:14 .dockerenv
+drwxr-xr-x   2 root root   4096 Feb 11  2021 .empty
+-rw-r--r--   1 root root      1 Oct 21 20:14 Overlap_and_Volumes__.txt
+drwxr-xr-x   1 root root   4096 Feb 11  2021 bin
+drwxr-xr-x   2 root root   4096 Apr 24  2018 boot
+drwxr-xr-x   5 root root    340 Oct 21 20:14 dev
+drwxr-xr-x   1 root root   4096 Oct 21 20:14 etc
+-rw-r--r--   1 root root 100244 Dec  2  2020 fslinstaller.py
+drwxr-xr-x   2 root root   4096 Apr 24  2018 home
+drwxr-xr-x   1 root root   4096 May 23  2017 lib
+drwxr-xr-x   2 root root   4096 Jan 18  2021 lib64
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 logdir
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 logdir+
+drwxr-xr-x   2 root root   4096 Jan 18  2021 media
+drwxr-xr-x   2 root root   4096 Jan 18  2021 mnt
+drwxr-xr-x   2 root root   4096 Jan 18  2021 opt
+drwxrwxrwx   1 1000 1000   4096 Oct 21 20:14 output
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 p
+dr-xr-xr-x 338 root root      0 Oct 21 20:14 proc
+drwx------   1 root root   4096 Feb 11  2021 root
+drwxr-xr-x   1 root root   4096 Jan 21  2021 run
+drwxr-xr-x   1 root root   4096 Jan 21  2021 sbin
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 slicesdir
+drwxr-xr-x   2 root root   4096 Jan 18  2021 srv
+dr-xr-xr-x  11 root root      0 Oct 21 20:14 sys
+drwxrwxrwt   1 root root   4096 Oct 21 20:16 tmp
+drwxr-xr-x   1 root root   4096 Jan 18  2021 usr
+drwxr-xr-x   1 root root   4096 Jan 18  2021 var
+ 
+######################################################################
+#### IMAGE INFORMATION
+######################################################################
+ 
+filename	-help.nii.gz
+
+sizeof_hdr	348
+data_type	UNKNOWN
+dim0		0
+dim1		0
+dim2		0
+dim3		0
+dim4		0
+dim5		0
+dim6		0
+dim7		0
+vox_units	Unknown
+time_units	Unknown
+datatype	0
+nbyper		0
+bitpix		0
+pixdim0		0.000000
+pixdim1		0.000000
+pixdim2		0.000000
+pixdim3		0.000000
+pixdim4		0.000000
+pixdim5		0.000000
+pixdim6		0.000000
+pixdim7		0.000000
+vox_offset	352
+cal_max		0.000000
+cal_min		0.000000
+scl_slope	1.000000
+scl_inter	0.000000
+phase_dim	0
+freq_dim	0
+slice_dim	0
+slice_name	Unknown
+slice_code	0
+slice_start	0
+slice_end	0
+slice_duration	0.000000
+toffset		0.000000
+intent		Unknown
+intent_code	0
+intent_name	
+intent_p1	0.000000
+intent_p2	0.000000
+intent_p3	0.000000
+qform_name	Unknown
+qform_code	0
+qto_xyz:1	1.000000 0.000000 0.000000 0.000000 
+qto_xyz:2	0.000000 1.000000 0.000000 0.000000 
+qto_xyz:3	0.000000 0.000000 1.000000 0.000000 
+qto_xyz:4	0.000000 0.000000 0.000000 1.000000 
+qform_xorient	Left-to-Right
+qform_yorient	Posterior-to-Anterior
+qform_zorient	Inferior-to-Superior
+sform_name	Unknown
+sform_code	0
+sto_xyz:1	0.000000 0.000000 0.000000 0.000000 
+sto_xyz:2	0.000000 0.000000 0.000000 0.000000 
+sto_xyz:3	0.000000 0.000000 0.000000 0.000000 
+sto_xyz:4	0.000000 0.000000 0.000000 1.000000 
+sform_xorient	Unknown
+sform_yorient	Unknown
+sform_zorient	Unknown
+file_type	NIFTI-1+
+file_code	1
+descrip		
+aux_file	
+ 
+This error report is saved in the file: /tmp/fsl_awnvTq.gz
+ 
+
+=== Output of 'fslerrorreport' (no arguments) ===
+
+/usr/local/fsl/bin/fslerrorreport: line 93: quota: command not found
+Image Exception : #63 :: No image files match: /
+No image files match: /
+ 
+######################################################################
+#### MACHINE INFORMATION
+######################################################################
+ 
+Uname:
+Linux
+ 
+df:
+Filesystem      1K-blocks     Used Available Use% Mounted on
+overlay        1055762868 63548436 938510960   7% /
+ 
+quota:
+ 
+Memory and Swap info:
+MemTotal:       32741712 kB
+MemFree:        13841608 kB
+MemAvailable:   31006812 kB
+Buffers:          278292 kB
+Cached:         16212408 kB
+SwapCached:           20 kB
+Active:          1110444 kB
+Inactive:       16083424 kB
+Active(anon):       4052 kB
+Inactive(anon):   711352 kB
+Active(file):    1106392 kB
+Inactive(file): 15372072 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       8388608 kB
+SwapFree:        8388340 kB
+Dirty:                40 kB
+Writeback:             0 kB
+AnonPages:        677180 kB
+Mapped:           307088 kB
+Shmem:             12236 kB
+KReclaimable:    1147116 kB
+Slab:            1344516 kB
+SReclaimable:    1147116 kB
+SUnreclaim:       197400 kB
+KernelStack:       10500 kB
+PageTables:        11256 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    24759464 kB
+Committed_AS:    3005260 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       34808 kB
+VmallocChunk:          0 kB
+Percpu:             8704 kB
+AnonHugePages:    415744 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      197632 kB
+DirectMap2M:    16447488 kB
+DirectMap1G:    27262976 kB
+ 
+######################################################################
+#### ENVIRONMENT INFORMATION
+######################################################################
+ 
+FSLDIR=/usr/local/fsl
+FSLOUTPUTTYPE=NIFTI_GZ
+ 
+LD_LIBRARY_PATH=/usr/local/fsl/lib
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/fsl/bin
+LD_LIBRARY_PATH=/usr/local/fsl/lib
+ 
+######################################################################
+#### DIRECTORY INFORMATION
+######################################################################
+ 
+PWD:
+/
+ 
+total 660
+-rw-r--r--   1 root root     41 Oct 21 20:14 --help
+-rw-r--r--   1 root root     48 Oct 21 20:16 --help.nii.gz
+-rw-r--r--   1 root root   6820 Oct 21 20:14 --help1.lut
+-rw-r--r--   1 root root  16264 Oct 21 20:14 --help1.map
+-rw-r--r--   1 root root   7320 Oct 21 20:14 --help1t.lut
+-rw-r--r--   1 root root  16764 Oct 21 20:14 --help1t.map
+-rw-r--r--   1 root root  15220 Oct 21 20:14 --help2.lut
+-rw-r--r--   1 root root  52150 Oct 21 20:14 --help2.map
+-rw-r--r--   1 root root  16220 Oct 21 20:14 --help2t.lut
+-rw-r--r--   1 root root  53150 Oct 21 20:14 --help2t.map
+-rw-r--r--   1 root root   9620 Oct 21 20:14 --help3.lut
+-rw-r--r--   1 root root   9614 Oct 21 20:14 --help3.map
+-rw-r--r--   1 root root    220 Oct 21 20:14 --help3t.lut
+-rw-r--r--   1 root root    214 Oct 21 20:14 --help3t.map
+-rw-r--r--   1 root root   1753 Oct 21 20:14 --help_tmp
+-rw-r--r--   1 root root     41 Oct 21 20:14 -help
+-rw-r--r--   1 root root     48 Oct 21 20:16 -help.nii.gz
+-rw-r--r--   1 root root   6820 Oct 21 20:14 -help1.lut
+-rw-r--r--   1 root root  16264 Oct 21 20:14 -help1.map
+-rw-r--r--   1 root root   7320 Oct 21 20:14 -help1t.lut
+-rw-r--r--   1 root root  16764 Oct 21 20:14 -help1t.map
+-rw-r--r--   1 root root  15220 Oct 21 20:14 -help2.lut
+-rw-r--r--   1 root root  52150 Oct 21 20:14 -help2.map
+-rw-r--r--   1 root root  16220 Oct 21 20:14 -help2t.lut
+-rw-r--r--   1 root root  53150 Oct 21 20:14 -help2t.map
+-rw-r--r--   1 root root   9620 Oct 21 20:14 -help3.lut
+-rw-r--r--   1 root root   9614 Oct 21 20:14 -help3.map
+-rw-r--r--   1 root root    220 Oct 21 20:14 -help3t.lut
+-rw-r--r--   1 root root    214 Oct 21 20:14 -help3t.map
+-rw-r--r--   1 root root      0 Oct 21 20:14 -help_tmp
+drwxr-xr-x   1 root root   4096 Oct 21 20:16 .
+drwxr-xr-x   1 root root   4096 Oct 21 20:16 ..
+-rwxr-xr-x   1 root root      0 Oct 21 20:14 .dockerenv
+drwxr-xr-x   2 root root   4096 Feb 11  2021 .empty
+-rw-r--r--   1 root root      1 Oct 21 20:14 Overlap_and_Volumes__.txt
+drwxr-xr-x   1 root root   4096 Feb 11  2021 bin
+drwxr-xr-x   2 root root   4096 Apr 24  2018 boot
+drwxr-xr-x   5 root root    340 Oct 21 20:14 dev
+drwxr-xr-x   1 root root   4096 Oct 21 20:14 etc
+-rw-r--r--   1 root root 100244 Dec  2  2020 fslinstaller.py
+drwxr-xr-x   2 root root   4096 Apr 24  2018 home
+drwxr-xr-x   1 root root   4096 May 23  2017 lib
+drwxr-xr-x   2 root root   4096 Jan 18  2021 lib64
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 logdir
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 logdir+
+drwxr-xr-x   2 root root   4096 Jan 18  2021 media
+drwxr-xr-x   2 root root   4096 Jan 18  2021 mnt
+drwxr-xr-x   2 root root   4096 Jan 18  2021 opt
+drwxrwxrwx   1 1000 1000   4096 Oct 21 20:14 output
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 p
+dr-xr-xr-x 338 root root      0 Oct 21 20:14 proc
+drwx------   1 root root   4096 Feb 11  2021 root
+drwxr-xr-x   1 root root   4096 Jan 21  2021 run
+drwxr-xr-x   1 root root   4096 Jan 21  2021 sbin
+drwxr-xr-x   2 root root   4096 Oct 21 20:16 slicesdir
+drwxr-xr-x   2 root root   4096 Jan 18  2021 srv
+dr-xr-xr-x  11 root root      0 Oct 21 20:14 sys
+drwxrwxrwt   1 root root   4096 Oct 21 20:16 tmp
+drwxr-xr-x   1 root root   4096 Jan 18  2021 usr
+drwxr-xr-x   1 root root   4096 Jan 18  2021 var
+ 
+######################################################################
+#### IMAGE INFORMATION
+######################################################################
+ 
+ 
+This error report is saved in the file: /tmp/fsl_bkjbCt.gz
+ 

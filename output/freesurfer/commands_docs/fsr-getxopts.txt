@@ -1,0 +1,9 @@
+
+=== Output of 'fsr-getxopts --help' ===
+
+
+=== Output of 'fsr-getxopts -help' ===
+
+
+=== Output of 'fsr-getxopts' (no arguments) ===
+

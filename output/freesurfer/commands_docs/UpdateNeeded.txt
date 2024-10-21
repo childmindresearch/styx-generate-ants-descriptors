@@ -1,0 +1,12 @@
+
+=== Output of 'UpdateNeeded --help' ===
+
+UpdateNeeded TargetFile SourceFile <SourceFile2 ...> 
+
+=== Output of 'UpdateNeeded -help' ===
+
+UpdateNeeded TargetFile SourceFile <SourceFile2 ...> 
+
+=== Output of 'UpdateNeeded' (no arguments) ===
+
+UpdateNeeded TargetFile SourceFile <SourceFile2 ...> 

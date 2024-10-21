@@ -1,0 +1,57 @@
+
+=== Output of 'mri_cvs_check --help' ===
+
+USAGE: mri_cvs_check
+
+Required Arguments:
+   --mov subjid       : subjid for subject to be moved / registered (SUBJECTS_DIR needs to be set)
+   --template subjid  : subjid for subject to be kept fixed (template). If missing, CVS template is assumed as a target.
+
+Optional Arguments
+
+   --hemi ?h    : indicate which hemi will be used
+   --version    : print version and exit
+   --help       : print help and exit
+
+
+Checks whether the files that are required for mri_cvs_register all exist.
+Set SUBJECTS_DIR properly before calling this script!
+
+Required Arguments:
+
+--mov subjid
+
+Subject id of the subject (as found in SUBJECTS_DIR) whose scan is to 
+be moved in registration with that of the template. 
+
+--template subjid
+
+Subject id of the subject (as found in SUBJECTS_DIR) whose scan is to 
+be used and the template / target for the registration. If missing, CVS 
+template is assumed as a target and no checks are done.
+
+Optional Arguments:
+
+--hemi [lh/rh]
+
+The hemisphere that is going to be processed. When, for example, an exvivo scan is processed, we often only have one of the hemis.
+
+=== Output of 'mri_cvs_check -help' ===
+
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'mri_cvs_check' (no arguments) ===
+
+USAGE: mri_cvs_check
+
+Required Arguments:
+   --mov subjid       : subjid for subject to be moved / registered (SUBJECTS_DIR needs to be set)
+   --template subjid  : subjid for subject to be kept fixed (template). If missing, CVS template is assumed as a target.
+
+Optional Arguments
+
+   --hemi ?h    : indicate which hemi will be used
+   --version    : print version and exit
+   --help       : print help and exit
+

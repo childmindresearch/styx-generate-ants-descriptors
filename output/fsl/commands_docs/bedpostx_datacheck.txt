@@ -1,0 +1,46 @@
+
+=== Output of 'bedpostx_datacheck --help' ===
+
+--help/data does not exist
+--help/nodif_brain_mask does not exist
+ num lines in --help/bvals 
+cat: unrecognized option '--help/bvals'
+Try 'cat --help' for more information.
+0
+ num words in --help/bvals 
+cat: unrecognized option '--help/bvals'
+Try 'cat --help' for more information.
+0
+ num lines in --help/bvecs 
+cat: unrecognized option '--help/bvecs'
+Try 'cat --help' for more information.
+0
+ num words in --help/bvecs 
+cat: unrecognized option '--help/bvecs'
+Try 'cat --help' for more information.
+0
+
+=== Output of 'bedpostx_datacheck -help' ===
+
+-help/data does not exist
+-help/nodif_brain_mask does not exist
+ num lines in -help/bvals 
+cat: invalid option -- 'h'
+Try 'cat --help' for more information.
+0
+ num words in -help/bvals 
+cat: invalid option -- 'h'
+Try 'cat --help' for more information.
+0
+ num lines in -help/bvecs 
+cat: invalid option -- 'h'
+Try 'cat --help' for more information.
+0
+ num words in -help/bvecs 
+cat: invalid option -- 'h'
+Try 'cat --help' for more information.
+0
+
+=== Output of 'bedpostx_datacheck' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/bedpostx_datacheck data_dir

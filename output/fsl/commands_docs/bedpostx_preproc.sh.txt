@@ -1,0 +1,50 @@
+
+=== Output of 'bedpostx_preproc.sh --help' ===
+
+Copying files to bedpost directory
+cp: unrecognized option '--help/bvecs'
+Try 'cp --help' for more information.
+Could not find a supported file with prefix "--help/nodif_brain_mask"
+Image Exception : #63 :: No image files match: --help/data
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: --help/data
+/usr/local/fsl/bin/bedpostx_preproc.sh: line 77:  2719 Aborted                 (core dumped) ${FSLDIR}/bin/fslslice ${subjdir}/data
+Image Exception : #63 :: No image files match: --help/nodif_brain_mask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: --help/nodif_brain_mask
+/usr/local/fsl/bin/bedpostx_preproc.sh: line 78:  2720 Aborted                 (core dumped) ${FSLDIR}/bin/fslslice ${subjdir}/nodif_brain_mask
+/usr/local/fsl/bin/bedpostx_preproc.sh: line 79: [: -eq: unary operator expected
+Done
+
+=== Output of 'bedpostx_preproc.sh -help' ===
+
+Copying files to bedpost directory
+cp: invalid option -- 'h'
+Try 'cp --help' for more information.
+Could not find a supported file with prefix "-help/nodif_brain_mask"
+Image Exception : #63 :: No image files match: -help/data
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: -help/data
+/usr/local/fsl/bin/bedpostx_preproc.sh: line 77:  2774 Aborted                 (core dumped) ${FSLDIR}/bin/fslslice ${subjdir}/data
+Image Exception : #63 :: No image files match: -help/nodif_brain_mask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: -help/nodif_brain_mask
+/usr/local/fsl/bin/bedpostx_preproc.sh: line 78:  2775 Aborted                 (core dumped) ${FSLDIR}/bin/fslslice ${subjdir}/nodif_brain_mask
+/usr/local/fsl/bin/bedpostx_preproc.sh: line 79: [: -eq: unary operator expected
+Done
+
+=== Output of 'bedpostx_preproc.sh' (no arguments) ===
+
+Copying files to bedpost directory
+cp: target '.bedpostX' is not a directory
+Could not find a supported file with prefix "/nodif_brain_mask"
+Image Exception : #63 :: No image files match: /data
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /data
+/usr/local/fsl/bin/bedpostx_preproc.sh: line 77:  2829 Aborted                 (core dumped) ${FSLDIR}/bin/fslslice ${subjdir}/data
+Image Exception : #63 :: No image files match: /nodif_brain_mask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /nodif_brain_mask
+/usr/local/fsl/bin/bedpostx_preproc.sh: line 78:  2830 Aborted                 (core dumped) ${FSLDIR}/bin/fslslice ${subjdir}/nodif_brain_mask
+/usr/local/fsl/bin/bedpostx_preproc.sh: line 79: [: -eq: unary operator expected
+Done

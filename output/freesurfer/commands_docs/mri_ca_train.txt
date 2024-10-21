@@ -1,0 +1,49 @@
+
+=== Output of 'mri_ca_train --help' ===
+
+unknown option --help
+
+=== Output of 'mri_ca_train -help' ===
+
+writing histogram of classes/voxel to (null)
+
+setenv SUBJECTS_DIR /usr/local/freesurfer/subjects
+cd /root
+/usr/local/freesurfer/bin/mri_ca_train -help 
+
+
+== Number of threads available to /usr/local/freesurfer/bin/mri_ca_train for OpenMP = 1 == 
+Purpose: /usr/local/freesurfer/bin/mri_ca_train trains GCA data with (multiple) subject(s)
+Usage  : /usr/local/freesurfer/bin/mri_ca_train [options] <subject1> <subject2> ... <output gca fname>
+where SUBJECTS_DIR env variable must be set.
+Options are:
+	-seg dir        - (required) segmentation volume (path relative to $subject/mri).
+	-xform xform    -  atlas transform (path relative to $subject/mri/transforms).
+	-mask volname   - use volname as a mask (path relative to $subject/mri.
+	-node_spacing   - spacing of classifiers in canonical space
+	-prior_spacing  - spacing of class priors in canonical space
+	-input name     - specifying training data (path relative to $subject/mri).
+                          can specify multiple inputs.  	 -sym - symmetrize the atlas after creation	 -makesym input.gca symmetrized.gca : symmetrize an already existing atlas 	 -checksym input.gca symmetrized.gca : check the symmetry of an already existing atlasIf not specified, "orig" is used
+	-check          - conduct sanity-check of labels for obvious edit errors	-threads N : specify number of threads to use (also -nthreads)	-done DoneFile : create DoneFile when done, (contents: 0=ok, 1=error)
+
+=== Output of 'mri_ca_train' (no arguments) ===
+
+
+setenv SUBJECTS_DIR /usr/local/freesurfer/subjects
+cd /root
+/usr/local/freesurfer/bin/mri_ca_train 
+
+
+== Number of threads available to /usr/local/freesurfer/bin/mri_ca_train for OpenMP = 1 == 
+Purpose: /usr/local/freesurfer/bin/mri_ca_train trains GCA data with (multiple) subject(s)
+Usage  : /usr/local/freesurfer/bin/mri_ca_train [options] <subject1> <subject2> ... <output gca fname>
+where SUBJECTS_DIR env variable must be set.
+Options are:
+	-seg dir        - (required) segmentation volume (path relative to $subject/mri).
+	-xform xform    -  atlas transform (path relative to $subject/mri/transforms).
+	-mask volname   - use volname as a mask (path relative to $subject/mri.
+	-node_spacing   - spacing of classifiers in canonical space
+	-prior_spacing  - spacing of class priors in canonical space
+	-input name     - specifying training data (path relative to $subject/mri).
+                          can specify multiple inputs.  	 -sym - symmetrize the atlas after creation	 -makesym input.gca symmetrized.gca : symmetrize an already existing atlas 	 -checksym input.gca symmetrized.gca : check the symmetry of an already existing atlasIf not specified, "orig" is used
+	-check          - conduct sanity-check of labels for obvious edit errors	-threads N : specify number of threads to use (also -nthreads)	-done DoneFile : create DoneFile when done, (contents: 0=ok, 1=error)

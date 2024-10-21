@@ -1,0 +1,15 @@
+
+=== Output of 'morph_kernel --help' ===
+
+Usage: morph_kernel <cube_side_length> <sphere_radius>
+e.g.: morph_kernel 11 5.5 > sphere111111.ker
+
+=== Output of 'morph_kernel -help' ===
+
+Usage: morph_kernel <cube_side_length> <sphere_radius>
+e.g.: morph_kernel 11 5.5 > sphere111111.ker
+
+=== Output of 'morph_kernel' (no arguments) ===
+
+Usage: morph_kernel <cube_side_length> <sphere_radius>
+e.g.: morph_kernel 11 5.5 > sphere111111.ker

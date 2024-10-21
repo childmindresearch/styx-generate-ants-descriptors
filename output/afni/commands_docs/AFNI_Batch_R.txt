@@ -1,0 +1,34 @@
+
+=== Output of 'AFNI_Batch_R --help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  --help --args --help
+Usage: R CMD BATCH [options] infile [outfile]
+
+Run R non-interactively with input from infile and place output (stdout
+and stderr) to another file.  If not given, the name of the output file
+is the one of the input file, with a possible '.R' extension stripped,
+and '.Rout' appended.
+
+Options:
+  -h, --help		print short help message and exit
+  -v, --version		print version info and exit
+  --no-timing           do not report the timings
+  --			end processing of options
+
+Further arguments starting with a '-' are considered as options as long
+as '--' was not encountered, and are passed on to the R process, which
+by default is started with '--restore --save --no-readline'.
+See also help('BATCH') inside R.
+
+Report bugs at <https://bugs.R-project.org>.
+
+=== Output of 'AFNI_Batch_R -help' ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla  -help --args -help
+
+=== Output of 'AFNI_Batch_R' (no arguments) ===
+
+/opt/afni/src/../install/AFNI_Batch_R
+R CMD BATCH --no-restore --save --no-readline --vanilla   --args 

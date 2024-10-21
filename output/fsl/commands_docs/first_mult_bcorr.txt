@@ -1,0 +1,75 @@
+
+=== Output of 'first_mult_bcorr --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+first_mult_bcorr (Version 1.0) University of Oxford (Mark Jenkinson)
+Converts 
+
+Usage: 
+first_mult_bcorr [options] -i <T1_image> -c <4D_corrected_labels> -u <4D_uncorrected_labels> -o <output_image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of original T1 input image
+	-o,--out	output image name (3D label image)
+	-u,--uncorrected	filename of 4D image of uncorrected labels (with boundaries)
+	-c,--corrected	filename of 4D image of individually corrected labels
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	output F-stats to standard out
+	-h,--help	display this message
+
+
+
+=== Output of 'first_mult_bcorr -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+first_mult_bcorr (Version 1.0) University of Oxford (Mark Jenkinson)
+Converts 
+
+Usage: 
+first_mult_bcorr [options] -i <T1_image> -c <4D_corrected_labels> -u <4D_uncorrected_labels> -o <output_image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of original T1 input image
+	-o,--out	output image name (3D label image)
+	-u,--uncorrected	filename of 4D image of uncorrected labels (with boundaries)
+	-c,--corrected	filename of 4D image of individually corrected labels
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	output F-stats to standard out
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'first_mult_bcorr' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	filename of original T1 input image
+	-o,--out	output image name (3D label image)
+	-u,--uncorrected	filename of 4D image of uncorrected labels (with boundaries)
+	-c,--corrected	filename of 4D image of individually corrected labels
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+first_mult_bcorr (Version 1.0) University of Oxford (Mark Jenkinson)
+Converts 
+
+Usage: 
+first_mult_bcorr [options] -i <T1_image> -c <4D_corrected_labels> -u <4D_uncorrected_labels> -o <output_image>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of original T1 input image
+	-o,--out	output image name (3D label image)
+	-u,--uncorrected	filename of 4D image of uncorrected labels (with boundaries)
+	-c,--corrected	filename of 4D image of individually corrected labels
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	output F-stats to standard out
+	-h,--help	display this message
+
+

@@ -1,0 +1,67 @@
+
+=== Output of 'makevol --help' ===
+
+Usage: makevol [OPTION]...
+Create a volume with given parameters.
+
+Options:
+-f, --filename FILENAME   Write volume to the given file name,
+                          implying type. Default=new_volume.mgz
+
+-x, --width WIDTH         Use integer WIDTH as the x dimension. Default=256
+-y, --height HEIGHT       Use integer HEIGHT as the y dimension. Default=256
+-z, --depth DEPTH         Use integer DEPTH as the z dimension. Default=256
+
+--sizex SIZEX             Use float SIZEX as the x resolution. Default=1.0
+--sizey SIZEY             Use float SIZEY as the y resolution. Default=1.0
+--sizez SIZEZ             Use float SIZEZ as the z resolution. Default=1.0
+
+--set-method METHOD [VALUE]
+                          Use METHOD to fill the values. Default=xyz. METHOD
+                          can be:
+                            xyz: Value is set to its x,yz, coords
+                            random: Random values from 0-255
+                            constant: Set all values to VALUE
+
+
+=== Output of 'makevol -help' ===
+
+Usage: makevol [OPTION]...
+Create a volume with given parameters.
+
+Options:
+-f, --filename FILENAME   Write volume to the given file name,
+                          implying type. Default=new_volume.mgz
+
+-x, --width WIDTH         Use integer WIDTH as the x dimension. Default=256
+-y, --height HEIGHT       Use integer HEIGHT as the y dimension. Default=256
+-z, --depth DEPTH         Use integer DEPTH as the z dimension. Default=256
+
+--sizex SIZEX             Use float SIZEX as the x resolution. Default=1.0
+--sizey SIZEY             Use float SIZEY as the y resolution. Default=1.0
+--sizez SIZEZ             Use float SIZEZ as the z resolution. Default=1.0
+
+--set-method METHOD [VALUE]
+                          Use METHOD to fill the values. Default=xyz. METHOD
+                          can be:
+                            xyz: Value is set to its x,yz, coords
+                            random: Random values from 0-255
+                            constant: Set all values to VALUE
+
+
+=== Output of 'makevol' (no arguments) ===
+
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+Creating volume new_volume.mgz
+  width = 256 height = 256 depth = 256
+  xsize = 1.000000 ysize = 1.000000 zsize = 1.000000
+  set method = XYZ, constant = 0

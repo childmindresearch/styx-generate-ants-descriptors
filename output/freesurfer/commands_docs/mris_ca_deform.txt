@@ -1,0 +1,12 @@
+
+=== Output of 'mris_ca_deform --help' ===
+
+unknown option --help
+
+=== Output of 'mris_ca_deform -help' ===
+
+unknown option -help
+
+=== Output of 'mris_ca_deform' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_ca_deform [options] <input surface> <label vol> <transform> <intensity vol> <output surface>

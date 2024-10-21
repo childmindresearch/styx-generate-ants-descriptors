@@ -1,0 +1,336 @@
+
+=== Output of 'run_mesh_utils --help' ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-m	filename of base mesh
+	-o,--out	filename of output image
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+run_mesh_utils
+Copyright(c) 2009, University of Oxford (Brian Patenaude)
+
+Usage: 
+run_mesh_utils [options] 
+
+Compulsory arguments (You MUST set one or more of):
+	-m	filename of base mesh
+	-o,--out	filename of output image
+
+Optional arguments (You may optionally specify one or more of):
+	--doUnCentreModel	 doUnCentreModel
+	-i,--in	filename of input image
+	-j	filename ofsecond input image
+	--doSubtractConstantFromScalars	doSubtractConstantFromScalars
+	-p,--w_im	weighting image force
+	-r,--w_tan	weighting image force
+	-s,--w_norm	weighting image force
+	-q,--w_tri	weighting image force
+	--doVertexScalarsToImageVolume	doVertexScalarsToImageVolume
+	-n	filename of base mesh2
+	--useSc2, useSc2	useSc2
+	-f	filename of flirt matrix
+	--doMeshReg,--meshreg	display this message
+	--doFillMesh,--fillmesh	display this message
+	--toggle,--toggle	toggle a feature
+	-l,--label	mesh label
+	--doMeshToContours,--meshToCont	convert mesh to a series of 2D contours
+	--sampNN,--help	display this message
+	--doCombineMeshes,--combMeshes	combine mesh results including vectors and scalars
+	--doUnCentreMesh,doUnCentreMesh	remove centre form ASCII vtk mesh (remove old IBIM format)
+	--doLabelAndCombineSB, doLabelAndCombineSB	label shared vertices and combine meshes
+	--doAddMeshes, doAddMeshes	doAddMeshes
+	--doSubtractMeshes, doSubtractMeshes	doSubtractMeshes
+	--doAppendSBmask, doAppendSBmask	doAppendSBmask
+	--doAppendIndexedSBmask, doAppendIndexedSBmask	doAppendIndexedSBmask
+	--doApplyFlirtThenSBmask, doApplyFlirtThenSBmask	doApplyFlirtThenSBmask
+	--inverse, inverse	inverse
+	--doWarpMesh,  doWarpMesh	 doWarpMesh
+	-x,--xshift	filename of input image
+	-y,--yshift	filename of input image
+	-z,--zshift	filename of input image
+	--doSurfDistMap,  doSurfDistMap	doSurfDistMap
+	--doSurfMeanAndStDev,  doSurfMeanAndStDev	doSurfMeanAndStDev
+	--doLQSurfReg,  doLQSurfReg	doLQSurfReg
+	--doAlterVertsBySBmask, doAlterVertsBySBmask	doAlterVertsBySBmask
+	--doSphereToCart,  doSphereToCart	doSphereToCart
+	--doCartToSphere,  doCartToSphere	doCartToSphere
+	--doFindMidMidPoint, doFindMidMidPoint	doFindMidMidPoint
+	--doWarpGrid, doWarpGrid	doWarpGrid
+	--doSampleGrid, doSampleGrid	doSampleGrid
+	--doSampleMesh, doSampleMesh	doSampleMesh
+	--doRandMesh, doRandMesh	doRandMesh
+	--doMeshToBvars, doMeshToBvars	doMeshToBvars
+	--doAddModesUsingScalars, doAddModesUsingScalars	doAddModesUsingScalars
+	--doRandMatrices, doRandMatrices	doRandMatrices
+	-t,--thresh	threshold
+	--doWriteConditionalIntensity, doWriteConditionalIntensity	doWriteConditionalIntensity
+	--doUgridToImage, doUgridToImage	doUgridToImage
+	--doReplaceVertsWithCoef, doReplaceVertsWithCoef	doReplaceVertsWithCoef
+	--doCoefModelToImage, doCoefModelToImage	doCoefModelToImage
+	-a,--myindex	degrees of freedom
+	--doFieldModelToImage,doFieldModelToImage	doFieldModelToImage
+	--doSubSampleGrid,doSubSampleGrid	doSubSampleGrid
+	--doScalarsToVolume	doScalarsToVolume
+	--doVectorsToVolume	doVectorsToVolume
+	--doPointsToVolume	doPointsToVolume
+	--doVolumeToScalars	doVolumeToScalars
+	--doVolumeToVectors	doVolumeToVectors
+	--doFtoP	doFtoP
+	--doGetMeans	doGetMeans
+	--doFlipMesh	doFlipMesh
+	--doAppendConstScalar	doAppendConstScalar
+	--doShiftGrid	doShiftGrid
+	--doConcatIntensityGrid	doConcatIntensityGrid
+	--doDeMeanIntensities	doDeMeanIntensities
+	--doConvert_ASCII_To_Binary	doConvert_ASCII_To_Binary
+	--doConvert_Binary_To_ASCII	doConvert_Binary_To_ASCII
+	--doSampleProfiles	 doSampleProfiles
+	--doDeformSurface	 doDeformSurface
+	--doMeshReg_LeastSq	 doMeshReg_LeastSq
+	--doGetMeshFromModel	doGetMeshFromModel
+	--doVertexLDA_LOO	doVertexLDA_LOO
+	--doVertexLDA_save	doVertexLDA_save
+	--doVertexLDA_loadAndApply	doVertexLDA_loadAndApply
+	--fullLDAoutput	output full classification information
+	--doGetMeanScalar	doGetMeanScalar
+	--doGetMaxScalar	doGetMaxScalar
+	--doAddScalars	doAddScalars
+	--doDivideScalarsByScalar	doDivideScalarsByScalar
+	--doDisplayNumericFieldNames	doDisplayNumericFieldNames
+	--doDisplayNumericField	doDisplayNumericField
+	-d,--dof	degrees of freedom (for fsl4.1.2 or before)
+	-e,--dof2	degrees of freedom2 (for fsl4.1.2 or before)
+	--doAddVertices	doAddVertices
+	--doDivideVerticesByScalar	doDivideVerticesByScalar
+	--doReplaceScalarsByScalars	doReplaceScalarsByScalars
+	--doDrawMeshScalars	doDrawMeshScalars
+	--doAverageSurfaces	doAverageSurfaces
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'run_mesh_utils -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+run_mesh_utils
+Copyright(c) 2009, University of Oxford (Brian Patenaude)
+
+Usage: 
+run_mesh_utils [options] 
+
+Compulsory arguments (You MUST set one or more of):
+	-m	filename of base mesh
+	-o,--out	filename of output image
+
+Optional arguments (You may optionally specify one or more of):
+	--doUnCentreModel	 doUnCentreModel
+	-i,--in	filename of input image
+	-j	filename ofsecond input image
+	--doSubtractConstantFromScalars	doSubtractConstantFromScalars
+	-p,--w_im	weighting image force
+	-r,--w_tan	weighting image force
+	-s,--w_norm	weighting image force
+	-q,--w_tri	weighting image force
+	--doVertexScalarsToImageVolume	doVertexScalarsToImageVolume
+	-n	filename of base mesh2
+	--useSc2, useSc2	useSc2
+	-f	filename of flirt matrix
+	--doMeshReg,--meshreg	display this message
+	--doFillMesh,--fillmesh	display this message
+	--toggle,--toggle	toggle a feature
+	-l,--label	mesh label
+	--doMeshToContours,--meshToCont	convert mesh to a series of 2D contours
+	--sampNN,--help	display this message
+	--doCombineMeshes,--combMeshes	combine mesh results including vectors and scalars
+	--doUnCentreMesh,doUnCentreMesh	remove centre form ASCII vtk mesh (remove old IBIM format)
+	--doLabelAndCombineSB, doLabelAndCombineSB	label shared vertices and combine meshes
+	--doAddMeshes, doAddMeshes	doAddMeshes
+	--doSubtractMeshes, doSubtractMeshes	doSubtractMeshes
+	--doAppendSBmask, doAppendSBmask	doAppendSBmask
+	--doAppendIndexedSBmask, doAppendIndexedSBmask	doAppendIndexedSBmask
+	--doApplyFlirtThenSBmask, doApplyFlirtThenSBmask	doApplyFlirtThenSBmask
+	--inverse, inverse	inverse
+	--doWarpMesh,  doWarpMesh	 doWarpMesh
+	-x,--xshift	filename of input image
+	-y,--yshift	filename of input image
+	-z,--zshift	filename of input image
+	--doSurfDistMap,  doSurfDistMap	doSurfDistMap
+	--doSurfMeanAndStDev,  doSurfMeanAndStDev	doSurfMeanAndStDev
+	--doLQSurfReg,  doLQSurfReg	doLQSurfReg
+	--doAlterVertsBySBmask, doAlterVertsBySBmask	doAlterVertsBySBmask
+	--doSphereToCart,  doSphereToCart	doSphereToCart
+	--doCartToSphere,  doCartToSphere	doCartToSphere
+	--doFindMidMidPoint, doFindMidMidPoint	doFindMidMidPoint
+	--doWarpGrid, doWarpGrid	doWarpGrid
+	--doSampleGrid, doSampleGrid	doSampleGrid
+	--doSampleMesh, doSampleMesh	doSampleMesh
+	--doRandMesh, doRandMesh	doRandMesh
+	--doMeshToBvars, doMeshToBvars	doMeshToBvars
+	--doAddModesUsingScalars, doAddModesUsingScalars	doAddModesUsingScalars
+	--doRandMatrices, doRandMatrices	doRandMatrices
+	-t,--thresh	threshold
+	--doWriteConditionalIntensity, doWriteConditionalIntensity	doWriteConditionalIntensity
+	--doUgridToImage, doUgridToImage	doUgridToImage
+	--doReplaceVertsWithCoef, doReplaceVertsWithCoef	doReplaceVertsWithCoef
+	--doCoefModelToImage, doCoefModelToImage	doCoefModelToImage
+	-a,--myindex	degrees of freedom
+	--doFieldModelToImage,doFieldModelToImage	doFieldModelToImage
+	--doSubSampleGrid,doSubSampleGrid	doSubSampleGrid
+	--doScalarsToVolume	doScalarsToVolume
+	--doVectorsToVolume	doVectorsToVolume
+	--doPointsToVolume	doPointsToVolume
+	--doVolumeToScalars	doVolumeToScalars
+	--doVolumeToVectors	doVolumeToVectors
+	--doFtoP	doFtoP
+	--doGetMeans	doGetMeans
+	--doFlipMesh	doFlipMesh
+	--doAppendConstScalar	doAppendConstScalar
+	--doShiftGrid	doShiftGrid
+	--doConcatIntensityGrid	doConcatIntensityGrid
+	--doDeMeanIntensities	doDeMeanIntensities
+	--doConvert_ASCII_To_Binary	doConvert_ASCII_To_Binary
+	--doConvert_Binary_To_ASCII	doConvert_Binary_To_ASCII
+	--doSampleProfiles	 doSampleProfiles
+	--doDeformSurface	 doDeformSurface
+	--doMeshReg_LeastSq	 doMeshReg_LeastSq
+	--doGetMeshFromModel	doGetMeshFromModel
+	--doVertexLDA_LOO	doVertexLDA_LOO
+	--doVertexLDA_save	doVertexLDA_save
+	--doVertexLDA_loadAndApply	doVertexLDA_loadAndApply
+	--fullLDAoutput	output full classification information
+	--doGetMeanScalar	doGetMeanScalar
+	--doGetMaxScalar	doGetMaxScalar
+	--doAddScalars	doAddScalars
+	--doDivideScalarsByScalar	doDivideScalarsByScalar
+	--doDisplayNumericFieldNames	doDisplayNumericFieldNames
+	--doDisplayNumericField	doDisplayNumericField
+	-d,--dof	degrees of freedom (for fsl4.1.2 or before)
+	-e,--dof2	degrees of freedom2 (for fsl4.1.2 or before)
+	--doAddVertices	doAddVertices
+	--doDivideVerticesByScalar	doDivideVerticesByScalar
+	--doReplaceScalarsByScalars	doReplaceScalarsByScalars
+	--doDrawMeshScalars	doDrawMeshScalars
+	--doAverageSurfaces	doAverageSurfaces
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+-e: Missing non-optional argument!
+
+=== Output of 'run_mesh_utils' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-m	filename of base mesh
+	-o,--out	filename of output image
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+run_mesh_utils
+Copyright(c) 2009, University of Oxford (Brian Patenaude)
+
+Usage: 
+run_mesh_utils [options] 
+
+Compulsory arguments (You MUST set one or more of):
+	-m	filename of base mesh
+	-o,--out	filename of output image
+
+Optional arguments (You may optionally specify one or more of):
+	--doUnCentreModel	 doUnCentreModel
+	-i,--in	filename of input image
+	-j	filename ofsecond input image
+	--doSubtractConstantFromScalars	doSubtractConstantFromScalars
+	-p,--w_im	weighting image force
+	-r,--w_tan	weighting image force
+	-s,--w_norm	weighting image force
+	-q,--w_tri	weighting image force
+	--doVertexScalarsToImageVolume	doVertexScalarsToImageVolume
+	-n	filename of base mesh2
+	--useSc2, useSc2	useSc2
+	-f	filename of flirt matrix
+	--doMeshReg,--meshreg	display this message
+	--doFillMesh,--fillmesh	display this message
+	--toggle,--toggle	toggle a feature
+	-l,--label	mesh label
+	--doMeshToContours,--meshToCont	convert mesh to a series of 2D contours
+	--sampNN,--help	display this message
+	--doCombineMeshes,--combMeshes	combine mesh results including vectors and scalars
+	--doUnCentreMesh,doUnCentreMesh	remove centre form ASCII vtk mesh (remove old IBIM format)
+	--doLabelAndCombineSB, doLabelAndCombineSB	label shared vertices and combine meshes
+	--doAddMeshes, doAddMeshes	doAddMeshes
+	--doSubtractMeshes, doSubtractMeshes	doSubtractMeshes
+	--doAppendSBmask, doAppendSBmask	doAppendSBmask
+	--doAppendIndexedSBmask, doAppendIndexedSBmask	doAppendIndexedSBmask
+	--doApplyFlirtThenSBmask, doApplyFlirtThenSBmask	doApplyFlirtThenSBmask
+	--inverse, inverse	inverse
+	--doWarpMesh,  doWarpMesh	 doWarpMesh
+	-x,--xshift	filename of input image
+	-y,--yshift	filename of input image
+	-z,--zshift	filename of input image
+	--doSurfDistMap,  doSurfDistMap	doSurfDistMap
+	--doSurfMeanAndStDev,  doSurfMeanAndStDev	doSurfMeanAndStDev
+	--doLQSurfReg,  doLQSurfReg	doLQSurfReg
+	--doAlterVertsBySBmask, doAlterVertsBySBmask	doAlterVertsBySBmask
+	--doSphereToCart,  doSphereToCart	doSphereToCart
+	--doCartToSphere,  doCartToSphere	doCartToSphere
+	--doFindMidMidPoint, doFindMidMidPoint	doFindMidMidPoint
+	--doWarpGrid, doWarpGrid	doWarpGrid
+	--doSampleGrid, doSampleGrid	doSampleGrid
+	--doSampleMesh, doSampleMesh	doSampleMesh
+	--doRandMesh, doRandMesh	doRandMesh
+	--doMeshToBvars, doMeshToBvars	doMeshToBvars
+	--doAddModesUsingScalars, doAddModesUsingScalars	doAddModesUsingScalars
+	--doRandMatrices, doRandMatrices	doRandMatrices
+	-t,--thresh	threshold
+	--doWriteConditionalIntensity, doWriteConditionalIntensity	doWriteConditionalIntensity
+	--doUgridToImage, doUgridToImage	doUgridToImage
+	--doReplaceVertsWithCoef, doReplaceVertsWithCoef	doReplaceVertsWithCoef
+	--doCoefModelToImage, doCoefModelToImage	doCoefModelToImage
+	-a,--myindex	degrees of freedom
+	--doFieldModelToImage,doFieldModelToImage	doFieldModelToImage
+	--doSubSampleGrid,doSubSampleGrid	doSubSampleGrid
+	--doScalarsToVolume	doScalarsToVolume
+	--doVectorsToVolume	doVectorsToVolume
+	--doPointsToVolume	doPointsToVolume
+	--doVolumeToScalars	doVolumeToScalars
+	--doVolumeToVectors	doVolumeToVectors
+	--doFtoP	doFtoP
+	--doGetMeans	doGetMeans
+	--doFlipMesh	doFlipMesh
+	--doAppendConstScalar	doAppendConstScalar
+	--doShiftGrid	doShiftGrid
+	--doConcatIntensityGrid	doConcatIntensityGrid
+	--doDeMeanIntensities	doDeMeanIntensities
+	--doConvert_ASCII_To_Binary	doConvert_ASCII_To_Binary
+	--doConvert_Binary_To_ASCII	doConvert_Binary_To_ASCII
+	--doSampleProfiles	 doSampleProfiles
+	--doDeformSurface	 doDeformSurface
+	--doMeshReg_LeastSq	 doMeshReg_LeastSq
+	--doGetMeshFromModel	doGetMeshFromModel
+	--doVertexLDA_LOO	doVertexLDA_LOO
+	--doVertexLDA_save	doVertexLDA_save
+	--doVertexLDA_loadAndApply	doVertexLDA_loadAndApply
+	--fullLDAoutput	output full classification information
+	--doGetMeanScalar	doGetMeanScalar
+	--doGetMaxScalar	doGetMaxScalar
+	--doAddScalars	doAddScalars
+	--doDivideScalarsByScalar	doDivideScalarsByScalar
+	--doDisplayNumericFieldNames	doDisplayNumericFieldNames
+	--doDisplayNumericField	doDisplayNumericField
+	-d,--dof	degrees of freedom (for fsl4.1.2 or before)
+	-e,--dof2	degrees of freedom2 (for fsl4.1.2 or before)
+	--doAddVertices	doAddVertices
+	--doDivideVerticesByScalar	doDivideVerticesByScalar
+	--doReplaceScalarsByScalars	doReplaceScalarsByScalars
+	--doDrawMeshScalars	doDrawMeshScalars
+	--doAverageSurfaces	doAverageSurfaces
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

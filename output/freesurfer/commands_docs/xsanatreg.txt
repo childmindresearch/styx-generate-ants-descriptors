@@ -1,0 +1,22 @@
+
+=== Output of 'xsanatreg --help' ===
+
+shift: No more words.
+
+=== Output of 'xsanatreg -help' ===
+
+shift: No more words.
+
+=== Output of 'xsanatreg' (no arguments) ===
+
+USAGE: xsanatreg
+   -src      srccordir  : directory of source COR volume (required)
+   -targ     targcordir : directory of target COR volume (required)
+   -xfm      file       : file in which to store transform  (required)
+   -tmpdir   dir        : directory for temporary storage (/tmp)
+   -srcminc  file       : file name for source minc (auto)
+   -targminc file       : file name for target minc (auto)
+   -nocleanup           : do not delete temporary minc files
+   -version             : print version and exit
+   -umask umask    
+   minctracc options

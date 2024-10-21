@@ -1,0 +1,39 @@
+
+=== Output of 'progressbar.tcl --help' ===
+
+/usr/local/freesurfer/bin/progressbar.tcl: line 99: package: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 100: package: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 103: namespace: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 105: namespace: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 108: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 111: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 114: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 117: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 119: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/progressbar.tcl: line 119: `  set widgetGlobals(debug) 0'
+
+=== Output of 'progressbar.tcl -help' ===
+
+/usr/local/freesurfer/bin/progressbar.tcl: line 99: package: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 100: package: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 103: namespace: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 105: namespace: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 108: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 111: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 114: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 117: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 119: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/progressbar.tcl: line 119: `  set widgetGlobals(debug) 0'
+
+=== Output of 'progressbar.tcl' (no arguments) ===
+
+/usr/local/freesurfer/bin/progressbar.tcl: line 99: package: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 100: package: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 103: namespace: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 105: namespace: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 108: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 111: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 114: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 117: variable: command not found
+/usr/local/freesurfer/bin/progressbar.tcl: line 119: syntax error near unexpected token `('
+/usr/local/freesurfer/bin/progressbar.tcl: line 119: `  set widgetGlobals(debug) 0'

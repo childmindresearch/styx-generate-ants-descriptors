@@ -1,0 +1,12 @@
+
+=== Output of 'mris_segmentation_stats --help' ===
+
+unknown option --help
+
+=== Output of 'mris_segmentation_stats -help' ===
+
+unknown option -help
+
+=== Output of 'mris_segmentation_stats' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_segmentation_stats [options] <overlay name> <segmentation label name> <subject 1>... <roc file>

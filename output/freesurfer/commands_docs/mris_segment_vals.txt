@@ -1,0 +1,22 @@
+
+=== Output of 'mris_segment_vals --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_segment_vals [options] <input surface> <input w/curv file> <output w/curv file>
+where options are:
+	-T <threshold> (default is 0)
+	-A <area thresh> ignore segments smaller than <area thresh> mm(default 0)
+
+This program segments an input val file into connected components
+
+=== Output of 'mris_segment_vals -help' ===
+
+unknown option -help
+
+=== Output of 'mris_segment_vals' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_segment_vals [options] <input surface> <input w/curv file> <output w/curv file>
+where options are:
+	-T <threshold> (default is 0)
+	-A <area thresh> ignore segments smaller than <area thresh> mm(default 0)
+
+This program segments an input val file into connected components

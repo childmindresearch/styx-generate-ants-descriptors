@@ -1,0 +1,51 @@
+
+=== Output of 'thickdiffmap --help' ===
+
+usage: thickdiffmap <subjscan1> <subjscan2> <commonsubj> <hemi> <step>...
+
+where:
+  <subjscan1>   first scan of a subject
+  <subjscan2>   second (later) scan of the same subject
+  <commonsubj>  subject to use as the common template
+  <hemi>        hemisphere to process
+  <step>...     stages of processing:
+                  1  - Compute linear alignment
+                  2  - Compute thickness difference map
+                  3  - Resample map to common template
+                  4  - Compute group-wise stats
+
+example: thickdiffmap subj1 subj1a fsaverage lh 1 2 3
+
+=== Output of 'thickdiffmap -help' ===
+
+usage: thickdiffmap <subjscan1> <subjscan2> <commonsubj> <hemi> <step>...
+
+where:
+  <subjscan1>   first scan of a subject
+  <subjscan2>   second (later) scan of the same subject
+  <commonsubj>  subject to use as the common template
+  <hemi>        hemisphere to process
+  <step>...     stages of processing:
+                  1  - Compute linear alignment
+                  2  - Compute thickness difference map
+                  3  - Resample map to common template
+                  4  - Compute group-wise stats
+
+example: thickdiffmap subj1 subj1a fsaverage lh 1 2 3
+
+=== Output of 'thickdiffmap' (no arguments) ===
+
+usage: thickdiffmap <subjscan1> <subjscan2> <commonsubj> <hemi> <step>...
+
+where:
+  <subjscan1>   first scan of a subject
+  <subjscan2>   second (later) scan of the same subject
+  <commonsubj>  subject to use as the common template
+  <hemi>        hemisphere to process
+  <step>...     stages of processing:
+                  1  - Compute linear alignment
+                  2  - Compute thickness difference map
+                  3  - Resample map to common template
+                  4  - Compute group-wise stats
+
+example: thickdiffmap subj1 subj1a fsaverage lh 1 2 3

@@ -1,0 +1,91 @@
+
+=== Output of 'trac-paths --help' ===
+
+
+USAGE: trac-paths
+
+Required arguments:
+  -c <file>      : dmrirc file (see dmrirc.example)
+
+Other arguments:
+  -log <file>    : default is trac-all.log in the same dir as dmrirc
+  -nolog         : do not save a log file
+  -cmd <file>    : default is trac-all.cmd in the same dir as dmrirc
+  -nocmd         : do not save a cmd file
+  -no-isrunning  : do not check whether this subject is currently being processed
+  -umask umask   : set unix file permission mask (default 002)
+  -grp groupid   : check that current group is alpha groupid 
+  -allowcoredump : set coredump limit to unlimited
+  -debug         : generate much more output
+  -dontrun       : do everything but execute each command
+  -version       : print version of this script and exit
+  -help          : print full contents of help
+
+trac-paths 7.4.1
+
+
+Tractography for a single subject.
+
+This script is called by trac-all. Trac-all makes sure that a proper
+configuration file is written locally (scripts/dmrirc.local) and passed
+as an argument to this script.
+
+SEE ALSO: trac-all, dmrirc.example
+
+
+=== Output of 'trac-paths -help' ===
+
+
+USAGE: trac-paths
+
+Required arguments:
+  -c <file>      : dmrirc file (see dmrirc.example)
+
+Other arguments:
+  -log <file>    : default is trac-all.log in the same dir as dmrirc
+  -nolog         : do not save a log file
+  -cmd <file>    : default is trac-all.cmd in the same dir as dmrirc
+  -nocmd         : do not save a cmd file
+  -no-isrunning  : do not check whether this subject is currently being processed
+  -umask umask   : set unix file permission mask (default 002)
+  -grp groupid   : check that current group is alpha groupid 
+  -allowcoredump : set coredump limit to unlimited
+  -debug         : generate much more output
+  -dontrun       : do everything but execute each command
+  -version       : print version of this script and exit
+  -help          : print full contents of help
+
+trac-paths 7.4.1
+
+
+Tractography for a single subject.
+
+This script is called by trac-all. Trac-all makes sure that a proper
+configuration file is written locally (scripts/dmrirc.local) and passed
+as an argument to this script.
+
+SEE ALSO: trac-all, dmrirc.example
+
+
+=== Output of 'trac-paths' (no arguments) ===
+
+
+USAGE: trac-paths
+
+Required arguments:
+  -c <file>      : dmrirc file (see dmrirc.example)
+
+Other arguments:
+  -log <file>    : default is trac-all.log in the same dir as dmrirc
+  -nolog         : do not save a log file
+  -cmd <file>    : default is trac-all.cmd in the same dir as dmrirc
+  -nocmd         : do not save a cmd file
+  -no-isrunning  : do not check whether this subject is currently being processed
+  -umask umask   : set unix file permission mask (default 002)
+  -grp groupid   : check that current group is alpha groupid 
+  -allowcoredump : set coredump limit to unlimited
+  -debug         : generate much more output
+  -dontrun       : do everything but execute each command
+  -version       : print version of this script and exit
+  -help          : print full contents of help
+

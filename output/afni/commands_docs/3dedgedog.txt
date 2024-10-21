@@ -1,0 +1,416 @@
+
+=== Output of '3dedgedog --help' ===
+
+[7m** ERROR:[0m Bad option '--help'
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dedgedog -help' enlighten:
+        '-input DSET      :(req) input dataset'
+        '-prefix PREF     :(req) output prefix name'
+        '-ratio_sigma RS  :the ratio of inner and outer Gaussian sigma values.'
+
+=== Output of '3dedgedog -help' ===
+
+
+Overview ~1~ 
+
+This program calculates edges in an image using the Difference of Gaussians
+(DOG) method by Wilson and Giese (1977) and later combined with work by
+Marr and Hildreth (1980) to provide a computationally efficient
+approximation to their Lagrangian of Gaussian (LOG) method for calculating
+edges in an image.  This is a fascinating set of papers to read.  But you
+don't have to take *my* word for it!...
+
+Generating edges in this way has some interesting properties, such as
+numerical efficiency and edges that are closed loops/surfaces.  The edges
+can be tuned to focus on structures of a particular size, too, which can be
+particularly useful in some applications.
+
+written by: PA Taylor and DR Glen (SSCC, NIMH, NIH)
+
+Description ~2~ 
+
+The primary papers for learning more about the DOG and LOG methods are:
+
+   Wilson HR, Giese SC  (1977). Threshold visibility of frequency
+   gradient patterns. Vision Res. 17(10):1177-90.
+   doi: 10.1016/0042-6989(77)90152-3. PMID: 595381.
+
+   Marr D, Hildreth E (1980). Theory of edge detection. Proc R Soc
+   Lond B Biol Sci. 207(1167):187-217.
+   doi: 10.1098/rspb.1980.0020. PMID: 6102765.
+
+Thanks to C. Rorden for pointing these papers out and discussing them.
+
+The current code here extends/tweaks the MH1980 algorithm a bit.  It runs
+in 3D by default (a straightforward extension), it also employs the
+Euclidean Distance Transform (EDT) to pick out the actual edges from the
+DOG step---see 3dDepthMap for more information about the EDT.
+
+The DOG-based edges require specifying a couple parameters, the main
+one being interpretable as a minimal 'scale size' for structures.  In this
+code, this is the 'sigma_rad' (or 'sigma_nvox', if you want to specify it
+in terms of the number of voxels along a given axis), which is the 'inner
+Gaussian' sigma value, if you are following MH1980.  The default for this
+sigma_rad parameter is set based on the expected average thickness of adult
+human GM, but it is easily alterable at the command line for any other
+values.
+
+==========================================================================
+
+Command usage and option list ~1~ 
+
+    3dedgedog [options] -prefix PREF -input DSET
+
+where: 
+
+  -input DSET      :(req) input dataset
+
+  -prefix PREF     :(req) output prefix name
+
+  -mask  MASK      :mask dataset.  NB: this mask is only applied *after*
+                    the EDT has been calculated.  Therefore, the boundaries
+                    of this mask have no affect on the calculated distance
+                    values, except for potentially zeroing some out at the
+                    end. Mask only gets made from [0]th vol.
+
+  -automask        :alternative to '-mask ..', for automatic internal
+                    calculation of a mask in the usual AFNI way. Again, this
+                    mask is only applied after all calcs (so using this does
+                    not speed up the calc or affect distance values).
+                    ** Special note: you can also write '-automask+X', where
+                    X is some integer; this will dilate the initial automask
+                    X number of times (as in 3dAllineate); must have X>0.
+
+  -sigma_rad RRR   :radius for 'inner' Gaussian, in units of mm; RRR must
+                    by greater than zero (def: 1.40). Default is chosen to
+                    capture useful features in typical adult, human GM,
+                    which has typical thickness of 2-2.5mm.  So, if you are
+                    analyzing some other kind of data, you might want to
+                    adapt this value appropriately.
+
+  -sigma_nvox NNN  :define radius for 'inner' Gaussian by providing a
+                    multiplicative factor for voxel edge length, which will
+                    be applied in each direction; NNN can be any float
+                    greater than zero.  This is an alternative to the
+                    '-sigma_rad ..' opt (def: use '-sigma_rad' and its
+                    default value).
+
+  -ratio_sigma RS  :the ratio of inner and outer Gaussian sigma values.
+                    That is, RS defines the size of the outer Gaussian,
+                    by scaling up the inner value.  RS can be any float
+                    greater than 1 (def: 1.40). See 'Notes' for more about
+                    this parameter.
+
+  -output_intermed :use this option flag if you would like to output some
+                    intermediate dataset(s):
+                        + DOG (difference of Gaussian)
+                        + EDT2 (Euclidean Distance Transform, dist**2 vals),
+                          [0]th vol only
+                        + BLURS (inner- and outer-Gaussian blurred dsets),
+                          [0]th vol only
+                    (def: not output).  Output names  will be user-entered
+                    prefix with a representative suffix appended.
+
+  -edge_bnd_NN EBN :specify the 'nearest neighbor' (NN) value for the
+                    connectedness of the drawn boundaries.  EBN must be
+                    one of the following integer values:
+                        1 -> for face only
+                        2 -> for face+edge
+                        3 -> for face+edge+node
+                    (def: 1).
+
+  -edge_bnd_side EBS :specify which boundary layer around the zero-layer
+                    to use in the algorithm.  EBS must be one of the
+                    following keywords:
+                       "NEG"  -> for negative (inner) boundary
+                       "POS"  -> for positive (outer) boundary
+                       "BOTH" -> for both (inner+outer) boundary
+                       "BOTH_SIGN" -> for both (inner+outer) boundary,
+                                        with pos/neg sides keeping sign
+                    (def: "NEG").
+
+  -edge_bnd_scale  :by default, this program outputs a mask of edges, so
+                    edge locations have value=1, and everything else is 0.
+                    Using this option means the edges will have values
+                    scaled to have a relative magnitude between 0 and 100
+                    (NB: the output dset will still be datum=short)
+                    depending on the gradient value at the edge.
+                    When using this opt, likely setting the colorbar scale
+                    to 25 will provide nice images (in N=1 cases tested,
+                    at least!).
+
+  -only2D   SLI    :instead of estimating edges in full 3D volume, calculate
+                    edges just in 2D, per plane.  Provide the slice plane
+                    you want to run along as the single argument SLI:
+                       "axi"  -> for axial slice
+                       "cor"  -> for coronal slice
+                       "sag"  -> for sagittal slice
+
+==========================================================================
+
+Notes ~1~
+
+The value of sigma_rad ~2~
+
+(... which sounds like the title of a great story, no? Anyways...)
+This parameter represents the ratio of the width of the two Gaussians that
+are blurred in the first stage of the DOG estimation.  In the limit that
+sigma_rad approaches 1, the DOG -> LOG.  So, we want to keep the value of
+this parameter in the general vicinity of 1 (and it can't be less than 1,
+because the ratio is of the outer-to-the-inner Gaussian).  MH1980 suggested
+that sigma_rad=1.6 was optimal 'on engineering grounds' of bandwidth
+sensitivity of filters.  This is *very approximate* reasoning, but provides
+another reference datum for selection.
+
+Because the DOG approximation used here is for visual purposes of MRI
+datasets, often even more specifically for alignment purposes, we have
+chosen a default value that seemed visually appropriate to real data.
+Values of sigma_rad close to one show much noisier, scattered images---that
+is, they pick up *lots* of contrast differences, probably too many for most
+visualization purposes.  Edge images smoothen as sigma_rad increases, but
+as it gets larger, it can also blend together edges of features---such as
+gyri of the brain with dura.  So, long story short, the default value here
+tries to pick a reasonable middle ground.
+
+==========================================================================
+
+Examples ~1~
+
+1) Basic case:
+   3dedgedog                                                       \
+       -input   anat+orig.HEAD                                     \
+       -prefix  anat_EDGE.nii.gz                                   
+
+2) Same as above, but output both edges from the DOG+EDT steps, keeping
+   the sign of each side:
+   3dedgedog                                                       \
+       -edge_bnd_side  BOTH_SIGN                                   \
+       -input   anat+orig.HEAD                                     \
+       -prefix  anat_EDGE_BOTHS.nii.gz                             
+
+3) Output both sides of edges, and scale the edge values (by DOG value):
+   3dedgedog                                                       \
+       -edge_bnd_side  BOTH_SIGN                                   \
+       -edge_bnd_scale                                             \
+       -input   anat+orig.HEAD                                     \
+       -prefix  anat_EDGE_BOTHS_SCALE.nii.gz                       
+
+4) Increase scale size of edged shapes to 2.7mm:
+   3dedgedog                                                       \
+       -sigma_rad 2.7                                              \
+       -edge_bnd_scale                                             \
+       -input   anat+orig.HEAD                                     \
+       -prefix  anat_EDGE_BOTHS_SCALE.nii.gz                       
+
+5) Apply automasking, with a bit of mask dilation so outer boundary is
+   included:
+   3dedgedog                                                       \
+       -automask+2                                                 \
+       -input   anat+orig.HEAD                                     \
+       -prefix  anat_EDGE_AMASK.nii.gz                             
+
+==========================================================================
+
+
+=== Output of '3dedgedog' (no arguments) ===
+
+
+Overview ~1~ 
+
+This program calculates edges in an image using the Difference of Gaussians
+(DOG) method by Wilson and Giese (1977) and later combined with work by
+Marr and Hildreth (1980) to provide a computationally efficient
+approximation to their Lagrangian of Gaussian (LOG) method for calculating
+edges in an image.  This is a fascinating set of papers to read.  But you
+don't have to take *my* word for it!...
+
+Generating edges in this way has some interesting properties, such as
+numerical efficiency and edges that are closed loops/surfaces.  The edges
+can be tuned to focus on structures of a particular size, too, which can be
+particularly useful in some applications.
+
+written by: PA Taylor and DR Glen (SSCC, NIMH, NIH)
+
+Description ~2~ 
+
+The primary papers for learning more about the DOG and LOG methods are:
+
+   Wilson HR, Giese SC  (1977). Threshold visibility of frequency
+   gradient patterns. Vision Res. 17(10):1177-90.
+   doi: 10.1016/0042-6989(77)90152-3. PMID: 595381.
+
+   Marr D, Hildreth E (1980). Theory of edge detection. Proc R Soc
+   Lond B Biol Sci. 207(1167):187-217.
+   doi: 10.1098/rspb.1980.0020. PMID: 6102765.
+
+Thanks to C. Rorden for pointing these papers out and discussing them.
+
+The current code here extends/tweaks the MH1980 algorithm a bit.  It runs
+in 3D by default (a straightforward extension), it also employs the
+Euclidean Distance Transform (EDT) to pick out the actual edges from the
+DOG step---see 3dDepthMap for more information about the EDT.
+
+The DOG-based edges require specifying a couple parameters, the main
+one being interpretable as a minimal 'scale size' for structures.  In this
+code, this is the 'sigma_rad' (or 'sigma_nvox', if you want to specify it
+in terms of the number of voxels along a given axis), which is the 'inner
+Gaussian' sigma value, if you are following MH1980.  The default for this
+sigma_rad parameter is set based on the expected average thickness of adult
+human GM, but it is easily alterable at the command line for any other
+values.
+
+==========================================================================
+
+Command usage and option list ~1~ 
+
+    3dedgedog [options] -prefix PREF -input DSET
+
+where: 
+
+  -input DSET      :(req) input dataset
+
+  -prefix PREF     :(req) output prefix name
+
+  -mask  MASK      :mask dataset.  NB: this mask is only applied *after*
+                    the EDT has been calculated.  Therefore, the boundaries
+                    of this mask have no affect on the calculated distance
+                    values, except for potentially zeroing some out at the
+                    end. Mask only gets made from [0]th vol.
+
+  -automask        :alternative to '-mask ..', for automatic internal
+                    calculation of a mask in the usual AFNI way. Again, this
+                    mask is only applied after all calcs (so using this does
+                    not speed up the calc or affect distance values).
+                    ** Special note: you can also write '-automask+X', where
+                    X is some integer; this will dilate the initial automask
+                    X number of times (as in 3dAllineate); must have X>0.
+
+  -sigma_rad RRR   :radius for 'inner' Gaussian, in units of mm; RRR must
+                    by greater than zero (def: 1.40). Default is chosen to
+                    capture useful features in typical adult, human GM,
+                    which has typical thickness of 2-2.5mm.  So, if you are
+                    analyzing some other kind of data, you might want to
+                    adapt this value appropriately.
+
+  -sigma_nvox NNN  :define radius for 'inner' Gaussian by providing a
+                    multiplicative factor for voxel edge length, which will
+                    be applied in each direction; NNN can be any float
+                    greater than zero.  This is an alternative to the
+                    '-sigma_rad ..' opt (def: use '-sigma_rad' and its
+                    default value).
+
+  -ratio_sigma RS  :the ratio of inner and outer Gaussian sigma values.
+                    That is, RS defines the size of the outer Gaussian,
+                    by scaling up the inner value.  RS can be any float
+                    greater than 1 (def: 1.40). See 'Notes' for more about
+                    this parameter.
+
+  -output_intermed :use this option flag if you would like to output some
+                    intermediate dataset(s):
+                        + DOG (difference of Gaussian)
+                        + EDT2 (Euclidean Distance Transform, dist**2 vals),
+                          [0]th vol only
+                        + BLURS (inner- and outer-Gaussian blurred dsets),
+                          [0]th vol only
+                    (def: not output).  Output names  will be user-entered
+                    prefix with a representative suffix appended.
+
+  -edge_bnd_NN EBN :specify the 'nearest neighbor' (NN) value for the
+                    connectedness of the drawn boundaries.  EBN must be
+                    one of the following integer values:
+                        1 -> for face only
+                        2 -> for face+edge
+                        3 -> for face+edge+node
+                    (def: 1).
+
+  -edge_bnd_side EBS :specify which boundary layer around the zero-layer
+                    to use in the algorithm.  EBS must be one of the
+                    following keywords:
+                       "NEG"  -> for negative (inner) boundary
+                       "POS"  -> for positive (outer) boundary
+                       "BOTH" -> for both (inner+outer) boundary
+                       "BOTH_SIGN" -> for both (inner+outer) boundary,
+                                        with pos/neg sides keeping sign
+                    (def: "NEG").
+
+  -edge_bnd_scale  :by default, this program outputs a mask of edges, so
+                    edge locations have value=1, and everything else is 0.
+                    Using this option means the edges will have values
+                    scaled to have a relative magnitude between 0 and 100
+                    (NB: the output dset will still be datum=short)
+                    depending on the gradient value at the edge.
+                    When using this opt, likely setting the colorbar scale
+                    to 25 will provide nice images (in N=1 cases tested,
+                    at least!).
+
+  -only2D   SLI    :instead of estimating edges in full 3D volume, calculate
+                    edges just in 2D, per plane.  Provide the slice plane
+                    you want to run along as the single argument SLI:
+                       "axi"  -> for axial slice
+                       "cor"  -> for coronal slice
+                       "sag"  -> for sagittal slice
+
+==========================================================================
+
+Notes ~1~
+
+The value of sigma_rad ~2~
+
+(... which sounds like the title of a great story, no? Anyways...)
+This parameter represents the ratio of the width of the two Gaussians that
+are blurred in the first stage of the DOG estimation.  In the limit that
+sigma_rad approaches 1, the DOG -> LOG.  So, we want to keep the value of
+this parameter in the general vicinity of 1 (and it can't be less than 1,
+because the ratio is of the outer-to-the-inner Gaussian).  MH1980 suggested
+that sigma_rad=1.6 was optimal 'on engineering grounds' of bandwidth
+sensitivity of filters.  This is *very approximate* reasoning, but provides
+another reference datum for selection.
+
+Because the DOG approximation used here is for visual purposes of MRI
+datasets, often even more specifically for alignment purposes, we have
+chosen a default value that seemed visually appropriate to real data.
+Values of sigma_rad close to one show much noisier, scattered images---that
+is, they pick up *lots* of contrast differences, probably too many for most
+visualization purposes.  Edge images smoothen as sigma_rad increases, but
+as it gets larger, it can also blend together edges of features---such as
+gyri of the brain with dura.  So, long story short, the default value here
+tries to pick a reasonable middle ground.
+
+==========================================================================
+
+Examples ~1~
+
+1) Basic case:
+   3dedgedog                                                       \
+       -input   anat+orig.HEAD                                     \
+       -prefix  anat_EDGE.nii.gz                                   
+
+2) Same as above, but output both edges from the DOG+EDT steps, keeping
+   the sign of each side:
+   3dedgedog                                                       \
+       -edge_bnd_side  BOTH_SIGN                                   \
+       -input   anat+orig.HEAD                                     \
+       -prefix  anat_EDGE_BOTHS.nii.gz                             
+
+3) Output both sides of edges, and scale the edge values (by DOG value):
+   3dedgedog                                                       \
+       -edge_bnd_side  BOTH_SIGN                                   \
+       -edge_bnd_scale                                             \
+       -input   anat+orig.HEAD                                     \
+       -prefix  anat_EDGE_BOTHS_SCALE.nii.gz                       
+
+4) Increase scale size of edged shapes to 2.7mm:
+   3dedgedog                                                       \
+       -sigma_rad 2.7                                              \
+       -edge_bnd_scale                                             \
+       -input   anat+orig.HEAD                                     \
+       -prefix  anat_EDGE_BOTHS_SCALE.nii.gz                       
+
+5) Apply automasking, with a bit of mask dilation so outer boundary is
+   included:
+   3dedgedog                                                       \
+       -automask+2                                                 \
+       -input   anat+orig.HEAD                                     \
+       -prefix  anat_EDGE_AMASK.nii.gz                             
+
+==========================================================================
+

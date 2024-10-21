@@ -1,0 +1,36 @@
+
+=== Output of 'antsLandmarkBasedTransformInitializer --help' ===
+
+Usage: antsLandmarkBasedTransformInitializer dimension fixedImage movingImage transformType outputTransform [meshSize[0]xmeshSize[1]x...=1x1x1] [numberOfLevels=4] [order=3] [enforceStationaryBoundaries=1] [landmarkWeights] 
+
+Notes:
+ 1) transformType = "rigid", "affine", or "bspline".
+ 2) The optional arguments only apply to the bspline transform.
+ 3) The landmark weights are read from a text file where each row is either:
+     "label,labelWeight" or 
+     "labelWeight" 
+    If the latter format is used, the label weights are assumed to be arranged in ascending order by label.
+
+=== Output of 'antsLandmarkBasedTransformInitializer -help' ===
+
+Usage: antsLandmarkBasedTransformInitializer dimension fixedImage movingImage transformType outputTransform [meshSize[0]xmeshSize[1]x...=1x1x1] [numberOfLevels=4] [order=3] [enforceStationaryBoundaries=1] [landmarkWeights] 
+
+Notes:
+ 1) transformType = "rigid", "affine", or "bspline".
+ 2) The optional arguments only apply to the bspline transform.
+ 3) The landmark weights are read from a text file where each row is either:
+     "label,labelWeight" or 
+     "labelWeight" 
+    If the latter format is used, the label weights are assumed to be arranged in ascending order by label.
+
+=== Output of 'antsLandmarkBasedTransformInitializer' (no arguments) ===
+
+Usage: antsLandmarkBasedTransformInitializer dimension fixedImage movingImage transformType outputTransform [meshSize[0]xmeshSize[1]x...=1x1x1] [numberOfLevels=4] [order=3] [enforceStationaryBoundaries=1] [landmarkWeights] 
+
+Notes:
+ 1) transformType = "rigid", "affine", or "bspline".
+ 2) The optional arguments only apply to the bspline transform.
+ 3) The landmark weights are read from a text file where each row is either:
+     "label,labelWeight" or 
+     "labelWeight" 
+    If the latter format is used, the label weights are assumed to be arranged in ascending order by label.

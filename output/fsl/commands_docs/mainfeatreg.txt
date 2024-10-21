@@ -1,0 +1,87 @@
+
+=== Output of 'mainfeatreg --help' ===
+
+Usage: mainfeatreg <feat_directory> [-pngs]
+-a <file>        fieldmap image ( for unwarping ). Also enables unwarping mode
+-b <file>        magnitude image basename ( for unwarping  - looks for basename and basename_brain )
+-c <file>        non-linear configuration ( default T1_2_MNI152_2mm )
+-d <directory>   registration directory
+-e <number>      echo time
+-f <number>      signal loss threshold
+-g <number>      echo spacing
+-G <file>        GDC warp image
+-h <file>        high-res structural image
+-i <file>        input image
+-j <file>        initial high-res structural image
+-k <number>      unwarp direction
+-l <file>        write to log file
+-o               update files only
+-n <file>        non-linear reg
+-r <file>        write to html registration report
+-R <file>        write to html unwarping report
+-s <file>        standard image
+-u <number>      initial high-res DOF
+-v <number>      initial high-res search
+-w <number>      high-res DOF
+-x <number>      high-res search
+-y <number>      standard DOF
+-z <number>      standard search
+-F <number>      FEAT version parameter
+
+=== Output of 'mainfeatreg -help' ===
+
+Usage: mainfeatreg <feat_directory> [-pngs]
+-a <file>        fieldmap image ( for unwarping ). Also enables unwarping mode
+-b <file>        magnitude image basename ( for unwarping  - looks for basename and basename_brain )
+-c <file>        non-linear configuration ( default T1_2_MNI152_2mm )
+-d <directory>   registration directory
+-e <number>      echo time
+-f <number>      signal loss threshold
+-g <number>      echo spacing
+-G <file>        GDC warp image
+-h <file>        high-res structural image
+-i <file>        input image
+-j <file>        initial high-res structural image
+-k <number>      unwarp direction
+-l <file>        write to log file
+-o               update files only
+-n <file>        non-linear reg
+-r <file>        write to html registration report
+-R <file>        write to html unwarping report
+-s <file>        standard image
+-u <number>      initial high-res DOF
+-v <number>      initial high-res search
+-w <number>      high-res DOF
+-x <number>      high-res search
+-y <number>      standard DOF
+-z <number>      standard search
+-F <number>      FEAT version parameter
+
+=== Output of 'mainfeatreg' (no arguments) ===
+
+Usage: mainfeatreg <feat_directory> [-pngs]
+-a <file>        fieldmap image ( for unwarping ). Also enables unwarping mode
+-b <file>        magnitude image basename ( for unwarping  - looks for basename and basename_brain )
+-c <file>        non-linear configuration ( default T1_2_MNI152_2mm )
+-d <directory>   registration directory
+-e <number>      echo time
+-f <number>      signal loss threshold
+-g <number>      echo spacing
+-G <file>        GDC warp image
+-h <file>        high-res structural image
+-i <file>        input image
+-j <file>        initial high-res structural image
+-k <number>      unwarp direction
+-l <file>        write to log file
+-o               update files only
+-n <file>        non-linear reg
+-r <file>        write to html registration report
+-R <file>        write to html unwarping report
+-s <file>        standard image
+-u <number>      initial high-res DOF
+-v <number>      initial high-res search
+-w <number>      high-res DOF
+-x <number>      high-res search
+-y <number>      standard DOF
+-z <number>      standard search
+-F <number>      FEAT version parameter

@@ -1,0 +1,234 @@
+
+=== Output of 'gtmseg --help' ===
+
+
+gtmseg -- create an anatomical segmentation for the geometric transfer matrix (GTM)
+   run with --help for more help
+
+ --s subject     : subject to analyze (required)
+ --xcerseg : run xcerebralseg on this subject to create apas+head.mgz
+
+ --o outvol      : relative to subject/mri (default is gtmseg.mgz)
+ --usf USF       : upsampling factor (default is 2)
+ --subsegwm      : subsegment WM into lobes (default)
+ --keep-hypo     : do not relabel hypointensities as WM when subsegmenting WM
+ --keep-cc       : do not relabel corpus callosum as WM
+ --dmax dmax     : distance threshold to use when subsegmenting WM (default is 5)
+ --ctx-annot annot lhbase rhbase : annotation to use for cortical segmentation (default is aparc 1000 2000)
+ --wm-annot  annot lhbase rhbase : annotation to use for WM segmentation (with --subsegwm, default is lobes 3200 4200)
+ --output-usf OutputUSF : set output USF different than USF, mostly for debugging
+ --head headseg : use headseg instead of apas+head.mgz
+ --subseg-cblum-wm : subsegment cerebellum WM into core and gyri:
+ --no-pons :   do not add pons segmentation when doing ---xcerseg:
+ --no-vermis : do not add vermis segmentation when doing ---xcerseg:
+ --ctab colortable 
+ --no-seg-stats : do not compute segmentation stats
+
+ --debug 
+ --help 
+gtmseg 7.4.1
+
+Creates a segmentation that can then be used with the geometric
+transfer matrix for performing PET partial volume correction. It will
+create a segmentation of the head (approximate extra-cerebral CSF,
+approximate skull, air cavities, and the rest of the head) using the
+xcerebralseg script; this also adds segments for pons and vermis by
+default; With --subseg-cblum-wm, the cerebellum WM is subsegmented
+into a core component and gyri. The core components keep the
+{Left,Right}-Cerebellum-White-Matter names and indices. The gyri will
+become CbmWM_Gyri_{Left,Right} with indices 690 and 691.
+
+The WM can be subsegmented into lobes with --subsegwm. Hypointensities
+can be kept with --keep-hypo. The corpus callosum can be kept with
+--keep-cc. If these segments are not "kept" then they are relabelled
+as WM. The upsampling factor (USF) controls the resolution of the
+segmentation; this make a difference for cortical
+segmentations. Higher resolution is more accurate but takes up more
+disk space and will require more computations later on.
+
+Example:
+
+gtmseg --s subject
+
+Creates a file called $SUBJECTS_DIR/subject/mri/gtmseg.mgz without
+subsegmenting WM. Hypos are re-labeled as WM as is CC. The USF is 2
+(meaning .5mm voxel size).
+
+gtmseg --s subject --keep-hypo --subsegwm --o gtmseg.wmseg.hypo.mgz --usf 1
+
+Creates a file called $SUBJECTS_DIR/subject/mri/gtmseg.wmseg.hypo.mgz
+with subsegmenting of WM and keeping yypos. CC is re-labeled as
+WM. The USF is 1 (meaning 1mm voxel size).
+
+You can use your own segmentation or a modified FS segmentation. 
+It will be easiest if you modify apas+head.mgz to insert your
+segmentations. apas+head.mgz is created by gtmseg but you can
+create it with 
+
+xcerebralseg --s $subject --o $SUBJECTS_DIR/$subject/mri/apas+head.mgz
+
+To create a new segmentation by replacing voxels in apas+head.mgz with
+your segmentation: make sure that the index you give your new
+segmentation(s) is not already present in apas+head.mgz. Next create a
+color table text file that looks something like this:
+
+# TissueTypeSchema 
+#ctTType   0  unknown                           0   0   0    0
+#ctTType   1  cortex                          205  62  78    0
+#ctTType   2  subcort_gm                      230 148  34    0
+#ctTType   3  wm                                0 255   0    0
+#ctTType   4  csf                             120  18 134    0
+#ctTType   5  head                            150 150 200    0
+265 MySeg            219 100 176 0 2
+
+In the above case, it is assumed that the index that you used
+was 265 and that your segmentation is for subcortical gray matter
+(thus making the last number=2 in the MySeg row). If you have more
+than one segmentation you are adding, then add rows into the 
+color table. The first 5 entries codes for the different possible
+tissue types.
+
+You can then run
+
+gtmseg --s subject --head apas+head+myseg.mgz \
+   --ctab myseg.colortable.txt --o gtmseg+myseg.mgz  
+
+where apas+head+myseg.mgz is apas+head.mgz with your new segmentation,
+myseg.colortable.txt is the color table you created, and
+gtmseg+myseg.mgz will be your output volume. Note that an output color
+table gtmseg+myseg.ctab will be generated. You should check in this to
+make sure that your segmentation appears. You can also run
+
+tkmeditfv subject orig.mgz -seg gtmseg+myseg.mgz  myseg.colortable.txt
+
+
+=== Output of 'gtmseg -help' ===
+
+
+gtmseg -- create an anatomical segmentation for the geometric transfer matrix (GTM)
+   run with --help for more help
+
+ --s subject     : subject to analyze (required)
+ --xcerseg : run xcerebralseg on this subject to create apas+head.mgz
+
+ --o outvol      : relative to subject/mri (default is gtmseg.mgz)
+ --usf USF       : upsampling factor (default is 2)
+ --subsegwm      : subsegment WM into lobes (default)
+ --keep-hypo     : do not relabel hypointensities as WM when subsegmenting WM
+ --keep-cc       : do not relabel corpus callosum as WM
+ --dmax dmax     : distance threshold to use when subsegmenting WM (default is 5)
+ --ctx-annot annot lhbase rhbase : annotation to use for cortical segmentation (default is aparc 1000 2000)
+ --wm-annot  annot lhbase rhbase : annotation to use for WM segmentation (with --subsegwm, default is lobes 3200 4200)
+ --output-usf OutputUSF : set output USF different than USF, mostly for debugging
+ --head headseg : use headseg instead of apas+head.mgz
+ --subseg-cblum-wm : subsegment cerebellum WM into core and gyri:
+ --no-pons :   do not add pons segmentation when doing ---xcerseg:
+ --no-vermis : do not add vermis segmentation when doing ---xcerseg:
+ --ctab colortable 
+ --no-seg-stats : do not compute segmentation stats
+
+ --debug 
+ --help 
+gtmseg 7.4.1
+
+Creates a segmentation that can then be used with the geometric
+transfer matrix for performing PET partial volume correction. It will
+create a segmentation of the head (approximate extra-cerebral CSF,
+approximate skull, air cavities, and the rest of the head) using the
+xcerebralseg script; this also adds segments for pons and vermis by
+default; With --subseg-cblum-wm, the cerebellum WM is subsegmented
+into a core component and gyri. The core components keep the
+{Left,Right}-Cerebellum-White-Matter names and indices. The gyri will
+become CbmWM_Gyri_{Left,Right} with indices 690 and 691.
+
+The WM can be subsegmented into lobes with --subsegwm. Hypointensities
+can be kept with --keep-hypo. The corpus callosum can be kept with
+--keep-cc. If these segments are not "kept" then they are relabelled
+as WM. The upsampling factor (USF) controls the resolution of the
+segmentation; this make a difference for cortical
+segmentations. Higher resolution is more accurate but takes up more
+disk space and will require more computations later on.
+
+Example:
+
+gtmseg --s subject
+
+Creates a file called $SUBJECTS_DIR/subject/mri/gtmseg.mgz without
+subsegmenting WM. Hypos are re-labeled as WM as is CC. The USF is 2
+(meaning .5mm voxel size).
+
+gtmseg --s subject --keep-hypo --subsegwm --o gtmseg.wmseg.hypo.mgz --usf 1
+
+Creates a file called $SUBJECTS_DIR/subject/mri/gtmseg.wmseg.hypo.mgz
+with subsegmenting of WM and keeping yypos. CC is re-labeled as
+WM. The USF is 1 (meaning 1mm voxel size).
+
+You can use your own segmentation or a modified FS segmentation. 
+It will be easiest if you modify apas+head.mgz to insert your
+segmentations. apas+head.mgz is created by gtmseg but you can
+create it with 
+
+xcerebralseg --s $subject --o $SUBJECTS_DIR/$subject/mri/apas+head.mgz
+
+To create a new segmentation by replacing voxels in apas+head.mgz with
+your segmentation: make sure that the index you give your new
+segmentation(s) is not already present in apas+head.mgz. Next create a
+color table text file that looks something like this:
+
+# TissueTypeSchema 
+#ctTType   0  unknown                           0   0   0    0
+#ctTType   1  cortex                          205  62  78    0
+#ctTType   2  subcort_gm                      230 148  34    0
+#ctTType   3  wm                                0 255   0    0
+#ctTType   4  csf                             120  18 134    0
+#ctTType   5  head                            150 150 200    0
+265 MySeg            219 100 176 0 2
+
+In the above case, it is assumed that the index that you used
+was 265 and that your segmentation is for subcortical gray matter
+(thus making the last number=2 in the MySeg row). If you have more
+than one segmentation you are adding, then add rows into the 
+color table. The first 5 entries codes for the different possible
+tissue types.
+
+You can then run
+
+gtmseg --s subject --head apas+head+myseg.mgz \
+   --ctab myseg.colortable.txt --o gtmseg+myseg.mgz  
+
+where apas+head+myseg.mgz is apas+head.mgz with your new segmentation,
+myseg.colortable.txt is the color table you created, and
+gtmseg+myseg.mgz will be your output volume. Note that an output color
+table gtmseg+myseg.ctab will be generated. You should check in this to
+make sure that your segmentation appears. You can also run
+
+tkmeditfv subject orig.mgz -seg gtmseg+myseg.mgz  myseg.colortable.txt
+
+
+=== Output of 'gtmseg' (no arguments) ===
+
+
+gtmseg -- create an anatomical segmentation for the geometric transfer matrix (GTM)
+   run with --help for more help
+
+ --s subject     : subject to analyze (required)
+ --xcerseg : run xcerebralseg on this subject to create apas+head.mgz
+
+ --o outvol      : relative to subject/mri (default is gtmseg.mgz)
+ --usf USF       : upsampling factor (default is 2)
+ --subsegwm      : subsegment WM into lobes (default)
+ --keep-hypo     : do not relabel hypointensities as WM when subsegmenting WM
+ --keep-cc       : do not relabel corpus callosum as WM
+ --dmax dmax     : distance threshold to use when subsegmenting WM (default is 5)
+ --ctx-annot annot lhbase rhbase : annotation to use for cortical segmentation (default is aparc 1000 2000)
+ --wm-annot  annot lhbase rhbase : annotation to use for WM segmentation (with --subsegwm, default is lobes 3200 4200)
+ --output-usf OutputUSF : set output USF different than USF, mostly for debugging
+ --head headseg : use headseg instead of apas+head.mgz
+ --subseg-cblum-wm : subsegment cerebellum WM into core and gyri:
+ --no-pons :   do not add pons segmentation when doing ---xcerseg:
+ --no-vermis : do not add vermis segmentation when doing ---xcerseg:
+ --ctab colortable 
+ --no-seg-stats : do not compute segmentation stats
+
+ --debug 
+ --help 

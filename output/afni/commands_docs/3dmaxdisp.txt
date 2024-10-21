@@ -1,0 +1,132 @@
+
+=== Output of '3dmaxdisp --help' ===
+
+++ 3dmaxdisp: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+++ Authored by: Zhark the Displacer
+[7m** ERROR:[0m Unknown and Illegal option '--help' :-( :-( :-(
+   Here's hoping these excerpts from '/opt/afni/src/../install/3dmaxdisp -help' enlighten:
+        '-dset  ddd  }='
+        '-verb        = Print a few progress reports (to stderr).'
+        '-inset ddd  }= The input dataset is 'ddd', which is used only to form'
+
+=== Output of '3dmaxdisp -help' ===
+
+++ 3dmaxdisp: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+++ Authored by: Zhark the Displacer
+
+Program 3dmaxdisp!
+
+ * Reads in a 3D dataset and a DICOM-based affine matrix
+ * Outputs the average and maximum displacement that the matrix produces
+   when applied to the edge voxels of the 3D dataset's automask.
+ * The motivation for this program was to check if two
+   affine transformation matrices are 'close' -- but of course,
+   you can use this program for anything else you like.
+ * Suppose you have two affine transformation matrices that
+   transform a dataset XX.nii to MNI space, stored in files
+    AA.aff12.1D and BB.aff12.1D
+   and they aren't identical but they are close. How close?
+ * If these matrices are from 3dAllineate (-1Dmatrix_save),
+   then each matrix transforms DICOM-order coordinates
+   in XX.nii to MNI-space.
+ * So Inverse(AA) transforms MNI-space to XX-space
+ * So Inverse(AA)*BB transforms MNI-space to MNI-space,
+   going back to XX-space via matrix Inverse(AA) and then forward
+   to MNI-space via BB.
+ * This program (3dmaxdisp) can compute the average and maximum
+   displacement of Inverse(AA)*BB over the edges of the MNI template,
+   which will give you the answer to 'How close?' are the matrices.
+   If these displacements are on the order of a voxel size
+   (e.g., 1 mm), then the two matrices are for practical purposes
+   'close enough' (in Zhark's opinion).
+ * How to do this?
+     cat_matvec AA.aff12.1D -I BB.aff12.1D > AinvB.aff12.1D
+     3dmaxdisp -dset ~/abin/MNI152_2009_template_SSW.nii.gz'[0]' -matrix AinvB.aff12.1D
+ * Results are sent to stdout, two numbers per row (average and maximum),
+   one row of output for each matrix row given. Usually you will want to
+   capture stdout to a file with '>' or '| tee', depending on your further plans.
+
+-------
+OPTIONS:
+-------
+  -inset ddd  }= The input dataset is 'ddd', which is used only to form
+     *OR*     }= the mask over which the displacements will be computed.
+  -dset  ddd  }=
+
+  -matrix mmm  = File 'mmm' has 12 numbers per row, which are assembled
+                 into the 3x4 affine transformation matrix to be applied
+                 to the coordinates of the voxels in the dataset mask.
+                * As a special case, you can use the word 'IDENTITY'
+                  for the matrix filename, which should result in
+                  a max displacement of 0 mm.
+                * If there is more than 1 row in 'mmm', then each row
+                  is treated as a separate matrix, and the max displacement
+                  will be computed separately for each matrix.
+
+  -verb        = Print a few progress reports (to stderr).
+
+------
+Author: Zhark the Displacer (AKA Bob the Inverted) -- June 2021
+------
+
+
+=== Output of '3dmaxdisp' (no arguments) ===
+
+++ 3dmaxdisp: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+++ Authored by: Zhark the Displacer
+
+Program 3dmaxdisp!
+
+ * Reads in a 3D dataset and a DICOM-based affine matrix
+ * Outputs the average and maximum displacement that the matrix produces
+   when applied to the edge voxels of the 3D dataset's automask.
+ * The motivation for this program was to check if two
+   affine transformation matrices are 'close' -- but of course,
+   you can use this program for anything else you like.
+ * Suppose you have two affine transformation matrices that
+   transform a dataset XX.nii to MNI space, stored in files
+    AA.aff12.1D and BB.aff12.1D
+   and they aren't identical but they are close. How close?
+ * If these matrices are from 3dAllineate (-1Dmatrix_save),
+   then each matrix transforms DICOM-order coordinates
+   in XX.nii to MNI-space.
+ * So Inverse(AA) transforms MNI-space to XX-space
+ * So Inverse(AA)*BB transforms MNI-space to MNI-space,
+   going back to XX-space via matrix Inverse(AA) and then forward
+   to MNI-space via BB.
+ * This program (3dmaxdisp) can compute the average and maximum
+   displacement of Inverse(AA)*BB over the edges of the MNI template,
+   which will give you the answer to 'How close?' are the matrices.
+   If these displacements are on the order of a voxel size
+   (e.g., 1 mm), then the two matrices are for practical purposes
+   'close enough' (in Zhark's opinion).
+ * How to do this?
+     cat_matvec AA.aff12.1D -I BB.aff12.1D > AinvB.aff12.1D
+     3dmaxdisp -dset ~/abin/MNI152_2009_template_SSW.nii.gz'[0]' -matrix AinvB.aff12.1D
+ * Results are sent to stdout, two numbers per row (average and maximum),
+   one row of output for each matrix row given. Usually you will want to
+   capture stdout to a file with '>' or '| tee', depending on your further plans.
+
+-------
+OPTIONS:
+-------
+  -inset ddd  }= The input dataset is 'ddd', which is used only to form
+     *OR*     }= the mask over which the displacements will be computed.
+  -dset  ddd  }=
+
+  -matrix mmm  = File 'mmm' has 12 numbers per row, which are assembled
+                 into the 3x4 affine transformation matrix to be applied
+                 to the coordinates of the voxels in the dataset mask.
+                * As a special case, you can use the word 'IDENTITY'
+                  for the matrix filename, which should result in
+                  a max displacement of 0 mm.
+                * If there is more than 1 row in 'mmm', then each row
+                  is treated as a separate matrix, and the max displacement
+                  will be computed separately for each matrix.
+
+  -verb        = Print a few progress reports (to stderr).
+
+------
+Author: Zhark the Displacer (AKA Bob the Inverted) -- June 2021
+------
+

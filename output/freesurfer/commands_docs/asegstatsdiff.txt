@@ -1,0 +1,48 @@
+
+=== Output of 'asegstatsdiff --help' ===
+
+USAGE: asegstatsdiff <subj1> <subj2> [<outdir>]
+
+The utility asegstats2table is executed given the two subjects
+as input, and an output table called asegstats.txt is produced.
+Then, another row is added to that table containing the percent
+difference between the data of each of the two subjects.
+Mainly this is used to evaluate the effect of a code change on
+the aseg morphometry data for a given subject (before and after).
+The return code is the number of structures found to have nonzero
+percentage differences.
+
+[<outdir>] - optionally specify a directory to write asegstats.txt
+
+
+=== Output of 'asegstatsdiff -help' ===
+
+USAGE: asegstatsdiff <subj1> <subj2> [<outdir>]
+
+The utility asegstats2table is executed given the two subjects
+as input, and an output table called asegstats.txt is produced.
+Then, another row is added to that table containing the percent
+difference between the data of each of the two subjects.
+Mainly this is used to evaluate the effect of a code change on
+the aseg morphometry data for a given subject (before and after).
+The return code is the number of structures found to have nonzero
+percentage differences.
+
+[<outdir>] - optionally specify a directory to write asegstats.txt
+
+
+=== Output of 'asegstatsdiff' (no arguments) ===
+
+USAGE: asegstatsdiff <subj1> <subj2> [<outdir>]
+
+The utility asegstats2table is executed given the two subjects
+as input, and an output table called asegstats.txt is produced.
+Then, another row is added to that table containing the percent
+difference between the data of each of the two subjects.
+Mainly this is used to evaluate the effect of a code change on
+the aseg morphometry data for a given subject (before and after).
+The return code is the number of structures found to have nonzero
+percentage differences.
+
+[<outdir>] - optionally specify a directory to write asegstats.txt
+

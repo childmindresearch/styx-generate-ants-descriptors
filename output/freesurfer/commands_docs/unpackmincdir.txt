@@ -1,0 +1,24 @@
+
+=== Output of 'unpackmincdir --help' ===
+
+unpackmincdir 7.4.1
+Mon Oct 21 20:22:00 UTC 2024
+ERROR: Flag --help unrecognized.
+--help
+
+=== Output of 'unpackmincdir -help' ===
+
+unpackmincdir 7.4.1
+Mon Oct 21 20:22:00 UTC 2024
+ERROR: Flag -help unrecognized.
+-help
+
+=== Output of 'unpackmincdir' (no arguments) ===
+
+USAGE: unpackmincdir -src sourcedir -targ targdir
+         -scanseqinfo file : scan sequence directives (freesurfer_alpha/scanseq.info)
+         -funcseq  seqname : use seqname for functionals (ep2d_fid_ts_20b2604)
+         -fsd      dir     : functional subdirectory (bold)
+         -minconly    : do not unpack into bshorts
+         -nocopy      : create directories but do not copy/convert data
+         -umask umask : unix file permission mask (22)

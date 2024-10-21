@@ -1,0 +1,96 @@
+
+=== Output of 'antsIntermodalityIntrasubject.sh --help' ===
+
+
+antsIntermodalityIntrasubject.sh performs registration between a scalar image and a T1 image:
+
+Usage:
+
+antsIntermodalityIntrasubject.sh -d imageDimension
+              -r anatomicalT1image (brain or whole-head, depending on modality) to align to
+              -R anatomicalReference image to warp to (often higher resolution than anatomicalT1image)
+              -i scalarImageToMatch  (such as avgerage bold, averge dwi, etc.)
+              -x anatomicalT1brainmask (should mask out regions that do not appear in scalarImageToMatch)
+              -t transformType (0=rigid, 1=affine, 2=rigid+small_def, 3=affine+small_def)
+              -w prefix of T1 to template transform
+              -T template space
+
+
+              <OPTARGS>
+              -o outputPrefix
+              -l labels in template space
+              -a auxiliary scalar image/s to warp to template
+              -b auxiliary dt image to warp to template
+
+Example:
+
+  bash /opt/ants/bin/antsIntermodalityIntrasubject.sh -d 3 -i pcasl_control.nii.gz -r t1.nii.gz -x t1_mask.nii.gz -a cbf.nii.gz -l template_aal.nii.gz -w t12template_ -t 2 -o output
+
+minimal paramters that must be passed include:
+
+-d  -i -r -x -w -o
+
+
+=== Output of 'antsIntermodalityIntrasubject.sh -help' ===
+
+
+antsIntermodalityIntrasubject.sh performs registration between a scalar image and a T1 image:
+
+Usage:
+
+antsIntermodalityIntrasubject.sh -d imageDimension
+              -r anatomicalT1image (brain or whole-head, depending on modality) to align to
+              -R anatomicalReference image to warp to (often higher resolution than anatomicalT1image)
+              -i scalarImageToMatch  (such as avgerage bold, averge dwi, etc.)
+              -x anatomicalT1brainmask (should mask out regions that do not appear in scalarImageToMatch)
+              -t transformType (0=rigid, 1=affine, 2=rigid+small_def, 3=affine+small_def)
+              -w prefix of T1 to template transform
+              -T template space
+
+
+              <OPTARGS>
+              -o outputPrefix
+              -l labels in template space
+              -a auxiliary scalar image/s to warp to template
+              -b auxiliary dt image to warp to template
+
+Example:
+
+  bash /opt/ants/bin/antsIntermodalityIntrasubject.sh -d 3 -i pcasl_control.nii.gz -r t1.nii.gz -x t1_mask.nii.gz -a cbf.nii.gz -l template_aal.nii.gz -w t12template_ -t 2 -o output
+
+minimal paramters that must be passed include:
+
+-d  -i -r -x -w -o
+
+
+=== Output of 'antsIntermodalityIntrasubject.sh' (no arguments) ===
+
+
+antsIntermodalityIntrasubject.sh performs registration between a scalar image and a T1 image:
+
+Usage:
+
+antsIntermodalityIntrasubject.sh -d imageDimension
+              -r anatomicalT1image (brain or whole-head, depending on modality) to align to
+              -R anatomicalReference image to warp to (often higher resolution than anatomicalT1image)
+              -i scalarImageToMatch  (such as avgerage bold, averge dwi, etc.)
+              -x anatomicalT1brainmask (should mask out regions that do not appear in scalarImageToMatch)
+              -t transformType (0=rigid, 1=affine, 2=rigid+small_def, 3=affine+small_def)
+              -w prefix of T1 to template transform
+              -T template space
+
+
+              <OPTARGS>
+              -o outputPrefix
+              -l labels in template space
+              -a auxiliary scalar image/s to warp to template
+              -b auxiliary dt image to warp to template
+
+Example:
+
+  bash /opt/ants/bin/antsIntermodalityIntrasubject.sh -d 3 -i pcasl_control.nii.gz -r t1.nii.gz -x t1_mask.nii.gz -a cbf.nii.gz -l template_aal.nii.gz -w t12template_ -t 2 -o output
+
+minimal paramters that must be passed include:
+
+-d  -i -r -x -w -o
+

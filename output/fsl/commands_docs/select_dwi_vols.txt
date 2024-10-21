@@ -1,0 +1,42 @@
+
+=== Output of 'select_dwi_vols --help' ===
+
+
+Usage: select_dwi_vols <data> <bvals> <output> <approx_bval> [other options]
+
+ Optional arguments:
+
+ -b <value>    additional bvalues to be extracted (can be used multiple times)
+ -m            output mean instead of concat
+ -v            output variance instead of concat
+ -obv <bvecs>  produce <output>.bval and <output>.bvec
+ -db <delta_bvals> only include volumes with offset in b-value less than this value (default: 100 s/mm2)
+
+
+=== Output of 'select_dwi_vols -help' ===
+
+
+Usage: select_dwi_vols <data> <bvals> <output> <approx_bval> [other options]
+
+ Optional arguments:
+
+ -b <value>    additional bvalues to be extracted (can be used multiple times)
+ -m            output mean instead of concat
+ -v            output variance instead of concat
+ -obv <bvecs>  produce <output>.bval and <output>.bvec
+ -db <delta_bvals> only include volumes with offset in b-value less than this value (default: 100 s/mm2)
+
+
+=== Output of 'select_dwi_vols' (no arguments) ===
+
+
+Usage: select_dwi_vols <data> <bvals> <output> <approx_bval> [other options]
+
+ Optional arguments:
+
+ -b <value>    additional bvalues to be extracted (can be used multiple times)
+ -m            output mean instead of concat
+ -v            output variance instead of concat
+ -obv <bvecs>  produce <output>.bval and <output>.bvec
+ -db <delta_bvals> only include volumes with offset in b-value less than this value (default: 100 s/mm2)
+

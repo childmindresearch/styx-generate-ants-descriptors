@@ -1,0 +1,15 @@
+
+=== Output of 'qboot_postproc.sh --help' ===
+
+Removing intermediate files
+Done
+
+=== Output of 'qboot_postproc.sh -help' ===
+
+Removing intermediate files
+Done
+
+=== Output of 'qboot_postproc.sh' (no arguments) ===
+
+Removing intermediate files
+Done

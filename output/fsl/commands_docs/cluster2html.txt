@@ -1,0 +1,15 @@
+
+=== Output of 'cluster2html --help' ===
+
+Usage: cluster2html <featdir> <inroot> [-std]
+<inroot> should not contain the _std extension
+
+=== Output of 'cluster2html -help' ===
+
+Usage: cluster2html <featdir> <inroot> [-std]
+<inroot> should not contain the _std extension
+
+=== Output of 'cluster2html' (no arguments) ===
+
+Usage: cluster2html <featdir> <inroot> [-std]
+<inroot> should not contain the _std extension

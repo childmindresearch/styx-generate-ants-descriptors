@@ -1,0 +1,135 @@
+
+=== Output of 'groupstatsdiff --help' ===
+
+
+groupstatsdiff 
+  --g1 group1dir : output folder from groupstats
+  --g2 group2dir : output folder from groupstats
+  --o output : output folder for difference
+  --no-maps : only analyze ROI data
+  --osgm : use OSGM instead of native FSGD
+  --no-common : do not select common segs when running stattablediff
+  --allow-subj-diff : allow list of subjects to be different between the two
+  --no-area : do not compute area diffs
+  --no-volume : do not compute volume diffs
+  --no-ba : do not compute diffs for BA labels
+  --no-aparcstats : do not do aparcstats
+  --no-asegstats : do not do asegstats
+  --no-wparcstats : do not do wmparcstats
+  --no-stats : do not do any ROI stats
+  --no-prune : do not prune when running mri_glmfit (may be nec if g1=g2)
+  --fwhm fwhm <--fwhm fwhm> : override the fwhm from group ana (must be present)
+  --sd1 sd1, --sd2 sd2 : subjects dirs for computing dice (default is parent dir of groupdir)
+  --no-dice : do not compute dice
+  --dice-ctab ctab : ctab to use for dice (default is /usr/local/freesurfer/ASegStatsLUT.txt)
+  
+groupstatsdiff 7.4.1
+
+This is a script run on two outputs of groupstats with the intention
+of evaluating the differences between two different recon-all analyses
+(eg, two versions of FS, same version but different platforms, same
+version but different parameters). The groupstats script is run
+separately on each of the analyses, storing the output in group1dir
+and group2dir which are then passed to this script.
+
+This script can be run in two different modes, either with --osgm
+(one-sample-group-mean) or without in which case it will use the FSGD
+file from the groupstats run. If groupstats was run with OSGM, then
+these two are the same. Use OSGM when simply looking at the difference
+between the two analyses. Use the native FSGD when look at whether
+there is an interaction between effect of interest (eg, age) and the 
+two analyses.
+
+One can then evaluate the differences with something like
+
+tksurfer fsaverage lh inflated -aparc \
+   -ov diffdir/maps/glm.thickness.lh.sm10/osgm/sig.mgh \
+   -t diffdir/maps/diff.thickness.lh.sm10.mgh
+
+The map will indicate OSGM differences and the "time" course will show
+the paired differences in each subject. If you want to dig deeper into
+a particular subject, then try using fvcompare.
+
+Other maps that can be examined are: thickness, area, volume.
+
+
+
+=== Output of 'groupstatsdiff -help' ===
+
+
+groupstatsdiff 
+  --g1 group1dir : output folder from groupstats
+  --g2 group2dir : output folder from groupstats
+  --o output : output folder for difference
+  --no-maps : only analyze ROI data
+  --osgm : use OSGM instead of native FSGD
+  --no-common : do not select common segs when running stattablediff
+  --allow-subj-diff : allow list of subjects to be different between the two
+  --no-area : do not compute area diffs
+  --no-volume : do not compute volume diffs
+  --no-ba : do not compute diffs for BA labels
+  --no-aparcstats : do not do aparcstats
+  --no-asegstats : do not do asegstats
+  --no-wparcstats : do not do wmparcstats
+  --no-stats : do not do any ROI stats
+  --no-prune : do not prune when running mri_glmfit (may be nec if g1=g2)
+  --fwhm fwhm <--fwhm fwhm> : override the fwhm from group ana (must be present)
+  --sd1 sd1, --sd2 sd2 : subjects dirs for computing dice (default is parent dir of groupdir)
+  --no-dice : do not compute dice
+  --dice-ctab ctab : ctab to use for dice (default is /usr/local/freesurfer/ASegStatsLUT.txt)
+  
+groupstatsdiff 7.4.1
+
+This is a script run on two outputs of groupstats with the intention
+of evaluating the differences between two different recon-all analyses
+(eg, two versions of FS, same version but different platforms, same
+version but different parameters). The groupstats script is run
+separately on each of the analyses, storing the output in group1dir
+and group2dir which are then passed to this script.
+
+This script can be run in two different modes, either with --osgm
+(one-sample-group-mean) or without in which case it will use the FSGD
+file from the groupstats run. If groupstats was run with OSGM, then
+these two are the same. Use OSGM when simply looking at the difference
+between the two analyses. Use the native FSGD when look at whether
+there is an interaction between effect of interest (eg, age) and the 
+two analyses.
+
+One can then evaluate the differences with something like
+
+tksurfer fsaverage lh inflated -aparc \
+   -ov diffdir/maps/glm.thickness.lh.sm10/osgm/sig.mgh \
+   -t diffdir/maps/diff.thickness.lh.sm10.mgh
+
+The map will indicate OSGM differences and the "time" course will show
+the paired differences in each subject. If you want to dig deeper into
+a particular subject, then try using fvcompare.
+
+Other maps that can be examined are: thickness, area, volume.
+
+
+
+=== Output of 'groupstatsdiff' (no arguments) ===
+
+
+groupstatsdiff 
+  --g1 group1dir : output folder from groupstats
+  --g2 group2dir : output folder from groupstats
+  --o output : output folder for difference
+  --no-maps : only analyze ROI data
+  --osgm : use OSGM instead of native FSGD
+  --no-common : do not select common segs when running stattablediff
+  --allow-subj-diff : allow list of subjects to be different between the two
+  --no-area : do not compute area diffs
+  --no-volume : do not compute volume diffs
+  --no-ba : do not compute diffs for BA labels
+  --no-aparcstats : do not do aparcstats
+  --no-asegstats : do not do asegstats
+  --no-wparcstats : do not do wmparcstats
+  --no-stats : do not do any ROI stats
+  --no-prune : do not prune when running mri_glmfit (may be nec if g1=g2)
+  --fwhm fwhm <--fwhm fwhm> : override the fwhm from group ana (must be present)
+  --sd1 sd1, --sd2 sd2 : subjects dirs for computing dice (default is parent dir of groupdir)
+  --no-dice : do not compute dice
+  --dice-ctab ctab : ctab to use for dice (default is /usr/local/freesurfer/ASegStatsLUT.txt)
+  

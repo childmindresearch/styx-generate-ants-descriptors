@@ -1,0 +1,80 @@
+
+=== Output of 'fslselectvols --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fslselectvols
+ Select volumes from a 4D time series and output a subset 4D volume
+
+
+Usage: 
+fslselectvols -i <input> -o <output> --vols=0,1,6,7
+fslselectvols -i <input> -o <output> --vols=volumes_list.txt
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in		input file name (4D image)
+	-o,--out	output file name (4D image)
+	--vols		list of volumes to extract (comma-separated list or ascii file)
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this help text
+	-m		output mean instead of concat
+	-v		output variance instead of concat
+
+
+
+=== Output of 'fslselectvols -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fslselectvols
+ Select volumes from a 4D time series and output a subset 4D volume
+
+
+Usage: 
+fslselectvols -i <input> -o <output> --vols=0,1,6,7
+fslselectvols -i <input> -o <output> --vols=volumes_list.txt
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in		input file name (4D image)
+	-o,--out	output file name (4D image)
+	--vols		list of volumes to extract (comma-separated list or ascii file)
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this help text
+	-m		output mean instead of concat
+	-v		output variance instead of concat
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'fslselectvols' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in		input file name (4D image)
+	-o,--out	output file name (4D image)
+	--vols		list of volumes to extract (comma-separated list or ascii file)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fslselectvols
+ Select volumes from a 4D time series and output a subset 4D volume
+
+
+Usage: 
+fslselectvols -i <input> -o <output> --vols=0,1,6,7
+fslselectvols -i <input> -o <output> --vols=volumes_list.txt
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in		input file name (4D image)
+	-o,--out	output file name (4D image)
+	--vols		list of volumes to extract (comma-separated list or ascii file)
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this help text
+	-m		output mean instead of concat
+	-v		output variance instead of concat
+
+

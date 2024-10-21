@@ -1,0 +1,21 @@
+
+=== Output of 'bedpost --help' ===
+
+
+Error - bedpost has been superceded by bedpostx! Please instead run:
+bedpostx --help -n 1
+
+
+=== Output of 'bedpost -help' ===
+
+
+Error - bedpost has been superceded by bedpostx! Please instead run:
+bedpostx -help -n 1
+
+
+=== Output of 'bedpost' (no arguments) ===
+
+
+Error - bedpost has been superceded by bedpostx! Please instead run:
+bedpostx <dir> -n 1
+

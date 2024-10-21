@@ -1,0 +1,22 @@
+
+=== Output of '@Center_Distance --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Center_Distance -help' ===
+
+
+Usage: @Center_Distance <-dset DSET_1 DSET_2> 
+
+   Returns the distance between the centers 
+   of DSET_1 and DSET_2
+
+
+=== Output of '@Center_Distance' (no arguments) ===
+
+
+Usage: @Center_Distance <-dset DSET_1 DSET_2> 
+
+   Returns the distance between the centers 
+   of DSET_1 and DSET_2
+

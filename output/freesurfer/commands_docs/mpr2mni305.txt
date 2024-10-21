@@ -1,0 +1,19 @@
+
+=== Output of 'mpr2mni305 --help' ===
+
+Mon Oct 21 20:20:12 UTC 2024
+/usr/local/freesurfer/bin/mpr2mni305 --help
+mpr2mni305 7.4.1
+MPR2MNI305_TARGET: Undefined variable.
+
+=== Output of 'mpr2mni305 -help' ===
+
+Mon Oct 21 20:20:12 UTC 2024
+/usr/local/freesurfer/bin/mpr2mni305 -help
+mpr2mni305 7.4.1
+MPR2MNI305_TARGET: Undefined variable.
+
+=== Output of 'mpr2mni305' (no arguments) ===
+
+Usage:	mpr2mni305 <mpr_anat>
+ e.g.,	mpr2mni305 131

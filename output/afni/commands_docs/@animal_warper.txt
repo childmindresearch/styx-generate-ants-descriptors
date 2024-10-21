@@ -1,0 +1,1456 @@
+
+=== Output of '@animal_warper --help' ===
+
+** unknown option --help
+
+=== Output of '@animal_warper -help' ===
+
+
+Overview ~1~
+
+This is a script to:
++ align a subject structural dataset to a template
++ save the warp + inverse warps, for any future mapping
++ apply the warps to "follower" datasets in either space (e.g.,
+  atlases, segmentations, masks, or other anatomicals) to map those
+  dsets to the other space
+  - one common use: send a template atlas to native space
++ estimate surfaces of ROIs (with scripts also made to simplify viewing)
++ make automatic QC images to show the outputs, for quick evaluation
+
+This @animal_warper (AW) program uses basic AFNI commands to compute
+affine and nonlinear alignments. The program works by first aligning
+centers of the subject to that of the template. Affine and nonlinear
+alignment follow. The inverse warp is computed to bring the template
+and atlas segmentation into the center-shifted grid. Skullstripping is
+provided by masking with the template. Finally, the grids are adjusted
+back to the original center. Surfaces are made for all the atlas
+regions and for a transformed copy of the template dataset.
+
+Throughout this help file and output text files, note that the
+following terminology applies:
+
+    AP    =  afni_proc.py
+    AW    =  @animal_warper
+
+    xform =  transform
+    NL    =  nonlinear
+    aff   =  affine
+
+    orig  =  'original' (or native) subject data and/or space
+    base  =  template and/or template space
+    osh   =  original subject data/space shifted to base
+    pshft =  pre-shift (simple center of mass shift) to base
+    shft  =  'full' shift (includes aff align) to base
+    warp2std = a dset now warped to standard/template space (from original)
+
+
+Usage Example ~1~
+
+  animal_warper                                          \
+      -input  macaque1+orig                              \
+      -base   ../NMT.nii.gz                              \
+      -atlas  atlas_dir/D99_atlas_1.2a_al2NMT.nii.gz     \
+      -outdir aligned_data
+
+   Note only the input dset and template_dset are *required*. If no
+   "-atlas .." dset is given, then only the alignment steps are
+   performed.
+
+   Note also that you might want to include the "-ok_to_exist" flag,
+   in case you need to restart the command at some point, and want to
+   make use of previously created datasets (to save time).
+
+
+Options ~1~
+
+  -input input_dset   :required input dataset to align to base template
+                       (what is called the 'source' in other AFNI
+                       alignment programs).
+
+  -base base_dset     :required dataset. Can be given with a normal
+                       path-specification, or by just being somewhere
+                       that @FindAfniDsetPath can find it.  Note,
+                       this volume will also be used to try to
+                       skullstrip in the input dset (unless an
+                       explicit '-brainmask ..' dset is input; see
+                       that option below).
+
+  -template_prefix TP :*no longer an option*.  See/use '-base_abbrev',
+                       below.
+
+  -outdir outputdir   :create new directory and do all processing there.
+                       Minor note: '.' is not allowed;  that is, you must 
+                       choose a new directory.  NB: the input, base and 
+                       any atlas followers get copied into that directory
+                       (def = 'aw_results')
+
+  -skullstrip brainmask
+                      :one can provide a brainmask that is in the
+                       base template space. This brainmask will be
+                       warped back to native space and used to
+                       skullstrip the original volume. This dataset
+                       should share exactly the same grid as the
+                       base template dataset.  (If this opt isn't
+                       used to provide a brainmask, then the '-base
+                       ..' volume itself will be used to do so.)
+
+  -atlas ATL1 ATL2 ATL3 ...
+  -atlas_followers ATL1 ATL2 ATL3 ...
+                      :either of these option flags does the exact
+                       same thing-- one or more atlas (int-valued)
+                       dsets in the *base* volume space can be
+                       provided, and each will be mapped to the
+                       input dset's native space.  Atlas labeling
+                       will be preserved. Additionally, isosurfaces
+                       of each that can be viewed in SUMA will be
+                       created.  Atlas locations can be given with a
+                       normal path-specification, or by just being
+                       somewhere that @FindAfniDsetPath can find it.
+
+  -seg_followers S1 S2 S3 ...
+                      :one or more (int-valued) dsets in the *base*
+                       volume space can be provided, and each will
+                       be mapped to the input dset's native space.
+                       Must share the same grid of the base
+                       dataset. Atlas labeling will be preserved.
+                       different than the atlas_followers above (no
+                       surfaces generated for these).
+
+  -template_followers T1 T2 T3 ...
+                      :one or more dsets in the *base* volume space
+                       can be provided, and each will be mapped to
+                       the input dset's native space.  Not required
+                       to be int-valued here.
+
+  -dset_followers D1 D2 D3 ...
+                      :one or more dsets in the *input* volume space
+                       can be provided, and each will be mapped to
+                       the base dset's template space.  Not required
+                       to be int-valued here.
+
+  -roidset_followers dset1 dset2 ...
+                      :one or more (int-valued) dsets in the *input*
+                       volume space can be provided, and each will
+                       be mapped to the base dset's template space.
+
+  -input_abbrev INP_ABBR
+                      :when a dset DSET is warped to a space, it
+                       will like DSET_in_SOMETHING.nii.gz.  If that
+                       SOMETHING is the input dset space, then you
+                       can specify that label/abbreviation here.
+                       The INP_ABBR is also used for some files as 
+                       SOMETHING_*.
+                       Default naming will be to use the prefix of
+                       the input dset, such as would come from:
+                         3dinfo -prefix_noext INPUT_DSET
+                       Created file names can be quite long due to this,
+                       so an INP_ABBR might be useful.
+
+  -base_abbrev BASE_ABBR
+                      :used just like the '-input_abbrev ..' value 
+                       above, but for the base dset.
+                       Default here is to use the space information
+                       from a dset, namely:
+                          3dinfo -space BASE_DSET
+                       See also the '-use_known_abbrev_*' options
+                       for being able to let this program try to
+                       recognize a commonly known dset from its name.
+
+  -atlas_abbrevs AA1 AA2 AA3 ...
+                      :used just like the '-input_abbrev ..' value
+                       above, but for the atlas follower dsets.  NB:
+                       you either need to have the same number of
+                       atlas abbreviations as input atlas followers,
+                       or none.
+                       Default abbreviation is:  
+                         3dinfo -prefix_noext ATLAS_DSET
+                       See also the '-use_known_abbrev_*' options
+                       for being able to let this program try to
+                       recognize a commonly known dset from its name.
+
+  -template_abbrevs TA1 TA2 TA3 ...
+                      :used just like the '-atlas_abbrevs ..' opt
+                       above, but for the template follower dsets.  
+                       Default abbreviation is:  
+                         3dinfo -prefix_noext TEMPLATE_DSET
+                       Has the same 'known' list as the base abbrevs, 
+                       so make sure you don't run into having two files
+                       share the same abbrev!
+
+  -seg_abbrevs SA1 SA2 SA3 ...
+                      :used just like the '-atlas_abbrevs ..' opt
+                       above, but for the seg follower dsets.  
+                       Default abbreviation is:  
+                         3dinfo -prefix_noext SEG_DSET
+                       Has no 'known' abbrevs.
+
+  -dset_abbrevs DA1 DA2 DA3 ...
+                      :used just like the '-atlas_abbrevs ..' opt
+                       above, but for the dset follower dsets.  
+                       Default abbreviation is:  
+                         3dinfo -prefix_noext DSET_DSET
+                       Has no 'known' abbrevs.
+
+  -roidset_abbrevs RA1 RA2 RA3 ...
+                      :used just like the '-atlas_abbrevs ..' opt
+                       above, but for the dset follower dsets.  
+                       Default abbreviation is:  
+                         3dinfo -prefix_noext ROIDSET_DSET
+                       Has no 'known' abbrevs.
+
+  -use_known_abbrev_base
+                      :try to 'guess' an appropriate abbreviation
+                       for a base dset as processing proceeds, for
+                       naming created dsets.  Shares same list of
+                       knowns as the 'template' followers.
+
+  -use_known_abbrev_atlas
+                      :try to 'guess' an appropriate abbreviation
+                       for an atlas dset as processing proceeds, for
+                       naming created dsets.  
+
+  -use_known_abbrev_template
+                      :try to 'guess' an appropriate abbreviation
+                       for a template follower dset as processing
+                       proceeds, for naming created dsets.  Shares
+                       same list of knowns as the 'base'.
+
+  -use_known_abbrev_ALL
+                      :like using all the other '-use_known_abbrev*' 
+                       opts.
+
+  -align_centers_meth ACM
+                      :By default, an early step here is to use
+                       "Align_Centers -grid .." to start the
+                       alignment (align centers of grids).  If you
+                       want to, you can enter any of the "Center
+                       options" that @Align_Centers permits by using
+                       the given option in place of "ACM" *without*
+                       the preceding minus (e.g. a useful one might
+                       be: cm).  
+                       You can also provide the keyword "OFF" as an
+                       argument, and then @Align_Centers won't be
+                       run at all (the dset is just copied at that
+                       step), which is useful if you have already
+                       centered your dataset nicely.
+
+  -aff_move_opt AMO   :by default, '-giant_move' is used in the affine
+                       alignment step (via align_epi_anat.py). With this
+                       option, you can change the movement type to be
+                       any of the values allowed by align_epi_anat.py---
+                       note that you should *not* include the hyphen from
+                       the align_epi_anat.py option name, and if the option
+                       takes two terms, then you should put it in quotes, 
+                       such as: "cmass cmass"  (default: "giant_move").
+                       A special value of "OFF" means that none of these
+                       extra movement options is included (e.g., your
+                       input dset overlaps the base VERY well already).
+
+  -cost xxx           :choose a cost function for affine and nonlinear
+                       alignment. The same or similar cost function
+                       will be used for both alignments. The cost
+                       functions are listed in the help for
+                       3dAllineate and 3dQwarp.  Cost functions,
+                       like lpa+ZZ for 3dAllineate, are not
+                       available in 3dQwarp, so the "+ZZ" part would
+                       removed from the NL part of warping (i.e.,
+                       lpa would then be used for 3dQwarp's NL
+                       warping cost function). The default cost
+                       function is lpa+ZZ for affine warping (via
+                       align_epi_anat.py and 3dAllineate) and a
+                       clipped Pearson correlation for nonlinear
+                       warping (via auto_warp.py and 3dQwarp)
+
+  -maxlev nn          :maximum level for nonlinear warping. Determines 
+                       final neighborhood 'patch' size that is
+                       matched+refined. Allowed values are:
+                           0 <= nn <= 11
+                       See 3dQwarp help for information on maxlev. 
+                       Use smaller values for faster performance and
+                       testing. Increase up to 11 for finer warping.
+                       (def = 09)
+
+  -no_surfaces        :do not make surfaces for atlas regions in native
+                       space. Default is to create a surface directory
+                       with surfaces of each region in native space.
+
+  -feature_size mm    :set size in mm for affine alignment. Use about 0.1
+                       for mouse, 0.5 for macaque or rat. (def: 0.5)
+
+  -supersize          :allow for up to 50% size difference between subject
+                       and template
+
+  -init_scale  IS     :useful if the input dset is much larger or smaller
+                       than the reference template.  'IS' is the approximate
+                       length ratio of the input to the template.  So, if 
+                       you align a baby shark (doo doo, doo doo doo doo) 
+                       brain to an adult shark template brain, you might 
+                       use this option with a value of 0.75, for example.
+
+  -mode_smooth_size n :modal smoothing kernel size in voxels (not mm)
+                       This determines the size of a spatial regularization
+                       neighborhood for both ROI followers and segmentation
+                       datasets. Voxel values are replaced with the mode
+                       (most common value) in the spherical neighborhood.
+                       The default uses a 1 voxel radius. Use higher values
+                       depending on the irregularities of the edges of the
+                       regions and ROI 
+                       Turn off by setting this to 0
+
+  -mode_smooth_replacement_off
+                      :the current default behavior for modal
+                       smoothing is to do both 1) modal smoothing
+                       (with 3dLocalstat) and then 2) check if any
+                       ROIs got lost in that process, and 3) if ROIs
+                       got lost, put them back in (those specific
+                       ones won't be smoothed, just re-placed).
+                       Using this opt will mean that steps #2 and #3
+                       do NOT happen -- you just get plain modal
+                       smoothing without replacement.
+
+  -center_out CO      :center native-space output to native original 
+                       space or to center-shifted space over the center
+                       of template.  Allowed values of CO are 'native' 
+                       (def, leaves center at original location)
+                       and 'center_shift' (shift the input toward base,
+                       and calculate all other warps and outputs to/from
+                       there).
+                       ****Note using the center_out native data
+                       transformations might require extra care.
+                       3dNmatrix_apply may require vast amounts of memory
+                       if the center of the original dataset is far from
+                       the center of the template dataset, usually around
+                       an xyz coordinate of 0,0,0. 
+                       If datasets are far from a center around 0,0,0,
+                       then consider using 
+                         3drefit -oblique_recenter
+                         3drefit -oblique_recenter_raw
+                       or a preprocessing center alignment for all the
+                       native space datasets
+                         @Align_Centers -base template -dset mydset \
+                          -child dset2 dset3 ...
+
+  -align_type   AT    :provide alignment only to specified level, of which  
+                       your choices are:
+                         rigid       - align using rotation and translation
+                         rigid_equiv - compute alignment with full
+                                       affine but apply only the rigid
+                                       parameters.  This is usually
+                                       preferred over the rigid body
+                                       alignment because it handles
+                                       different sizes better. The
+                                       purpose here is to put data
+                                       into approximately the same
+                                       position as the template
+                                       (AC-PC, axialized, ...)
+                         affine      - full affine, 12 parameters
+                                       rotation, translation, shearing and 
+                                       scaling
+                         all         - go through affine and nonlinear warps
+                                       (default)
+                       In each case the full script runs.  However, note that
+                       the detail of alignment (and quality of masking) from
+                       less-than-nonlinear warps will necessarily be more 
+                       approximate.
+
+ -extra_qw_opts "EQO" :specify other options to add on to the
+                       existing options for 3dQwarp either as a group
+                       of options in quotes as in "-nopenalty
+                       -workhard 0:3" or by repeated use of this
+                       option. 3dQwarp is called indirectly using
+                       auto_warp.py.
+
+  -keep_temp          :keep temporary files including awpy directory (from
+                       auto_warp.py) and other intermediate datasets
+
+  -ver                :display program version
+
+  -ok_to_exist        :reuse and do not overwrite existing datasets.
+                       This option is used for faster restarts or with
+                       limited alignment options
+
+  -echo               :copy all commands being run into the terminal 
+                       (like running 'tcsh -x ...')
+
+
+Outputs (we got plenty of 'em!) ~1~
+
+  @animal_warper provides multiple outputs to assist in registering
+  your anatomicals and associated MRI data to the template.  Below,
+  INP refers to the abbreviation used to refer to the "-input .."
+  subject dset, and TEM to that of the "-base .." template
+  (typically in some standard space).
+
+  Main datasets ~2~
+
+    The following are all contained in the main output directory
+    ("-outdir ..")
+
+    + Text file "dictionary" reference of outputs
+      o animal_outs.txt         - guide to data in main dir and subdirs;
+                                  contains version number and history of 
+                                  command run
+
+    + Subject scans in native space of input
+      o INP.nii.gz              - copy of original input
+      o INP_ns.nii.gz           - same as above, but "no skull" (ns) version
+      o INP_nsu.nii.gz          - same as above, but also unifized (brightness)
+      o INP_mask.nii.gz         - mask of input (should match "ns" version)
+      o DSET_FOLL               - copy(s) of "-dset_followers .." (not abbrev)
+      o ROIDSET_FOLL            - copy(s) of "-roidset_followers .." (not 
+                                  abbrev)
+
+    + Template scans in native space of input 
+      o TEM_in_INP.nii.gz       - template aligned to input
+
+    + Template followers (e.g., atlas ATL, segmentation SEG) in native
+      space of input; could be several of each, each with own abbreviation
+      o ATL_in_INP.nii.gz       - "-atlas_followers .." aligned to input
+      o SEG_in_INP.nii.gz       - "-seg_followers .." aligned to input
+
+
+    + Template dsets and followers in template space
+      o TEMPLATE                - copy of "-template .." (not abbrev)
+      o TEMPLATE_MASK           - copy of "-skullstrip .." mask (not abbrev)
+      o ATL_FOLL                - copy(s) of "-atlas_followers .." (not abbrev)
+      o SEG_FOLL                - copy(s) of "-seg_followers .." (not abbrev)
+      o TEMPLATE_FOLL           - copy of "-template_followers .." (not abbrev)
+
+    + Subject scans mapped to the template
+      o INP_warp2std.nii.gz     - input dset nonlinearly warped to TEM
+      o INP_warp2std_ns.nii.gz  - same as above, but "no skull" version
+      o INP_warp2std_nsu.nii.gz - same as above, but also unifized (brightness)
+
+    + Alignment data (INP->TEM)
+      o INP_composite_linear_to_template.1D - matrix, full affine part
+      o INP_shft_WARP.nii.gz    - NL warp part (TEM grid)
+
+    + Alignment data (TEM->INP)
+      o INP_composite_linear_to_template_inv.1D - matrix, full affine part
+      o INP_shft_WARPINV.nii.gz - NL part of warp (TEM grid)
+
+  QC info ~2~
+
+    The following are all contained in the "QC/" subdirectory.
+
+    The following quality control (QC) images are automatically
+    generated during processing, to help with speedy checking of
+    processing.  In each case, there are three sets of PNG montages
+    (one for sag, cor and axi views) and a copy of the colorbar used
+    (same prefix as file name, *.jpg).  Additionally, there is also a
+    *.txt file of ranges of values related to the ulay and olay, which
+    might be useful for QC or figure-generation.
+
+    + init_qc_00.input+base*.jpg, [init_qc_00_*_DEOB*]
+      [ulay] input source dset, original location
+      [olay] base dset
+      o single image montage to check initial overlap of source and base,
+        ignoring any obliquity that might be present (i.e., the way AFNI 
+        GUI does by default, and also how alignment starts)
+      o if initial overlap is not strong, alignment can fail or
+        produce weirdness
+      o *if* either dset has obliquity, then an image of both after 
+        deobliquing with 3dWarp is created (*DEOB.jpg), and a text file
+        about obliquity is also created (*DEOB.txt).
+
+    + init_qc_01.input_sh+base*.jpg
+      [ulay] input source dset, center-shifted location
+      [olay] base dset
+
+    + init_qc_01.input_sh_scale+base*.jpg   (only created if using '-init_scale ..')
+      [ulay] same as previous ulay, but with init_scale value applied
+      [olay] base dset
+
+    + init_qc_02.input_aff+base*.jpg
+      [ulay] input source dset, affine-aligned to base
+      [olay] base dset
+
+    + init_qc_03.input_NL+base*.jpg
+      [ulay] input source dset, NL-aligned to base
+      [olay] base dset
+
+    + qc_00.wrpd_input+base* (in base space)
+      [ulay] edges of the base dset
+      [olay] warped input dset
+
+    + qc_01.input+wrpd_base* (in input space)
+      [ulay] edges of the (warped) base dset
+      [olay] original input dset
+
+    + qc_02.input+mask* (in input space)
+      [ulay] input dset 
+      [olay] estimated (or input) mask, showing skullstripping
+
+    + qc_03.input+wrpd_{ATL,SEG}* (in input space)
+      [ulay] 'edge enhanced' original input dset
+      [olay] warped atlas or seg dset 
+      o NB: if the olay dset has >1 subbrick, each will be snapshotted
+            separately, because I heard the baying of the crowds for
+            such.
+
+    Additionally, if follower datasets are used (e.g., mapping atlases
+    from template to subject space), then report*1D text files are
+    also output, detailing information about ROIs before and after
+    mapping.
+
+    + report_{ATL,SEG}*.1D 
+      o this text file includes both absolute and relative volumes, as
+        well as ratios of volumes.  Additionally, one can see if any
+        ROIs got lost in the mapping process (e.g., were too small or
+        narrow, got squeezed too much or fell outside the mask).
+      o this text file can be viewed in a regular text editor and also
+        used for calculations with AFNI programs
+      o each report calculated separately for each subbrick of an
+        input ATL or SEG
+
+  Surfaces generated ~2~
+
+    (Unless you turn off surface estimate) there will be a "surfaces/"
+    directory with full sets of ROI surfaces calculated from the
+    '-atlas_follower ..' and '-seg_follower ..' dsets.
+
+    + surfaces_{ATL,SEG}*/
+      o full set of surfaces of each region in the respective dset
+      o if the atlas has >1 subbrick (e.g., the CHARM), then each 
+        subbrick will have its own subdir
+
+    + do_view_surfaces_{ATL,SEG}*.tcsh
+      o automatically generated script to view the contents of each 
+        surfaces_{ATL,SEG}*/ directory in SUMA
+
+    + TEM_in_INP.gii
+      o slightly polished surface of the warped template in input
+        space
+
+    + do_view_isosurf_TEM_in_INP.tcsh
+      o automatically generated script to view TEM_in_INP.gii in SUMA
+
+
+  Intermediate results directory ~2~
+
+    There is an "intermediate/" directory with lots of intermediate
+    warps, affine transforms and datasets.  
+
+    *If* you are supremely confident about your outputs, you can
+    remove this directory to save space.  **But** you should probably
+    only do so if you really need to, because invariably once you
+    delete it you will need to check something from it.  That's just
+    life.
+
+    This directory is useful to keep around for asking questions,
+    checking alignment (esp. checking if something went wrong),
+    potentially debugging (not my fault!), etc.
+
+    Comments ~2~
+
+    All atlas_points and labeltables on all input dsets should be
+    passed along to their warped versions, preserving those useful
+    functionalities and information.
+
+
+Integrating AW with afni_proc.py (AP) ~1~
+
+  Let's say that you plan to run AW as a prelude to processing FMRI
+  data with AP (a good idea, by the way!).  
+
+  This might be an example AW command (written with variables in ye
+  olde 'tcsh' style):
+
+    set anat_subj = sub-001_anat.nii.gz                   # input anat
+    set refvol    = NMT_*_SS.nii.gz                       # ref: template
+    set refatl    = CHARM*.nii.gz                         # ref: atlas
+    set odir_aw   = dir_aw/sub-001                        # output dir
+
+    @animal_warper                           \
+        -input  ${anat_subj}                \
+        -base   ${refvol}                   \
+        -atlas  ${refatl}                   \
+        -outdir ${odir_aw}                  \
+        -ok_to_exist
+
+  If you are mapping your FMRI data to standard space and using the
+  "tlrc" block in your AP command, then there are probably 4 main
+  outputs from there that you would then put into every successive AP
+  command, as well as using the same "refvol" and noting that your
+  anatomical dset has already been skullstripped.  We highlight these
+  in the following AP skeleton command (where the '...' means some
+  other entries/options would likely be included; order doesn't matter
+  for the AP command, but we are following the style in which most
+  afni_proc.py help examples are written):
+
+  |  # root of AW output dsets
+  |  set anat_base = `3dinfo -prefix_noext ${anat_subj}`  
+  |
+  |  afni_proc.py                                                       \
+  |      ...                                                            \
+  |      -blocks  ... align tlrc volreg ...                             \
+  |      ...                                                            \
+  |      -copy_anat               ${odir_aw}/${anat_base}_ns.nii.gz     \
+  |      -anat_has_skull          no                                    \
+  |      ...                                                            \
+  |      -tlrc_base               ${refvol}                             \
+  |      -tlrc_NL_warp                                                  \
+  |      -tlrc_NL_warped_dsets                                          \
+  |          ${odir_aw}/${anat_base}_warp2std_nsu.nii.gz                \
+  |          ${odir_aw}/${anat_base}_composite_linear_to_template.1D  \
+  |          ${odir_aw}/${anat_base}_shft_WARP.nii.gz                 \
+  |      ...
+
+  In the preceding, please note the naming conventions in the *.1D
+  affine matrix and *WARP.nii.gz nonlinear warp dset which are
+  provided to the '-tlrc_NL_warped_dsets ..' option.
+
+
+Examples ~1~
+
+  1) Align a subject anatomical to the NMT template.  Use some
+  'follower' datasets that are defined in the template space, so that
+  they will be warped to subject space (there are other followers that
+  can start in the native space and be warped to the standard space,
+  too).  Use abbreviations with the followers to simplify life:
+
+    @animal_warper                                                \
+        -input             ${dir_anat}/anat-sub-000.nii.gz       \
+        -input_abbrev      ${subj}_anat                          \
+        -base              ${dir_ref}/NMT_*_SS.nii.gz            \
+        -base_abbrev       NMT2                                   \
+        -atlas_followers   ${dir_ref}/CHARM_*.nii.gz             \
+        -atlas_abbrevs     CHARM                                  \
+        -seg_followers     ${dir_ref}/NMT_*_segmentation.nii.gz  \
+        -seg_abbrevs       SEG                                    \
+        -skullstrip        ${dir_ref}/NMT_*_brainmask.nii.gz     \
+        -outdir            odir_aw                                \
+        -ok_to_exist 
+
+  2) Just like the previous example, but include more followers and
+  abbrevs:
+
+    @animal_warper                                                \
+        -input             ${dir_anat}/anat-sub-000.nii.gz       \
+        -input_abbrev      ${subj}_anat                          \
+        -base              ${dir_ref}/NMT_*_SS.nii.gz            \
+        -base_abbrev       NMT2                                   \
+        -atlas_followers   ${dir_ref}/CHARM_*.nii.gz             \
+                           ${dir_ref}/D99_*.nii.gz               \
+        -atlas_abbrevs     CHARM  D99                             \
+        -seg_followers     ${dir_ref}/NMT_*_segmentation.nii.gz  \
+        -seg_abbrevs       SEG                                    \
+        -skullstrip        ${dir_ref}/NMT_*_brainmask.nii.gz     \
+        -outdir            odir_aw                                \
+        -ok_to_exist 
+
+  3) Just like the previous example, but include followers (dset and
+  roidset) from subject space:
+
+    @animal_warper                                                \
+        -input             ${dir_anat}/anat-sub-000.nii.gz       \
+        -input_abbrev      ${subj}_anat                          \
+        -base              ${dir_ref}/NMT_*_SS.nii.gz            \
+        -base_abbrev       NMT2                                   \
+        -atlas_followers   ${dir_ref}/CHARM_*.nii.gz             \
+                           ${dir_ref}/D99_*.nii.gz               \
+        -atlas_abbrevs     CHARM  D99                             \
+        -seg_followers     ${dir_ref}/NMT_*_segmentation.nii.gz  \
+        -seg_abbrevs       SEG                                    \
+        -skullstrip        ${dir_ref}/NMT_*_brainmask.nii.gz     \
+        -dset_followers    ${dir_anat}/anat-t2w-sub-000.nii.gz   \
+        -dset_abbrevs      T2W                                    \
+        -roidset_followers ${dir_anat}/parcels-sub-000.nii.gz    \
+        -roidset_abbrevs   ROIS                                   \
+        -outdir            odir_aw                                \
+        -ok_to_exist 
+
+Demos, Tutorials and Online Docs ~1~
+
+  + See the MACAQUE_DEMO_* demos for examples in using the program, as
+    well as integrating its outputs with afni_proc.py.  To download
+    the demos for task-based FMRI and resting state FMRI analysis,
+    respectively:
+
+      @Install_MACAQUE_DEMO
+
+      @Install_MACAQUE_DEMO_REST
+
+    ... with accompanying webpages here:
+
+      https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/nonhuman/macaque_demos/main_toc.html
+
+  + For (growing) documentation on non-human dataset processing in
+    AFNI, see:
+
+      https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/nonhuman/main_toc.html
+
+  + For information on accompanying templates and atlases in the
+    animal kingdon (such as NMT, CHARM and SARM), as well as how to
+    download them, please see here:
+
+      https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/nonhuman/macaque_tempatl/main_toc.html
+
+
+References ~1~
+
+  If you use this program and/or the NMTv2, CHARM or ARM in your work,
+  please cite the following:
+
+  + Jung B, Taylor PA, Seidlitz PA, Sponheim C, Perkins P, 
+    Ungerleider LG, Glen DR, Messinger A (2021). 
+    A Comprehensive Macaque FMRI Pipeline and Hierarchical Atlas.
+    NeuroImage 235:117997.
+    https://doi.org/10.1016/j.neuroimage.2021.117997
+    https://www.biorxiv.org/content/10.1101/2020.08.05.237818v1
+
+  + Saad ZS, Glen DR, Chen G, Beauchamp MS, Desai R, Cox RW (2009). A
+    new method for improving functional-to-structural MRI alignment
+    using local Pearson correlation. Neuroimage 44 839–848. doi:
+    10.1016/j.neuroimage.2008.09.037
+    https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2649831/
+
+  If you use the SARM or ARM atlas, please cite the following:
+
+    R. Hartig, D. Glen, B. Jung, N.K. Logothetis, G. Paxinos,
+    E.A. Garza-Villarreal, A. Messinger, H. Evrard (2021). The
+    Subcortical Atlas of the Rhesus Macaque (SARM) for
+    Neuroimaging. NeuroImage 235:117996.
+    https://doi.org/10.1016/j.neuroimage.2021.117996.
+    
+
+  If you use the D99 atlas (warped to the NMT v2 in this
+  repository), please cite the following:
+
+    C. Reveley, A. Gruslys, F.Q. Ye, D. Glen, J. Samaha, B.E. Russ,
+    Z. Saad, A.K.  Seth, D.A. Leopold, K.S. Saleem (2017).
+    Three-Dimensional Digital Template Atlas of the Macaque
+    Brain. Cereb. Cortex 27:4463-4477.
+    https://doi.org/10.1093/cercor/bhw248.
+
+This program has been written (and rewritten!) by D Glen and PA Taylor
+(SSCC, NIMH, NIH, USA), with many helpful contributions and
+suggestions from B Jung and A Messinger.
+
+
+=== Output of '@animal_warper' (no arguments) ===
+
+
+Overview ~1~
+
+This is a script to:
++ align a subject structural dataset to a template
++ save the warp + inverse warps, for any future mapping
++ apply the warps to "follower" datasets in either space (e.g.,
+  atlases, segmentations, masks, or other anatomicals) to map those
+  dsets to the other space
+  - one common use: send a template atlas to native space
++ estimate surfaces of ROIs (with scripts also made to simplify viewing)
++ make automatic QC images to show the outputs, for quick evaluation
+
+This @animal_warper (AW) program uses basic AFNI commands to compute
+affine and nonlinear alignments. The program works by first aligning
+centers of the subject to that of the template. Affine and nonlinear
+alignment follow. The inverse warp is computed to bring the template
+and atlas segmentation into the center-shifted grid. Skullstripping is
+provided by masking with the template. Finally, the grids are adjusted
+back to the original center. Surfaces are made for all the atlas
+regions and for a transformed copy of the template dataset.
+
+Throughout this help file and output text files, note that the
+following terminology applies:
+
+    AP    =  afni_proc.py
+    AW    =  @animal_warper
+
+    xform =  transform
+    NL    =  nonlinear
+    aff   =  affine
+
+    orig  =  'original' (or native) subject data and/or space
+    base  =  template and/or template space
+    osh   =  original subject data/space shifted to base
+    pshft =  pre-shift (simple center of mass shift) to base
+    shft  =  'full' shift (includes aff align) to base
+    warp2std = a dset now warped to standard/template space (from original)
+
+
+Usage Example ~1~
+
+  animal_warper                                          \
+      -input  macaque1+orig                              \
+      -base   ../NMT.nii.gz                              \
+      -atlas  atlas_dir/D99_atlas_1.2a_al2NMT.nii.gz     \
+      -outdir aligned_data
+
+   Note only the input dset and template_dset are *required*. If no
+   "-atlas .." dset is given, then only the alignment steps are
+   performed.
+
+   Note also that you might want to include the "-ok_to_exist" flag,
+   in case you need to restart the command at some point, and want to
+   make use of previously created datasets (to save time).
+
+
+Options ~1~
+
+  -input input_dset   :required input dataset to align to base template
+                       (what is called the 'source' in other AFNI
+                       alignment programs).
+
+  -base base_dset     :required dataset. Can be given with a normal
+                       path-specification, or by just being somewhere
+                       that @FindAfniDsetPath can find it.  Note,
+                       this volume will also be used to try to
+                       skullstrip in the input dset (unless an
+                       explicit '-brainmask ..' dset is input; see
+                       that option below).
+
+  -template_prefix TP :*no longer an option*.  See/use '-base_abbrev',
+                       below.
+
+  -outdir outputdir   :create new directory and do all processing there.
+                       Minor note: '.' is not allowed;  that is, you must 
+                       choose a new directory.  NB: the input, base and 
+                       any atlas followers get copied into that directory
+                       (def = 'aw_results')
+
+  -skullstrip brainmask
+                      :one can provide a brainmask that is in the
+                       base template space. This brainmask will be
+                       warped back to native space and used to
+                       skullstrip the original volume. This dataset
+                       should share exactly the same grid as the
+                       base template dataset.  (If this opt isn't
+                       used to provide a brainmask, then the '-base
+                       ..' volume itself will be used to do so.)
+
+  -atlas ATL1 ATL2 ATL3 ...
+  -atlas_followers ATL1 ATL2 ATL3 ...
+                      :either of these option flags does the exact
+                       same thing-- one or more atlas (int-valued)
+                       dsets in the *base* volume space can be
+                       provided, and each will be mapped to the
+                       input dset's native space.  Atlas labeling
+                       will be preserved. Additionally, isosurfaces
+                       of each that can be viewed in SUMA will be
+                       created.  Atlas locations can be given with a
+                       normal path-specification, or by just being
+                       somewhere that @FindAfniDsetPath can find it.
+
+  -seg_followers S1 S2 S3 ...
+                      :one or more (int-valued) dsets in the *base*
+                       volume space can be provided, and each will
+                       be mapped to the input dset's native space.
+                       Must share the same grid of the base
+                       dataset. Atlas labeling will be preserved.
+                       different than the atlas_followers above (no
+                       surfaces generated for these).
+
+  -template_followers T1 T2 T3 ...
+                      :one or more dsets in the *base* volume space
+                       can be provided, and each will be mapped to
+                       the input dset's native space.  Not required
+                       to be int-valued here.
+
+  -dset_followers D1 D2 D3 ...
+                      :one or more dsets in the *input* volume space
+                       can be provided, and each will be mapped to
+                       the base dset's template space.  Not required
+                       to be int-valued here.
+
+  -roidset_followers dset1 dset2 ...
+                      :one or more (int-valued) dsets in the *input*
+                       volume space can be provided, and each will
+                       be mapped to the base dset's template space.
+
+  -input_abbrev INP_ABBR
+                      :when a dset DSET is warped to a space, it
+                       will like DSET_in_SOMETHING.nii.gz.  If that
+                       SOMETHING is the input dset space, then you
+                       can specify that label/abbreviation here.
+                       The INP_ABBR is also used for some files as 
+                       SOMETHING_*.
+                       Default naming will be to use the prefix of
+                       the input dset, such as would come from:
+                         3dinfo -prefix_noext INPUT_DSET
+                       Created file names can be quite long due to this,
+                       so an INP_ABBR might be useful.
+
+  -base_abbrev BASE_ABBR
+                      :used just like the '-input_abbrev ..' value 
+                       above, but for the base dset.
+                       Default here is to use the space information
+                       from a dset, namely:
+                          3dinfo -space BASE_DSET
+                       See also the '-use_known_abbrev_*' options
+                       for being able to let this program try to
+                       recognize a commonly known dset from its name.
+
+  -atlas_abbrevs AA1 AA2 AA3 ...
+                      :used just like the '-input_abbrev ..' value
+                       above, but for the atlas follower dsets.  NB:
+                       you either need to have the same number of
+                       atlas abbreviations as input atlas followers,
+                       or none.
+                       Default abbreviation is:  
+                         3dinfo -prefix_noext ATLAS_DSET
+                       See also the '-use_known_abbrev_*' options
+                       for being able to let this program try to
+                       recognize a commonly known dset from its name.
+
+  -template_abbrevs TA1 TA2 TA3 ...
+                      :used just like the '-atlas_abbrevs ..' opt
+                       above, but for the template follower dsets.  
+                       Default abbreviation is:  
+                         3dinfo -prefix_noext TEMPLATE_DSET
+                       Has the same 'known' list as the base abbrevs, 
+                       so make sure you don't run into having two files
+                       share the same abbrev!
+
+  -seg_abbrevs SA1 SA2 SA3 ...
+                      :used just like the '-atlas_abbrevs ..' opt
+                       above, but for the seg follower dsets.  
+                       Default abbreviation is:  
+                         3dinfo -prefix_noext SEG_DSET
+                       Has no 'known' abbrevs.
+
+  -dset_abbrevs DA1 DA2 DA3 ...
+                      :used just like the '-atlas_abbrevs ..' opt
+                       above, but for the dset follower dsets.  
+                       Default abbreviation is:  
+                         3dinfo -prefix_noext DSET_DSET
+                       Has no 'known' abbrevs.
+
+  -roidset_abbrevs RA1 RA2 RA3 ...
+                      :used just like the '-atlas_abbrevs ..' opt
+                       above, but for the dset follower dsets.  
+                       Default abbreviation is:  
+                         3dinfo -prefix_noext ROIDSET_DSET
+                       Has no 'known' abbrevs.
+
+  -use_known_abbrev_base
+                      :try to 'guess' an appropriate abbreviation
+                       for a base dset as processing proceeds, for
+                       naming created dsets.  Shares same list of
+                       knowns as the 'template' followers.
+
+  -use_known_abbrev_atlas
+                      :try to 'guess' an appropriate abbreviation
+                       for an atlas dset as processing proceeds, for
+                       naming created dsets.  
+
+  -use_known_abbrev_template
+                      :try to 'guess' an appropriate abbreviation
+                       for a template follower dset as processing
+                       proceeds, for naming created dsets.  Shares
+                       same list of knowns as the 'base'.
+
+  -use_known_abbrev_ALL
+                      :like using all the other '-use_known_abbrev*' 
+                       opts.
+
+  -align_centers_meth ACM
+                      :By default, an early step here is to use
+                       "Align_Centers -grid .." to start the
+                       alignment (align centers of grids).  If you
+                       want to, you can enter any of the "Center
+                       options" that @Align_Centers permits by using
+                       the given option in place of "ACM" *without*
+                       the preceding minus (e.g. a useful one might
+                       be: cm).  
+                       You can also provide the keyword "OFF" as an
+                       argument, and then @Align_Centers won't be
+                       run at all (the dset is just copied at that
+                       step), which is useful if you have already
+                       centered your dataset nicely.
+
+  -aff_move_opt AMO   :by default, '-giant_move' is used in the affine
+                       alignment step (via align_epi_anat.py). With this
+                       option, you can change the movement type to be
+                       any of the values allowed by align_epi_anat.py---
+                       note that you should *not* include the hyphen from
+                       the align_epi_anat.py option name, and if the option
+                       takes two terms, then you should put it in quotes, 
+                       such as: "cmass cmass"  (default: "giant_move").
+                       A special value of "OFF" means that none of these
+                       extra movement options is included (e.g., your
+                       input dset overlaps the base VERY well already).
+
+  -cost xxx           :choose a cost function for affine and nonlinear
+                       alignment. The same or similar cost function
+                       will be used for both alignments. The cost
+                       functions are listed in the help for
+                       3dAllineate and 3dQwarp.  Cost functions,
+                       like lpa+ZZ for 3dAllineate, are not
+                       available in 3dQwarp, so the "+ZZ" part would
+                       removed from the NL part of warping (i.e.,
+                       lpa would then be used for 3dQwarp's NL
+                       warping cost function). The default cost
+                       function is lpa+ZZ for affine warping (via
+                       align_epi_anat.py and 3dAllineate) and a
+                       clipped Pearson correlation for nonlinear
+                       warping (via auto_warp.py and 3dQwarp)
+
+  -maxlev nn          :maximum level for nonlinear warping. Determines 
+                       final neighborhood 'patch' size that is
+                       matched+refined. Allowed values are:
+                           0 <= nn <= 11
+                       See 3dQwarp help for information on maxlev. 
+                       Use smaller values for faster performance and
+                       testing. Increase up to 11 for finer warping.
+                       (def = 09)
+
+  -no_surfaces        :do not make surfaces for atlas regions in native
+                       space. Default is to create a surface directory
+                       with surfaces of each region in native space.
+
+  -feature_size mm    :set size in mm for affine alignment. Use about 0.1
+                       for mouse, 0.5 for macaque or rat. (def: 0.5)
+
+  -supersize          :allow for up to 50% size difference between subject
+                       and template
+
+  -init_scale  IS     :useful if the input dset is much larger or smaller
+                       than the reference template.  'IS' is the approximate
+                       length ratio of the input to the template.  So, if 
+                       you align a baby shark (doo doo, doo doo doo doo) 
+                       brain to an adult shark template brain, you might 
+                       use this option with a value of 0.75, for example.
+
+  -mode_smooth_size n :modal smoothing kernel size in voxels (not mm)
+                       This determines the size of a spatial regularization
+                       neighborhood for both ROI followers and segmentation
+                       datasets. Voxel values are replaced with the mode
+                       (most common value) in the spherical neighborhood.
+                       The default uses a 1 voxel radius. Use higher values
+                       depending on the irregularities of the edges of the
+                       regions and ROI 
+                       Turn off by setting this to 0
+
+  -mode_smooth_replacement_off
+                      :the current default behavior for modal
+                       smoothing is to do both 1) modal smoothing
+                       (with 3dLocalstat) and then 2) check if any
+                       ROIs got lost in that process, and 3) if ROIs
+                       got lost, put them back in (those specific
+                       ones won't be smoothed, just re-placed).
+                       Using this opt will mean that steps #2 and #3
+                       do NOT happen -- you just get plain modal
+                       smoothing without replacement.
+
+  -center_out CO      :center native-space output to native original 
+                       space or to center-shifted space over the center
+                       of template.  Allowed values of CO are 'native' 
+                       (def, leaves center at original location)
+                       and 'center_shift' (shift the input toward base,
+                       and calculate all other warps and outputs to/from
+                       there).
+                       ****Note using the center_out native data
+                       transformations might require extra care.
+                       3dNmatrix_apply may require vast amounts of memory
+                       if the center of the original dataset is far from
+                       the center of the template dataset, usually around
+                       an xyz coordinate of 0,0,0. 
+                       If datasets are far from a center around 0,0,0,
+                       then consider using 
+                         3drefit -oblique_recenter
+                         3drefit -oblique_recenter_raw
+                       or a preprocessing center alignment for all the
+                       native space datasets
+                         @Align_Centers -base template -dset mydset \
+                          -child dset2 dset3 ...
+
+  -align_type   AT    :provide alignment only to specified level, of which  
+                       your choices are:
+                         rigid       - align using rotation and translation
+                         rigid_equiv - compute alignment with full
+                                       affine but apply only the rigid
+                                       parameters.  This is usually
+                                       preferred over the rigid body
+                                       alignment because it handles
+                                       different sizes better. The
+                                       purpose here is to put data
+                                       into approximately the same
+                                       position as the template
+                                       (AC-PC, axialized, ...)
+                         affine      - full affine, 12 parameters
+                                       rotation, translation, shearing and 
+                                       scaling
+                         all         - go through affine and nonlinear warps
+                                       (default)
+                       In each case the full script runs.  However, note that
+                       the detail of alignment (and quality of masking) from
+                       less-than-nonlinear warps will necessarily be more 
+                       approximate.
+
+ -extra_qw_opts "EQO" :specify other options to add on to the
+                       existing options for 3dQwarp either as a group
+                       of options in quotes as in "-nopenalty
+                       -workhard 0:3" or by repeated use of this
+                       option. 3dQwarp is called indirectly using
+                       auto_warp.py.
+
+  -keep_temp          :keep temporary files including awpy directory (from
+                       auto_warp.py) and other intermediate datasets
+
+  -ver                :display program version
+
+  -ok_to_exist        :reuse and do not overwrite existing datasets.
+                       This option is used for faster restarts or with
+                       limited alignment options
+
+  -echo               :copy all commands being run into the terminal 
+                       (like running 'tcsh -x ...')
+
+
+Outputs (we got plenty of 'em!) ~1~
+
+  @animal_warper provides multiple outputs to assist in registering
+  your anatomicals and associated MRI data to the template.  Below,
+  INP refers to the abbreviation used to refer to the "-input .."
+  subject dset, and TEM to that of the "-base .." template
+  (typically in some standard space).
+
+  Main datasets ~2~
+
+    The following are all contained in the main output directory
+    ("-outdir ..")
+
+    + Text file "dictionary" reference of outputs
+      o animal_outs.txt         - guide to data in main dir and subdirs;
+                                  contains version number and history of 
+                                  command run
+
+    + Subject scans in native space of input
+      o INP.nii.gz              - copy of original input
+      o INP_ns.nii.gz           - same as above, but "no skull" (ns) version
+      o INP_nsu.nii.gz          - same as above, but also unifized (brightness)
+      o INP_mask.nii.gz         - mask of input (should match "ns" version)
+      o DSET_FOLL               - copy(s) of "-dset_followers .." (not abbrev)
+      o ROIDSET_FOLL            - copy(s) of "-roidset_followers .." (not 
+                                  abbrev)
+
+    + Template scans in native space of input 
+      o TEM_in_INP.nii.gz       - template aligned to input
+
+    + Template followers (e.g., atlas ATL, segmentation SEG) in native
+      space of input; could be several of each, each with own abbreviation
+      o ATL_in_INP.nii.gz       - "-atlas_followers .." aligned to input
+      o SEG_in_INP.nii.gz       - "-seg_followers .." aligned to input
+
+
+    + Template dsets and followers in template space
+      o TEMPLATE                - copy of "-template .." (not abbrev)
+      o TEMPLATE_MASK           - copy of "-skullstrip .." mask (not abbrev)
+      o ATL_FOLL                - copy(s) of "-atlas_followers .." (not abbrev)
+      o SEG_FOLL                - copy(s) of "-seg_followers .." (not abbrev)
+      o TEMPLATE_FOLL           - copy of "-template_followers .." (not abbrev)
+
+    + Subject scans mapped to the template
+      o INP_warp2std.nii.gz     - input dset nonlinearly warped to TEM
+      o INP_warp2std_ns.nii.gz  - same as above, but "no skull" version
+      o INP_warp2std_nsu.nii.gz - same as above, but also unifized (brightness)
+
+    + Alignment data (INP->TEM)
+      o INP_composite_linear_to_template.1D - matrix, full affine part
+      o INP_shft_WARP.nii.gz    - NL warp part (TEM grid)
+
+    + Alignment data (TEM->INP)
+      o INP_composite_linear_to_template_inv.1D - matrix, full affine part
+      o INP_shft_WARPINV.nii.gz - NL part of warp (TEM grid)
+
+  QC info ~2~
+
+    The following are all contained in the "QC/" subdirectory.
+
+    The following quality control (QC) images are automatically
+    generated during processing, to help with speedy checking of
+    processing.  In each case, there are three sets of PNG montages
+    (one for sag, cor and axi views) and a copy of the colorbar used
+    (same prefix as file name, *.jpg).  Additionally, there is also a
+    *.txt file of ranges of values related to the ulay and olay, which
+    might be useful for QC or figure-generation.
+
+    + init_qc_00.input+base*.jpg, [init_qc_00_*_DEOB*]
+      [ulay] input source dset, original location
+      [olay] base dset
+      o single image montage to check initial overlap of source and base,
+        ignoring any obliquity that might be present (i.e., the way AFNI 
+        GUI does by default, and also how alignment starts)
+      o if initial overlap is not strong, alignment can fail or
+        produce weirdness
+      o *if* either dset has obliquity, then an image of both after 
+        deobliquing with 3dWarp is created (*DEOB.jpg), and a text file
+        about obliquity is also created (*DEOB.txt).
+
+    + init_qc_01.input_sh+base*.jpg
+      [ulay] input source dset, center-shifted location
+      [olay] base dset
+
+    + init_qc_01.input_sh_scale+base*.jpg   (only created if using '-init_scale ..')
+      [ulay] same as previous ulay, but with init_scale value applied
+      [olay] base dset
+
+    + init_qc_02.input_aff+base*.jpg
+      [ulay] input source dset, affine-aligned to base
+      [olay] base dset
+
+    + init_qc_03.input_NL+base*.jpg
+      [ulay] input source dset, NL-aligned to base
+      [olay] base dset
+
+    + qc_00.wrpd_input+base* (in base space)
+      [ulay] edges of the base dset
+      [olay] warped input dset
+
+    + qc_01.input+wrpd_base* (in input space)
+      [ulay] edges of the (warped) base dset
+      [olay] original input dset
+
+    + qc_02.input+mask* (in input space)
+      [ulay] input dset 
+      [olay] estimated (or input) mask, showing skullstripping
+
+    + qc_03.input+wrpd_{ATL,SEG}* (in input space)
+      [ulay] 'edge enhanced' original input dset
+      [olay] warped atlas or seg dset 
+      o NB: if the olay dset has >1 subbrick, each will be snapshotted
+            separately, because I heard the baying of the crowds for
+            such.
+
+    Additionally, if follower datasets are used (e.g., mapping atlases
+    from template to subject space), then report*1D text files are
+    also output, detailing information about ROIs before and after
+    mapping.
+
+    + report_{ATL,SEG}*.1D 
+      o this text file includes both absolute and relative volumes, as
+        well as ratios of volumes.  Additionally, one can see if any
+        ROIs got lost in the mapping process (e.g., were too small or
+        narrow, got squeezed too much or fell outside the mask).
+      o this text file can be viewed in a regular text editor and also
+        used for calculations with AFNI programs
+      o each report calculated separately for each subbrick of an
+        input ATL or SEG
+
+  Surfaces generated ~2~
+
+    (Unless you turn off surface estimate) there will be a "surfaces/"
+    directory with full sets of ROI surfaces calculated from the
+    '-atlas_follower ..' and '-seg_follower ..' dsets.
+
+    + surfaces_{ATL,SEG}*/
+      o full set of surfaces of each region in the respective dset
+      o if the atlas has >1 subbrick (e.g., the CHARM), then each 
+        subbrick will have its own subdir
+
+    + do_view_surfaces_{ATL,SEG}*.tcsh
+      o automatically generated script to view the contents of each 
+        surfaces_{ATL,SEG}*/ directory in SUMA
+
+    + TEM_in_INP.gii
+      o slightly polished surface of the warped template in input
+        space
+
+    + do_view_isosurf_TEM_in_INP.tcsh
+      o automatically generated script to view TEM_in_INP.gii in SUMA
+
+
+  Intermediate results directory ~2~
+
+    There is an "intermediate/" directory with lots of intermediate
+    warps, affine transforms and datasets.  
+
+    *If* you are supremely confident about your outputs, you can
+    remove this directory to save space.  **But** you should probably
+    only do so if you really need to, because invariably once you
+    delete it you will need to check something from it.  That's just
+    life.
+
+    This directory is useful to keep around for asking questions,
+    checking alignment (esp. checking if something went wrong),
+    potentially debugging (not my fault!), etc.
+
+    Comments ~2~
+
+    All atlas_points and labeltables on all input dsets should be
+    passed along to their warped versions, preserving those useful
+    functionalities and information.
+
+
+Integrating AW with afni_proc.py (AP) ~1~
+
+  Let's say that you plan to run AW as a prelude to processing FMRI
+  data with AP (a good idea, by the way!).  
+
+  This might be an example AW command (written with variables in ye
+  olde 'tcsh' style):
+
+    set anat_subj = sub-001_anat.nii.gz                   # input anat
+    set refvol    = NMT_*_SS.nii.gz                       # ref: template
+    set refatl    = CHARM*.nii.gz                         # ref: atlas
+    set odir_aw   = dir_aw/sub-001                        # output dir
+
+    @animal_warper                           \
+        -input  ${anat_subj}                \
+        -base   ${refvol}                   \
+        -atlas  ${refatl}                   \
+        -outdir ${odir_aw}                  \
+        -ok_to_exist
+
+  If you are mapping your FMRI data to standard space and using the
+  "tlrc" block in your AP command, then there are probably 4 main
+  outputs from there that you would then put into every successive AP
+  command, as well as using the same "refvol" and noting that your
+  anatomical dset has already been skullstripped.  We highlight these
+  in the following AP skeleton command (where the '...' means some
+  other entries/options would likely be included; order doesn't matter
+  for the AP command, but we are following the style in which most
+  afni_proc.py help examples are written):
+
+  |  # root of AW output dsets
+  |  set anat_base = `3dinfo -prefix_noext ${anat_subj}`  
+  |
+  |  afni_proc.py                                                       \
+  |      ...                                                            \
+  |      -blocks  ... align tlrc volreg ...                             \
+  |      ...                                                            \
+  |      -copy_anat               ${odir_aw}/${anat_base}_ns.nii.gz     \
+  |      -anat_has_skull          no                                    \
+  |      ...                                                            \
+  |      -tlrc_base               ${refvol}                             \
+  |      -tlrc_NL_warp                                                  \
+  |      -tlrc_NL_warped_dsets                                          \
+  |          ${odir_aw}/${anat_base}_warp2std_nsu.nii.gz                \
+  |          ${odir_aw}/${anat_base}_composite_linear_to_template.1D  \
+  |          ${odir_aw}/${anat_base}_shft_WARP.nii.gz                 \
+  |      ...
+
+  In the preceding, please note the naming conventions in the *.1D
+  affine matrix and *WARP.nii.gz nonlinear warp dset which are
+  provided to the '-tlrc_NL_warped_dsets ..' option.
+
+
+Examples ~1~
+
+  1) Align a subject anatomical to the NMT template.  Use some
+  'follower' datasets that are defined in the template space, so that
+  they will be warped to subject space (there are other followers that
+  can start in the native space and be warped to the standard space,
+  too).  Use abbreviations with the followers to simplify life:
+
+    @animal_warper                                                \
+        -input             ${dir_anat}/anat-sub-000.nii.gz       \
+        -input_abbrev      ${subj}_anat                          \
+        -base              ${dir_ref}/NMT_*_SS.nii.gz            \
+        -base_abbrev       NMT2                                   \
+        -atlas_followers   ${dir_ref}/CHARM_*.nii.gz             \
+        -atlas_abbrevs     CHARM                                  \
+        -seg_followers     ${dir_ref}/NMT_*_segmentation.nii.gz  \
+        -seg_abbrevs       SEG                                    \
+        -skullstrip        ${dir_ref}/NMT_*_brainmask.nii.gz     \
+        -outdir            odir_aw                                \
+        -ok_to_exist 
+
+  2) Just like the previous example, but include more followers and
+  abbrevs:
+
+    @animal_warper                                                \
+        -input             ${dir_anat}/anat-sub-000.nii.gz       \
+        -input_abbrev      ${subj}_anat                          \
+        -base              ${dir_ref}/NMT_*_SS.nii.gz            \
+        -base_abbrev       NMT2                                   \
+        -atlas_followers   ${dir_ref}/CHARM_*.nii.gz             \
+                           ${dir_ref}/D99_*.nii.gz               \
+        -atlas_abbrevs     CHARM  D99                             \
+        -seg_followers     ${dir_ref}/NMT_*_segmentation.nii.gz  \
+        -seg_abbrevs       SEG                                    \
+        -skullstrip        ${dir_ref}/NMT_*_brainmask.nii.gz     \
+        -outdir            odir_aw                                \
+        -ok_to_exist 
+
+  3) Just like the previous example, but include followers (dset and
+  roidset) from subject space:
+
+    @animal_warper                                                \
+        -input             ${dir_anat}/anat-sub-000.nii.gz       \
+        -input_abbrev      ${subj}_anat                          \
+        -base              ${dir_ref}/NMT_*_SS.nii.gz            \
+        -base_abbrev       NMT2                                   \
+        -atlas_followers   ${dir_ref}/CHARM_*.nii.gz             \
+                           ${dir_ref}/D99_*.nii.gz               \
+        -atlas_abbrevs     CHARM  D99                             \
+        -seg_followers     ${dir_ref}/NMT_*_segmentation.nii.gz  \
+        -seg_abbrevs       SEG                                    \
+        -skullstrip        ${dir_ref}/NMT_*_brainmask.nii.gz     \
+        -dset_followers    ${dir_anat}/anat-t2w-sub-000.nii.gz   \
+        -dset_abbrevs      T2W                                    \
+        -roidset_followers ${dir_anat}/parcels-sub-000.nii.gz    \
+        -roidset_abbrevs   ROIS                                   \
+        -outdir            odir_aw                                \
+        -ok_to_exist 
+
+Demos, Tutorials and Online Docs ~1~
+
+  + See the MACAQUE_DEMO_* demos for examples in using the program, as
+    well as integrating its outputs with afni_proc.py.  To download
+    the demos for task-based FMRI and resting state FMRI analysis,
+    respectively:
+
+      @Install_MACAQUE_DEMO
+
+      @Install_MACAQUE_DEMO_REST
+
+    ... with accompanying webpages here:
+
+      https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/nonhuman/macaque_demos/main_toc.html
+
+  + For (growing) documentation on non-human dataset processing in
+    AFNI, see:
+
+      https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/nonhuman/main_toc.html
+
+  + For information on accompanying templates and atlases in the
+    animal kingdon (such as NMT, CHARM and SARM), as well as how to
+    download them, please see here:
+
+      https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/nonhuman/macaque_tempatl/main_toc.html
+
+
+References ~1~
+
+  If you use this program and/or the NMTv2, CHARM or ARM in your work,
+  please cite the following:
+
+  + Jung B, Taylor PA, Seidlitz PA, Sponheim C, Perkins P, 
+    Ungerleider LG, Glen DR, Messinger A (2021). 
+    A Comprehensive Macaque FMRI Pipeline and Hierarchical Atlas.
+    NeuroImage 235:117997.
+    https://doi.org/10.1016/j.neuroimage.2021.117997
+    https://www.biorxiv.org/content/10.1101/2020.08.05.237818v1
+
+  + Saad ZS, Glen DR, Chen G, Beauchamp MS, Desai R, Cox RW (2009). A
+    new method for improving functional-to-structural MRI alignment
+    using local Pearson correlation. Neuroimage 44 839–848. doi:
+    10.1016/j.neuroimage.2008.09.037
+    https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2649831/
+
+  If you use the SARM or ARM atlas, please cite the following:
+
+    R. Hartig, D. Glen, B. Jung, N.K. Logothetis, G. Paxinos,
+    E.A. Garza-Villarreal, A. Messinger, H. Evrard (2021). The
+    Subcortical Atlas of the Rhesus Macaque (SARM) for
+    Neuroimaging. NeuroImage 235:117996.
+    https://doi.org/10.1016/j.neuroimage.2021.117996.
+    
+
+  If you use the D99 atlas (warped to the NMT v2 in this
+  repository), please cite the following:
+
+    C. Reveley, A. Gruslys, F.Q. Ye, D. Glen, J. Samaha, B.E. Russ,
+    Z. Saad, A.K.  Seth, D.A. Leopold, K.S. Saleem (2017).
+    Three-Dimensional Digital Template Atlas of the Macaque
+    Brain. Cereb. Cortex 27:4463-4477.
+    https://doi.org/10.1093/cercor/bhw248.
+
+This program has been written (and rewritten!) by D Glen and PA Taylor
+(SSCC, NIMH, NIH, USA), with many helpful contributions and
+suggestions from B Jung and A Messinger.
+

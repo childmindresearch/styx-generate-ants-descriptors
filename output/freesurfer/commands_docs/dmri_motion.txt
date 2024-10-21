@@ -1,0 +1,82 @@
+
+=== Output of 'dmri_motion --help' ===
+
+
+USAGE: /usr/local/freesurfer/bin/dmri_motion
+
+Required arguments
+   --out <file>:
+     Output text file of motion measures
+
+Optional arguments
+   --outf <file>:
+     Output text file of frame-by-frame motion measures
+
+Arguments needed for between-volume motion measures
+   --mat <file>:
+     Input text file of volume-to-baseline affine transformations
+     Can be transformation matrices (e.g., from eddy_correct) or
+     transformation parameters (e.g., from eddy)
+
+Arguments needed for within-volume motion measures
+(see Benner et al MRM 2011):
+   --dwi <file> [...]:
+     Input DWI scan(s), unprocessed
+   --bval <file> [...]:
+     Input b-value table(s), one per scan
+   --T <num>:
+     Low-b image intensity threshold (default: 100)
+   --D <num>:
+     Nominal diffusivity (default: .001)
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+
+
+...
+
+
+=== Output of 'dmri_motion -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'dmri_motion' (no arguments) ===
+
+
+USAGE: /usr/local/freesurfer/bin/dmri_motion
+
+Required arguments
+   --out <file>:
+     Output text file of motion measures
+
+Optional arguments
+   --outf <file>:
+     Output text file of frame-by-frame motion measures
+
+Arguments needed for between-volume motion measures
+   --mat <file>:
+     Input text file of volume-to-baseline affine transformations
+     Can be transformation matrices (e.g., from eddy_correct) or
+     transformation parameters (e.g., from eddy)
+
+Arguments needed for within-volume motion measures
+(see Benner et al MRM 2011):
+   --dwi <file> [...]:
+     Input DWI scan(s), unprocessed
+   --bval <file> [...]:
+     Input b-value table(s), one per scan
+   --T <num>:
+     Low-b image intensity threshold (default: 100)
+   --D <num>:
+     Nominal diffusivity (default: .001)
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+

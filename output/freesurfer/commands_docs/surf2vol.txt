@@ -1,0 +1,117 @@
+
+=== Output of 'surf2vol --help' ===
+
+ No output option specified
+	 will use default value out.mgz
+ No field output option specified
+	 will use default value out_field.mgz
+ No Poisson ratio specified (option -poisson)
+	 will use default value 0.3
+ No Young-modulus specified (option -young)
+	 will use default value 10
+ Error parsing the cmd-line
+ No fixed volume present (option -fixed_mri)
+ No moving volume present (option -moving_mri)
+ No main fixed surface (option -fixed_surf missing)
+ No main moving surface (option -moving_surf missing)
+
+
+=== Output of 'surf2vol -help' ===
+
+Diffuse surface deformation to volumes--------------------------------------------------------------------------
+Petsc Release Version 2.3.3, Patch 13, Thu May 15 17:29:26 CDT 2008 HG revision: 4466c6289a0922df26e20626fd4a0b4dd03c8124
+       The PETSc Team
+    petsc-maint@mcs.anl.gov
+ http://www.mcs.anl.gov/petsc/
+See docs/copyright.html for copyright information
+See docs/changes/index.html for recent updates.
+See docs/troubleshooting.html for problems.
+See docs/manualpages/index.html for help. 
+Libraries linked from /autofs/space/lyon_006/pubsw/Linux2-2.3-x86_64/packages/petsc/2.3.3-p13/src/petsc-2.3.3-p13/lib/linux-gnu-c-opt
+--------------------------------------------------------------------------
+Options for all PETSc programs:
+ -on_error_abort: cause an abort when an error is detected. Useful 
+       only when run in the debugger
+ -on_error_attach_debugger [gdb,dbx,xxgdb,ups,noxterm]
+       start the debugger in new xterm
+       unless noxterm is given
+ -start_in_debugger [gdb,dbx,xxgdb,ups,noxterm]
+       start all processes in the debugger
+ -on_error_emacs <machinename>
+    emacs jumps to error file
+ -debugger_nodes [n1,n2,..] Nodes to start in debugger
+ -debugger_pause [m] : delay (in seconds) to attach debugger
+ -stop_for_debugger : prints message on how to attach debugger manually
+                      waits the delay for you to attach
+ -display display: Location where graphics and debuggers are displayed
+ -no_signal_handler: do not trap error signals
+ -mpi_return_on_error: MPI returns error code, rather than abort on internal error
+ -fp_trap: stop on floating point exceptions
+           note on IBM RS6000 this slows run greatly
+ -malloc_dump <optional filename>: dump list of unfreed memory at conclusion
+ -malloc: use our error checking malloc
+ -malloc no: don't use error checking malloc
+ -mallocinfo: prints total memory usage
+ -malloc_debug: enables extended checking for memory corruption
+ -options_table: dump list of options inputted
+ -options_left: dump list of unused options
+ -options_left no: don't dump list of unused options
+ -tmp tmpdir: alternative /tmp directory
+ -shared_tmp: tmp directory is shared by all processors
+ -not_shared_tmp: each processor has separate tmp directory
+ -memory_info: print memory usage at end of run
+ -get_total_flops: total flops over all processors
+ -log[_all _summary]: logging objects and events
+ -log_trace [filename]: prints trace of all PETSc calls
+ -info <optional filename>: print informative messages about the calculations
+ -v: prints PETSc version number and release date
+ -options_file <file>: reads options from file
+ -petsc_sleep n: sleeps n seconds before running program
+-----------------------------------------------
+------Additional PETSc component options--------
+ -log_summary_exclude: <vec,mat,pc.ksp,snes>
+ -info_exclude: <null,vec,mat,pc,ksp,snes,ts>
+-----------------------------------------------
+Options database options -------------------------------------------------
+  -options_monitor <stdout>: Monitor options database (PetscOptionsMonitorSet)
+  -options_monitor_cancel: Cancel all options database monitors (PetscOptionsMonitorCancel)
+ Usage : the following parameters are available:
+	 -fixed_surf[_%d] <file name>  (no numbering for the first surface, starting at 2 after)
+	 -aparc[_%d] [<file_name>|none] - numbering starts at secon
+	 -moving_surf[_%d]   <file name>
+	 -fixed_mri  <file name>
+	 -moving_mri    <file name>
+
+ Other optional arguments
+	 -out <file name>
+	 -out_field <file name>
+	 -out_affine <file name>
+	 -out_surf <root file name> (will be appended _<surf index>.white)
+	 -out_surf_affine <root file name> (will be appended _<surf index>.white)
+	 -out_mesh <file name>
+	 -spacing_x <scalar>
+	 -spacing_y <scalar>
+	 -spacing_z <scalar>
+	 -poisson <double> (must be <0.5)
+	 -cache_transform <file name> (if more than one run, will write the transform in a file and use in subsequent runs)
+	 -dirty factor (between 0 and 1)
+	 -dbg_output - will write a morph file at each iteration
+
+ Also, all the Petsc KSP options apply (see Petsc manual for details)
+
+=== Output of 'surf2vol' (no arguments) ===
+
+ No output option specified
+	 will use default value out.mgz
+ No field output option specified
+	 will use default value out_field.mgz
+ No Poisson ratio specified (option -poisson)
+	 will use default value 0.3
+ No Young-modulus specified (option -young)
+	 will use default value 10
+ Error parsing the cmd-line
+ No fixed volume present (option -fixed_mri)
+ No moving volume present (option -moving_mri)
+ No main fixed surface (option -fixed_surf missing)
+ No main moving surface (option -moving_surf missing)
+

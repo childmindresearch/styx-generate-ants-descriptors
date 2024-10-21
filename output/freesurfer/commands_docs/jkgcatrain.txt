@@ -1,0 +1,154 @@
+
+=== Output of 'jkgcatrain --help' ===
+
+
+jkgcatrain : jackknife training of gca 
+ --g gcadir : output of gcatrain
+ --iter iterno : iteraction number (usually 2)
+ --nthreads nthreads
+ --no-submit : run serially, do not pbsubmit
+ --pb-m : mail to user when jobs are pbsubmitted or finished
+ --rebuild-gca, m3z = talairach_one.m3z, normname = norm.mgz, iter = 2:
+
+jkgcatrain 7.4.1
+
+This script is meant to be run after gcatrain. gcatrain creates and
+populates a new SUBJECTS_DIR, runs initial recon-all on all subjects,
+creates an initial gca from one subject, then normalizes and registers
+all subjects to this gca, and creates a new gca from all
+subjects. This script uses this data to create new gcas from all
+subjects except one.  A loop is run to leave out a different subject
+each time. By default, the mri_ca_register jobs are pbsubmited. This
+script is much faster than running gcatrain multiple times leaving out
+a subject because the registration to the initial gca only needs to be
+done once.
+
+Example:
+
+gcatrain --g all39 --niters 2 --nthreads 4 --f slist.txt \
+  --sd subjects/atlases/aseg_atlas \
+  --init 990104_vc700 talairach_man.xfm --seg seg_edited10.mgz
+
+jkgcatrain --g all39 --iter 2 --threads 4
+
+Creates all39/gca/x.$subject.gca.i02.gca for all subjects
+
+
+# To test peformance, run
+foreach subject (`cat scripts/subjectlist.txt`)
+  echo "---------------------------"
+  date
+  set cmd = (gca-apply --s $subject --gca gca/x.$subject.gca.i02.gca \
+    --sd `pwd` --dice seg_edited10.mgz dice.x.$subject.gca.i02.dat)
+  set cmd = ($cmd --lta $subject/mri/transforms/talairach.i02.lta)
+  set cmd = ($cmd --overwrite --threads 3)
+  echo $cmd
+  pbsubmit -l nodes=1:ppn=3 -c "$cmd"
+  sleep 5
+end
+
+foreach subject (`cat scripts/subjectlist.txt`)
+  echo "---------------------------"
+  date
+  set cmd = (gca-apply --s $subject --gca gca/x.$subject.gca.i02.gca)
+  set cmd = ($cmd --overwrite)
+  echo $cmd
+  pbsubmit -l nodes=1:ppn=1 -c "$cmd"
+  sleep 5
+end
+
+foreach subject (`cat scripts/subjectlist.txt`)
+  set gcabase = x.$subject.gca.i02
+  pushd $subject/mri
+  set DiceFile = dice.x.$subject.gca.i02.dat
+  set DiceSeg = seg_edited10.mgz
+  set cmd = (mri_compute_seg_overlap -cortex 0 -L $DiceFile -table $DiceFile.table $gcabase.aseg.mgz $DiceSeg)
+  echo $cmd
+  $cmd
+  popd
+end
+
+
+
+=== Output of 'jkgcatrain -help' ===
+
+
+jkgcatrain : jackknife training of gca 
+ --g gcadir : output of gcatrain
+ --iter iterno : iteraction number (usually 2)
+ --nthreads nthreads
+ --no-submit : run serially, do not pbsubmit
+ --pb-m : mail to user when jobs are pbsubmitted or finished
+ --rebuild-gca, m3z = talairach_one.m3z, normname = norm.mgz, iter = 2:
+
+jkgcatrain 7.4.1
+
+This script is meant to be run after gcatrain. gcatrain creates and
+populates a new SUBJECTS_DIR, runs initial recon-all on all subjects,
+creates an initial gca from one subject, then normalizes and registers
+all subjects to this gca, and creates a new gca from all
+subjects. This script uses this data to create new gcas from all
+subjects except one.  A loop is run to leave out a different subject
+each time. By default, the mri_ca_register jobs are pbsubmited. This
+script is much faster than running gcatrain multiple times leaving out
+a subject because the registration to the initial gca only needs to be
+done once.
+
+Example:
+
+gcatrain --g all39 --niters 2 --nthreads 4 --f slist.txt \
+  --sd subjects/atlases/aseg_atlas \
+  --init 990104_vc700 talairach_man.xfm --seg seg_edited10.mgz
+
+jkgcatrain --g all39 --iter 2 --threads 4
+
+Creates all39/gca/x.$subject.gca.i02.gca for all subjects
+
+
+# To test peformance, run
+foreach subject (`cat scripts/subjectlist.txt`)
+  echo "---------------------------"
+  date
+  set cmd = (gca-apply --s $subject --gca gca/x.$subject.gca.i02.gca \
+    --sd `pwd` --dice seg_edited10.mgz dice.x.$subject.gca.i02.dat)
+  set cmd = ($cmd --lta $subject/mri/transforms/talairach.i02.lta)
+  set cmd = ($cmd --overwrite --threads 3)
+  echo $cmd
+  pbsubmit -l nodes=1:ppn=3 -c "$cmd"
+  sleep 5
+end
+
+foreach subject (`cat scripts/subjectlist.txt`)
+  echo "---------------------------"
+  date
+  set cmd = (gca-apply --s $subject --gca gca/x.$subject.gca.i02.gca)
+  set cmd = ($cmd --overwrite)
+  echo $cmd
+  pbsubmit -l nodes=1:ppn=1 -c "$cmd"
+  sleep 5
+end
+
+foreach subject (`cat scripts/subjectlist.txt`)
+  set gcabase = x.$subject.gca.i02
+  pushd $subject/mri
+  set DiceFile = dice.x.$subject.gca.i02.dat
+  set DiceSeg = seg_edited10.mgz
+  set cmd = (mri_compute_seg_overlap -cortex 0 -L $DiceFile -table $DiceFile.table $gcabase.aseg.mgz $DiceSeg)
+  echo $cmd
+  $cmd
+  popd
+end
+
+
+
+=== Output of 'jkgcatrain' (no arguments) ===
+
+
+jkgcatrain : jackknife training of gca 
+ --g gcadir : output of gcatrain
+ --iter iterno : iteraction number (usually 2)
+ --nthreads nthreads
+ --no-submit : run serially, do not pbsubmit
+ --pb-m : mail to user when jobs are pbsubmitted or finished
+ --rebuild-gca, m3z = talairach_one.m3z, normname = norm.mgz, iter = 2:
+

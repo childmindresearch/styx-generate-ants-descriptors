@@ -1,0 +1,183 @@
+
+=== Output of 'mni152reg --help' ===
+
+
+mni152reg --s subject
+
+  --1 : register to 1mm target (instead of 2mm)
+  --o outreg : explicity set output
+  --sym : register to FSL symmetric target
+  --save-vol : sample orig to output space
+
+mni152reg 7.4.1
+
+Registers the FreeSurfer subject to the FSL MNI 152 brain to create a
+tkregister-style registration matrix. The registration created by this
+program is primarily for integrating FreeSurfer with higher level FSL
+functional analysis (GFEAT) of a SINGLE subject, particularly for
+preparing for a surface-based group analysis. 
+
+Currently, this program is just a front-end for the FSL FLIRT program.
+
+To check the registration, run:
+
+tkregisterfv --mov $FSLDIR/data/standard/MNI152_T1_2mm_brain.nii.gz \
+  --reg $SUBJECTS_DIR/$subject/mri/transforms/reg.mni152.2mm.dat \
+  --surf 
+
+Note that the surfaces will not line up with the mni152 because this
+is a volumetric registration. 
+
+You should also check the registration with your GFEAT results:
+
+tkregisterfv --mov subject.gfeat/mean_func.nii.gz \
+  --reg $SUBJECTS_DIR/$subject/mri/transforms/reg.mni152.2mm.dat \
+  --surf 
+
+This matrix can also be used with tkmedit, tksurfer, mri_vol2vol,
+mri_vol2surf, and any other FreeSurfer program that uses a
+tkregister-style registration matrix.
+
+The mni152 registration target will be either
+MNI152_T1_1mm_brain.nii.gz or MNI152_T1_2mm_brain.nii.gz and is
+assumed to be in $FSLDIR/data/standard. 2mm is the default because
+this is what the FSL functional analysis uses. To create the
+1mm reg, add --1 to the command line.
+
+The output will be either reg.mni152.1mm.dat or reg.mni152.2mm.dat,
+depending upon the resolution selected. The output will be stored in
+$SUBJECTS_DIR/$subject/mri/transforms
+
+----------------------------------------------------------------------
+Example usage with FSL GFEAT of a single subject:
+
+tkmeditfv subject orig.mgz -aparc+aseg \
+  -overlay subject.gfeat/cope1.feat/stats/zstat1.nii.gz \
+  -reg $SUBJECTS_DIR/$subject/mri/transforms/reg.mni152.2mm.dat
+
+mri_vol2surf --mov subject.gfeat/cope1.feat/stats/zstat1.nii.gz \
+  -reg $SUBJECTS_DIR/$subject/mri/transforms/reg.mni152.2mm.dat \
+  --hemi lh --projfrac 0.5 --o lh.subject.zstat1.mgh 
+tksurferfv subject lh inflated -aparc -overlay lh.subject.zstat1.mgh 
+
+----------------------------------------------------------------------
+Example usage with FSL GFEAT of multiple subjects in preparation
+for a surface-based group analysis:
+
+# Map the copes
+mris_preproc --hemi lh --target fsaverage \
+  --iv subject1.gfeat/cope1.feat/stats/cope1.nii.gz \
+       $SUBJECTS_DIR/$subject1/mri/transforms/reg.mni152.2mm.dat \
+  --iv subject2.gfeat/cope1.feat/stats/cope1.nii.gz \
+       $SUBJECTS_DIR/$subject2/mri/transforms/reg.mni152.2mm.dat \
+  --iv subject3.gfeat/cope1.feat/stats/cope1.nii.gz \
+       $SUBJECTS_DIR/$subject3/mri/transforms/reg.mni152.2mm.dat \
+  --out lh.fsaverage.cope1.mgh 
+
+# Map the varcopes
+mris_preproc --hemi lh --target fsaverage \
+  --iv subject1.gfeat/cope1.feat/stats/varcope1.nii.gz \
+       $SUBJECTS_DIR/$subject1/mri/transforms/reg.mni152.2mm.dat \
+  --iv subject2.gfeat/cope1.feat/stats/varcope1.nii.gz \
+       $SUBJECTS_DIR/$subject2/mri/transforms/reg.mni152.2mm.dat \
+  --iv subject3.gfeat/cope1.feat/stats/varcope1.nii.gz \
+       $SUBJECTS_DIR/$subject3/mri/transforms/reg.mni152.2mm.dat \
+  --out lh.fsaverage.varcope1.mgh 
+
+
+=== Output of 'mni152reg -help' ===
+
+
+mni152reg --s subject
+
+  --1 : register to 1mm target (instead of 2mm)
+  --o outreg : explicity set output
+  --sym : register to FSL symmetric target
+  --save-vol : sample orig to output space
+
+mni152reg 7.4.1
+
+Registers the FreeSurfer subject to the FSL MNI 152 brain to create a
+tkregister-style registration matrix. The registration created by this
+program is primarily for integrating FreeSurfer with higher level FSL
+functional analysis (GFEAT) of a SINGLE subject, particularly for
+preparing for a surface-based group analysis. 
+
+Currently, this program is just a front-end for the FSL FLIRT program.
+
+To check the registration, run:
+
+tkregisterfv --mov $FSLDIR/data/standard/MNI152_T1_2mm_brain.nii.gz \
+  --reg $SUBJECTS_DIR/$subject/mri/transforms/reg.mni152.2mm.dat \
+  --surf 
+
+Note that the surfaces will not line up with the mni152 because this
+is a volumetric registration. 
+
+You should also check the registration with your GFEAT results:
+
+tkregisterfv --mov subject.gfeat/mean_func.nii.gz \
+  --reg $SUBJECTS_DIR/$subject/mri/transforms/reg.mni152.2mm.dat \
+  --surf 
+
+This matrix can also be used with tkmedit, tksurfer, mri_vol2vol,
+mri_vol2surf, and any other FreeSurfer program that uses a
+tkregister-style registration matrix.
+
+The mni152 registration target will be either
+MNI152_T1_1mm_brain.nii.gz or MNI152_T1_2mm_brain.nii.gz and is
+assumed to be in $FSLDIR/data/standard. 2mm is the default because
+this is what the FSL functional analysis uses. To create the
+1mm reg, add --1 to the command line.
+
+The output will be either reg.mni152.1mm.dat or reg.mni152.2mm.dat,
+depending upon the resolution selected. The output will be stored in
+$SUBJECTS_DIR/$subject/mri/transforms
+
+----------------------------------------------------------------------
+Example usage with FSL GFEAT of a single subject:
+
+tkmeditfv subject orig.mgz -aparc+aseg \
+  -overlay subject.gfeat/cope1.feat/stats/zstat1.nii.gz \
+  -reg $SUBJECTS_DIR/$subject/mri/transforms/reg.mni152.2mm.dat
+
+mri_vol2surf --mov subject.gfeat/cope1.feat/stats/zstat1.nii.gz \
+  -reg $SUBJECTS_DIR/$subject/mri/transforms/reg.mni152.2mm.dat \
+  --hemi lh --projfrac 0.5 --o lh.subject.zstat1.mgh 
+tksurferfv subject lh inflated -aparc -overlay lh.subject.zstat1.mgh 
+
+----------------------------------------------------------------------
+Example usage with FSL GFEAT of multiple subjects in preparation
+for a surface-based group analysis:
+
+# Map the copes
+mris_preproc --hemi lh --target fsaverage \
+  --iv subject1.gfeat/cope1.feat/stats/cope1.nii.gz \
+       $SUBJECTS_DIR/$subject1/mri/transforms/reg.mni152.2mm.dat \
+  --iv subject2.gfeat/cope1.feat/stats/cope1.nii.gz \
+       $SUBJECTS_DIR/$subject2/mri/transforms/reg.mni152.2mm.dat \
+  --iv subject3.gfeat/cope1.feat/stats/cope1.nii.gz \
+       $SUBJECTS_DIR/$subject3/mri/transforms/reg.mni152.2mm.dat \
+  --out lh.fsaverage.cope1.mgh 
+
+# Map the varcopes
+mris_preproc --hemi lh --target fsaverage \
+  --iv subject1.gfeat/cope1.feat/stats/varcope1.nii.gz \
+       $SUBJECTS_DIR/$subject1/mri/transforms/reg.mni152.2mm.dat \
+  --iv subject2.gfeat/cope1.feat/stats/varcope1.nii.gz \
+       $SUBJECTS_DIR/$subject2/mri/transforms/reg.mni152.2mm.dat \
+  --iv subject3.gfeat/cope1.feat/stats/varcope1.nii.gz \
+       $SUBJECTS_DIR/$subject3/mri/transforms/reg.mni152.2mm.dat \
+  --out lh.fsaverage.varcope1.mgh 
+
+
+=== Output of 'mni152reg' (no arguments) ===
+
+
+mni152reg --s subject
+
+  --1 : register to 1mm target (instead of 2mm)
+  --o outreg : explicity set output
+  --sym : register to FSL symmetric target
+  --save-vol : sample orig to output space
+

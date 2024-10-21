@@ -1,0 +1,50 @@
+
+=== Output of 'fs_tutorial_data --help' ===
+
+ 
+ Usages:
+  
+ 1) Tutorial data will be downloaded into TUTORIAL_DATA.
+    If TUTORIAL_DATA is undefined, it will be downloaded
+    into /usr/local/freesurfer/subjects/tutorial_data
+
+    $> fs_tutorial_data
+
+ 2) Tuturial data will by downloaded into TUTORIAL_DATA
+    with additional rsync flags:
+
+    $> fs_tutorial_data <rsync_options>
+
+ 3) Show help:
+ 
+    $> fs_update -h, -help, --help 
+
+
+=== Output of 'fs_tutorial_data -help' ===
+
+ 
+ Usages:
+  
+ 1) Tutorial data will be downloaded into TUTORIAL_DATA.
+    If TUTORIAL_DATA is undefined, it will be downloaded
+    into /usr/local/freesurfer/subjects/tutorial_data
+
+    $> fs_tutorial_data
+
+ 2) Tuturial data will by downloaded into TUTORIAL_DATA
+    with additional rsync flags:
+
+    $> fs_tutorial_data <rsync_options>
+
+ 3) Show help:
+ 
+    $> fs_update -h, -help, --help 
+
+
+=== Output of 'fs_tutorial_data' (no arguments) ===
+
+ Tutorial data will be downloaded and installed into:
+
+   /usr/local/freesurfer/subjects/tutorial_data
+
+

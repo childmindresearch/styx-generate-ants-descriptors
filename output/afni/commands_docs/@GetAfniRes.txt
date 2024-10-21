@@ -1,0 +1,20 @@
+
+=== Output of '@GetAfniRes --help' ===
+
+*** Can't open dataset --help
+d1: Subscript out of range.
+d1: Subscript out of range.
+d1: Subscript out of range.
+
+
+=== Output of '@GetAfniRes -help' ===
+
+@GetAfniRes [-min|-max|-mean] dset
+Return the voxel resolution of dset
+
+
+=== Output of '@GetAfniRes' (no arguments) ===
+
+@GetAfniRes [-min|-max|-mean] dset
+Return the voxel resolution of dset
+

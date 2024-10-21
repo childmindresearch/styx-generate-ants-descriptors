@@ -1,0 +1,156 @@
+
+=== Output of 'abids_json_tool.py --help' ===
+
+usage: /opt/afni/src/../install/abids_json_tool.py -input FILE -prefix PREFIX
+                                                   (-txt2json | -json2txt | -add_json KEY [VALUE ...] | -del_json KEY)
+                                                   [-force_add] [-overwrite]
+                                                   [-help]
+                                                   [-delimiter_major DELIM_MAJ]
+                                                   [-delimiter_minor DELIM_MIN]
+                                                   [-literal_keys]
+                                                   [-values_stay_str]
+/opt/afni/src/../install/abids_json_tool.py: error: the following arguments are required: -input, -prefix
+
+=== Output of 'abids_json_tool.py -help' ===
+
+usage: /opt/afni/src/../install/abids_json_tool.py -input FILE -prefix PREFIX
+                                                   (-txt2json | -json2txt | -add_json KEY [VALUE ...] | -del_json KEY)
+                                                   [-force_add] [-overwrite]
+                                                   [-help]
+                                                   [-delimiter_major DELIM_MAJ]
+                                                   [-delimiter_minor DELIM_MIN]
+                                                   [-literal_keys]
+                                                   [-values_stay_str]
+
+------------------------------------------
+Overview ~1~
+
+    This script helps to manipulate json files in various ways.
+
+Caveats ~1~
+
+    None yet.
+
+Example ~1~
+
+    abids_json_tool.py -input out.ss_review.FT.txt                        -prefix out.ss_review.FT.json                        -txt2json
+
+------------------------------------------
+
+Options ~1~
+
+Required arguments:
+  -input FILE           One file to convert. (either ":" separated or json
+                        formatted.) Enter NULL with -add_json to create new
+                        json file.
+  -prefix PREFIX        Output file name.
+
+Only one of these:
+  -txt2json             Convert from ":" separated text file to json formatted
+                        file.
+  -json2txt             Convert from json formatted file to ":" separated text
+                        file.
+  -add_json KEY [VALUE ...]
+                        Add an attribute to the end of the specified json
+                        file. Needs exactly two arguments. (e.g. Fruit Apple)
+                        The KEY must not have spaces and must be only one
+                        word. If the VALUE is more than one item, it needs to
+                        be surrounded by single or double quotes and be comma
+                        separated (e.g. Fruit "Apple,Orange")
+  -del_json KEY         Remove attribute (KEY) from the -input json file.
+
+Optional arguments:
+  -force_add, -f        Use with -add_json to overwrite an existing attribute
+                        in the specified json file.
+  -overwrite            Use caution as this will overwrite the -prefix file if
+                        it exists!!
+  -help                 Show this help and exit.
+  -delimiter_major DELIM_MAJ
+                        When using "-txt2json" opt, specify the new (major)
+                        delimiter to separate keys and values.
+  -delimiter_minor DELIM_MIN
+                        When using "-txt2json" opt, specify the new (minor)
+                        delimiter to separate value items. NB: pairs of quotes
+                        take priority to define a single item. The default
+                        delimiter (outside of quotes) is whitespace.
+  -literal_keys         Do not replace spaces with '_', nor parentheses and
+                        brackets with ''.
+  -values_stay_str      Each numeric or str item gets saved as a str;
+                        otherwise, guess at int and float.
+
+------------------------------------------
+Justin Rajendra circa 08/2018
+Keep on keeping on!
+------------------------------------------
+
+=== Output of 'abids_json_tool.py' (no arguments) ===
+
+usage: /opt/afni/src/../install/abids_json_tool.py -input FILE -prefix PREFIX
+                                                   (-txt2json | -json2txt | -add_json KEY [VALUE ...] | -del_json KEY)
+                                                   [-force_add] [-overwrite]
+                                                   [-help]
+                                                   [-delimiter_major DELIM_MAJ]
+                                                   [-delimiter_minor DELIM_MIN]
+                                                   [-literal_keys]
+                                                   [-values_stay_str]
+
+------------------------------------------
+Overview ~1~
+
+    This script helps to manipulate json files in various ways.
+
+Caveats ~1~
+
+    None yet.
+
+Example ~1~
+
+    abids_json_tool.py -input out.ss_review.FT.txt                        -prefix out.ss_review.FT.json                        -txt2json
+
+------------------------------------------
+
+Options ~1~
+
+Required arguments:
+  -input FILE           One file to convert. (either ":" separated or json
+                        formatted.) Enter NULL with -add_json to create new
+                        json file.
+  -prefix PREFIX        Output file name.
+
+Only one of these:
+  -txt2json             Convert from ":" separated text file to json formatted
+                        file.
+  -json2txt             Convert from json formatted file to ":" separated text
+                        file.
+  -add_json KEY [VALUE ...]
+                        Add an attribute to the end of the specified json
+                        file. Needs exactly two arguments. (e.g. Fruit Apple)
+                        The KEY must not have spaces and must be only one
+                        word. If the VALUE is more than one item, it needs to
+                        be surrounded by single or double quotes and be comma
+                        separated (e.g. Fruit "Apple,Orange")
+  -del_json KEY         Remove attribute (KEY) from the -input json file.
+
+Optional arguments:
+  -force_add, -f        Use with -add_json to overwrite an existing attribute
+                        in the specified json file.
+  -overwrite            Use caution as this will overwrite the -prefix file if
+                        it exists!!
+  -help                 Show this help and exit.
+  -delimiter_major DELIM_MAJ
+                        When using "-txt2json" opt, specify the new (major)
+                        delimiter to separate keys and values.
+  -delimiter_minor DELIM_MIN
+                        When using "-txt2json" opt, specify the new (minor)
+                        delimiter to separate value items. NB: pairs of quotes
+                        take priority to define a single item. The default
+                        delimiter (outside of quotes) is whitespace.
+  -literal_keys         Do not replace spaces with '_', nor parentheses and
+                        brackets with ''.
+  -values_stay_str      Each numeric or str item gets saved as a str;
+                        otherwise, guess at int and float.
+
+------------------------------------------
+Justin Rajendra circa 08/2018
+Keep on keeping on!
+------------------------------------------

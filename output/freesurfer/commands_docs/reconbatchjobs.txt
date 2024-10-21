@@ -1,0 +1,15 @@
+
+=== Output of 'reconbatchjobs --help' ===
+
+Usage: reconbatchjobs logfile cmdfile1 [cmdfile2 ...]
+See recon-all script for examples.
+
+=== Output of 'reconbatchjobs -help' ===
+
+Usage: reconbatchjobs logfile cmdfile1 [cmdfile2 ...]
+See recon-all script for examples.
+
+=== Output of 'reconbatchjobs' (no arguments) ===
+
+Usage: reconbatchjobs logfile cmdfile1 [cmdfile2 ...]
+See recon-all script for examples.

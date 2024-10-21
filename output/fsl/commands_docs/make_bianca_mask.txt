@@ -1,0 +1,27 @@
+
+=== Output of 'make_bianca_mask --help' ===
+
+/usr/local/fsl/bin/make_bianca_mask: line 94: pushd: too many arguments
+
+=== Output of 'make_bianca_mask -help' ===
+
+basename: invalid option -- 'h'
+Try 'basename --help' for more information.
+
+=== Output of 'make_bianca_mask' (no arguments) ===
+
+Usage:  make_bianca_mask <structural_image> <CSF pve> <warp_file_MNI2structural> <keep_intermediate_files>
+ 
+The first input is the basename of the structural image (e.g. T1_biascorr). The script works under the assumption that the brain extracted image would be called <structural image>_brain.nii.gz
+The second input is the corresponding CSF partial volume map calculated with FAST
+The third input is the non-linear transformation warp file from standard space to structural image
+If you want to keep intermediate files (e.g. for debugging), add 1 as 4th input
+ 
+e.g.make_bianca_mask T1_biascorr T1_fast_pve_0 MNI_to_T1_nonlin_field.nii.gz
+ 
+Output: the script creates two files called <structural image>_bianca_mask.nii.gz , <structural image>_ventmask.nii.gz
+The first masks can be used to remove candidate lesions from the automatic segmentation via fslmaths:
+  e.g.   fslmaths sub001_bianca_output -mas T1_bianca_mask.nii.gz sub001_bianca_output_masked
+alternatively, it can be used to mask one of the input images to restrict the search for lesions within a tighter brain mask
+ e.g. fslmaths FLAIR -mas T1_bianca_mask_to_FLAIR FLAIR_masked
+The second mask can be used to calculate ventricle volumes or to extract periventricular lesions (as those whithin a certain distance from the ventricles)

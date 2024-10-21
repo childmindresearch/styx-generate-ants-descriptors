@@ -1,0 +1,12 @@
+
+=== Output of 'mris_profileClustering --help' ===
+
+/usr/local/freesurfer/bin/mris_profileClustering: error while loading shared libraries: libGLU.so.1: cannot open shared object file: No such file or directory
+
+=== Output of 'mris_profileClustering -help' ===
+
+/usr/local/freesurfer/bin/mris_profileClustering: error while loading shared libraries: libGLU.so.1: cannot open shared object file: No such file or directory
+
+=== Output of 'mris_profileClustering' (no arguments) ===
+
+/usr/local/freesurfer/bin/mris_profileClustering: error while loading shared libraries: libGLU.so.1: cannot open shared object file: No such file or directory

@@ -1,0 +1,12 @@
+
+=== Output of 'mris_twoclass --help' ===
+
+error: mris_twoclass has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mris_twoclass -help' ===
+
+error: mris_twoclass has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mris_twoclass' (no arguments) ===
+
+error: mris_twoclass has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

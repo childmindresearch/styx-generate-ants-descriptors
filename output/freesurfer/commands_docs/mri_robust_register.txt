@@ -1,0 +1,1167 @@
+
+=== Output of 'mri_robust_register --help' ===
+
+7.4.1
+
+				Help
+
+NAME
+	mri_robust_register
+
+SYNOPSIS
+	mri_robust_register --mov <mov.mgz> --dst <dst.mgz> --lta <reg.lta> 
+	[options]
+
+DESCRIPTION
+	This program computes an inverse consistent registration of two 
+	volumes, via an interative symmetric alignment of the two images. 
+	Default transformation type is rigid (translation and rotation), but 
+	affine can be specified (--affine). The program contains both robust 
+	(outlier insensitive) and standard cost functions:
+	 The robust approach uses a method based on robust statistics to 
+	detect outliers and removes them from the registration. This leads to 
+	highly accurate registrations even with local changes in the image 
+	(e.g. jaw movement). For same modality use costfunction ROB (default) 
+	and ROBENT for cross modal registration (experimental and only tested 
+	for isotropic voxels). An additional optional intensity scale 
+	parameter (--iscale) can be used to adjust for global intensity 
+	differences. 
+	 Regular non-robust cost functions include (nromalized) mutual 
+	information (MI and NMI) and can be used for cross modal registration 
+	without robustness.
+	 
+	If the registration fails: 
+	The registration can fail because of several reasons, most likely due 
+	to large intensity differences or non-linear differences in the image.
+	You can try:
+	* Switch on intensity scaling (--iscale) (for ROB and ROBENT).
+	* Switch off the center of mass initialization (with --noinit). 
+	* If you are trying to estimate an --affine registration, try rigid 
+	first and then pass it with --ixform to the affine step in a second 
+	run.
+	* Depending on your image resoution, it may be that the coarsest level
+	is too coarse, misaligning the image. Try to specify a larger 
+	--minsize to avoid computation on very coarse scales (especially for 
+	2D registrations, e.g. --minsize 120, for 3d --minsize 40).
+	* If you used automatic saturation estimation in ROB or ROBENT 
+	(--satit), try to specify the sensitivity manually via --sat. A high 
+	sat is less sensitive to outliers, low is more sensitive (range 
+	approx. from 4 to 20 in most cases).
+	* If you specified a manual saturation in ROB or ROBENT (--sat) too 
+	many voxels might be considered outlier early in the process. You can 
+	check this by outputing the weights (--weights ow.mgz) and by looking 
+	at them in:
+	  freeview dst.mgz mappedmov.mgz ow.mgz:colormap=heat 
+	If most of the brain is labeled outlier (red/yellow), try to set the 
+	saturation to a higher value (eg. --sat 12) or use --satit to 
+	automatically determine a good sat value. --satit works best for 3D 
+	brain images.
+
+POSITIONAL ARGUMENTS
+	None.
+
+REQUIRED FLAGGED ARGUMENTS
+	--mov <mov.mgz>
+		input movable volume to be aligned to target
+
+	--dst <dst.mgz>
+		input target volume
+
+	--lta <reg.lta>
+		output registration (transform from mov to dst)
+
+	One of the following is required for sensitivity when using ROB or 
+	ROBENT (robust cost functions, default):
+
+	--sat <real>
+		for ROB and ROBENT: set outlier sensitivity manually (e.g. 
+		'--sat 4.685' ). Higher values mean less sensitivity. Check 
+		--weights to see how much outliers get detected and adjust 
+		this parameter manually.
+
+	--satit
+		for ROB and ROBENT: auto-detect good sensitivity (works best 
+		for head or full brain images). You can manually specify sat 
+		if satit does not give satisfying results.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--mapmov <aligned.mgz> 
+		output image: movable mapped and resampled at destination
+
+	--mapmovhdr <aligned.mgz> 
+		output image: movable aligned to destination (no resampling, 
+		only adjusting header vox2ras)
+
+	--weights <weights.mgz> 
+		output weights (outlier probabilities) in destination space 
+		(0=regular,1=outlier)
+
+	--oneminusw
+		weights (outlier) map will be inverted (0=outlier), as in 
+		earlier versions
+
+	--iscale 
+		estimate intensity scale factor (default no).
+		Highly recommended for unnormalized images when using ROB or 
+		ROBENT!
+
+	--iscaleonly
+		only perform iscale (no transformation, default off)
+
+	--iscaleout <fname.txt>
+		output text file for iscale value (will activate --iscale). 
+		Default: no iscale output
+
+	--iscalein <fname.txt>
+		initial input text file for iscale value (probably you want to
+		also activate --iscale to estimate final value?)
+
+	--transonly
+		find 3 parameter translation only
+
+	--affine
+		find 12 parameter affine transform
+
+	--ixform lta
+		use initial transform lta on source. Default: align centers of
+		mass (see also --noinit). The final output transform will be 
+		from source to target and thus include the ixform.
+
+	--initorient
+		use moments for orientation initialization (default false). 
+		Recommended for stripped brains, but not with full head images
+		with different cropping. 
+
+	--noinit
+		skip automatic transform initialization.
+		Default: translate images to align centers of mass, good for 
+		within subject full head or brain images.
+		Use --noinit if center of mass is meaningless, e.g. when 
+		registering different resolutions or parts to larger images. 
+
+	--vox2vox
+		output VOX2VOX lta file (default is RAS2RAS)
+
+	--cost <str>
+		Cost function:
+		     ROB    robust <- default, recommended
+		            for robust same modality registration.
+		     ROBENT robust entropy, experimental, 
+		            for robust cross modal registration, can be slow
+		            also see --entradius, --entball, --entcorrection
+		     MI     mutual information 
+		     NMI    normalized mutual information,
+		            recommended for x-modal registration.
+		     SB     segmentation-based: Aganj, Fischl, IEEE SPL, 2017
+		            for cross modal with large initial misalignment,
+		            may need NMI to fine-tune, experimental
+		     ECC    entropy correlation coefficient, experimental
+		     NCC    normalized cross corrrelation, experimental
+		     SCR    symetrized correlation ratio, experimental
+		Note: most cost functions require the image backgrounds to be 
+		black! Also, only ROB and ROBENT use gradient decend, the 
+		others use a Powell optimizer.
+
+	--entradius
+		with ROBENT: specify box radius for entropy computation, 
+		default: 5 (may be slow)
+
+	--entcorrection
+		with ROBENT: uses better entropy computation that works on 
+		smaller boxes. For 3D recommended to switch this on and set 
+		entradius to around 2.
+
+	--entball
+		with ROBENT: use ball around voxel instead of box (default 
+		no), does not seem to make a big difference.
+
+	--entmov <entmov.mgz>
+		with ROBENT: write movable entropy image.
+
+	--powelltol <real>
+		with MI,NMI etc: set Powell tolerance (default 0.00001 = 
+		1e-5).
+
+	--sobel
+		register Sobel magnitude images (default no)
+
+	--nosym
+		do not map to half way space, but resample mov to dst 
+		internally (destroys symmetry, but is useful when registering 
+		a larger block to a part)
+
+	--maxit <#>
+
+	--entdst <entdst.mgz>
+		with ROBENT: write target entropy image.
+		iterate max # times on each resolution (default 5)
+
+	--highit <#>
+		iterate max # times on highest resolution (default 5)
+
+	--epsit <real>
+		stop iterations when transform update falls below <real> RMS 
+		distance (default 0.01)
+
+	--nomulti
+		process highest resolution only (no multiscale)
+
+	--maxsize <#>
+		specify largest voxel dimension for gaussian pyramid (e.g. 
+		--maxsize 256 will not process resolutions with more than 256 
+		voxels in any direction). Default: process up to the input 
+		resolution. You can use this to prevent the algorithm to run 
+		on the high resolutions (to avoid long runtimes and memory 
+		issues)
+
+	--minsize <#>
+		specify smallest voxel dimension for gaussian pyramid (will 
+		not downsample resolutions smaller than #). Default: smallest 
+		dimension 16 voxels
+
+	--wlimit <real>
+		(expert option) sets maximal outlier limit for --satit 
+		(default 0.16), reduce to decrease outlier sensitivity 
+
+	--subsample <real>
+		subsample if dim > # on all axes (default no subsampling)
+
+	--floattype
+		convert images to float internally (default: keep input type)
+
+	--whitebgmov
+		assume white background in MOV for padding (default: black)
+
+	--whitebgdst
+		assume white background in DST for padding (default: black)
+
+	--uchar
+		convert inputs to UCHAR (with re-scale and histogram cropping)
+		(default: keep original type)
+
+	--maskmov <mask.mgz>
+		mask mov image with mask.mgz
+
+	--maskdst <mask.mgz>
+		mask dst image with mask.mgz
+
+	--halfmov <hm.mgz>
+		outputs half-way mov (resampled in halfway space)
+
+	--halfdst <hd.mgz>
+		outputs half-way dst (resampled in halfway space)
+
+	--halfweights hw.mgz
+		outputs half-way weights (resampled in halfway space)
+
+	--halfmovlta hm.lta
+		outputs transform from mov to half-way space
+
+	--halfdstlta hd.lta
+		outputs transform from dst to half-way space
+
+	--debug
+		show debug output (default no debug output)
+
+	--verbose
+		0 quiet, 1 normal (default), 2 detail
+
+EXAMPLE 1
+	Simple Full Head Registration (same modality):
+	 
+	mri_robust_register --mov vol1.mgz --dst vol2.mgz --lta v1to2.lta 
+	--mapmov v1to2.mgz --weights v1to2-weights.mgz --iscale 
+	--satit
+	
+	Computes the symmetric rigid registration (translation and rotation) 
+	of vol1.mgz to vol2.mgz using robust statistics and with an additional
+	global intensity scaling parameter. The output is the transform 
+	(v1to2.lta) and image v1to2.mgz (the vol1.mgz resampled to the target 
+	image). Additionally the weights of the robust registation (outlier 
+	detection) are saved. Everything can be viewed with:
+	
+	freeview vol2.mgz v1to2.mgz v1to2-weights.mgz:colormap=heat 
+
+EXAMPLE 2
+	Half Way Space Output (same modality):
+	 
+	mri_robust_register --mov vol1.nii --dst vol2.nii --lta v1to2.lta 
+	--halfmov h1.nii --halfdst h2.nii --halfmovlta h1.lta --halfdstlta 
+	h2.lta --iscale --satit
+	 
+	Computes the rigid robust registration with intensity scaling of Nifti
+	vol1 to vol2 (the registration will be saved in v1to2.lta). 
+	Additionally outputs the half-way volumes h1.nii and h2.nii (with 
+	corresponding transforms h1.lta and h2.lta). As both volumes are 
+	mapped to the half-way space, they will both be resampled. This can be
+	used to construct an unbiased mean volume (e.g. with mri_average) or 
+	to compute change maps. The output can be viewed with: 
+	
+	freeview h1.nii h2.nii
+
+EXAMPLE 3
+	Part to Full Registration (same modality):
+	 
+	mri_robust_register --mov fullhemi.mgz --dst part.mgz --noinit --nosym
+	--sat 8 --maxsize 380 --mapmovhdr hemi2part.mgz --lta hemi2part.lta
+	 
+	Registers a full hemisphere with a high-resolutional part (e.g. 
+	hippocampal slices). It is recommended to specify the part as the 
+	target (the full hemi image will then be cropped internally). For 
+	partial registration to work we need to skip the center of mass 
+	initialization (--noinit) and switch off the half way space (--nosym).
+	Also the inputs need to be in an approximate alignment, alternatively 
+	you can pass --ixform with a transform that approximately aligns the 
+	images. The satuarion needs to be specified manually with --sat. You 
+	can output the weights with --weights to see if too many voxels are 
+	removed and increase the value (to reduce outlier sensitivity). For 
+	high-res inputs we limit the resolution to 380 to reduce run time and 
+	mem usage. The output will be the transform (--lta) and the mov mapped
+	to dst w/o resampling (--mapmovhdr), only adjusting the header 
+	information. Look at results with:
+	
+	freeview -v part.mgz part2hemi.mgz
+	
+	You can also invert transforms and apply them :
+	
+	mri_concatenate_lta -invert1 hemi2part.lta identity.nofile 
+	part2hemi.lta
+	
+	mri_convert -at inv1.lta part.mgz part2hemi.mgz 
+
+EXAMPLE 4
+	Robust cross modal registration:
+	 
+	mri_robust_register --mov movT2.mgz --dst dstT1.mgz --satit --iscale 
+	--mapmov T2_to_T1.mgz --lta T2_to_T1.lta --cost ROBENT --entradius 2 
+	--entcorrection --weights T2_to_T1_weights.mgz
+	 
+	Registers a T2 image to T1 using robust entropy with correction mode 
+	and box radius 2 (= side length of 5 for boxes).
+	Look at results with:
+	
+	freeview dstT1.mgz T2_to_T1.mgz T2_to_T1_weights.mgz:colormap=heat 
+
+EXAMPLE 5
+	Standard cross modal registration:
+	 
+	mri_robust_register --mov movT2.mgz --dst dstT1.mgz --mapmov T2_to_
+	T1.mgz --lta T2_to_T1.lta --cost NMI
+	 
+	Registers a T2 image to T1 using normalized mutual information (no 
+	outlier detection, Powell method is used for optimization). Here no 
+	saturation or intensity scaling is necessary. NMI or MI may be the 
+	prefered option for non-isotropic voxel whereas ROBENT has not been 
+	tested much. Also if you register a slab to a whole image you should 
+	probably add --nosym and play around with masking the images (e.g. 
+	--maskmov brainmask ).
+	Look at results with:
+	
+	freeview dstT1.mgz T2_to_T1.mgz 
+
+REFERENCES
+	
+	Please cite this:
+	 
+	Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+	Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+	 http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+	 http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+	
+	Extension to multi registration (template estimation):
+	
+	Within-Subject Template Estimation for Unbiased Longitudinal Image 
+	Analysis. M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl. NeuroImage
+	61(4):1402-1418, 2012.
+	 http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+	 http://reuter.mit.edu/papers/reuter-long12.pdf
+	 
+	 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_robust_template (to simultaneously register 2 or more inputs to an
+	unbiased mid space, e.g. to create within subject cross time template 
+	image)
+
+
+
+=== Output of 'mri_robust_register -help' ===
+
+7.4.1
+
+				Help
+
+NAME
+	mri_robust_register
+
+SYNOPSIS
+	mri_robust_register --mov <mov.mgz> --dst <dst.mgz> --lta <reg.lta> 
+	[options]
+
+DESCRIPTION
+	This program computes an inverse consistent registration of two 
+	volumes, via an interative symmetric alignment of the two images. 
+	Default transformation type is rigid (translation and rotation), but 
+	affine can be specified (--affine). The program contains both robust 
+	(outlier insensitive) and standard cost functions:
+	 The robust approach uses a method based on robust statistics to 
+	detect outliers and removes them from the registration. This leads to 
+	highly accurate registrations even with local changes in the image 
+	(e.g. jaw movement). For same modality use costfunction ROB (default) 
+	and ROBENT for cross modal registration (experimental and only tested 
+	for isotropic voxels). An additional optional intensity scale 
+	parameter (--iscale) can be used to adjust for global intensity 
+	differences. 
+	 Regular non-robust cost functions include (nromalized) mutual 
+	information (MI and NMI) and can be used for cross modal registration 
+	without robustness.
+	 
+	If the registration fails: 
+	The registration can fail because of several reasons, most likely due 
+	to large intensity differences or non-linear differences in the image.
+	You can try:
+	* Switch on intensity scaling (--iscale) (for ROB and ROBENT).
+	* Switch off the center of mass initialization (with --noinit). 
+	* If you are trying to estimate an --affine registration, try rigid 
+	first and then pass it with --ixform to the affine step in a second 
+	run.
+	* Depending on your image resoution, it may be that the coarsest level
+	is too coarse, misaligning the image. Try to specify a larger 
+	--minsize to avoid computation on very coarse scales (especially for 
+	2D registrations, e.g. --minsize 120, for 3d --minsize 40).
+	* If you used automatic saturation estimation in ROB or ROBENT 
+	(--satit), try to specify the sensitivity manually via --sat. A high 
+	sat is less sensitive to outliers, low is more sensitive (range 
+	approx. from 4 to 20 in most cases).
+	* If you specified a manual saturation in ROB or ROBENT (--sat) too 
+	many voxels might be considered outlier early in the process. You can 
+	check this by outputing the weights (--weights ow.mgz) and by looking 
+	at them in:
+	  freeview dst.mgz mappedmov.mgz ow.mgz:colormap=heat 
+	If most of the brain is labeled outlier (red/yellow), try to set the 
+	saturation to a higher value (eg. --sat 12) or use --satit to 
+	automatically determine a good sat value. --satit works best for 3D 
+	brain images.
+
+POSITIONAL ARGUMENTS
+	None.
+
+REQUIRED FLAGGED ARGUMENTS
+	--mov <mov.mgz>
+		input movable volume to be aligned to target
+
+	--dst <dst.mgz>
+		input target volume
+
+	--lta <reg.lta>
+		output registration (transform from mov to dst)
+
+	One of the following is required for sensitivity when using ROB or 
+	ROBENT (robust cost functions, default):
+
+	--sat <real>
+		for ROB and ROBENT: set outlier sensitivity manually (e.g. 
+		'--sat 4.685' ). Higher values mean less sensitivity. Check 
+		--weights to see how much outliers get detected and adjust 
+		this parameter manually.
+
+	--satit
+		for ROB and ROBENT: auto-detect good sensitivity (works best 
+		for head or full brain images). You can manually specify sat 
+		if satit does not give satisfying results.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--mapmov <aligned.mgz> 
+		output image: movable mapped and resampled at destination
+
+	--mapmovhdr <aligned.mgz> 
+		output image: movable aligned to destination (no resampling, 
+		only adjusting header vox2ras)
+
+	--weights <weights.mgz> 
+		output weights (outlier probabilities) in destination space 
+		(0=regular,1=outlier)
+
+	--oneminusw
+		weights (outlier) map will be inverted (0=outlier), as in 
+		earlier versions
+
+	--iscale 
+		estimate intensity scale factor (default no).
+		Highly recommended for unnormalized images when using ROB or 
+		ROBENT!
+
+	--iscaleonly
+		only perform iscale (no transformation, default off)
+
+	--iscaleout <fname.txt>
+		output text file for iscale value (will activate --iscale). 
+		Default: no iscale output
+
+	--iscalein <fname.txt>
+		initial input text file for iscale value (probably you want to
+		also activate --iscale to estimate final value?)
+
+	--transonly
+		find 3 parameter translation only
+
+	--affine
+		find 12 parameter affine transform
+
+	--ixform lta
+		use initial transform lta on source. Default: align centers of
+		mass (see also --noinit). The final output transform will be 
+		from source to target and thus include the ixform.
+
+	--initorient
+		use moments for orientation initialization (default false). 
+		Recommended for stripped brains, but not with full head images
+		with different cropping. 
+
+	--noinit
+		skip automatic transform initialization.
+		Default: translate images to align centers of mass, good for 
+		within subject full head or brain images.
+		Use --noinit if center of mass is meaningless, e.g. when 
+		registering different resolutions or parts to larger images. 
+
+	--vox2vox
+		output VOX2VOX lta file (default is RAS2RAS)
+
+	--cost <str>
+		Cost function:
+		     ROB    robust <- default, recommended
+		            for robust same modality registration.
+		     ROBENT robust entropy, experimental, 
+		            for robust cross modal registration, can be slow
+		            also see --entradius, --entball, --entcorrection
+		     MI     mutual information 
+		     NMI    normalized mutual information,
+		            recommended for x-modal registration.
+		     SB     segmentation-based: Aganj, Fischl, IEEE SPL, 2017
+		            for cross modal with large initial misalignment,
+		            may need NMI to fine-tune, experimental
+		     ECC    entropy correlation coefficient, experimental
+		     NCC    normalized cross corrrelation, experimental
+		     SCR    symetrized correlation ratio, experimental
+		Note: most cost functions require the image backgrounds to be 
+		black! Also, only ROB and ROBENT use gradient decend, the 
+		others use a Powell optimizer.
+
+	--entradius
+		with ROBENT: specify box radius for entropy computation, 
+		default: 5 (may be slow)
+
+	--entcorrection
+		with ROBENT: uses better entropy computation that works on 
+		smaller boxes. For 3D recommended to switch this on and set 
+		entradius to around 2.
+
+	--entball
+		with ROBENT: use ball around voxel instead of box (default 
+		no), does not seem to make a big difference.
+
+	--entmov <entmov.mgz>
+		with ROBENT: write movable entropy image.
+
+	--powelltol <real>
+		with MI,NMI etc: set Powell tolerance (default 0.00001 = 
+		1e-5).
+
+	--sobel
+		register Sobel magnitude images (default no)
+
+	--nosym
+		do not map to half way space, but resample mov to dst 
+		internally (destroys symmetry, but is useful when registering 
+		a larger block to a part)
+
+	--maxit <#>
+
+	--entdst <entdst.mgz>
+		with ROBENT: write target entropy image.
+		iterate max # times on each resolution (default 5)
+
+	--highit <#>
+		iterate max # times on highest resolution (default 5)
+
+	--epsit <real>
+		stop iterations when transform update falls below <real> RMS 
+		distance (default 0.01)
+
+	--nomulti
+		process highest resolution only (no multiscale)
+
+	--maxsize <#>
+		specify largest voxel dimension for gaussian pyramid (e.g. 
+		--maxsize 256 will not process resolutions with more than 256 
+		voxels in any direction). Default: process up to the input 
+		resolution. You can use this to prevent the algorithm to run 
+		on the high resolutions (to avoid long runtimes and memory 
+		issues)
+
+	--minsize <#>
+		specify smallest voxel dimension for gaussian pyramid (will 
+		not downsample resolutions smaller than #). Default: smallest 
+		dimension 16 voxels
+
+	--wlimit <real>
+		(expert option) sets maximal outlier limit for --satit 
+		(default 0.16), reduce to decrease outlier sensitivity 
+
+	--subsample <real>
+		subsample if dim > # on all axes (default no subsampling)
+
+	--floattype
+		convert images to float internally (default: keep input type)
+
+	--whitebgmov
+		assume white background in MOV for padding (default: black)
+
+	--whitebgdst
+		assume white background in DST for padding (default: black)
+
+	--uchar
+		convert inputs to UCHAR (with re-scale and histogram cropping)
+		(default: keep original type)
+
+	--maskmov <mask.mgz>
+		mask mov image with mask.mgz
+
+	--maskdst <mask.mgz>
+		mask dst image with mask.mgz
+
+	--halfmov <hm.mgz>
+		outputs half-way mov (resampled in halfway space)
+
+	--halfdst <hd.mgz>
+		outputs half-way dst (resampled in halfway space)
+
+	--halfweights hw.mgz
+		outputs half-way weights (resampled in halfway space)
+
+	--halfmovlta hm.lta
+		outputs transform from mov to half-way space
+
+	--halfdstlta hd.lta
+		outputs transform from dst to half-way space
+
+	--debug
+		show debug output (default no debug output)
+
+	--verbose
+		0 quiet, 1 normal (default), 2 detail
+
+EXAMPLE 1
+	Simple Full Head Registration (same modality):
+	 
+	mri_robust_register --mov vol1.mgz --dst vol2.mgz --lta v1to2.lta 
+	--mapmov v1to2.mgz --weights v1to2-weights.mgz --iscale 
+	--satit
+	
+	Computes the symmetric rigid registration (translation and rotation) 
+	of vol1.mgz to vol2.mgz using robust statistics and with an additional
+	global intensity scaling parameter. The output is the transform 
+	(v1to2.lta) and image v1to2.mgz (the vol1.mgz resampled to the target 
+	image). Additionally the weights of the robust registation (outlier 
+	detection) are saved. Everything can be viewed with:
+	
+	freeview vol2.mgz v1to2.mgz v1to2-weights.mgz:colormap=heat 
+
+EXAMPLE 2
+	Half Way Space Output (same modality):
+	 
+	mri_robust_register --mov vol1.nii --dst vol2.nii --lta v1to2.lta 
+	--halfmov h1.nii --halfdst h2.nii --halfmovlta h1.lta --halfdstlta 
+	h2.lta --iscale --satit
+	 
+	Computes the rigid robust registration with intensity scaling of Nifti
+	vol1 to vol2 (the registration will be saved in v1to2.lta). 
+	Additionally outputs the half-way volumes h1.nii and h2.nii (with 
+	corresponding transforms h1.lta and h2.lta). As both volumes are 
+	mapped to the half-way space, they will both be resampled. This can be
+	used to construct an unbiased mean volume (e.g. with mri_average) or 
+	to compute change maps. The output can be viewed with: 
+	
+	freeview h1.nii h2.nii
+
+EXAMPLE 3
+	Part to Full Registration (same modality):
+	 
+	mri_robust_register --mov fullhemi.mgz --dst part.mgz --noinit --nosym
+	--sat 8 --maxsize 380 --mapmovhdr hemi2part.mgz --lta hemi2part.lta
+	 
+	Registers a full hemisphere with a high-resolutional part (e.g. 
+	hippocampal slices). It is recommended to specify the part as the 
+	target (the full hemi image will then be cropped internally). For 
+	partial registration to work we need to skip the center of mass 
+	initialization (--noinit) and switch off the half way space (--nosym).
+	Also the inputs need to be in an approximate alignment, alternatively 
+	you can pass --ixform with a transform that approximately aligns the 
+	images. The satuarion needs to be specified manually with --sat. You 
+	can output the weights with --weights to see if too many voxels are 
+	removed and increase the value (to reduce outlier sensitivity). For 
+	high-res inputs we limit the resolution to 380 to reduce run time and 
+	mem usage. The output will be the transform (--lta) and the mov mapped
+	to dst w/o resampling (--mapmovhdr), only adjusting the header 
+	information. Look at results with:
+	
+	freeview -v part.mgz part2hemi.mgz
+	
+	You can also invert transforms and apply them :
+	
+	mri_concatenate_lta -invert1 hemi2part.lta identity.nofile 
+	part2hemi.lta
+	
+	mri_convert -at inv1.lta part.mgz part2hemi.mgz 
+
+EXAMPLE 4
+	Robust cross modal registration:
+	 
+	mri_robust_register --mov movT2.mgz --dst dstT1.mgz --satit --iscale 
+	--mapmov T2_to_T1.mgz --lta T2_to_T1.lta --cost ROBENT --entradius 2 
+	--entcorrection --weights T2_to_T1_weights.mgz
+	 
+	Registers a T2 image to T1 using robust entropy with correction mode 
+	and box radius 2 (= side length of 5 for boxes).
+	Look at results with:
+	
+	freeview dstT1.mgz T2_to_T1.mgz T2_to_T1_weights.mgz:colormap=heat 
+
+EXAMPLE 5
+	Standard cross modal registration:
+	 
+	mri_robust_register --mov movT2.mgz --dst dstT1.mgz --mapmov T2_to_
+	T1.mgz --lta T2_to_T1.lta --cost NMI
+	 
+	Registers a T2 image to T1 using normalized mutual information (no 
+	outlier detection, Powell method is used for optimization). Here no 
+	saturation or intensity scaling is necessary. NMI or MI may be the 
+	prefered option for non-isotropic voxel whereas ROBENT has not been 
+	tested much. Also if you register a slab to a whole image you should 
+	probably add --nosym and play around with masking the images (e.g. 
+	--maskmov brainmask ).
+	Look at results with:
+	
+	freeview dstT1.mgz T2_to_T1.mgz 
+
+REFERENCES
+	
+	Please cite this:
+	 
+	Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+	Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+	 http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+	 http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+	
+	Extension to multi registration (template estimation):
+	
+	Within-Subject Template Estimation for Unbiased Longitudinal Image 
+	Analysis. M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl. NeuroImage
+	61(4):1402-1418, 2012.
+	 http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+	 http://reuter.mit.edu/papers/reuter-long12.pdf
+	 
+	 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_robust_template (to simultaneously register 2 or more inputs to an
+	unbiased mid space, e.g. to create within subject cross time template 
+	image)
+
+
+
+=== Output of 'mri_robust_register' (no arguments) ===
+
+7.4.1
+
+				Help
+
+NAME
+	mri_robust_register
+
+SYNOPSIS
+	mri_robust_register --mov <mov.mgz> --dst <dst.mgz> --lta <reg.lta> 
+	[options]
+
+DESCRIPTION
+	This program computes an inverse consistent registration of two 
+	volumes, via an interative symmetric alignment of the two images. 
+	Default transformation type is rigid (translation and rotation), but 
+	affine can be specified (--affine). The program contains both robust 
+	(outlier insensitive) and standard cost functions:
+	 The robust approach uses a method based on robust statistics to 
+	detect outliers and removes them from the registration. This leads to 
+	highly accurate registrations even with local changes in the image 
+	(e.g. jaw movement). For same modality use costfunction ROB (default) 
+	and ROBENT for cross modal registration (experimental and only tested 
+	for isotropic voxels). An additional optional intensity scale 
+	parameter (--iscale) can be used to adjust for global intensity 
+	differences. 
+	 Regular non-robust cost functions include (nromalized) mutual 
+	information (MI and NMI) and can be used for cross modal registration 
+	without robustness.
+	 
+	If the registration fails: 
+	The registration can fail because of several reasons, most likely due 
+	to large intensity differences or non-linear differences in the image.
+	You can try:
+	* Switch on intensity scaling (--iscale) (for ROB and ROBENT).
+	* Switch off the center of mass initialization (with --noinit). 
+	* If you are trying to estimate an --affine registration, try rigid 
+	first and then pass it with --ixform to the affine step in a second 
+	run.
+	* Depending on your image resoution, it may be that the coarsest level
+	is too coarse, misaligning the image. Try to specify a larger 
+	--minsize to avoid computation on very coarse scales (especially for 
+	2D registrations, e.g. --minsize 120, for 3d --minsize 40).
+	* If you used automatic saturation estimation in ROB or ROBENT 
+	(--satit), try to specify the sensitivity manually via --sat. A high 
+	sat is less sensitive to outliers, low is more sensitive (range 
+	approx. from 4 to 20 in most cases).
+	* If you specified a manual saturation in ROB or ROBENT (--sat) too 
+	many voxels might be considered outlier early in the process. You can 
+	check this by outputing the weights (--weights ow.mgz) and by looking 
+	at them in:
+	  freeview dst.mgz mappedmov.mgz ow.mgz:colormap=heat 
+	If most of the brain is labeled outlier (red/yellow), try to set the 
+	saturation to a higher value (eg. --sat 12) or use --satit to 
+	automatically determine a good sat value. --satit works best for 3D 
+	brain images.
+
+POSITIONAL ARGUMENTS
+	None.
+
+REQUIRED FLAGGED ARGUMENTS
+	--mov <mov.mgz>
+		input movable volume to be aligned to target
+
+	--dst <dst.mgz>
+		input target volume
+
+	--lta <reg.lta>
+		output registration (transform from mov to dst)
+
+	One of the following is required for sensitivity when using ROB or 
+	ROBENT (robust cost functions, default):
+
+	--sat <real>
+		for ROB and ROBENT: set outlier sensitivity manually (e.g. 
+		'--sat 4.685' ). Higher values mean less sensitivity. Check 
+		--weights to see how much outliers get detected and adjust 
+		this parameter manually.
+
+	--satit
+		for ROB and ROBENT: auto-detect good sensitivity (works best 
+		for head or full brain images). You can manually specify sat 
+		if satit does not give satisfying results.
+
+OPTIONAL FLAGGED ARGUMENTS
+	--mapmov <aligned.mgz> 
+		output image: movable mapped and resampled at destination
+
+	--mapmovhdr <aligned.mgz> 
+		output image: movable aligned to destination (no resampling, 
+		only adjusting header vox2ras)
+
+	--weights <weights.mgz> 
+		output weights (outlier probabilities) in destination space 
+		(0=regular,1=outlier)
+
+	--oneminusw
+		weights (outlier) map will be inverted (0=outlier), as in 
+		earlier versions
+
+	--iscale 
+		estimate intensity scale factor (default no).
+		Highly recommended for unnormalized images when using ROB or 
+		ROBENT!
+
+	--iscaleonly
+		only perform iscale (no transformation, default off)
+
+	--iscaleout <fname.txt>
+		output text file for iscale value (will activate --iscale). 
+		Default: no iscale output
+
+	--iscalein <fname.txt>
+		initial input text file for iscale value (probably you want to
+		also activate --iscale to estimate final value?)
+
+	--transonly
+		find 3 parameter translation only
+
+	--affine
+		find 12 parameter affine transform
+
+	--ixform lta
+		use initial transform lta on source. Default: align centers of
+		mass (see also --noinit). The final output transform will be 
+		from source to target and thus include the ixform.
+
+	--initorient
+		use moments for orientation initialization (default false). 
+		Recommended for stripped brains, but not with full head images
+		with different cropping. 
+
+	--noinit
+		skip automatic transform initialization.
+		Default: translate images to align centers of mass, good for 
+		within subject full head or brain images.
+		Use --noinit if center of mass is meaningless, e.g. when 
+		registering different resolutions or parts to larger images. 
+
+	--vox2vox
+		output VOX2VOX lta file (default is RAS2RAS)
+
+	--cost <str>
+		Cost function:
+		     ROB    robust <- default, recommended
+		            for robust same modality registration.
+		     ROBENT robust entropy, experimental, 
+		            for robust cross modal registration, can be slow
+		            also see --entradius, --entball, --entcorrection
+		     MI     mutual information 
+		     NMI    normalized mutual information,
+		            recommended for x-modal registration.
+		     SB     segmentation-based: Aganj, Fischl, IEEE SPL, 2017
+		            for cross modal with large initial misalignment,
+		            may need NMI to fine-tune, experimental
+		     ECC    entropy correlation coefficient, experimental
+		     NCC    normalized cross corrrelation, experimental
+		     SCR    symetrized correlation ratio, experimental
+		Note: most cost functions require the image backgrounds to be 
+		black! Also, only ROB and ROBENT use gradient decend, the 
+		others use a Powell optimizer.
+
+	--entradius
+		with ROBENT: specify box radius for entropy computation, 
+		default: 5 (may be slow)
+
+	--entcorrection
+		with ROBENT: uses better entropy computation that works on 
+		smaller boxes. For 3D recommended to switch this on and set 
+		entradius to around 2.
+
+	--entball
+		with ROBENT: use ball around voxel instead of box (default 
+		no), does not seem to make a big difference.
+
+	--entmov <entmov.mgz>
+		with ROBENT: write movable entropy image.
+
+	--powelltol <real>
+		with MI,NMI etc: set Powell tolerance (default 0.00001 = 
+		1e-5).
+
+	--sobel
+		register Sobel magnitude images (default no)
+
+	--nosym
+		do not map to half way space, but resample mov to dst 
+		internally (destroys symmetry, but is useful when registering 
+		a larger block to a part)
+
+	--maxit <#>
+
+	--entdst <entdst.mgz>
+		with ROBENT: write target entropy image.
+		iterate max # times on each resolution (default 5)
+
+	--highit <#>
+		iterate max # times on highest resolution (default 5)
+
+	--epsit <real>
+		stop iterations when transform update falls below <real> RMS 
+		distance (default 0.01)
+
+	--nomulti
+		process highest resolution only (no multiscale)
+
+	--maxsize <#>
+		specify largest voxel dimension for gaussian pyramid (e.g. 
+		--maxsize 256 will not process resolutions with more than 256 
+		voxels in any direction). Default: process up to the input 
+		resolution. You can use this to prevent the algorithm to run 
+		on the high resolutions (to avoid long runtimes and memory 
+		issues)
+
+	--minsize <#>
+		specify smallest voxel dimension for gaussian pyramid (will 
+		not downsample resolutions smaller than #). Default: smallest 
+		dimension 16 voxels
+
+	--wlimit <real>
+		(expert option) sets maximal outlier limit for --satit 
+		(default 0.16), reduce to decrease outlier sensitivity 
+
+	--subsample <real>
+		subsample if dim > # on all axes (default no subsampling)
+
+	--floattype
+		convert images to float internally (default: keep input type)
+
+	--whitebgmov
+		assume white background in MOV for padding (default: black)
+
+	--whitebgdst
+		assume white background in DST for padding (default: black)
+
+	--uchar
+		convert inputs to UCHAR (with re-scale and histogram cropping)
+		(default: keep original type)
+
+	--maskmov <mask.mgz>
+		mask mov image with mask.mgz
+
+	--maskdst <mask.mgz>
+		mask dst image with mask.mgz
+
+	--halfmov <hm.mgz>
+		outputs half-way mov (resampled in halfway space)
+
+	--halfdst <hd.mgz>
+		outputs half-way dst (resampled in halfway space)
+
+	--halfweights hw.mgz
+		outputs half-way weights (resampled in halfway space)
+
+	--halfmovlta hm.lta
+		outputs transform from mov to half-way space
+
+	--halfdstlta hd.lta
+		outputs transform from dst to half-way space
+
+	--debug
+		show debug output (default no debug output)
+
+	--verbose
+		0 quiet, 1 normal (default), 2 detail
+
+EXAMPLE 1
+	Simple Full Head Registration (same modality):
+	 
+	mri_robust_register --mov vol1.mgz --dst vol2.mgz --lta v1to2.lta 
+	--mapmov v1to2.mgz --weights v1to2-weights.mgz --iscale 
+	--satit
+	
+	Computes the symmetric rigid registration (translation and rotation) 
+	of vol1.mgz to vol2.mgz using robust statistics and with an additional
+	global intensity scaling parameter. The output is the transform 
+	(v1to2.lta) and image v1to2.mgz (the vol1.mgz resampled to the target 
+	image). Additionally the weights of the robust registation (outlier 
+	detection) are saved. Everything can be viewed with:
+	
+	freeview vol2.mgz v1to2.mgz v1to2-weights.mgz:colormap=heat 
+
+EXAMPLE 2
+	Half Way Space Output (same modality):
+	 
+	mri_robust_register --mov vol1.nii --dst vol2.nii --lta v1to2.lta 
+	--halfmov h1.nii --halfdst h2.nii --halfmovlta h1.lta --halfdstlta 
+	h2.lta --iscale --satit
+	 
+	Computes the rigid robust registration with intensity scaling of Nifti
+	vol1 to vol2 (the registration will be saved in v1to2.lta). 
+	Additionally outputs the half-way volumes h1.nii and h2.nii (with 
+	corresponding transforms h1.lta and h2.lta). As both volumes are 
+	mapped to the half-way space, they will both be resampled. This can be
+	used to construct an unbiased mean volume (e.g. with mri_average) or 
+	to compute change maps. The output can be viewed with: 
+	
+	freeview h1.nii h2.nii
+
+EXAMPLE 3
+	Part to Full Registration (same modality):
+	 
+	mri_robust_register --mov fullhemi.mgz --dst part.mgz --noinit --nosym
+	--sat 8 --maxsize 380 --mapmovhdr hemi2part.mgz --lta hemi2part.lta
+	 
+	Registers a full hemisphere with a high-resolutional part (e.g. 
+	hippocampal slices). It is recommended to specify the part as the 
+	target (the full hemi image will then be cropped internally). For 
+	partial registration to work we need to skip the center of mass 
+	initialization (--noinit) and switch off the half way space (--nosym).
+	Also the inputs need to be in an approximate alignment, alternatively 
+	you can pass --ixform with a transform that approximately aligns the 
+	images. The satuarion needs to be specified manually with --sat. You 
+	can output the weights with --weights to see if too many voxels are 
+	removed and increase the value (to reduce outlier sensitivity). For 
+	high-res inputs we limit the resolution to 380 to reduce run time and 
+	mem usage. The output will be the transform (--lta) and the mov mapped
+	to dst w/o resampling (--mapmovhdr), only adjusting the header 
+	information. Look at results with:
+	
+	freeview -v part.mgz part2hemi.mgz
+	
+	You can also invert transforms and apply them :
+	
+	mri_concatenate_lta -invert1 hemi2part.lta identity.nofile 
+	part2hemi.lta
+	
+	mri_convert -at inv1.lta part.mgz part2hemi.mgz 
+
+EXAMPLE 4
+	Robust cross modal registration:
+	 
+	mri_robust_register --mov movT2.mgz --dst dstT1.mgz --satit --iscale 
+	--mapmov T2_to_T1.mgz --lta T2_to_T1.lta --cost ROBENT --entradius 2 
+	--entcorrection --weights T2_to_T1_weights.mgz
+	 
+	Registers a T2 image to T1 using robust entropy with correction mode 
+	and box radius 2 (= side length of 5 for boxes).
+	Look at results with:
+	
+	freeview dstT1.mgz T2_to_T1.mgz T2_to_T1_weights.mgz:colormap=heat 
+
+EXAMPLE 5
+	Standard cross modal registration:
+	 
+	mri_robust_register --mov movT2.mgz --dst dstT1.mgz --mapmov T2_to_
+	T1.mgz --lta T2_to_T1.lta --cost NMI
+	 
+	Registers a T2 image to T1 using normalized mutual information (no 
+	outlier detection, Powell method is used for optimization). Here no 
+	saturation or intensity scaling is necessary. NMI or MI may be the 
+	prefered option for non-isotropic voxel whereas ROBENT has not been 
+	tested much. Also if you register a slab to a whole image you should 
+	probably add --nosym and play around with masking the images (e.g. 
+	--maskmov brainmask ).
+	Look at results with:
+	
+	freeview dstT1.mgz T2_to_T1.mgz 
+
+REFERENCES
+	
+	Please cite this:
+	 
+	Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+	Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+	 http://dx.doi.org/10.1016/j.neuroimage.2010.07.020
+	 http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+	
+	Extension to multi registration (template estimation):
+	
+	Within-Subject Template Estimation for Unbiased Longitudinal Image 
+	Analysis. M. Reuter, N.J. Schmansky, H.D. Rosas, B. Fischl. NeuroImage
+	61(4):1402-1418, 2012.
+	 http://dx.doi.org/10.1016/j.neuroimage.2012.02.084
+	 http://reuter.mit.edu/papers/reuter-long12.pdf
+	 
+	 
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	mri_robust_template (to simultaneously register 2 or more inputs to an
+	unbiased mid space, e.g. to create within subject cross time template 
+	image)
+
+

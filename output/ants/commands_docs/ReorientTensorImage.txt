@@ -1,0 +1,12 @@
+
+=== Output of 'ReorientTensorImage --help' ===
+
+Usage: ReorientTensorImage Dimension infile.nii outfile.nii <warp.nii/affine.txt> 
+
+=== Output of 'ReorientTensorImage -help' ===
+
+Usage: ReorientTensorImage Dimension infile.nii outfile.nii <warp.nii/affine.txt> 
+
+=== Output of 'ReorientTensorImage' (no arguments) ===
+
+Usage: ReorientTensorImage Dimension infile.nii outfile.nii <warp.nii/affine.txt> 

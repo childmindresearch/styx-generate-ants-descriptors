@@ -1,0 +1,26 @@
+
+=== Output of 'checkFEAT --help' ===
+
+grep: unrecognized option '--help/report.html'
+Usage: grep [OPTION]... PATTERN [FILE]...
+Try 'grep --help' for more information.
+grep: unrecognized option '--help/report.html'
+Usage: grep [OPTION]... PATTERN [FILE]...
+Try 'grep --help' for more information.
+grep: unrecognized option '--help/report_log.html'
+Usage: grep [OPTION]... PATTERN [FILE]...
+Try 'grep --help' for more information.
+--help
+
+=== Output of 'checkFEAT -help' ===
+
+grep: STILL RUNNING: No such file or directory
+grep: Errors occured: No such file or directory
+grep: Error: No such file or directory
+-help
+
+=== Output of 'checkFEAT' (no arguments) ===
+
+Usage: checkFEAT FEATdirs
+
+Checks status of FEAT analyses

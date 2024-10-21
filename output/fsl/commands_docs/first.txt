@@ -1,0 +1,106 @@
+
+=== Output of 'first --help' ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	Filename of input image to be segmented.
+	-k,--outputName	Output name
+	-m,--inputModel	Filename of input model (the structure to be segmented).
+	-l,--flirtMatrix	Filename of flirt matrix that transform input image to MNI space (output of first_flirt)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+first University of Oxford (Brian Patenaude)
+
+Usage: 
+first -i <input image> -l <flirt matrix> -m <model>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	Filename of input image to be segmented.
+	-k,--outputName	Output name
+	-m,--inputModel	Filename of input model (the structure to be segmented).
+	-l,--flirtMatrix	Filename of flirt matrix that transform input image to MNI space (output of first_flirt)
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-p,--inputModel2	Filename of second input model (the structure to be segmented).
+	-n,--nmodes	Specifies number of modes used.
+	--intref,--intref	use structure specified by modelname2 as intensity reference
+	--multiImageInput,--multiImageInput	use structure specified by modelname2 as intensity reference
+	--binarySurfaceOutput,--binarySurfaceOutput	use structure specified by modelname2 as intensity reference
+	-b,--bmapname	Filename of conditional mapping matrix
+	-o,--bvars	Initialize using bvars from a previous segmenation. When using with --shcond specifies the 						  the shape of the structure we are conditioning on.
+	--shcond	Use conditional shape probability
+	--loadbvars	load intial parameter estimates from a previous segmentation.
+
+
+
+=== Output of 'first -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+first University of Oxford (Brian Patenaude)
+
+Usage: 
+first -i <input image> -l <flirt matrix> -m <model>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	Filename of input image to be segmented.
+	-k,--outputName	Output name
+	-m,--inputModel	Filename of input model (the structure to be segmented).
+	-l,--flirtMatrix	Filename of flirt matrix that transform input image to MNI space (output of first_flirt)
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-p,--inputModel2	Filename of second input model (the structure to be segmented).
+	-n,--nmodes	Specifies number of modes used.
+	--intref,--intref	use structure specified by modelname2 as intensity reference
+	--multiImageInput,--multiImageInput	use structure specified by modelname2 as intensity reference
+	--binarySurfaceOutput,--binarySurfaceOutput	use structure specified by modelname2 as intensity reference
+	-b,--bmapname	Filename of conditional mapping matrix
+	-o,--bvars	Initialize using bvars from a previous segmenation. When using with --shcond specifies the 						  the shape of the structure we are conditioning on.
+	--shcond	Use conditional shape probability
+	--loadbvars	load intial parameter estimates from a previous segmentation.
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'first' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	Filename of input image to be segmented.
+	-k,--outputName	Output name
+	-m,--inputModel	Filename of input model (the structure to be segmented).
+	-l,--flirtMatrix	Filename of flirt matrix that transform input image to MNI space (output of first_flirt)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+first University of Oxford (Brian Patenaude)
+
+Usage: 
+first -i <input image> -l <flirt matrix> -m <model>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	Filename of input image to be segmented.
+	-k,--outputName	Output name
+	-m,--inputModel	Filename of input model (the structure to be segmented).
+	-l,--flirtMatrix	Filename of flirt matrix that transform input image to MNI space (output of first_flirt)
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	-p,--inputModel2	Filename of second input model (the structure to be segmented).
+	-n,--nmodes	Specifies number of modes used.
+	--intref,--intref	use structure specified by modelname2 as intensity reference
+	--multiImageInput,--multiImageInput	use structure specified by modelname2 as intensity reference
+	--binarySurfaceOutput,--binarySurfaceOutput	use structure specified by modelname2 as intensity reference
+	-b,--bmapname	Filename of conditional mapping matrix
+	-o,--bvars	Initialize using bvars from a previous segmenation. When using with --shcond specifies the 						  the shape of the structure we are conditioning on.
+	--shcond	Use conditional shape probability
+	--loadbvars	load intial parameter estimates from a previous segmentation.
+
+

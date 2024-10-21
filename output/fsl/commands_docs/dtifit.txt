@@ -1,0 +1,87 @@
+
+=== Output of 'dtifit --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+dtifit
+
+Usage: 
+dtifit -k <filename>
+ dtifit --verbose
+
+
+Compulsory arguments (You MUST set one or more of):
+	-k,--data	dti data file
+	-o,--out	Output basename
+	-m,--mask	Bet binary mask file
+	-r,--bvecs	b vectors file
+	-b,--bvals	b values file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--cni	Input confound regressors
+	--sse	Output sum of squared errors
+	-w,--wls	Fit the tensor with weighted least squares
+	--kurt	Output mean kurtosis map (for multi-shell data)
+	--kurtdir	Output maps of kurtosis along each eigenvector: K1, K2, and K3 (for multi-shell data)
+	--littlebit	Only process small area of brain
+	--save_tensor	Save the elements of the tensor
+	-z,--zmin	min z
+	-Z,--zmax	max z
+	-y,--ymin	min y
+	-Y,--ymax	max y
+	-x,--xmin	min x
+	-X,--xmax	max x
+	--gradnonlin	Gradient Nonlinearity Tensor file
+
+
+
+=== Output of 'dtifit -help' ===
+
+terminate called after throwing an instance of 'Utilities::X_OptionError'
+  what():  -e: Option doesn't exist!
+timeout: the monitored command dumped core
+
+=== Output of 'dtifit' (no arguments) ===
+
+
+
+
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+dtifit
+
+Usage: 
+dtifit -k <filename>
+ dtifit --verbose
+
+
+Compulsory arguments (You MUST set one or more of):
+	-k,--data	dti data file
+	-o,--out	Output basename
+	-m,--mask	Bet binary mask file
+	-r,--bvecs	b vectors file
+	-b,--bvals	b values file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+	--cni	Input confound regressors
+	--sse	Output sum of squared errors
+	-w,--wls	Fit the tensor with weighted least squares
+	--kurt	Output mean kurtosis map (for multi-shell data)
+	--kurtdir	Output maps of kurtosis along each eigenvector: K1, K2, and K3 (for multi-shell data)
+	--littlebit	Only process small area of brain
+	--save_tensor	Save the elements of the tensor
+	-z,--zmin	min z
+	-Z,--zmax	max z
+	-y,--ymin	min y
+	-Y,--ymax	max y
+	-x,--xmin	min x
+	-X,--xmax	max x
+	--gradnonlin	Gradient Nonlinearity Tensor file
+
+

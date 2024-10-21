@@ -1,0 +1,11 @@
+
+=== Output of 'remove_ext --help' ===
+
+--help
+
+=== Output of 'remove_ext -help' ===
+
+-help
+
+=== Output of 'remove_ext' (no arguments) ===
+

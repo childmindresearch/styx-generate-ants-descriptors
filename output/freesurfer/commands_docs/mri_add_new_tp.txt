@@ -1,0 +1,87 @@
+
+=== Output of 'mri_add_new_tp --help' ===
+
+
+  mri_add_new_tp <base-id> <newtp-id>
+
+  Adds a new time point to the base/template without
+  re-creating the base. Therefore only the new time point
+  needs to be run longitudinally ( recon-all -long .. )
+  instead of re-running the base and all longitudinals.
+
+  Note: 
+  1. The new time points needs to be fully processed with the 
+     standard recon-all stream before (newtp-id is the subj-dir)
+  2. Adding a new time point to the base this way is only
+     recommended if:
+  a) enough time points are already in the base (maybe 3 or 4)
+  b) the new time point is not too different from the old ones
+  c) not too many other time points have been added this way
+
+  In fact, we are currently not sure what influence this has
+  on your analysis. The good news: your results from earlier
+  longitudinal processing will stay the same. The bad news:
+  you introduce a bias towards the earlier time points.
+
+  More info on longitudinal processing at:
+  http://surfer.nmr.mgh.harvard.edu/fswiki/LongitudinalProcessing
+
+
+
+=== Output of 'mri_add_new_tp -help' ===
+
+
+  mri_add_new_tp <base-id> <newtp-id>
+
+  Adds a new time point to the base/template without
+  re-creating the base. Therefore only the new time point
+  needs to be run longitudinally ( recon-all -long .. )
+  instead of re-running the base and all longitudinals.
+
+  Note: 
+  1. The new time points needs to be fully processed with the 
+     standard recon-all stream before (newtp-id is the subj-dir)
+  2. Adding a new time point to the base this way is only
+     recommended if:
+  a) enough time points are already in the base (maybe 3 or 4)
+  b) the new time point is not too different from the old ones
+  c) not too many other time points have been added this way
+
+  In fact, we are currently not sure what influence this has
+  on your analysis. The good news: your results from earlier
+  longitudinal processing will stay the same. The bad news:
+  you introduce a bias towards the earlier time points.
+
+  More info on longitudinal processing at:
+  http://surfer.nmr.mgh.harvard.edu/fswiki/LongitudinalProcessing
+
+
+
+=== Output of 'mri_add_new_tp' (no arguments) ===
+
+
+  mri_add_new_tp <base-id> <newtp-id>
+
+  Adds a new time point to the base/template without
+  re-creating the base. Therefore only the new time point
+  needs to be run longitudinally ( recon-all -long .. )
+  instead of re-running the base and all longitudinals.
+
+  Note: 
+  1. The new time points needs to be fully processed with the 
+     standard recon-all stream before (newtp-id is the subj-dir)
+  2. Adding a new time point to the base this way is only
+     recommended if:
+  a) enough time points are already in the base (maybe 3 or 4)
+  b) the new time point is not too different from the old ones
+  c) not too many other time points have been added this way
+
+  In fact, we are currently not sure what influence this has
+  on your analysis. The good news: your results from earlier
+  longitudinal processing will stay the same. The bad news:
+  you introduce a bias towards the earlier time points.
+
+  More info on longitudinal processing at:
+  http://surfer.nmr.mgh.harvard.edu/fswiki/LongitudinalProcessing
+
+

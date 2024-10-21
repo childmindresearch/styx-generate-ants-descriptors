@@ -1,0 +1,41 @@
+
+=== Output of 'map_all_labels --help' ===
+
+painting output onto subject --help.
+processing subject average7...
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+
+=== Output of 'map_all_labels -help' ===
+
+painting output onto subject -help.
+processing subject average7...
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+
+=== Output of 'map_all_labels' (no arguments) ===
+
+painting output onto subject label.
+usage: mris_spherical_average [option] <which> <fname> <hemi> <spherical surf> <subject 1> ... <output>
+where which is one of
+	coords
+	label
+	vals
+	curv
+	area

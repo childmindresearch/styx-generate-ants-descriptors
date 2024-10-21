@@ -1,0 +1,103 @@
+
+=== Output of 'vol2segavg --help' ===
+
+
+vol2segavg 
+ --o out : can be .txt or a binary (eg, .nii, .mgh)
+ --i vol.nii : input
+ --reg reg.dat or --regheader
+ --seg seg.mgz
+ --aparc+aseg
+ --s subject : may be needed if --reg not supplied
+ --segid id <--segid id2 ...> 
+ --mul MulVal : multiply input by MulVal
+ --no-bb : do not use bounding box
+ --erode nerode : erode segmentation
+ --dilate dilate : dilate segmentation
+ --wm : sets segid to 2 41 7 46 251 252 253 254 255 77 78 79 and aparc+aseg
+ --vcsf : sets segid to 4 5 43 44 31 63 and aparc+aseg
+ --xcsf : sets segid to 257 and apas+head
+ --remove-mean : remove mean from time course
+
+vol2segavg 7.4.1
+
+Computes the average of a volume inside a given segment of a segmentation resampling
+the input volume to the segmentation space. The output can be a text file or a volume 
+format (eg, .mgh, .nii). If the volume has multiple time points, then the output
+will have multiple time points. If a segmentation id is not supplied, then 1 is assumed.
+By default, the binarized segmentation is reduced in size to a bounding box that
+covers the segmentation. This can be much more computationally efficient, especially
+when the input has many time points. This is basically a frontend for mri_segstats
+with the difference being that mri_segstats requires that the input volume and
+segmentation must be in the same space. mri_segstats will report on each segmentation
+and reduce certain segmentations into a single segmentation.
+
+
+EXAMPLE:
+
+# Compute the mean FA in corpus callosum
+vol2segavg  --segid 251 --segid 252 --segid 253 --segid 254 --segid 255 \
+  --aparc+aseg --reg register.dat --i fa.nii.gz --o cc.fa.dat
+
+
+=== Output of 'vol2segavg -help' ===
+
+
+vol2segavg 
+ --o out : can be .txt or a binary (eg, .nii, .mgh)
+ --i vol.nii : input
+ --reg reg.dat or --regheader
+ --seg seg.mgz
+ --aparc+aseg
+ --s subject : may be needed if --reg not supplied
+ --segid id <--segid id2 ...> 
+ --mul MulVal : multiply input by MulVal
+ --no-bb : do not use bounding box
+ --erode nerode : erode segmentation
+ --dilate dilate : dilate segmentation
+ --wm : sets segid to 2 41 7 46 251 252 253 254 255 77 78 79 and aparc+aseg
+ --vcsf : sets segid to 4 5 43 44 31 63 and aparc+aseg
+ --xcsf : sets segid to 257 and apas+head
+ --remove-mean : remove mean from time course
+
+vol2segavg 7.4.1
+
+Computes the average of a volume inside a given segment of a segmentation resampling
+the input volume to the segmentation space. The output can be a text file or a volume 
+format (eg, .mgh, .nii). If the volume has multiple time points, then the output
+will have multiple time points. If a segmentation id is not supplied, then 1 is assumed.
+By default, the binarized segmentation is reduced in size to a bounding box that
+covers the segmentation. This can be much more computationally efficient, especially
+when the input has many time points. This is basically a frontend for mri_segstats
+with the difference being that mri_segstats requires that the input volume and
+segmentation must be in the same space. mri_segstats will report on each segmentation
+and reduce certain segmentations into a single segmentation.
+
+
+EXAMPLE:
+
+# Compute the mean FA in corpus callosum
+vol2segavg  --segid 251 --segid 252 --segid 253 --segid 254 --segid 255 \
+  --aparc+aseg --reg register.dat --i fa.nii.gz --o cc.fa.dat
+
+
+=== Output of 'vol2segavg' (no arguments) ===
+
+
+vol2segavg 
+ --o out : can be .txt or a binary (eg, .nii, .mgh)
+ --i vol.nii : input
+ --reg reg.dat or --regheader
+ --seg seg.mgz
+ --aparc+aseg
+ --s subject : may be needed if --reg not supplied
+ --segid id <--segid id2 ...> 
+ --mul MulVal : multiply input by MulVal
+ --no-bb : do not use bounding box
+ --erode nerode : erode segmentation
+ --dilate dilate : dilate segmentation
+ --wm : sets segid to 2 41 7 46 251 252 253 254 255 77 78 79 and aparc+aseg
+ --vcsf : sets segid to 4 5 43 44 31 63 and aparc+aseg
+ --xcsf : sets segid to 257 and apas+head
+ --remove-mean : remove mean from time course
+

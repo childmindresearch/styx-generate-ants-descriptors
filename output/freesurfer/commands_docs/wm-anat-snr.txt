@@ -1,0 +1,138 @@
+
+=== Output of 'wm-anat-snr --help' ===
+
+
+wm-anat-snr 
+
+   --s subject  : FreeSurfer subject name
+
+   --force : force analysis even if output is up-to-date
+   --o datfile  : output file
+   --nerode N   : number of erodes of the WM mask
+   --tmp tmpdir : temporary directory
+   --cleanup    : delete tmpdir (default)
+   --no-cleanup : do not delete tmpdir (default)
+   --help       : print help and exit
+
+
+Measures the anatomical SNR in white matter (WM). This can be used as
+a quality assurance (QA) metric. This metric is experimental and may 
+change in the future.
+
+Simply run:  wm-anat-snr --s subject
+
+The WM is determined from the aparc+aseg.mgz automatic segmentation as
+voxels with the following indices: 2 41 7 46 251 252 253 254 255 77 78
+79. The last three are WM hypointensities.  A mask is made from these
+voxels and then eroded by 3 voxels (controlled by --nerode). The mean
+and standard deviation (measured over space) of the norm.mgz is
+computed within this mask.  The snr is then computed as the
+mean/stddev. The output is put in stats/wmsnr.e3.dat (e3 is for erode
+by 3, so the name will change if you change the number of erodes). The
+output file contains 6 columns:
+
+1. subject name
+2. SNR
+3. Mean WM intensity
+4. Standard deviation of WM intensity
+5. Number of voxels in the mask after erosion
+6. Number of erodes
+
+Typical values are 15-20. Subjects with less than 15 should be
+scrutinized. SNR values may be low because of several factors,
+including motion, imperfect intensity inhomogeneity correction, high
+background noise, some scanner artifact, a failure in the FreeSurfer
+analysis, or some other reason. It might also be low because the
+subject biologically has a large range of intensities (eg, many
+hypointensities).  Note that a low SNR does not necessarily mean that
+the data are bad, and a high SNR does not necessarily mean that
+everything is ok.
+
+By default, this program will not re-run an analysis unless the
+output file is older than the aparc+aseg.mgz or the norm.mgz. To
+force re-analysis, run with --force.
+
+After running on a group of subjects, you can run
+
+cd $SUBJECTS_DIR
+cat */stats/wmsnr.e3.dat | sort -k 2 -n 
+
+To get a list of subjects sorted by the SNR.
+
+
+=== Output of 'wm-anat-snr -help' ===
+
+
+wm-anat-snr 
+
+   --s subject  : FreeSurfer subject name
+
+   --force : force analysis even if output is up-to-date
+   --o datfile  : output file
+   --nerode N   : number of erodes of the WM mask
+   --tmp tmpdir : temporary directory
+   --cleanup    : delete tmpdir (default)
+   --no-cleanup : do not delete tmpdir (default)
+   --help       : print help and exit
+
+
+Measures the anatomical SNR in white matter (WM). This can be used as
+a quality assurance (QA) metric. This metric is experimental and may 
+change in the future.
+
+Simply run:  wm-anat-snr --s subject
+
+The WM is determined from the aparc+aseg.mgz automatic segmentation as
+voxels with the following indices: 2 41 7 46 251 252 253 254 255 77 78
+79. The last three are WM hypointensities.  A mask is made from these
+voxels and then eroded by 3 voxels (controlled by --nerode). The mean
+and standard deviation (measured over space) of the norm.mgz is
+computed within this mask.  The snr is then computed as the
+mean/stddev. The output is put in stats/wmsnr.e3.dat (e3 is for erode
+by 3, so the name will change if you change the number of erodes). The
+output file contains 6 columns:
+
+1. subject name
+2. SNR
+3. Mean WM intensity
+4. Standard deviation of WM intensity
+5. Number of voxels in the mask after erosion
+6. Number of erodes
+
+Typical values are 15-20. Subjects with less than 15 should be
+scrutinized. SNR values may be low because of several factors,
+including motion, imperfect intensity inhomogeneity correction, high
+background noise, some scanner artifact, a failure in the FreeSurfer
+analysis, or some other reason. It might also be low because the
+subject biologically has a large range of intensities (eg, many
+hypointensities).  Note that a low SNR does not necessarily mean that
+the data are bad, and a high SNR does not necessarily mean that
+everything is ok.
+
+By default, this program will not re-run an analysis unless the
+output file is older than the aparc+aseg.mgz or the norm.mgz. To
+force re-analysis, run with --force.
+
+After running on a group of subjects, you can run
+
+cd $SUBJECTS_DIR
+cat */stats/wmsnr.e3.dat | sort -k 2 -n 
+
+To get a list of subjects sorted by the SNR.
+
+
+=== Output of 'wm-anat-snr' (no arguments) ===
+
+
+wm-anat-snr 
+
+   --s subject  : FreeSurfer subject name
+
+   --force : force analysis even if output is up-to-date
+   --o datfile  : output file
+   --nerode N   : number of erodes of the WM mask
+   --tmp tmpdir : temporary directory
+   --cleanup    : delete tmpdir (default)
+   --no-cleanup : do not delete tmpdir (default)
+   --help       : print help and exit
+

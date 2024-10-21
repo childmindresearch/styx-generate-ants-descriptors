@@ -1,0 +1,154 @@
+
+=== Output of 'mri_long_normalize --help' ===
+
+				Help
+
+NAME
+	mri_long_normalize
+
+SYNOPSIS
+	mri__long_normalize <input vol> <base-tp file> <output vol>
+
+DESCRIPTION
+	Normalize the white-matter, optionally based on control points. The 
+	input volume is converted into a new volume where white matter image 
+	values all range around 110.
+
+POSITIONAL ARGUMENTS
+	<input vol>
+		input mri volume file
+
+	<output vol>
+		output mri volume file
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-n <int n>
+		use n 3d normalization iterations (default=2)
+
+	-no1d
+		disable 1d normalization
+
+	-sigma sigma
+		smooth bias field
+
+	-a aseg
+
+	-v Gvx Gvy Gvz
+		for debugging
+
+	-d Gx Gy Gz
+		for debugging
+
+	-r controlpoints biasfield
+		for reading
+
+	-u or -h
+		print usage
+
+EXAMPLE 1
+	mri_normalize SUBJECT/mri/nu.mgz SUBJECT/mri/T1.mgz
+	
+	Uses the nu volume (nonuniformity corrected volume), and creates the 
+	T1 volume, with white matter voxels around 110 image value
+
+EXAMPLE 2
+	mri_long_normalize -aseg aseg.mgz -mask brainmask.mgz	norm.mgz 
+	$SUBJECTS_DIR/bert_base/base-tps brain.mgz
+	
+	Uses the norm volume, and creates the brain volume, making use of the 
+	aseg and masking with brainmask
+
+REFERENCES
+	"Cortical Surface-Based Analysis I: Segmentation and Surface 
+	Reconstruction", Dale, A.M., Fischl, B., Sereno, M.I. (1999) 
+	NeuroImage 9(2):179-194
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	nu_correct, mri_fill
+
+
+
+=== Output of 'mri_long_normalize -help' ===
+
+				Help
+
+NAME
+	mri_long_normalize
+
+SYNOPSIS
+	mri__long_normalize <input vol> <base-tp file> <output vol>
+
+DESCRIPTION
+	Normalize the white-matter, optionally based on control points. The 
+	input volume is converted into a new volume where white matter image 
+	values all range around 110.
+
+POSITIONAL ARGUMENTS
+	<input vol>
+		input mri volume file
+
+	<output vol>
+		output mri volume file
+
+REQUIRED FLAGGED ARGUMENTS
+	None
+
+OPTIONAL FLAGGED ARGUMENTS
+	-n <int n>
+		use n 3d normalization iterations (default=2)
+
+	-no1d
+		disable 1d normalization
+
+	-sigma sigma
+		smooth bias field
+
+	-a aseg
+
+	-v Gvx Gvy Gvz
+		for debugging
+
+	-d Gx Gy Gz
+		for debugging
+
+	-r controlpoints biasfield
+		for reading
+
+	-u or -h
+		print usage
+
+EXAMPLE 1
+	mri_normalize SUBJECT/mri/nu.mgz SUBJECT/mri/T1.mgz
+	
+	Uses the nu volume (nonuniformity corrected volume), and creates the 
+	T1 volume, with white matter voxels around 110 image value
+
+EXAMPLE 2
+	mri_long_normalize -aseg aseg.mgz -mask brainmask.mgz	norm.mgz 
+	$SUBJECTS_DIR/bert_base/base-tps brain.mgz
+	
+	Uses the norm volume, and creates the brain volume, making use of the 
+	aseg and masking with brainmask
+
+REFERENCES
+	"Cortical Surface-Based Analysis I: Segmentation and Surface 
+	Reconstruction", Dale, A.M., Fischl, B., Sereno, M.I. (1999) 
+	NeuroImage 9(2):179-194
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+SEE ALSO
+	nu_correct, mri_fill
+
+
+
+=== Output of 'mri_long_normalize' (no arguments) ===
+
+timeout: the monitored command dumped core

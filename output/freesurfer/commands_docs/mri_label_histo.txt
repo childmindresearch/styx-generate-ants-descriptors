@@ -1,0 +1,12 @@
+
+=== Output of 'mri_label_histo --help' ===
+
+unknown option --help
+
+=== Output of 'mri_label_histo -help' ===
+
+unknown option -help
+
+=== Output of 'mri_label_histo' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_label_histo [options] <T1 volume> <labeled volume> <label> <output>

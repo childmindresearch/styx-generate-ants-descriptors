@@ -1,0 +1,12 @@
+
+=== Output of 'filmbabescript --help' ===
+
+Usage: filmbabescript featdir flobsdir
+
+=== Output of 'filmbabescript -help' ===
+
+Usage: filmbabescript featdir flobsdir
+
+=== Output of 'filmbabescript' (no arguments) ===
+
+Usage: filmbabescript featdir flobsdir

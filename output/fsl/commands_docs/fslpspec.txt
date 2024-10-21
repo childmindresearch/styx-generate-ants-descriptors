@@ -1,0 +1,18 @@
+
+=== Output of 'fslpspec --help' ===
+
+Image Exception : #8 :: Fslread: DT 0 not supported
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Fslread: DT 0 not supported
+timeout: the monitored command dumped core
+
+=== Output of 'fslpspec -help' ===
+
+Image Exception : #8 :: Fslread: DT 0 not supported
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Fslread: DT 0 not supported
+timeout: the monitored command dumped core
+
+=== Output of 'fslpspec' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/fslpspec <input> [options] [output]

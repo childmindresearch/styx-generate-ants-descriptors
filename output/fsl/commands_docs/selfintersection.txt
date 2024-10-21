@@ -1,0 +1,12 @@
+
+=== Output of 'selfintersection --help' ===
+
+lucky you, the mesh is NOT self-intersecting
+
+=== Output of 'selfintersection -help' ===
+
+lucky you, the mesh is NOT self-intersecting
+
+=== Output of 'selfintersection' (no arguments) ===
+
+Usage : selfintersection [mesh.off]

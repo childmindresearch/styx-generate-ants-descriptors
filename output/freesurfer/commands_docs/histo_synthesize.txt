@@ -1,0 +1,12 @@
+
+=== Output of 'histo_synthesize --help' ===
+
+unknown option --help
+
+=== Output of 'histo_synthesize -help' ===
+
+unknown option -help
+
+=== Output of 'histo_synthesize' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/histo_synthesize [options] <MRI volume> <HISTO volume> <synthetic histo>	

@@ -1,0 +1,80 @@
+
+=== Output of 'gems_compute_atlas_probs --help' ===
+
+usage: gems_compute_atlas_probs [-h] --subjects-dir SUBJECTS_DIR
+                                --mesh-collections MESH_COLLECTIONS
+                                [MESH_COLLECTIONS ...] --out-dir OUT_DIR
+                                [--segmentations-dir SEGMENTATIONS_DIR]
+                                [--gt-from-FS]
+                                [--segmentation-name SEGMENTATION_NAME]
+                                [--multi-structure]
+                                [--labels LABELS [LABELS ...]] [--from-samseg]
+                                [--EM-iterations EM_ITERATIONS] [--show-figs]
+                                [--save-figs] [--save-average-figs]
+                                [--subjects_file SUBJECTS_FILE]
+                                [--labels_file LABELS_FILE]
+                                [--samseg-subdir SAMSEG_SUBDIR]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --subjects-dir SUBJECTS_DIR
+                        Directory with saved SAMSEG runs with --history flag.
+  --mesh-collections MESH_COLLECTIONS [MESH_COLLECTIONS ...]
+                        Mesh collection file(s).
+  --out-dir OUT_DIR     Output directory.
+  --segmentations-dir SEGMENTATIONS_DIR
+                        Directory with GT segmentations.
+  --gt-from-FS          GT from FreeSurfer segmentations.
+  --segmentation-name SEGMENTATION_NAME
+                        Filename of the segmentations, assumed to be the same
+                        for each subject.
+  --multi-structure     Estimate alphas from more than 1 structure.
+  --labels LABELS [LABELS ...]
+                        Labels numbers. Needs --multi-structure flag on.
+  --from-samseg         SAMSEG runs obtained from command samseg instead of
+                        run_samseg.
+  --EM-iterations EM_ITERATIONS
+                        EM iterations.
+  --show-figs           Show figures during run.
+  --save-figs           Save rasterized prior of each subject.
+  --save-average-figs   Save average rasterized prior.
+  --subjects_file SUBJECTS_FILE
+                        Text file with list of subjects.
+  --labels_file LABELS_FILE
+                        Text file with list of labels (instead of --labels).
+  --samseg-subdir SAMSEG_SUBDIR
+                        Name of samseg subdir in subject/mri folder
+
+=== Output of 'gems_compute_atlas_probs -help' ===
+
+usage: gems_compute_atlas_probs [-h] --subjects-dir SUBJECTS_DIR
+                                --mesh-collections MESH_COLLECTIONS
+                                [MESH_COLLECTIONS ...] --out-dir OUT_DIR
+                                [--segmentations-dir SEGMENTATIONS_DIR]
+                                [--gt-from-FS]
+                                [--segmentation-name SEGMENTATION_NAME]
+                                [--multi-structure]
+                                [--labels LABELS [LABELS ...]] [--from-samseg]
+                                [--EM-iterations EM_ITERATIONS] [--show-figs]
+                                [--save-figs] [--save-average-figs]
+                                [--subjects_file SUBJECTS_FILE]
+                                [--labels_file LABELS_FILE]
+                                [--samseg-subdir SAMSEG_SUBDIR]
+gems_compute_atlas_probs: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'gems_compute_atlas_probs' (no arguments) ===
+
+usage: gems_compute_atlas_probs [-h] --subjects-dir SUBJECTS_DIR
+                                --mesh-collections MESH_COLLECTIONS
+                                [MESH_COLLECTIONS ...] --out-dir OUT_DIR
+                                [--segmentations-dir SEGMENTATIONS_DIR]
+                                [--gt-from-FS]
+                                [--segmentation-name SEGMENTATION_NAME]
+                                [--multi-structure]
+                                [--labels LABELS [LABELS ...]] [--from-samseg]
+                                [--EM-iterations EM_ITERATIONS] [--show-figs]
+                                [--save-figs] [--save-average-figs]
+                                [--subjects_file SUBJECTS_FILE]
+                                [--labels_file LABELS_FILE]
+                                [--samseg-subdir SAMSEG_SUBDIR]
+gems_compute_atlas_probs: error: the following arguments are required: --subjects-dir, --mesh-collections, --out-dir

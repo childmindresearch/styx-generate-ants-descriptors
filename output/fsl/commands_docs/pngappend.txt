@@ -1,0 +1,36 @@
+
+=== Output of 'pngappend --help' ===
+
+
+ pngappend  -  append PNG files horizontally and/or vertically into a new PNG (or GIF) file
+
+Usage: pngappend <input 1> <+|-> [n] <input 2> [<+|-> [n] <input n>]  output>
+
+ + appends horizontally,
+ - appends vertically (i.e. works like a linebreak)
+[n] number ofgap pixels
+note that files with .gif extension will be input/output in GIF format
+
+=== Output of 'pngappend -help' ===
+
+
+ pngappend  -  append PNG files horizontally and/or vertically into a new PNG (or GIF) file
+
+Usage: pngappend <input 1> <+|-> [n] <input 2> [<+|-> [n] <input n>]  output>
+
+ + appends horizontally,
+ - appends vertically (i.e. works like a linebreak)
+[n] number ofgap pixels
+note that files with .gif extension will be input/output in GIF format
+
+=== Output of 'pngappend' (no arguments) ===
+
+
+ pngappend  -  append PNG files horizontally and/or vertically into a new PNG (or GIF) file
+
+Usage: pngappend <input 1> <+|-> [n] <input 2> [<+|-> [n] <input n>]  output>
+
+ + appends horizontally,
+ - appends vertically (i.e. works like a linebreak)
+[n] number ofgap pixels
+note that files with .gif extension will be input/output in GIF format

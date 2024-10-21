@@ -1,0 +1,148 @@
+
+=== Output of 'first_utils --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+firt_utils University of Oxford (Brian Patenaude)
+
+Usage: 
+first_utils [options] -i input -o output 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of input image/mesh/bvars
+	-o,--out	Output name
+
+Optional arguments (You may optionally specify one or more of):
+	-g,--in	Filename of normalization factors.
+	-r,--in	Filename of reference image 
+	-a,--in	Specifies extra path to image in .bvars file
+	-f,--in	Text file containing filenames of flirt matrices (filenames, not numbers).
+	--useScale	do stats
+	--overlap	Calculates Dice overlap.
+	-m,--in	Filename of input mesh
+	--useNorm	Normalize volumes measurements.
+	--surfaceout	Output vertex analysis on the surface (old method)
+	-p,--thresh	Threshhold for clean up.
+	-l,--meshlabel	Specifies the label used to fill the mesh.
+	--usebvars	Operate using the mode parameters output from FIRST.
+	--useReconMNI	Reconstruct meshes in MNI space.
+	--vertexAnalysis	Perform vertex-wise stats from bvars.
+	--useReconNative	Reconstruct meshes in native space.
+	--useRigidAlign	Register meshes using 6 degree of freedom (7 if useScale is used).
+	-d,--in	Filename of fsl design matrix
+	--reconMeshFromBvars	Convert bvars to mesh.
+	--readBvars	Read bvars from binary format
+	--meshToVol	Convert mesh to an image.
+	--centreOrigin	Places origin of mesh at the centre of the image
+	--saveVertices	filename for saving matrix of vertex coords: (all x, then all y, then all z) by Nsubjects
+	-v,--verbose	output F-stats to standard out
+	--usePCAfilter	Smooths the surface my truncating the mode parameters.
+	-n,--numModes	Number of modes to retain per structure.
+	--singleBoundaryCorr	Correct boundary voxels of a single structure.
+	--doMVGLM	doMVGLM.
+	--concatBvars	Concat bvars from binary format
+	--debug		turn on debugging mode
+	-h,--help	display this message
+
+
+
+=== Output of 'first_utils -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+firt_utils University of Oxford (Brian Patenaude)
+
+Usage: 
+first_utils [options] -i input -o output 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of input image/mesh/bvars
+	-o,--out	Output name
+
+Optional arguments (You may optionally specify one or more of):
+	-g,--in	Filename of normalization factors.
+	-r,--in	Filename of reference image 
+	-a,--in	Specifies extra path to image in .bvars file
+	-f,--in	Text file containing filenames of flirt matrices (filenames, not numbers).
+	--useScale	do stats
+	--overlap	Calculates Dice overlap.
+	-m,--in	Filename of input mesh
+	--useNorm	Normalize volumes measurements.
+	--surfaceout	Output vertex analysis on the surface (old method)
+	-p,--thresh	Threshhold for clean up.
+	-l,--meshlabel	Specifies the label used to fill the mesh.
+	--usebvars	Operate using the mode parameters output from FIRST.
+	--useReconMNI	Reconstruct meshes in MNI space.
+	--vertexAnalysis	Perform vertex-wise stats from bvars.
+	--useReconNative	Reconstruct meshes in native space.
+	--useRigidAlign	Register meshes using 6 degree of freedom (7 if useScale is used).
+	-d,--in	Filename of fsl design matrix
+	--reconMeshFromBvars	Convert bvars to mesh.
+	--readBvars	Read bvars from binary format
+	--meshToVol	Convert mesh to an image.
+	--centreOrigin	Places origin of mesh at the centre of the image
+	--saveVertices	filename for saving matrix of vertex coords: (all x, then all y, then all z) by Nsubjects
+	-v,--verbose	output F-stats to standard out
+	--usePCAfilter	Smooths the surface my truncating the mode parameters.
+	-n,--numModes	Number of modes to retain per structure.
+	--singleBoundaryCorr	Correct boundary voxels of a single structure.
+	--doMVGLM	doMVGLM.
+	--concatBvars	Concat bvars from binary format
+	--debug		turn on debugging mode
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'first_utils' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	filename of input image/mesh/bvars
+	-o,--out	Output name
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+firt_utils University of Oxford (Brian Patenaude)
+
+Usage: 
+first_utils [options] -i input -o output 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	filename of input image/mesh/bvars
+	-o,--out	Output name
+
+Optional arguments (You may optionally specify one or more of):
+	-g,--in	Filename of normalization factors.
+	-r,--in	Filename of reference image 
+	-a,--in	Specifies extra path to image in .bvars file
+	-f,--in	Text file containing filenames of flirt matrices (filenames, not numbers).
+	--useScale	do stats
+	--overlap	Calculates Dice overlap.
+	-m,--in	Filename of input mesh
+	--useNorm	Normalize volumes measurements.
+	--surfaceout	Output vertex analysis on the surface (old method)
+	-p,--thresh	Threshhold for clean up.
+	-l,--meshlabel	Specifies the label used to fill the mesh.
+	--usebvars	Operate using the mode parameters output from FIRST.
+	--useReconMNI	Reconstruct meshes in MNI space.
+	--vertexAnalysis	Perform vertex-wise stats from bvars.
+	--useReconNative	Reconstruct meshes in native space.
+	--useRigidAlign	Register meshes using 6 degree of freedom (7 if useScale is used).
+	-d,--in	Filename of fsl design matrix
+	--reconMeshFromBvars	Convert bvars to mesh.
+	--readBvars	Read bvars from binary format
+	--meshToVol	Convert mesh to an image.
+	--centreOrigin	Places origin of mesh at the centre of the image
+	--saveVertices	filename for saving matrix of vertex coords: (all x, then all y, then all z) by Nsubjects
+	-v,--verbose	output F-stats to standard out
+	--usePCAfilter	Smooths the surface my truncating the mode parameters.
+	-n,--numModes	Number of modes to retain per structure.
+	--singleBoundaryCorr	Correct boundary voxels of a single structure.
+	--doMVGLM	doMVGLM.
+	--concatBvars	Concat bvars from binary format
+	--debug		turn on debugging mode
+	-h,--help	display this message
+
+

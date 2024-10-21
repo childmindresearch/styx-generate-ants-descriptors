@@ -1,0 +1,42 @@
+
+=== Output of '@DO.examples --help' ===
+
+No such parameter (--help) accepted. See @DO.examples -help.
+
+=== Output of '@DO.examples -help' ===
+
+
+Usage: @DO.examples [-auto_test]
+
+A script to illustrate the use of Displayable Objects in SUMA.
+Read this script and see suma -help_nido for information.
+
+Interactive usage information is in SUMA's interactive help (ctrl+h) 
+section for 'Ctrl+Alt+s'.
+
+See also @DriveSuma, and @DriveAfni
+
+Questions or comments are welcome on AFNI's message board:
+ https://discuss.afni.nimh.nih.gov/ 
+
+-auto_test: Run this script in test mode where user prompts are
+timed out at 2 seconds, and the command output log is preserved
+in a file called __testlog.txt
+
+   Ziad S. Saad, saadz@mail.nih.gov
+
+
+=== Output of '@DO.examples' (no arguments) ===
+
+Error: Can't open display: 
+[1] 11421
+xterm: Command not found.
+Error: Can't open display: 
+[1]  + Exit 1                        xterm -name SUMA -geometry 80x30+10+450 -bg black -fg white -e suma -dev -niml |& tee -a __testlog.txt 
+
++++ Command Echo:
+   DriveSuma -com show_surf -label __donut -i __donut.ply -com viewer_cont -viewer_size 1000 1000 -key m -key left 
+
+SUMA_niml_call: Contacting on tcp:127.0.0.1:53219 (6), maximum wait 300.000 sec 
+(You can change max. wait time with env. SUMA_DriveSumaMaxWait)
+........................Command timed out after 10 seconds

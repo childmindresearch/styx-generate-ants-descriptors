@@ -1,0 +1,147 @@
+
+=== Output of 'feat2surf --help' ===
+
+
+USAGE: feat2surf
+
+ --feat dir  <--feat dir>  : Feat output directory
+ --featdirfile file : file with a list of feat directories
+
+Optional flags and arguments:
+
+ --projfrac fraction : project fraction into cortical surface (default is 0)
+ --hemi hemi : run on hemi (lh or rh) only. Default is lh and rh. 
+ --target subject : subject used to define common surface space (default is fsaverage)
+ --surf surface : surface to resample to (default is white)
+ --cope-only : only map the copes and varcopes to the common surface space
+ 
+ --version : print version and exit
+ --help    : print help and exit
+ --debug   : turn on debugging
+ --nolog   : do not create a log file
+ --out outdir : put output in outdir instead of feat/reg_surf-?h/stats (debugging)
+
+feat2surf 7.4.1
+
+Resamples Feat statistics onto the surface of the subject and onto a
+stereo-taxic surface atlas.
+
+Statistics are obtained from FeatDir/stats as well as those volumes in
+FeatDir beginning with "cluster" and "rendered". The results are
+stored in FeatDir/reg_surf-lh-SUBJECT/stats, and
+FeatDir/reg_surf-rh-SUBJECT/stats where SUBJECT is the freesurfer name
+of the subject. It will also resample to the common space and stored
+the results in in FeatDir/reg_surf-lh-targid/stats and
+FeatDir/reg_surf-rh-targid/stats, where targid is the subject that
+defines the common surface space (default is fsaverage). If you are using
+the "new" FreeSurfer recon where you have registered your surfaces
+to the "filled" atlas, then use fsaverage instead.
+
+Works properly on ANALYZE or NIFTI; output is stored in mgz format.
+
+Creates log file featdir/reg/freesurfer/feat2surf.log
+
+REQUIRED ARGUMENTS
+
+--feat featdir <--feat featdir ...>
+
+Directory where Feat results are stored. Can specify multiple --feat.
+
+--featdirfile file <--featdirfile file>
+
+File with a list of Feat directories. Both --feat and --featdirfile
+can be specified (multiple times).
+
+OPTIONAL ARGUMENTS
+
+--projfrac fraction
+
+Sample functional a fraction of the cortical thickness normal to the
+surface. Eg, --projfrac 0.5 will sample in the middle of the cortical
+ribbon. Default is 0.  The subject must have thickness files in the
+surf directory.
+
+--hemi hemi
+
+Run on hemi (lh or rh) only. Default is to do both.
+
+--target subject
+
+Subject used to define common surface space (default is fsaverage).
+
+--surf surface
+
+Surface to resample to (default is white).
+
+EXAMPLE
+
+# Assume a data set exists called fbert.img
+# Analyze fbert.img with Feat to generate directory fbert.feat
+
+# Register fbert.feat to subject bert:
+reg-feat2anat --feat fbert.feat --subject bert
+
+# Resample fbert.feat onto the surface
+feat2surf --feat fbert.feat
+
+# View on native surface
+tksurfer bert lh inflated \
+  -overlay fbert.feat/reg_surf-lh-bert/stats/zstat1.nii.gz
+
+# View on common surface
+tksurfer fsaverage lh inflated \
+  -overlay fbert.feat/reg_surf-lh-fsaverage/stats/zstat1.nii.gz
+
+
+BUGS
+
+The surface-based data are stored in "volume" formats (ie, the format
+found in the FEAT dir).  In this case, the spatial dimensions do not
+correspond to volume dimensions but rather the number of vertices on
+the surface. This is typically on the order of 150,000. Ideally, we
+would simply store the surface data as a "volume" with 150,000
+columns, 1 row, and 1 slice.  However, ANALYZE cannot represent
+dimensions over 2^15, or 32768.  Same problem with NIFTI. To get
+around this, we factor the number of vertices into dimensions smaller
+than 32768. Eg, the fsaverage surface has 163842 vertices which we
+factor into 1974x83. However, for individuals there is no guarantee
+that the number of vertices will have a factor less than 32768. For
+this reason the data resampled on the individual surfaces is stored in
+MGH format (which does not have these restrictions).
+
+
+
+
+
+
+
+
+
+
+
+=== Output of 'feat2surf -help' ===
+
+ERROR: flag -help not recognized
+
+=== Output of 'feat2surf' (no arguments) ===
+
+
+USAGE: feat2surf
+
+ --feat dir  <--feat dir>  : Feat output directory
+ --featdirfile file : file with a list of feat directories
+
+Optional flags and arguments:
+
+ --projfrac fraction : project fraction into cortical surface (default is 0)
+ --hemi hemi : run on hemi (lh or rh) only. Default is lh and rh. 
+ --target subject : subject used to define common surface space (default is fsaverage)
+ --surf surface : surface to resample to (default is white)
+ --cope-only : only map the copes and varcopes to the common surface space
+ 
+ --version : print version and exit
+ --help    : print help and exit
+ --debug   : turn on debugging
+ --nolog   : do not create a log file
+ --out outdir : put output in outdir instead of feat/reg_surf-?h/stats (debugging)
+

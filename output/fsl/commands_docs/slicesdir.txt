@@ -1,0 +1,34 @@
+
+=== Output of 'slicesdir --help' ===
+
+--help
+/usr/local/fsl/bin/slicesdir: line 141: 19752 Segmentation fault      (core dumped) ${FSLDIR}/bin/slicer $A $pairimage -s 1 $sliceropts
+
+ Cannot open slicesdir/grota.png for reading
+/usr/local/fsl/bin/slicesdir: line 141: 19756 Segmentation fault      (core dumped) ${FSLDIR}/bin/pngappend $convertopts slicesdir/${Q}.png
+/usr/local/fsl/bin/slicesdir: line 136: dc: command not found
+/usr/local/fsl/bin/slicesdir: line 117: [: -lt: unary operator expected
+
+Finished. To view, point your web browser at
+file://slicesdir/index.html
+
+=== Output of 'slicesdir -help' ===
+
+-help
+/usr/local/fsl/bin/slicesdir: line 141: 19800 Segmentation fault      (core dumped) ${FSLDIR}/bin/slicer $A $pairimage -s 1 $sliceropts
+
+ Cannot open slicesdir/grota.png for reading
+/usr/local/fsl/bin/slicesdir: line 141: 19804 Segmentation fault      (core dumped) ${FSLDIR}/bin/pngappend $convertopts slicesdir/${Q}.png
+/usr/local/fsl/bin/slicesdir: line 136: dc: command not found
+/usr/local/fsl/bin/slicesdir: line 117: [: -lt: unary operator expected
+
+Finished. To view, point your web browser at
+file://slicesdir/index.html
+
+=== Output of 'slicesdir' (no arguments) ===
+
+Usage: slicesdir [-o] [-p <image>] [-e <thr>] [-S] <filelist>
+-o         : filelist is pairs ( <underlying> <red-outline> ) of images
+-p <image> : use <image> as red-outline image on top of all images in <filelist>
+-e <thr>   :  use the specified threshold for edges (if >0 use this proportion of max-min, if <0, use the absolute value)
+-S         : output every second axial slice rather than just 9 ortho slices

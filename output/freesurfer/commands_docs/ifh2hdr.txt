@@ -1,0 +1,27 @@
+
+=== Output of 'ifh2hdr --help' ===
+
+freesurfer ifh2hdr.c
+Usage:	ifh2hdr <(4dfp) file>
+e.g.,	ifh2hdr vc654_mpr_atl -r-500to1500
+	option
+	-r<flt>[to<flt>]	set range
+N.B.:	ifh2hdr preserves the endian state of the input ifh
+
+=== Output of 'ifh2hdr -help' ===
+
+freesurfer ifh2hdr.c
+Usage:	ifh2hdr <(4dfp) file>
+e.g.,	ifh2hdr vc654_mpr_atl -r-500to1500
+	option
+	-r<flt>[to<flt>]	set range
+N.B.:	ifh2hdr preserves the endian state of the input ifh
+
+=== Output of 'ifh2hdr' (no arguments) ===
+
+freesurfer ifh2hdr.c
+Usage:	ifh2hdr <(4dfp) file>
+e.g.,	ifh2hdr vc654_mpr_atl -r-500to1500
+	option
+	-r<flt>[to<flt>]	set range
+N.B.:	ifh2hdr preserves the endian state of the input ifh

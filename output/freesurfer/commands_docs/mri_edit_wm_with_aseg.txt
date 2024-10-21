@@ -1,0 +1,180 @@
+
+=== Output of 'mri_edit_wm_with_aseg --help' ===
+
+/usr/local/freesurfer/bin/mri_edit_wm_with_aseg --help 
+				Help
+
+NAME
+	mri_edit_wm_with_aseg
+
+SYNOPSIS
+	mri_edit_wm_with_aseg <options> input-wm input-T1/brain aseg output-wm
+
+DESCRIPTION
+	*****************************************
+
+POSITIONAL ARGUMENTS
+	*********************************************
+
+REQUIRED FLAGGED ARGUMENTS
+	******************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	-fillven
+
+	-fix-scm-ha ndil
+		Remove voxels in amyg, ILV, and parts of hippo
+
+	-fix-scm-ha-only aseg.presurf.mgz SCM ndil out.mgz
+		Standalone: 
+
+	-keep
+		keep edits as found in output volume
+
+	-keep-in
+		keep edits as found in input volume
+
+	-lh
+		erase rh labels from output
+
+	-rh
+		erase lh labels from output
+
+	-fix-ento-wm entowm level lhval rhval
+		Insert lhval rhval where {3,4}006 and {3,4}201 in entowm 
+		volume. For wm.seg use 255. For brain.finalsurfs use 255. For 
+		filled use 255 and 127. 
+
+	-sa-fix-ento-wm entowm level lhval rhval invol outvol
+		Stand-alone version of -fix-ento-wm 
+
+	-debug_voxel Gx Gy Gz
+
+EXAMPLE 1
+	mri_edit_wm_with_aseg -keep-in wm.seg.mgz brain.mgz aseg.mgz 
+	wm.asegedit.mgz
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_edit_wm_with_aseg -help' ===
+
+/usr/local/freesurfer/bin/mri_edit_wm_with_aseg -help 
+				Help
+
+NAME
+	mri_edit_wm_with_aseg
+
+SYNOPSIS
+	mri_edit_wm_with_aseg <options> input-wm input-T1/brain aseg output-wm
+
+DESCRIPTION
+	*****************************************
+
+POSITIONAL ARGUMENTS
+	*********************************************
+
+REQUIRED FLAGGED ARGUMENTS
+	******************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	-fillven
+
+	-fix-scm-ha ndil
+		Remove voxels in amyg, ILV, and parts of hippo
+
+	-fix-scm-ha-only aseg.presurf.mgz SCM ndil out.mgz
+		Standalone: 
+
+	-keep
+		keep edits as found in output volume
+
+	-keep-in
+		keep edits as found in input volume
+
+	-lh
+		erase rh labels from output
+
+	-rh
+		erase lh labels from output
+
+	-fix-ento-wm entowm level lhval rhval
+		Insert lhval rhval where {3,4}006 and {3,4}201 in entowm 
+		volume. For wm.seg use 255. For brain.finalsurfs use 255. For 
+		filled use 255 and 127. 
+
+	-sa-fix-ento-wm entowm level lhval rhval invol outvol
+		Stand-alone version of -fix-ento-wm 
+
+	-debug_voxel Gx Gy Gz
+
+EXAMPLE 1
+	mri_edit_wm_with_aseg -keep-in wm.seg.mgz brain.mgz aseg.mgz 
+	wm.asegedit.mgz
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_edit_wm_with_aseg' (no arguments) ===
+
+/usr/local/freesurfer/bin/mri_edit_wm_with_aseg 
+				Help
+
+NAME
+	mri_edit_wm_with_aseg
+
+SYNOPSIS
+	mri_edit_wm_with_aseg <options> input-wm input-T1/brain aseg output-wm
+
+DESCRIPTION
+	*****************************************
+
+POSITIONAL ARGUMENTS
+	*********************************************
+
+REQUIRED FLAGGED ARGUMENTS
+	******************************************
+
+OPTIONAL FLAGGED ARGUMENTS
+	-fillven
+
+	-fix-scm-ha ndil
+		Remove voxels in amyg, ILV, and parts of hippo
+
+	-fix-scm-ha-only aseg.presurf.mgz SCM ndil out.mgz
+		Standalone: 
+
+	-keep
+		keep edits as found in output volume
+
+	-keep-in
+		keep edits as found in input volume
+
+	-lh
+		erase rh labels from output
+
+	-rh
+		erase lh labels from output
+
+	-fix-ento-wm entowm level lhval rhval
+		Insert lhval rhval where {3,4}006 and {3,4}201 in entowm 
+		volume. For wm.seg use 255. For brain.finalsurfs use 255. For 
+		filled use 255 and 127. 
+
+	-sa-fix-ento-wm entowm level lhval rhval invol outvol
+		Stand-alone version of -fix-ento-wm 
+
+	-debug_voxel Gx Gy Gz
+
+EXAMPLE 1
+	mri_edit_wm_with_aseg -keep-in wm.seg.mgz brain.mgz aseg.mgz 
+	wm.asegedit.mgz
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

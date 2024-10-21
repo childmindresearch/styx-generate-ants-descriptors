@@ -1,0 +1,127 @@
+
+=== Output of 'talairach_afd --help' ===
+
+				Help
+
+NAME
+	talairach_afd
+
+SYNOPSIS
+	talairach_afd -subj <subject_name> [-T <p-value threshold>] or 
+	talairach_afd -xfm <xfm_fname> [-T <p-value threshold>]
+
+DESCRIPTION
+	This program detects Talairach alignment failures.
+
+POSITIONAL ARGUMENTS
+	****************************************************************
+
+REQUIRED FLAGGED ARGUMENTS
+	Only one of the following is required.
+
+	-subj %s
+		specify subject's name
+
+	-xfm %s
+		specify the talairach.xfm file to check
+
+OPTIONAL FLAGGED ARGUMENTS
+	-T #threshold the p-values at #
+		Talairach transforms for subjects with p-values <= T are 
+		considered as very unlikely default=0.010
+
+	-afd %s
+		specify directory containing .afd data files
+
+	-V
+		verbose
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'talairach_afd -help' ===
+
+				Help
+
+NAME
+	talairach_afd
+
+SYNOPSIS
+	talairach_afd -subj <subject_name> [-T <p-value threshold>] or 
+	talairach_afd -xfm <xfm_fname> [-T <p-value threshold>]
+
+DESCRIPTION
+	This program detects Talairach alignment failures.
+
+POSITIONAL ARGUMENTS
+	****************************************************************
+
+REQUIRED FLAGGED ARGUMENTS
+	Only one of the following is required.
+
+	-subj %s
+		specify subject's name
+
+	-xfm %s
+		specify the talairach.xfm file to check
+
+OPTIONAL FLAGGED ARGUMENTS
+	-T #threshold the p-values at #
+		Talairach transforms for subjects with p-values <= T are 
+		considered as very unlikely default=0.010
+
+	-afd %s
+		specify directory containing .afd data files
+
+	-V
+		verbose
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'talairach_afd' (no arguments) ===
+
+ERROR: a subject name or .xfm filename must be provided!
+				Help
+
+NAME
+	talairach_afd
+
+SYNOPSIS
+	talairach_afd -subj <subject_name> [-T <p-value threshold>] or 
+	talairach_afd -xfm <xfm_fname> [-T <p-value threshold>]
+
+DESCRIPTION
+	This program detects Talairach alignment failures.
+
+POSITIONAL ARGUMENTS
+	****************************************************************
+
+REQUIRED FLAGGED ARGUMENTS
+	Only one of the following is required.
+
+	-subj %s
+		specify subject's name
+
+	-xfm %s
+		specify the talairach.xfm file to check
+
+OPTIONAL FLAGGED ARGUMENTS
+	-T #threshold the p-values at #
+		Talairach transforms for subjects with p-values <= T are 
+		considered as very unlikely default=0.010
+
+	-afd %s
+		specify directory containing .afd data files
+
+	-V
+		verbose
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+

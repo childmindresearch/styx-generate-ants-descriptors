@@ -1,0 +1,28 @@
+
+=== Output of 'mris_fill --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_fill [options] <input surface> <output volume>
+
+This program floodfills the interior of a surface and writes
+the results into a volume of the specified resolution.
+
+valid options are:
+
+	-r <resolution>: set the resolution of the output volume (default = 0.250 mm/voxel)
+	-c               'conform' the volume before writing
+
+=== Output of 'mris_fill -help' ===
+
+unknown option -help
+
+=== Output of 'mris_fill' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_fill [options] <input surface> <output volume>
+
+This program floodfills the interior of a surface and writes
+the results into a volume of the specified resolution.
+
+valid options are:
+
+	-r <resolution>: set the resolution of the output volume (default = 0.250 mm/voxel)
+	-c               'conform' the volume before writing

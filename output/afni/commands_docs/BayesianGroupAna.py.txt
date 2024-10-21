@@ -1,0 +1,447 @@
+
+=== Output of 'BayesianGroupAna.py --help' ===
+
+usage: /opt/afni/src/../install/BayesianGroupAna.py [-h] -dataTable DATATABLE
+                                                    -y VAR [-help]
+                                                    [-prefix PREFIX]
+                                                    [-x VAR [VAR ...]]
+                                                    [-no_center]
+                                                    [-iterations ITER]
+                                                    [-chains CHAINS]
+                                                    [-control_list LIST]
+                                                    [-plot]
+                                                    [-more_plots TYPE [TYPE ...]]
+                                                    [-RData] [-seed SEED]
+                                                    [-overwrite]
+
+------------------------------------------
+Overview ~1~
+
+    This program conducts Bayesian Group Analysis (BGA) on a list
+    (e.g., 6 or more) of regions of interest (ROIs) as laid out in Chen et al.
+    (2018, https://www.biorxiv.org/content/early/2018/02/20/238998).
+    Compared to the conventional univariate GLM in which each voxel or ROI is
+    considered autonomous and analyzed independently, BGA pools and shares the
+    information across the ROIs in a multilevel system. It is the
+    probability of incorrect sign, instead of false positive rate that is
+    controlled. In other words, there is only one BGA model that incorporates
+    the data from all ROIs.
+
+    This will explore the effect of X on Y at each ROI. The computation may
+    take a few minutes or more depending on the amount of input data and
+    model complexity. The final inferences are conducted through the
+    posterior distribution or quantile intervals for each effect that are
+    provided in a table in the output. A boxplot can also be generated if
+    requested with -plot.
+
+    The computation requires that the R package "brms" be installed
+    (e.g., through rPkgsInstall).
+    More info on the brms package can be found here:
+        https://CRAN.R-project.org/package=brms
+    And the brms reference manual is here:
+        https://cran.r-project.org/web/packages/brms/brms.pdf
+
+Details ~1~
+
+    Similar to 3dMVM and 3dLME, a data table  should be created containing
+    the input data and relevant variables (with at least 3 columns: subject
+    labels, ROI labels, response variable values).
+
+    The -dataTable should be formatted as follows:
+
+        Subj  ROI   some_y  some_x other_x
+        S001  roi1  0.12    0.056  0.356
+        S001  roi2  0.65    0.232  0.231
+        S002  roi1  0.14    0.456  0.856
+        S002  roi2  0.64    0.432  0.431
+        ...
+
+    The Subj and ROI columns must be included with the exact spelling!!
+    If there are no x variables, only the intercept will be calculated.
+
+Outputs ~1~
+
+    Given -prefix is "gangBGA" and -x is "some_x", the default outputs are the
+    following files:
+
+        gangBGA_summary.txt:
+            Summary of the brmsfit object from R.
+
+        gangBGA_rhats.csv:
+            rhats for each effect and x variable combination.
+
+        gangBGA_Intercept_table.csv:
+            Table with the MedianEst, StdDev, 2.50%, 5%, 50%, 95%, and 97.50%
+            of each ROI for the Intercept term.
+
+        gangBGA_some_x_table.csv:
+            The same table as the Intercept but for the some_x variable.
+
+Caveats ~1~
+
+    All x variables are centered by default.
+
+    The boxplot with -plot is not a standard boxplot.
+    It is a plot of the 2.50%, 5%, 50%, 95%, 97.50% percentiles.
+    The coloring of the boxes is determined by where the zero line crosses the
+    box and whiskers.
+        White:  The zero line crosses the main box (between 5% and 95%).
+        Purple: The zero line crosses between the whiskers and the main box.
+                (2.50% to 5%) OR (95% to 97.50%)
+        Red:    The zero line does not cross the box or the whiskers.
+
+    Additional plot types for -more_plots include (not sure all of these work):
+        hist dens hist_by_chain dens_overlay violin intervalsareas
+        acf acf_bar trace trace_highlight rhat rhat_hist neff neff_hist
+        nuts_acceptance nuts_divergence nuts_stepsize nuts_treedepth
+        nuts_energy
+
+    Tables and plots will be created for the intercept and all specified x
+    variables separately. So there may be a lot of output.
+
+Examples ~1~
+
+    Minimum requirement only calculates the intercept (may not be useful).
+        BayesianGroupAna.py -dataTable my_roi_data.txt -y zscore
+
+    More useful. Calculates 2 x variables and saves out some plots.
+        BayesianGroupAna.py -dataTable my_roi_data.txt  \
+                            -prefix dock_of_the_bayes   \
+                            -y zscore -x some_x other_x \
+                            -chains 4 -iterations 1000  \
+                            -plot -more_plots rhat violin
+
+------------------------------------------
+
+Options ~1~
+
+Required arguments:
+  -dataTable DATATABLE  Input text file.
+  -y VAR                Column name for the y variable.
+
+Optional arguments:
+  -h, --help            show this help message and exit
+  -help                 Show this help.
+  -prefix PREFIX        Name of the output file.
+  -x VAR [VAR ...]      Column name for the x variables. If not specified,
+                        only the intercept will be added.
+  -no_center            Disable centering on the x variables. Maybe useful if
+                        you centered manually.
+  -iterations ITER      Number of total iterations per chain including warmup.
+                        Default [1000]
+  -chains CHAINS        Number of Markov chains. Default [4]
+  -control_list LIST    Comma separated list of control parameters to pass to
+                        the brm function. (example:
+                        'adapt_delta=0.99,max_treedepth=20'). Default is the
+                        brm function defaults
+  -plot                 Output box, fit, and posterior prediction plots.
+  -more_plots TYPE [TYPE ...]
+                        Output "stanplots" given different types of plot
+                        names.
+  -RData                Save the R session workspace and data.
+  -seed SEED            Seed to generate random number. Default [1234]
+  -overwrite            Overwrites the output files.
+
+------------------------------------------
+Justin Rajendra circa 05/2018
+4 Gang Box...
+Keep on keeping on!
+------------------------------------------
+
+=== Output of 'BayesianGroupAna.py -help' ===
+
+usage: /opt/afni/src/../install/BayesianGroupAna.py [-h] -dataTable DATATABLE
+                                                    -y VAR [-help]
+                                                    [-prefix PREFIX]
+                                                    [-x VAR [VAR ...]]
+                                                    [-no_center]
+                                                    [-iterations ITER]
+                                                    [-chains CHAINS]
+                                                    [-control_list LIST]
+                                                    [-plot]
+                                                    [-more_plots TYPE [TYPE ...]]
+                                                    [-RData] [-seed SEED]
+                                                    [-overwrite]
+
+------------------------------------------
+Overview ~1~
+
+    This program conducts Bayesian Group Analysis (BGA) on a list
+    (e.g., 6 or more) of regions of interest (ROIs) as laid out in Chen et al.
+    (2018, https://www.biorxiv.org/content/early/2018/02/20/238998).
+    Compared to the conventional univariate GLM in which each voxel or ROI is
+    considered autonomous and analyzed independently, BGA pools and shares the
+    information across the ROIs in a multilevel system. It is the
+    probability of incorrect sign, instead of false positive rate that is
+    controlled. In other words, there is only one BGA model that incorporates
+    the data from all ROIs.
+
+    This will explore the effect of X on Y at each ROI. The computation may
+    take a few minutes or more depending on the amount of input data and
+    model complexity. The final inferences are conducted through the
+    posterior distribution or quantile intervals for each effect that are
+    provided in a table in the output. A boxplot can also be generated if
+    requested with -plot.
+
+    The computation requires that the R package "brms" be installed
+    (e.g., through rPkgsInstall).
+    More info on the brms package can be found here:
+        https://CRAN.R-project.org/package=brms
+    And the brms reference manual is here:
+        https://cran.r-project.org/web/packages/brms/brms.pdf
+
+Details ~1~
+
+    Similar to 3dMVM and 3dLME, a data table  should be created containing
+    the input data and relevant variables (with at least 3 columns: subject
+    labels, ROI labels, response variable values).
+
+    The -dataTable should be formatted as follows:
+
+        Subj  ROI   some_y  some_x other_x
+        S001  roi1  0.12    0.056  0.356
+        S001  roi2  0.65    0.232  0.231
+        S002  roi1  0.14    0.456  0.856
+        S002  roi2  0.64    0.432  0.431
+        ...
+
+    The Subj and ROI columns must be included with the exact spelling!!
+    If there are no x variables, only the intercept will be calculated.
+
+Outputs ~1~
+
+    Given -prefix is "gangBGA" and -x is "some_x", the default outputs are the
+    following files:
+
+        gangBGA_summary.txt:
+            Summary of the brmsfit object from R.
+
+        gangBGA_rhats.csv:
+            rhats for each effect and x variable combination.
+
+        gangBGA_Intercept_table.csv:
+            Table with the MedianEst, StdDev, 2.50%, 5%, 50%, 95%, and 97.50%
+            of each ROI for the Intercept term.
+
+        gangBGA_some_x_table.csv:
+            The same table as the Intercept but for the some_x variable.
+
+Caveats ~1~
+
+    All x variables are centered by default.
+
+    The boxplot with -plot is not a standard boxplot.
+    It is a plot of the 2.50%, 5%, 50%, 95%, 97.50% percentiles.
+    The coloring of the boxes is determined by where the zero line crosses the
+    box and whiskers.
+        White:  The zero line crosses the main box (between 5% and 95%).
+        Purple: The zero line crosses between the whiskers and the main box.
+                (2.50% to 5%) OR (95% to 97.50%)
+        Red:    The zero line does not cross the box or the whiskers.
+
+    Additional plot types for -more_plots include (not sure all of these work):
+        hist dens hist_by_chain dens_overlay violin intervalsareas
+        acf acf_bar trace trace_highlight rhat rhat_hist neff neff_hist
+        nuts_acceptance nuts_divergence nuts_stepsize nuts_treedepth
+        nuts_energy
+
+    Tables and plots will be created for the intercept and all specified x
+    variables separately. So there may be a lot of output.
+
+Examples ~1~
+
+    Minimum requirement only calculates the intercept (may not be useful).
+        BayesianGroupAna.py -dataTable my_roi_data.txt -y zscore
+
+    More useful. Calculates 2 x variables and saves out some plots.
+        BayesianGroupAna.py -dataTable my_roi_data.txt  \
+                            -prefix dock_of_the_bayes   \
+                            -y zscore -x some_x other_x \
+                            -chains 4 -iterations 1000  \
+                            -plot -more_plots rhat violin
+
+------------------------------------------
+
+Options ~1~
+
+Required arguments:
+  -dataTable DATATABLE  Input text file.
+  -y VAR                Column name for the y variable.
+
+Optional arguments:
+  -h, --help            show this help message and exit
+  -help                 Show this help.
+  -prefix PREFIX        Name of the output file.
+  -x VAR [VAR ...]      Column name for the x variables. If not specified,
+                        only the intercept will be added.
+  -no_center            Disable centering on the x variables. Maybe useful if
+                        you centered manually.
+  -iterations ITER      Number of total iterations per chain including warmup.
+                        Default [1000]
+  -chains CHAINS        Number of Markov chains. Default [4]
+  -control_list LIST    Comma separated list of control parameters to pass to
+                        the brm function. (example:
+                        'adapt_delta=0.99,max_treedepth=20'). Default is the
+                        brm function defaults
+  -plot                 Output box, fit, and posterior prediction plots.
+  -more_plots TYPE [TYPE ...]
+                        Output "stanplots" given different types of plot
+                        names.
+  -RData                Save the R session workspace and data.
+  -seed SEED            Seed to generate random number. Default [1234]
+  -overwrite            Overwrites the output files.
+
+------------------------------------------
+Justin Rajendra circa 05/2018
+4 Gang Box...
+Keep on keeping on!
+------------------------------------------
+
+=== Output of 'BayesianGroupAna.py' (no arguments) ===
+
+usage: /opt/afni/src/../install/BayesianGroupAna.py [-h] -dataTable DATATABLE
+                                                    -y VAR [-help]
+                                                    [-prefix PREFIX]
+                                                    [-x VAR [VAR ...]]
+                                                    [-no_center]
+                                                    [-iterations ITER]
+                                                    [-chains CHAINS]
+                                                    [-control_list LIST]
+                                                    [-plot]
+                                                    [-more_plots TYPE [TYPE ...]]
+                                                    [-RData] [-seed SEED]
+                                                    [-overwrite]
+
+------------------------------------------
+Overview ~1~
+
+    This program conducts Bayesian Group Analysis (BGA) on a list
+    (e.g., 6 or more) of regions of interest (ROIs) as laid out in Chen et al.
+    (2018, https://www.biorxiv.org/content/early/2018/02/20/238998).
+    Compared to the conventional univariate GLM in which each voxel or ROI is
+    considered autonomous and analyzed independently, BGA pools and shares the
+    information across the ROIs in a multilevel system. It is the
+    probability of incorrect sign, instead of false positive rate that is
+    controlled. In other words, there is only one BGA model that incorporates
+    the data from all ROIs.
+
+    This will explore the effect of X on Y at each ROI. The computation may
+    take a few minutes or more depending on the amount of input data and
+    model complexity. The final inferences are conducted through the
+    posterior distribution or quantile intervals for each effect that are
+    provided in a table in the output. A boxplot can also be generated if
+    requested with -plot.
+
+    The computation requires that the R package "brms" be installed
+    (e.g., through rPkgsInstall).
+    More info on the brms package can be found here:
+        https://CRAN.R-project.org/package=brms
+    And the brms reference manual is here:
+        https://cran.r-project.org/web/packages/brms/brms.pdf
+
+Details ~1~
+
+    Similar to 3dMVM and 3dLME, a data table  should be created containing
+    the input data and relevant variables (with at least 3 columns: subject
+    labels, ROI labels, response variable values).
+
+    The -dataTable should be formatted as follows:
+
+        Subj  ROI   some_y  some_x other_x
+        S001  roi1  0.12    0.056  0.356
+        S001  roi2  0.65    0.232  0.231
+        S002  roi1  0.14    0.456  0.856
+        S002  roi2  0.64    0.432  0.431
+        ...
+
+    The Subj and ROI columns must be included with the exact spelling!!
+    If there are no x variables, only the intercept will be calculated.
+
+Outputs ~1~
+
+    Given -prefix is "gangBGA" and -x is "some_x", the default outputs are the
+    following files:
+
+        gangBGA_summary.txt:
+            Summary of the brmsfit object from R.
+
+        gangBGA_rhats.csv:
+            rhats for each effect and x variable combination.
+
+        gangBGA_Intercept_table.csv:
+            Table with the MedianEst, StdDev, 2.50%, 5%, 50%, 95%, and 97.50%
+            of each ROI for the Intercept term.
+
+        gangBGA_some_x_table.csv:
+            The same table as the Intercept but for the some_x variable.
+
+Caveats ~1~
+
+    All x variables are centered by default.
+
+    The boxplot with -plot is not a standard boxplot.
+    It is a plot of the 2.50%, 5%, 50%, 95%, 97.50% percentiles.
+    The coloring of the boxes is determined by where the zero line crosses the
+    box and whiskers.
+        White:  The zero line crosses the main box (between 5% and 95%).
+        Purple: The zero line crosses between the whiskers and the main box.
+                (2.50% to 5%) OR (95% to 97.50%)
+        Red:    The zero line does not cross the box or the whiskers.
+
+    Additional plot types for -more_plots include (not sure all of these work):
+        hist dens hist_by_chain dens_overlay violin intervalsareas
+        acf acf_bar trace trace_highlight rhat rhat_hist neff neff_hist
+        nuts_acceptance nuts_divergence nuts_stepsize nuts_treedepth
+        nuts_energy
+
+    Tables and plots will be created for the intercept and all specified x
+    variables separately. So there may be a lot of output.
+
+Examples ~1~
+
+    Minimum requirement only calculates the intercept (may not be useful).
+        BayesianGroupAna.py -dataTable my_roi_data.txt -y zscore
+
+    More useful. Calculates 2 x variables and saves out some plots.
+        BayesianGroupAna.py -dataTable my_roi_data.txt  \
+                            -prefix dock_of_the_bayes   \
+                            -y zscore -x some_x other_x \
+                            -chains 4 -iterations 1000  \
+                            -plot -more_plots rhat violin
+
+------------------------------------------
+
+Options ~1~
+
+Required arguments:
+  -dataTable DATATABLE  Input text file.
+  -y VAR                Column name for the y variable.
+
+Optional arguments:
+  -h, --help            show this help message and exit
+  -help                 Show this help.
+  -prefix PREFIX        Name of the output file.
+  -x VAR [VAR ...]      Column name for the x variables. If not specified,
+                        only the intercept will be added.
+  -no_center            Disable centering on the x variables. Maybe useful if
+                        you centered manually.
+  -iterations ITER      Number of total iterations per chain including warmup.
+                        Default [1000]
+  -chains CHAINS        Number of Markov chains. Default [4]
+  -control_list LIST    Comma separated list of control parameters to pass to
+                        the brm function. (example:
+                        'adapt_delta=0.99,max_treedepth=20'). Default is the
+                        brm function defaults
+  -plot                 Output box, fit, and posterior prediction plots.
+  -more_plots TYPE [TYPE ...]
+                        Output "stanplots" given different types of plot
+                        names.
+  -RData                Save the R session workspace and data.
+  -seed SEED            Seed to generate random number. Default [1234]
+  -overwrite            Overwrites the output files.
+
+------------------------------------------
+Justin Rajendra circa 05/2018
+4 Gang Box...
+Keep on keeping on!
+------------------------------------------

@@ -1,0 +1,27 @@
+
+=== Output of 'overlay --help' ===
+
+Usage: overlay <colour_type> <output_type> [-c] <background_image> <bg_min> <bg_max> <stat_image_1> <s1_min> <s1_max> [stat_image_2 s2min s2max] <output_image> [cbartype] [cbarfilename]
+colour_type: 0=solid 1=transparent colours
+output_type: 0=floating point (32 bit real) 1=integer (16 bit signed integer)
+-c : use checkerboard mask for overlay
+<bg_min> <bg_max> can be replaced by -a for automatic estimation of background display range or -A to use the full image range
+valid cbartypes colours are: ybg, valid cbartypes options are: s (stack) 
+
+=== Output of 'overlay -help' ===
+
+Usage: overlay <colour_type> <output_type> [-c] <background_image> <bg_min> <bg_max> <stat_image_1> <s1_min> <s1_max> [stat_image_2 s2min s2max] <output_image> [cbartype] [cbarfilename]
+colour_type: 0=solid 1=transparent colours
+output_type: 0=floating point (32 bit real) 1=integer (16 bit signed integer)
+-c : use checkerboard mask for overlay
+<bg_min> <bg_max> can be replaced by -a for automatic estimation of background display range or -A to use the full image range
+valid cbartypes colours are: ybg, valid cbartypes options are: s (stack) 
+
+=== Output of 'overlay' (no arguments) ===
+
+Usage: overlay <colour_type> <output_type> [-c] <background_image> <bg_min> <bg_max> <stat_image_1> <s1_min> <s1_max> [stat_image_2 s2min s2max] <output_image> [cbartype] [cbarfilename]
+colour_type: 0=solid 1=transparent colours
+output_type: 0=floating point (32 bit real) 1=integer (16 bit signed integer)
+-c : use checkerboard mask for overlay
+<bg_min> <bg_max> can be replaced by -a for automatic estimation of background display range or -A to use the full image range
+valid cbartypes colours are: ybg, valid cbartypes options are: s (stack) 

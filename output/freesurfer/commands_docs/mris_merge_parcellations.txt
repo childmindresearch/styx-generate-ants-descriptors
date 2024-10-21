@@ -1,0 +1,26 @@
+
+=== Output of 'mris_merge_parcellations --help' ===
+
+This program computes the Hausdorff distance between two labels on the surface
+
+valid options are:
+
+(see the source code!)
+usage: /usr/local/freesurfer/bin/mris_merge_parcellations [options] <surface> <label1> <label2>
+	-a <annot name>    compute pairwise HD between all annotations
+
+=== Output of 'mris_merge_parcellations -help' ===
+
+unknown option -help
+This program computes the Hausdorff distance between two labels on the surface
+
+valid options are:
+
+(see the source code!)
+usage: /usr/local/freesurfer/bin/mris_merge_parcellations [options] <surface> <label1> <label2>
+	-a <annot name>    compute pairwise HD between all annotations
+
+=== Output of 'mris_merge_parcellations' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_merge_parcellations [options] <surface> <label1> <label2>
+	-a <annot name>    compute pairwise HD between all annotations

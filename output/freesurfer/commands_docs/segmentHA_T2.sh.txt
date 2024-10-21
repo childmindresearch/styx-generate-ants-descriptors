@@ -1,0 +1,60 @@
+
+=== Output of 'segmentHA_T2.sh --help' ===
+
+     
+ERROR: cannot find Matlab 2019b runtime in location:
+     
+/usr/local/freesurfer/MCRv97
+     
+It is looking for either: 
+  bin/glnxa64/libmwlaunchermain.so    (Linux 64b) or
+  bin/maci64/libmwlaunchermain.dylib (Mac 64b)
+ 
+The hippocampal/amygdala and brainstem modules require the (free) Matlab runtime.
+You will need to download the Matlab Compiler Runtime (MCR) for Matlab 2019b.
+To do so, please run the following command (you might need root permissions):
+ 
+fs_install_mcr R2019b
+ 
+For further details, please visit https://surfer.nmr.mgh.harvard.edu/fswiki/MatlabRuntime
+ 
+
+=== Output of 'segmentHA_T2.sh -help' ===
+
+     
+ERROR: cannot find Matlab 2019b runtime in location:
+     
+/usr/local/freesurfer/MCRv97
+     
+It is looking for either: 
+  bin/glnxa64/libmwlaunchermain.so    (Linux 64b) or
+  bin/maci64/libmwlaunchermain.dylib (Mac 64b)
+ 
+The hippocampal/amygdala and brainstem modules require the (free) Matlab runtime.
+You will need to download the Matlab Compiler Runtime (MCR) for Matlab 2019b.
+To do so, please run the following command (you might need root permissions):
+ 
+fs_install_mcr R2019b
+ 
+For further details, please visit https://surfer.nmr.mgh.harvard.edu/fswiki/MatlabRuntime
+ 
+
+=== Output of 'segmentHA_T2.sh' (no arguments) ===
+
+     
+ERROR: cannot find Matlab 2019b runtime in location:
+     
+/usr/local/freesurfer/MCRv97
+     
+It is looking for either: 
+  bin/glnxa64/libmwlaunchermain.so    (Linux 64b) or
+  bin/maci64/libmwlaunchermain.dylib (Mac 64b)
+ 
+The hippocampal/amygdala and brainstem modules require the (free) Matlab runtime.
+You will need to download the Matlab Compiler Runtime (MCR) for Matlab 2019b.
+To do so, please run the following command (you might need root permissions):
+ 
+fs_install_mcr R2019b
+ 
+For further details, please visit https://surfer.nmr.mgh.harvard.edu/fswiki/MatlabRuntime
+ 

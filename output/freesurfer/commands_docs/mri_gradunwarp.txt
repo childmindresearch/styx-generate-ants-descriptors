@@ -1,0 +1,135 @@
+
+=== Output of 'mri_gradunwarp --help' ===
+
+
+USAGE: /usr/local/freesurfer/bin/mri_gradunwarp 
+
+   --gradcoeff <gradient-file>  gradient coeff input (not with --load_transtbl)
+   --load_transtbl <m3z-table>  load unwarp transform table in m3z format (not with --gradcoeff)
+   --i <input-warped-file>       input volume, or surface 
+   --o <output-unwarped-file>    unwarped output volume, or surface 
+   --out_transtbl <output-m3z-table>  save unwarp transform table in m3z format (or --gcam)
+   --save_transtbl_only   just save unwarp transform table in m3z format, need --gradcoeff <> (or --gcam-only)
+
+   --interp <interptype>                                       interpolation method: nearest | trilinear | cubic (default is trilinear)
+
+   --nthreads <nthreads>                                       number of threads to run
+
+   --checkopts                                                 don't run anything, just check options and exit
+   --help                                                      print out information on how to use this program
+   --version                                                   print out version and exit
+
+7.4.1
+
+
+7.4.1
+
+
+This program provides a tool to correct gradient non-linearity distortions in MRI images.
+The m3z output will map from the unwarped space to the warped space.
+
+Examples:
+
+1. create gradient unwarp m3z transformation table only from a volume using gradient file:
+  mri_gradunwarp 
+    --gradcoeff coeff_Sonata.grad 
+    --i invol.mgz 
+    --out_transtbl gradunwarp.m3z 
+    --save_transtbl_only 
+    --nthreads 10 
+
+2. unwarp given volume using gradient file, save gradient unwarp m3z transformation table:
+  mri_gradunwarp 
+    --gradcoeff coeff_Sonata.grad 
+    --i invol.mgz 
+    --o invol.unwarped.nearest.mgz --interp nearest
+    --out_transtbl gradunwarp.m3z 
+    --nthreads 10 
+
+3. unwarp given surface using gradient unwarp m3z transformation table:
+  mri_gradunwarp 
+    --load_transtbl gradunwarp.m3z 
+    --i lh.white 
+    --o lh.unwarped.nearest.white --interp nearest
+    --nthreads 10 
+
+
+=== Output of 'mri_gradunwarp -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+USAGE: /usr/local/freesurfer/bin/mri_gradunwarp 
+
+   --gradcoeff <gradient-file>  gradient coeff input (not with --load_transtbl)
+   --load_transtbl <m3z-table>  load unwarp transform table in m3z format (not with --gradcoeff)
+   --i <input-warped-file>       input volume, or surface 
+   --o <output-unwarped-file>    unwarped output volume, or surface 
+   --out_transtbl <output-m3z-table>  save unwarp transform table in m3z format (or --gcam)
+   --save_transtbl_only   just save unwarp transform table in m3z format, need --gradcoeff <> (or --gcam-only)
+
+   --interp <interptype>                                       interpolation method: nearest | trilinear | cubic (default is trilinear)
+
+   --nthreads <nthreads>                                       number of threads to run
+
+   --checkopts                                                 don't run anything, just check options and exit
+   --help                                                      print out information on how to use this program
+   --version                                                   print out version and exit
+
+7.4.1
+
+
+7.4.1
+
+
+This program provides a tool to correct gradient non-linearity distortions in MRI images.
+The m3z output will map from the unwarped space to the warped space.
+
+Examples:
+
+1. create gradient unwarp m3z transformation table only from a volume using gradient file:
+  mri_gradunwarp 
+    --gradcoeff coeff_Sonata.grad 
+    --i invol.mgz 
+    --out_transtbl gradunwarp.m3z 
+    --save_transtbl_only 
+    --nthreads 10 
+
+2. unwarp given volume using gradient file, save gradient unwarp m3z transformation table:
+  mri_gradunwarp 
+    --gradcoeff coeff_Sonata.grad 
+    --i invol.mgz 
+    --o invol.unwarped.nearest.mgz --interp nearest
+    --out_transtbl gradunwarp.m3z 
+    --nthreads 10 
+
+3. unwarp given surface using gradient unwarp m3z transformation table:
+  mri_gradunwarp 
+    --load_transtbl gradunwarp.m3z 
+    --i lh.white 
+    --o lh.unwarped.nearest.white --interp nearest
+    --nthreads 10 
+
+
+=== Output of 'mri_gradunwarp' (no arguments) ===
+
+
+USAGE: /usr/local/freesurfer/bin/mri_gradunwarp 
+
+   --gradcoeff <gradient-file>  gradient coeff input (not with --load_transtbl)
+   --load_transtbl <m3z-table>  load unwarp transform table in m3z format (not with --gradcoeff)
+   --i <input-warped-file>       input volume, or surface 
+   --o <output-unwarped-file>    unwarped output volume, or surface 
+   --out_transtbl <output-m3z-table>  save unwarp transform table in m3z format (or --gcam)
+   --save_transtbl_only   just save unwarp transform table in m3z format, need --gradcoeff <> (or --gcam-only)
+
+   --interp <interptype>                                       interpolation method: nearest | trilinear | cubic (default is trilinear)
+
+   --nthreads <nthreads>                                       number of threads to run
+
+   --checkopts                                                 don't run anything, just check options and exit
+   --help                                                      print out information on how to use this program
+   --version                                                   print out version and exit
+
+7.4.1
+

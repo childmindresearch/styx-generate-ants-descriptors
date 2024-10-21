@@ -1,0 +1,106 @@
+
+=== Output of 'antsJointLabelFusion.sh --help' ===
+
+/opt/ants/bin/antsJointLabelFusion.sh: illegal option -- -
+
+
+=== Output of 'antsJointLabelFusion.sh -help' ===
+
+
+
+=== Output of 'antsJointLabelFusion.sh' (no arguments) ===
+
+
+Usage:
+
+antsJointLabelFusion.sh -d ImageDimension -o OutputPrefix <other options> <images>
+
+Compulsory arguments (minimal command line requires SGE cluster, otherwise use -c & -j options):
+
+     -d:  ImageDimension: 2 or 3.
+
+     -o:  OutputPrefix:   A prefix that is prepended to all output files.
+
+     -t:  TargetImage:    Target image to be labeled.
+
+     -g:  Atlas:          Atlas to be warped to target image.
+
+     -l:  Labels:         Labels corresponding to atlas (cf -g).
+
+Optional arguments:
+
+     -m:  Majority vote:  Use majority vote instead of joint label fusion (default = 0).
+
+     -k:  Keep files:     Keep warped atlas and label files (default = 0).
+
+     -c:  Control for parallel computation (default 0) -- 0 == run serially,  1 == SGE qsub,
+          2 == use PEXEC (localhost), 3 == Apple XGrid, 4 == PBS qsub, 5 == SLURM.
+
+     -j:  Number of cpu cores to use (default 2; -- requires "-c 2").
+
+     -r:  qsub options
+
+     -q:  Use quick registration parameters:  Either 0 or 1 (default = 1).
+
+     -p:  Save posteriors:  Save posteriors in specified c-style format e.g. posterior%04d.nii.gz
+                           Need to specify output directory.
+
+     -f:  Float precision: Use float precision (default = 1) -- 0 == double, 1 == float.
+
+     -u:  Registration walltime (default = 20:00:00):  Option for PBS/SLURM qsub specifying requested time
+          per pairwise registration.
+
+     -v:  Registration memory limit (default = 8gb):  Option for PBS/SLURM qsub specifying requested memory
+          per pairwise registration.
+
+     -w:  JLF walltime (default = 20:00:00):  Option for PBS/SLURM qsub specifying requested time
+          for the joint label fusion call.
+
+     -z:  JLF Memory limit (default = 8gb):  Option for PBS/SLURM qsub specifying requested memory
+          for the joint label fusion call.
+
+     -y:  transform type (default = \'s\')
+        t: translation
+        r: rigid
+        a: rigid + affine
+        s: rigid + affine + deformable syn
+        sr: rigid + deformable syn
+        so: deformable syn only
+        b: rigid + affine + deformable b-spline syn
+        br: rigid + deformable b-spline syn
+        bo: deformable b-spline syn only
+
+     -x:  Target mask image (default = \'majorityvoting\')
+        otsu: use otsu thresholding to define foreground/background
+        or: 'or' all the warped atlas images to defined foreground/background
+        majorityvoting: perform a voxelwise label voting.  If >= 80% of the warped atlases agree at that
+                        voxel, we keep that voted label at that voxel and *do not* perform JLF.  Note that
+                        the 80% threshold is hard-coded but can be easily changed in the script.
+        <filename>: a user-specified mask
+        none: don't use a mask
+
+Example:
+
+antsJointLabelFusion.sh -d 3 -t target.nii.gz -o malf \
+              -p malfPosteriors%04d.nii.gz \
+              -g atlas1.nii.gz -l labels1.nii.gz \
+              -g atlas2.nii.gz -l labels2.nii.gz \
+              -g atlas3.nii.gz -l labels3.nii.gz
+
+--------------------------------------------------------------------------------------
+JLF was created by:
+--------------------------------------------------------------------------------------
+Hongzhi Wang and Paul Yushkevich
+Penn Image Computing And Science Laboratory
+University of Pennsylvania
+
+Please reference http://www.ncbi.nlm.nih.gov/pubmed/22732662 when employing this script
+in your studies.
+
+Wang H, Suh JW, Das SR, Pluta J, Craige C, Yushkevich PA.
+Multi-Atlas Segmentation with Joint Label Fusion.
+IEEE Trans Pattern Anal Mach Intell.
+--------------------------------------------------------------------------------------
+script by Nick Tustison
+--------------------------------------------------------------------------------------
+

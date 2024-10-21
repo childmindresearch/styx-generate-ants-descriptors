@@ -1,0 +1,76 @@
+
+=== Output of 'mri_fieldsign --help' ===
+
+/usr/local/freesurfer/bin/mri_fieldsign 
+   --fs fieldsignfile : output file
+   --eccen real imag
+   --polar real imag
+
+   --s subject 
+   --hemi hemi 
+   --patch patchfile : without hemi 
+   --occip : patchfile = occip.patch.flat
+   --sphere : use spherical surface instead of patch
+   --fwhm fwhm_mm
+   --nsmooth nsmoothsteps
+   --rev : reverse sign
+   --old : use old FS estimation code (default is new)
+
+   --eccen-rot rotangle : rotate eccen by rotangle (degrees)
+   --polar-rot rotangle : rotate polar by rotangle (degrees)
+   --eccen-out eccenangle : output
+   --polar-out polarangle : output
+
+   --eccen-sfa sfafile : eccen selfreqavg file 
+   --polar-sfa sfafile : polar selfreqavg file 
+   --sfa sfadir :  
+   --sfa-true          : use true real and imag (only affects when smoothing)
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+WARNING: this program is not yet tested!
+
+=== Output of 'mri_fieldsign -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_fieldsign' (no arguments) ===
+
+/usr/local/freesurfer/bin/mri_fieldsign 
+   --fs fieldsignfile : output file
+   --eccen real imag
+   --polar real imag
+
+   --s subject 
+   --hemi hemi 
+   --patch patchfile : without hemi 
+   --occip : patchfile = occip.patch.flat
+   --sphere : use spherical surface instead of patch
+   --fwhm fwhm_mm
+   --nsmooth nsmoothsteps
+   --rev : reverse sign
+   --old : use old FS estimation code (default is new)
+
+   --eccen-rot rotangle : rotate eccen by rotangle (degrees)
+   --polar-rot rotangle : rotate polar by rotangle (degrees)
+   --eccen-out eccenangle : output
+   --polar-out polarangle : output
+
+   --eccen-sfa sfafile : eccen selfreqavg file 
+   --polar-sfa sfafile : polar selfreqavg file 
+   --sfa sfadir :  
+   --sfa-true          : use true real and imag (only affects when smoothing)
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

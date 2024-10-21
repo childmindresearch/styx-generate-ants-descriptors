@@ -1,0 +1,54 @@
+
+=== Output of 'label2surf --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+label2surf 
+	 Transform a group of labels into a surface
+
+Usage: 
+label2surf -s <surface> -o <outputsurface> -l <labels>
+
+Compulsory arguments (You MUST set one or more of):
+	-s,--surf	input surface
+	-o,--out	output surface
+	-l,--labels	ascii list of label files
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+
+
+=== Output of 'label2surf -help' ===
+
+terminate called after throwing an instance of 'Utilities::X_OptionError'
+  what():  -e: Option doesn't exist!
+timeout: the monitored command dumped core
+
+=== Output of 'label2surf' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-s,--surf	input surface
+	-o,--out	output surface
+	-l,--labels	ascii list of label files
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+label2surf 
+	 Transform a group of labels into a surface
+
+Usage: 
+label2surf -s <surface> -o <outputsurface> -l <labels>
+
+Compulsory arguments (You MUST set one or more of):
+	-s,--surf	input surface
+	-o,--out	output surface
+	-l,--labels	ascii list of label files
+
+Optional arguments (You may optionally specify one or more of):
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this message
+
+

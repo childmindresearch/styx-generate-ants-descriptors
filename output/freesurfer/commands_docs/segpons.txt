@@ -1,0 +1,53 @@
+
+=== Output of 'segpons --help' ===
+
+
+segpons --s subject
+ --aseg : use and refine aseg (default, output will be aseg+pons.mgz)
+ --apas : use aparc+aseg.mgz (output will be apas+pons.mgz)
+ --seg seg : specify your own seg (output will be seg+pons.mgz)
+ --no-refine : do not refine when using aseg
+ --pons152 ponsmask : mask of pons in mni152space (/usr/local/freesurfer/average/pons.mni152.2mm.mgz)
+
+segpons 7.4.1
+
+This is a "fast-and-dirty" way to get an APPROXIMATE segmentation of
+pons. Pons has been labeled in the mni152 2mm space. The subject is
+linearly registered to the mni152 space using mni152reg. The pons mask
+is then mapped into the subject anatomical space. The final pons
+segmentation is the intesection of the pons mask and the brain stem
+segmentation (ie, pons is constrained to be within brain stem). 
+The pons segmentation number is 174.
+
+
+=== Output of 'segpons -help' ===
+
+
+segpons --s subject
+ --aseg : use and refine aseg (default, output will be aseg+pons.mgz)
+ --apas : use aparc+aseg.mgz (output will be apas+pons.mgz)
+ --seg seg : specify your own seg (output will be seg+pons.mgz)
+ --no-refine : do not refine when using aseg
+ --pons152 ponsmask : mask of pons in mni152space (/usr/local/freesurfer/average/pons.mni152.2mm.mgz)
+
+segpons 7.4.1
+
+This is a "fast-and-dirty" way to get an APPROXIMATE segmentation of
+pons. Pons has been labeled in the mni152 2mm space. The subject is
+linearly registered to the mni152 space using mni152reg. The pons mask
+is then mapped into the subject anatomical space. The final pons
+segmentation is the intesection of the pons mask and the brain stem
+segmentation (ie, pons is constrained to be within brain stem). 
+The pons segmentation number is 174.
+
+
+=== Output of 'segpons' (no arguments) ===
+
+
+segpons --s subject
+ --aseg : use and refine aseg (default, output will be aseg+pons.mgz)
+ --apas : use aparc+aseg.mgz (output will be apas+pons.mgz)
+ --seg seg : specify your own seg (output will be seg+pons.mgz)
+ --no-refine : do not refine when using aseg
+ --pons152 ponsmask : mask of pons in mni152space (/usr/local/freesurfer/average/pons.mni152.2mm.mgz)
+

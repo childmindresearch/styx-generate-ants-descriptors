@@ -1,0 +1,17 @@
+
+=== Output of 'mri_ca_tissue_parms --help' ===
+
+unknown option --help
+
+=== Output of 'mri_ca_tissue_parms -help' ===
+
+writing T1/PD histograms to (null)...
+usage: /usr/local/freesurfer/bin/mri_ca_tissue_parms [options] <subject 1> <subject 2> ... <output file>
+	-spacing  - spacing of classifiers in canonical space
+	-gradient - use intensity gradient as input to classifier.
+
+=== Output of 'mri_ca_tissue_parms' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_ca_tissue_parms [options] <subject 1> <subject 2> ... <output file>
+	-spacing  - spacing of classifiers in canonical space
+	-gradient - use intensity gradient as input to classifier.

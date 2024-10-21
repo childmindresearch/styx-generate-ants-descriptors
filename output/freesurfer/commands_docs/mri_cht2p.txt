@@ -1,0 +1,12 @@
+
+=== Output of 'mri_cht2p --help' ===
+
+error: mri_cht2p has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_cht2p -help' ===
+
+error: mri_cht2p has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_cht2p' (no arguments) ===
+
+error: mri_cht2p has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

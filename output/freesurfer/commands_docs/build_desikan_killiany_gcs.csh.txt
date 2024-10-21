@@ -1,0 +1,15 @@
+
+=== Output of 'build_desikan_killiany_gcs.csh --help' ===
+
+Usage: /usr/local/freesurfer/bin/build_desikan_killiany_gcs.csh <hemi>
+where <hemi> is rh or lh
+
+=== Output of 'build_desikan_killiany_gcs.csh -help' ===
+
+Usage: /usr/local/freesurfer/bin/build_desikan_killiany_gcs.csh <hemi>
+where <hemi> is rh or lh
+
+=== Output of 'build_desikan_killiany_gcs.csh' (no arguments) ===
+
+Usage: /usr/local/freesurfer/bin/build_desikan_killiany_gcs.csh <hemi>
+where <hemi> is rh or lh

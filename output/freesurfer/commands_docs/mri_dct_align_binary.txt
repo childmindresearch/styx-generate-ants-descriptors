@@ -1,0 +1,14 @@
+
+=== Output of 'mri_dct_align_binary --help' ===
+
+unknown option --HELP
+usage: /usr/local/freesurfer/bin/mri_dct_align_binary <source> <destination> <output xform>
+
+=== Output of 'mri_dct_align_binary -help' ===
+
+unknown option -HELP
+usage: /usr/local/freesurfer/bin/mri_dct_align_binary <source> <destination> <output xform>
+
+=== Output of 'mri_dct_align_binary' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_dct_align_binary <source> <destination> <output xform>

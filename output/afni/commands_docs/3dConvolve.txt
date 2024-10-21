@@ -1,0 +1,30 @@
+
+=== Output of '3dConvolve --help' ===
+
+
+** :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( **
+**                                                          **
+** This program, 3dConvolve, is no longer supported in AFNI **
+**                                                          **
+** :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( **
+** Program compile date = Sep 12 2024
+
+=== Output of '3dConvolve -help' ===
+
+
+** :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( **
+**                                                          **
+** This program, 3dConvolve, is no longer supported in AFNI **
+**                                                          **
+** :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( **
+** Program compile date = Sep 12 2024
+
+=== Output of '3dConvolve' (no arguments) ===
+
+
+** :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( **
+**                                                          **
+** This program, 3dConvolve, is no longer supported in AFNI **
+**                                                          **
+** :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( :( **
+** Program compile date = Sep 12 2024

@@ -1,0 +1,13 @@
+
+=== Output of 'fslnvols --help' ===
+
+0
+
+=== Output of 'fslnvols -help' ===
+
+0
+
+=== Output of 'fslnvols' (no arguments) ===
+
+
+Usage: fslnvols <input>

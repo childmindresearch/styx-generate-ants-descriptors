@@ -1,0 +1,60 @@
+
+=== Output of 'make_hemi_mask --help' ===
+
+
+   Usage: make_hemi_mask hemi input.mgz output.mgz
+
+   Description: 
+    Registers input to the left/right reversed version using 
+    mri_robust_register making use of the half-way space. This results
+    in an upright, forward facing head position. Then keep only selected
+    hemi ('lh' or 'rh'), map it back to original space and apply as mask.
+
+   Reference:
+    Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+    Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+    DOI-Link http://dx.doi.org/10.1016/j.neuroimage.2010.07.020 
+    Pre-Print http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+make_hemi_mask 7.4.1
+
+
+=== Output of 'make_hemi_mask -help' ===
+
+
+   Usage: make_hemi_mask hemi input.mgz output.mgz
+
+   Description: 
+    Registers input to the left/right reversed version using 
+    mri_robust_register making use of the half-way space. This results
+    in an upright, forward facing head position. Then keep only selected
+    hemi ('lh' or 'rh'), map it back to original space and apply as mask.
+
+   Reference:
+    Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+    Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+    DOI-Link http://dx.doi.org/10.1016/j.neuroimage.2010.07.020 
+    Pre-Print http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+make_hemi_mask 7.4.1
+
+
+=== Output of 'make_hemi_mask' (no arguments) ===
+
+
+   Usage: make_hemi_mask hemi input.mgz output.mgz
+
+   Description: 
+    Registers input to the left/right reversed version using 
+    mri_robust_register making use of the half-way space. This results
+    in an upright, forward facing head position. Then keep only selected
+    hemi ('lh' or 'rh'), map it back to original space and apply as mask.
+
+   Reference:
+    Highly Accurate Inverse Consistent Registration: A Robust Approach, M.
+    Reuter, H.D. Rosas, B. Fischl.  NeuroImage 53(4):1181-1196, 2010.
+    DOI-Link http://dx.doi.org/10.1016/j.neuroimage.2010.07.020 
+    Pre-Print http://reuter.mit.edu/papers/reuter-robreg10.pdf 
+
+make_hemi_mask 7.4.1
+

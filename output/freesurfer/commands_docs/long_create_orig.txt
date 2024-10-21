@@ -1,0 +1,30 @@
+
+=== Output of 'long_create_orig --help' ===
+
+INFO: SUBJECTS_DIR is /usr/local/freesurfer/subjects
+cat: /usr/local/freesurfer/subjects/--help/base-tps: No such file or directory
+
+=== Output of 'long_create_orig -help' ===
+
+INFO: SUBJECTS_DIR is /usr/local/freesurfer/subjects
+cat: /usr/local/freesurfer/subjects/-help/base-tps: No such file or directory
+
+=== Output of 'long_create_orig' (no arguments) ===
+
+
+  long_create_orig <base-id> (<tp-id>)
+
+  Maps, conforms and averages (motioncorrect) raw inputs from 
+  cross sectional directory to base space. If tp-id is ommitted
+  performs operation on all time points in base.
+
+  Output directory by default is <SUBJECTS_DIR>/<base-id>/longtp/<tp-id>
+
+  Note: 
+  This script is called from within recon-all.
+  There is usually no need to call it directly.
+
+  More info on longitudinal processing at:
+  http://surfer.nmr.mgh.harvard.edu/fswiki/LongitudinalProcessing
+
+

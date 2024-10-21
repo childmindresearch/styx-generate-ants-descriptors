@@ -1,0 +1,12 @@
+
+=== Output of 'oxford_asl_roi_stats.py --help' ===
+
+bash: /usr/local/fsl/bin/oxford_asl_roi_stats.py: /bin/env: bad interpreter: No such file or directory
+
+=== Output of 'oxford_asl_roi_stats.py -help' ===
+
+bash: /usr/local/fsl/bin/oxford_asl_roi_stats.py: /bin/env: bad interpreter: No such file or directory
+
+=== Output of 'oxford_asl_roi_stats.py' (no arguments) ===
+
+bash: /usr/local/fsl/bin/oxford_asl_roi_stats.py: /bin/env: bad interpreter: No such file or directory

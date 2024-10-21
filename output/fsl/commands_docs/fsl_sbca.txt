@@ -1,0 +1,130 @@
+
+=== Output of 'fsl_sbca --help' ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        input file name (4D image file)
+	-s,--seed	seed voxel coordinate or file name of seed mask (3D/4D file)
+	-o,--out	output file base name
+	-t,--target	file name of target mask(s) (3D or 4D file)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_sbca (Version 1.0)
+Author: Christian F. Beckmann 
+Copyright(C) 2008-2013 University of Oxford 
+ 
+ Performs seed-based correlation analysis on FMRI data
+ using either a single seed coordinate or a seed mask 
+ 
+
+Usage: 
+fsl_sbca -i <input> -s <seed> -t <target> -o <basename> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (4D image file)
+	-s,--seed	seed voxel coordinate or file name of seed mask (3D/4D file)
+	-o,--out	output file base name
+	-t,--target	file name of target mask(s) (3D or 4D file)
+
+Optional arguments (You may optionally specify one or more of):
+	-r,--reg	perform time series regression rather than classification to targets
+	--conf	        file name (or comma-separated list of file name) for confound ascii txt files
+	--seeddata	file name of 4D data file for the seed
+	--bin	        binarise spatial maps prior to calculation of time courses
+	--mean	        use mean instead of Eigenvariates for calculation of time courses
+	--abscc	        use maximum absolute value instead of of maximum value of the cross-correlations
+	--order	        number of Eigenvariates (default 1)
+	--out_seeds	output seed mask image as <basename>_seeds
+	--out_seedmask	output seed mask image as <basename>_seedmask
+	--out_ttcs	output target time courses as <basename>_ttc<X>.txt
+	--out_conf	output confound time courses as <basename>_confounds.txt
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this help text
+
+
+
+=== Output of 'fsl_sbca -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_sbca (Version 1.0)
+Author: Christian F. Beckmann 
+Copyright(C) 2008-2013 University of Oxford 
+ 
+ Performs seed-based correlation analysis on FMRI data
+ using either a single seed coordinate or a seed mask 
+ 
+
+Usage: 
+fsl_sbca -i <input> -s <seed> -t <target> -o <basename> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (4D image file)
+	-s,--seed	seed voxel coordinate or file name of seed mask (3D/4D file)
+	-o,--out	output file base name
+	-t,--target	file name of target mask(s) (3D or 4D file)
+
+Optional arguments (You may optionally specify one or more of):
+	-r,--reg	perform time series regression rather than classification to targets
+	--conf	        file name (or comma-separated list of file name) for confound ascii txt files
+	--seeddata	file name of 4D data file for the seed
+	--bin	        binarise spatial maps prior to calculation of time courses
+	--mean	        use mean instead of Eigenvariates for calculation of time courses
+	--abscc	        use maximum absolute value instead of of maximum value of the cross-correlations
+	--order	        number of Eigenvariates (default 1)
+	--out_seeds	output seed mask image as <basename>_seeds
+	--out_seedmask	output seed mask image as <basename>_seedmask
+	--out_ttcs	output target time courses as <basename>_ttc<X>.txt
+	--out_conf	output confound time courses as <basename>_confounds.txt
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this help text
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'fsl_sbca' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	        input file name (4D image file)
+	-s,--seed	seed voxel coordinate or file name of seed mask (3D/4D file)
+	-o,--out	output file base name
+	-t,--target	file name of target mask(s) (3D or 4D file)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+fsl_sbca (Version 1.0)
+Author: Christian F. Beckmann 
+Copyright(C) 2008-2013 University of Oxford 
+ 
+ Performs seed-based correlation analysis on FMRI data
+ using either a single seed coordinate or a seed mask 
+ 
+
+Usage: 
+fsl_sbca -i <input> -s <seed> -t <target> -o <basename> [options]
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	        input file name (4D image file)
+	-s,--seed	seed voxel coordinate or file name of seed mask (3D/4D file)
+	-o,--out	output file base name
+	-t,--target	file name of target mask(s) (3D or 4D file)
+
+Optional arguments (You may optionally specify one or more of):
+	-r,--reg	perform time series regression rather than classification to targets
+	--conf	        file name (or comma-separated list of file name) for confound ascii txt files
+	--seeddata	file name of 4D data file for the seed
+	--bin	        binarise spatial maps prior to calculation of time courses
+	--mean	        use mean instead of Eigenvariates for calculation of time courses
+	--abscc	        use maximum absolute value instead of of maximum value of the cross-correlations
+	--order	        number of Eigenvariates (default 1)
+	--out_seeds	output seed mask image as <basename>_seeds
+	--out_seedmask	output seed mask image as <basename>_seedmask
+	--out_ttcs	output target time courses as <basename>_ttc<X>.txt
+	--out_conf	output confound time courses as <basename>_confounds.txt
+	-v,--verbose	switch on diagnostic messages
+	-h,--help	display this help text
+
+

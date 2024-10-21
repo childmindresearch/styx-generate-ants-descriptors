@@ -1,0 +1,12 @@
+
+=== Output of 'LesionFilling --help' ===
+
+Example usage: LesionFilling imageDimension T1_image.nii.gz lesion_mask.nii.gz output_lesion_filled.nii.gz
+
+=== Output of 'LesionFilling -help' ===
+
+Example usage: LesionFilling imageDimension T1_image.nii.gz lesion_mask.nii.gz output_lesion_filled.nii.gz
+
+=== Output of 'LesionFilling' (no arguments) ===
+
+Example usage: LesionFilling imageDimension T1_image.nii.gz lesion_mask.nii.gz output_lesion_filled.nii.gz

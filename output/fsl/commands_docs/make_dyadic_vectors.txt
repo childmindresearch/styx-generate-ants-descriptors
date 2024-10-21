@@ -1,0 +1,18 @@
+
+=== Output of 'make_dyadic_vectors --help' ===
+
+usage: make_dyadic_vectors <theta_vol> <phi_vol> [mask] <output> [perc]
+[mask] is optional
+[perc] is the {perc}% angle of the output cone of uncertainty (output will be in degrees)
+
+=== Output of 'make_dyadic_vectors -help' ===
+
+usage: make_dyadic_vectors <theta_vol> <phi_vol> [mask] <output> [perc]
+[mask] is optional
+[perc] is the {perc}% angle of the output cone of uncertainty (output will be in degrees)
+
+=== Output of 'make_dyadic_vectors' (no arguments) ===
+
+usage: make_dyadic_vectors <theta_vol> <phi_vol> [mask] <output> [perc]
+[mask] is optional
+[perc] is the {perc}% angle of the output cone of uncertainty (output will be in degrees)

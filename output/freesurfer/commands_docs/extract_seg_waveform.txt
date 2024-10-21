@@ -1,0 +1,82 @@
+
+=== Output of 'extract_seg_waveform --help' ===
+
+
+extract_seg_waveform
+ --seg 
+ --id index <--id index2> or --id index1 index2 ...
+ --i inputvol
+ --reg reg.lta
+ --vsm vsm.nii.gz : voxel shift map for B0 distortion correction
+ --regheader
+ --demean : remove mean, first, and second order trends
+ --o waveform.dat
+
+$Id$
+
+This program extracts an average waveform from an input volume where
+the average is computed over the voxels in the given segmentation
+indices. The input volume is mapped to the space of the segmentation
+given the registration; if a voxel shift map (VSM) is supply, then
+that is applied simultanetously as part of the transform. Nearest
+neighbor interpolation is used. Once in the segmentation space, the
+voxels in the desired indicies of the segmentation are averaged.
+To reduce computational complexity, a bounding box volume around
+the segmentation is created. This will yield exactly the same results
+as using the full FoV, but does not require mapping fMRI volumes with
+100s of time points into the (often) 256^3 segmentation space. 
+
+This method is better than mapping the segmentation into the input
+volume space for two reasons: (1) partial volume correction is a
+little bit better and no need to specify a fill parameter, and (2) it
+can apply the VSM for B0 correction.
+
+
+
+=== Output of 'extract_seg_waveform -help' ===
+
+
+extract_seg_waveform
+ --seg 
+ --id index <--id index2> or --id index1 index2 ...
+ --i inputvol
+ --reg reg.lta
+ --vsm vsm.nii.gz : voxel shift map for B0 distortion correction
+ --regheader
+ --demean : remove mean, first, and second order trends
+ --o waveform.dat
+
+$Id$
+
+This program extracts an average waveform from an input volume where
+the average is computed over the voxels in the given segmentation
+indices. The input volume is mapped to the space of the segmentation
+given the registration; if a voxel shift map (VSM) is supply, then
+that is applied simultanetously as part of the transform. Nearest
+neighbor interpolation is used. Once in the segmentation space, the
+voxels in the desired indicies of the segmentation are averaged.
+To reduce computational complexity, a bounding box volume around
+the segmentation is created. This will yield exactly the same results
+as using the full FoV, but does not require mapping fMRI volumes with
+100s of time points into the (often) 256^3 segmentation space. 
+
+This method is better than mapping the segmentation into the input
+volume space for two reasons: (1) partial volume correction is a
+little bit better and no need to specify a fill parameter, and (2) it
+can apply the VSM for B0 correction.
+
+
+
+=== Output of 'extract_seg_waveform' (no arguments) ===
+
+
+extract_seg_waveform
+ --seg 
+ --id index <--id index2> or --id index1 index2 ...
+ --i inputvol
+ --reg reg.lta
+ --vsm vsm.nii.gz : voxel shift map for B0 distortion correction
+ --regheader
+ --demean : remove mean, first, and second order trends
+ --o waveform.dat
+

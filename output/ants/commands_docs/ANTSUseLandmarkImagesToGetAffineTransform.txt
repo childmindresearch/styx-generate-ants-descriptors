@@ -1,0 +1,24 @@
+
+=== Output of 'ANTSUseLandmarkImagesToGetAffineTransform --help' ===
+
+Usage:   ANTSUseLandmarkImagesToGetAffineTransform FixedImageWithLabeledLandmarks.nii.gz  MovingImageWithLabeledLandmarks.nii.gz [rigid | affine] OutAffine.txt 
+ we expect the input images to be (1) N-ary  (2) in the same physical space as the images you want to 
+ register and (3 ) to have the same landmark points defined within them ... 
+ landmarks will be defined from the center of mass of the labels in the input images . 
+ You can use ITK-snap to generate the label images. 
+
+=== Output of 'ANTSUseLandmarkImagesToGetAffineTransform -help' ===
+
+Usage:   ANTSUseLandmarkImagesToGetAffineTransform FixedImageWithLabeledLandmarks.nii.gz  MovingImageWithLabeledLandmarks.nii.gz [rigid | affine] OutAffine.txt 
+ we expect the input images to be (1) N-ary  (2) in the same physical space as the images you want to 
+ register and (3 ) to have the same landmark points defined within them ... 
+ landmarks will be defined from the center of mass of the labels in the input images . 
+ You can use ITK-snap to generate the label images. 
+
+=== Output of 'ANTSUseLandmarkImagesToGetAffineTransform' (no arguments) ===
+
+Usage:   ANTSUseLandmarkImagesToGetAffineTransform FixedImageWithLabeledLandmarks.nii.gz  MovingImageWithLabeledLandmarks.nii.gz [rigid | affine] OutAffine.txt 
+ we expect the input images to be (1) N-ary  (2) in the same physical space as the images you want to 
+ register and (3 ) to have the same landmark points defined within them ... 
+ landmarks will be defined from the center of mass of the labels in the input images . 
+ You can use ITK-snap to generate the label images. 

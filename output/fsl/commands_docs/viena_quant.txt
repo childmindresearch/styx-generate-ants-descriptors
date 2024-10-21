@@ -1,0 +1,12 @@
+
+=== Output of 'viena_quant --help' ===
+
+Usage: viena_quant <input1> <input2> <ventriclemask>
+
+=== Output of 'viena_quant -help' ===
+
+Usage: viena_quant <input1> <input2> <ventriclemask>
+
+=== Output of 'viena_quant' (no arguments) ===
+
+Usage: viena_quant <input1> <input2> <ventriclemask>

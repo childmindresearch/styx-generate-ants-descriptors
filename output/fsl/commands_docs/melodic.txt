@@ -1,0 +1,178 @@
+
+=== Output of 'melodic --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+MELODIC (Version 3.15)
+ Multivariate Exploratory Linear Optimised Decomposition into Independent Components
+
+Author: Christian F. Beckmann 
+ Copyright(c) 2001-2013 University of Oxford
+
+Usage: 
+ melodic -i <filename> <options>
+ 	 	 to run melodic
+ melodic -i <filename> --ICs=melodic_IC --mix=melodic_mix <options>
+ 	 	 to run Mixture Model based inference on estimated ICs
+ melodic --help 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input file names (either single file name or comma-separated list or text file)
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--outdir	output directory name
+	--Oall	        output everything
+	-m,--mask	file name of mask for thresholding
+	-d,--dim	dimensionality reduction into #num dimensions (default: automatic estimation)
+	-a,--approach	approach for multi-session/subject data:
+	   concat	temporally-concatenated group-ICA using MIGP ( default )
+	   tica  	tensor-ICA
+	--report	generate Melodic web report
+	--CIFTI	        input/output as CIFTI (warning: auto-dimensionality estimation for CIFTI data is currently inaccurate)
+	--vn,--varnorm	switch off variance normalisation
+	-v,--verbose	switch on diagnostic messages
+
+
+
+	--nomask	switch off masking
+	--update_mask	switch off mask updating
+	--nobet		switch off BET
+	--bgthreshold	brain / non-brain threshold (only if --nobet selected)
+
+	--dimest	use specific dim. estimation technique: lap, bic, mdl, aic, mean (default: lap)
+	--sep_vn	switch on separate variance nomalisation for each input dataset (off by default)
+	--disableMigp	switch off MIGP data reduction when using -a concat (full temporal concatenation will be used)
+	--migpN	Number of internal Eigenmaps
+	--migp_shuffle	Randomise MIGP file order (default: TRUE)
+	--migp_factor	Internal Factor of mem-threshold relative to number of Eigenmaps (default: 2)
+	-n,--numICs	numer of IC's to extract (for deflation approach)
+	--nl		nonlinearity: gauss, tanh, pow3 (default), pow4
+	--covarweight	voxel-wise weights for the covariance matrix (e.g. segmentation information)
+	--eps	minimum error change
+	--epsS	minimum error change for rank-1 approximation in TICA
+	--maxit		maximum number of iterations before restart
+	--maxrestart	maximum number of restarts
+
+	--mmthresh	threshold for Mixture Model based inference
+	--no_mm		switch off mixture modelling on IC maps
+ 
+	--ICs		input filename of the IC components file for mixture modelling
+	--mix		input filename of mixing matrix for mixture modelling / filtering
+	--smode		input filename of matrix of session modes for report generation
+	-f,--filter	list of component numbers to remove
+ 
+	--bgimage	specify background image for report (default: mean image)
+ 
+	--tr		TR in seconds
+	--logPower	calculate log of power for frequency spectrum
+
+	--Tdes	        design matrix across time-domain
+	--Tcon	        t-contrast matrix across time-domain
+	--Sdes	        design matrix across subject-domain
+	--Scon	        t-contrast matrix across subject-domain
+	--Ounmix	output unmixing matrix
+	--Ostats	output thresholded maps and probability maps
+	--Opca		output PCA results
+	--Owhite	output whitening/dewhitening matrices
+	--Oorig		output the original ICs
+	--Omean		output mean volume
+
+	-V,--version	prints version information
+	--copyright	prints copyright information
+	-h,--help	prints this help message
+	--debug	        switch on debug messages
+	--report_maps	control string for spatial map images (see slicer)
+
+
+
+=== Output of 'melodic -help' ===
+
+
+-e: Option doesn't exist!
+
+=== Output of 'melodic' (no arguments) ===
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+MELODIC (Version 3.15)
+ Multivariate Exploratory Linear Optimised Decomposition into Independent Components
+
+Author: Christian F. Beckmann 
+ Copyright(c) 2001-2013 University of Oxford
+
+Usage: 
+ melodic -i <filename> <options>
+ 	 	 to run melodic
+ melodic -i <filename> --ICs=melodic_IC --mix=melodic_mix <options>
+ 	 	 to run Mixture Model based inference on estimated ICs
+ melodic --help 
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input file names (either single file name or comma-separated list or text file)
+
+Optional arguments (You may optionally specify one or more of):
+	-o,--outdir	output directory name
+	--Oall	        output everything
+	-m,--mask	file name of mask for thresholding
+	-d,--dim	dimensionality reduction into #num dimensions (default: automatic estimation)
+	-a,--approach	approach for multi-session/subject data:
+	   concat	temporally-concatenated group-ICA using MIGP ( default )
+	   tica  	tensor-ICA
+	--report	generate Melodic web report
+	--CIFTI	        input/output as CIFTI (warning: auto-dimensionality estimation for CIFTI data is currently inaccurate)
+	--vn,--varnorm	switch off variance normalisation
+	-v,--verbose	switch on diagnostic messages
+
+
+
+	--nomask	switch off masking
+	--update_mask	switch off mask updating
+	--nobet		switch off BET
+	--bgthreshold	brain / non-brain threshold (only if --nobet selected)
+
+	--dimest	use specific dim. estimation technique: lap, bic, mdl, aic, mean (default: lap)
+	--sep_vn	switch on separate variance nomalisation for each input dataset (off by default)
+	--disableMigp	switch off MIGP data reduction when using -a concat (full temporal concatenation will be used)
+	--migpN	Number of internal Eigenmaps
+	--migp_shuffle	Randomise MIGP file order (default: TRUE)
+	--migp_factor	Internal Factor of mem-threshold relative to number of Eigenmaps (default: 2)
+	-n,--numICs	numer of IC's to extract (for deflation approach)
+	--nl		nonlinearity: gauss, tanh, pow3 (default), pow4
+	--covarweight	voxel-wise weights for the covariance matrix (e.g. segmentation information)
+	--eps	minimum error change
+	--epsS	minimum error change for rank-1 approximation in TICA
+	--maxit		maximum number of iterations before restart
+	--maxrestart	maximum number of restarts
+
+	--mmthresh	threshold for Mixture Model based inference
+	--no_mm		switch off mixture modelling on IC maps
+ 
+	--ICs		input filename of the IC components file for mixture modelling
+	--mix		input filename of mixing matrix for mixture modelling / filtering
+	--smode		input filename of matrix of session modes for report generation
+	-f,--filter	list of component numbers to remove
+ 
+	--bgimage	specify background image for report (default: mean image)
+ 
+	--tr		TR in seconds
+	--logPower	calculate log of power for frequency spectrum
+
+	--Tdes	        design matrix across time-domain
+	--Tcon	        t-contrast matrix across time-domain
+	--Sdes	        design matrix across subject-domain
+	--Scon	        t-contrast matrix across subject-domain
+	--Ounmix	output unmixing matrix
+	--Ostats	output thresholded maps and probability maps
+	--Opca		output PCA results
+	--Owhite	output whitening/dewhitening matrices
+	--Oorig		output the original ICs
+	--Omean		output mean volume
+
+	-V,--version	prints version information
+	--copyright	prints copyright information
+	-h,--help	prints this help message
+	--debug	        switch on debug messages
+	--report_maps	control string for spatial map images (see slicer)
+
+

@@ -1,0 +1,76 @@
+
+=== Output of 'dmri_vox2vox --help' ===
+
+
+USAGE: ./dmri_vox2vox
+
+Basic inputs
+   --in <file> [...]:
+     Input text file(s)
+   --indir <dir>:
+     Input directory (optional)
+     If specified, names of input text files are relative to this
+   --out <file> [...]:
+     Output text file(s), as many as inputs
+   --outdir <dir>:
+     Output directory (optional)
+     If specified, names of output text files are relative to this)
+   --inref <file>:
+     Input reference volume
+   --outref <file>:
+     Output reference volume
+   --reg <file>:
+     Affine registration (.mat), applied first
+   --regnl <file>:
+     Nonlinear registration (.m3z), applied second
+   --invnl:
+     Apply inverse of nonlinear warp (with --regnl, default: no)
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+
+
+...
+
+
+=== Output of 'dmri_vox2vox -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'dmri_vox2vox' (no arguments) ===
+
+
+USAGE: ./dmri_vox2vox
+
+Basic inputs
+   --in <file> [...]:
+     Input text file(s)
+   --indir <dir>:
+     Input directory (optional)
+     If specified, names of input text files are relative to this
+   --out <file> [...]:
+     Output text file(s), as many as inputs
+   --outdir <dir>:
+     Output directory (optional)
+     If specified, names of output text files are relative to this)
+   --inref <file>:
+     Input reference volume
+   --outref <file>:
+     Output reference volume
+   --reg <file>:
+     Affine registration (.mat), applied first
+   --regnl <file>:
+     Nonlinear registration (.m3z), applied second
+   --invnl:
+     Apply inverse of nonlinear warp (with --regnl, default: no)
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+

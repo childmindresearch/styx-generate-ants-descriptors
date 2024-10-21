@@ -1,0 +1,95 @@
+
+=== Output of 'mri_cor2label --help' ===
+
+
+mri_cor2label 
+   --i  input     : vol or surface overlay
+   --id labelid   : value to match in the input
+   --thresh thresh   : threshold the input to make label (ie, input>thresh) instead of --id
+   --l  labelfile : name of output file
+   --v  volfile   : write label volume in file
+   --surf subject hemi <surf> : interpret input as surface overlay
+   --surf-path surface : specify surface path rather than subject/hemi
+   --opt target delta valmap
+   --remove-holes-islands  : remove holes in label and islands (with --surf only)
+   --dilate ndilations : dilate label (with --surf only)
+   --erode  nerosions  : erode label (with --surf only)
+     Note: dilation is done first, then erode
+   --help         :print out help information
+
+
+7.4.1
+
+
+Converts values in a volume or surface overlay to a label. The program
+searches the input for values equal to labelid. The xyz values for
+each point are then computed based on the tkregister voxel-to-RAS
+matrix (volume) or from the xyz of the specified surface.  The xyz
+values are then stored in labelfile in the label file format. the
+statistic value is set to 0.  While this program can be used with any
+mri volume, it was designed to convert parcellation volumes, which
+happen to be stored in mri format.  See tkmedit for more information
+on parcellations. For volumes, the volume of the labvel in mm^3 can be
+written to the text file designated in by the --v flag. 
+
+If --opt is used, then treats input as a probability map. It
+thresholds the probability map such that the sum of the suprathreshold
+voxels in the valmap will be closest to target. The application is
+where one is trying to create a label where the total area is as
+close to the mean of the individual labels as possible, eg, 
+   mri_cor2label --i label.prob.mgz --id 1 --l ./lh.junk.label \n     --surf fsaverage lh --opt 922.18 .001 \n    $SUBJECTS_DIR/fsaverage/surf/lh.white.avg.area.mgh
+Performs a brute-force seach of thresholds from 0-1 step delta.
+
+Note: the name of this program is a bit misleading as it will operate
+on anything readble by mri_convert (eg, mgz, mgh, nifti, bhdr,
+analyze, etc).
+
+Bugs:
+
+  If the name of the label does not include a forward slash (ie, '/')
+  then the program will attempt to put the label files in
+  $SUBJECTS_DIR/subject/label.  So, if you want the labels to go into
+  the current directory, make sure to put a './' in front of the label.
+
+Example 1: Create a label of the left putamen (12) from the automatic
+segmentation
+
+mri_cor2label --c $SUBJECTS_DIR/subject/mri/aseg.mgz 
+   --id 12 --l ./left-putamen.label
+
+The value 12 is from $FREESURFER_HOME/FreeSurferColorLUT.txt
+
+Example 2: Create a label of the left hemi surface vertices whose
+thickness is greater than 2mm.
+
+# First, create a binarized map of the thickness
+mri_binarize --i $SUBJECTS_DIR/subject/surf/lh.thickness 
+  --min 2 --o lh.thickness.thresh.mgh
+
+mri_cor2label --i lh.thickness.thresh.mgh 
+  --surf subject lh  --id 1 --l ./lh.thickness.thresh.label
+
+
+
+=== Output of 'mri_cor2label -help' ===
+
+ERROR: Option -help unknown
+
+=== Output of 'mri_cor2label' (no arguments) ===
+
+
+mri_cor2label 
+   --i  input     : vol or surface overlay
+   --id labelid   : value to match in the input
+   --thresh thresh   : threshold the input to make label (ie, input>thresh) instead of --id
+   --l  labelfile : name of output file
+   --v  volfile   : write label volume in file
+   --surf subject hemi <surf> : interpret input as surface overlay
+   --surf-path surface : specify surface path rather than subject/hemi
+   --opt target delta valmap
+   --remove-holes-islands  : remove holes in label and islands (with --surf only)
+   --dilate ndilations : dilate label (with --surf only)
+   --erode  nerosions  : erode label (with --surf only)
+     Note: dilation is done first, then erode
+   --help         :print out help information
+

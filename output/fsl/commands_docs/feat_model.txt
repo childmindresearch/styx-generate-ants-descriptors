@@ -1,0 +1,12 @@
+
+=== Output of 'feat_model --help' ===
+
+timeout: the monitored command dumped core
+
+=== Output of 'feat_model -help' ===
+
+timeout: the monitored command dumped core
+
+=== Output of 'feat_model' (no arguments) ===
+
+Usage: feat_model <design_name_root> [confound matrix text file]

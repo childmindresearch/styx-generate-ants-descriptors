@@ -1,0 +1,17 @@
+
+=== Output of 'mris_rescale --help' ===
+
+usage: /usr/local/freesurfer/bin/mris_rescale [options] <input surface file> <output surf>
+
+This program will rescale a surface representation
+
+valid options are:
+
+
+=== Output of 'mris_rescale -help' ===
+
+unknown option -help
+
+=== Output of 'mris_rescale' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mris_rescale [options] <input surface file> <output surf>

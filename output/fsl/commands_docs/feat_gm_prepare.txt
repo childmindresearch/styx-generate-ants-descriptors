@@ -1,0 +1,15 @@
+
+=== Output of 'feat_gm_prepare --help' ===
+
+Usage: feat_gm_prepare <4D-GM-output> <list of first-level FEAT output directories>
+Note: these all have to have had registration completed in them
+
+=== Output of 'feat_gm_prepare -help' ===
+
+Usage: feat_gm_prepare <4D-GM-output> <list of first-level FEAT output directories>
+Note: these all have to have had registration completed in them
+
+=== Output of 'feat_gm_prepare' (no arguments) ===
+
+Usage: feat_gm_prepare <4D-GM-output> <list of first-level FEAT output directories>
+Note: these all have to have had registration completed in them

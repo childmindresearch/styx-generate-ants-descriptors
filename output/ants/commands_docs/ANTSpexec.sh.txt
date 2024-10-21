@@ -1,0 +1,94 @@
+
+=== Output of 'ANTSpexec.sh --help' ===
+
+/opt/ants/bin/ANTSpexec.sh: illegal option -- -
+
+Usage:
+
+ANTSpexec.sh [-h ] [-r ] [-j nb_jobs ] command arg_list
+
+Optional arguments:
+
+     -h:  Shows help
+
+     -r:  Replace asterix * in the command string with argument
+
+     -j:  Number of cpu cores to use (default 2)
+
+Examples:
+
+    ANTSpexec.sh somecommand arg1 arg2 arg3
+
+    ANTSpexec.sh -j 3 \"somecommand -r -p\" arg1 arg2 arg3
+
+    ANTSpexec.sh -j 6 -r \"convert -scale 50% * small/small_*\" *.jpg"
+
+In case you terminate this script prematurely by pressing CTRL + C, run
+//killme.sh to terminate any remaining processes.
+
+
+=== Output of 'ANTSpexec.sh -help' ===
+
+
+This is a simple wrapper for running processes in parallel. Tested both on
+Mac (Darwin) and Linux (CentOS 5).
+
+Usage:
+
+ANTSpexec.sh [-h ] [-r ] [-j nb_jobs ] command arg_list
+
+Optional arguments:
+
+     -h:  Shows this help
+
+     -r:  Replace asterix * in the command string with argument
+
+     -j:  Number of cpu cores to use (default 2)
+
+Examples:
+
+    ANTSpexec.sh somecommand arg1 arg2 arg3
+
+    ANTSpexec.sh -j 3 \"somecommand -r -p\" arg1 arg2 arg3
+
+    ANTSpexec.sh -j 6 -r \"convert -scale 50% * small/small_*\" *.jpg"
+
+In case you terminate this script prematurely by pressing CTRL + C, run
+//killme.sh to terminate any remaining processes.
+
+--------------------------------------------------------------------------------------
+Original script by Kawakamasu:
+http://pebblesinthesand.wordpress.com/category/parallel-computing/
+
+Script adapted by:
+Brian Avants, Penn Image Computing And Science Laboratory
+N.M. van Strien, http://www.mri-tutorial.com | NTNU MR-Center
+--------------------------------------------------------------------------------------
+
+
+=== Output of 'ANTSpexec.sh' (no arguments) ===
+
+
+Usage:
+
+ANTSpexec.sh [-h ] [-r ] [-j nb_jobs ] command arg_list
+
+Optional arguments:
+
+     -h:  Shows help
+
+     -r:  Replace asterix * in the command string with argument
+
+     -j:  Number of cpu cores to use (default 2)
+
+Examples:
+
+    ANTSpexec.sh somecommand arg1 arg2 arg3
+
+    ANTSpexec.sh -j 3 \"somecommand -r -p\" arg1 arg2 arg3
+
+    ANTSpexec.sh -j 6 -r \"convert -scale 50% * small/small_*\" *.jpg"
+
+In case you terminate this script prematurely by pressing CTRL + C, run
+//killme.sh to terminate any remaining processes.
+

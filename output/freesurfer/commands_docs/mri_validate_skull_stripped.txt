@@ -1,0 +1,12 @@
+
+=== Output of 'mri_validate_skull_stripped --help' ===
+
+USAGE: tntester mri_reference mri_test weight (>1) 
+
+=== Output of 'mri_validate_skull_stripped -help' ===
+
+USAGE: tntester mri_reference mri_test weight (>1) 
+
+=== Output of 'mri_validate_skull_stripped' (no arguments) ===
+
+USAGE: tntester mri_reference mri_test weight (>1) 

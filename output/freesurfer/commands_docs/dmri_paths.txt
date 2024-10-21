@@ -1,0 +1,206 @@
+
+=== Output of 'dmri_paths --help' ===
+
+
+USAGE: /usr/local/freesurfer/bin/dmri_paths
+
+Basic inputs (native DWI space)
+   --indir <dir> [...]:
+     Input subject directory (optional)
+     If specified, names of all basic inputs are relative to this
+     Specify multiple input directories for longitudinal data
+   --outdir <dir> [...]:
+     Output directory (one per path)
+   --dwi <file>:
+     DWI volume series
+   --grad <file>:
+     Text file of diffusion gradients
+   --bval <file>:
+     Text file of diffusion b-values
+   --mask <file>:
+     Mask volume
+   --bpdir <dir>:
+     BEDPOST directory
+   --ntr <num>:
+     Max number of tracts per voxel (default 1)
+   --fmin <num>:
+     Tract volume fraction threshold (default 0)
+   --basereg <file> [...]:
+     Base-to-DWI registration, needed for longitudinal data only
+     (.mat, as many as input directories)
+
+Longitudinal inputs (base template space)
+   --basemask <file>:
+     Base template mask volume
+
+End ROIs (atlas space)
+   --roi1 <file> [...]:
+     End ROI 1 (volume or label, one per path)
+   --roi2 <file> [...]:
+     End ROI 2 (volume or label, one per path)
+   --roimesh1 <file> [...]:
+     Mesh for end ROI 1 (for label ROIs)
+   --roimesh2 <file> [...]:
+     Mesh for end ROI 2 (for label ROIs)
+   --roiref1 <file> [...]:
+     Reference volume for end ROI 1 (for label ROIs)
+   --roiref2 <file> [...]:
+     Reference volume for end ROI 2 (for label ROIs)
+
+Prior-related inputs (atlas space)
+   --prior <file0 file1> [...]:
+     Spatial path priors (negative log-likelihoods off and
+     on the path, one pair per path)
+   --nprior <priorfile idfile> [...]:
+     Near-neighbor label priors (negative log-likelihood
+     and list of labels, one pair per path)
+   --nset <num>:
+     Subset of near-neighbor label priors (default all)
+   --lprior <priorfile idfile> [...]:
+     Local-neighbor label priors (negative log-likelihood 
+     and list of labels, one pair per path)
+   --lset <num>:
+     Subset of local-neighbor label priors (default all)
+   --seg <file> [...]:
+     Segmentation map of test subject
+     Specify multiple segmentation maps for longitudinal data
+   --tprior <file> [...]:
+     Path tangent vector priors (negative log-likelihood,
+     one per path)
+   --cprior <file> [...]:
+     Path curvature priors (negative log-likelihood,
+     one per path)
+   --reg <file>:
+     DWI-to-atlas affine registration (.mat)
+   --regnl <file>:
+     DWI-to-atlas nonlinear registration (.m3z)
+
+MCMC options (native diffusion or base template space)
+   --init <file> [...]:
+     Text file of initial control points (one per path)
+   --nb <num>:
+     Number of burn-in samples (default 5000)
+   --ns <num>:
+     Number of post-burn-in samples (default 5000)
+   --nk <num>:
+     Keep every nk-th sample (default 10)
+   --nu <num>:
+     Update proposal every nu-th sample (default 40)
+   --sdp <file> [...]:
+     Text file with initial proposal standard deviations
+     for control point perturbations (one per path or
+     default SD=1 for all control points and all paths)
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+
+
+...
+
+
+=== Output of 'dmri_paths -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'dmri_paths' (no arguments) ===
+
+
+USAGE: /usr/local/freesurfer/bin/dmri_paths
+
+Basic inputs (native DWI space)
+   --indir <dir> [...]:
+     Input subject directory (optional)
+     If specified, names of all basic inputs are relative to this
+     Specify multiple input directories for longitudinal data
+   --outdir <dir> [...]:
+     Output directory (one per path)
+   --dwi <file>:
+     DWI volume series
+   --grad <file>:
+     Text file of diffusion gradients
+   --bval <file>:
+     Text file of diffusion b-values
+   --mask <file>:
+     Mask volume
+   --bpdir <dir>:
+     BEDPOST directory
+   --ntr <num>:
+     Max number of tracts per voxel (default 1)
+   --fmin <num>:
+     Tract volume fraction threshold (default 0)
+   --basereg <file> [...]:
+     Base-to-DWI registration, needed for longitudinal data only
+     (.mat, as many as input directories)
+
+Longitudinal inputs (base template space)
+   --basemask <file>:
+     Base template mask volume
+
+End ROIs (atlas space)
+   --roi1 <file> [...]:
+     End ROI 1 (volume or label, one per path)
+   --roi2 <file> [...]:
+     End ROI 2 (volume or label, one per path)
+   --roimesh1 <file> [...]:
+     Mesh for end ROI 1 (for label ROIs)
+   --roimesh2 <file> [...]:
+     Mesh for end ROI 2 (for label ROIs)
+   --roiref1 <file> [...]:
+     Reference volume for end ROI 1 (for label ROIs)
+   --roiref2 <file> [...]:
+     Reference volume for end ROI 2 (for label ROIs)
+
+Prior-related inputs (atlas space)
+   --prior <file0 file1> [...]:
+     Spatial path priors (negative log-likelihoods off and
+     on the path, one pair per path)
+   --nprior <priorfile idfile> [...]:
+     Near-neighbor label priors (negative log-likelihood
+     and list of labels, one pair per path)
+   --nset <num>:
+     Subset of near-neighbor label priors (default all)
+   --lprior <priorfile idfile> [...]:
+     Local-neighbor label priors (negative log-likelihood 
+     and list of labels, one pair per path)
+   --lset <num>:
+     Subset of local-neighbor label priors (default all)
+   --seg <file> [...]:
+     Segmentation map of test subject
+     Specify multiple segmentation maps for longitudinal data
+   --tprior <file> [...]:
+     Path tangent vector priors (negative log-likelihood,
+     one per path)
+   --cprior <file> [...]:
+     Path curvature priors (negative log-likelihood,
+     one per path)
+   --reg <file>:
+     DWI-to-atlas affine registration (.mat)
+   --regnl <file>:
+     DWI-to-atlas nonlinear registration (.m3z)
+
+MCMC options (native diffusion or base template space)
+   --init <file> [...]:
+     Text file of initial control points (one per path)
+   --nb <num>:
+     Number of burn-in samples (default 5000)
+   --ns <num>:
+     Number of post-burn-in samples (default 5000)
+   --nk <num>:
+     Keep every nk-th sample (default 10)
+   --nu <num>:
+     Update proposal every nu-th sample (default 40)
+   --sdp <file> [...]:
+     Text file with initial proposal standard deviations
+     for control point perturbations (one per path or
+     default SD=1 for all control points and all paths)
+
+Other options
+   --debug:     turn on debugging
+   --checkopts: don't run anything, just check options and exit
+   --help:      print out information on how to use this program
+   --version:   print out version and exit
+

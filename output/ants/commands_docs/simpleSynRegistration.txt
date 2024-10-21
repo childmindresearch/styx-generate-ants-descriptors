@@ -1,0 +1,15 @@
+
+=== Output of 'simpleSynRegistration --help' ===
+
+Usage: simpleSynRegistration
+<Fixed Image> , <Moving Image> , <Initial Transform> , <Output prefix file name without any extension>
+
+=== Output of 'simpleSynRegistration -help' ===
+
+Usage: simpleSynRegistration
+<Fixed Image> , <Moving Image> , <Initial Transform> , <Output prefix file name without any extension>
+
+=== Output of 'simpleSynRegistration' (no arguments) ===
+
+Usage: simpleSynRegistration
+<Fixed Image> , <Moving Image> , <Initial Transform> , <Output prefix file name without any extension>

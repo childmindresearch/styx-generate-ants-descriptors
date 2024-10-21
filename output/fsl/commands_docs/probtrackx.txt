@@ -1,0 +1,118 @@
+
+=== Output of 'probtrackx --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+probtrackx
+
+Usage: 
+probtrackx -s <basename> -m <maskname> -x <seedfile> -o <output> --targetmasks=<textfile>
+ probtrackx --help
+
+
+Compulsory arguments (You MUST set one or more of):
+	-s,--samples	Basename for samples files
+	-m,--mask	Bet binary mask file in diffusion space
+	-x,--seed	Seed volume, or voxel, or ascii file with multiple volumes, or freesurfer label file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	Verbose level, [0-2]
+	-h,--help	Display this message
+	--mode		Use --mode=simple for single seed voxel
+	--targetmasks	File containing a list of target masks - required for seeds_to_targets classification
+	--mask2		Second mask in twomask_symm mode.
+	--waypoints	Waypoint mask or ascii list of waypoint masks - only keep paths going through ALL the masks
+	--network	Activate network mode - only keep paths going through at least one seed mask (required if multiple seed masks)
+	--mesh		Freesurfer-type surface descriptor (in ascii format)
+	--seedref	Reference vol to define seed space in simple mode - diffusion space assumed if absent
+	--dir		Directory to put the final volumes in - code makes this directory - default='logdir'
+	--forcedir	Use the actual directory name given - i.e. don't add + to make a new directory
+	--opd		Output path distribution
+	--pd		Correct path distribution for the length of the pathways
+	--os2t		Output seeds to targets
+	-o,--out	Output file (default='fdt_paths')
+	--avoid		Reject pathways passing through locations given by this mask
+	--stop		Stop tracking at locations given by this mask file
+	--xfm		Transform taking seed space to DTI space (either FLIRT matrix or FNIRT warpfield) - default is identity
+	--invxfm	Transform taking DTI space to seed space (compulsory when using a warpfield for seeds_to_dti)
+	-P,--nsamples	Number of samples - default=5000
+	-S,--nsteps	Number of steps per sample - default=2000
+	--distthresh	Discards samples shorter than this threshold (in mm - default=0)
+	-c,--cthr	Curvature threshold - default=0.2
+	--fibthresh	Volume fraction before subsidary fibre orientations are considered - default=0.01
+	--sampvox	Sample random points within seed voxels
+	--steplength	Steplength in mm - default=0.5
+	-l,--loopcheck	Perform loopchecks on paths - slower, but allows lower curvature threshold
+	-f,--usef	Use anisotropy to constrain tracking
+	--randfib	Default 0. Set to 1 to randomly sample initial fibres (with f > fibthresh). 
+                        Set to 2 to sample in proportion fibres (with f>fibthresh) to f. 
+                        Set to 3 to sample ALL populations at random (even if f<fibthresh)
+	--fibst		Force a starting fibre for tracking - default=1, i.e. first fibre orientation. Only works if randfib==0
+	--modeuler	Use modified euler streamlining
+	--rseed		Random seed
+	--s2tastext	Output seed-to-target counts as a text file (useful when seeding from a mesh)
+
+
+
+=== Output of 'probtrackx -help' ===
+
+-e: Option doesn't exist!
+try: probtrackx --help
+
+=== Output of 'probtrackx' (no arguments) ===
+
+
+
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+probtrackx
+
+Usage: 
+probtrackx -s <basename> -m <maskname> -x <seedfile> -o <output> --targetmasks=<textfile>
+ probtrackx --help
+
+
+Compulsory arguments (You MUST set one or more of):
+	-s,--samples	Basename for samples files
+	-m,--mask	Bet binary mask file in diffusion space
+	-x,--seed	Seed volume, or voxel, or ascii file with multiple volumes, or freesurfer label file
+
+Optional arguments (You may optionally specify one or more of):
+	-V,--verbose	Verbose level, [0-2]
+	-h,--help	Display this message
+	--mode		Use --mode=simple for single seed voxel
+	--targetmasks	File containing a list of target masks - required for seeds_to_targets classification
+	--mask2		Second mask in twomask_symm mode.
+	--waypoints	Waypoint mask or ascii list of waypoint masks - only keep paths going through ALL the masks
+	--network	Activate network mode - only keep paths going through at least one seed mask (required if multiple seed masks)
+	--mesh		Freesurfer-type surface descriptor (in ascii format)
+	--seedref	Reference vol to define seed space in simple mode - diffusion space assumed if absent
+	--dir		Directory to put the final volumes in - code makes this directory - default='logdir'
+	--forcedir	Use the actual directory name given - i.e. don't add + to make a new directory
+	--opd		Output path distribution
+	--pd		Correct path distribution for the length of the pathways
+	--os2t		Output seeds to targets
+	-o,--out	Output file (default='fdt_paths')
+	--avoid		Reject pathways passing through locations given by this mask
+	--stop		Stop tracking at locations given by this mask file
+	--xfm		Transform taking seed space to DTI space (either FLIRT matrix or FNIRT warpfield) - default is identity
+	--invxfm	Transform taking DTI space to seed space (compulsory when using a warpfield for seeds_to_dti)
+	-P,--nsamples	Number of samples - default=5000
+	-S,--nsteps	Number of steps per sample - default=2000
+	--distthresh	Discards samples shorter than this threshold (in mm - default=0)
+	-c,--cthr	Curvature threshold - default=0.2
+	--fibthresh	Volume fraction before subsidary fibre orientations are considered - default=0.01
+	--sampvox	Sample random points within seed voxels
+	--steplength	Steplength in mm - default=0.5
+	-l,--loopcheck	Perform loopchecks on paths - slower, but allows lower curvature threshold
+	-f,--usef	Use anisotropy to constrain tracking
+	--randfib	Default 0. Set to 1 to randomly sample initial fibres (with f > fibthresh). 
+                        Set to 2 to sample in proportion fibres (with f>fibthresh) to f. 
+                        Set to 3 to sample ALL populations at random (even if f<fibthresh)
+	--fibst		Force a starting fibre for tracking - default=1, i.e. first fibre orientation. Only works if randfib==0
+	--modeuler	Use modified euler streamlining
+	--rseed		Random seed
+	--s2tastext	Output seed-to-target counts as a text file (useful when seeding from a mesh)
+
+

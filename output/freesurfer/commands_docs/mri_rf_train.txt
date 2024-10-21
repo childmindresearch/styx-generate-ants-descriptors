@@ -1,0 +1,23 @@
+
+=== Output of 'mri_rf_train --help' ===
+
+unknown option --help
+
+=== Output of 'mri_rf_train -help' ===
+
+unknown option -help
+
+=== Output of 'mri_rf_train' (no arguments) ===
+
+Purpose: /usr/local/freesurfer/bin/mri_rf_train trains GCA data with (multiple) subject(s)
+Usage  : /usr/local/freesurfer/bin/mri_rf_train [options] <subject1> <subject2> ... <output rfa fname>
+where SUBJECTS_DIR env variable must be set.
+Options are:
+	-seg dir        - (required) segmentation volume (path relative to $subject/mri).
+	-xform xform    -  atlas transform (path relative to $subject/mri/transforms).
+	-mask volname   - use volname as a mask (path relative to $subject/mri.
+	-node_spacing   - spacing of classifiers in canonical space
+	-prior_spacing  - spacing of class priors in canonical space
+	-input name     - specifying training data (path relative to $subject/mri).
+                          can specify multiple inputs.  If not specified, "orig" is used
+	-check          - conduct sanity-check of labels for obvious edit errors

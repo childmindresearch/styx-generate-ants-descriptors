@@ -1,0 +1,13 @@
+
+=== Output of 'mri_extract_fcd_features --help' ===
+
+unknown option --help
+
+=== Output of 'mri_extract_fcd_features -help' ===
+
+unknown option -help
+
+=== Output of 'mri_extract_fcd_features' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_extract_fcd_features [options] <subject> <hemi> <output file>
+	sdir <subjects dir> - specify SUBJECTS_DIR on the command line instead of in env

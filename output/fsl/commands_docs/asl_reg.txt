@@ -1,0 +1,91 @@
+
+=== Output of 'asl_reg --help' ===
+
+ASL_REG
+Version: v4.0.15-dirty Fri Jul 17 11:23:03 2020
+Registration for ASL data
+
+Usage (optional parameters in {}):
+ -i         : specify input image - e.g. perfusion-weighted image
+ {-o}       : specify output directory - {default: pwd}
+ -s         : specify structural brain image - wholehead
+ {--sbet}   : specify structural brain image - brain extracted
+ {--init}   : specify initial transformation matrix for input to structural image
+
+ Extra 'final' registration refinement (optional parameters in {}):
+  -c            : specify an ASL control/calibration image for initial registration - brain extracted
+  {-m}          : specify a brain mask for brain extraction of the input image
+  {--tissseg}   : specify tissue segmenation image for bbr (in structural image space)
+  {--finalonly} : only run the 'final' registration step
+
+ Distortion correction using fieldmap (see epi_reg):
+ --fmap=<image>         : fieldmap image (in rad/s)
+ --fmapmag=<image>      : fieldmap magnitude image - wholehead extracted
+ --fmapmagbrain=<image> : fieldmap magnitude image - brain extracted
+ --wmseg=<image>        : white matter segmentation of T1 image
+ --echospacing=<val>    : Effective EPI echo spacing (sometimes called dwell time) - in seconds
+ --pedir=<dir>          : phase encoding direction, dir = x/y/z/-x/-y/-z
+ {--nofmapreg}          : do not perform registration of fmap to T1 (use if fmap already registered) 
+
+Error! Unrecognised option on command line: --help
+
+
+=== Output of 'asl_reg -help' ===
+
+ASL_REG
+Version: v4.0.15-dirty Fri Jul 17 11:23:03 2020
+Registration for ASL data
+
+Usage (optional parameters in {}):
+ -i         : specify input image - e.g. perfusion-weighted image
+ {-o}       : specify output directory - {default: pwd}
+ -s         : specify structural brain image - wholehead
+ {--sbet}   : specify structural brain image - brain extracted
+ {--init}   : specify initial transformation matrix for input to structural image
+
+ Extra 'final' registration refinement (optional parameters in {}):
+  -c            : specify an ASL control/calibration image for initial registration - brain extracted
+  {-m}          : specify a brain mask for brain extraction of the input image
+  {--tissseg}   : specify tissue segmenation image for bbr (in structural image space)
+  {--finalonly} : only run the 'final' registration step
+
+ Distortion correction using fieldmap (see epi_reg):
+ --fmap=<image>         : fieldmap image (in rad/s)
+ --fmapmag=<image>      : fieldmap magnitude image - wholehead extracted
+ --fmapmagbrain=<image> : fieldmap magnitude image - brain extracted
+ --wmseg=<image>        : white matter segmentation of T1 image
+ --echospacing=<val>    : Effective EPI echo spacing (sometimes called dwell time) - in seconds
+ --pedir=<dir>          : phase encoding direction, dir = x/y/z/-x/-y/-z
+ {--nofmapreg}          : do not perform registration of fmap to T1 (use if fmap already registered) 
+
+Error! Unrecognised option on command line: -help
+
+
+=== Output of 'asl_reg' (no arguments) ===
+
+ASL_REG
+Version: v4.0.15-dirty Fri Jul 17 11:23:03 2020
+Registration for ASL data
+
+Usage (optional parameters in {}):
+ -i         : specify input image - e.g. perfusion-weighted image
+ {-o}       : specify output directory - {default: pwd}
+ -s         : specify structural brain image - wholehead
+ {--sbet}   : specify structural brain image - brain extracted
+ {--init}   : specify initial transformation matrix for input to structural image
+
+ Extra 'final' registration refinement (optional parameters in {}):
+  -c            : specify an ASL control/calibration image for initial registration - brain extracted
+  {-m}          : specify a brain mask for brain extraction of the input image
+  {--tissseg}   : specify tissue segmenation image for bbr (in structural image space)
+  {--finalonly} : only run the 'final' registration step
+
+ Distortion correction using fieldmap (see epi_reg):
+ --fmap=<image>         : fieldmap image (in rad/s)
+ --fmapmag=<image>      : fieldmap magnitude image - wholehead extracted
+ --fmapmagbrain=<image> : fieldmap magnitude image - brain extracted
+ --wmseg=<image>        : white matter segmentation of T1 image
+ --echospacing=<val>    : Effective EPI echo spacing (sometimes called dwell time) - in seconds
+ --pedir=<dir>          : phase encoding direction, dir = x/y/z/-x/-y/-z
+ {--nofmapreg}          : do not perform registration of fmap to T1 (use if fmap already registered) 
+

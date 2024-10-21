@@ -1,0 +1,23 @@
+
+=== Output of 'mris_curvature2image --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/mris_curvature2image -s surface -m mask -o outputOverlayImage -d outputDistanceImage -c overlay -l label -inv -r radius
+
+=== Output of 'mris_curvature2image -help' ===
+
+--------------------------------------------------------------------------
+ERROR: FreeSurfer license file /usr/local/freesurfer/.license not found.
+  If you are outside the NMR-Martinos Center,
+  go to http://surfer.nmr.mgh.harvard.edu/registration.html to 
+  get a valid license file (it's free).
+  If you are inside the NMR-Martinos Center,
+  make sure to source the standard environment.
+  A path to an alternative license file can also be
+  specified with the FS_LICENSE environmental variable.
+--------------------------------------------------------------------------
+
+=== Output of 'mris_curvature2image' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/mris_curvature2image -s surface -m mask -o outputOverlayImage -d outputDistanceImage -c overlay -l label -inv -r radius

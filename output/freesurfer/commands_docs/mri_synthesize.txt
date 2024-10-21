@@ -1,0 +1,20 @@
+
+=== Output of 'mri_synthesize --help' ===
+
+
+This program will synthesize a flash acquisition based on previously computed T1/PD maps
+
+=== Output of 'mri_synthesize -help' ===
+
+unknown option -help
+usage: /usr/local/freesurfer/bin/mri_synthesize [options] <TR> <alpha (deg)> <TE> <T1 volume> <PD volume> <output volume>
+The -w switch will use a fixed weighting in order to generate an output volume with
+optimal gray/white contrast
+
+=== Output of 'mri_synthesize' (no arguments) ===
+
+
+This program will synthesize a flash acquisition based on previously computed T1/PD maps
+usage: /usr/local/freesurfer/bin/mri_synthesize [options] <TR> <alpha (deg)> <TE> <T1 volume> <PD volume> <output volume>
+The -w switch will use a fixed weighting in order to generate an output volume with
+optimal gray/white contrast

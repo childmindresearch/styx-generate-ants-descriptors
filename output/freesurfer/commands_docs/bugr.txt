@@ -1,0 +1,75 @@
+
+=== Output of 'bugr --help' ===
+
+
+Cut-and-paste the following info into your FreeSurfer problem report:
+---------------------------------------------------------------------
+
+FREESURFER_HOME: /usr/local/freesurfer
+
+Build stamp: freesurfer-linux-centos8_x86_64-7.4.1-20230613-7eb8460
+
+RedHat release: CentOS Stream release 8
+
+Kernel info: Linux 5.15.153.1-microsoft-standard-WSL2 x86_64
+
+---------------------------------------------------------------------
+Please include the following additional information in your report:
+
+  1) subject name
+  2) the entire command-line executed
+  3) the error message generated
+  4) optionally include the subject's /script/recon-all.log
+
+See also: http://surfer.nmr.mgh.harvard.edu/fswiki/BugReporting
+
+
+=== Output of 'bugr -help' ===
+
+
+Cut-and-paste the following info into your FreeSurfer problem report:
+---------------------------------------------------------------------
+
+FREESURFER_HOME: /usr/local/freesurfer
+
+Build stamp: freesurfer-linux-centos8_x86_64-7.4.1-20230613-7eb8460
+
+RedHat release: CentOS Stream release 8
+
+Kernel info: Linux 5.15.153.1-microsoft-standard-WSL2 x86_64
+
+---------------------------------------------------------------------
+Please include the following additional information in your report:
+
+  1) subject name
+  2) the entire command-line executed
+  3) the error message generated
+  4) optionally include the subject's /script/recon-all.log
+
+See also: http://surfer.nmr.mgh.harvard.edu/fswiki/BugReporting
+
+
+=== Output of 'bugr' (no arguments) ===
+
+
+Cut-and-paste the following info into your FreeSurfer problem report:
+---------------------------------------------------------------------
+
+FREESURFER_HOME: /usr/local/freesurfer
+
+Build stamp: freesurfer-linux-centos8_x86_64-7.4.1-20230613-7eb8460
+
+RedHat release: CentOS Stream release 8
+
+Kernel info: Linux 5.15.153.1-microsoft-standard-WSL2 x86_64
+
+---------------------------------------------------------------------
+Please include the following additional information in your report:
+
+  1) subject name
+  2) the entire command-line executed
+  3) the error message generated
+  4) optionally include the subject's /script/recon-all.log
+
+See also: http://surfer.nmr.mgh.harvard.edu/fswiki/BugReporting
+

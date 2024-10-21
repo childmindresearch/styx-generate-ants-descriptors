@@ -1,0 +1,18 @@
+
+=== Output of 'labels_disjoint --help' ===
+
+description: label1 minus label2
+usage:   /usr/local/freesurfer/bin/labels_disjoint <label1> <label2> <outputname>
+example: /usr/local/freesurfer/bin/labels_disjoint rh.Occ.label rh.V1.label rh.Occ_V1.label
+
+=== Output of 'labels_disjoint -help' ===
+
+description: label1 minus label2
+usage:   /usr/local/freesurfer/bin/labels_disjoint <label1> <label2> <outputname>
+example: /usr/local/freesurfer/bin/labels_disjoint rh.Occ.label rh.V1.label rh.Occ_V1.label
+
+=== Output of 'labels_disjoint' (no arguments) ===
+
+description: label1 minus label2
+usage:   /usr/local/freesurfer/bin/labels_disjoint <label1> <label2> <outputname>
+example: /usr/local/freesurfer/bin/labels_disjoint rh.Occ.label rh.V1.label rh.Occ_V1.label

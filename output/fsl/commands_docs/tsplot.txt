@@ -1,0 +1,32 @@
+
+=== Output of 'tsplot --help' ===
+
+Image Exception : #63 :: No image files match: --help/filtered_func_data
+Image Exception : #22 :: Failed to read volume --help/filtered_func_data
+Error : No image files match: --help/filtered_func_data
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume --help/filtered_func_data
+Error : No image files match: --help/filtered_func_data
+timeout: the monitored command dumped core
+
+=== Output of 'tsplot -help' ===
+
+Image Exception : #63 :: No image files match: -help/filtered_func_data
+Image Exception : #22 :: Failed to read volume -help/filtered_func_data
+Error : No image files match: -help/filtered_func_data
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume -help/filtered_func_data
+Error : No image files match: -help/filtered_func_data
+timeout: the monitored command dumped core
+
+=== Output of 'tsplot' (no arguments) ===
+
+Usage: tsplot <feat_directory.feat> [options]
+[-f <4D_data>] input main filtered data, in case it's not <feat_directory.feat>/filtered_func_data
+[-c <X Y Z>] : use X,Y,Z instead of max Z stat position
+[-C <X Y Z output_file.txt>] : use X,Y,Z to output time series only - no stats or modelling
+[-m <mask>] : use mask image instead of thresholded activation images
+[-o <output_directory>] change output directory from default of input feat directory
+[-n] don't weight cluster averaging with Z stats
+[-p] prewhiten data and model timeseries before plotting
+[-d] don't keep raw data text files

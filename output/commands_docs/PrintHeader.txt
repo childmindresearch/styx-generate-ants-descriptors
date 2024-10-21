@@ -1,7 +1,0 @@
-Usage:  PrintHeader image.ext [whatInformation]
-  whatInformation:  
-    0 = origin
-    1 = spacing
-    2 = size
-    3 = index
-    4 = direction

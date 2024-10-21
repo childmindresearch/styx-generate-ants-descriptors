@@ -1,0 +1,28 @@
+
+=== Output of '@parse_afni_name --help' ===
+
+. --help  
+
+=== Output of '@parse_afni_name -help' ===
+
+Usage 1: A script to parse an AFNI name
+
+   @parse_afni_name <name>
+
+Outputs the path, prefix, view and sub-brick selection string.
+
+If view is missing (nifti file), and sub-brick selection
+is used, view is set to '----'
+
+
+=== Output of '@parse_afni_name' (no arguments) ===
+
+Usage 1: A script to parse an AFNI name
+
+   @parse_afni_name <name>
+
+Outputs the path, prefix, view and sub-brick selection string.
+
+If view is missing (nifti file), and sub-brick selection
+is used, view is set to '----'
+

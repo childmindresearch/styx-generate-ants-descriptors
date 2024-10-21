@@ -1,0 +1,12 @@
+
+=== Output of 'tridec --help' ===
+
+Usage: /usr/local/freesurfer/bin/tridec subject_name fine_file ico_file out_file
+
+=== Output of 'tridec -help' ===
+
+Usage: /usr/local/freesurfer/bin/tridec subject_name fine_file ico_file out_file
+
+=== Output of 'tridec' (no arguments) ===
+
+Usage: /usr/local/freesurfer/bin/tridec subject_name fine_file ico_file out_file

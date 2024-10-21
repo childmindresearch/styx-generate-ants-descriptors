@@ -1,0 +1,24 @@
+
+=== Output of 'estimate_metric_distortion --help' ===
+
+estimate_metric_distortion  <original mesh> <transformed mesh > < output> <-option>   
+ Compares triangle areas before and after registration - can be used to assess strength of regularisation
+ options: 
+ -target project result onto a target image (requires argument)
+ -abs take absolute value 
+
+=== Output of 'estimate_metric_distortion -help' ===
+
+estimate_metric_distortion  <original mesh> <transformed mesh > < output> <-option>   
+ Compares triangle areas before and after registration - can be used to assess strength of regularisation
+ options: 
+ -target project result onto a target image (requires argument)
+ -abs take absolute value 
+
+=== Output of 'estimate_metric_distortion' (no arguments) ===
+
+estimate_metric_distortion  <original mesh> <transformed mesh > < output> <-option>   
+ Compares triangle areas before and after registration - can be used to assess strength of regularisation
+ options: 
+ -target project result onto a target image (requires argument)
+ -abs take absolute value 

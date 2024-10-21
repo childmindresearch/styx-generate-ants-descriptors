@@ -1,0 +1,67 @@
+
+=== Output of 'mri_relabel_nonwm_hypos --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_relabel_nonwm_hypos 
+
+   --i inputseg  : input segmentation with non-wm-hypos labeled as 80, 81, or 82
+   --o outputseg : segmentation with non-wm-hypos relabeled 
+   --seg seg newseg : relabel hypos adjacent to seg as newseg (can use multiple --seg args)
+   --seg-default : use default relabeling scheme
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+
+This program relabels non-WM hypointensities (80, 81, 82) based
+on proximity to a nearby label. The set of nearby labels is 
+specified by the user using either --seg or --seg default.
+Eg, --seg 11 270 would replace non-wm hypos next to left caudate with 
+the value 270. 
+Alternatively, --seg-default will create the following list
+
+  11 Left-Caudate              will be relabeled as  270
+  12 Left-Putamen              will be relabeled as  271
+  13 Left-Pallidum             will be relabeled as  272
+  17 Left-Hippocampus          will be relabeled as  273
+  18 Left-Amygdala             will be relabeled as  274
+  26 Left-Accumbens-area       will be relabeled as  275
+  10 Left-Thalamus             will be relabeled as  276
+  50 Right-Caudate             will be relabeled as  280
+  51 Right-Putamen             will be relabeled as  281
+  52 Right-Pallidum            will be relabeled as  282
+  53 Right-Hippocampus         will be relabeled as  283
+  54 Right-Amygdala            will be relabeled as  284
+  58 Right-Accumbens-area      will be relabeled as  285
+  49 Right-Thalamus            will be relabeled as  286
+
+The user will need to create a custom color to view/analyze the new segmentation
+The color table must be formated like $FREESURFER_HOME/FreeSurferColorLUT.txt, eg
+   270 left-caudate-nonwm-hypos   120 120 0 0
+This can be used with tkmedit, like tkmedit subject nu.mgz -seg newseg.mgz newcolortable
+or when running mri_segstats (passing the colortable with --ctab)
+
+
+=== Output of 'mri_relabel_nonwm_hypos -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_relabel_nonwm_hypos' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_relabel_nonwm_hypos 
+
+   --i inputseg  : input segmentation with non-wm-hypos labeled as 80, 81, or 82
+   --o outputseg : segmentation with non-wm-hypos relabeled 
+   --seg seg newseg : relabel hypos adjacent to seg as newseg (can use multiple --seg args)
+   --seg-default : use default relabeling scheme
+
+   --debug     turn on debugging
+   --checkopts don't run anything, just check options and exit
+   --help      print out information on how to use this program
+   --version   print out version and exit
+
+7.4.1
+

@@ -1,0 +1,95 @@
+
+=== Output of 'AntsN4BiasFieldCorrectionFs --help' ===
+
+				Help
+
+NAME
+	AntsN4BiasFieldCorrectionFs
+
+SYNOPSIS
+	AntsN4BiasFieldCorrectionFs [options] -i <invol> -o <outvol>
+
+DESCRIPTION
+	Runs N4 (nonparameteric, nonuniform normalization) retrospective bias 
+	correction on an image. This programs wraps the 
+	AntsN4BiasFieldCorrection utility available in the ANTs package (see 
+	http://stnava.github.io/ANTs).
+
+REQUIRED FLAGGED ARGUMENTS
+	-i, --input FILE
+		Input volume file.
+
+	-o, --output FILE
+		Corrected volume file.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-m, --mask FILE
+		Use image mask during correction.
+
+	-s, --shrink INT
+		Resample factor to decrease computation time. Default is 4.
+
+	-t, --iters INT [INT...]
+		Number of resolutions and max iterations per resolution. 
+		Default is `50 50 50 50`, which indicates 4 fitting levels 
+		with 50 iterations each.
+
+	-d, --dtype DTYPE
+		Corrected output datatype. Can be float, uchar, or int. 
+		Default is float.
+
+	-r, --replace-zeros offset scale remask
+		Replace 0s with offset + scale*rand(). Values will be remasked
+		in the output if remask=1.
+
+
+
+=== Output of 'AntsN4BiasFieldCorrectionFs -help' ===
+
+error: unexpected argument '-help'
+
+=== Output of 'AntsN4BiasFieldCorrectionFs' (no arguments) ===
+
+				Help
+
+NAME
+	AntsN4BiasFieldCorrectionFs
+
+SYNOPSIS
+	AntsN4BiasFieldCorrectionFs [options] -i <invol> -o <outvol>
+
+DESCRIPTION
+	Runs N4 (nonparameteric, nonuniform normalization) retrospective bias 
+	correction on an image. This programs wraps the 
+	AntsN4BiasFieldCorrection utility available in the ANTs package (see 
+	http://stnava.github.io/ANTs).
+
+REQUIRED FLAGGED ARGUMENTS
+	-i, --input FILE
+		Input volume file.
+
+	-o, --output FILE
+		Corrected volume file.
+
+OPTIONAL FLAGGED ARGUMENTS
+	-m, --mask FILE
+		Use image mask during correction.
+
+	-s, --shrink INT
+		Resample factor to decrease computation time. Default is 4.
+
+	-t, --iters INT [INT...]
+		Number of resolutions and max iterations per resolution. 
+		Default is `50 50 50 50`, which indicates 4 fitting levels 
+		with 50 iterations each.
+
+	-d, --dtype DTYPE
+		Corrected output datatype. Can be float, uchar, or int. 
+		Default is float.
+
+	-r, --replace-zeros offset scale remask
+		Replace 0s with offset + scale*rand(). Values will be remasked
+		in the output if remask=1.
+
+
+error: missing required input '--input'

@@ -1,0 +1,12 @@
+
+=== Output of 'hist2prob --help' ===
+
+Usage: hist2prob <image> <size> <low_thresh> <high_thresh>
+
+=== Output of 'hist2prob -help' ===
+
+Usage: hist2prob <image> <size> <low_thresh> <high_thresh>
+
+=== Output of 'hist2prob' (no arguments) ===
+
+Usage: hist2prob <image> <size> <low_thresh> <high_thresh>

@@ -1,0 +1,45 @@
+
+=== Output of '@Install_MBM_Marmoset --help' ===
+
+Error: Option or parameter '--help' not understood
+
+=== Output of '@Install_MBM_Marmoset -help' ===
+
+     Installs the NIH marmoset template and atlases described
+     in:
+         "Marmoset template"
+         Cirong Liu, et al, submitted
+     
+     After the archive is downloaded and unpacked, see its README.txt
+     for details.
+     Options:
+     [-wget]: Use wget to download archive. Script chooses by default
+              with preference for curl
+     [-curl]: Use curl to download archive. Script chooses by default
+              with preference for curl
+
+
+=== Output of '@Install_MBM_Marmoset' (no arguments) ===
+
+/usr/bin/curl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  5  238M    5 12.7M    0     0  15.8M      0  0:00:15 --:--:--  0:00:15 15.8M 15  238M   15 35.9M    0     0  19.9M      0  0:00:11  0:00:01  0:00:10 19.9M 25  238M   25 60.5M    0     0  21.5M      0  0:00:11  0:00:02  0:00:09 21.5M 36  238M   36 86.3M    0     0  22.6M      0  0:00:10  0:00:03  0:00:07 22.6M 47  238M   47  112M    0     0  23.3M      0  0:00:10  0:00:04  0:00:06 23.3M 57  238M   57  138M    0     0  23.7M      0  0:00:10  0:00:05  0:00:05 25.0M 68  238M   68  164M    0     0  24.1M      0  0:00:09  0:00:06  0:00:03 25.6M 79  238M   79  190M    0     0  24.3M      0  0:00:09  0:00:07  0:00:02 25.9M 90  238M   90  216M    0     0  24.5M      0  0:00:09  0:00:08  0:00:01 25.9M100  238M  100  238M    0     0  24.6M      0  0:00:09  0:00:09 --:--:-- 25.9M
+MBMv3_dist/
+MBMv3_dist/template_DTI_TR_brain.nii.gz
+MBMv3_dist/template_T2w_nosharp.nii.gz
+MBMv3_dist/._surfAFNI.CT.skull.surf.gii
+MBMv3_dist/surfAFNI.CT.skull.surf.gii
+MBMv3_dist/template_MPRAGE_TI1200ms_nosharp.nii.gz
+MBMv3_dist/._surfFS.rh.white.surf.gii
+MBMv3_dist/surfFS.rh.white.surf.gii
+MBMv3_dist/template_DTI_tensor_brain.nii.gz
+MBMv3_dist/template_myelinmap_nosharp.nii.gz
+MBMv3_dist/._segmentation_six_types_prob_2_subcorticalgray.nii.gz
+MBMv3_dist/segmentation_six_types_prob_2_subcorticalgray.nii.gz
+MBMv3_dist/template_DTI_RD.nii.gz
+MBMv3_dist/._surfFS.rh.full.flat.patch.surf.gii
+MBMv3_dist/surfFS.rh.full.flat.patch.surf.gii
+MBMv3_dist/._segmentation_six_types_prob_5_vessel.nii.gz
+MBMv3_dist/segmentation_six_types_prob_5_vessel.nii.gz
+Command timed out after 10 seconds

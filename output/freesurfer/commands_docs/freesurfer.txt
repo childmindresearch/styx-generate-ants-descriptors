@@ -1,0 +1,78 @@
+
+=== Output of 'freesurfer --help' ===
+
+
+FreeSurfer is a set of tools for the analysis and visualization
+of structural and functional brain imaging data. FreeSurfer
+also refers to the structural imaging stream within the
+FreeSurfer suite.
+
+Users should consult the online documentation available at:
+
+  http://surfer.nmr.mgh.harvard.edu
+
+Alternatively, the 'recon-all' command help-text provides
+adequate information to begin processing subject data, such
+as the sample subject 'bert' found in the 'freesurfer/subjects'
+directory.  Type 'recon-all --help' to view this help-text.
+
+Direct comments and questions to:
+
+  freesurfer@nmr.mgh.harvard.edu
+
+You are running this version of FreeSurfer:
+
+  freesurfer-linux-centos8_x86_64-7.4.1-20230613-7eb8460
+
+
+=== Output of 'freesurfer -help' ===
+
+
+FreeSurfer is a set of tools for the analysis and visualization
+of structural and functional brain imaging data. FreeSurfer
+also refers to the structural imaging stream within the
+FreeSurfer suite.
+
+Users should consult the online documentation available at:
+
+  http://surfer.nmr.mgh.harvard.edu
+
+Alternatively, the 'recon-all' command help-text provides
+adequate information to begin processing subject data, such
+as the sample subject 'bert' found in the 'freesurfer/subjects'
+directory.  Type 'recon-all --help' to view this help-text.
+
+Direct comments and questions to:
+
+  freesurfer@nmr.mgh.harvard.edu
+
+You are running this version of FreeSurfer:
+
+  freesurfer-linux-centos8_x86_64-7.4.1-20230613-7eb8460
+
+
+=== Output of 'freesurfer' (no arguments) ===
+
+
+FreeSurfer is a set of tools for the analysis and visualization
+of structural and functional brain imaging data. FreeSurfer
+also refers to the structural imaging stream within the
+FreeSurfer suite.
+
+Users should consult the online documentation available at:
+
+  http://surfer.nmr.mgh.harvard.edu
+
+Alternatively, the 'recon-all' command help-text provides
+adequate information to begin processing subject data, such
+as the sample subject 'bert' found in the 'freesurfer/subjects'
+directory.  Type 'recon-all --help' to view this help-text.
+
+Direct comments and questions to:
+
+  freesurfer@nmr.mgh.harvard.edu
+
+You are running this version of FreeSurfer:
+
+  freesurfer-linux-centos8_x86_64-7.4.1-20230613-7eb8460
+

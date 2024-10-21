@@ -1,0 +1,33 @@
+
+=== Output of 'fsl_gen_3D --help' ===
+
+
+Usage: fsl_gen_3D <input> <output> 
+
+       Tool to generate a 3D snapshot of a structural image.
+
+
+Error: input image  not valid
+
+
+=== Output of 'fsl_gen_3D -help' ===
+
+
+Usage: fsl_gen_3D <input> <output> 
+
+       Tool to generate a 3D snapshot of a structural image.
+
+
+Error: input image  not valid
+
+
+=== Output of 'fsl_gen_3D' (no arguments) ===
+
+
+Usage: fsl_gen_3D <input> <output> 
+
+       Tool to generate a 3D snapshot of a structural image.
+
+
+Error: No input image.
+

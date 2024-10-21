@@ -1,0 +1,198 @@
+
+=== Output of '3dPolyfit --help' ===
+
+++ 3dPolyfit: AFNI version=AFNI_24.2.06 (Sep 12 2024) [64-bit]
+[7m** FATAL ERROR:[0m Unknown option: --help
+** Program compile date = Sep 12 2024
+
+=== Output of '3dPolyfit -help' ===
+
+
+Usage: 3dPolyfit [options] dataset   ~1~
+
+* Fits a polynomial in space to the input dataset and outputs that fitted dataset.
+
+* You can also add your own basis datasets to the fitting mix, using the
+  '-base' option.
+
+* You can get the fit coefficients using the '-1Dcoef' option.
+
+--------
+Options:   ~1~
+--------
+
+  -nord n    = Maximum polynomial order (0..9) [default order=3]
+                [n=0 is the constant 1]
+                [n=-1 means only use volumes from '-base']
+
+  -blur f    = Gaussian blur input dataset (inside mask) with FWHM='f' (mm)
+
+  -mrad r    = Radius (voxels) of preliminary median filter of input
+                [default is no blurring of either type; you can]
+                [do both types (Gaussian and median), but why??]
+                [N.B.: median blur is slower than Gaussian]
+
+  -prefix pp = Use 'pp' for prefix of output dataset (the fit).
+                [default prefix is 'Polyfit'; use NULL to skip this output]
+
+  -resid  rr = Use 'rr' for the prefix of the residual dataset.
+                [default is not to output residuals]
+
+  -1Dcoef cc = Save coefficients of fit into text file cc.1D.
+                [default is not to save these coefficients]
+
+  -automask  = Create a mask (a la 3dAutomask)
+  -mask mset = Create a mask from nonzero voxels in 'mset'.
+                [default is not to use a mask, which is probably a bad idea]
+
+  -mone      = Scale the mean value of the fit (inside the mask) to 1.
+                [probably this option is not useful for anything]
+
+  -mclip     = Clip fit values outside the rectilinear box containing the
+               mask to the edge of that box, to avoid weird artifacts.
+
+  -meth mm   = Set 'mm' to 2 for least squares fit;
+               set it to 1 for L1 fit [default method=2]
+                [Note that L1 fitting is slower than L2 fitting!]
+
+  -base bb   = In addition to the polynomial fit, also use
+               the volumes in dataset 'bb' as extra basis functions.
+                [If you use a base dataset, then you can set nord]
+                [to -1, to skip using any spatial polynomial fit.]
+
+  -verb      = Print fun and useful progress reports :-)
+
+------
+Notes:   ~1~
+------
+* Output dataset is always stored in float format.
+
+* If the input dataset has more than 1 sub-brick, only sub-brick #0
+  is processed. To fit more than one volume, you'll have to use a script
+  to loop over the input sub-bricks, and then glue (3dTcat) the results
+  together to get a final result. A simple example:
+     #!/bin/tcsh
+     set base = model.nii
+     set dset = errts.nii
+     set nval = `3dnvals $dset`
+     @ vtop = $nval - 1
+     foreach vv ( `count_afni 0 $vtop` )
+       3dPolyfit -base "$base" -nord 0 -mask "$base" -1Dcoef QQ.$vv -prefix QQ.$vv.nii $dset"[$vv]"
+     end
+     3dTcat -prefix QQall.nii QQ.0*.nii
+     1dcat  QQ.0*.1D > QQall.1D
+     m QQ.0*
+     exit 0
+
+* If the '-base' dataset has multiple sub-bricks, all of them are used.
+
+* You can use the '-base' option more than once, if desired or needed.
+
+* The original motivation for this program was to fit a spatial model
+  to a field map MRI, but that didn't turn out to be useful. Nevertheless,
+  I make this program available to someone who might find it beguiling.
+
+* If you really want, I could allow you to put sign constraints on the
+  fit coefficients (e.g., say that the coefficient for a given base volume
+  should be non-negative). But you'll have to beg for this.
+
+-- Emitted by RWCox
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+
+
+=== Output of '3dPolyfit' (no arguments) ===
+
+
+Usage: 3dPolyfit [options] dataset   ~1~
+
+* Fits a polynomial in space to the input dataset and outputs that fitted dataset.
+
+* You can also add your own basis datasets to the fitting mix, using the
+  '-base' option.
+
+* You can get the fit coefficients using the '-1Dcoef' option.
+
+--------
+Options:   ~1~
+--------
+
+  -nord n    = Maximum polynomial order (0..9) [default order=3]
+                [n=0 is the constant 1]
+                [n=-1 means only use volumes from '-base']
+
+  -blur f    = Gaussian blur input dataset (inside mask) with FWHM='f' (mm)
+
+  -mrad r    = Radius (voxels) of preliminary median filter of input
+                [default is no blurring of either type; you can]
+                [do both types (Gaussian and median), but why??]
+                [N.B.: median blur is slower than Gaussian]
+
+  -prefix pp = Use 'pp' for prefix of output dataset (the fit).
+                [default prefix is 'Polyfit'; use NULL to skip this output]
+
+  -resid  rr = Use 'rr' for the prefix of the residual dataset.
+                [default is not to output residuals]
+
+  -1Dcoef cc = Save coefficients of fit into text file cc.1D.
+                [default is not to save these coefficients]
+
+  -automask  = Create a mask (a la 3dAutomask)
+  -mask mset = Create a mask from nonzero voxels in 'mset'.
+                [default is not to use a mask, which is probably a bad idea]
+
+  -mone      = Scale the mean value of the fit (inside the mask) to 1.
+                [probably this option is not useful for anything]
+
+  -mclip     = Clip fit values outside the rectilinear box containing the
+               mask to the edge of that box, to avoid weird artifacts.
+
+  -meth mm   = Set 'mm' to 2 for least squares fit;
+               set it to 1 for L1 fit [default method=2]
+                [Note that L1 fitting is slower than L2 fitting!]
+
+  -base bb   = In addition to the polynomial fit, also use
+               the volumes in dataset 'bb' as extra basis functions.
+                [If you use a base dataset, then you can set nord]
+                [to -1, to skip using any spatial polynomial fit.]
+
+  -verb      = Print fun and useful progress reports :-)
+
+------
+Notes:   ~1~
+------
+* Output dataset is always stored in float format.
+
+* If the input dataset has more than 1 sub-brick, only sub-brick #0
+  is processed. To fit more than one volume, you'll have to use a script
+  to loop over the input sub-bricks, and then glue (3dTcat) the results
+  together to get a final result. A simple example:
+     #!/bin/tcsh
+     set base = model.nii
+     set dset = errts.nii
+     set nval = `3dnvals $dset`
+     @ vtop = $nval - 1
+     foreach vv ( `count_afni 0 $vtop` )
+       3dPolyfit -base "$base" -nord 0 -mask "$base" -1Dcoef QQ.$vv -prefix QQ.$vv.nii $dset"[$vv]"
+     end
+     3dTcat -prefix QQall.nii QQ.0*.nii
+     1dcat  QQ.0*.1D > QQall.1D
+     m QQ.0*
+     exit 0
+
+* If the '-base' dataset has multiple sub-bricks, all of them are used.
+
+* You can use the '-base' option more than once, if desired or needed.
+
+* The original motivation for this program was to fit a spatial model
+  to a field map MRI, but that didn't turn out to be useful. Nevertheless,
+  I make this program available to someone who might find it beguiling.
+
+* If you really want, I could allow you to put sign constraints on the
+  fit coefficients (e.g., say that the coefficient for a given base volume
+  should be non-negative). But you'll have to beg for this.
+
+-- Emitted by RWCox
+
+++ Compile date = Sep 12 2024 {AFNI_24.2.06:linux_ubuntu_16_64_glw_local_shared}
+

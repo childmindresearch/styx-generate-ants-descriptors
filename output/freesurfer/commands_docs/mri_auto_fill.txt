@@ -1,0 +1,12 @@
+
+=== Output of 'mri_auto_fill --help' ===
+
+error: mri_auto_fill has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_auto_fill -help' ===
+
+error: mri_auto_fill has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_auto_fill' (no arguments) ===
+
+error: mri_auto_fill has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

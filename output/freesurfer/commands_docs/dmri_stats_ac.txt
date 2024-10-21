@@ -1,0 +1,14 @@
+
+=== Output of 'dmri_stats_ac --help' ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_stats_ac -i anatomicutsFolder -n numClusters -c correspondenceFile -m <numMeasures> <measure1Name> <measure1> ... <measureNName> <measureN> -o output
+
+=== Output of 'dmri_stats_ac -help' ===
+
+timeout: the monitored command dumped core
+
+=== Output of 'dmri_stats_ac' (no arguments) ===
+
+Usage: 
+/usr/local/freesurfer/bin/dmri_stats_ac -i anatomicutsFolder -n numClusters -c correspondenceFile -m <numMeasures> <measure1Name> <measure1> ... <measureNName> <measureN> -o output

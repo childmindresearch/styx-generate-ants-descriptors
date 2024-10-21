@@ -1,0 +1,21 @@
+
+=== Output of 'MemoryTest --help' ===
+
+Basic useage ex: 
+MemoryTest ImageDimension whichmetric image1.ext image2.ext NumberOfFieldsToAllocate 
+  outimage and logfile are optional  
+  Metric 0 - MeanSquareDifference, 1 - Cross-Correlation, 2-Mutual Information  
+
+=== Output of 'MemoryTest -help' ===
+
+Basic useage ex: 
+MemoryTest ImageDimension whichmetric image1.ext image2.ext NumberOfFieldsToAllocate 
+  outimage and logfile are optional  
+  Metric 0 - MeanSquareDifference, 1 - Cross-Correlation, 2-Mutual Information  
+
+=== Output of 'MemoryTest' (no arguments) ===
+
+Basic useage ex: 
+MemoryTest ImageDimension whichmetric image1.ext image2.ext NumberOfFieldsToAllocate 
+  outimage and logfile are optional  
+  Metric 0 - MeanSquareDifference, 1 - Cross-Correlation, 2-Mutual Information  

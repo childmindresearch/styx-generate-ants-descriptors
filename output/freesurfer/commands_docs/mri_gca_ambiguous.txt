@@ -1,0 +1,16 @@
+
+=== Output of 'mri_gca_ambiguous --help' ===
+
+usage: /usr/local/freesurfer/bin/mri_gca_ambiguous [options] <gca file> <output volume>
+
+This program computes an ambiguity measure across a  GCA and output an MR image of it
+
+=== Output of 'mri_gca_ambiguous -help' ===
+
+unknown option -help
+
+=== Output of 'mri_gca_ambiguous' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/mri_gca_ambiguous [options] <gca file> <output volume>
+
+This program computes an ambiguity measure across a  GCA and output an MR image of it

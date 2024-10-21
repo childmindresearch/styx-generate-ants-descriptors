@@ -1,0 +1,127 @@
+
+=== Output of 'tkregisterfv --help' ===
+
+
+This is a script that runs freeview with arguments like tkregister.
+Not all tkregister functionality is replicated. Only uses LTA files.
+
+tkregisterfv --mov mov --targ targ --reg reg.lta --s subject 
+  --aux vol1 reg1 --aux vol2 reg2 ...
+  Note: you can run it like 
+   tkregisterfv --reg reg.lta             and it will read the mov and targ volumes from the lta
+   tkregisterfv --reg reg.lta --mov mov   and it will read the targ volume from the lta
+   tkregisterfv --reg reg.lta --targ targ and it will read the mov  volume from the lta
+
+  --fstarg volume : spec volume instead of orig.mgz
+  --sd SUBJECTS_DIR
+  --seg segvolume : load segvolume as well
+  --aseg : load aseg.mgz as seg volume
+  --aparc+aseg : load aparc+aseg.mgz as seg volume
+  --opacity opacity : set seg opacity
+  --surfs : load lh and rh wm surfs
+  --pial-surfs : load pial surfs instead of wm surfs
+  --all-surfs : load both pial and wm surfs
+  --no-surfs : do not load any surfs
+  --lh-only, --rh-only : surface hemisphere
+  --surf surfname : explicit path to surf to load
+  --aux-surf auxsurfname : explicit path to surf to load
+  --plane plane : cor, sag, ax
+  --no-config : do not automatically raise transform config window
+  --mov2 mov2 <--reg2 reg2> : provide a second mov (and possibly reg)
+  --mov3 mov3 <--reg3 reg3> : provide a third mov (and possibly reg)
+  --heat : use heat map color tables for all volumes
+  --regheader : create registration file assuming the two volumes share a RAS
+  --params tx ty tz ry rx rz sy sx sz hxy hxz hyz : regheader with affine matrix parameters
+      translations in mm, rotations in deg
+  --flip-x : regheader with rx=180
+  --flip-y : regheader with ry=180
+  --flip-z : regheader with rz=180
+
+  --fstal --s subject : only these two args to modify the talairach.xfm
+
+tkregisterfv 7.4.1
+
+
+=== Output of 'tkregisterfv -help' ===
+
+
+This is a script that runs freeview with arguments like tkregister.
+Not all tkregister functionality is replicated. Only uses LTA files.
+
+tkregisterfv --mov mov --targ targ --reg reg.lta --s subject 
+  --aux vol1 reg1 --aux vol2 reg2 ...
+  Note: you can run it like 
+   tkregisterfv --reg reg.lta             and it will read the mov and targ volumes from the lta
+   tkregisterfv --reg reg.lta --mov mov   and it will read the targ volume from the lta
+   tkregisterfv --reg reg.lta --targ targ and it will read the mov  volume from the lta
+
+  --fstarg volume : spec volume instead of orig.mgz
+  --sd SUBJECTS_DIR
+  --seg segvolume : load segvolume as well
+  --aseg : load aseg.mgz as seg volume
+  --aparc+aseg : load aparc+aseg.mgz as seg volume
+  --opacity opacity : set seg opacity
+  --surfs : load lh and rh wm surfs
+  --pial-surfs : load pial surfs instead of wm surfs
+  --all-surfs : load both pial and wm surfs
+  --no-surfs : do not load any surfs
+  --lh-only, --rh-only : surface hemisphere
+  --surf surfname : explicit path to surf to load
+  --aux-surf auxsurfname : explicit path to surf to load
+  --plane plane : cor, sag, ax
+  --no-config : do not automatically raise transform config window
+  --mov2 mov2 <--reg2 reg2> : provide a second mov (and possibly reg)
+  --mov3 mov3 <--reg3 reg3> : provide a third mov (and possibly reg)
+  --heat : use heat map color tables for all volumes
+  --regheader : create registration file assuming the two volumes share a RAS
+  --params tx ty tz ry rx rz sy sx sz hxy hxz hyz : regheader with affine matrix parameters
+      translations in mm, rotations in deg
+  --flip-x : regheader with rx=180
+  --flip-y : regheader with ry=180
+  --flip-z : regheader with rz=180
+
+  --fstal --s subject : only these two args to modify the talairach.xfm
+
+tkregisterfv 7.4.1
+
+
+=== Output of 'tkregisterfv' (no arguments) ===
+
+
+This is a script that runs freeview with arguments like tkregister.
+Not all tkregister functionality is replicated. Only uses LTA files.
+
+tkregisterfv --mov mov --targ targ --reg reg.lta --s subject 
+  --aux vol1 reg1 --aux vol2 reg2 ...
+  Note: you can run it like 
+   tkregisterfv --reg reg.lta             and it will read the mov and targ volumes from the lta
+   tkregisterfv --reg reg.lta --mov mov   and it will read the targ volume from the lta
+   tkregisterfv --reg reg.lta --targ targ and it will read the mov  volume from the lta
+
+  --fstarg volume : spec volume instead of orig.mgz
+  --sd SUBJECTS_DIR
+  --seg segvolume : load segvolume as well
+  --aseg : load aseg.mgz as seg volume
+  --aparc+aseg : load aparc+aseg.mgz as seg volume
+  --opacity opacity : set seg opacity
+  --surfs : load lh and rh wm surfs
+  --pial-surfs : load pial surfs instead of wm surfs
+  --all-surfs : load both pial and wm surfs
+  --no-surfs : do not load any surfs
+  --lh-only, --rh-only : surface hemisphere
+  --surf surfname : explicit path to surf to load
+  --aux-surf auxsurfname : explicit path to surf to load
+  --plane plane : cor, sag, ax
+  --no-config : do not automatically raise transform config window
+  --mov2 mov2 <--reg2 reg2> : provide a second mov (and possibly reg)
+  --mov3 mov3 <--reg3 reg3> : provide a third mov (and possibly reg)
+  --heat : use heat map color tables for all volumes
+  --regheader : create registration file assuming the two volumes share a RAS
+  --params tx ty tz ry rx rz sy sx sz hxy hxz hyz : regheader with affine matrix parameters
+      translations in mm, rotations in deg
+  --flip-x : regheader with rx=180
+  --flip-y : regheader with ry=180
+  --flip-z : regheader with rz=180
+
+  --fstal --s subject : only these two args to modify the talairach.xfm
+

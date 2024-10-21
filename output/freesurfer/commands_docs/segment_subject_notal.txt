@@ -1,0 +1,15 @@
+
+=== Output of 'segment_subject_notal --help' ===
+
+/usr/local/freesurfer/subjects/--help/scripts ~ 
+mv: cannot stat '../mri/orig/COR-.info': No such file or directory
+
+=== Output of 'segment_subject_notal -help' ===
+
+/usr/local/freesurfer/subjects/-help/scripts ~ 
+mv: cannot stat '../mri/orig/COR-.info': No such file or directory
+
+=== Output of 'segment_subject_notal' (no arguments) ===
+
+/usr/local/freesurfer/subjects/scripts ~ 
+mv: cannot stat '../mri/orig/COR-.info': No such file or directory

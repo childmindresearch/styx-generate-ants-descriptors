@@ -1,0 +1,15 @@
+
+=== Output of 'TextureCooccurrenceFeatures --help' ===
+
+Usage: TextureCooccurrenceFeatures imageDimension inputImage [numberOfBinsPerAxis=256] [maskImage] [maskLabel=1]
+Features: Energy,Entropy,InverseDifferenceMoment,Inertia,ClusterShade,ClusterProminence
+
+=== Output of 'TextureCooccurrenceFeatures -help' ===
+
+Usage: TextureCooccurrenceFeatures imageDimension inputImage [numberOfBinsPerAxis=256] [maskImage] [maskLabel=1]
+Features: Energy,Entropy,InverseDifferenceMoment,Inertia,ClusterShade,ClusterProminence
+
+=== Output of 'TextureCooccurrenceFeatures' (no arguments) ===
+
+Usage: TextureCooccurrenceFeatures imageDimension inputImage [numberOfBinsPerAxis=256] [maskImage] [maskLabel=1]
+Features: Energy,Entropy,InverseDifferenceMoment,Inertia,ClusterShade,ClusterProminence

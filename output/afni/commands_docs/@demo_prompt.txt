@@ -1,0 +1,17 @@
+
+=== Output of '@demo_prompt --help' ===
+
+Error: Can't open display: 
+
+=== Output of '@demo_prompt -help' ===
+
+
+Prompts user with message and waits for acknowledgment
+Status is 0 if user presses OK, 1 if user cancels
+   Example:
+   @demo_prompt "touch your nose" ; echo $status
+
+
+=== Output of '@demo_prompt' (no arguments) ===
+
+Error: Can't open display: 

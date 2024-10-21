@@ -1,0 +1,362 @@
+
+=== Output of '@afni_refacer_run --help' ===
+
+** unexpected option #1 = '--help'
+
+=== Output of '@afni_refacer_run -help' ===
+
+
+OVERVIEW ~1~
+
+This script re-faces one input dataset, using a master shell dataset to
+write over the subject's 'face' region.
+
+The main input is the name of a T1-weighted dataset.
+
+ver = 2.4
+
+OUTPUTS ~1~
+
+When running with '-mode_all', then 5 datasets will be output, all in
+the same space as the input volume:
+
+    + Three refaced/defaced volumes:
+      1) a "defaced" volume (face+ears replaced with zeros)
+      2) a "refaced" volume (face+ears replaced with artificial values) 
+      3) a "reface_plused" volume (face+ears+skull replaced with artificial
+         values)
+
+    + Two face-replacing volumes:
+      4) the face+ears used to replace or remove subject data
+      5) the face+ears+skull used to replace subject data
+
+Automatic images of the re/defaced volume(s) will be created with
+@chauffeur_afni, so the user can quickly evaluate results visually.
+
+A temporary working directory is also created.  This will be cleaned
+(=deleted) by default, but the user can choose to save it.
+
+USAGE ~1~
+
+  @afni_refacer_run                         \
+    -input  DSET                            \
+    -mode_{reface|reface_plus|deface|all}   \
+    -prefix PPP                             \
+    {-anonymize_output}                     \
+    {-cost CC}                              \
+    {-overwrite}                            \
+    {-no_clean}                             \
+    {-no_images}                            \
+    {-verb_allin}      
+
+where:
+
+ -input DSET  : (req) name of input dset; can contain path information.
+
+     ... and one of the following modes MUST be chosen:
+ -mode_deface : replace the computed face+ears voxels with all zeros
+                instead of the artificial face (ears are also removed)
+ -mode_reface : replace the subject's face+ears with a scaled set of
+                artificial values
+ -mode_reface_plus : replace the subject's face+ears+skull with a scaled
+                set of artificial values (i.e., like 'refacing', but
+                replacing a more complete shell around the subject's
+                brain)
+ -mode_all    : output three volumes: one defaced, one refaced and one
+                reface_plused
+
+ -prefix PPP  : (req) name of output dset (see NOTES for info about
+                about file names, particularly when "-mode_all" is used).
+
+ -anonymize_output : (opt) use 3drefit and nifti_tool to anonymize the
+                output dsets.  **But always verify anonymization
+                yourself, Dear User!** This will not be able to help
+                you if you choose a non-anonymizing output file name,
+                for example.
+
+ -cost CC     : (opt) can specify any cost function that is allowed by 
+                3dAllineate (def: lpa)
+ 
+ -shell SH    : (opt) can specify which shell to use.  At present, the 
+                available options for SH are:
+                  afni_refacer_shell_sym_1.0.nii.gz  (traditional)
+                  afni_refacer_shell_sym_2.0.nii.gz  (more face/neck removal)
+                (def: afni_refacer_shell_sym_1.0.nii.gz)
+
+ -no_clean    : (opt) don't delete temp working dir (def: remove working
+                dir)
+
+ -no_images   : (opt) don't make pretty images to automatically view the 
+                results of re/defacing;  but why wouldn't you want those?
+                This disables use of Xvfb.
+
+ -overwrite   : (opt) final two file outputs will overwrite any existing
+                files of the same name (def: don't do this).  NB: this 
+                option does not apply to the working directory
+
+ -verb_allin  : (opt) run the 3dAllineate part herein with '-verb' (for
+                verbosity)
+
+NOTES ~1~
+
+Output file names ~2~
+
+If the user implements one of the individual modes for either
+refacing, reface_plusing or defacing, then the main output file of
+interest is simply specified by their "-prefix .." choice.
+Additionally, the the replacement volume in subject space will be
+output, with the same name plus a suffix (either 'face' or
+'face_plus').
+
+Elif the user implements '-mode_all', then three output volumes are
+created, each with the same prefix specified by their "-prefix .."
+choice, with identifying suffixes and *.nii.gz extensions:  
+    PREFIX.deface.nii.gz 
+    PREFIX.reface.nii.gz
+    PREFIX.reface_plus.nii.gz
+Additionally, both replacement volumes will be output, having the
+same prefix and relevant suffix:
+    PREFIX.face.nii.gz 
+    PREFIX.face_plus.nii.gz 
+
+A directory of QC images will be made by default, called:
+    PREFIX_QC/
+This will contain images of each of the new anatomical volumes and the
+replacement volumes over the original anatomical.
+
+Requisite data sets ~2~
+
+This script relies on having two datasets that should already be
+included with AFNI binaries:
+    MNI152_2009_template_SSW.nii.gz  = MNI skull strip/warp template
+    afni_refacer_shell_sym_*.nii.gz  = dataset to replace face region
+The latter dataset(s) have been made by a combination of the
+@afni_refacer_make_master and @afni_refacer_make_master_addendum 
+scripts.
+
+If you are missing these datasets for some reason (e.g., you build
+your own AFNI binaries on your computer), you can download these from
+the current/atlases directory.  Or just ask for more info on the
+Message Board.
+
+
+Author   - The Face of Imperial Zhark, Who is Terrible to Behold!
+Modifier - PA Taylor
+
+EXAMPLES ~1~
+
+1) default refacing (replace face+ears+skull+etc.)
+
+    @afni_refacer_run                     \
+        -input anat+orig.                 \
+        -mode_reface_plus                 \
+        -prefix anat_reface_plus.nii.gz
+    
+2) reface smaller volume (replace face+ears only)
+
+    @afni_refacer_run                     \
+        -input anat+orig.                 \
+        -mode_reface                      \
+        -prefix anat_reface.nii.gz
+
+3) deface = replace face+ears with zeros
+
+    @afni_refacer_run                     \
+        -input anat+orig.                 \
+        -mode_deface                      \
+        -prefix anat_deface.nii.gz
+
+3) ALL = output all versions of vol: refaced, reface_plused, defaced
+
+    @afni_refacer_run                     \
+        -input anat+orig.                 \
+        -mode_all                         \
+        -prefix anat
+
+4) ... and using different shell for replacement:
+
+    @afni_refacer_run                             \
+        -input anat+orig.                         \
+        -mode_all                                 \
+        -shell afni_refacer_shell_sym_2.0.nii.gz  \
+        -prefix anat
+
+
+=== Output of '@afni_refacer_run' (no arguments) ===
+
+
+OVERVIEW ~1~
+
+This script re-faces one input dataset, using a master shell dataset to
+write over the subject's 'face' region.
+
+The main input is the name of a T1-weighted dataset.
+
+ver = 2.4
+
+OUTPUTS ~1~
+
+When running with '-mode_all', then 5 datasets will be output, all in
+the same space as the input volume:
+
+    + Three refaced/defaced volumes:
+      1) a "defaced" volume (face+ears replaced with zeros)
+      2) a "refaced" volume (face+ears replaced with artificial values) 
+      3) a "reface_plused" volume (face+ears+skull replaced with artificial
+         values)
+
+    + Two face-replacing volumes:
+      4) the face+ears used to replace or remove subject data
+      5) the face+ears+skull used to replace subject data
+
+Automatic images of the re/defaced volume(s) will be created with
+@chauffeur_afni, so the user can quickly evaluate results visually.
+
+A temporary working directory is also created.  This will be cleaned
+(=deleted) by default, but the user can choose to save it.
+
+USAGE ~1~
+
+  @afni_refacer_run                         \
+    -input  DSET                            \
+    -mode_{reface|reface_plus|deface|all}   \
+    -prefix PPP                             \
+    {-anonymize_output}                     \
+    {-cost CC}                              \
+    {-overwrite}                            \
+    {-no_clean}                             \
+    {-no_images}                            \
+    {-verb_allin}      
+
+where:
+
+ -input DSET  : (req) name of input dset; can contain path information.
+
+     ... and one of the following modes MUST be chosen:
+ -mode_deface : replace the computed face+ears voxels with all zeros
+                instead of the artificial face (ears are also removed)
+ -mode_reface : replace the subject's face+ears with a scaled set of
+                artificial values
+ -mode_reface_plus : replace the subject's face+ears+skull with a scaled
+                set of artificial values (i.e., like 'refacing', but
+                replacing a more complete shell around the subject's
+                brain)
+ -mode_all    : output three volumes: one defaced, one refaced and one
+                reface_plused
+
+ -prefix PPP  : (req) name of output dset (see NOTES for info about
+                about file names, particularly when "-mode_all" is used).
+
+ -anonymize_output : (opt) use 3drefit and nifti_tool to anonymize the
+                output dsets.  **But always verify anonymization
+                yourself, Dear User!** This will not be able to help
+                you if you choose a non-anonymizing output file name,
+                for example.
+
+ -cost CC     : (opt) can specify any cost function that is allowed by 
+                3dAllineate (def: lpa)
+ 
+ -shell SH    : (opt) can specify which shell to use.  At present, the 
+                available options for SH are:
+                  afni_refacer_shell_sym_1.0.nii.gz  (traditional)
+                  afni_refacer_shell_sym_2.0.nii.gz  (more face/neck removal)
+                (def: afni_refacer_shell_sym_1.0.nii.gz)
+
+ -no_clean    : (opt) don't delete temp working dir (def: remove working
+                dir)
+
+ -no_images   : (opt) don't make pretty images to automatically view the 
+                results of re/defacing;  but why wouldn't you want those?
+                This disables use of Xvfb.
+
+ -overwrite   : (opt) final two file outputs will overwrite any existing
+                files of the same name (def: don't do this).  NB: this 
+                option does not apply to the working directory
+
+ -verb_allin  : (opt) run the 3dAllineate part herein with '-verb' (for
+                verbosity)
+
+NOTES ~1~
+
+Output file names ~2~
+
+If the user implements one of the individual modes for either
+refacing, reface_plusing or defacing, then the main output file of
+interest is simply specified by their "-prefix .." choice.
+Additionally, the the replacement volume in subject space will be
+output, with the same name plus a suffix (either 'face' or
+'face_plus').
+
+Elif the user implements '-mode_all', then three output volumes are
+created, each with the same prefix specified by their "-prefix .."
+choice, with identifying suffixes and *.nii.gz extensions:  
+    PREFIX.deface.nii.gz 
+    PREFIX.reface.nii.gz
+    PREFIX.reface_plus.nii.gz
+Additionally, both replacement volumes will be output, having the
+same prefix and relevant suffix:
+    PREFIX.face.nii.gz 
+    PREFIX.face_plus.nii.gz 
+
+A directory of QC images will be made by default, called:
+    PREFIX_QC/
+This will contain images of each of the new anatomical volumes and the
+replacement volumes over the original anatomical.
+
+Requisite data sets ~2~
+
+This script relies on having two datasets that should already be
+included with AFNI binaries:
+    MNI152_2009_template_SSW.nii.gz  = MNI skull strip/warp template
+    afni_refacer_shell_sym_*.nii.gz  = dataset to replace face region
+The latter dataset(s) have been made by a combination of the
+@afni_refacer_make_master and @afni_refacer_make_master_addendum 
+scripts.
+
+If you are missing these datasets for some reason (e.g., you build
+your own AFNI binaries on your computer), you can download these from
+the current/atlases directory.  Or just ask for more info on the
+Message Board.
+
+
+Author   - The Face of Imperial Zhark, Who is Terrible to Behold!
+Modifier - PA Taylor
+
+EXAMPLES ~1~
+
+1) default refacing (replace face+ears+skull+etc.)
+
+    @afni_refacer_run                     \
+        -input anat+orig.                 \
+        -mode_reface_plus                 \
+        -prefix anat_reface_plus.nii.gz
+    
+2) reface smaller volume (replace face+ears only)
+
+    @afni_refacer_run                     \
+        -input anat+orig.                 \
+        -mode_reface                      \
+        -prefix anat_reface.nii.gz
+
+3) deface = replace face+ears with zeros
+
+    @afni_refacer_run                     \
+        -input anat+orig.                 \
+        -mode_deface                      \
+        -prefix anat_deface.nii.gz
+
+3) ALL = output all versions of vol: refaced, reface_plused, defaced
+
+    @afni_refacer_run                     \
+        -input anat+orig.                 \
+        -mode_all                         \
+        -prefix anat
+
+4) ... and using different shell for replacement:
+
+    @afni_refacer_run                             \
+        -input anat+orig.                         \
+        -mode_all                                 \
+        -shell afni_refacer_shell_sym_2.0.nii.gz  \
+        -prefix anat
+

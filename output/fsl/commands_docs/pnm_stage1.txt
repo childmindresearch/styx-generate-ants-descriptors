@@ -1,0 +1,180 @@
+
+=== Output of 'pnm_stage1 --help' ===
+
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/fsl_abspath", line 70, in <module>
+    print (os.path.realpath(sys.argv[1]))
+IndexError: list index out of range
+/usr/local/fsl/bin/popp --help
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+popp (Version 1.0)
+Copyright(c) 2011, University of Oxford (Mark Jenkinson)
+
+Usage: 
+popp [options] -i <input data file> -o <output data file>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input physiological data filename (text format)
+	-o,--out	output basename for physiological data and timing/triggers (no extensions)
+
+Optional arguments (You may optionally specify one or more of):
+	-s,--samplingrate	sampling rate in Hz (default is 100Hz)
+	--tr	TR value in seconds
+	--resp	specify column number of respiratory input
+	--cardiac	specify column number of cardiac input
+	--trigger	specify column number of trigger input
+	--rvt	generate RVT data
+	--heartrate	generate heartrate data
+	--pulseox_trigger	specify that cardiac data is a trigger
+	--smoothcard	specify smoothing amount for cardiac (in seconds)
+	--smoothresp	specify smoothing amount for respiratory (in seconds)
+	--highfreqcutoff	high frequency cut off for respiratory filter in Hz (default is 5Hz)
+	--lowfreqcutoff	low frequency cut off for respiratory filter in Hz (default is 0.1Hz)
+	--initthreshc	initial threshold percentile for cardiac (default 90)
+	--nthreshc	neighbourhood exclusion threshold percentile for cardiac (default 60)
+	--initthreshr	initial threshold percentile for respiratory (default 80)
+	--nthreshr	neighbourhood exclusion threshold percentile for respiratory (default 80)
+	--invertresp	invert respiratory trace
+	--invertcardiac	invert cardiac trace
+	--noclean1	turn off cleanup phase 1
+	--noclean2	turn off cleanup phase 2
+	--loadcardphase	input cardiac phase for reprocessing (text format)
+	--loadrespphase	input respiratory phase for reprocessing (text format)
+	--vol	input volumetric image (EPI) filename
+	--startingsample	set sample number of the starting time (t=0)
+	--respadd	comma separated list of times (in sec) to add to respiratory peak list (uses nearest local max)
+	--respdel	comma separated list of times (in sec) to delete from respiratory peak list (uses nearest existing peak)
+	--cardadd	comma separated list of times (in sec) to add to cardiac peak list (uses nearest local max)
+	--carddel	comma separated list of times (in sec) to delete from cardiac peak list (uses nearest existing peak)
+	-v,--verbose	switch on diagnostic messages
+	--debug	output debugging information
+	-h,--help	display this message
+
+
+dirname: missing operand
+Try 'dirname --help' for more information.
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/fsl_abspath", line 70, in <module>
+    print (os.path.realpath(sys.argv[1]))
+IndexError: list index out of range
+
+=== Output of 'pnm_stage1 -help' ===
+
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/fsl_abspath", line 70, in <module>
+    print (os.path.realpath(sys.argv[1]))
+IndexError: list index out of range
+/usr/local/fsl/bin/popp -help
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+popp (Version 1.0)
+Copyright(c) 2011, University of Oxford (Mark Jenkinson)
+
+Usage: 
+popp [options] -i <input data file> -o <output data file>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input physiological data filename (text format)
+	-o,--out	output basename for physiological data and timing/triggers (no extensions)
+
+Optional arguments (You may optionally specify one or more of):
+	-s,--samplingrate	sampling rate in Hz (default is 100Hz)
+	--tr	TR value in seconds
+	--resp	specify column number of respiratory input
+	--cardiac	specify column number of cardiac input
+	--trigger	specify column number of trigger input
+	--rvt	generate RVT data
+	--heartrate	generate heartrate data
+	--pulseox_trigger	specify that cardiac data is a trigger
+	--smoothcard	specify smoothing amount for cardiac (in seconds)
+	--smoothresp	specify smoothing amount for respiratory (in seconds)
+	--highfreqcutoff	high frequency cut off for respiratory filter in Hz (default is 5Hz)
+	--lowfreqcutoff	low frequency cut off for respiratory filter in Hz (default is 0.1Hz)
+	--initthreshc	initial threshold percentile for cardiac (default 90)
+	--nthreshc	neighbourhood exclusion threshold percentile for cardiac (default 60)
+	--initthreshr	initial threshold percentile for respiratory (default 80)
+	--nthreshr	neighbourhood exclusion threshold percentile for respiratory (default 80)
+	--invertresp	invert respiratory trace
+	--invertcardiac	invert cardiac trace
+	--noclean1	turn off cleanup phase 1
+	--noclean2	turn off cleanup phase 2
+	--loadcardphase	input cardiac phase for reprocessing (text format)
+	--loadrespphase	input respiratory phase for reprocessing (text format)
+	--vol	input volumetric image (EPI) filename
+	--startingsample	set sample number of the starting time (t=0)
+	--respadd	comma separated list of times (in sec) to add to respiratory peak list (uses nearest local max)
+	--respdel	comma separated list of times (in sec) to delete from respiratory peak list (uses nearest existing peak)
+	--cardadd	comma separated list of times (in sec) to add to cardiac peak list (uses nearest local max)
+	--carddel	comma separated list of times (in sec) to delete from cardiac peak list (uses nearest existing peak)
+	-v,--verbose	switch on diagnostic messages
+	--debug	output debugging information
+	-h,--help	display this message
+
+
+
+-e: Option doesn't exist!
+dirname: missing operand
+Try 'dirname --help' for more information.
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/fsl_abspath", line 70, in <module>
+    print (os.path.realpath(sys.argv[1]))
+IndexError: list index out of range
+
+=== Output of 'pnm_stage1' (no arguments) ===
+
+Usage: pnm_stage1 [popp options]
+   Runs popp (see options below) and then creates necessary scripts
+     to run manual webpage editing (and second stage if GUI was used)
+ 
+***************************************************
+The following COMPULSORY options have not been set:
+	-i,--in	input physiological data filename (text format)
+	-o,--out	output basename for physiological data and timing/triggers (no extensions)
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+popp (Version 1.0)
+Copyright(c) 2011, University of Oxford (Mark Jenkinson)
+
+Usage: 
+popp [options] -i <input data file> -o <output data file>
+
+Compulsory arguments (You MUST set one or more of):
+	-i,--in	input physiological data filename (text format)
+	-o,--out	output basename for physiological data and timing/triggers (no extensions)
+
+Optional arguments (You may optionally specify one or more of):
+	-s,--samplingrate	sampling rate in Hz (default is 100Hz)
+	--tr	TR value in seconds
+	--resp	specify column number of respiratory input
+	--cardiac	specify column number of cardiac input
+	--trigger	specify column number of trigger input
+	--rvt	generate RVT data
+	--heartrate	generate heartrate data
+	--pulseox_trigger	specify that cardiac data is a trigger
+	--smoothcard	specify smoothing amount for cardiac (in seconds)
+	--smoothresp	specify smoothing amount for respiratory (in seconds)
+	--highfreqcutoff	high frequency cut off for respiratory filter in Hz (default is 5Hz)
+	--lowfreqcutoff	low frequency cut off for respiratory filter in Hz (default is 0.1Hz)
+	--initthreshc	initial threshold percentile for cardiac (default 90)
+	--nthreshc	neighbourhood exclusion threshold percentile for cardiac (default 60)
+	--initthreshr	initial threshold percentile for respiratory (default 80)
+	--nthreshr	neighbourhood exclusion threshold percentile for respiratory (default 80)
+	--invertresp	invert respiratory trace
+	--invertcardiac	invert cardiac trace
+	--noclean1	turn off cleanup phase 1
+	--noclean2	turn off cleanup phase 2
+	--loadcardphase	input cardiac phase for reprocessing (text format)
+	--loadrespphase	input respiratory phase for reprocessing (text format)
+	--vol	input volumetric image (EPI) filename
+	--startingsample	set sample number of the starting time (t=0)
+	--respadd	comma separated list of times (in sec) to add to respiratory peak list (uses nearest local max)
+	--respdel	comma separated list of times (in sec) to delete from respiratory peak list (uses nearest existing peak)
+	--cardadd	comma separated list of times (in sec) to add to cardiac peak list (uses nearest local max)
+	--carddel	comma separated list of times (in sec) to delete from cardiac peak list (uses nearest existing peak)
+	-v,--verbose	switch on diagnostic messages
+	--debug	output debugging information
+	-h,--help	display this message
+
+

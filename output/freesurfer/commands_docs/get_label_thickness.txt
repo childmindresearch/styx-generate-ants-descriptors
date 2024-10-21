@@ -1,0 +1,12 @@
+
+=== Output of 'get_label_thickness --help' ===
+
+if: Missing file name.
+
+=== Output of 'get_label_thickness -help' ===
+
+head: invalid option -- 'h'
+Try 'head --help' for more information.
+
+=== Output of 'get_label_thickness' (no arguments) ===
+

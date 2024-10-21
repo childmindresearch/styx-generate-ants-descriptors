@@ -1,0 +1,31 @@
+
+=== Output of 'fslreorient2std --help' ===
+
+ERROR: Orientation information not stored in --help!
+Cannot reslice without orientation information (i.e. need valid labels in FSLView)
+The NIfTI image must contain a non-zero code for either the sform or the qform
+ - check your reconstruction/conversion software to try and fix this
+
+=== Output of 'fslreorient2std -help' ===
+
+ERROR: Orientation information not stored in -help!
+Cannot reslice without orientation information (i.e. need valid labels in FSLView)
+The NIfTI image must contain a non-zero code for either the sform or the qform
+ - check your reconstruction/conversion software to try and fix this
+
+=== Output of 'fslreorient2std' (no arguments) ===
+
+Usage: fslreorient2std [-m <matrix file>] <input_image> [output_image]
+ 
+fslreorient2std is a tool for reorienting the image to match the
+approximate orientation of the standard template images (MNI152).
+It only applies 0, 90, 180 or 270 degree rotations.
+It is not a registration tool.
+It requires NIfTI images with valid orientation information
+in them (seen by valid labels in FSLView).  This tool
+assumes the labels are correct - if not, fix that before using this.
+If the output name is not specified the equivalent transformation
+ matrix is written to the standard output
+If the option -m is given, with an accompanying filename, then the
+ transformation matrix is written to this file instead
+ 

@@ -1,0 +1,100 @@
+
+=== Output of 'mri_concatenate_lta --help' ===
+
+unknown option --help
+
+Usage: /usr/local/freesurfer/bin/mri_concatenate_lta <options> lta_1 lta_2 lta_final 
+
+Short description: concatenates two consecutive LTA transformations 
+                   into one overall transformation, Out = LTA2*LTA1
+Required arguments
+
+  lta_1              maps some src1 to dst1 
+  lta_2              maps dst1(src2) to dst2 
+  lta_final          the combined LTA maps: src1 to dst2 = LTA2*LTA1
+
+Optional arguments
+
+  -tal file1 file2   if lta2 is talairach.xfm specify src (file1) and
+                        template (file2) for the talairach xfm.
+  -invert1           invert lta_1 before applying it
+  -invert2           invert lta_2 before applying it
+  -invertout         invert output lta
+  -out_type          set final LTA type: 0 VOX2VOX (default)
+                                         1 RAS2RAS
+
+  -subject subject : set subject in output lta
+
+-rmsdiff radius outputfile : computes RMS diff between transforms using MJ's formula
+   a radius of 70 is suggested. RMS will be saved in outputfile unless outputfile = nofile
+   Eg, mri_concatenate_lta -rmsdiff 70 rms.dat lta1 lta2, note: no output lta
+
+You can use 'identity.nofile' as the filename for lta2
+  e.g.: /usr/local/freesurfer/bin/mri_concatenate_lta -invert1 lta1.lta identity.nofile inv1.lta
+
+
+=== Output of 'mri_concatenate_lta -help' ===
+
+
+Usage: /usr/local/freesurfer/bin/mri_concatenate_lta <options> lta_1 lta_2 lta_final 
+
+Short description: concatenates two consecutive LTA transformations 
+                   into one overall transformation, Out = LTA2*LTA1
+Required arguments
+
+  lta_1              maps some src1 to dst1 
+  lta_2              maps dst1(src2) to dst2 
+  lta_final          the combined LTA maps: src1 to dst2 = LTA2*LTA1
+
+Optional arguments
+
+  -tal file1 file2   if lta2 is talairach.xfm specify src (file1) and
+                        template (file2) for the talairach xfm.
+  -invert1           invert lta_1 before applying it
+  -invert2           invert lta_2 before applying it
+  -invertout         invert output lta
+  -out_type          set final LTA type: 0 VOX2VOX (default)
+                                         1 RAS2RAS
+
+  -subject subject : set subject in output lta
+
+-rmsdiff radius outputfile : computes RMS diff between transforms using MJ's formula
+   a radius of 70 is suggested. RMS will be saved in outputfile unless outputfile = nofile
+   Eg, mri_concatenate_lta -rmsdiff 70 rms.dat lta1 lta2, note: no output lta
+
+You can use 'identity.nofile' as the filename for lta2
+  e.g.: /usr/local/freesurfer/bin/mri_concatenate_lta -invert1 lta1.lta identity.nofile inv1.lta
+
+
+=== Output of 'mri_concatenate_lta' (no arguments) ===
+
+
+Usage: /usr/local/freesurfer/bin/mri_concatenate_lta <options> lta_1 lta_2 lta_final 
+
+Short description: concatenates two consecutive LTA transformations 
+                   into one overall transformation, Out = LTA2*LTA1
+Required arguments
+
+  lta_1              maps some src1 to dst1 
+  lta_2              maps dst1(src2) to dst2 
+  lta_final          the combined LTA maps: src1 to dst2 = LTA2*LTA1
+
+Optional arguments
+
+  -tal file1 file2   if lta2 is talairach.xfm specify src (file1) and
+                        template (file2) for the talairach xfm.
+  -invert1           invert lta_1 before applying it
+  -invert2           invert lta_2 before applying it
+  -invertout         invert output lta
+  -out_type          set final LTA type: 0 VOX2VOX (default)
+                                         1 RAS2RAS
+
+  -subject subject : set subject in output lta
+
+-rmsdiff radius outputfile : computes RMS diff between transforms using MJ's formula
+   a radius of 70 is suggested. RMS will be saved in outputfile unless outputfile = nofile
+   Eg, mri_concatenate_lta -rmsdiff 70 rms.dat lta1 lta2, note: no output lta
+
+You can use 'identity.nofile' as the filename for lta2
+  e.g.: /usr/local/freesurfer/bin/mri_concatenate_lta -invert1 lta1.lta identity.nofile inv1.lta
+

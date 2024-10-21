@@ -1,0 +1,55 @@
+
+=== Output of 'mris_autodet_gwstats --help' ===
+
+
+PROGRAM: mris_autodet_gwstats
+Manages the computation of the gray/white statistics used to place the 
+  white and pial surfaces (currently in MRIScomputeBorderValues()
+ --o outputfile : output text file with stats
+ --i  T1wvolume (usually brain.finalsurfs.mgz)
+ --wm wmvolume  (usually wm.mgz)
+ --surf  surf (usually ?h.orig)
+ --surfs lhsurf rhsurf 
+ --lh-surf lhsurf 
+ --rh-surf rhsurf 
+ --s subject : reads in brain.finalsurfs.mgz, wm.mgz, lh.orig and rh.orig
+ --sd SUBJECTS_DIR 
+ --min_border_white MinBW : Min border white  (can also use -seg-wlo for compatibility)
+ --max_border_white MaxBW : Max border white
+ --min_gray_at_white_border MinGWB
+ --max_gray MaxG (can also use -seg-ghi for compatibility)
+ --max_gray_at_csf_border MaxGCSFB
+ --min_gray_at_csf_border MinGCSFB
+ --max_csf MaxCSF
+
+
+
+
+=== Output of 'mris_autodet_gwstats -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mris_autodet_gwstats' (no arguments) ===
+
+
+PROGRAM: mris_autodet_gwstats
+Manages the computation of the gray/white statistics used to place the 
+  white and pial surfaces (currently in MRIScomputeBorderValues()
+ --o outputfile : output text file with stats
+ --i  T1wvolume (usually brain.finalsurfs.mgz)
+ --wm wmvolume  (usually wm.mgz)
+ --surf  surf (usually ?h.orig)
+ --surfs lhsurf rhsurf 
+ --lh-surf lhsurf 
+ --rh-surf rhsurf 
+ --s subject : reads in brain.finalsurfs.mgz, wm.mgz, lh.orig and rh.orig
+ --sd SUBJECTS_DIR 
+ --min_border_white MinBW : Min border white  (can also use -seg-wlo for compatibility)
+ --max_border_white MaxBW : Max border white
+ --min_gray_at_white_border MinGWB
+ --max_gray MaxG (can also use -seg-ghi for compatibility)
+ --max_gray_at_csf_border MaxGCSFB
+ --min_gray_at_csf_border MinGCSFB
+ --max_csf MaxCSF
+

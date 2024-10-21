@@ -1,0 +1,72 @@
+
+=== Output of 'tbss_4_prestats --help' ===
+
+creating skeleton mask using threshold --help
+Image Exception : #63 :: No image files match: mean_FA_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_skeleton
+/usr/local/fsl/bin/tbss_4_prestats: line 93: 20786 Aborted                 (core dumped) ${FSLDIR}/bin/fslmaths mean_FA_skeleton -thr $thresh -bin mean_FA_skeleton_mask
+creating skeleton distancemap (for use in projection search)
+Image Exception : #63 :: No image files match: mean_FA_mask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_mask
+/usr/local/fsl/bin/tbss_4_prestats: line 96: 20787 Aborted                 (core dumped) ${FSLDIR}/bin/fslmaths mean_FA_mask -mul -1 -add 1 -add mean_FA_skeleton_mask mean_FA_skeleton_mask_dst
+Image Exception : #63 :: No image files match: mean_FA_skeleton_mask_dst
+Image Exception : #22 :: Failed to read volume mean_FA_skeleton_mask_dst
+Error : No image files match: mean_FA_skeleton_mask_dst
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume mean_FA_skeleton_mask_dst
+Error : No image files match: mean_FA_skeleton_mask_dst
+/usr/local/fsl/bin/tbss_4_prestats: line 97: 20788 Aborted                 (core dumped) ${FSLDIR}/bin/distancemap -i mean_FA_skeleton_mask_dst -o mean_FA_skeleton_mask_dst
+projecting all FA data onto skeleton
+Image Exception : #63 :: No image files match: mean_FA
+Image Exception : #22 :: Failed to read volume mean_FA
+Error : No image files match: mean_FA
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume mean_FA
+Error : No image files match: mean_FA
+/usr/local/fsl/bin/tbss_4_prestats: line 100: 20789 Aborted                 (core dumped) ${FSLDIR}/bin/tbss_skeleton -i mean_FA -p $thresh mean_FA_skeleton_mask_dst ${FSLDIR}/data/standard/LowerCingulum_1mm all_FA all_FA_skeletonised
+
+now run stats - for example:
+randomise -i all_FA_skeletonised -o tbss -m mean_FA_skeleton_mask -d design.mat -t design.con -n 500 --T2 -V
+(after generating design.mat and design.con)
+
+=== Output of 'tbss_4_prestats -help' ===
+
+creating skeleton mask using threshold -help
+Image Exception : #63 :: No image files match: mean_FA_skeleton
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_skeleton
+/usr/local/fsl/bin/tbss_4_prestats: line 93: 20804 Aborted                 (core dumped) ${FSLDIR}/bin/fslmaths mean_FA_skeleton -thr $thresh -bin mean_FA_skeleton_mask
+creating skeleton distancemap (for use in projection search)
+Image Exception : #63 :: No image files match: mean_FA_mask
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: mean_FA_mask
+/usr/local/fsl/bin/tbss_4_prestats: line 96: 20805 Aborted                 (core dumped) ${FSLDIR}/bin/fslmaths mean_FA_mask -mul -1 -add 1 -add mean_FA_skeleton_mask mean_FA_skeleton_mask_dst
+Image Exception : #63 :: No image files match: mean_FA_skeleton_mask_dst
+Image Exception : #22 :: Failed to read volume mean_FA_skeleton_mask_dst
+Error : No image files match: mean_FA_skeleton_mask_dst
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume mean_FA_skeleton_mask_dst
+Error : No image files match: mean_FA_skeleton_mask_dst
+/usr/local/fsl/bin/tbss_4_prestats: line 97: 20806 Aborted                 (core dumped) ${FSLDIR}/bin/distancemap -i mean_FA_skeleton_mask_dst -o mean_FA_skeleton_mask_dst
+projecting all FA data onto skeleton
+Image Exception : #63 :: No image files match: mean_FA
+Image Exception : #22 :: Failed to read volume mean_FA
+Error : No image files match: mean_FA
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume mean_FA
+Error : No image files match: mean_FA
+/usr/local/fsl/bin/tbss_4_prestats: line 100: 20807 Aborted                 (core dumped) ${FSLDIR}/bin/tbss_skeleton -i mean_FA -p $thresh mean_FA_skeleton_mask_dst ${FSLDIR}/data/standard/LowerCingulum_1mm all_FA all_FA_skeletonised
+
+now run stats - for example:
+randomise -i all_FA_skeletonised -o tbss -m mean_FA_skeleton_mask -d design.mat -t design.con -n 500 --T2 -V
+(after generating design.mat and design.con)
+
+=== Output of 'tbss_4_prestats' (no arguments) ===
+
+
+Usage: tbss_4_prestats <threshold>
+
+The normal recommendation for <threshold> is 0.2
+

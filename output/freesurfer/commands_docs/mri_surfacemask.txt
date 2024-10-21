@@ -1,0 +1,18 @@
+
+=== Output of 'mri_surfacemask --help' ===
+
+
+  Usage: mri_surfacemask <volume> <surface> <surface-masked volume>
+Purpose: Produce a new volume where all pixels outside the surface are set to zero.
+
+=== Output of 'mri_surfacemask -help' ===
+
+
+  Usage: mri_surfacemask <volume> <surface> <surface-masked volume>
+Purpose: Produce a new volume where all pixels outside the surface are set to zero.
+
+=== Output of 'mri_surfacemask' (no arguments) ===
+
+
+  Usage: mri_surfacemask <volume> <surface> <surface-masked volume>
+Purpose: Produce a new volume where all pixels outside the surface are set to zero.

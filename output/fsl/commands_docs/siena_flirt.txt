@@ -1,0 +1,12 @@
+
+=== Output of 'siena_flirt --help' ===
+
+Usage: siena_flirt <input1_fileroot> <input2_fileroot>
+
+=== Output of 'siena_flirt -help' ===
+
+Usage: siena_flirt <input1_fileroot> <input2_fileroot>
+
+=== Output of 'siena_flirt' (no arguments) ===
+
+Usage: siena_flirt <input1_fileroot> <input2_fileroot>

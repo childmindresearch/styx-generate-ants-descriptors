@@ -1,0 +1,102 @@
+
+=== Output of 'seg2recon --help' ===
+
+
+seg2recon
+  --s subject : output
+  --seg segvol : aseg-type volume, eg, from synthseg, fastsurfer, psacnn, samseg, or aseg
+  --i inputvol : what you would pass to recon-all
+  --ctab ctab  : ctab for the seg (will use embedded if there or FreeSurferColorLUT.txt if not spec)
+  --ndilate  : dilate binarization of seg when creating brainmask (2)
+  --threads nthreads
+  --force-update : force regeneration of files whether needed or not (default is --no-force-update)
+  --no-cc : do not seg corpus callosum (default is --cc)
+  --m mask : use mask as brainmask instead of computing from seg
+  --h headmask : use headmask instead of running mri_seghead
+  --thresh thresh : threshold for bias field estimation
+  --expert xoptsfile <--expert xoptsfile>
+  --rca : run recon-all on the output (good for testing)
+  --no-bias-field-cor (--no-bfc) : do not compute or apply bias field correction
+
+seg2recon 7.4.1
+
+Creates and populates a subjects dir from an input image and seg in a
+way that recon-all can be run on it. It will propogate the seg to
+aseg.auto_noCCseg.mgz and will run mri_cc to add the corpus callosum
+to it to create aseg.auto.mgz as output. It fits and removes the bias
+field to create the nu.mgz (to which T1.mgz is linked). It creates a
+brain mask by binarizing and dilating the segmentation. The norm.mgz
+and brainmask.mgz are the nu.mgz masked by the brain mask. The bias is
+fit inside of a head mask.  Computes talairach.xfm from the nu.mgz
+using talairach_avi. No talairach.m3z is created.
+
+After completion, recon-all can be run something like
+recon-all -s subject -autorecon2-samseg -autorecon3 
+
+
+
+
+
+
+
+
+=== Output of 'seg2recon -help' ===
+
+
+seg2recon
+  --s subject : output
+  --seg segvol : aseg-type volume, eg, from synthseg, fastsurfer, psacnn, samseg, or aseg
+  --i inputvol : what you would pass to recon-all
+  --ctab ctab  : ctab for the seg (will use embedded if there or FreeSurferColorLUT.txt if not spec)
+  --ndilate  : dilate binarization of seg when creating brainmask (2)
+  --threads nthreads
+  --force-update : force regeneration of files whether needed or not (default is --no-force-update)
+  --no-cc : do not seg corpus callosum (default is --cc)
+  --m mask : use mask as brainmask instead of computing from seg
+  --h headmask : use headmask instead of running mri_seghead
+  --thresh thresh : threshold for bias field estimation
+  --expert xoptsfile <--expert xoptsfile>
+  --rca : run recon-all on the output (good for testing)
+  --no-bias-field-cor (--no-bfc) : do not compute or apply bias field correction
+
+seg2recon 7.4.1
+
+Creates and populates a subjects dir from an input image and seg in a
+way that recon-all can be run on it. It will propogate the seg to
+aseg.auto_noCCseg.mgz and will run mri_cc to add the corpus callosum
+to it to create aseg.auto.mgz as output. It fits and removes the bias
+field to create the nu.mgz (to which T1.mgz is linked). It creates a
+brain mask by binarizing and dilating the segmentation. The norm.mgz
+and brainmask.mgz are the nu.mgz masked by the brain mask. The bias is
+fit inside of a head mask.  Computes talairach.xfm from the nu.mgz
+using talairach_avi. No talairach.m3z is created.
+
+After completion, recon-all can be run something like
+recon-all -s subject -autorecon2-samseg -autorecon3 
+
+
+
+
+
+
+
+
+=== Output of 'seg2recon' (no arguments) ===
+
+
+seg2recon
+  --s subject : output
+  --seg segvol : aseg-type volume, eg, from synthseg, fastsurfer, psacnn, samseg, or aseg
+  --i inputvol : what you would pass to recon-all
+  --ctab ctab  : ctab for the seg (will use embedded if there or FreeSurferColorLUT.txt if not spec)
+  --ndilate  : dilate binarization of seg when creating brainmask (2)
+  --threads nthreads
+  --force-update : force regeneration of files whether needed or not (default is --no-force-update)
+  --no-cc : do not seg corpus callosum (default is --cc)
+  --m mask : use mask as brainmask instead of computing from seg
+  --h headmask : use headmask instead of running mri_seghead
+  --thresh thresh : threshold for bias field estimation
+  --expert xoptsfile <--expert xoptsfile>
+  --rca : run recon-all on the output (good for testing)
+  --no-bias-field-cor (--no-bfc) : do not compute or apply bias field correction
+

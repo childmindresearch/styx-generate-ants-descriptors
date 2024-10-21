@@ -1,0 +1,68 @@
+
+=== Output of 'adjunct_aw_tableize_roi_info.py --help' ===
+
+++ Command line:
+    /opt/afni/src/../install/adjunct_aw_tableize_roi_info.py --help
+
+** ERROR: wrong number of args! Need 6, not 1.
+          See help file.
+
+=== Output of 'adjunct_aw_tableize_roi_info.py -help' ===
+
+++ Command line:
+    /opt/afni/src/../install/adjunct_aw_tableize_roi_info.py -help
+
+
+--------------------------------------------------------------------
+Helpfile for:    ***  adjunct_aw_tableize_roi_info.py  ***
+Version num:     1.62
+Version dat:     June 30, 2021
+Written by:      PA Taylor (NIMH, NIH)
+
+Just a simple helper function for the fat_proc* scripts.  
+
+Takes >= 6 arguments: 
+   1) an output file name;
+   2) an (warped) atlas of interest, with subbrick selector, if necessary;
+   3) a mask for the (warped) atlas (same grid)
+   4) a reference atlas (i.e., same one but unwarped), with (same) 
+      subbrick selector, if necessary.
+   5) a mask for the reference atlas (same grid)
+   6) a "modesmooth" value, from modal smoothing used after warping
+
+The output file name will be simple text, containing ROI count/size
+information.
+
+--------------------------------------------------------------------
+
+
+
+=== Output of 'adjunct_aw_tableize_roi_info.py' (no arguments) ===
+
+++ Command line:
+    /opt/afni/src/../install/adjunct_aw_tableize_roi_info.py
+
+
+--------------------------------------------------------------------
+Helpfile for:    ***  adjunct_aw_tableize_roi_info.py  ***
+Version num:     1.62
+Version dat:     June 30, 2021
+Written by:      PA Taylor (NIMH, NIH)
+
+Just a simple helper function for the fat_proc* scripts.  
+
+Takes >= 6 arguments: 
+   1) an output file name;
+   2) an (warped) atlas of interest, with subbrick selector, if necessary;
+   3) a mask for the (warped) atlas (same grid)
+   4) a reference atlas (i.e., same one but unwarped), with (same) 
+      subbrick selector, if necessary.
+   5) a mask for the reference atlas (same grid)
+   6) a "modesmooth" value, from modal smoothing used after warping
+
+The output file name will be simple text, containing ROI count/size
+information.
+
+--------------------------------------------------------------------
+
+

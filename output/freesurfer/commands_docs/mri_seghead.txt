@@ -1,0 +1,76 @@
+
+=== Output of 'mri_seghead --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_seghead 
+
+   --invol     input volume id (eg, T1)
+   --outvol    input volume id
+   --fill      fill value  (255)
+   --fhi       fhi : fhi value when running MRIchangeType(); default is 0.999
+   --thresh1   threshold value  (eg, 20)
+   --thresh2   threshold value  (eg, 20)
+   --thresh    single threshold value for 1 and 2 
+   --nhitsmin  min number of consecutive hits (2) 
+   --hvoldat   file : write head volume (mm3) to an ascii file 
+   --get-signal-behind-head  
+   --rescale : rescale input when converting to uchar (--no-rescale)  
+   --fill-holes-islands : fill holes and remove islands  
+   --seed col row slice (for filling)
+   --or-mask ormask.mgz : include voxels in this mask regardless (--no-or-mask)
+   --gdiag diagno
+
+
+7.4.1
+
+This program binarizes the input volume such that all the voxels in the 
+head are set to 255 (or whatever is passed with --fill). The result is 
+stored in the output volume passed by --outvol. 
+ 
+The program first creates a binarized mass just a few mm below the skin.
+This mass is then grown out using a connected components algorithm so 
+that most of the skin details are retained. 
+ 
+The initial mass is created in the following way. First, for every row 
+and slice, the column is searched from both ends for the 'skin'. The 
+skin is defined as the first consecutive nhitsmin voxels over thresh1.
+Once the skin is found coming from both directions, everything in between
+is binarized to the fill value. This process is repeated for the rows 
+and slices. The initial mass is created by ANDing all three voxels.
+ 
+After the initial mass is defined, the original volume is modified so
+that all the voxels in the mass are set to 255. This has the effect of 
+filling in all of the subepidermal features that would normally be below 
+threshold. A seed point is chosen at the center of the volume. The final 
+binarized volume is computed as all the voxels above thresh2 connected to  
+the seed point. 
+ 
+--thresh threshold will set thresh1 and thresh2 to threshold. 
+ 
+Typical values for the parameters are: thresh=20 and nhitsmin=2. 
+ 
+
+=== Output of 'mri_seghead -help' ===
+
+ERROR: Option -help unknown
+       Did you really mean --help ?
+
+=== Output of 'mri_seghead' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_seghead 
+
+   --invol     input volume id (eg, T1)
+   --outvol    input volume id
+   --fill      fill value  (255)
+   --fhi       fhi : fhi value when running MRIchangeType(); default is 0.999
+   --thresh1   threshold value  (eg, 20)
+   --thresh2   threshold value  (eg, 20)
+   --thresh    single threshold value for 1 and 2 
+   --nhitsmin  min number of consecutive hits (2) 
+   --hvoldat   file : write head volume (mm3) to an ascii file 
+   --get-signal-behind-head  
+   --rescale : rescale input when converting to uchar (--no-rescale)  
+   --fill-holes-islands : fill holes and remove islands  
+   --seed col row slice (for filling)
+   --or-mask ormask.mgz : include voxels in this mask regardless (--no-or-mask)
+   --gdiag diagno
+

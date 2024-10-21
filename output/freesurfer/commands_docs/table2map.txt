@@ -1,0 +1,28 @@
+
+=== Output of 'table2map --help' ===
+
+usage: table2map [-h] -t FILE -o FILE [-s FILE] [-p FILE]
+                 [-c [COLUMNS [COLUMNS ...]]] [-l FILE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t FILE, --table FILE
+                        Input table.
+  -o FILE, --out FILE   Output map.
+  -s FILE, --seg FILE   Segmentation to map to.
+  -p FILE, --parc FILE  Parcellation to map to.
+  -c [COLUMNS [COLUMNS ...]], --columns [COLUMNS [COLUMNS ...]]
+                        Table columns to map. All are included by default.
+  -l FILE, --lut FILE   Alternative lookup table.
+
+=== Output of 'table2map -help' ===
+
+usage: table2map [-h] -t FILE -o FILE [-s FILE] [-p FILE]
+                 [-c [COLUMNS [COLUMNS ...]]] [-l FILE]
+table2map: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'table2map' (no arguments) ===
+
+usage: table2map [-h] -t FILE -o FILE [-s FILE] [-p FILE]
+                 [-c [COLUMNS [COLUMNS ...]]] [-l FILE]
+table2map: error: the following arguments are required: -t/--table, -o/--out

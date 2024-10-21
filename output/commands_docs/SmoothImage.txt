@@ -1,4 +1,0 @@
-Usage:  
-SmoothImage ImageDimension image.ext smoothingsigma outimage.ext {sigma-is-in-spacing-units-(0)/1} {medianfilter-(0)/1}
- If using median filter, sigma is the radius of filtering, in voxels 
- A separate sigma can be specified for each dimension, e.g., 1.5x1x2 

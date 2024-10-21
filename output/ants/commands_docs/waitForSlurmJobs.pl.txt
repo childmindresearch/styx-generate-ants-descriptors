@@ -1,0 +1,27 @@
+
+=== Output of 'waitForSlurmJobs.pl --help' ===
+
+Use of uninitialized value $delay in numeric lt (<) at /opt/ants/bin/waitForSlurmJobs.pl line 26.
+Sleep period is too short, will poll queue once every 10 seconds
+  Waiting for 0 jobs: 
+sh: 1: squeue: not found
+  No more jobs in queue
+
+
+=== Output of 'waitForSlurmJobs.pl -help' ===
+
+Use of uninitialized value $delay in numeric lt (<) at /opt/ants/bin/waitForSlurmJobs.pl line 26.
+Sleep period is too short, will poll queue once every 10 seconds
+  Waiting for 0 jobs: 
+sh: 1: squeue: not found
+  No more jobs in queue
+
+
+=== Output of 'waitForSlurmJobs.pl' (no arguments) ===
+
+Use of uninitialized value $delay in numeric lt (<) at /opt/ants/bin/waitForSlurmJobs.pl line 26.
+Sleep period is too short, will poll queue once every 10 seconds
+  Waiting for 0 jobs: 
+sh: 1: squeue: not found
+  No more jobs in queue
+

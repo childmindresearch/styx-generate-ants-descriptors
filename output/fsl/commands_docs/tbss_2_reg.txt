@@ -1,0 +1,33 @@
+
+=== Output of 'tbss_2_reg --help' ===
+
+
+Usage: tbss_2_reg [options]
+
+Target-selection options - choose ONE of:
+ -T            : use FMRIB58_FA_1mm as target for nonlinear registrations (recommended)
+ -t <target>   : use <target> image as target for nonlinear registrations
+ -n            : find best target from all images in FA
+
+
+=== Output of 'tbss_2_reg -help' ===
+
+
+Usage: tbss_2_reg [options]
+
+Target-selection options - choose ONE of:
+ -T            : use FMRIB58_FA_1mm as target for nonlinear registrations (recommended)
+ -t <target>   : use <target> image as target for nonlinear registrations
+ -n            : find best target from all images in FA
+
+
+=== Output of 'tbss_2_reg' (no arguments) ===
+
+
+Usage: tbss_2_reg [options]
+
+Target-selection options - choose ONE of:
+ -T            : use FMRIB58_FA_1mm as target for nonlinear registrations (recommended)
+ -t <target>   : use <target> image as target for nonlinear registrations
+ -n            : find best target from all images in FA
+

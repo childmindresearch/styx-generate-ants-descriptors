@@ -1,0 +1,12 @@
+
+=== Output of 'Text2Vest --help' ===
+
+Text2Vest <text file> <vest file>
+
+=== Output of 'Text2Vest -help' ===
+
+Text2Vest <text file> <vest file>
+
+=== Output of 'Text2Vest' (no arguments) ===
+
+Text2Vest <text file> <vest file>

@@ -1,0 +1,62 @@
+
+=== Output of 'mri_synthstrip --help' ===
+
+Robust, universal skull-stripping for brain images of any type.
+usage: mri_synthstrip [-h] -i file [-o file] [-m file] [-g] [-b BORDER]
+                      [--no-csf] [--model file]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i file, --image file
+                        Input image to skullstrip.
+  -o file, --out file   Save stripped image to path.
+  -m file, --mask file  Save binary brain mask to path.
+  -g, --gpu             Use the GPU.
+  -b BORDER, --border BORDER
+                        Mask border threshold in mm. Default is 1.
+  --no-csf              Exclude CSF from brain border.
+  --model file          Alternative model weights.
+
+If you use SynthStrip in your analysis, please cite:
+----------------------------------------------------
+SynthStrip: Skull-Stripping for Any Brain Image
+A Hoopes, JS Mora, AV Dalca, B Fischl, M Hoffmann
+NeuroImage 206 (2022), 119474
+https://doi.org/10.1016/j.neuroimage.2022.119474 
+
+Website: https://w3id.org/synthstrip
+
+
+=== Output of 'mri_synthstrip -help' ===
+
+usage: mri_synthstrip [-h] -i file [-o file] [-m file] [-g] [-b BORDER]
+                      [--no-csf] [--model file]
+mri_synthstrip: error: argument -h/--help: ignored explicit argument 'elp'
+
+=== Output of 'mri_synthstrip' (no arguments) ===
+
+Robust, universal skull-stripping for brain images of any type.
+usage: mri_synthstrip [-h] -i file [-o file] [-m file] [-g] [-b BORDER]
+                      [--no-csf] [--model file]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i file, --image file
+                        Input image to skullstrip.
+  -o file, --out file   Save stripped image to path.
+  -m file, --mask file  Save binary brain mask to path.
+  -g, --gpu             Use the GPU.
+  -b BORDER, --border BORDER
+                        Mask border threshold in mm. Default is 1.
+  --no-csf              Exclude CSF from brain border.
+  --model file          Alternative model weights.
+
+If you use SynthStrip in your analysis, please cite:
+----------------------------------------------------
+SynthStrip: Skull-Stripping for Any Brain Image
+A Hoopes, JS Mora, AV Dalca, B Fischl, M Hoffmann
+NeuroImage 206 (2022), 119474
+https://doi.org/10.1016/j.neuroimage.2022.119474 
+
+Website: https://w3id.org/synthstrip
+

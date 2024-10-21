@@ -1,0 +1,61 @@
+
+=== Output of 'std2imgcoord --help' ===
+
+Lacking argument to option --help
+ERROR:: image filename not found
+
+Image Exception : #63 :: No image files match: 
+Image Exception : #22 :: Failed to read volume 
+Error : No image files match: 
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume 
+Error : No image files match: 
+timeout: the monitored command dumped core
+
+=== Output of 'std2imgcoord -help' ===
+
+Usage: /usr/local/fsl/bin/std2imgcoord [options] <filename containing coordinates>
+
+e.g.   /usr/local/fsl/bin/std2imgcoord -img <invol> -std <standard image> -xfm <img2standard mat file> <coordinate file>
+       /usr/local/fsl/bin/std2imgcoord -img <invol> -std <standard image> <coordinate file>
+       /usr/local/fsl/bin/std2imgcoord -img <invol> -std <standard image> - 
+
+  Options are:
+        -std <filename of standard image>
+        -img <filename of input image>
+        -xfm <filename of affine transform   (e.g. example_func2standard.mat)>
+        -warp <filename of warpfield (e.g. highres2standard_warp.nii.gz)>
+        -premat <filename of pre-warp affine transform  (e.g. example_func2highres.mat)>   (default=identity)
+        -mm                                  (outputs coordinates in mm - default)
+        -vox                                 (outputs coordinates in voxels)
+        -v                                   (verbose output)
+        -verbose                             (more verbose output)
+        -help
+
+ Notes:
+  (1) if '-' is used as coordinate filename then coordinates are read from standard input
+  (2) the -img option is compulsory
+
+=== Output of 'std2imgcoord' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/std2imgcoord [options] <filename containing coordinates>
+
+e.g.   /usr/local/fsl/bin/std2imgcoord -img <invol> -std <standard image> -xfm <img2standard mat file> <coordinate file>
+       /usr/local/fsl/bin/std2imgcoord -img <invol> -std <standard image> <coordinate file>
+       /usr/local/fsl/bin/std2imgcoord -img <invol> -std <standard image> - 
+
+  Options are:
+        -std <filename of standard image>
+        -img <filename of input image>
+        -xfm <filename of affine transform   (e.g. example_func2standard.mat)>
+        -warp <filename of warpfield (e.g. highres2standard_warp.nii.gz)>
+        -premat <filename of pre-warp affine transform  (e.g. example_func2highres.mat)>   (default=identity)
+        -mm                                  (outputs coordinates in mm - default)
+        -vox                                 (outputs coordinates in voxels)
+        -v                                   (verbose output)
+        -verbose                             (more verbose output)
+        -help
+
+ Notes:
+  (1) if '-' is used as coordinate filename then coordinates are read from standard input
+  (2) the -img option is compulsory

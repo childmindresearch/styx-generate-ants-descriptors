@@ -1,0 +1,33 @@
+
+=== Output of 'mri_remove_neck --help' ===
+
+				Help
+
+NAME
+	mri_remove_neck
+
+SYNOPSIS
+	mri_remove_neck <in volume> <transform> <GCA> <output volume>
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_remove_neck -help' ===
+
+				Help
+
+NAME
+	mri_remove_neck
+
+SYNOPSIS
+	mri_remove_neck <in volume> <transform> <GCA> <output volume>
+
+REPORTING
+	Report bugs to <freesurfer@nmr.mgh.harvard.edu>
+
+
+
+=== Output of 'mri_remove_neck' (no arguments) ===
+

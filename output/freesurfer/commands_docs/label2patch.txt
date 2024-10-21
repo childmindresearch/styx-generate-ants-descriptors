@@ -1,0 +1,21 @@
+
+=== Output of 'label2patch --help' ===
+
+unknown option --help
+
+=== Output of 'label2patch -help' ===
+
+unknown option -help
+
+=== Output of 'label2patch' (no arguments) ===
+
+usage: /usr/local/freesurfer/bin/label2patch [options] <subject name> <hemi> <label file name> <output patch file>...
+where valid options are:
+	-dilate <n>  : dilate the label <n> times before creating the patch
+	-erode <n>   : erode the label <n> times before creating the patch
+	-close <n>   : close the label <n> times before creating the patch
+	-sdir <path> : use <path> as the SUBJECTS_DIR instead of environment
+	-surf <name> : use <name> as the surface (default 'inflated')
+	-writesurf   : write output to a surface file (not a patch)
+	               (use .stl in filename to only write the mesh covered by
+	                the label, saving it in FS format will save full surface)

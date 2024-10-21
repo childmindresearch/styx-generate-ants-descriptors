@@ -1,0 +1,15 @@
+
+=== Output of 'fsl2ascii --help' ===
+
+
+Usage: fsl2ascii <input> <output>
+
+=== Output of 'fsl2ascii -help' ===
+
+
+Usage: fsl2ascii <input> <output>
+
+=== Output of 'fsl2ascii' (no arguments) ===
+
+
+Usage: fsl2ascii <input> <output>

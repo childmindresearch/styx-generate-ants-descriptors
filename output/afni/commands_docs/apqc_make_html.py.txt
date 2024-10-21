@@ -1,0 +1,24 @@
+
+=== Output of 'apqc_make_html.py --help' ===
+
+** ERROR: unknown opt: '--help'
+
+=== Output of 'apqc_make_html.py -help' ===
+
+
+
+Help is here.
+
+-qc_dir
+
+
+
+=== Output of 'apqc_make_html.py' (no arguments) ===
+
+
+
+Help is here.
+
+-qc_dir
+
+

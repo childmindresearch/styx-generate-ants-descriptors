@@ -1,0 +1,48 @@
+
+=== Output of 'mri_map_cpdat --help' ===
+
+ERROR: need to specify an output control file
+
+/usr/local/freesurfer/bin/mri_map_cpdat <Required Arguments>
+
+  Maps a control.dat file to a different space using an LTA
+
+  -in  <file>      input  control point txt file
+  -out <file>      output control point txt file
+  -lta <file>      lta transform file to be applied
+  -tomni305 <subject>  get lta from talairach.xfm
+  -frommni305 <subject>  get lta from talairach.xfm
+  -slf subjectlistfile : maps all control points from all subjects listed in the text/ascii subjectlistfile to mni305 (talairach) space
+  
+
+=== Output of 'mri_map_cpdat -help' ===
+
+ERROR: need to specify an output control file
+
+/usr/local/freesurfer/bin/mri_map_cpdat <Required Arguments>
+
+  Maps a control.dat file to a different space using an LTA
+
+  -in  <file>      input  control point txt file
+  -out <file>      output control point txt file
+  -lta <file>      lta transform file to be applied
+  -tomni305 <subject>  get lta from talairach.xfm
+  -frommni305 <subject>  get lta from talairach.xfm
+  -slf subjectlistfile : maps all control points from all subjects listed in the text/ascii subjectlistfile to mni305 (talairach) space
+  
+
+=== Output of 'mri_map_cpdat' (no arguments) ===
+
+ERROR: need to specify an output control file
+
+/usr/local/freesurfer/bin/mri_map_cpdat <Required Arguments>
+
+  Maps a control.dat file to a different space using an LTA
+
+  -in  <file>      input  control point txt file
+  -out <file>      output control point txt file
+  -lta <file>      lta transform file to be applied
+  -tomni305 <subject>  get lta from talairach.xfm
+  -frommni305 <subject>  get lta from talairach.xfm
+  -slf subjectlistfile : maps all control points from all subjects listed in the text/ascii subjectlistfile to mni305 (talairach) space
+  

@@ -1,0 +1,83 @@
+
+=== Output of 'swap_voxelwise --help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+swap_voxelwise 
+Reordering of vectors with direction preservation
+
+Usage: 
+swap_voxelwise -v <vectorsFileList> [-s <scalarsFileList> -b <outputBaseName> -m <mask>]
+
+Compulsory arguments (You MUST set one or more of):
+	-v,--vectors	vectors list (textfile)
+	-s,--scalars	scalars list (textfile)
+	-m,--mask	filename of brain mask or skeleton
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	-V,--verbose	switch on diagnostic messages
+	--mode	reordering mode - choose between 'voxels' (default) or 'volumes' (in which the volumes must be aligned)
+	-b,--obasename	output obasename - default='reordered'
+	--initmask	filename of initialisation mask
+	--xthresh	threshold for considering a crosing fibre region - default=0.1
+
+
+
+=== Output of 'swap_voxelwise -help' ===
+
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+swap_voxelwise 
+Reordering of vectors with direction preservation
+
+Usage: 
+swap_voxelwise -v <vectorsFileList> [-s <scalarsFileList> -b <outputBaseName> -m <mask>]
+
+Compulsory arguments (You MUST set one or more of):
+	-v,--vectors	vectors list (textfile)
+	-s,--scalars	scalars list (textfile)
+	-m,--mask	filename of brain mask or skeleton
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	-V,--verbose	switch on diagnostic messages
+	--mode	reordering mode - choose between 'voxels' (default) or 'volumes' (in which the volumes must be aligned)
+	-b,--obasename	output obasename - default='reordered'
+	--initmask	filename of initialisation mask
+	--xthresh	threshold for considering a crosing fibre region - default=0.1
+
+
+
+-e: Option doesn't exist!
+
+=== Output of 'swap_voxelwise' (no arguments) ===
+
+***************************************************
+The following COMPULSORY options have not been set:
+	-v,--vectors	vectors list (textfile)
+	-s,--scalars	scalars list (textfile)
+	-m,--mask	filename of brain mask or skeleton
+***************************************************
+
+Part of FSL (ID: 6.0.4:ddd0a010)
+swap_voxelwise 
+Reordering of vectors with direction preservation
+
+Usage: 
+swap_voxelwise -v <vectorsFileList> [-s <scalarsFileList> -b <outputBaseName> -m <mask>]
+
+Compulsory arguments (You MUST set one or more of):
+	-v,--vectors	vectors list (textfile)
+	-s,--scalars	scalars list (textfile)
+	-m,--mask	filename of brain mask or skeleton
+
+Optional arguments (You may optionally specify one or more of):
+	-h,--help	display this message
+	-V,--verbose	switch on diagnostic messages
+	--mode	reordering mode - choose between 'voxels' (default) or 'volumes' (in which the volumes must be aligned)
+	-b,--obasename	output obasename - default='reordered'
+	--initmask	filename of initialisation mask
+	--xthresh	threshold for considering a crosing fibre region - default=0.1
+
+

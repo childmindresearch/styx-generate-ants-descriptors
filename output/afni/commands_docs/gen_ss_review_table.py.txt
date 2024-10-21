@@ -1,0 +1,613 @@
+
+=== Output of 'gen_ss_review_table.py --help' ===
+
+** error: unknown trailing arguments : ['--help']
+** failed to process options...
+
+=== Output of 'gen_ss_review_table.py -help' ===
+
+
+=============================================================================
+gen_ss_review_table.py - generate a table from ss_review_basic output files
+
+   Given many output text files (e.g. of the form out.ss_review.SUBJECT.txt),
+   make a tab-delimited table of output fields, one infile/subject per line.
+
+   The program is based on processing lines of the form:
+
+        description label : value1 value2 ...
+
+   A resulting table will have one row per input, and one column per value,
+   with columns separated by a tab character, for input into a spreadsheet.
+
+   The top row of the output will have labels.
+   The second row will have value_N entries, corresponding to the labels.
+   The first column will be either detected group names from the inputs,
+      or will simply be the input file names.
+
+ * See "gen_ss_review_scripts.py -help_fields" for short descriptions of
+   the fields.
+
+------------------------------------------
+examples:
+
+   1. typical usage: input all out.ss_review files across groups and subjects
+
+      gen_ss_review_table.py -write_table review_table.xls        \
+                -infiles group.*/subj.*/*.results/out.ss_review.*
+
+   2. just show label table
+
+      gen_ss_review_table.py -showlabs -infiles gr*/sub*/*.res*/out.ss_rev*
+
+   3. report outliers: subjects with "outlier" table values
+      (include all 'degrees of freedom left' values in the table)
+
+      gen_ss_review_table.py                                          \
+              -outlier_sep space                                      \
+              -report_outliers 'censor fraction' GE 0.1               \
+              -report_outliers 'average censored motion' GE 0.1       \
+              -report_outliers 'max censored displacement' GE 8       \
+              -report_outliers 'TSNR average' LT 300                  \
+              -report_outliers 'degrees of freedom left' SHOW         \
+              -infiles sub*/s*.results/out.ss*.txt                    \
+              -write_outliers outliers.values.txt
+
+      * To show a complete table of subjects to keep rather than outliers to
+        drop, add option -show_keepers.
+
+   4. report outliers: subjects with varying columns, where they should not
+
+      gen_ss_review_table.py                                          \
+              -outlier_sep space                                      \
+              -report_outliers 'AFNI version' VARY                    \
+              -report_outliers 'num regs of interest' VARY            \
+              -report_outliers 'final voxel resolution' VARY          \
+              -report_outliers 'num TRs per run' VARY                 \
+              -infiles sub*/s*.results/out.ss*.txt                    \
+              -write_outliers outliers.vary.txt
+
+      * Note that examples 3 and 4 could be put together, but it might make
+        processing easier to keep them separate.
+
+   5. report outliers: subjects with varying columns, where ANY entries vary
+      (excludes the initial subject column)
+
+      gen_ss_review_table.py -report_outliers ANY VARY     \
+              -outlier_sep space -infiles all/dset*.txt
+
+      This is intended to work with the output from gtkyd_check.
+
+------------------------------------------
+terminal options:
+
+   -help                : show this help
+   -hist                : show the revision history
+   -ver                 : show the version number
+
+------------------------------------------
+process options:
+
+   -infiles FILE1 ...   : specify @ss_review_basic output text files to process
+
+         e.g. -infiles out.ss_review.subj12345.txt
+         e.g. -infiles group.*/subj.*/*.results/out.ss_review.*
+
+      The resulting table will be based on all of the fields in these files.
+
+      This program can be used as a pipe for input and output, using '-'
+      or file stream names.
+
+   -infiles_json JSON1 ... : specify JSON text files (= dictionaries) to
+                          process, and make a table based on all of
+                          the keys in these files.
+
+   -overwrite           : overwrite the output -write_table, if it exists
+
+      Without this option, an existing -write_table will not be overwritten.
+
+
+   -empty_is_outlier    : treat empty tests as outliers
+
+         e.g.     -empty_is_outlier
+         default: (do not treat as outliers)
+
+      This option applies to -report_outliers.
+
+      If the user specifies a test that must be numerical (GT, GE, LT,
+      LE, ZGT, ZGE, ZLT, ZLE) against a valid float and the current
+      column to test against is empty, the default operation is to not
+      report it (it is not treated as an outlier).  For example, if
+      looking for runs with "censor fraction" greater than 0.1, a run
+      without any censor fraction (e.g. if this subject did not have
+      the given run) would not be reported as an outlier.
+
+      Use this option to report such cases as outliers.
+
+      See also -report_outliers.
+
+   -outlier_sep SEP     : use SEP for the outlier table separator
+
+         e.g.     -outlier_sep tab
+         default. -outlier_sep space
+
+      Use this option to specify how the fields in the outlier table are
+      separated.  SEP can be basically anything, with some special cases:
+
+         space  : (default) make the columns spatially aligned
+         comma  : use commas ',' for field separators
+         tab    : use tabs '\t' for field separators
+         STRING : otherwise, use the given STRING as it is provided
+
+   -separator SEP       : use SEP for the label/vals separator (default = ':')
+
+         e.g. -separator :
+         e.g. -separator tab
+         e.g. -separator whitespace
+
+      Use this option to specify the separation character or string between
+      the labels and values of the input files.
+
+   -join_values GLUE    : concatenate multi-valued values with string GLUE
+
+      This only affects values that have multiple entries (like 3
+      dimensions of a voxel).
+
+      If using, make sure that GLUE contents do not coincide with
+      table separator, or you will end up with a sticky situation
+      (default = None, meaning multiple values go to separate columns).
+                          
+   -showlabs            : display counts of all labels found, with parents
+
+      This is mainly to help create a list of labels and parent labels.
+
+   -show_infiles        : include input files in reviewtable result
+
+      Force the first output column to be the input files.
+
+   -show_keepers        : show a table of subjects kept rather than dropped
+
+      By default, -report_outliers shows a subject table of any outliers.
+      With -show_keepers, the table is essentially inverted.  Subjects with
+      no outliers would be shown, and the displayed outlier limits would be
+      logically negated (e.g.  GE:1.25 would change to LT:1.25).
+
+   -report_outliers LABEL COMP [VAL] : report outliers, where comparison holds
+
+        e.g. -report_outliers 'censor fraction' GE 0.1
+        e.g. -report_outliers 'average censored motion' GE 0.1
+        e.g. -report_outliers 'TSNR average' LT 100
+        e.g. -report_outliers 'AFNI version' VARY
+        e.g. -report_outliers 'global correlation (GCOR)' SHOW
+        e.g. -report_outliers ANY VARY
+
+      This option is used to make a table of outlier subjects.  If any
+      comparison function is true for a subject (other than SHOW), that subject
+      will be included in the output table.  By default, only the values seen
+      as outliers will be shown (see -report_outliers_fill_style).
+
+      The outlier table will be spatially aligned by default, though the
+      option -outlier_sep can be used to control the field separator.
+
+      In general, the comparison will be an outlier if it is true, meaning
+      "LABEL COMP VAL" defines what is an outlier (as opposed to defining what
+      is okay).  The parameters include:
+
+        LABEL   : the (probably quoted) label from the input out.ss files
+                  (it should be quoted to be applied as a single parameter,
+                  including spaces, parentheses or other special characters)
+
+                  ANY  : A special LABEL is "ANY".  This will be replaced with
+                         each label in the input (excluded the initial one, for
+                         subject).  It is equivalent to specifying the given
+                         test for every (non-initial) label in the input.
+
+                  ANY0 : Another special LABEL, but in this case, it includes
+                         column 0, previously left for subject.
+
+        COMP    : a comparison operator, one of:
+                  SHOW  : (no VAL) show the value, for any output subject
+                  VARY  : (no VAL) show any value that varies from first subj
+                  EQ    : equals (outlier if subject value equals VAL)
+                  LT    : less than
+                  LE    : less than or equal to
+                  GT    : greater than
+                  GE    : greater than or equal to
+                  ZLT   : Z-score less than
+                  ZLE   : Z-score less than or equal to
+                  ZGT   : Z-score greater than
+                  ZGE   : Z-score greater than or equal to
+
+                  The Z* operators are implemented as follows for a given
+                  LABEL:
+                  In this case, the VAL will be treated as a Z-score
+                  value.  The mean and stdev across all subjects for
+                  that LABEL are calculated, and then the specified
+                  VAL is translated to local units as an inverse
+                  Z-transform: VAL -> VAL*stdev + mean. Then the
+                  comparison is made.
+                  The translated threshold is reported in the outlier
+                  report. This only applies to LABELs with scalar, numerical
+                  values.
+
+        VAL     : a comparison value (if needed, based on COMP)
+
+      RO example 1.
+
+            -report_outliers 'censor fraction' GE 0.1
+
+         Any subject with a 'censor fraction' that is greater than or equal to
+         0.1 will be considered an outlier, with that subject line shown, and
+         with that field value shown.
+
+      RO example 2.
+
+            -report_outliers 'AFNI version' VARY
+
+         In determining whether 'AFNI version' varies across subjects, each
+         subject is simply compared with the first.  If they differ, that
+         subject is considered an outlier, with the version shown.
+
+      RO example 3.
+
+            -report_outliers 'global correlation (GCOR)' SHOW
+
+         SHOW is not actually an outlier comparison, it simply means to show
+         the given field value in any output.  This will not affect which
+         subject lines are displayed.  But for those that are, the GCOR column
+         (in this example) and values will be included.
+
+      RO example 4.
+
+            -report_outliers 'anat/EPI mask Dice coef' ZLE -3
+
+         Any subject with a much lower 'anat/EPI mask Dice coef' than
+         other subjects will be considered an outlier.  Rather than
+         being an absolute exclusion criterion, this might more be
+         more appropriate simply to quickly point out subjects that
+         might have an alignment issue (or at least who differ from
+         the rest of the group in this parameter).
+
+      See also -report_outliers_fill_style, -outlier_sep and -empty_is_outlier.
+
+   -report_outliers_fill_style STYLE : how to fill non-outliers in table
+
+        e.g. -report_outliers_fill_style na
+        default: -report_outliers_fill_style blank
+
+      Aside from the comparison operator of 'SHOW', by default, the outlier
+      table will be sparse, with empty positions where values are not
+      outliers.  This option specifies how to fill non-outlier positions.
+
+            blank   : (default) leave position blank
+            na      : show the text, 'na'
+            value   : show the original data value
+
+   -show_missing        : display all missing keys
+
+      Show all missing keys from all infiles.
+
+   -write_outliers FNAME : write outlier table to given file, FNAME
+
+      If FNAME is '-' 'stdout', write to stdout.
+
+   -write_table FNAME    : write final table to the given file
+   -tablefile   FNAME    : (same)
+
+      Write the full spreadsheet to the given file.
+
+      If the specified file already exists, it will not be overwritten
+      unless the -overwrite option is specified.
+
+   -verb LEVEL          : be verbose (default LEVEL = 1)
+
+------------------------------------------
+Thanks to J Jarcho for encouragement and suggestions.
+
+R Reynolds    April 2014
+=============================================================================
+
+
+=== Output of 'gen_ss_review_table.py' (no arguments) ===
+
+
+=============================================================================
+gen_ss_review_table.py - generate a table from ss_review_basic output files
+
+   Given many output text files (e.g. of the form out.ss_review.SUBJECT.txt),
+   make a tab-delimited table of output fields, one infile/subject per line.
+
+   The program is based on processing lines of the form:
+
+        description label : value1 value2 ...
+
+   A resulting table will have one row per input, and one column per value,
+   with columns separated by a tab character, for input into a spreadsheet.
+
+   The top row of the output will have labels.
+   The second row will have value_N entries, corresponding to the labels.
+   The first column will be either detected group names from the inputs,
+      or will simply be the input file names.
+
+ * See "gen_ss_review_scripts.py -help_fields" for short descriptions of
+   the fields.
+
+------------------------------------------
+examples:
+
+   1. typical usage: input all out.ss_review files across groups and subjects
+
+      gen_ss_review_table.py -write_table review_table.xls        \
+                -infiles group.*/subj.*/*.results/out.ss_review.*
+
+   2. just show label table
+
+      gen_ss_review_table.py -showlabs -infiles gr*/sub*/*.res*/out.ss_rev*
+
+   3. report outliers: subjects with "outlier" table values
+      (include all 'degrees of freedom left' values in the table)
+
+      gen_ss_review_table.py                                          \
+              -outlier_sep space                                      \
+              -report_outliers 'censor fraction' GE 0.1               \
+              -report_outliers 'average censored motion' GE 0.1       \
+              -report_outliers 'max censored displacement' GE 8       \
+              -report_outliers 'TSNR average' LT 300                  \
+              -report_outliers 'degrees of freedom left' SHOW         \
+              -infiles sub*/s*.results/out.ss*.txt                    \
+              -write_outliers outliers.values.txt
+
+      * To show a complete table of subjects to keep rather than outliers to
+        drop, add option -show_keepers.
+
+   4. report outliers: subjects with varying columns, where they should not
+
+      gen_ss_review_table.py                                          \
+              -outlier_sep space                                      \
+              -report_outliers 'AFNI version' VARY                    \
+              -report_outliers 'num regs of interest' VARY            \
+              -report_outliers 'final voxel resolution' VARY          \
+              -report_outliers 'num TRs per run' VARY                 \
+              -infiles sub*/s*.results/out.ss*.txt                    \
+              -write_outliers outliers.vary.txt
+
+      * Note that examples 3 and 4 could be put together, but it might make
+        processing easier to keep them separate.
+
+   5. report outliers: subjects with varying columns, where ANY entries vary
+      (excludes the initial subject column)
+
+      gen_ss_review_table.py -report_outliers ANY VARY     \
+              -outlier_sep space -infiles all/dset*.txt
+
+      This is intended to work with the output from gtkyd_check.
+
+------------------------------------------
+terminal options:
+
+   -help                : show this help
+   -hist                : show the revision history
+   -ver                 : show the version number
+
+------------------------------------------
+process options:
+
+   -infiles FILE1 ...   : specify @ss_review_basic output text files to process
+
+         e.g. -infiles out.ss_review.subj12345.txt
+         e.g. -infiles group.*/subj.*/*.results/out.ss_review.*
+
+      The resulting table will be based on all of the fields in these files.
+
+      This program can be used as a pipe for input and output, using '-'
+      or file stream names.
+
+   -infiles_json JSON1 ... : specify JSON text files (= dictionaries) to
+                          process, and make a table based on all of
+                          the keys in these files.
+
+   -overwrite           : overwrite the output -write_table, if it exists
+
+      Without this option, an existing -write_table will not be overwritten.
+
+
+   -empty_is_outlier    : treat empty tests as outliers
+
+         e.g.     -empty_is_outlier
+         default: (do not treat as outliers)
+
+      This option applies to -report_outliers.
+
+      If the user specifies a test that must be numerical (GT, GE, LT,
+      LE, ZGT, ZGE, ZLT, ZLE) against a valid float and the current
+      column to test against is empty, the default operation is to not
+      report it (it is not treated as an outlier).  For example, if
+      looking for runs with "censor fraction" greater than 0.1, a run
+      without any censor fraction (e.g. if this subject did not have
+      the given run) would not be reported as an outlier.
+
+      Use this option to report such cases as outliers.
+
+      See also -report_outliers.
+
+   -outlier_sep SEP     : use SEP for the outlier table separator
+
+         e.g.     -outlier_sep tab
+         default. -outlier_sep space
+
+      Use this option to specify how the fields in the outlier table are
+      separated.  SEP can be basically anything, with some special cases:
+
+         space  : (default) make the columns spatially aligned
+         comma  : use commas ',' for field separators
+         tab    : use tabs '\t' for field separators
+         STRING : otherwise, use the given STRING as it is provided
+
+   -separator SEP       : use SEP for the label/vals separator (default = ':')
+
+         e.g. -separator :
+         e.g. -separator tab
+         e.g. -separator whitespace
+
+      Use this option to specify the separation character or string between
+      the labels and values of the input files.
+
+   -join_values GLUE    : concatenate multi-valued values with string GLUE
+
+      This only affects values that have multiple entries (like 3
+      dimensions of a voxel).
+
+      If using, make sure that GLUE contents do not coincide with
+      table separator, or you will end up with a sticky situation
+      (default = None, meaning multiple values go to separate columns).
+                          
+   -showlabs            : display counts of all labels found, with parents
+
+      This is mainly to help create a list of labels and parent labels.
+
+   -show_infiles        : include input files in reviewtable result
+
+      Force the first output column to be the input files.
+
+   -show_keepers        : show a table of subjects kept rather than dropped
+
+      By default, -report_outliers shows a subject table of any outliers.
+      With -show_keepers, the table is essentially inverted.  Subjects with
+      no outliers would be shown, and the displayed outlier limits would be
+      logically negated (e.g.  GE:1.25 would change to LT:1.25).
+
+   -report_outliers LABEL COMP [VAL] : report outliers, where comparison holds
+
+        e.g. -report_outliers 'censor fraction' GE 0.1
+        e.g. -report_outliers 'average censored motion' GE 0.1
+        e.g. -report_outliers 'TSNR average' LT 100
+        e.g. -report_outliers 'AFNI version' VARY
+        e.g. -report_outliers 'global correlation (GCOR)' SHOW
+        e.g. -report_outliers ANY VARY
+
+      This option is used to make a table of outlier subjects.  If any
+      comparison function is true for a subject (other than SHOW), that subject
+      will be included in the output table.  By default, only the values seen
+      as outliers will be shown (see -report_outliers_fill_style).
+
+      The outlier table will be spatially aligned by default, though the
+      option -outlier_sep can be used to control the field separator.
+
+      In general, the comparison will be an outlier if it is true, meaning
+      "LABEL COMP VAL" defines what is an outlier (as opposed to defining what
+      is okay).  The parameters include:
+
+        LABEL   : the (probably quoted) label from the input out.ss files
+                  (it should be quoted to be applied as a single parameter,
+                  including spaces, parentheses or other special characters)
+
+                  ANY  : A special LABEL is "ANY".  This will be replaced with
+                         each label in the input (excluded the initial one, for
+                         subject).  It is equivalent to specifying the given
+                         test for every (non-initial) label in the input.
+
+                  ANY0 : Another special LABEL, but in this case, it includes
+                         column 0, previously left for subject.
+
+        COMP    : a comparison operator, one of:
+                  SHOW  : (no VAL) show the value, for any output subject
+                  VARY  : (no VAL) show any value that varies from first subj
+                  EQ    : equals (outlier if subject value equals VAL)
+                  LT    : less than
+                  LE    : less than or equal to
+                  GT    : greater than
+                  GE    : greater than or equal to
+                  ZLT   : Z-score less than
+                  ZLE   : Z-score less than or equal to
+                  ZGT   : Z-score greater than
+                  ZGE   : Z-score greater than or equal to
+
+                  The Z* operators are implemented as follows for a given
+                  LABEL:
+                  In this case, the VAL will be treated as a Z-score
+                  value.  The mean and stdev across all subjects for
+                  that LABEL are calculated, and then the specified
+                  VAL is translated to local units as an inverse
+                  Z-transform: VAL -> VAL*stdev + mean. Then the
+                  comparison is made.
+                  The translated threshold is reported in the outlier
+                  report. This only applies to LABELs with scalar, numerical
+                  values.
+
+        VAL     : a comparison value (if needed, based on COMP)
+
+      RO example 1.
+
+            -report_outliers 'censor fraction' GE 0.1
+
+         Any subject with a 'censor fraction' that is greater than or equal to
+         0.1 will be considered an outlier, with that subject line shown, and
+         with that field value shown.
+
+      RO example 2.
+
+            -report_outliers 'AFNI version' VARY
+
+         In determining whether 'AFNI version' varies across subjects, each
+         subject is simply compared with the first.  If they differ, that
+         subject is considered an outlier, with the version shown.
+
+      RO example 3.
+
+            -report_outliers 'global correlation (GCOR)' SHOW
+
+         SHOW is not actually an outlier comparison, it simply means to show
+         the given field value in any output.  This will not affect which
+         subject lines are displayed.  But for those that are, the GCOR column
+         (in this example) and values will be included.
+
+      RO example 4.
+
+            -report_outliers 'anat/EPI mask Dice coef' ZLE -3
+
+         Any subject with a much lower 'anat/EPI mask Dice coef' than
+         other subjects will be considered an outlier.  Rather than
+         being an absolute exclusion criterion, this might more be
+         more appropriate simply to quickly point out subjects that
+         might have an alignment issue (or at least who differ from
+         the rest of the group in this parameter).
+
+      See also -report_outliers_fill_style, -outlier_sep and -empty_is_outlier.
+
+   -report_outliers_fill_style STYLE : how to fill non-outliers in table
+
+        e.g. -report_outliers_fill_style na
+        default: -report_outliers_fill_style blank
+
+      Aside from the comparison operator of 'SHOW', by default, the outlier
+      table will be sparse, with empty positions where values are not
+      outliers.  This option specifies how to fill non-outlier positions.
+
+            blank   : (default) leave position blank
+            na      : show the text, 'na'
+            value   : show the original data value
+
+   -show_missing        : display all missing keys
+
+      Show all missing keys from all infiles.
+
+   -write_outliers FNAME : write outlier table to given file, FNAME
+
+      If FNAME is '-' 'stdout', write to stdout.
+
+   -write_table FNAME    : write final table to the given file
+   -tablefile   FNAME    : (same)
+
+      Write the full spreadsheet to the given file.
+
+      If the specified file already exists, it will not be overwritten
+      unless the -overwrite option is specified.
+
+   -verb LEVEL          : be verbose (default LEVEL = 1)
+
+------------------------------------------
+Thanks to J Jarcho for encouragement and suggestions.
+
+R Reynolds    April 2014
+=============================================================================
+

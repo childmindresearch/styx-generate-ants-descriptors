@@ -1,0 +1,13 @@
+
+=== Output of 'mris_extract_patches --help' ===
+
+unknown option --help
+
+=== Output of 'mris_extract_patches -help' ===
+
+unknown option -help
+
+=== Output of 'mris_extract_patches' (no arguments) ===
+
+Usage: /usr/local/freesurfer/bin/mris_extract_patches [options] <subject> <output dir>
+Example: mris_extract_patches bruce $SUBJECTS_DIR/bruce/patches

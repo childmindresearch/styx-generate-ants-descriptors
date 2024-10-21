@@ -1,0 +1,16 @@
+
+=== Output of 'mri_and --help' ===
+
+USAGE: /usr/local/freesurfer/bin/mri_and  <options> fname1 fname2 .. 
+
+
+Performs a logical voxel-wise AND on a series of volumes
+
+=== Output of 'mri_and -help' ===
+
+unknown option -help
+
+=== Output of 'mri_and' (no arguments) ===
+
+USAGE: /usr/local/freesurfer/bin/mri_and  <options> fname1 fname2 .. 
+

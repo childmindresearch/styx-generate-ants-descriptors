@@ -1,0 +1,21 @@
+
+=== Output of 'nsize --help' ===
+
+Usage: nsize image_in image_out
+  Zero pads 'image_in' to NxN, N=64,128,256,512, or 1024, 
+  whichever is the closest size larger than 'image_in'.
+  [Works only for byte and short images.]
+
+=== Output of 'nsize -help' ===
+
+Usage: nsize image_in image_out
+  Zero pads 'image_in' to NxN, N=64,128,256,512, or 1024, 
+  whichever is the closest size larger than 'image_in'.
+  [Works only for byte and short images.]
+
+=== Output of 'nsize' (no arguments) ===
+
+Usage: nsize image_in image_out
+  Zero pads 'image_in' to NxN, N=64,128,256,512, or 1024, 
+  whichever is the closest size larger than 'image_in'.
+  [Works only for byte and short images.]

@@ -1,0 +1,18 @@
+
+=== Output of 'pairreg --help' ===
+
+Usage: /usr/local/fsl/bin/pairreg brain1 brain2 skull1 skull2 outputmatrix [extra flirt args]
+
+  NB: brain1 and skull1 are used as -ref arguments internally
+
+=== Output of 'pairreg -help' ===
+
+Usage: /usr/local/fsl/bin/pairreg brain1 brain2 skull1 skull2 outputmatrix [extra flirt args]
+
+  NB: brain1 and skull1 are used as -ref arguments internally
+
+=== Output of 'pairreg' (no arguments) ===
+
+Usage: /usr/local/fsl/bin/pairreg brain1 brain2 skull1 skull2 outputmatrix [extra flirt args]
+
+  NB: brain1 and skull1 are used as -ref arguments internally

@@ -1,0 +1,36 @@
+
+=== Output of 'analyzeto4dfp --help' ===
+
+Usage: analyzeto4dfp <analyze_image>
+	option
+	-s	apply ROIScaleFactor
+	-x	flip first  axis
+	-y	flip second axis
+	-z	flip third  axis
+	-@<b|l>	toutput big or little endian (default CPU endian)
+	-O<int>	supply orientation code (in range [0-5])
+freesurfer analyzeto4dfp.c
+
+=== Output of 'analyzeto4dfp -help' ===
+
+Usage: analyzeto4dfp <analyze_image>
+	option
+	-s	apply ROIScaleFactor
+	-x	flip first  axis
+	-y	flip second axis
+	-z	flip third  axis
+	-@<b|l>	toutput big or little endian (default CPU endian)
+	-O<int>	supply orientation code (in range [0-5])
+freesurfer analyzeto4dfp.c
+
+=== Output of 'analyzeto4dfp' (no arguments) ===
+
+Usage: analyzeto4dfp <analyze_image>
+	option
+	-s	apply ROIScaleFactor
+	-x	flip first  axis
+	-y	flip second axis
+	-z	flip third  axis
+	-@<b|l>	toutput big or little endian (default CPU endian)
+	-O<int>	supply orientation code (in range [0-5])
+freesurfer analyzeto4dfp.c

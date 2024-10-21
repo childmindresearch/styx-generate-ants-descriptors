@@ -1,0 +1,12 @@
+
+=== Output of 'mri_aseg_edit_reclassify --help' ===
+
+error: mri_aseg_edit_reclassify has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_aseg_edit_reclassify -help' ===
+
+error: mri_aseg_edit_reclassify has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu
+
+=== Output of 'mri_aseg_edit_reclassify' (no arguments) ===
+
+error: mri_aseg_edit_reclassify has been removed from this version of freesurfer. For further information, please post to the help list at freesurfer@nmr.mgh.harvard.edu

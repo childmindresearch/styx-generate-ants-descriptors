@@ -1,0 +1,22 @@
+
+=== Output of 'run_SegmentThalamicNuclei.sh --help' ===
+
+------------------------------------------
+Setting up environment variables
+---
+LD_LIBRARY_PATH is .:--help/runtime/glnxa64:--help/bin/glnxa64:--help/sys/os/glnxa64:--help/sys/java/jre/glnxa64/jre/lib/amd64/native_threads:--help/sys/java/jre/glnxa64/jre/lib/amd64/server:--help/sys/java/jre/glnxa64/jre/lib/amd64/client:--help/sys/java/jre/glnxa64/jre/lib/amd64:
+/usr/local/freesurfer/bin/SegmentThalamicNuclei: error while loading shared libraries: libmwlaunchermain.so: cannot open shared object file: No such file or directory
+
+=== Output of 'run_SegmentThalamicNuclei.sh -help' ===
+
+------------------------------------------
+Setting up environment variables
+---
+LD_LIBRARY_PATH is .:-help/runtime/glnxa64:-help/bin/glnxa64:-help/sys/os/glnxa64:-help/sys/java/jre/glnxa64/jre/lib/amd64/native_threads:-help/sys/java/jre/glnxa64/jre/lib/amd64/server:-help/sys/java/jre/glnxa64/jre/lib/amd64/client:-help/sys/java/jre/glnxa64/jre/lib/amd64:
+/usr/local/freesurfer/bin/SegmentThalamicNuclei: error while loading shared libraries: libmwlaunchermain.so: cannot open shared object file: No such file or directory
+
+=== Output of 'run_SegmentThalamicNuclei.sh' (no arguments) ===
+
+------------------------------------------
+Usage:
+/usr/local/freesurfer/bin/run_SegmentThalamicNuclei.sh <deployedMCRroot> args

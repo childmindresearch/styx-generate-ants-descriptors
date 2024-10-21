@@ -1,0 +1,109 @@
+
+=== Output of 'fs_time --help' ===
+
+--help: Command not found.
+
+=== Output of 'fs_time -help' ===
+
+
+fs_time [options] command args
+ options:
+  -o outputfile : save resource info into outputfile
+  -k key
+  -l : report on load averages as from uptime
+fs_time 7.4.1
+
+This is a frontend for the unix /usr/bin/time program to keep track of 
+resources used by a process. The basic usage is like that of time, ie,
+
+fs_time [options] command args
+
+It creates a formatted output that allows for easy processing. See below.
+
+If the FS_TIME_ALLOW env var is set to 0, then fs_time will simply run
+the command and exit with the retun status. This feature allows
+fs_time to be turned off in cases where /usr/bin/time does not exist.
+If it is not set or set to non-zero, then fs_time runs as normal.
+
+If the env variable FSTIME_LOAD is set to 1 or not set at all, then
+uptime is run before and after each process to give the load on the
+system (see below for output)
+
+Default fs_time Output (see also the manual page for /usr/bin/time):
+1. Key (default is @#@FSTIME)
+2. Time stamp at the onset of execution
+3. Command name
+4. N Number of arguments passed to command
+5. e Elapsed real time in seconds . This is the total
+      amount of time from when the command started to when it ended regardless
+      of how much of the CPU it got.
+6. S Total number of CPU-seconds that the process spent in kernel mode.
+7. U Total number of CPU-seconds that the process spent in user mode.
+8. P Percentage of the CPU that this job got, computed as (U+S)/e.
+9. M Maximum resident set size of the process during its lifetime, in Kbytes.
+10. F Number  of major page faults that occurred while the process was running.  
+      These are faults where the page has to be read in from disk.
+11. R Number of minor, or recoverable, page faults.  These are
+   faults for pages that are not valid but which have not yet been
+   claimed by other virtual pages.  Thus the data in the page is
+   still valid but the system tables must be updated.
+12.  W Number of times the process was swapped out of main memory.
+13. c Number of times the process was context-switched involuntarily 
+    (because the time slice expired). 
+14. w Number of waits: times that the program was context-switched voluntarily, 
+    for instance while  waiting  for an I/O operation to complete.
+15. I Number of file system inputs by the process.
+16. O Number of file system outputs by the process.
+17. L L1 L5 L15 : load averages at 1, 5, and 15 min (with setenv FSTIME_LOAD 1)
+
+Example:
+
+fs_time -o resource.dat mri_convert orig.mgz myfile.mgz
+mri_convert orig.mgz myfile.mgz 
+reading from orig.mgz...
+TR=2730.00, TE=3.44, TI=1000.00, flip angle=7.00
+i_ras = (-1, 0, 0)
+j_ras = (2.38419e-07, 0, -1)
+k_ras = (-1.93715e-07, 1, 0)
+writing to myfile.mgz...
+@#@FSTIME 2016:01:21:18:27:08 mri_convert N 2 e 2.20 S 0.05 U 1.64 P 77% M 23628 F 0 R 5504 W 0 c 7 w 3 I 0 O 20408 
+
+The above command runs the mri_convert command with two arguments and
+produces the information about resources. It also creates a file
+resource.dat with the resource information. In this case, the above is
+interpreted as:
+
+@#@FSTIME  : key for easy searching/grepping
+mri_convert : command that was run
+2016:01:21:18:27:08 : time stamp at the onset of execution year:month:day:hour:min:sec
+N 2 : mri_convert was run with 2 arguments
+e 2.20 : total elapsed time in seconds from start to end
+S 0.05 : seconds spent in system mode
+U 1.64 : seconds spent in user mode
+P 77%  : percent of cpu that process used (S+U)/e
+M 23628 : maximum memory size in Kbytes
+F 0 : no major page faults
+R 5504 : number of minor page faults
+W 0 : process was not swapped out of memory
+c 7 : seven involuntary context-switches
+w 3 : three voluntary context-switches
+I 0 : zero file system inputs by the process.
+O 20408 : Number of file system outputs by the process.
+
+If the env variable FSTIME_LOAD is set to 1, the output looks something like
+
+@#@FSLOADPOST 2016:01:23:15:11 mri_convert N 2 0.00 0.03 0.06
+
+The 3 numbers are the system load averages for the past 1, 5, and 15
+minutes as given by uptime.
+
+
+
+=== Output of 'fs_time' (no arguments) ===
+
+
+fs_time [options] command args
+ options:
+  -o outputfile : save resource info into outputfile
+  -k key
+  -l : report on load averages as from uptime
