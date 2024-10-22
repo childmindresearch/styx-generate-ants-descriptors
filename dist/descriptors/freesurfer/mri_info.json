@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_info",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Tool to extract metadata from MRI volumes",
   "command-line": "mri_info [INPUT1] [INPUT2] [CONFORMED_FLAG] [CONFORMED_TO_MIN_FLAG] [IS_1MM_ISO_FLAG] [TYPE_FLAG] [TR_FLAG] [TE_FLAG] [TI_FLAG] [FA_FLAG] [PEDIR_FLAG] [RES_FLAG] [CRES_FLAG] [RRES_FLAG] [SRES_FLAG] [VOXVOL_FLAG] [VOXVOLSUM_FLAG] [NCOLS_FLAG] [NROWS_FLAG] [NSLICES_FLAG] [DIM_FLAG] [CDC_FLAG] [RDC_FLAG] [SDC_FLAG] [VOX2RAS_FLAG] [RAS2VOX_FLAG] [VOX2RAS_TKR_FLAG] [RAS2VOX_TKR_FLAG] [VOX2RAS_FSL_FLAG] [TKR2SCANNER_FLAG] [SCANNER2TKR_FLAG] [RAS_GOOD_FLAG] [CRAS_FLAG] [CENTER_FLAG] [ZERO_CRAS_FLAG] [P0_FLAG] [DET_FLAG] [DOF_FLAG] [NFRAMES_FLAG] [MID_FRAME_FLAG] [FORMAT_FLAG] [ORIENTATION_FLAG] [SLICEDIRECTION_FLAG] [AUTOALIGN_FLAG] [CTAB_FLAG] [CMDS_FLAG] [DUMP_FLAG] [VOXEL_CRS_FLAG] [ENTROPY_FLAG] [OUTPUT_FILE] [ORIG_RAS2VOX_FLAG] [IN_TYPE]",
   "schema-version": "0.5",
   "inputs": [

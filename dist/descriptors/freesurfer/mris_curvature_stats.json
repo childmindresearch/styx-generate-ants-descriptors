@@ -3,7 +3,7 @@
   "name": "mris_curvature_stats",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer/blob/dev/mri_tarball/mris_curvature_stats.c",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Tool for calculating statistics on surface curvature values.",
   "command-line": "mris_curvature_stats [OPTIONS] [SUBJECTNAME] [HEMI] [CURVFILE...]",
   "container-image": {
     "type": "docker",

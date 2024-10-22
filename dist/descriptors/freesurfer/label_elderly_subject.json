@@ -3,7 +3,7 @@
   "name": "label_elderly_subject",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://example.com/label_elderly_subject.json",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Tool for labeling brain structures in MRI images of elderly subjects using Freesurfer.",
   "command-line": "label_elderly_subject [NORM_VOLUME] [TRANSFORM_LTA] [CLASSIFIER_ARRAY] [ASEG_VOLUME]",
   "container-image": {
     "type": "docker",

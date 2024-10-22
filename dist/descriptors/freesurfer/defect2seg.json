@@ -3,7 +3,7 @@
   "name": "defect2seg",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Converts surface defect labels into a segmentation volume and pointsets",
   "command-line": "defect2seg [OUTPUT_SEG] [TEMPLATE] [LH_SURF] [LH_DEFECT_LABELS] [LH_POINTSET] [LH_OFFSET] [RH_SURF] [RH_DEFECT_LABELS] [RH_POINTSET] [RH_OFFSET] [SUBJECT] [LH_ONLY_FLAG] [RH_ONLY_FLAG] [CORTEX_FLAG] [NO_CORTEX_FLAG]",
   "schema-version": "0.5",
   "inputs": [

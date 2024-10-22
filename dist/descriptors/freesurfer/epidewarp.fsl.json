@@ -3,7 +3,7 @@
   "name": "epidewarp.fsl",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/Boutiques/boutiques-descriptors/blob/master/epidewarp.fsl.json",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Front end for FSL's PRELUDE and FUGUE programs to correct B0 distortion in EPI scans.",
   "command-line": "epidewarp.fsl [MAG] [DPH] [PH] [COMPLEX] [EXF] [EPI] [TEDIFF] [ESP] [PEREV] [SIGMA] [VSM_FWHM] [VSM] [VSMMAG] [EXFDW] [EPIDW] [NOMAGEXFREG] [HEAD] [TMPDIR] [LOG] [NOCLEANUP] [CLEANUP] [DEBUG]",
   "container-image": {
     "type": "docker",

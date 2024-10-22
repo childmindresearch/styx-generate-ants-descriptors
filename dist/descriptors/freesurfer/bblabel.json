@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "bblabel",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Applies a bounding box to a label, copying only the label points within the specified box to the output.",
   "command-line": "bblabel [LABEL_FILE] [X_MIN] [X_MAX] [Y_MIN] [Y_MAX] [Z_MIN] [Z_MAX] [OUTPUT_FILE] [DEBUG_FLAG] [UMASK]",
   "schema-version": "0.5",
   "inputs": [

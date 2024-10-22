@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_sbbr",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Special implementation of boundary-based registration for a single slice.",
   "command-line": "/usr/local/freesurfer/bin/mri_sbbr [TEMPLATE_VOLUME] [SURFACE_FILE] [INIT_REG_FILE] [T1_FLAG] [T2_FLAG] [OPTIMIZATION_TYPE] [DISTANCE_IN] [DISTANCE_OUT] [SLOPE] [FTOL] [LINMINTOL] [NITERS_MAX] [SEARCH] [SEARCH1D] [PARAMETER] [INCREMENT] [SLICE] [THREADS] [OUTPUT_REGISTRATION] [INVERTED_OUTPUT_REGISTRATION] [OUTPUT_SURFACE] [DEBUG_FLAG] [DIAGNOSTIC_FLAG] [CHECK_OPTS_FLAG]",
   "schema-version": "0.5",
   "inputs": [

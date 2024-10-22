@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "grad_unwarp",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Convert, dewarp, and resample DICOM files to MGH files.",
   "command-line": "grad_unwarp [INFILE] [SERIESNO] [UNWARP_TYPE] [NOJAC_FLAG] [CORFOV_FLAG] [COR_FLAG] [INTERP_METHOD] [OUTFILE] [MATLAB_BINARY]",
   "schema-version": "0.5",
   "inputs": [

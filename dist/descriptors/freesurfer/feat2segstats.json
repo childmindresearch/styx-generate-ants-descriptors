@@ -1,7 +1,7 @@
 {
   "tool-version": "7.4.1",
   "name": "feat2segstats",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Computes segmentation summaries and stores output in featdir/freesurfer/segstats/segvol/statname.dat",
   "command-line": "feat2segstats [FEAT_DIR] [FEATDIRFILE] [SEG] [ASEG_FLAG] [APARC_ASEG_FLAG] [CTAB] [ALL_SEGS_FLAG] [COPES_FLAG] [VARCOPES_FLAG] [ZSTATS_FLAG] [PES_FLAG] [RVAR] [EXF] [MASK] [MEAN_FUNC] [STAT] [VERSION_FLAG] [HELP_FLAG] [DEBUG_FLAG] [NOLOG_FLAG]",
   "schema-version": "0.5",
   "inputs": [

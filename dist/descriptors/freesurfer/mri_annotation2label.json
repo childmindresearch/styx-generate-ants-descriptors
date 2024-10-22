@@ -1,6 +1,6 @@
 {
   "name": "mri_annotation2label",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Convert an annotation into multiple label files or into a segmentation volume.",
   "command-line": "/usr/local/freesurfer/bin/mri_annotation2label [SUBJECT] [HEMI] [LOBES] [LOBES_STRICT] [LOBES_STRICT_PHCG] [LABEL] [LABELBASE] [OUTDIR] [SEG] [SEGBASE] [CTAB] [BORDER] [BORDER_ANNOT] [ANNOTATION] [SUBJECTS_DIR] [SURFACE] [STAT] [HELP] [VERSION]",
   "schema-version": "0.5",
   "inputs": [

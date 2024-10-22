@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "fslregister",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Registers a volume to its FreeSurfer anatomical using FSL's FLIRT and creates a FreeSurfer register.dat file.",
   "command-line": "fslregister --s [SUBJ_ID] --mov [MOV_VOL] --reg [REG_FILE] [FSL_MAT] [INIT_FSL_MAT] [NO_INIT_XFM] [NITERS] [DOF] [BINS] [COST] [MAXANGLE] [NO_NEW_SCHEDULE] [NO_ALLOW_SWAP] [NO_TRANS] [BET_MOV] [BET_FVALUE] [BET_FUNC] [BET_REF] [FRAME] [MID_FRAME] [FSVOL] [TEMPLATE_OUT] [OUT_VOL] [VERBOSE] [TMP_DIR] [NO_CLEANUP] [NO_LOG] [VERSION] [HELP] [LTA]",
   "container-image": {
     "type": "docker",

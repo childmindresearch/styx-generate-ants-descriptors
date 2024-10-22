@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_cvs_register",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Combined Volume and Surface Registration",
   "command-line": "mri_cvs_register [MOVING_SUBJECT] [TEMPLATE_SUBJECT] [TEMPLATE_DIRECTORY] [MNI_FLAG] [OUTDIR] [ASEG_FNAME] [VOLTYPE] [STEP1_FLAG] [STEP2_FLAG] [STEP3_FLAG] [NOASEG_FLAG] [NOINTENSITY_FLAG] [HEMI_FLAG] [MASKTARGETHEMI_FLAG] [MASKMOVINGHEMI_FLAG] [NOCLEANUP_FLAG] [KEEPELREG_FLAG] [KEEPALLM3Z_FLAG] [CLEANALL_FLAG] [CLEANSURFREG_FLAG] [CLEANELREG_FLAG] [CLEANVOLREG_FLAG] [M3D_FLAG] [OPENMP] [NOLOG_FLAG] [VERSION_FLAG] [HELP_FLAG]",
   "container-image": {
     "type": "docker",

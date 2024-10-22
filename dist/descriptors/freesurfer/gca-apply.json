@@ -3,7 +3,7 @@
   "name": "gca-apply",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://example.com/gca-apply.json",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Applies a GCA, performing the steps of mri_em_register, mri_ca_normalize, mri_ca_register, and mri_ca_label. This script replicates the stages in recon-all without overwriting files.",
   "command-line": "gca-apply [GCAFILE] [SUBJECT] [NTHREADS] [BASE] [NO_SEGSTATS_FLAG] [SD] [DICE_SEG] [DICE_FILE] [LTA] [NORM] [INPUT] [BRAINMASK] [OUTPUT_DIR] [NO_V6LABOPTS_FLAG] [M3Z_FILE] [GCA_RB_2016_FLAG] [FORCE_UPDATE_FLAG] [GCAREG_ITERS]",
   "container-image": {
     "type": "docker",

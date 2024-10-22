@@ -1,6 +1,6 @@
 {
   "name": "long_stats_slopes",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Computes slopes of statistics in a longitudinal study for each subject from processed results, outputting to designated directories for further analysis.",
   "command-line": "long_stats_slopes [QDEC] [STATS] [MEAS] [SD] [DO_AVG_FLAG] [DO_RATE_FLAG] [DO_PC1FIT_FLAG] [DO_PC1_FLAG] [DO_SPC_FLAG] [DO_STACK_FLAG] [RESID] [TIME] [GENERIC_TIME_FLAG] [CROSS_FLAG] [OUT_AVG] [OUT_RATE] [OUT_PC1FIT] [OUT_PC1] [OUT_SPC] [OUT_RESID] [OUT_STACK] [STACK_AVG] [STACK_RATE] [STACK_PC1FIT] [STACK_PC1] [STACK_SPC] [STACK_RESID]",
   "inputs": [
     {

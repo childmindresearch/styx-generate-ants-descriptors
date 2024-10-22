@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mris_convert",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "This program will convert MRI-surface data formats.",
   "command-line": "mris_convert [INPUT_FILE] [SECOND_INPUT_FILE] [OUTPUT_FILE] [PATCH_FLAG] [CURV_OVERLAY_FILES] [FUNCTIONAL_DATA_FILE] [ORIG_POSITIONS] [SCALE] [RESCALE_FLAG] [TALAIRACH_XFM] [NORMALS_FLAG] [NEIGHBORS_FLAG] [XYZ_FLAG] [ANNOTATION_FILE] [PARCSTATS_FILE] [GIFTI_DATAARRAY_NUM] [LABEL_FILE] [LABEL_STATS_FILE] [COMBINE_SURFS_FLAG] [MERGE_GIFTI_FLAG] [SPLIT_GIFTI_FLAG] [GIFTI_OUTDIR] [DELETE_CMDS_FLAG] [CENTER_FLAG] [VOL_GEOM] [REMOVE_VOL_GEOM_FLAG] [TO_SURF_COORDS] [TO_SCANNER_FLAG] [TO_TKR_FLAG] [USEREALRAS_FLAG] [USESURFRAS_FLAG] [UPSAMPLE_TIMES] [VOLUME_SURFACE] [AREA_SURFACE] [ANGLE_SURFACE] [LABEL_TO_MASK_SURFACE] [CRAS_ADD_FLAG] [CRAS_SUBTRACT_FLAG]",
   "schema-version": "0.5",
   "inputs": [

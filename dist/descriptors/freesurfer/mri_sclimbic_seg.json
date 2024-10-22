@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_sclimbic_seg",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Segment subcortical limbic structures using Freesurfer.",
   "command-line": "mri_sclimbic_seg [INPUT_FILE] [OUTPUT_FILE] [SUBJECTS] [SUBJECTS_DIR] [CONFORM_FLAG] [ETIV_FLAG] [EXCLUDE_LABELS] [KEEP_AC_FLAG] [VOX_COUNT_FLAG] [MODEL_FILE] [CTAB_FILE] [POP_STATS_FILE] [DEBUG_FLAG] [VMP_FLAG] [THREADS] [TAL_XFM] [WRITE_POSTERIORS_FLAG] [WRITE_VOLUMES_FLAG] [WRITE_QA_STATS_FLAG] [7T_FLAG] [PERCENTILE] [CUDA_DEVICE] [OUTPUT_BASE] [NO_CITE_FLAG] [NCHANNELS]",
   "container-image": {
     "type": "docker",

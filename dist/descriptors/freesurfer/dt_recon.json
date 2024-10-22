@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "dt_recon",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Performs DTI reconstruction from the raw DWI input files.",
   "command-line": "dt_recon [INPUT_VOLUME] [BVALS_BVECS] [SUBJECT_ID] [OUTPUT_DIR] [INFO_DUMP] [EC_REFERENCE] [NO_EC_FLAG] [NO_REG_FLAG] [REGISTER_FILE] [NO_TAL_FLAG] [SUBJECTS_DIR] [SAVE_EC_RESIDUALS_FLAG] [PCA_ANALYSIS_FLAG] [MASK_PRUNE_THRESHOLD] [INIT_SPM_FLAG] [INIT_FSL_FLAG] [DEBUG_FLAG] [VERSION_FLAG]",
   "schema-version": "0.5",
   "inputs": [

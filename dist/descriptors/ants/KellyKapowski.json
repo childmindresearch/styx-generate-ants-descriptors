@@ -2,7 +2,7 @@
   "name": "KellyKapowski",
   "command-line": "KellyKapowski [IMAGE_DIMENSIONALITY] [SEGMENTATION_IMAGE] [GRAY_MATTER_PROBABILITY_IMAGE] [WHITE_MATTER_PROBABILITY_IMAGE] [CONVERGENCE] [THICKNESS_PRIOR_ESTIMATE] [THICKNESS_PRIOR_IMAGE] [GRADIENT_STEP] [SMOOTHING_VARIANCE] [SMOOTHING_VELOCITY_FIELD_PARAMETER] [USE_BSPLINE_SMOOTHING] [USE_MASKED_SMOOTHING] [TIME_POINTS] [RESTRICT_DEFORMATION] [NUMBER_OF_INTEGRATION_POINTS] [MAXIMUM_NUMBER_OF_INVERT_DISPLACEMENT_FIELD_ITERATIONS] [OUTPUT] [VERBOSE]",
   "author": "ANTs developers",
-  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "description": "DiReCT is a registration based estimate of cortical thickness. It was published in S. R. Das, B. B. Avants, M. Grossman, and J. C. Gee, Registration based cortical thickness measurement, Neuroimage 2009, 45:867--879.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
   "schema-version": "0.5",

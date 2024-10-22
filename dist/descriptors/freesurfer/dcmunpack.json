@@ -1,7 +1,7 @@
 {
   "tool-version": "7.4.1",
   "name": "dcmunpack",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Sorts and converts a directory of DICOM files (Siemens, GE, Philips) into an output hierarchy with nifti (nii), mgh, mgz, or analyze output formats.",
   "command-line": "dcmunpack [SOURCE_DIRECTORY] [TARGET_DIRECTORY] [RUN] [AUTO_RUNSEQ] [KEEP_SCOUTS_FLAG] [SCANONLY] [ONE_PER_DIR_FLAG] [EXTENSION] [PREFIX] [PATTERN] [NO_INFODUMP_FLAG] [GENERIC_FLAG] [COPY_ONLY_FLAG] [NO_CONVERT_FLAG] [FORCE_UPDATE_FLAG] [MAX_FLAG] [BASE_FLAG] [KEY] [INDEX_OUT] [INDEX_IN] [ITDICOM_FLAG] [NO_EXIT_ON_ERROR_FLAG] [RUN_SKIP] [NO_RESCALE_DICOM_FLAG] [RESCALE_DICOM_FLAG] [NO_DWI_FLAG] [IID] [IJD] [IKD] [EXTRA_INFO_FLAG] [FIRST_DICOM_FLAG] [NO_DCM2NIIX_FLAG] [PHASE_FLAG] [FIPS] [FIPS_RUN] [XML_ONLY_FLAG] [LOG] [DEBUG_FLAG]",
   "schema-version": "0.5",
   "inputs": [

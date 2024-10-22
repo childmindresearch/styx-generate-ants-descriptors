@@ -1,6 +1,6 @@
 {
   "name": "fsl_rigid_register",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "A front-end tool for FSL's FLIRT that computes a rigid registration matrix and resamples the input volume to the reference volume.",
   "command-line": "fsl_rigid_register [REFERENCE_VOLUME] [INPUT_VOLUME] [OUTPUT_VOLUME] [FSLMAT_FILE] [REGMAT_FILE] [XFM_FILE] [LTA_FILE] [NO_INIT_GEOM_FLAG] [APPLY_XFM_FILE] [APPLY_INIT_XFM_FLAG] [INIT_XFM_FILE] [MAX_ANGLE] [INTERP_METHOD] [DOF] [BINS] [COST_FUNCTION] [TMP_DIR] [NOCLEANUP_FLAG] [CLEANUP_FLAG] [SUBJECT] [VERSION_FLAG] [HELP_FLAG]",
   "schema-version": "0.5",
   "inputs": [

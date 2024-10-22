@@ -1,7 +1,7 @@
 {
   "name": "mris_mef_surfaces",
   "command-line": "/usr/local/freesurfer/bin/mris_mef_surfaces [SUBJECT_NAME] [HEMISPHERE] [OMIT_SELF_INTERSECTION_FLAG] [CURVATURE_FLAG] [AVERAGE_CURVATURE_TIMES] [WHITE_ONLY_FLAG]",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Positions the tessellation of the cortical surface at the white matter surface, then the gray matter surface and generates surface files for these surfaces. Also generates 'curvature' file for cortical thickness and a surface file approximating layer IV of the cortical sheet.",
   "schema-version": "0.5",
   "inputs": [
     {

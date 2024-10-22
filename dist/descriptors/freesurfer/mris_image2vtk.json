@@ -1,7 +1,7 @@
 {
   "tool-version": "7.4.1",
   "name": "mris_image2vtk",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Convert image to VTK format with specified thresholds and smoothing parameters",
   "command-line": "/usr/local/freesurfer/bin/mris_image2vtk [INPUT_FILE] [OUTPUT_FILE] [LOWER_THRESHOLD] [UPPER_THRESHOLD] [VTK_SMOOTH_ITERS] [IMAGE_SMOOTH_SIZE] [REDUCTION_PERCENT]",
   "schema-version": "0.5",
   "inputs": [

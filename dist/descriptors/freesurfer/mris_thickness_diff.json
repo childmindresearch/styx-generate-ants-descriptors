@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mris_thickness_diff",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Computes the difference of two surface data sets defined on two surface meshes.",
   "command-line": "/usr/local/freesurfer/bin/mris_thickness_diff [SURFACE1] [DATA1] [SURFACE2] [DATA2] [SRC_TYPE_FLAG] [TRG_TYPE_FLAG] [OUT_FILE] [OUT_RESAMPLED_FLAG] [NSMOOTH_FLAG] [REGISTER_FLAG] [XFORM_FILE] [INVERT_FLAG] [SRC_VOLUME] [DST_VOLUME] [ABS_FLAG] [LOG_FILE] [SUBJECT_NAME]",
   "container-image": {
     "type": "docker",

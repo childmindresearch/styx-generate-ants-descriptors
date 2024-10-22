@@ -3,7 +3,7 @@
   "name": "fs_time",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://example.com/fs_time.json",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "A frontend for the unix /usr/bin/time program to track resource usage by a process.",
   "command-line": "fs_time [OUTPUT_FILE] [KEY] [LOAD_AVG_FLAG] [COMMAND] [ARGS]",
   "schema-version": "0.5",
   "inputs": [

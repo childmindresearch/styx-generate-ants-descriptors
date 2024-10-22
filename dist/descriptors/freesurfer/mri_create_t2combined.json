@@ -1,6 +1,6 @@
 {
   "name": "mri_create_t2combined",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Utility to combine two or three T2* 7T partial-brain volumes into one volume, retaining resolution and registered to the MPRAGE anatomical.",
   "command-line": "mri_create_t2combined [SUBJID] [T1WB] [T2UPPER] [T2MIDDLE] [T2LOWER] [T2COMBINED] [SHOW]",
   "schema-version": "0.5",
   "inputs": [

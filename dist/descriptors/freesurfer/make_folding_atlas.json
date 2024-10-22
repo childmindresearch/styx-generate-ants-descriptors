@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "make_folding_atlas",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Script to iteratively create a cortical folding atlas.",
   "command-line": "make_folding_atlas [SUBJECT_LIST_FILE] [FSGD_FILE] [SUBJECTS] [OUTPUT_BASE] [MAX_ITERATIONS] [XHEMI_FLAG] [INIT_SURF_REG] [INIT_SUBJECT] [NO_ANNOT_TEMPLATE_FLAG] [LR_HEMISPHERE_FLAG] [LHRH_FLAG] [ICO_ORDER] [NO_VOL_ON_LAST_FLAG] [VOL_FLAG] [INIT_FLAG] [SHORT_SLEEP_FLAG] [NO_TEMPLATE_ONLY_FLAG] [THREADS] [ACCOUNT]",
   "schema-version": "0.5",
   "inputs": [

@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_glmfit-sim",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "A tool to run corrections for multiple comparisons on volumes or surfaces, using various methods including Monte Carlo simulation, permutation, and Gaussian Random Fields.",
   "command-line": "mri_glmfit-sim [GLMDIR] [CWP] [MCZSIM] [MCZSIM_DIR] [MCZSIM_LABEL] [PERM] [PERM_RESID] [PERM_SIGNFLIP] [GRF] [SPACES_2] [SPACES_3] [OVERWRITE] [BG] [SLEEP] [A2009S] [ANNOT] [LOG] [BASE] [NO_SIM] [SEED] [FWHM_OVERRIDE] [FWHM_ADD] [UNIFORM] [NO_OUT_ANNOT] [NO_CLUSTER_MEAN] [Y_FILE] [CENTROID] [SPATIAL_SUM] [HELP]",
   "container-image": {
     "type": "docker",

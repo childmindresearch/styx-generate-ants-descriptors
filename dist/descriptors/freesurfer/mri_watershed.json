@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_watershed",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "A tool for stripping skull and other non-brain tissues to produce brain volume from T1 volume.",
   "command-line": "mri_watershed [INPUT_VOLUME] [OUTPUT_VOLUME] [WEIGHT] [NO_WTA_FLAG] [PROBA_MERGING] [PREFLOODING_HEIGHT] [NO_SEEDPT_FLAG] [NO_TA_FLAG] [COPY_FLAG] [ATLAS_FLAG] [SURF_NAME] [USESURF_RAS_FLAG] [NO_T1_ANALYSIS_FLAG] [SHRINK_SURFACE_FLAG] [EXPAND_SURFACE_FLAG] [USE_WATERSHED_FLAG] [T1_VOLUME] [WAT_TEMP_FLAG] [FIRST_TEMP_FLAG] [SURF_DEBUG_FLAG] [BRAIN_SURF_NAME] [SHRINK_BRAIN_SURF] [SEED_POINT] [CENTER_BRAIN] [BRAIN_RADIUS] [WATERSHED_THRESHOLD] [NO_WATERSHED_ANALYSIS_FLAG] [LABEL_FLAG] [MANUAL_PARAMS] [XTHRESH] [MASK_FLAG]",
   "schema-version": "0.5",
   "inputs": [

@@ -1,7 +1,7 @@
 {
   "name": "labels_intersect",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Tool to find the intersection of two label files",
   "command-line": "/usr/local/freesurfer/bin/labels_intersect [LABEL1] [LABEL2] [OUTPUTNAME]",
   "schema-version": "0.5",
   "inputs": [

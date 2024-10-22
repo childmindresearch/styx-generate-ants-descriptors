@@ -1,7 +1,7 @@
 {
   "tool-version": "7.4.1",
   "name": "mri_wbc",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "A tool for working with functional brain imaging data on surfaces and volumes.",
   "command-line": "/usr/local/freesurfer/bin/mri_wbc [FUNCTIONAL_VOLUME] [VOLUME_MASK] [LH_FUNCTIONAL_SURF] [LH_SURFACE] [LH_INFLATED] [LH_MASK] [LH_LABEL] [RH_FUNCTIONAL_SURF] [RH_SURFACE] [RH_INFLATED] [RH_MASK] [RH_LABEL] [RHO_THRESHOLD] [DIST_THRESHOLD] [THREADS] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
   "schema-version": "0.5",
   "inputs": [

@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mris_fix_topology",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Computes a mapping from the unit sphere onto the cortical surface, ensuring a topologically correct surface.",
   "command-line": "mris_fix_topology [SUBJECT_NAME] [HEMISPHERE] [ORIG_NAME] [SPHERE_NAME] [INFLATED_NAME] [OUTPUT_NAME] [DEFECT_BASE_NAME] [WRITE_FIXED_INFLATED_FLAG] [VERBOSE_FLAG] [VERBOSE_LOW_FLAG] [WARNINGS_FLAG] [ERRORS_FLAG] [MOVIES_FLAG] [INTERSECT_FLAG] [MAPPINGS_FLAG] [CORRECT_DEFECT] [NITERS] [GENETIC_FLAG] [OPTIMIZE_FLAG] [RANDOM] [SEED] [DIAG_FLAG] [MGZ_FLAG] [SMOOTH] [DIAGNOSTIC_LEVEL] [THREADS]",
   "schema-version": "0.5",
   "inputs": [

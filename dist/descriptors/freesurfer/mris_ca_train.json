@@ -1,7 +1,7 @@
 {
   "name": "mris_ca_train",
   "tool-version": "7.4.1",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Creates a cortical parcellation atlas file based on one or more annotated subjects using probabilistic information.",
   "command-line": "mris_ca_train [HEMI] [CANONSURF] [ANNOT_FILE] [SUBJECTS] [OUTPUT_FILE] [SDIR] [NBRS] [ORIG] [NORM1_FLAG] [NORM2_FLAG] [NORM3_FLAG] [IC] [SULC_FLAG] [SULCONLY_FLAG] [A] [PARCELLATION_TABLE] [N] [VERBOSE] [DEBUG_VERTEX] [GCS_MEANS] [GCS_PRIORS] [GCS_DIFF] [NFILL] [NO_FILL_FLAG] [HELP_FLAG] [VERSION_FLAG]",
   "inputs": [
     {

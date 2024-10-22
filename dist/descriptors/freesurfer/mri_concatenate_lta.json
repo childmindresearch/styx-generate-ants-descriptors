@@ -1,6 +1,6 @@
 {
   "name": "mri_concatenate_lta",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Concatenates two consecutive LTA transformations into one overall transformation, Out = LTA2*LTA1",
   "command-line": "/usr/local/freesurfer/bin/mri_concatenate_lta [LTA_1] [LTA_2] [LTA_FINAL] [TAL_SRC] [TAL_TEMPLATE] [INVERT1_FLAG] [INVERT2_FLAG] [INVERTOUT_FLAG] [OUT_TYPE] [SUBJECT] [RMSDIFF_RADIUS] [RMSDIFF_OUTPUTFILE]",
   "schema-version": "0.5",
   "inputs": [

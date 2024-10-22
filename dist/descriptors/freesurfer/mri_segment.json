@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_segment",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Segments white matter from the input volume.",
   "command-line": "mri_segment [IN_VOL] [OUT_VOL] [NO1D_REMOVE] [SLOPE] [PSLOPE] [NSLOPE] [DEBUG_VOXEL] [AUTO_FLAG] [NOAUTO_FLAG] [LOG_FLAG] [KEEP_FLAG] [GRAY_HI] [WM_LOW] [WM_LOW_FACTOR] [WM_HI] [NSEG] [THICKEN_FLAG] [FILLBG_FLAG] [FILLV_FLAG] [BLUR_SIGMA] [ITERATIONS] [THIN_STRAND_LIMIT] [VERBOSE_FLAG] [THRESHOLD] [EXTRACT_OPTIONS] [WSIZE] [WSIZEMM] [PLVW_SIZE] [PLV_LEN] [DATFILE] [SEGMENTATION] [DIAGNO] [DIAG_WRITE_FLAG] [DIAG_VERBOSE_FLAG]",
   "container-image": {
     "type": "docker",

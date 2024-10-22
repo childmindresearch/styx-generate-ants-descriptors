@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "dcmdrle.fs",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Decodes RLE-compressed DICOM files.",
   "command-line": "dcmdrle [INPUT_FILE] [OUTPUT_FILE] [HELP_FLAG] [VERSION_FLAG] [ARGUMENTS_FLAG] [QUIET_FLAG] [VERBOSE_FLAG] [DEBUG_FLAG] [LOG_LEVEL] [LOG_CONFIG] [READ_FILE_FLAG] [READ_FILE_ONLY_FLAG] [READ_DATASET_FLAG] [UID_DEFAULT_FLAG] [UID_ALWAYS_FLAG] [BYTE_ORDER_DEFAULT_FLAG] [BYTE_ORDER_REVERSE_FLAG] [WRITE_FILE_FLAG] [WRITE_DATASET_FLAG] [WRITE_XFER_LITTLE_FLAG] [WRITE_XFER_BIG_FLAG] [WRITE_XFER_IMPLICIT_FLAG] [ENABLE_NEW_VR_FLAG] [DISABLE_NEW_VR_FLAG] [GROUP_LENGTH_RECALC_FLAG] [GROUP_LENGTH_CREATE_FLAG] [GROUP_LENGTH_REMOVE_FLAG] [LENGTH_EXPLICIT_FLAG] [LENGTH_UNDEFINED_FLAG] [PADDING_RETAIN_FLAG] [PADDING_OFF_FLAG] [PADDING_CREATE]",
   "schema-version": "0.5",
   "inputs": [

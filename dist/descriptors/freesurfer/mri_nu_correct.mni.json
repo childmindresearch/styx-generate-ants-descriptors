@@ -3,7 +3,7 @@
   "name": "mri_nu_correct.mni",
   "author": "FreeSurfer Developers",
   "descriptor-url": "N/A",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Wrapper for nu_correct, used for correcting intensity non-uniformity (bias fields).",
   "command-line": "mri_nu_correct.mni [INPUT_VOLUME] [OUTPUT_VOLUME] [ITERATIONS] [PROTO_ITERS] [MASK] [THRESHOLD] [TAL_XFM] [ANTS_N3_FLAG] [ANTS_N4_FLAG] [NO_UCHAR_FLAG] [ANTS_N4_REPLACE_ZEROS_FLAG] [CM_FLAG] [DEBUG_FLAG]",
   "container-image": {
     "type": "docker",

@@ -1,6 +1,6 @@
 {
   "name": "dmri_pathstats",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Compute path statistics for diffusion MRI data based on input .trk file and optional various measures.",
   "command-line": "./dmri_pathstats [IN_TRK] [ROIS] [IN_TRC] [MEAS] [MEAS_NAME] [DT_BASE] [PATH_NAME] [SUBJ_NAME] [OUT_FILE] [OUT_VOX_FILE] [MEDIAN_FILE] [ENDS_BASE] [REF_FILE] [PTHR] [FTHR] [DEBUG_FLAG] [CHECKOPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
   "schema-version": "0.5",
   "inputs": [

@@ -1,7 +1,7 @@
 {
   "name": "test_recon-all.csh",
   "command-line": "test_recon-all.csh [REFERENCE_SUBJ_SOURCE_DIR] [REFERENCE_SUBJID] [TEST_SUBJECT_DEST_DIR] [TEST_SUBJID] [FREESURFER_HOME] [NORECON_FLAG]",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Script for testing recon-all and other utilities with FreeSurfer.",
   "schema-version": "0.5",
   "inputs": [
     {

@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_z2p",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Converts Z-statistic volumes to P-value volumes.",
   "command-line": "/usr/local/freesurfer/bin/mri_z2p [Z_VOLUME] [P_VOLUME] [SIG_VOLUME] [MASK_VOLUME] [TWO_SIDED_FLAG] [ONE_SIDED_FLAG] [SIGNED_FLAG] [FEATDIR] [FEAT_EXT] [FORMAT_FLAG] [DEBUG_FLAG] [CHECK_OPTS_FLAG]",
   "schema-version": "0.5",
   "inputs": [

@@ -2,7 +2,7 @@
   "name": "stat_normalize",
   "command-line": "/usr/local/freesurfer/bin/stat_normalize [INPUT_SV_PREFIX] [OUTPUT_SV_PREFIX] [RESOLUTION] [FIELD_OF_VIEW] [SPH_AVG] [XFM_FILE] [FIX_XFM_FLAG] [FLOAT2INT_OPTION]",
   "schema-version": "0.5",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "This program will convert and average a sequence of volume-based statistics in Talairach space.",
   "inputs": [
     {
       "id": "input_sv_prefix",

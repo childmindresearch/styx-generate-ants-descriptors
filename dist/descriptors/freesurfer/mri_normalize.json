@@ -1,6 +1,6 @@
 {
   "name": "mri_normalize",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Normalize the white-matter, optionally based on control points. The input volume is converted into a new volume where white matter image values all range around 110.",
   "command-line": "mri_normalize [INPUT_VOL] [OUTPUT_VOL] [NORM_ITERS] [DISABLE_1D_FLAG] [NONMAX_SUPPRESS_FLAG] [CONFORM_FLAG] [NONCONFORM_FLAG] [GENTLE_FLAG] [CONTROL_POINTS] [FONLY_CONTROL_POINTS] [LONLY_LABELS] [LABELS] [WRITE_VOLUMES] [INTENSITY_ABOVE] [INTENSITY_BELOW] [INTENSITY_GRADIENT] [PRUNE_FLAG] [NO_GENTLE_CP_FLAG] [MASK_FILE] [ATLAS_TRANSFORM] [NOSKULL_FLAG] [MONKEY_FLAG] [NOSNR_FLAG] [SIGMA_SMOOTH] [ASEG_FILE] [DEBUG_V_FLAG] [DEBUG_D_FLAG] [RENORM_VOL] [CHECKNORM_VOL] [LOAD_READ_CP] [CP_OUTPUT_VOL] [SURFACE_TRANSFORM] [SEED_VALUE] [PRINT_HELP_FLAG]",
   "schema-version": "0.5",
   "inputs": [

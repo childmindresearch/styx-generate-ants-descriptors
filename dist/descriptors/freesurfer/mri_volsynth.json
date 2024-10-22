@@ -1,7 +1,7 @@
 {
   "name": "mri_volsynth",
   "tool-version": "7.4.1",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Synthesizes a volume with specified geometry and probability distribution function.",
   "author": "FreeSurfer Developers",
   "command-line": "/usr/local/freesurfer/bin/mri_volsynth [OUTPUT_VOLID] [TEMPLATE] [NFRAMES] [OFFSET_FLAG] [OFFSET_MID_FLAG] [CURV] [DIM] [RES] [VOX_SIZE] [TR] [CDIRCOS] [RDIRCOS] [SDIRCOS] [C_RAS] [P0] [PRECISION] [SEED] [SEEDFILE] [PDF] [BB] [GMEAN] [GSTD] [DELTA_CRSF] [DELTA_VAL] [DELTA_VAL_OFF] [GRID] [DOF] [DOF_NUM] [DOF_DEN] [RESCALE_FLAG] [VAL_A] [VAL_B] [VOX_RADIUS] [MM_RADIUS] [SPHERE_CENTER] [HSC] [ABS_FLAG] [CP] [SPIKE] [FWHM] [SUM2] [DIM_SURF_FLAG] [CTAB]",
   "schema-version": "0.5",

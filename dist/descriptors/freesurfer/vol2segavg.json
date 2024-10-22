@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "vol2segavg",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Computes the average of a volume inside a given segment of a segmentation resampling the input volume to the segmentation space.",
   "command-line": "vol2segavg [OUTPUT] [INPUT] [REG] [SEGMENTATION] [APARC_ASEG_FLAG] [SUBJECT] [SEGMENTATION_ID] [MULTIPLY_VALUE] [NO_BB_FLAG] [ERODE] [DILATE] [WM_FLAG] [VCSF_FLAG] [XCSF_FLAG] [REMOVE_MEAN_FLAG]",
   "schema-version": "0.5",
   "inputs": [

@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_3d_photo_recon",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Code for 3D photo reconstruction (Tregidgo, et al., MICCAI 2020)",
   "command-line": "mri_3d_photo_recon [INPUT_PHOTO_DIR] [INPUT_SEGMENTATION_DIR] [SLICE_THICKNESS] [PHOTO_RESOLUTION] [OUTPUT_DIRECTORY] [REF_MASK] [REF_SURFACE] [REF_SOFT_MASK] [MESH_REORIENT_WITH_INDICES] [PHOTOS_POSTERIOR_SIDE_FLAG] [ORDER_POSTERIOR_TO_ANTERIOR_FLAG] [ALLOW_Z_STRETCH_FLAG] [RIGID_ONLY_FOR_PHOTOS_FLAG] [GPU]",
   "schema-version": "0.5",
   "inputs": [

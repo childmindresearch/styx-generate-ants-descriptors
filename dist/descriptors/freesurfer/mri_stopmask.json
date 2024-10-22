@@ -1,6 +1,6 @@
 {
   "name": "mri_stopmask",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "This program creates a mask used to stop the search for the maximum gradient in mris_place_surface, preventing the surface from wandering into areas it should not.",
   "command-line": "mri_stopmask --o [OUTPUT_MASK] --filled [FILLED_AUTO_MGZ] [FILLED_MGZ] --aseg [ASEG_PRESURF_MGZ] [LATERAL_VENTRICLES_FLAG] [WMSA_ERODE_MM] [WM_MGZ] [BRAIN_FINALSURFS_MGZ] [NO_FILLED_FLAG] [NO_LV_FLAG] [NO_WMSA_FLAG] [NO_WM_FLAG] [NO_BFS_FLAG]",
   "schema-version": "0.5",
   "inputs": [

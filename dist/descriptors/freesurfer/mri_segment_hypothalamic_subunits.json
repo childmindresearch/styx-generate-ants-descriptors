@@ -1,6 +1,6 @@
 {
   "name": "mri_segment_hypothalamic_subunits",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "This module segments hypothalamic subunits and can be run in two modes: on FreeSurfer subjects or on any T1-weighted scan(s) of approximately 1mm resolution.",
   "command-line": "mri_segment_hypothalamic_subunits [SUBJECTS] [SUBJECTS_DIR] [WRITE_POSTERIORS_FLAG] [IMAGE] [OUTPUT] [POSTERIORS] [RESAMPLE] [VOLUME_OUTPUT] [CROP_SIZE] [THREADS] [CPU_FLAG]",
   "schema-version": "0.5",
   "inputs": [

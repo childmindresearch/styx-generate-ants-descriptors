@@ -1,7 +1,7 @@
 {
   "tool-version": "7.4.1",
   "name": "surfreg",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Performs surface registration (mris_register) between a subject and a target average subject based on the hemi.reg.template.tif atlas in the average subject.",
   "command-line": "surfreg [SUBJECT] [TARGET] [CROSS_HEMI_FLAG] [REG_LH_FLAG] [REG_RH_FLAG] [REG_BOTH_FLAG] [NO_ANNOT_FLAG] [ANNOTNAME] [APARC_FLAG] [NONEG_FLAG] [INIT_REG_NAME] [LTA_REG] [INIT_FROM_TAL_FLAG] [OUTSURF_NAME] [NO_SET_VOL_GEOM_FLAG] [THREADS]",
   "schema-version": "0.5",
   "inputs": [

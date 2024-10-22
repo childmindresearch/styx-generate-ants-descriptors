@@ -3,7 +3,7 @@
   "name": "mris_mesh_subdivide",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://example.com/boutiques/mris_mesh_subdivide.json",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "This program will subdivide a triangular mesh surface.",
   "command-line": "mris_mesh_subdivide [INPUT_SURFACE] [OUTPUT_SURFACE] [SUBDIVISION_METHOD] [ITERATIONS]",
   "schema-version": "0.5",
   "inputs": [

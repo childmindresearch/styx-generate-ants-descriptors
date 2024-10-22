@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "post-recon-all",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Post-processing script typically run after recon-all in FreeSurfer",
   "command-line": "post-recon-all [SUBJECT] [SUBFIELDS_FLAG] [SUBREGIONS_FLAG] [CVS_FLAG] [QCACHE_FLAG] [SCLIMBIC_FLAG] [HTHSU_FLAG] [SYNTHSTRIP_FLAG] [SYNTHSEG_FLAG] [QASTATS_FLAG] [SAMSEG_FLAG] [XHEMI_FLAG] [COS7_FLAG] [THREADS] [FORCE_FLAG] [EXIT_ON_ERROR_FLAG]",
   "schema-version": "0.5",
   "inputs": [

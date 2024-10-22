@@ -2,7 +2,7 @@
   "name": "mri_synthmorph",
   "tool-version": "7.4.1",
   "command-line": "mri_synthmorph [MOVING] [FIXED] [MOVED_OUTPUT] [TRANS_OUTPUT] [HEADER_ONLY_FLAG] [MODEL] [INIT_TRANSFORM] [THREADS] [GPU_FLAG] [SMOOTH] [EXTENT] [MODEL_WEIGHTS] [INSPECT_DIR]",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "SynthMorph is a deep-learning tool for brain-specific MRI image registration without preprocessing.",
   "author": "FreeSurfer Developers",
   "schema-version": "0.5",
   "inputs": [

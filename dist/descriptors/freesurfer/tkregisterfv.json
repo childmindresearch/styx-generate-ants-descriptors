@@ -1,7 +1,7 @@
 {
   "name": "tkregisterfv",
   "tool-version": "7.4.1",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "A script that runs freeview with arguments like tkregister, focusing on LTA files.",
   "command-line": "tkregisterfv --mov [MOV] --targ [TARG] --reg [REG] --s [SUBJECT] [FSTARG] [SD] [SEG] [ASEG_FLAG] [APARC_ASEG_FLAG] [OPACITY] [SURFS_FLAG] [PIAL_SURFS_FLAG] [ALL_SURFS_FLAG] [NO_SURFS_FLAG] [LH_ONLY_FLAG] [RH_ONLY_FLAG] [SURF] [AUX_S] [PLANE] [NO_CONFIG_FLAG] [MOV2] [REG2] [MOV3] [REG3] [HEAT_FLAG] [REGHEADER_FLAG] [PARAMS] [FLIP_X_FLAG] [FLIP_Y_FLAG] [FLIP_Z_FLAG] [FSTAL] [AUX]",
   "schema-version": "0.5",
   "inputs": [

@@ -1,6 +1,6 @@
 {
   "name": "unpacksdcmdir",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "A tool for unpacking SD card directories, typically used in neuroimaging workflows. It seems to have a dependency on Tcl, as indicated by the error messages.",
   "command-line": "unpacksdcmdir [DIRECTORY] [OUTPUT]",
   "tool-version": "7.4.1",
   "schema-version": "0.5",

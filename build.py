@@ -22,7 +22,6 @@ def copy_and_patch_descriptor(src_path, dest_path, package_data):
     # Update fields
     descriptor['name'] = src_path.stem
     descriptor['author'] = package_data['author']
-    descriptor['description'] = package_data['description']
     descriptor['url'] = package_data['url']
     descriptor['tool-version'] = package_data['version']
     descriptor["container-image"] = {

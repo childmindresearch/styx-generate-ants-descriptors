@@ -3,7 +3,7 @@
   "name": "flirt.fsl",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "FMRIB's Linear Image Registration Tool",
   "command-line": "flirt [INPUT_VOL] [REF_VOL] [OUTPUT_VOL] [MATRIX_FILE] [INITIAL_MATRIX] [DATA_TYPE] [COST_FUNCTION] [SEARCH_COST_FUNCTION] [USE_SFORM_QFORM] [DISPLAY_INIT_MATRIX] [ANGLE_REP] [INTERPOLATION_METHOD] [SINC_WIDTH] [SINC_WINDOW] [NUM_BINS] [DEG_FREEDOM] [NO_RESAMPLE] [FORCE_SCALING] [MIN_VOX_DIM] [APPLY_XFM] [APPLY_ISO_XFM_SCALE] [PADDING_SIZE] [SEARCH_RX] [SEARCH_RY] [SEARCH_RZ] [NO_SEARCH] [COARSE_SEARCH] [FINE_SEARCH] [SCHEDULE_FILE] [REF_WEIGHT] [IN_WEIGHT] [NO_CLAMP] [NO_RESAMP_BLUR] [RIGID_BODY_MODE] [VERBOSE] [VERBOSE_LEVEL] [PAUSE_STAGES] [VERSION_FLAG]",
   "container-image": {
     "type": "docker",

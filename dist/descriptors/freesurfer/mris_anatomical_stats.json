@@ -3,7 +3,7 @@
   "name": "mris_anatomical_stats",
   "author": "FreeSurfer Developers",
   "descriptor-url": "PLACEHOLDER_FOR_DESCRIPTOR_URL",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "This program computes a number of anatomical properties.",
   "command-line": "mris_anatomical_stats [SUBJECTNAME] [HEMI] [SURFACENAME] [LOW_THRESH] [HI_THRESH] [LABEL_FILE] [THICKNESS_FILE] [ANNOTATION_FILE] [TABULAR_OUTPUT_FLAG] [TABLEFILE] [LOGFILE] [NSMOOTH] [CTAB_FILE] [NO_GLOBAL_FLAG] [TH3_FLAG]",
   "container-image": {
     "type": "docker",

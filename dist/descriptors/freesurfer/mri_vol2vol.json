@@ -3,7 +3,7 @@
   "name": "mri_vol2vol",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer/blob/dev/mri_vol2vol.c",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Resamples a volume into another field-of-view using various types of matrices (FreeSurfer, FSL, SPM, and MNI).",
   "command-line": "mri_vol2vol [MOV] [TARG] [OUTVOL] [DISP] [DOWNSAMPLE] [REGISTER] [LTA] [LTA_INV] [FSL] [XFM] [INV_FLAG] [TAL_FLAG] [TALRES] [TALXFM] [M3Z] [INV_MORPH_FLAG] [FSTARG] [CROP] [SLICE_CROP] [SLICE_REVERSE_FLAG] [SLICE_BIAS] [INTERP] [FILL_AVG_FLAG] [FILL_CONS_FLAG] [FILL_US] [MUL] [PRECISION] [KEEP_PRECISION_FLAG] [KERNEL_FLAG] [COPY_CTAB_FLAG] [GCAM] [SPM_WARP] [MAP_POINT] [MAP_POINT_INV_LTA] [NO_RESAMPLE_FLAG] [ROT] [TRANS] [SHEAR] [REG_FINAL] [SYTH_FLAG] [SEED] [SAVE_REG_FLAG] [DEBUG_FLAG] [VERSION_FLAG]",
   "schema-version": "0.5",
   "inputs": [

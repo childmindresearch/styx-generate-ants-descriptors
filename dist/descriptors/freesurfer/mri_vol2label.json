@@ -1,7 +1,7 @@
 {
   "tool-version": "7.4.1",
   "name": "mri_vol2label",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Converts values in a volume or surface overlay to a label using specified parameters.",
   "command-line": "mri_vol2label --i [INPUT] --id [LABEL_ID] --thresh [THRESHOLD] --l [LABEL_FILE] --v [VOL_FILE] --surf [SURF_SUBJECT_HEMI] --surf-path [SURF_PATH] --opt [OPT_PARAMS] --remove-holes-islands [REMOVE_HOLES_FLAG] --dilate [DILATIONS] --erode [EROSIONS] [HELP_FLAG]",
   "schema-version": "0.5",
   "inputs": [

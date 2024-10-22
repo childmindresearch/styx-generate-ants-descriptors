@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_compute_seg_overlap",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Compute coefficients of overlap between segmentation volumes.",
   "command-line": "mri_compute_seg_overlap [INPUT_SEG1] [INPUT_SEG2] [LOG_FILE] [MEAN_LOG_FILE] [STD_LOG_FILE] [OVERALL_LOG_FLAG] [EXCLUDE_CORTEX_FLAG] [EXCLUDE_WM_FLAG] [ALL_LABELS_FLAG] [DICE_PARAMS]",
   "schema-version": "0.5",
   "inputs": [

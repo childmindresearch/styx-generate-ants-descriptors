@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_mask",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Applies a mask volume (typically skull stripped)",
   "command-line": "mri_mask [INPUT_VOL] [MASK_VOL] [OUTPUT_VOL] [XFORM] [LTA_SRC] [LTA_DST] [THRESHOLD] [NPAD] [NPAD1_NPAD2_NPAD3] [NPAD1A_NPAD1B_NPAD2A_NPAD2B_NPAD3A_NPAD3B] [ABS_FLAG] [INVERT_FLAG] [NO_INVERT_FLAG] [RH_FLAG] [LH_FLAG] [DILATE] [NO_CEREBELLUM_FLAG] [OVAL] [TRANSFER] [KEEP_MASK_DELETION_EDITS_FLAG] [SAMSEG_FLAG]",
   "schema-version": "0.5",
   "inputs": [

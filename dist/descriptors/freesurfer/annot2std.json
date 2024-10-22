@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "annot2std",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Creates an average annotation in a standard space based on transforming the annotations of the individual subjects to the standard space through the surface registration.",
   "command-line": "annot2std [OUTPUT_ANNOT_PATH] [SUBJECTS] [FSGD_FILE] [SUBJECT_LIST_FILE] [TARGET] [HEMISPHERE_FLAG] [XHEMI_FLAG] [SURFREG] [SRCSURFREG] [TRGSURFREG] [ANNOTNAME] [SEGMENTATION] [STACK] [HELP_FLAG] [VERSION_FLAG]",
   "container-image": {
     "type": "docker",

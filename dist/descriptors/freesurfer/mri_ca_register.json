@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_ca_register",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Generates a multi-dimensional talairach transform from a gca file and talairach.lta file",
   "command-line": "mri_ca_register [INPUT_VOLUME] [TEMPLATE] [OUTPUT_VOLUME] [TOLERANCE] [MASK] [TRANSFORM_LTA] [LEVEL] [READ_INTENSITY] [ALIGN] [INVERT_SAVE_FILE] [DISTANCE] [REGULARIZE] [REGULARIZE_MEAN] [SCALE_SMOOTHNESS] [NOBRIGHT_FLAG] [RENORMALIZE_MAP_FLAG] [RENORMALIZE] [READ_LTA_FLAG] [SMOOTHNESS] [SAMPLES] [NSMALL] [FIXED_FLAG] [OPTIMAL_FLAG] [NONEG_FLAG] [WM_FLAG] [MIN_AVGS] [TRANSFORM_LIMIT] [RELABEL] [RELABEL_AVGS] [RESET_AVGS] [VF_FILE] [DIAG_FILE] [TR] [TE] [EXAMPLE] [BIGVENTRICLES_FLAG] [UNCOMPRESS_FLAG] [SECOND_PASS_RENORM_FLAG] [THREADS]",
   "schema-version": "0.5",
   "inputs": [

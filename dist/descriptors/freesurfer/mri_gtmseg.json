@@ -3,7 +3,7 @@
   "name": "mri_gtmseg",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://surfer.nmr.mgh.harvard.edu/",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Creates a segmentation that can be used with the geometric transfer matrix (GTM).",
   "command-line": "mri_gtmseg [OUTPUT_VOLUME] [SOURCE_SUBJECT] [INTERNAL_USF] [APAS_FILE] [CONTEXT_ANNOTATION] [SUBSEG_WM_FLAG] [WM_ANNOTATION] [DMAX] [KEEP_HYPO_FLAG] [KEEP_CC_FLAG] [CTAB] [LHMINMAX] [RHMINMAX] [OUTPUT_USF] [THREADS] [THREADS_MAX_FLAG] [THREADS_MAX_1_FLAG] [DEBUG_FLAG] [CHECK_OPTS_FLAG]",
   "container-image": {
     "type": "docker",

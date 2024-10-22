@@ -1,6 +1,6 @@
 {
   "name": "run_segmentSubjectT1T2_autoEstimateAlveusML.sh",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Automated segmentation tool for T1 and T2 weighted images to estimate the Alveus.",
   "schema-version": "0.5",
   "command-line": "run_segmentSubjectT1T2_autoEstimateAlveusML.sh [DEPLOYED_MCRROOT] [ARGS]",
   "inputs": [

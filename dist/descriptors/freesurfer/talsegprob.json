@@ -3,7 +3,7 @@
   "name": "talsegprob",
   "author": "FreeSurfer Developers",
   "descriptor-url": "UNKNOWN",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Tool to create a binary probability volume from aseg.mgz based on segmentation numbers, resliced to talirach/MNI305/fsaverage space.",
   "command-line": "talsegprob [SUBJECTS_LIST] [FSGD_FILE] [SEGMENTATION_NUMBER] [SECOND_SEGMENTATION_NUMBER] [HIPPO_FLAG] [LEFT_HIPPO_FLAG] [RIGHT_HIPPO_FLAG] [SEGMENTATION_FILE] [PROBABILITY_OUTPUT] [VOTE_OUTPUT] [CONCAT_OUTPUT] [XFORM_FILE] [SUBJECTS_DIR] [TMPDIR] [NOCLEANUP_FLAG] [VERSION_FLAG] [ECHO_FLAG]",
   "schema-version": "0.5",
   "inputs": [

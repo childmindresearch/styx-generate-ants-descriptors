@@ -1,6 +1,6 @@
 {
   "name": "run_SegmentSubfieldsT1Longitudinal.sh",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Script for segmenting subfields from T1-weighted longitudinal data using FreeSurfer.",
   "command-line": "/usr/local/freesurfer/bin/run_SegmentSubfieldsT1Longitudinal.sh [DEPLOYED_MCR_ROOT] [ARGS]",
   "schema-version": "0.5",
   "inputs": [

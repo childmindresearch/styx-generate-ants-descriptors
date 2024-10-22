@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mris_curvature",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Compute the second fundamental form of a cortical surface to generate mean and Gaussian curvature.",
   "command-line": "mris_curvature [SAVE_FLAG] [MAX_PRINCIPAL_FLAG] [MGH_OUTPUT_FLAG] [MIN_PRINCIPAL_FLAG] [ITERATIVE_AVERAGES] [NEIGHBORHOOD_SIZE] [RANDOM_SEED] [CURVS] [H_CURV] [K_CURV] [K1_CURV] [K2_CURV] [K1K2_CURV] [INPUT_SURF]",
   "schema-version": "0.5",
   "inputs": [

@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_edit_wm_with_aseg",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "A tool for editing white matter with anatomical segmentation.",
   "command-line": "mri_edit_wm_with_aseg [INPUT_WM] [INPUT_T1_BRAIN] [ASEG] [OUTPUT_WM] [FILLVEN_FLAG] [FIX_SCM_HA] [FIX_SCM_HA_ONLY] [KEEP_FLAG] [KEEP_IN_FLAG] [LH_FLAG] [RH_FLAG] [FIX_ENTO_WM] [SA_FIX_ENTO_WM] [DEBUG_VOXEL]",
   "schema-version": "0.5",
   "inputs": [

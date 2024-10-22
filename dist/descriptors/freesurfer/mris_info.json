@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mris_info",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Prints out information about a surface file.",
   "command-line": "mris_info [SURFACE_FILE] [OUTFILE] [SUBJECT_HEMI_SURFNAME] [PATCHFILE] [VNUM] [VXNUM] [CURVFILE] [ANNOTFILE] [EDGEMETRIC_ID] [EDGE_NUM] [VTXNO] [MTX_FMT] [MASK] [LABELFILE] [EDGE_FILE] [TALAIRACH_XFM_FLAG] [RESCALE_FLAG] [AREA_STATS_FLAG] [EDGE_STATS_FLAG] [QUALITY_STATS_FLAG] [INTERSECTIONS_FLAG] [NOGIFTI_FLAG] [VERSION_FLAG] [HELP_FLAG]",
   "schema-version": "0.5",
   "inputs": [

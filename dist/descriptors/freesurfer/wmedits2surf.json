@@ -3,7 +3,7 @@
   "name": "wmedits2surf",
   "author": "FreeSurfer Developers",
   "command-line": "wmedits2surf --s [SUBJECT] [SELF_FLAG] [OVERWRITE_FLAG] [TMP_DIR] [CLEANUP_FLAG] [NO_CLEANUP_FLAG] [DEBUG_FLAG] [LH_FLAG] [RH_FLAG] [NO_SURFS_FLAG]",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Computes binary maps of surface locations where the wm.mgz has been edited. Creates files for each hemisphere for each type of edit.",
   "schema-version": "0.5",
   "inputs": [
     {

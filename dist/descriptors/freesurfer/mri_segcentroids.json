@@ -1,6 +1,6 @@
 {
   "name": "mri_segcentroids",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Computes the center of mass for individual structures in a segmentation.",
   "command-line": "mri_segcentroids --i [INPUT_SEGMENTATION] --o [OUTPUT_FILE] [POINTSET_FLAG] [REGISTRATION_FILE] [WEIGHTS_FILE] [LUT_FILE] [DEFAULT_LUT_FLAG]",
   "schema-version": "0.5",
   "inputs": [

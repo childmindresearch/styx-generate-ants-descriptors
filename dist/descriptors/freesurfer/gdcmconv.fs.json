@@ -1,7 +1,7 @@
 {
   "tool-version": "7.4.1",
   "name": "gdcmconv.fs",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Convert a DICOM file into another DICOM file.",
   "command-line": "gdcmconv [INPUT_FILE] [OUTPUT_FILE] [EXPLICIT_FLAG] [IMPLICIT_FLAG] [USE_DICT_FLAG] [WITH_PRIVATE_DICT_FLAG] [CHECK_META_FLAG] [ROOT_UID] [REMOVE_GL_FLAG] [REMOVE_PRIVATE_TAGS_FLAG] [REMOVE_RETIRED_FLAG] [APPLY_LUT_FLAG] [PHOTOMETRIC_INTERPRETATION] [RAW_FLAG] [DEFLATED_FLAG] [JPEG_FLAG] [J2K_FLAG] [JPEGLS_FLAG] [RLE_FLAG] [FORCE_FLAG] [GENERATE_ICON_FLAG] [ICON_MINMAX] [ICON_AUTO_MINMAX_FLAG] [COMPRESS_ICON_FLAG] [PLANAR_CONFIGURATION] [LOSSY_FLAG] [SPLIT] [VERBOSE_FLAG] [WARNING_FLAG] [DEBUG_FLAG] [ERROR_FLAG] [QUIET_FLAG] [JPEG_QUALITY] [LOSSY_ERROR] [RATE] [J2K_QUALITY] [TILE] [NUMBER_RESOLUTION] [IRREVERSIBLE_FLAG] [IGNORE_ERRORS_FLAG]",
   "container-image": {
     "type": "docker",

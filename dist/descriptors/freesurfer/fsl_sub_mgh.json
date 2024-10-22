@@ -3,7 +3,7 @@
   "name": "fsl_sub_mgh",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslSub",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Wrapper for job control system such as SGE, modified for compatibility with the PBS queueing system.",
   "command-line": "fsl_sub_mgh [ESTIMATED_TIME] [QUEUE_NAME] [ARCHITECTURE] [JOB_PRIORITY] [EMAIL_ADDRESS] [HOLD_JOB] [TASK_FILE] [JOB_NAME] [LOG_DIR] [MAIL_OPTIONS] [FLAGS_IN_SCRIPTS] [VERBOSE_FLAG] [SHELL_PATH] <COMMAND>",
   "schema-version": "0.5",
   "inputs": [

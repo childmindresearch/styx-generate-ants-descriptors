@@ -1,6 +1,6 @@
 {
   "name": "merge_stats_tables",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Merges a set of stats table files into a single stats table where each line is a subject and each column is a segmentation or parcellation.",
   "command-line": "merge_stats_tables [SUBJECTS] [INPUTS] [OUTPUTFILE] [MEAS] [SUBJECTSFILE] [INTABLE] [SUBDIR] [DELIMITER] [COMMON_SEGS_FLAG] [ALL_SEGS_FLAG] [SEGIDS_FROM_FILE] [SEGNO] [NO_SEGNO_FLAG] [TRANSPOSE_FLAG] [SKIP_FLAG] [DEBUG_FLAG]",
   "schema-version": "0.5",
   "inputs": [

@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mris_preproc",
   "author": "FreeSurfer Developers",
-  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "description": "Script to prepare surface-based data for high-level analysis by resampling surface or volume source data to a common subject and concatenating them into one file.",
   "command-line": "mris_preproc --out [OUTFILE] --target [TARGET_SUBJECT] --hemi [HEMI] [MEAS] [LABEL] [MEASDIR] [SUBJECTS] [FSGD] [SUBJECTLIST] [QDEC] [QDEC_LONG] [SURFMEASFILE] [VOLMEASFILE] [PROJFRAC] [PROJFRAC_MAX] [PROJFRAC_AVG] [NO_MASK_NON_CORTEX] [SESSION_FILE] [DIR_FILE] [ANALYSIS] [CONTRAST] [CVAR_FLAG] [OFFSET_FLAG] [MAP] [ETIV_FLAG] [FWHM] [FWHM_SRC] [NITERS] [NITERS_SRC] [CORTEX_ONLY] [MGZ_FLAG] [NO_JAC_FLAG] [PAIRED_DIFF_FLAG] [CACHE_OUT] [CACHE_IN] [CACHE_OUT_ONLY] [NO_PRUNE_FLAG] [MEAN_FLAG] [STD_FLAG] [RESHAPE_FLAG] [SURFREG] [SUBJECTS_DIR] [SYNTH_FLAG] [TMPDIR] [NOCLEANUP_FLAG] [CLEANUP_FLAG] [LOG] [NOLOG_FLAG] [DEBUG_FLAG]",
   "container-image": {
     "type": "docker",
