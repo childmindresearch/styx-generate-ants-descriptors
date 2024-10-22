@@ -1,0 +1,31 @@
+{
+  "tool-version": "7.4.1",
+  "name": "run_mris_preproc",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "run_mris_preproc [QDEC_TABLE] [TARGET_AVERAGE]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Text file of subject data used by qdec",
+      "value-key": "[QDEC_TABLE]",
+      "type": "File",
+      "optional": false,
+      "id": "qdec_table",
+      "name": "Qdec table file"
+    },
+    {
+      "description": "Specify a target average, default is fsaverage",
+      "value-key": "[TARGET_AVERAGE]",
+      "type": "String",
+      "optional": true,
+      "id": "target_average",
+      "name": "Target average"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

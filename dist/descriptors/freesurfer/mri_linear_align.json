@@ -1,0 +1,39 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_linear_align",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "/usr/local/freesurfer/bin/mri_linear_align [SOURCE] [TARGET] [OUTPUT_XFORM]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "source",
+      "name": "Source Image",
+      "type": "File",
+      "value-key": "[SOURCE]",
+      "description": "Source image file for alignment",
+      "optional": false
+    },
+    {
+      "id": "target",
+      "name": "Target Image",
+      "type": "File",
+      "value-key": "[TARGET]",
+      "description": "Target image file for alignment",
+      "optional": false
+    },
+    {
+      "id": "output_xform",
+      "name": "Output Transform",
+      "type": "String",
+      "value-key": "[OUTPUT_XFORM]",
+      "description": "Output transformation file",
+      "optional": false
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

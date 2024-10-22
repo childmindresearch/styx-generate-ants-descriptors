@@ -1,0 +1,56 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mris_BA_segment",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "mris_BA_segment [SURFACE] [PROFILES] [PRIOR_LABEL] [OUTPUT_LABEL]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input surface file",
+      "value-key": "[SURFACE]",
+      "type": "File",
+      "optional": false,
+      "id": "surface",
+      "name": "Surface file"
+    },
+    {
+      "description": "Input profiles file",
+      "value-key": "[PROFILES]",
+      "type": "File",
+      "optional": false,
+      "id": "profiles",
+      "name": "Profiles file"
+    },
+    {
+      "description": "Input prior label file",
+      "value-key": "[PRIOR_LABEL]",
+      "type": "File",
+      "optional": false,
+      "id": "prior_label",
+      "name": "Prior label file"
+    },
+    {
+      "description": "Output label file",
+      "value-key": "[OUTPUT_LABEL]",
+      "type": "String",
+      "optional": false,
+      "id": "output_label",
+      "name": "Output label"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_LABEL]",
+      "description": "Output label file",
+      "optional": false,
+      "id": "output_label_file",
+      "name": "Output label file"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

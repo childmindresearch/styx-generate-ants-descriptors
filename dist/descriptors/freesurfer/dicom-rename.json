@@ -1,0 +1,58 @@
+{
+  "name": "dicom-rename",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "schema-version": "0.5",
+  "command-line": "dicom-rename [INPUT_FILES] --o [OUTBASE]",
+  "inputs": [
+    {
+      "id": "input_files",
+      "name": "Input DICOM Files",
+      "type": "File",
+      "list": true,
+      "description": "Input DICOM files to be renamed.",
+      "optional": false,
+      "value-key": "[INPUT_FILES]"
+    },
+    {
+      "id": "output_base",
+      "name": "Output Base Name",
+      "type": "String",
+      "description": "Base name for output files that includes series and image numbers.",
+      "optional": false,
+      "command-line-flag": "--o",
+      "value-key": "[OUTBASE]"
+    },
+    {
+      "id": "version",
+      "name": "Version",
+      "type": "Flag",
+      "description": "Print version and exit.",
+      "optional": true,
+      "command-line-flag": "--version"
+    },
+    {
+      "id": "help",
+      "name": "Help",
+      "type": "Flag",
+      "description": "Print help and exit.",
+      "optional": true,
+      "command-line-flag": "--help"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTBASE]-SSS-IIIII.dcm",
+      "description": "Renamed output DICOM file with series and image numbers.",
+      "optional": true,
+      "id": "renamed_dicom",
+      "name": "Renamed DICOM File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

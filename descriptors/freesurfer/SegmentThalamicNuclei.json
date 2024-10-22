@@ -1,0 +1,39 @@
+{
+  "name": "SegmentThalamicNuclei",
+  "tool-version": "1.0.0",
+  "description": "A tool for segmenting thalamic nuclei using FreeSurfer",
+  "author": "Placeholder",
+  "command-line": "SegmentThalamicNuclei [T1_IMAGE] [OUTPUT_DIR]",
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "t1_image",
+      "type": "File",
+      "name": "T1-weighted Input Image",
+      "description": "The T1-weighted image to process.",
+      "optional": false,
+      "value-key": "[T1_IMAGE]"
+    },
+    {
+      "id": "output_dir",
+      "type": "String",
+      "name": "Output Directory",
+      "description": "Directory to store segmentation results.",
+      "optional": false,
+      "value-key": "[OUTPUT_DIR]"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "seg_output",
+      "name": "Segmentation Output",
+      "description": "The output segmentation file of thalamic nuclei.",
+      "path-template": "[OUTPUT_DIR]/thalamic_nuclei_seg.nii.gz",
+      "optional": true
+    }
+  ]
+}

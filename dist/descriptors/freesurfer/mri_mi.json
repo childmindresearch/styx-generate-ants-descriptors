@@ -1,0 +1,49 @@
+{
+  "name": "mri_mi",
+  "tool-version": "7.4.1",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "mri_mi [INPUT_FILE1] [INPUT_FILE2] [BINS] [SILENT_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "First input file name.",
+      "value-key": "[INPUT_FILE1]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file1",
+      "name": "Input file 1"
+    },
+    {
+      "description": "Second input file name.",
+      "value-key": "[INPUT_FILE2]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file2",
+      "name": "Input file 2"
+    },
+    {
+      "command-line-flag": "--bins",
+      "description": "Specifies the number of bins for the two input volumes. Default is 64x64.",
+      "value-key": "[BINS]",
+      "type": "String",
+      "optional": true,
+      "id": "bins",
+      "name": "Bins"
+    },
+    {
+      "command-line-flag": "--silent",
+      "description": "Write out only the final mutual information result.",
+      "value-key": "[SILENT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "silent",
+      "name": "Silent Flag"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

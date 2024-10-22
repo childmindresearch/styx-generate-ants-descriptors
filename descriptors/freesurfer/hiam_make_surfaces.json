@@ -1,0 +1,36 @@
+{
+  "tool-version": "1.0.0",
+  "name": "hiam_make_surfaces",
+  "author": "Placeholder",
+  "description": "Surface creation tool for specified brain structures",
+  "command-line": "hiam_make_surfaces [OPTIONS] [SUBJECT_NAME] [STRUCTURE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Subject name for which surfaces are to be created",
+      "value-key": "[SUBJECT_NAME]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_name",
+      "name": "Subject Name"
+    },
+    {
+      "description": "Structure for which surfaces will be created. Valid values are RA, LA, RH, and LH.",
+      "value-key": "[STRUCTURE]",
+      "type": "String",
+      "optional": false,
+      "id": "structure",
+      "name": "Structure",
+      "value-choices": [
+        "RA",
+        "LA",
+        "RH",
+        "LH"
+      ]
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  }
+}

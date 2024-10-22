@@ -1,0 +1,24 @@
+{
+  "tool-version": "7.4.1",
+  "name": "ms_refine_subject",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://example.com/boutiques/ms_refine_subject.json",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "ms_refine_subject [SUBJECTS_DIR]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Directory containing the subject data (e.g. /usr/local/freesurfer/subjects)",
+      "value-key": "[SUBJECTS_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "subjects_dir",
+      "name": "Subjects Directory"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

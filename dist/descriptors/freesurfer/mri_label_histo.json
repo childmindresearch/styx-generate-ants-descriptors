@@ -1,0 +1,56 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_label_histo",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "mri_label_histo [T1_VOLUME] [LABELED_VOLUME] [LABEL] [OUTPUT]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input T1-weighted anatomical volume.",
+      "value-key": "[T1_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "t1_volume",
+      "name": "T1 Volume"
+    },
+    {
+      "description": "Input volume with labeled regions.",
+      "value-key": "[LABELED_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "labeled_volume",
+      "name": "Labeled Volume"
+    },
+    {
+      "description": "Label of the region of interest.",
+      "value-key": "[LABEL]",
+      "type": "Number",
+      "optional": false,
+      "id": "label",
+      "name": "Label"
+    },
+    {
+      "description": "Output file for histogram.",
+      "value-key": "[OUTPUT]",
+      "type": "String",
+      "optional": false,
+      "id": "output",
+      "name": "Output"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT]",
+      "description": "Histogram of voxel values for the specified label.",
+      "optional": false,
+      "id": "histogram_output",
+      "name": "Histogram Output"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

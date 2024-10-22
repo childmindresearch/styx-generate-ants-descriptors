@@ -1,0 +1,40 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_log_likelihood",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "mri_log_likelihood [INPUT_IMAGES] [ATLAS] [TRANSFORM_FILE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "List of input brain images",
+      "value-key": "[INPUT_IMAGES]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "input_brain_images",
+      "name": "Input Brain Images"
+    },
+    {
+      "description": "Atlas image file",
+      "value-key": "[ATLAS]",
+      "type": "File",
+      "optional": false,
+      "id": "atlas_file",
+      "name": "Atlas File"
+    },
+    {
+      "description": "Transform file for registration",
+      "value-key": "[TRANSFORM_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "transform_file",
+      "name": "Transform File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

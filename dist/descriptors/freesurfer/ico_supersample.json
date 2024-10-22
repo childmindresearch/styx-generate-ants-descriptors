@@ -1,0 +1,50 @@
+{
+  "name": "ico_supersample",
+  "tool-version": "7.4.1",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "ico_supersample [REFINE_FLAG] [RADIUS] [PROJECTION_POINT]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "-y",
+      "description": "Refine the icosahedron mesh",
+      "value-key": "[REFINE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "refine",
+      "name": "Refine flag"
+    },
+    {
+      "description": "Radius of the sphere onto which the icosahedron is projected",
+      "value-key": "[RADIUS]",
+      "type": "Number",
+      "optional": true,
+      "id": "radius",
+      "name": "Radius"
+    },
+    {
+      "description": "Projection point for the icosahedron refinement. Enter three floating point values separated by spaces.",
+      "value-key": "[PROJECTION_POINT]",
+      "type": "Number",
+      "list": true,
+      "optional": true,
+      "id": "projection_point",
+      "name": "Projection Point"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "refined_icosahedron.obj",
+      "description": "The output file containing the refined icosahedron mesh.",
+      "optional": false,
+      "id": "output_file",
+      "name": "Refined Icosahedron File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

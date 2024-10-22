@@ -1,0 +1,23 @@
+{
+  "name": "build_desikan_killiany_gcs.csh",
+  "command-line": "/usr/local/freesurfer/bin/build_desikan_killiany_gcs.csh [HEMI]",
+  "description": "Tool to build Desikan-Killiany cortical parcellation in FreeSurfer.",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "hemi",
+      "name": "Hemisphere",
+      "description": "Hemisphere designation for the operation. Should be 'rh' for right hemisphere or 'lh' for left hemisphere.",
+      "value-key": "[HEMI]",
+      "type": "String",
+      "optional": false
+    }
+  ],
+  "tool-version": "1.0.0",
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  },
+  "author": "Placeholder",
+  "descriptor-url": "https://github.com/freesurfer/freesurfer"
+}

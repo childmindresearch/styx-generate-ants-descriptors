@@ -1,0 +1,23 @@
+{
+  "tool-version": "1.0.0",
+  "name": "xhemi-tal",
+  "description": "Computes the talairach.xfm for xhemi based on the original (unflipped) talairach.xfm",
+  "command-line": "xhemi-tal --s [SUBJECT]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--s",
+      "description": "Subject for which to compute the talairach.xfm",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "optional": false,
+      "id": "subject",
+      "name": "Subject"
+    }
+  ],
+  "author": "Placeholder",
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  }
+}

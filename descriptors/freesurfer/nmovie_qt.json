@@ -1,0 +1,23 @@
+{
+  "tool-version": "1.0.0",
+  "name": "nmovie_qt",
+  "author": "Placeholder",
+  "description": "An image viewer using Qt for displaying images in sequence.",
+  "command-line": "nmovie_qt [IMAGES]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input image files to be displayed. Multiple files can be provided.",
+      "value-key": "[IMAGES]",
+      "type": "File",
+      "optional": false,
+      "id": "images",
+      "name": "Image Files",
+      "list": true
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  }
+}

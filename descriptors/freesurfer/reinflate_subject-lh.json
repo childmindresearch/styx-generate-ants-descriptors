@@ -1,0 +1,31 @@
+{
+  "tool-version": "1.0.0",
+  "name": "reinflate_subject-lh",
+  "author": "Placeholder",
+  "description": "Utility to reinflate cortical surfaces for left hemisphere in FreeSurfer",
+  "command-line": "reinflate_subject-lh [SUBJECT]",
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Subject identifier",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_id",
+      "name": "Subject ID"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[SUBJECT]/surf/lh.inflated",
+      "description": "Reinflated left hemisphere cortical surface",
+      "optional": false,
+      "id": "inflated_surface",
+      "name": "Inflated Surface"
+    }
+  ]
+}

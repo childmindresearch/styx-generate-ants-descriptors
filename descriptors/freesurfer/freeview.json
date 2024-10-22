@@ -1,0 +1,23 @@
+{
+  "tool-version": "1.0.0",
+  "name": "freeview",
+  "author": "Placeholder",
+  "descriptor-url": "unknown",
+  "description": "Freeview is a 3D/2D brain visualization tool.",
+  "command-line": "freeview [ARGS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Arguments for freeview",
+      "value-key": "[ARGS]",
+      "type": "String",
+      "optional": true,
+      "id": "args",
+      "name": "Arguments"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  }
+}

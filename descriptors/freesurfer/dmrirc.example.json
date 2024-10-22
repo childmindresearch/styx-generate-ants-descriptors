@@ -1,0 +1,31 @@
+{
+  "tool-version": "1.0.0",
+  "name": "dmrirc.example",
+  "author": "Placeholder",
+  "descriptor-url": "None",
+  "description": "Example script for DTI processing in FreeSurfer",
+  "command-line": "dmrirc.example [ARGS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Subject list in parenthesis",
+      "value-key": "[SUBJECT_LIST]",
+      "type": "String",
+      "optional": true,
+      "id": "subjlist",
+      "name": "Subject list"
+    },
+    {
+      "description": "Environment variables to be set",
+      "value-key": "[ENV_VARS]",
+      "type": "String",
+      "optional": true,
+      "id": "env_vars",
+      "name": "Environment variables"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  }
+}

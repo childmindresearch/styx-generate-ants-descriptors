@@ -1,0 +1,32 @@
+{
+  "name": "long_create_base_sigma",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "long_create_base_sigma [BASE_ID] [SIGMA]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Subject ID of the base",
+      "value-key": "[BASE_ID]",
+      "type": "String",
+      "optional": false,
+      "id": "base_id",
+      "name": "Base ID"
+    },
+    {
+      "description": "Integer value of sigma smoothing (usually 2..6)",
+      "value-key": "[SIGMA]",
+      "type": "Number",
+      "integer": true,
+      "optional": false,
+      "id": "sigma",
+      "name": "Sigma"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

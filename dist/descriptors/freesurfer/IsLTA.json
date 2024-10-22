@@ -1,0 +1,42 @@
+{
+  "tool-version": "7.4.1",
+  "name": "IsLTA",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "IsLTA --r [CANDIDATE_FILE] --o [OUTFILE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Candidate file to check if it is an LTA",
+      "value-key": "[CANDIDATE_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "candidate_file",
+      "name": "Candidate File",
+      "command-line-flag": "--r"
+    },
+    {
+      "description": "Output file to write the result",
+      "value-key": "[OUTFILE]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output File",
+      "command-line-flag": "--o"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTFILE]",
+      "description": "File containing 1 if the candidate file is an LTA, otherwise 0",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output LTA verification file"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

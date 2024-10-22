@@ -1,0 +1,66 @@
+{
+  "name": "mris_nudge",
+  "tool-version": "7.4.1",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "/usr/local/freesurfer/bin/mris_nudge [INPUT_SURFACE] [INPUT_VOLUME] [VERTEX] [TARGET_VAL] [NBHD] [OUTPUT_SURF]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "input_surface",
+      "name": "Input Surface",
+      "description": "Input surface file for nudging",
+      "type": "File",
+      "value-key": "[INPUT_SURFACE]",
+      "optional": false
+    },
+    {
+      "id": "input_volume",
+      "name": "Input Volume",
+      "description": "Input volume file",
+      "type": "File",
+      "value-key": "[INPUT_VOLUME]",
+      "optional": false
+    },
+    {
+      "id": "vertex",
+      "name": "Vertex",
+      "description": "Vertex to nudge",
+      "type": "Number",
+      "value-key": "[VERTEX]",
+      "optional": false,
+      "integer": true
+    },
+    {
+      "id": "target_val",
+      "name": "Target Value",
+      "description": "Target value for nudging",
+      "type": "Number",
+      "value-key": "[TARGET_VAL]",
+      "optional": false
+    },
+    {
+      "id": "nbhd",
+      "name": "Neighborhood",
+      "description": "Neighborhood size for nudge operation",
+      "type": "Number",
+      "value-key": "[NBHD]",
+      "optional": false,
+      "integer": true
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_surface",
+      "name": "Output Surface",
+      "description": "Output surface file after nudging",
+      "path-template": "[OUTPUT_SURF]",
+      "optional": false
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

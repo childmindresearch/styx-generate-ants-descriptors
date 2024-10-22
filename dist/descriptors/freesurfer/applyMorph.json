@@ -1,0 +1,63 @@
+{
+  "name": "applyMorph",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "applyMorph [INPUTS] --template [TEMPLATE] --transform [TRANSFORM] [ZLIB_BUFFER] [DBG_COORDS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input files.",
+      "value-key": "[INPUTS]",
+      "type": "File",
+      "list": true,
+      "name": "Inputs",
+      "id": "inputs",
+      "optional": false
+    },
+    {
+      "command-line-flag": "--template",
+      "description": "Template volume.",
+      "value-key": "[TEMPLATE]",
+      "type": "File",
+      "name": "Template",
+      "id": "template",
+      "optional": false
+    },
+    {
+      "command-line-flag": "--transform",
+      "description": "Transform file.",
+      "value-key": "[TRANSFORM]",
+      "type": "File",
+      "name": "Transform",
+      "id": "transform",
+      "optional": false
+    },
+    {
+      "command-line-flag": "--zlib_buffer",
+      "description": "Zlib buffer pre-allocation multiplier.",
+      "value-key": "[ZLIB_BUFFER]",
+      "type": "Number",
+      "name": "Zlib Buffer Multiplier",
+      "id": "zlib_buffer",
+      "optional": true
+    },
+    {
+      "command-line-flag": "--dbg_coords",
+      "description": "Debugging coordinates.",
+      "value-key": "[DBG_COORDS]",
+      "type": "Number",
+      "list": true,
+      "min-list-entries": 3,
+      "max-list-entries": 3,
+      "name": "Debugging Coordinates",
+      "id": "dbg_coords",
+      "optional": true
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

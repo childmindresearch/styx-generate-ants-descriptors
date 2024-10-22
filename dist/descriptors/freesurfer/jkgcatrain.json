@@ -1,0 +1,61 @@
+{
+  "tool-version": "7.4.1",
+  "name": "jkgcatrain",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "jkgcatrain [GCA_DIRECTORY] [ITERATION_NUMBER] [NUM_THREADS] [NO_SUBMIT_FLAG] [MAIL_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--g",
+      "description": "Output directory from gcatrain.",
+      "value-key": "[GCA_DIRECTORY]",
+      "type": "String",
+      "optional": false,
+      "id": "gca_directory",
+      "name": "GCA Directory"
+    },
+    {
+      "command-line-flag": "--iter",
+      "description": "Iteration number (usually 2).",
+      "value-key": "[ITERATION_NUMBER]",
+      "type": "Number",
+      "optional": true,
+      "default-value": 2,
+      "id": "iteration_number",
+      "name": "Iteration Number"
+    },
+    {
+      "command-line-flag": "--nthreads",
+      "description": "Number of threads to use.",
+      "value-key": "[NUM_THREADS]",
+      "type": "Number",
+      "optional": true,
+      "id": "num_threads",
+      "name": "Number of Threads"
+    },
+    {
+      "command-line-flag": "--no-submit",
+      "description": "Run serially, do not use pbsubmit.",
+      "value-key": "[NO_SUBMIT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_submit",
+      "name": "No Submit Flag"
+    },
+    {
+      "command-line-flag": "--pb-m",
+      "description": "Mail to user when jobs are pbsubmitted or finished.",
+      "value-key": "[MAIL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mail_flag",
+      "name": "Mail Flag"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

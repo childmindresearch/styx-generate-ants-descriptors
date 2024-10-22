@@ -1,0 +1,31 @@
+{
+  "name": "mris_add_template",
+  "tool-version": "1.0.0",
+  "description": "This tool has been removed from the current version of FreeSurfer.",
+  "author": "Placeholder",
+  "command-line": "mris_add_template",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "value-key": "[PLACEHOLDER_INPUT]",
+      "type": "String",
+      "optional": true,
+      "id": "placeholder_input",
+      "name": "Placeholder Input",
+      "description": "No inputs available as the tool has been removed."
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[PLACEHOLDER_OUTPUT]",
+      "description": "No outputs available as the tool has been removed.",
+      "optional": true,
+      "id": "placeholder_output",
+      "name": "Placeholder Output"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  }
+}

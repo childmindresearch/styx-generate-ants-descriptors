@@ -1,0 +1,42 @@
+{
+  "tool-version": "7.4.1",
+  "name": "make_average_subcort",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "make_average_subcort [SUBJECTS] --o [OUTPUT_VOLUME]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "List of subject identifiers",
+      "value-key": "[SUBJECTS]",
+      "type": "String",
+      "list": true,
+      "optional": false,
+      "id": "subjects",
+      "name": "Subjects"
+    },
+    {
+      "command-line-flag": "--o",
+      "description": "Output volume file",
+      "value-key": "[OUTPUT_VOLUME]",
+      "type": "String",
+      "optional": false,
+      "id": "output_volume",
+      "name": "Output Volume"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_VOLUME]",
+      "description": "Final average subcortical mask in fsaverage/mni305 space",
+      "optional": false,
+      "id": "output_mask_file",
+      "name": "Output Mask File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

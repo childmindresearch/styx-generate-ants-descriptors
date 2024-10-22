@@ -1,0 +1,76 @@
+{
+  "name": "mris_AA_shrinkwrap",
+  "tool-version": "7.4.1",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "mris_AA_shrinkwrap [T1_VOL] [PD_VOL] [OUTPUT_DIR] [OMIT_SELF_INTERSECTION] [CREATE_CURVATURE_AREA] [AVERAGE_CURVATURE] [WHITE_ONLY]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "T1 volume file",
+      "value-key": "[T1_VOL]",
+      "type": "File",
+      "optional": false,
+      "id": "t1_vol",
+      "name": "T1 Volume File"
+    },
+    {
+      "description": "PD volume file",
+      "value-key": "[PD_VOL]",
+      "type": "File",
+      "optional": false,
+      "id": "pd_vol",
+      "name": "PD Volume File"
+    },
+    {
+      "description": "Output directory",
+      "value-key": "[OUTPUT_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "output_dir",
+      "name": "Output Directory"
+    },
+    {
+      "command-line-flag": "-q",
+      "description": "Omit self-intersection and only generate gray/white surface",
+      "value-key": "[OMIT_SELF_INTERSECTION]",
+      "type": "Flag",
+      "optional": true,
+      "id": "omit_self_intersection",
+      "name": "Omit Self-intersection Flag"
+    },
+    {
+      "command-line-flag": "-c",
+      "description": "Create curvature and area files from white matter surface",
+      "value-key": "[CREATE_CURVATURE_AREA]",
+      "type": "Flag",
+      "optional": true,
+      "id": "create_curvature_area",
+      "name": "Create Curvature and Area Flag"
+    },
+    {
+      "command-line-flag": "-a",
+      "description": "Average curvature values a specified number of times (default=10)",
+      "value-key": "[AVERAGE_CURVATURE]",
+      "type": "Number",
+      "optional": true,
+      "id": "average_curvature",
+      "name": "Average Curvature",
+      "default-value": 10
+    },
+    {
+      "command-line-flag": "-whiteonly",
+      "description": "Only generate white matter surface",
+      "value-key": "[WHITE_ONLY]",
+      "type": "Flag",
+      "optional": true,
+      "id": "white_only",
+      "name": "White Only Flag"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

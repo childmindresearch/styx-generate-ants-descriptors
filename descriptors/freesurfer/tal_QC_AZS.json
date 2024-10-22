@@ -1,0 +1,22 @@
+{
+  "tool-version": "1.0.0",
+  "name": "tal_QC_AZS",
+  "author": "Placeholder",
+  "description": "A tool that processes a logfile.",
+  "command-line": "tal_QC_AZS [LOGFILE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input logfile for processing.",
+      "value-key": "[LOGFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "logfile",
+      "name": "Logfile"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  }
+}

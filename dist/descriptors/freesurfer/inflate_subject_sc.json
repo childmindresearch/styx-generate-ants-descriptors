@@ -1,0 +1,51 @@
+{
+  "tool-version": "7.4.1",
+  "name": "inflate_subject_sc",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://example.com/inflate_subject_sc.json",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "inflate_subject_sc [OPTIONS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Path to the subject directory.",
+      "value-key": "[SUBJECT_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_dir",
+      "name": "Subject directory"
+    },
+    {
+      "command-line-flag": "--verbose",
+      "description": "Enable verbose output.",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose flag"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Enable debug mode.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[SUBJECT_DIR]/inflated_output",
+      "description": "Inflated subject surface output.",
+      "optional": true,
+      "id": "inflated_output",
+      "name": "Inflated output file"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

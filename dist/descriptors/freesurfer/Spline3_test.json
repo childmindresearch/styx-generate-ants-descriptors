@@ -1,0 +1,58 @@
+{
+  "name": "Spline3_test",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "Spline3_test [X_VALUES] [Y_VALUES] [X_NEW_VALUES]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Original x values for interpolation.",
+      "value-key": "[X_VALUES]",
+      "type": "Number",
+      "list": true,
+      "optional": false,
+      "id": "x_values",
+      "name": "X values"
+    },
+    {
+      "description": "Original y values corresponding to x values.",
+      "value-key": "[Y_VALUES]",
+      "type": "Number",
+      "list": true,
+      "optional": false,
+      "id": "y_values",
+      "name": "Y values"
+    },
+    {
+      "description": "New x values where interpolation is evaluated.",
+      "value-key": "[X_NEW_VALUES]",
+      "type": "Number",
+      "list": true,
+      "optional": false,
+      "id": "x_new_values",
+      "name": "X new values"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "Ynew.txt",
+      "description": "Interpolated y values at new x positions.",
+      "optional": false,
+      "id": "output_ynew",
+      "name": "Output Ynew values"
+    },
+    {
+      "path-template": "Ynewarr.txt",
+      "description": "Array format of interpolated y values at new x positions.",
+      "optional": true,
+      "id": "output_ynewarr",
+      "name": "Output Ynewarr values"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

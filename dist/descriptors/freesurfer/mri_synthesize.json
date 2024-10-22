@@ -1,0 +1,82 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_synthesize",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "unknown",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "/usr/local/freesurfer/bin/mri_synthesize [TR] [ALPHA] [TE] [T1_VOLUME] [PD_VOLUME] [OUTPUT_VOLUME] [FIXED_WEIGHT_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Repetition time (TR) for the synthesis.",
+      "value-key": "[TR]",
+      "type": "Number",
+      "optional": false,
+      "id": "tr",
+      "name": "TR"
+    },
+    {
+      "description": "Flip angle (alpha) in degrees.",
+      "value-key": "[ALPHA]",
+      "type": "Number",
+      "optional": false,
+      "id": "alpha",
+      "name": "Alpha (degrees)"
+    },
+    {
+      "description": "Echo time (TE) for the synthesis.",
+      "value-key": "[TE]",
+      "type": "Number",
+      "optional": false,
+      "id": "te",
+      "name": "TE"
+    },
+    {
+      "description": "Path to the T1 volume.",
+      "value-key": "[T1_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "t1_volume",
+      "name": "T1 Volume"
+    },
+    {
+      "description": "Path to the PD volume.",
+      "value-key": "[PD_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "pd_volume",
+      "name": "PD Volume"
+    },
+    {
+      "description": "Path for the output volume.",
+      "value-key": "[OUTPUT_VOLUME]",
+      "type": "String",
+      "optional": false,
+      "id": "output_volume",
+      "name": "Output Volume"
+    },
+    {
+      "command-line-flag": "-w",
+      "description": "Use a fixed weighting to generate an output volume with optimal gray/white contrast.",
+      "value-key": "[FIXED_WEIGHT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "fixed_weight",
+      "name": "Fixed Weight Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_VOLUME]",
+      "description": "The synthesized FLASH acquisition output volume.",
+      "optional": false,
+      "id": "synthesized_output",
+      "name": "Synthesized Output Volume"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

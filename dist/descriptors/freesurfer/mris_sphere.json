@@ -1,0 +1,49 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mris_sphere",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://github.com/freesurfer/freesurfer/blob/dev/GNUmakefile/functionals/mris_sphere/mris_sphere.c",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "mris_sphere [SURFACE_FILE] [PATCH_FILE] [OUTPUT_PATCH]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input surface file.",
+      "value-key": "[SURFACE_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "surface_file",
+      "name": "Surface file"
+    },
+    {
+      "description": "Input patch file name.",
+      "value-key": "[PATCH_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "patch_file",
+      "name": "Patch file"
+    },
+    {
+      "description": "Output patch file name.",
+      "value-key": "[OUTPUT_PATCH]",
+      "type": "String",
+      "optional": false,
+      "id": "output_patch",
+      "name": "Output patch"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_PATCH]",
+      "description": "Output patch file.",
+      "optional": false,
+      "id": "output_patch_file",
+      "name": "Output patch file"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

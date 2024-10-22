@@ -1,0 +1,22 @@
+{
+  "tool-version": "1.0.0",
+  "name": "renormalize_T1_subject",
+  "author": "Placeholder",
+  "description": "Renormalize T1 subject images using FreeSurfer scripts",
+  "command-line": "renormalize_T1_subject [SUBJECT_DIR]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Directory of the subject containing T1 images to renormalize",
+      "value-key": "[SUBJECT_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_dir",
+      "name": "Subject Directory"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  }
+}

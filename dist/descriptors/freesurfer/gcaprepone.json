@@ -1,0 +1,69 @@
+{
+  "tool-version": "7.4.1",
+  "name": "gcaprepone",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "gcaprepone [GCA_DIR] [SUBJECT] [INIT_SUBJECT_FLAG] [SOURCE_SUBJECTS_DIR] [DONE_FILE] [NO_EMREG_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--o",
+      "description": "Directory to be the new SUBJECTS_DIR",
+      "value-key": "[GCA_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "gcadir",
+      "name": "GCA Directory"
+    },
+    {
+      "command-line-flag": "--s",
+      "description": "Subject for the process",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "optional": false,
+      "id": "subject",
+      "name": "Subject"
+    },
+    {
+      "command-line-flag": "--init-subject",
+      "description": "Flag indicating the initial subject",
+      "value-key": "[INIT_SUBJECT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "init_subject",
+      "name": "Initial Subject Flag"
+    },
+    {
+      "command-line-flag": "--sd",
+      "description": "SUBJECTS_DIR for source data",
+      "value-key": "[SOURCE_SUBJECTS_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "source_subjects_dir",
+      "name": "Source SUBJECTS_DIR"
+    },
+    {
+      "command-line-flag": "--done",
+      "description": "File to indicate completion",
+      "value-key": "[DONE_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "done_file",
+      "name": "Done File"
+    },
+    {
+      "command-line-flag": "--no-emreg",
+      "description": "Flag to skip EM registration",
+      "value-key": "[NO_EMREG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_emreg",
+      "name": "No EMReg Flag"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

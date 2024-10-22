@@ -1,0 +1,61 @@
+{
+  "tool-version": "7.4.1",
+  "name": "vsm-smooth",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://example.com/vsm-smooth_descriptor.json",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "vsm-smooth [INPUT_FILE] [OUTPUT_FILE] [FWHM_VALUE] [TEMP_DIR]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--i",
+      "description": "Input voxel shift map (vsm).",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input VSM file"
+    },
+    {
+      "command-line-flag": "--o",
+      "description": "Output smoothed voxel shift map.",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output VSM file"
+    },
+    {
+      "command-line-flag": "--fwhm",
+      "description": "Full width at half maximum for smoothing.",
+      "value-key": "[FWHM_VALUE]",
+      "type": "Number",
+      "optional": false,
+      "id": "fwhm_value",
+      "name": "FWHM value"
+    },
+    {
+      "command-line-flag": "--tmpdir",
+      "description": "Directory for temporary files.",
+      "value-key": "[TEMP_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "temp_dir",
+      "name": "Temporary directory"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "The resulting smoothed voxel shift map.",
+      "optional": false,
+      "id": "output_vsm",
+      "name": "Smoothed VSM file"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

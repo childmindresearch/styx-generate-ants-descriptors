@@ -1,0 +1,37 @@
+{
+  "tool-version": "7.4.1",
+  "name": "hiam_make_surfaces",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "hiam_make_surfaces [OPTIONS] [SUBJECT_NAME] [STRUCTURE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Subject name for which surfaces are to be created",
+      "value-key": "[SUBJECT_NAME]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_name",
+      "name": "Subject Name"
+    },
+    {
+      "description": "Structure for which surfaces will be created. Valid values are RA, LA, RH, and LH.",
+      "value-key": "[STRUCTURE]",
+      "type": "String",
+      "optional": false,
+      "id": "structure",
+      "name": "Structure",
+      "value-choices": [
+        "RA",
+        "LA",
+        "RH",
+        "LH"
+      ]
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

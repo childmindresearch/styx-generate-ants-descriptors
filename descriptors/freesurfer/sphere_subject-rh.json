@@ -1,0 +1,22 @@
+{
+  "tool-version": "1.0.0",
+  "name": "sphere_subject-rh",
+  "author": "Placeholder",
+  "description": "Sphere Subject RH tool for FreeSurfer, requires valid license.",
+  "command-line": "sphere_subject-rh [LICENSE_FILE]",
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Path to FreeSurfer license file, can be specified with the FS_LICENSE environmental variable.",
+      "value-key": "[LICENSE_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "license_file",
+      "name": "License File"
+    }
+  ]
+}

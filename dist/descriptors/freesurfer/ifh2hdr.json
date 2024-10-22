@@ -1,0 +1,32 @@
+{
+  "tool-version": "7.4.1",
+  "name": "ifh2hdr",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "ifh2hdr [INPUT_FILE] [RANGE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input 4dfp file",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input File"
+    },
+    {
+      "command-line-flag": "-r",
+      "description": "Set range for the 4dfp file. Format: <float>[to<float>].",
+      "value-key": "[RANGE]",
+      "type": "String",
+      "optional": true,
+      "id": "range",
+      "name": "Range"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,24 @@
+{
+  "tool-version": "1.0.0",
+  "name": "sphere_subject-lh",
+  "author": "Placeholder",
+  "descriptor-url": "https://github.com/freesurfer/freesurfer",
+  "description": "Tool for processing spherical representations in FreeSurfer",
+  "command-line": "sphere_subject-lh [LICENSE]",
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Path to the FreeSurfer license file",
+      "value-key": "[LICENSE]",
+      "type": "File",
+      "optional": false,
+      "id": "license_file",
+      "name": "License file",
+      "default-value": "/usr/local/freesurfer/.license"
+    }
+  ]
+}

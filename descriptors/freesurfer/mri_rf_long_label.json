@@ -1,0 +1,22 @@
+{
+  "name": "mri_rf_long_label",
+  "description": "The mri_rf_long_label tool has been removed from this version of FreeSurfer.",
+  "author": "Placeholder",
+  "command-line": "mri_rf_long_label [HELP_FLAG]",
+  "schema-version": "0.5",
+  "tool-version": "1.0.0",
+  "inputs": [
+    {
+      "id": "help_flag",
+      "name": "Help flag",
+      "description": "Displays a message that the tool has been removed.",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  }
+}

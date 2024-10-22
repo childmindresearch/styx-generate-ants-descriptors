@@ -1,0 +1,57 @@
+{
+  "name": "tal_compare",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "tal_compare [REF_FILE] [MOVING_FILE] [OUTPUT_FILE] [VERBOSE_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Reference TAL database file.",
+      "value-key": "[REF_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "ref_file",
+      "name": "Reference File"
+    },
+    {
+      "description": "Moving TAL database file to compare against the reference.",
+      "value-key": "[MOVING_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "moving_file",
+      "name": "Moving File"
+    },
+    {
+      "description": "Output file to store comparison results.",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Enable verbose output.",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Comparison results output file.",
+      "optional": false,
+      "id": "comparison_results",
+      "name": "Comparison Results Output File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

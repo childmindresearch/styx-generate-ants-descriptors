@@ -1,0 +1,23 @@
+{
+  "tool-version": "1.0.0",
+  "name": "dmrirc.long.example",
+  "author": "Placeholder",
+  "descriptor-url": "none",
+  "description": "Example script for processing DWI data in a longitudinal study.",
+  "command-line": "dmrirc.long.example [CONFIG_FILE]",
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Configuration file for the DWI processing script.",
+      "value-key": "[CONFIG_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "config_file",
+      "name": "Configuration file"
+    }
+  ]
+}

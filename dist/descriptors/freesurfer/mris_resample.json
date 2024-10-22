@@ -1,0 +1,81 @@
+{
+  "name": "mris_resample",
+  "tool-version": "7.4.1",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "mris_resample --atlas_reg [ATLAS_REG] --subject_reg [SUBJECT_REG] --subject_surf [SUBJECT_SURF] --out [OUTPUT] [ANNOT_IN] [ANNOT_OUT]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "atlas_reg",
+      "name": "Atlas Registration File",
+      "type": "File",
+      "description": "Atlas spherical registration file.",
+      "value-key": "[ATLAS_REG]",
+      "optional": false
+    },
+    {
+      "id": "subject_reg",
+      "name": "Subject Registration File",
+      "type": "File",
+      "description": "Subject spherical registration file.",
+      "value-key": "[SUBJECT_REG]",
+      "optional": false
+    },
+    {
+      "id": "subject_surf",
+      "name": "Subject Surface File",
+      "type": "File",
+      "description": "Subject actual surface.",
+      "value-key": "[SUBJECT_SURF]",
+      "optional": false
+    },
+    {
+      "id": "output",
+      "name": "Output Resampled Surface",
+      "type": "File",
+      "description": "Output resampled surface.",
+      "value-key": "[OUTPUT]",
+      "optional": false
+    },
+    {
+      "command-line-flag": "--annot_in",
+      "id": "annot_in",
+      "name": "Input Annotation",
+      "type": "File",
+      "description": "Input annotation (for the subject). If present, output annotation must be present as well.",
+      "value-key": "[ANNOT_IN]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "--annot_out",
+      "id": "annot_out",
+      "name": "Output Annotation",
+      "type": "File",
+      "description": "Output annotation (for the resampled atlas). If present, input annotation must be present as well.",
+      "value-key": "[ANNOT_OUT]",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT]",
+      "description": "Resampled surface output",
+      "optional": false,
+      "id": "resampled_surface_output",
+      "name": "Resampled Surface Output"
+    },
+    {
+      "path-template": "[ANNOT_OUT]",
+      "description": "Output annotation for the resampled atlas",
+      "optional": true,
+      "id": "resampled_annotation_output",
+      "name": "Resampled Annotation Output"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "author": "FreeSurfer Developers",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,41 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mris_extract_main_component",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "N/A",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "mris_extract_main_component [INPUT_SURFACE] [OUTPUT_SURFACE]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input surface file (e.g. lh.white)",
+      "value-key": "[INPUT_SURFACE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_surface",
+      "name": "Input Surface"
+    },
+    {
+      "description": "Output surface file (e.g. lh.white.main)",
+      "value-key": "[OUTPUT_SURFACE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_surface",
+      "name": "Output Surface"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_SURFACE]",
+      "description": "Extracted main component of the input surface",
+      "optional": false,
+      "id": "output_surface_file",
+      "name": "Output Surface File"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

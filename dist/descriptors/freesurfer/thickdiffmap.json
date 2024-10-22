@@ -1,0 +1,56 @@
+{
+  "name": "thickdiffmap",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "thickdiffmap [SUBJSCAN1] [SUBJSCAN2] [COMMONSUBJ] [HEMI] [STEPS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "First scan of a subject",
+      "value-key": "[SUBJSCAN1]",
+      "type": "File",
+      "optional": false,
+      "id": "subjscan1",
+      "name": "Subject Scan 1"
+    },
+    {
+      "description": "Second (later) scan of the same subject",
+      "value-key": "[SUBJSCAN2]",
+      "type": "File",
+      "optional": false,
+      "id": "subjscan2",
+      "name": "Subject Scan 2"
+    },
+    {
+      "description": "Subject to use as the common template",
+      "value-key": "[COMMONSUBJ]",
+      "type": "String",
+      "optional": false,
+      "id": "commonsubj",
+      "name": "Common Subject"
+    },
+    {
+      "description": "Hemisphere to process",
+      "value-key": "[HEMI]",
+      "type": "String",
+      "optional": false,
+      "id": "hemi",
+      "name": "Hemisphere"
+    },
+    {
+      "description": "Stages of processing",
+      "value-key": "[STEPS]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "steps",
+      "name": "Processing Steps"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

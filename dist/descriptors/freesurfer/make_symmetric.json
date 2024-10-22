@@ -1,0 +1,63 @@
+{
+  "tool-version": "7.4.1",
+  "name": "make_symmetric",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "make_symmetric [HEMI] [INPUT_FILE] [OUTPUT_FILE] [TRANSFORM_MAP]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "The hemisphere to mirror; accepted values are 'lh' for left hemisphere or 'rh' for right hemisphere.",
+      "value-key": "[HEMI]",
+      "type": "String",
+      "optional": false,
+      "id": "hemi",
+      "name": "Hemisphere"
+    },
+    {
+      "description": "Input image in .mgz format.",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input file"
+    },
+    {
+      "description": "Output image in .mgz format resulting from the symmetric processing.",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output file"
+    },
+    {
+      "description": "Transformation map in .lta format mapping the input to the upright space.",
+      "value-key": "[TRANSFORM_MAP]",
+      "type": "String",
+      "optional": false,
+      "id": "transform_map",
+      "name": "Transform map file"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Output image file after processing.",
+      "optional": false,
+      "id": "processed_output",
+      "name": "Processed output file"
+    },
+    {
+      "path-template": "[TRANSFORM_MAP]",
+      "description": "Transformation map file mapping the input to the upright space.",
+      "optional": false,
+      "id": "map_output",
+      "name": "Transform map output file"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

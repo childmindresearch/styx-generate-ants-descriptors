@@ -1,0 +1,23 @@
+{
+  "tool-version": "1.0.0",
+  "name": "fsPrintHelp",
+  "author": "Placeholder",
+  "descriptor-url": "Unknown",
+  "description": "fsPrintHelp - A tool that attempts to provide help documentation for FreeSurfer commands.",
+  "command-line": "fsPrintHelp [ARGUMENTS]",
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Any arguments that fsPrintHelp accepts.",
+      "value-key": "[ARGUMENTS]",
+      "type": "String",
+      "optional": true,
+      "id": "arguments",
+      "name": "Command Arguments"
+    }
+  ]
+}

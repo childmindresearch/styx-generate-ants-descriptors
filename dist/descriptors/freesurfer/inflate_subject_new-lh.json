@@ -1,0 +1,32 @@
+{
+  "tool-version": "7.4.1",
+  "name": "inflate_subject_new-lh",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "inflate_subject_new-lh [SUBJECT_DIR] [OPTIONS]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Directory of the subject's data in FreeSurfer",
+      "value-key": "[SUBJECT_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_dir",
+      "name": "Subject Directory"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[SUBJECT_DIR]/surf/lh.inflated",
+      "description": "Inflated surface file for the left hemisphere",
+      "optional": false,
+      "id": "inflated_surface",
+      "name": "Inflated Left Hemisphere Surface"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

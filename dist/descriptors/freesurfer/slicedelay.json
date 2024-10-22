@@ -1,0 +1,67 @@
+{
+  "name": "slicedelay",
+  "tool-version": "7.4.1",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "author": "FreeSurfer Developers",
+  "command-line": "slicedelay --o [SLICE_DELAY_FILE] --nslices [NUM_SLICES] --order [ORDER] --ngroups [NUM_GROUPS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "slicedelayfile",
+      "name": "Slice Delay File",
+      "description": "Output file for the custom slice delay",
+      "value-key": "[SLICE_DELAY_FILE]",
+      "type": "String",
+      "optional": false,
+      "command-line-flag": "--o"
+    },
+    {
+      "id": "nslices",
+      "name": "Number of Slices",
+      "description": "Total number of slices in the volume",
+      "value-key": "[NUM_SLICES]",
+      "type": "Number",
+      "optional": false,
+      "command-line-flag": "--nslices"
+    },
+    {
+      "id": "order",
+      "name": "Slice Order",
+      "description": "Order of slices (up, down, odd, even, siemens)",
+      "value-key": "[ORDER]",
+      "type": "String",
+      "optional": false,
+      "command-line-flag": "--order",
+      "value-choices": [
+        "up",
+        "down",
+        "odd",
+        "even",
+        "siemens"
+      ]
+    },
+    {
+      "id": "ngroups",
+      "name": "Number of Groups",
+      "description": "Number of slice groups for SMS",
+      "value-key": "[NUM_GROUPS]",
+      "type": "Number",
+      "optional": false,
+      "command-line-flag": "--ngroups"
+    }
+  ],
+  "output-files": [
+    {
+      "id": "slicedelayfile",
+      "name": "Slice Delay Output File",
+      "description": "The generated slice delay file",
+      "path-template": "[SLICE_DELAY_FILE]",
+      "optional": false
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

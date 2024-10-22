@@ -1,0 +1,78 @@
+{
+  "name": "compute_label_volumes.csh",
+  "command-line": "compute_label_volumes [LABEL_VOLUME] [OUTPUT_FILE] [PARTICULAR_LABEL] [VERSION_FLAG] [HELP_FLAG]",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--vol",
+      "description": "Label volume to be analyzed",
+      "value-key": "[LABEL_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "label_vol",
+      "name": "Label Volume"
+    },
+    {
+      "command-line-flag": "--out",
+      "description": "Text file where the results are written",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    },
+    {
+      "command-line-flag": "--L",
+      "description": "The particular label to be analyzed (case-sensitive option)",
+      "value-key": "[PARTICULAR_LABEL]",
+      "type": "String",
+      "optional": true,
+      "id": "label_L",
+      "name": "Particular Label (L)"
+    },
+    {
+      "command-line-flag": "--l",
+      "description": "The particular label to be analyzed (case-insensitive option)",
+      "value-key": "[PARTICULAR_LABEL]",
+      "type": "String",
+      "optional": true,
+      "id": "label_l",
+      "name": "Particular Label (l)"
+    },
+    {
+      "command-line-flag": "--version",
+      "description": "Print version and exit",
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version Flag"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Print help and exit",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Text file with the computed number of voxels and volumes",
+      "optional": false,
+      "id": "result_file",
+      "name": "Result File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

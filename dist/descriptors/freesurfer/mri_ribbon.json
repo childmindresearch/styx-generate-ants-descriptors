@@ -1,0 +1,65 @@
+{
+  "name": "mri_ribbon",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "mri_ribbon [LABEL_FILE] [INNER_SURFACE] [OUTER_SURFACE] [INPUT_VOLUME] [OUTPUT_VOLUME]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "-l",
+      "description": "Label file specifying regions of interest (optional)",
+      "value-key": "[LABEL_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "label_file",
+      "name": "Label File"
+    },
+    {
+      "description": "File name of the inner surface",
+      "value-key": "[INNER_SURFACE]",
+      "type": "File",
+      "optional": false,
+      "id": "inner_surface",
+      "name": "Inner Surface"
+    },
+    {
+      "description": "File name of the outer surface",
+      "value-key": "[OUTER_SURFACE]",
+      "type": "File",
+      "optional": false,
+      "id": "outer_surface",
+      "name": "Outer Surface"
+    },
+    {
+      "description": "Prefix for the input volume file",
+      "value-key": "[INPUT_VOLUME]",
+      "type": "String",
+      "optional": false,
+      "id": "input_volume",
+      "name": "Input Volume Prefix"
+    },
+    {
+      "description": "Prefix for the output volume file",
+      "value-key": "[OUTPUT_VOLUME]",
+      "type": "String",
+      "optional": false,
+      "id": "output_volume",
+      "name": "Output Volume Prefix"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_VOLUME]_ribbon.nii.gz",
+      "description": "Output ribbon volume",
+      "optional": false,
+      "id": "ribbon_output",
+      "name": "Ribbon Output Volume"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

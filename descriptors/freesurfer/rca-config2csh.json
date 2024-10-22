@@ -1,0 +1,22 @@
+{
+  "name": "rca-config2csh",
+  "tool-version": "1.0.0",
+  "author": "Placeholder",
+  "description": "rca-config2csh is a utility to convert configuration files into C-shell syntax.",
+  "command-line": "rca-config2csh [CONFIG_FILE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Configuration file to be converted",
+      "value-key": "[CONFIG_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "configfile",
+      "name": "Configuration file"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  }
+}

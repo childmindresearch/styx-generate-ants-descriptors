@@ -1,0 +1,40 @@
+{
+  "name": "segmentSubjectT1_autoEstimateAlveusML",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "schema-version": "0.5",
+  "command-line": "segmentSubjectT1_autoEstimateAlveusML [T1_FILE] [OUTPUT_FOLDER]",
+  "inputs": [
+    {
+      "id": "t1_file",
+      "name": "T1-weighted MRI",
+      "type": "File",
+      "description": "Input T1-weighted MRI file to be segmented.",
+      "value-key": "[T1_FILE]",
+      "optional": false
+    },
+    {
+      "id": "output_folder",
+      "name": "Output Folder",
+      "type": "String",
+      "description": "Path to the folder where the outputs will be saved.",
+      "value-key": "[OUTPUT_FOLDER]",
+      "optional": false
+    }
+  ],
+  "output-files": [
+    {
+      "id": "segmentation_output",
+      "name": "Segmentation Output",
+      "description": "The file containing segmented MRI data.",
+      "path-template": "[OUTPUT_FOLDER]/segmented_output.nii.gz",
+      "optional": false
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

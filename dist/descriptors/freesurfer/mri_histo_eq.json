@@ -1,0 +1,32 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_histo_eq",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://github.com/freesurfer/freesurfer",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "mri_histo_eq [INPUT_VOLUME_1] [INPUT_VOLUME_2]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input volume 1",
+      "value-key": "[INPUT_VOLUME_1]",
+      "type": "File",
+      "optional": false,
+      "id": "input_volume_1",
+      "name": "Input Volume 1"
+    },
+    {
+      "description": "Input volume 2",
+      "value-key": "[INPUT_VOLUME_2]",
+      "type": "File",
+      "optional": false,
+      "id": "input_volume_2",
+      "name": "Input Volume 2"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

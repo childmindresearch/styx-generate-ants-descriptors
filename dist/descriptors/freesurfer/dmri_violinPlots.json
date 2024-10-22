@@ -1,0 +1,42 @@
+{
+  "name": "dmri_violinPlots",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "dmri_violinPlots -i [INPUT_DIRECTORY] -l [LABELS] -s [STRUCTURE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "-i",
+      "description": "Directory with all subjects",
+      "value-key": "[INPUT_DIRECTORY]",
+      "type": "String",
+      "optional": false,
+      "id": "input_directory",
+      "name": "Input Directory"
+    },
+    {
+      "command-line-flag": "-l",
+      "description": "CSV file with group labels",
+      "value-key": "[LABELS]",
+      "type": "File",
+      "optional": false,
+      "id": "labels",
+      "name": "Labels CSV"
+    },
+    {
+      "command-line-flag": "-s",
+      "description": "Name of the structure",
+      "value-key": "[STRUCTURE]",
+      "type": "String",
+      "optional": false,
+      "id": "structure",
+      "name": "Structure Name"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

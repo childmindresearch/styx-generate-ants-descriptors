@@ -1,0 +1,61 @@
+{
+  "tool-version": "7.4.1",
+  "name": "deface_subject",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "N/A",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "deface_subject [SUBJECTS_DIR] [SUBJECT_ID] [VOLUME_INPUT] [VOLUME_OUTPUT]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Directory containing FreeSurfer subject directories.",
+      "value-key": "[SUBJECTS_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "subjects_dir",
+      "name": "Subjects Directory",
+      "command-line-flag": "-sdir"
+    },
+    {
+      "description": "Subject ID that specifies the subject directory.",
+      "value-key": "[SUBJECT_ID]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_id",
+      "name": "Subject ID",
+      "command-line-flag": "-id"
+    },
+    {
+      "description": "Input volume to be defaced.",
+      "value-key": "[VOLUME_INPUT]",
+      "type": "File",
+      "optional": false,
+      "id": "volume_input",
+      "name": "Input Volume",
+      "command-line-flag": "-i"
+    },
+    {
+      "description": "Output volume after defacing.",
+      "value-key": "[VOLUME_OUTPUT]",
+      "type": "String",
+      "optional": false,
+      "id": "volume_output",
+      "name": "Output Volume",
+      "command-line-flag": "-o"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[VOLUME_OUTPUT]",
+      "description": "Defaced output volume.",
+      "optional": false,
+      "id": "output_volume",
+      "name": "Defaced Output Volume"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

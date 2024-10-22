@@ -1,0 +1,42 @@
+{
+  "tool-version": "7.4.1",
+  "name": "reg-mni305.2mm",
+  "author": "FreeSurfer Developers",
+  "description": "FreeSurfer is a software package for the analysis and visualization of neuroimaging data from cross-sectional and longitudinal studies. It is developed by the Laboratory for Computational Neuroimaging at the Martinos Center for Biomedical Imaging.\n\nFreeSurfer provides full processing streams for structural and functional MRI and includes tools for linear and nonlinear registration, cortical and subcortical segmentation, cortical surface reconstruction, statistical analysis of group morphometry, diffusion MRI, PET analysis, and much more. It is also the structural MRI analysis software of choice for the Human Connectome Project.",
+  "command-line": "reg-mni305.2mm --s [SUBJECT] --reg [REGFILE]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--s",
+      "description": "Subject ID for the FreeSurfer anatomical space.",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_id",
+      "name": "Subject ID"
+    },
+    {
+      "command-line-flag": "--reg",
+      "description": "tkregister2-style registration matrix file (should have a .dat or .reg extension).",
+      "value-key": "[REGFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "regfile",
+      "name": "Registration file"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[REGFILE]",
+      "description": "tkregister2-style registration matrix output file.",
+      "optional": false,
+      "id": "output_regfile",
+      "name": "Output Registration File"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

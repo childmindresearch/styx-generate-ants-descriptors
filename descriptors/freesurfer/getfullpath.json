@@ -1,0 +1,22 @@
+{
+  "name": "getfullpath",
+  "command-line": "getfullpath [FILENAME]",
+  "schema-version": "0.5",
+  "description": "A utility to retrieve the full path of a specified file or directory.",
+  "inputs": [
+    {
+      "description": "Filename for which to get the full path.",
+      "value-key": "[FILENAME]",
+      "type": "String",
+      "optional": false,
+      "id": "filename",
+      "name": "Filename"
+    }
+  ],
+  "author": "Placeholder",
+  "tool-version": "1.0.0",
+  "container-image": {
+    "type": "docker",
+    "image": "place/holder"
+  }
+}
