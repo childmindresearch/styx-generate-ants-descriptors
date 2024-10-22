@@ -12,9 +12,9 @@ The process of generating Boutiques descriptors is divided into three main steps
 
 ## Scripts
 
-1. `extract.sh`: Extracts documentation for commands from specified neuroimaging software packages using Docker containers.
-2. `llm.py`: Generates Boutiques descriptors from command help texts using AI language models (e.g., OpenAI's GPT-4).
-3. `build.py`: Compiles the generated descriptors into a structured package.
+1. `extract_<package>.sh`: Extracts documentation for commands from specified neuroimaging software packages using Docker containers.
+2. `llm.py <package>`: Generates Boutiques descriptors from command help texts using AI language models (e.g., OpenAI's GPT-4).
+3. `build.py <package>`: Compiles the generated descriptors into a structured package.
 
 ## Requirements
 
